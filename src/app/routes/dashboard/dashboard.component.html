@@ -1,0 +1,39 @@
+<p>dashboard</p>
+<div fxLayout="row wrap">
+  <div [fxFlex.gt-sm]="33.333" [fxFlex.gt-xs]="50" [fxFlex]="100">
+    <mat-card>
+      <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let shoe of typesOfShoes">
+          {{shoe}}
+        </mat-list-option>
+      </mat-selection-list>
+      <p>
+        Options selected: {{shoes.selectedOptions.selected.length}}
+      </p>
+    </mat-card>
+  </div>
+  <div [fxFlex.gt-sm]="33.333" [fxFlex.gt-xs]="50" [fxFlex]="100" fxHide="false" fxHide.gt-md>
+    <mat-card>
+      <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let shoe of typesOfShoes">
+          {{shoe}}
+        </mat-list-option>
+      </mat-selection-list>
+      <p>
+        Options selected2: {{shoes.selectedOptions.selected.length}}
+      </p>
+    </mat-card>
+  </div>
+  <div [fxFlex.gt-sm]="33.333" [fxFlex.gt-xs]="50" [fxFlex]="100">
+    <mat-card>
+      <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let shoe of typesOfShoes">
+          {{shoe}}
+        </mat-list-option>
+      </mat-selection-list>
+      <p>
+        Options selected3: {{shoes.selectedOptions.selected.length}}
+      </p>
+    </mat-card>
+  </div>
+</div>

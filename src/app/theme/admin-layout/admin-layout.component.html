@@ -1,0 +1,27 @@
+<div class="app-admin-container">
+  <!-- <ngx-loading-bar color="#009688"></ngx-loading-bar> -->
+  <!-- <app-header (toggleSidenav)="sidemenu.toggle()" (toggleNotificationSidenav)="notifications.toggle()"></app-header> -->
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidemenu mode="side" class="sidebar-panel">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <!-- <mat-sidenav #notifications position="end" class="chat-panel" mode="over" opened="false">
+      <app-notification></app-notification>
+    </mat-sidenav> -->
+    <mat-sidenav-content>
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidemenu.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        My App
+      </mat-toolbar>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Demo Purposes Only -->
+  <!-- <app-options (messageEvent)="receiveOptions($event)"></app-options> -->
+  <!-- /Demo Purposes Only -->
+</div>

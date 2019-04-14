@@ -1,0 +1,107 @@
+//
+// General
+//
+$transition-duration: 300ms !default;
+$gutter: 1rem !default;
+
+//
+// Widths
+//
+$sidebar-width: 15rem !default;
+$compact-sidebar-width: 100px !default;
+$collapsed-sidebar-width: 80px !default;
+$sidebar-width-mobile: 18rem !default;
+
+//
+// Typography
+//
+$font-size-base: 0.875rem !default;
+$font-weight-base: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 600 !default;
+
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
+
+$headings-margin-bottom: (1rem / 2) !default;
+$headings-font-family:   inherit !default;
+$headings-font-weight:   400 !default;
+$headings-line-height:   1.1 !default;
+$headings-color:         inherit !default;
+
+//
+// Radius
+//
+$border-radius-base: 2px !default;
+$border-radius-large: 2px !default;
+$border-radius-small: 1px !default;
+
+//
+// Spacing
+//
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  xs: (
+    x: ($spacer-x / 1.8),
+    y: ($spacer-y / 1.8)
+  ),
+  1: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  2: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+  3: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  )
+) !default;
+$border-width: 1px !default;
+
+
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Grid breakpoints
+//
+// Define the minimum and maximum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 600px,
+  // Medium screen / tablet
+  md: 960px,
+  // Large screen / desktop
+  lg: 1280px,
+  // Extra large screen / wide desktop
+  xl: 1920px
+) !default;
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px
+) !default;
+
+
+
+
