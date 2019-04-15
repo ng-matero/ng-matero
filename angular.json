@@ -56,6 +56,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
@@ -67,6 +75,10 @@
           "configurations": {
             "production": {
               "browserTarget": "ng-matero:build:production"
+            },
+            "hmr": {
+              "browserTarget": "ng-matero:build:hmr",
+              "hmr": true
             }
           }
         },
