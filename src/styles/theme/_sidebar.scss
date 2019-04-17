@@ -8,14 +8,19 @@ mat-sidenav.matero-sidebar {
   position: absolute !important;
   overflow-x: hidden;
   width: $sidebar-width;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
-  .mat-drawer-focus-trap > .cdk-focus-trap-content {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+    0 2px 2px 0 rgba(0, 0, 0, .14),
+    0 1px 5px 0 rgba(0, 0, 0, .12);
+  border-width: 0;
+
+  .mat-drawer-focus-trap>.cdk-focus-trap-content {
     position: relative;
   }
-  > nav {
+
+  >nav {
     min-width: $sidebar-width;
   }
+
   .mat-list-item .mat-list-item-content {
     display: block;
     height: auto;
@@ -24,15 +29,18 @@ mat-sidenav.matero-sidebar {
     padding: 0;
     transition: max-height 0.3s cubic-bezier(0.35, 0, 0.25, 1);
   }
+
   .mat-list-item {
     height: auto;
     background-color: transparent;
     transition: background-color 0.3s cubic-bezier(0.35, 0, 0.25, 1);
   }
-  .mat-list-item.open > .mat-list-item-content {
+
+  .mat-list-item.open>.mat-list-item-content {
     max-height: 2000px;
     background: mat-color($background, "hover");
   }
+
   .mat-nav-list a {
     display: flex;
     flex-direction: row;
@@ -40,6 +48,7 @@ mat-sidenav.matero-sidebar {
     height: 48px;
     padding: 0 16px;
   }
+
   .sub-menu {
     padding-top: 0;
     overflow: hidden;
@@ -47,6 +56,7 @@ mat-sidenav.matero-sidebar {
     max-height: 0;
     transform: translateZ(0) !important;
   }
+
   .sub-menu a {
     padding-left: (64px);
   }
@@ -67,6 +77,7 @@ mat-sidenav.matero-sidebar {
     mat-icon:not(.menu-caret) {
       margin-right: (24px);
     }
+
     .menu-caret {
       display: block;
       transition: transform $transition-duration cubic-bezier(0.7, 0, 0.3, 1);
@@ -74,9 +85,11 @@ mat-sidenav.matero-sidebar {
       margin-left: (0.3125rem);
       text-align: center;
     }
-    .open > .mat-list-item-content > [appAccordionToggle] > .menu-caret {
+
+    .open>.mat-list-item-content>[appAccordionToggle]>.menu-caret {
       transform: rotate(-180deg);
     }
+
     .menu-badge {
       display: inline-block;
       height: 16px;
@@ -88,7 +101,8 @@ mat-sidenav.matero-sidebar {
       font-weight: 700;
       padding: 0 4px;
     }
-    .open > .mat-list-item-content > .sub-menu {
+
+    .open>.mat-list-item-content>.sub-menu {
       max-height: 2000px;
     }
   }
