@@ -1,0 +1,39 @@
+.matero-container-wrap,
+.matero-container {
+  height: 100%;
+}
+
+.matero-sidebar {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+    0 2px 2px 0 rgba(0, 0, 0, .14),
+    0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.matero-topbar {
+  background: #fff;
+  color: rgba(0, 0, 0, .76);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+    0 2px 2px 0 rgba(0, 0, 0, .14),
+    0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.matero-content-inner {
+  padding: 10px;
+}
+
+.matero-branding {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 16px;
+  width: 15rem;
+  height: 64px;
+  line-height: 64px;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  color: #444;
+  background: #fff;
+  transition: all .3s cubic-bezier(.35, 0, .25, 1);
+  overflow: hidden;
+}

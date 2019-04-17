@@ -1,22 +1,26 @@
-<div class="app-admin-container">
+<div class="matero-container-wrap">
   <!-- <ngx-loading-bar color="#009688"></ngx-loading-bar> -->
 
-  <mat-sidenav-container>
-    <mat-sidenav #sidemenu mode="side" class="sidebar-panel" opened>
+  <mat-sidenav-container class="matero-container">
+    <mat-sidenav #sidemenu mode="side" class="matero-sidebar" opened>
       <app-sidebar></app-sidebar>
     </mat-sidenav>
     <!-- <mat-sidenav #notifications position="end" class="chat-panel" mode="over" opened="false">
       <app-notification></app-notification>
     </mat-sidenav> -->
-    <mat-sidenav-content>
-      <mat-toolbar>
+    <mat-sidenav-content class="matero-content">
+
+      <mat-toolbar class="matero-topbar">
         <button mat-icon-button (click)="sidemenu.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
         My App
       </mat-toolbar>
 
-      <router-outlet></router-outlet>
+      <div class="matero-content-inner">
+        <router-outlet></router-outlet>
+      </div>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 

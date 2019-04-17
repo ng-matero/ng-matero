@@ -4,7 +4,7 @@ $mat-toolbar-height-desktop: 64px !default;
 $mat-toolbar-height-mobile-portrait: 56px !default;
 $mat-toolbar-height-mobile-landscape: 48px !default;
 
-mat-sidenav.sidebar-panel {
+mat-sidenav.matero-sidebar {
   position: absolute !important;
   overflow-x: hidden;
   width: $sidebar-width;
@@ -316,12 +316,4 @@ mat-sidenav.sidebar-panel {
 //     }
 //   }
 
-//   .app-dark {
-//     &.compact-sidebar,
-//     .compact-sidebar {
-//       mat-sidenav.sidebar-panel .sub-menu {
-//         background: mat-color($dark-background, card);
-//       }
-//     }
-//   }
 // }
