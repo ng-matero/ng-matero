@@ -4,76 +4,51 @@ $mat-toolbar-height-desktop: 64px !default;
 $mat-toolbar-height-mobile-portrait: 56px !default;
 $mat-toolbar-height-mobile-landscape: 48px !default;
 
-mat-sidenav.matero-sidebar {
-  position: absolute !important;
+.matero-sidebar {
+  position: absolute;
   overflow-x: hidden;
   width: $sidebar-width;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+  box-shadow:
+    0 3px 1px -2px rgba(0, 0, 0, .2),
     0 2px 2px 0 rgba(0, 0, 0, .14),
     0 1px 5px 0 rgba(0, 0, 0, .12);
   border-width: 0;
 
-  .mat-drawer-focus-trap>.cdk-focus-trap-content {
-    position: relative;
+  .matero-sidenav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  >nav {
-    min-width: $sidebar-width;
-  }
-
-  .mat-list-item .mat-list-item-content {
+  .matero-sidenav-item {
     display: block;
     height: auto;
-    max-height: 48px;
-    overflow: hidden;
     padding: 0;
-    transition: max-height 0.3s cubic-bezier(0.35, 0, 0.25, 1);
-  }
-
-  .mat-list-item {
-    height: auto;
-    background-color: transparent;
-    transition: background-color 0.3s cubic-bezier(0.35, 0, 0.25, 1);
-  }
-
-  .mat-list-item.open>.mat-list-item-content {
-    max-height: 2000px;
     background: mat-color($background, "hover");
   }
 
-  .mat-nav-list a {
+  .matero-sidenav-item.open>.matero-sidenav {
+    max-height: 2000px;
+  }
+
+  .matero-sidenav.sub-menu {
+    padding-top: 0;
+    overflow: hidden;
+    max-height: 0;
+    transform: translateZ(0);
+    transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+  }
+
+  .matero-sidenav a {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 48px;
     padding: 0 16px;
+    text-decoration: none;
   }
 
-  .sub-menu {
-    padding-top: 0;
-    overflow: hidden;
-    transition: 0.5s max-height cubic-bezier(0.35, 0, 0.25, 1);
-    max-height: 0;
-    transform: translateZ(0) !important;
-  }
-
-  .sub-menu a {
-    padding-left: (64px);
-  }
-
-  .sub-menu .sub-menu a {
-    padding-left: (64px + 16px);
-  }
-
-  .sub-menu .sub-menu .sub-menu a {
-    padding-left: (64px + 32px);
-  }
-
-  .sub-menu .sub-menu .sub-menu .sub-menu a {
-    padding-left: (64px + 48px);
-  }
-
-  .navigation {
+  .matero-sidenav {
     mat-icon:not(.menu-caret) {
       margin-right: (24px);
     }
@@ -86,7 +61,7 @@ mat-sidenav.matero-sidebar {
       text-align: center;
     }
 
-    .open>.mat-list-item-content>[appAccordionToggle]>.menu-caret {
+    .open>[appAccordionToggle]>.menu-caret {
       transform: rotate(-180deg);
     }
 
@@ -100,10 +75,6 @@ mat-sidenav.matero-sidebar {
       font-size: 10px;
       font-weight: 700;
       padding: 0 4px;
-    }
-
-    .open>.mat-list-item-content>.sub-menu {
-      max-height: 2000px;
     }
   }
 }

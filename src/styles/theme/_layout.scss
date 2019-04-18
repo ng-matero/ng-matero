@@ -11,7 +11,7 @@
     0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
-.matero-content-inner {
+.matero-content {
   padding: 10px;
 }
 
@@ -20,7 +20,6 @@
   align-items: center;
   position: relative;
   padding: 0 16px;
-  width: 15rem;
   height: 64px;
   line-height: 64px;
   top: 0;
@@ -30,4 +29,9 @@
   background: #fff;
   transition: all .3s cubic-bezier(.35, 0, .25, 1);
   overflow: hidden;
+}
+
+.matero-menu-wrap {
+  height: calc(100% - 64px);
+  overflow: auto;
 }

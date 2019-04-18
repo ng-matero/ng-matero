@@ -8,7 +8,7 @@
     <!-- <mat-sidenav #notifications position="end" class="chat-panel" mode="over" opened="false">
       <app-notification></app-notification>
     </mat-sidenav> -->
-    <mat-sidenav-content class="matero-content">
+    <mat-sidenav-content class="matero-content-wrap">
 
       <mat-toolbar class="matero-topbar">
         <button mat-icon-button (click)="sidemenu.toggle()">
@@ -17,7 +17,7 @@
         My App
       </mat-toolbar>
 
-      <div class="matero-content-inner">
+      <div class="matero-content">
         <router-outlet></router-outlet>
       </div>
 
