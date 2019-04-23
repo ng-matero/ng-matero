@@ -5,22 +5,26 @@
     <mat-sidenav #sidemenu mode="side" class="matero-sidebar" opened>
       <app-sidebar></app-sidebar>
     </mat-sidenav>
-    <!-- <mat-sidenav #notifications position="end" class="chat-panel" mode="over" opened="false">
-      <app-notification></app-notification>
-    </mat-sidenav> -->
-    <mat-sidenav-content class="matero-content-wrap">
 
+    <mat-sidenav #notifications position="end" mode="over" opened="false">
+      <!-- <app-notification></app-notification> -->123
+    </mat-sidenav>
+
+    <mat-sidenav-content class="matero-content-wrap">
       <mat-toolbar class="matero-topbar">
         <button mat-icon-button (click)="sidemenu.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
         My App
+        <span fxFlex></span>
+        <button mat-icon-button (click)="notifications.toggle()">
+          <mat-icon>notifications</mat-icon>
+        </button>
       </mat-toolbar>
 
       <div class="matero-content">
         <router-outlet></router-outlet>
       </div>
-
     </mat-sidenav-content>
   </mat-sidenav-container>
 
