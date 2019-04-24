@@ -1,19 +1,19 @@
 <ul appAccordion class="matero-sidenav">
   <li class="matero-sidenav-item" appAccordionLink *ngFor="let menuitem of menuService.getAll()"
     group="{{menuitem.state}}">
-    <a appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+    <a appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'" matRipple>
       <mat-icon>{{ menuitem.icon }}</mat-icon>
       <span>{{ menuitem.name }}</span>
       <span fxFlex></span>
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
     </a>
-    <a appAccordionToggle href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink'">
+    <a appAccordionToggle href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink'" matRipple>
       <mat-icon>{{ menuitem.icon }}</mat-icon>
       <span>{{ menuitem.name }}</span>
       <span fxFlex></span>
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
     </a>
-    <a appAccordionToggle href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink'">
+    <a appAccordionToggle href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink'" matRipple>
       <mat-icon>{{ menuitem.icon }}</mat-icon>
       <span>{{ menuitem.name }}</span>
       <span fxFlex></span>
@@ -28,7 +28,7 @@
     </a>
     <ul class="matero-sidenav sub-menu" *ngIf="menuitem.type === 'sub'">
       <li class="matero-sidenav-item" *ngFor="let childitem of menuitem.children" routerLinkActive="open">
-        <a [routerLink]="['/', menuitem.state, childitem.state ]">{{ childitem.name }}</a>
+        <a [routerLink]="['/', menuitem.state, childitem.state ]" matRipple>{{ childitem.name }}</a>
       </li>
     </ul>
   </li>
