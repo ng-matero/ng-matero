@@ -20,7 +20,7 @@ export interface Menu {
   children?: ChildrenItems[];
 }
 
-const MENUITEMS = [
+const MENUITEMS: Menu[] = [
   {
     state: '/',
     name: 'HOME',
@@ -38,21 +38,39 @@ const MENUITEMS = [
       { state: 'media', name: 'MEDIA' },
       { state: 'messages', name: 'MESSAGES' },
       { state: 'social', name: 'SOCIAL' },
-      {
-        state: 'chat',
-        name: 'CHAT',
-        type: 'sub',
-        children: [
-          { state: 'calendar', name: 'CALENDAR' },
-          { state: 'media', name: 'MEDIA' },
-          { state: 'messages', name: 'MESSAGES' },
-          { state: 'social', name: 'SOCIAL' },
-          { state: 'chat', name: 'CHAT' },
-        ],
-      },
+      { state: 'chat', name: 'CHAT', type: 'sub' },
     ],
   },
-
+  {
+    state: 'material',
+    name: 'Material',
+    type: 'sub',
+    icon: 'favorite',
+  },
+  {
+    state: 'forms',
+    name: 'Forms',
+    type: 'sub',
+    icon: 'description',
+  },
+  {
+    state: 'tables',
+    name: 'Tables',
+    type: 'sub',
+    icon: 'format_line_spacing',
+  },
+  {
+    state: 'profile',
+    name: 'Profile',
+    type: 'sub',
+    icon: 'person',
+  },
+  {
+    state: 'sessions',
+    name: 'Sessions',
+    type: 'sub',
+    icon: 'view_carousel',
+  },
 ];
 
 @Injectable()
@@ -61,7 +79,7 @@ export class MenuService {
     return MENUITEMS;
   }
 
-  add(menu: any) {
+  add(menu: Menu) {
     MENUITEMS.push(menu);
   }
 }
