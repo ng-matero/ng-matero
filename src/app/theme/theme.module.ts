@@ -7,6 +7,7 @@ import { MenuComponent } from './admin-layout/menu/menu.component';
 import { AccordionAnchorDirective } from './admin-layout/menu/accordionanchor.directive';
 import { AccordionDirective } from './admin-layout/menu/accordion.directive';
 import { AccordionLinkDirective } from './admin-layout/menu/accordionlink.directive';
+import { NotificationComponent } from './admin-layout/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AccordionLinkDirective } from './admin-layout/menu/accordionlink.direct
     AccordionAnchorDirective,
     AccordionDirective,
     AccordionLinkDirective,
+    NotificationComponent,
   ],
   imports: [SharedModule],
 })

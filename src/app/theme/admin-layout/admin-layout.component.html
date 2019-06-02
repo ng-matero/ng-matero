@@ -7,7 +7,7 @@
     </mat-sidenav>
 
     <mat-sidenav #notifications position="end" mode="over" opened="false">
-      <!-- <app-notification></app-notification> -->123
+      <app-notification></app-notification>
     </mat-sidenav>
 
     <mat-sidenav-content class="matero-content-wrap">
@@ -19,6 +19,7 @@
         <span fxFlex></span>
         <button mat-icon-button (click)="notifications.toggle()">
           <mat-icon>notifications</mat-icon>
+          <span class="notification-label">5</span>
         </button>
       </mat-toolbar>
 
