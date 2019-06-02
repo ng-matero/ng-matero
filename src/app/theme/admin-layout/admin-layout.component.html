@@ -11,17 +11,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="matero-content-wrap">
-      <mat-toolbar class="matero-topbar">
-        <button mat-icon-button (click)="sidemenu.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        My App
-        <span fxFlex></span>
-        <button mat-icon-button (click)="notifications.toggle()">
-          <mat-icon>notifications</mat-icon>
-          <span class="notification-label">5</span>
-        </button>
-      </mat-toolbar>
+      <app-header (toggleSidenav)="sidemenu.toggle()" (toggleNotificationSidenav)="notifications.toggle()"></app-header>
 
       <div class="matero-content">
         <router-outlet></router-outlet>
