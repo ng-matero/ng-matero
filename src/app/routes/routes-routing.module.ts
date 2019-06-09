@@ -16,6 +16,11 @@ const routes: Routes = [
         component: DashboardComponent,
         data: { title: '仪表盘', titleI18n: 'dashboard' },
       },
+      {
+        path: 'apps',
+        loadChildren: './apps/apps.module#AppsModule',
+        data: { title: '应用程序', titleI18n: 'apps' },
+      },
     ],
   },
 ];

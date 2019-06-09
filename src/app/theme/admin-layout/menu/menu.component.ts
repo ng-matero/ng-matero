@@ -15,7 +15,9 @@ import { MenuService } from './menu.service';
 export class MenuComponent {
   currentLang = 'en';
 
-  constructor(public menuService: MenuService) {}
+  constructor(public menuService: MenuService) {
+    this.addMenuItem();
+  }
 
   addMenuItem(): void {
     this.menuService.add({
