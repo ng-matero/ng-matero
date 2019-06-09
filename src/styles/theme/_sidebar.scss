@@ -24,11 +24,15 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     display: block;
     height: auto;
     padding: 0;
-    background: mat-color($background, "hover");
+    // background: mat-color($background, "hover");
   }
 
-  .matero-sidenav-item.open>.matero-sidenav {
-    max-height: 2000px;
+  .matero-sidenav-item.open {
+    background: rgba(0, 0, 0, .02);
+    >.matero-sidenav {
+      max-height: 2000px;
+      background: rgba(0, 0, 0, .05);
+    }
   }
 
   .matero-sidenav.sub-menu {
@@ -37,6 +41,10 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     max-height: 0;
     transform: translateZ(0);
     transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+
+    a {
+      padding: 0 48px;
+    }
   }
 
   .matero-sidenav a {
@@ -51,7 +59,11 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 
   .matero-sidenav {
     mat-icon:not(.menu-caret) {
-      margin-right: (24px);
+      width: 18px;
+      height: 18px;
+      margin-right: 14px;
+      font-size: 18px;
+      line-height: 18px;
     }
 
     .menu-caret {
