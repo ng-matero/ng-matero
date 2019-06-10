@@ -16,7 +16,7 @@ export class MenuComponent {
   currentLang = 'en';
 
   constructor(public menuService: MenuService) {
-    this.addMenuItem();
+    // this.addMenuItem();
   }
 
   addMenuItem(): void {

@@ -22,8 +22,8 @@ export interface Menu {
 
 const MENUITEMS: Menu[] = [
   {
-    state: '/',
-    name: 'HOME',
+    state: 'dashboard',
+    name: 'Dashboard',
     type: 'link',
     icon: 'explore',
   },
