@@ -9,6 +9,7 @@ export interface ChildrenItems {
   state: string;
   name: string;
   type?: string;
+  children?: ChildrenItems[];
 }
 
 export interface Menu {
@@ -34,11 +35,11 @@ const MENUITEMS: Menu[] = [
     icon: 'apps',
     badge: [{ type: 'red', value: '5' }],
     children: [
-      { state: 'media', name: 'MEDIA' },
-      { state: 'calendar', name: 'CALENDAR' },
-      { state: 'messages', name: 'MESSAGES' },
-      { state: 'social', name: 'SOCIAL' },
-      { state: 'chat', name: 'CHAT', type: 'sub' },
+      { state: 'media', name: 'MEDIA', type: 'link' },
+      { state: 'calendar', name: 'CALENDAR', type: 'link' },
+      { state: 'messages', name: 'MESSAGES', type: 'link' },
+      { state: 'social', name: 'SOCIAL', type: 'link' },
+      { state: 'chat', name: 'CHAT', type: 'link' },
     ],
   },
   {
@@ -46,6 +47,17 @@ const MENUITEMS: Menu[] = [
     name: 'Material',
     type: 'sub',
     icon: 'favorite',
+    children: [
+      {
+        state: 'layout',
+        name: 'Layout',
+        type: 'sub',
+        children: [
+          { state: 'card', name: 'Card', type: 'link' },
+          { state: 'grid', name: 'Grid', type: 'link' },
+        ],
+      },
+    ],
   },
   {
     state: 'forms',

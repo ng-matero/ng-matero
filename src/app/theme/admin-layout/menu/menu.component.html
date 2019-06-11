@@ -26,9 +26,31 @@
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
-    <ul class="matero-sidenav sub-menu" *ngIf="menuitem.type === 'sub'">
-      <li class="matero-sidenav-item" *ngFor="let childitem of menuitem.children" routerLinkActive="open">
-        <a [routerLink]="['/', menuitem.state, childitem.state ]" matRipple>{{ childitem.name }}</a>
+    <ul appAccordion class="matero-sidenav sub-menu" *ngIf="menuitem.type === 'sub'">
+      <li class="matero-sidenav-item" appAccordionLink *ngFor="let childitem of menuitem.children"
+        group="{{childitem.state}}">
+        <!-- <a [routerLink]="['/', menuitem.state, childitem.state ]" matRipple>{{ childitem.name }}</a> -->
+        <a appAccordionToggle [routerLink]="['/', menuitem.state, childitem.state]" *ngIf="childitem.type === 'link'"
+          matRipple>
+          <span>{{ childitem.name }}</span>
+        </a>
+        <a appAccordionToggle href="{{childitem.state}}" *ngIf="childitem.type === 'extLink'" matRipple>
+          <span>{{ childitem.name }}</span>
+        </a>
+        <a appAccordionToggle href="{{childitem.state}}" target="_blank" *ngIf="childitem.type === 'extTabLink'"
+          matRipple>
+          <span>{{ childitem.name }}</span>
+        </a>
+        <a appAccordionToggle href="javascript:;" *ngIf="childitem.type === 'sub'" matRipple>
+          <span>{{ childitem.name }}</span>
+          <span fxFlex></span>
+          <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
+        </a>
+        <ul class="matero-sidenav sub-menu" *ngIf="childitem.type === 'sub'">
+          <li class="matero-sidenav-item" *ngFor="let childitem2 of childitem.children" routerLinkActive="open">
+            <a [routerLink]="['/', menuitem.state, childitem.state, childitem2.state ]" matRipple>{{ childitem2.name }}</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </li>

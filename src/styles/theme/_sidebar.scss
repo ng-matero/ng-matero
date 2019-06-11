@@ -29,6 +29,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 
   .matero-sidenav-item.open {
     background: rgba(0, 0, 0, .02);
+
     >.matero-sidenav {
       max-height: 2000px;
       background: rgba(0, 0, 0, .05);
@@ -43,7 +44,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
 
     a {
-      padding: 0 48px;
+      padding-left: 48px;
     }
   }
 
