@@ -1,54 +1,56 @@
 <ul appAccordion class="matero-sidenav">
-  <li class="matero-sidenav-item" appAccordionLink *ngFor="let menuitem of menuService.getAll()"
-    group="{{menuitem.state}}">
-    <a appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'" matRipple>
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
-      <span>{{ menuitem.name }}</span>
+  <li class="matero-sidenav-item" appAccordionLink *ngFor="let menuItem of menuService.getAll()"
+    group="{{menuItem.state}}">
+    <a appAccordionToggle [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
+      <mat-icon>{{ menuItem.icon }}</mat-icon>
+      <span>{{ menuItem.name }}</span>
       <span fxFlex></span>
-      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
     </a>
-    <a appAccordionToggle href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink'" matRipple>
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
-      <span>{{ menuitem.name }}</span>
+    <a appAccordionToggle href="{{menuItem.state}}" *ngIf="menuItem.type === 'extLink'" matRipple>
+      <mat-icon>{{ menuItem.icon }}</mat-icon>
+      <span>{{ menuItem.name }}</span>
       <span fxFlex></span>
-      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
     </a>
-    <a appAccordionToggle href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink'" matRipple>
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
-      <span>{{ menuitem.name }}</span>
+    <a appAccordionToggle href="{{menuItem.state}}" target="_blank" *ngIf="menuItem.type === 'extTabLink'" matRipple>
+      <mat-icon>{{ menuItem.icon }}</mat-icon>
+      <span>{{ menuItem.name }}</span>
       <span fxFlex></span>
-      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
     </a>
-    <a appAccordionToggle href="javascript:;" *ngIf="menuitem.type === 'sub'" matRipple>
-      <mat-icon>{{ menuitem.icon }}</mat-icon>
-      <span>{{ menuitem.name }}</span>
+    <!-- level 1 -->
+    <a appAccordionToggle href="javascript:;" *ngIf="menuItem.type === 'sub'" matRipple>
+      <mat-icon>{{ menuItem.icon }}</mat-icon>
+      <span>{{ menuItem.name }}</span>
       <span fxFlex></span>
-      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+      <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
-    <ul appAccordion class="matero-sidenav sub-menu" *ngIf="menuitem.type === 'sub'">
-      <li class="matero-sidenav-item" appAccordionLink *ngFor="let childitem of menuitem.children"
-        group="{{childitem.state}}">
-        <!-- <a [routerLink]="['/', menuitem.state, childitem.state ]" matRipple>{{ childitem.name }}</a> -->
-        <a appAccordionToggle [routerLink]="['/', menuitem.state, childitem.state]" *ngIf="childitem.type === 'link'"
+    <ul appAccordion class="matero-sidenav submenu level-1" *ngIf="menuItem.type === 'sub'">
+      <li class="matero-sidenav-item" appAccordionLink *ngFor="let childItemLvl1 of menuItem.children"
+        group="{{childItemLvl1.state}}" routerLinkActive="open">
+        <a appAccordionToggle [routerLink]="['/', menuItem.state, childItemLvl1.state]"
+          *ngIf="childItemLvl1.type === 'link'" matRipple>
+          <span>{{ childItemLvl1.name }}</span>
+        </a>
+        <a appAccordionToggle href="{{childItemLvl1.state}}" *ngIf="childItemLvl1.type === 'extLink'" matRipple>
+          <span>{{ childItemLvl1.name }}</span>
+        </a>
+        <a appAccordionToggle href="{{childItemLvl1.state}}" target="_blank" *ngIf="childItemLvl1.type === 'extTabLink'"
           matRipple>
-          <span>{{ childitem.name }}</span>
+          <span>{{ childItemLvl1.name }}</span>
         </a>
-        <a appAccordionToggle href="{{childitem.state}}" *ngIf="childitem.type === 'extLink'" matRipple>
-          <span>{{ childitem.name }}</span>
-        </a>
-        <a appAccordionToggle href="{{childitem.state}}" target="_blank" *ngIf="childitem.type === 'extTabLink'"
-          matRipple>
-          <span>{{ childitem.name }}</span>
-        </a>
-        <a appAccordionToggle href="javascript:;" *ngIf="childitem.type === 'sub'" matRipple>
-          <span>{{ childitem.name }}</span>
+        <!-- level 2 -->
+        <a appAccordionToggle href="javascript:;" *ngIf="childItemLvl1.type === 'sub'" matRipple>
+          <span>{{ childItemLvl1.name }}</span>
           <span fxFlex></span>
           <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
         </a>
-        <ul class="matero-sidenav sub-menu" *ngIf="childitem.type === 'sub'">
-          <li class="matero-sidenav-item" *ngFor="let childitem2 of childitem.children" routerLinkActive="open">
-            <a [routerLink]="['/', menuitem.state, childitem.state, childitem2.state ]" matRipple>{{ childitem2.name }}</a>
+        <ul class="matero-sidenav submenu level-2" *ngIf="childItemLvl1.type === 'sub'">
+          <li class="matero-sidenav-item" *ngFor="let childItemLvl2 of childItemLvl1.children" routerLinkActive="open">
+            <a [routerLink]="['/', menuItem.state, childItemLvl1.state, childItemLvl2.state ]"
+              matRipple>{{ childItemLvl2.name }}</a>
           </li>
         </ul>
       </li>

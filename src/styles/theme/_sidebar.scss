@@ -36,7 +36,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     }
   }
 
-  .matero-sidenav.sub-menu {
+  .matero-sidenav.submenu {
     padding-top: 0;
     overflow: hidden;
     max-height: 0;
@@ -107,7 +107,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 //     }
 //     mat-sidenav.sidebar-panel:not(:hover) {
 //       width: $collapsed-sidebar-width;
-//       .sub-menu {
+//       .submenu {
 //         display: none !important;
 //         visibility: hidden;
 //       }
@@ -213,7 +213,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 //         padding: 0;
 //         margin: 0;
 //       }
-//       .navigation > .mat-list-item:hover > .mat-list-item-content > .sub-menu {
+//       .navigation > .mat-list-item:hover > .mat-list-item-content > .submenu {
 //         display: block !important;
 //         visibility: visible;
 //       }
@@ -223,7 +223,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 //         display: none;
 //       }
 
-//       .sub-menu {
+//       .submenu {
 //         display: none !important;
 //         visibility: hidden;
 //         background: mat-color($background, "card");
@@ -246,22 +246,22 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 
 // [dir="rtl"] {
 //   mat-sidenav.sidebar-panel {
-//     .sub-menu a {
+//     .submenu a {
 //       @include padding-right(64px);
 //       @include padding-left(16px);
 //     }
 
-//     .sub-menu .sub-menu a {
+//     .submenu .submenu a {
 //       @include padding-right(64px + 16px);
 //       @include padding-left(16px);
 //     }
 
-//     .sub-menu .sub-menu .sub-menu a {
+//     .submenu .submenu .submenu a {
 //       @include padding-right(64px + 32px);
 //       @include padding-left(16px);
 //     }
 
-//     .sub-menu .sub-menu .sub-menu .sub-menu a {
+//     .submenu .submenu .submenu .submenu a {
 //       @include padding-right(64px + 48px);
 //       @include padding-left(16px);
 //     }
@@ -303,7 +303,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 //           left: 16px;
 //         }
 
-//         .sub-menu {
+//         .submenu {
 //           left: auto;
 //           right: 100%;
 //           a {
