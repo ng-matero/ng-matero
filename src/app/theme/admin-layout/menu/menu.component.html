@@ -1,5 +1,5 @@
-<ul appAccordion class="matero-sidenav">
-  <li class="matero-sidenav-item" appAccordionLink *ngFor="let menuItem of menuService.getAll()"
+<ul appAccordion class="matero-sidemenu">
+  <li class="matero-sidemenu-item" appAccordionLink *ngFor="let menuItem of menuService.getAll()"
     group="{{menuItem.state}}">
     <a appAccordionToggle [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
       <mat-icon>{{ menuItem.icon }}</mat-icon>
@@ -27,8 +27,8 @@
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
-    <ul appAccordion class="matero-sidenav submenu level-1" *ngIf="menuItem.type === 'sub'">
-      <li class="matero-sidenav-item" appAccordionLink *ngFor="let childItemLvl1 of menuItem.children"
+    <ul appAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">
+      <li class="matero-sidemenu-item" appAccordionLink *ngFor="let childItemLvl1 of menuItem.children"
         group="{{childItemLvl1.state}}" routerLinkActive="open">
         <a appAccordionToggle [routerLink]="['/', menuItem.state, childItemLvl1.state]"
           *ngIf="childItemLvl1.type === 'link'" matRipple>
@@ -47,8 +47,8 @@
           <span fxFlex></span>
           <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
         </a>
-        <ul class="matero-sidenav submenu level-2" *ngIf="childItemLvl1.type === 'sub'">
-          <li class="matero-sidenav-item" *ngFor="let childItemLvl2 of childItemLvl1.children" routerLinkActive="open">
+        <ul class="matero-sidemenu submenu level-2" *ngIf="childItemLvl1.type === 'sub'">
+          <li class="matero-sidemenu-item" *ngFor="let childItemLvl2 of childItemLvl1.children" routerLinkActive="open">
             <a [routerLink]="['/', menuItem.state, childItemLvl1.state, childItemLvl2.state ]"
               matRipple>{{ childItemLvl2.name }}</a>
           </li>

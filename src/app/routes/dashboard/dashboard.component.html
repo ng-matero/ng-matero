@@ -45,3 +45,26 @@
     </mat-card>
   </div>
 </div>
+
+<button mat-button [matMenuTriggerFor]="level1">Animal index</button>
+
+<mat-menu #level1="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="level2" [matMenuTriggerData]="{arr: [1,2,3]}">Vertebrates</button>
+  <button mat-menu-item [matMenuTriggerFor]="level2" [matMenuTriggerData]="{arr: [1,2]}">Invertebrates</button>
+</mat-menu>
+
+<mat-menu #level2="matMenu">
+  <ng-template matMenuContent let-arr="arr">
+    <button mat-menu-item *ngFor="let item of arr" [matMenuTriggerFor]="level3">{{item}}</button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #level3="matMenu">
+  <button mat-menu-item [routerLink]="['/', 'dashboard']">Insects</button>
+  <button mat-menu-item>Molluscs</button>
+  <button mat-menu-item>Crustaceans</button>
+  <button mat-menu-item>Corals</button>
+  <button mat-menu-item>Arachnids</button>
+  <button mat-menu-item>Velvet worms</button>
+  <button mat-menu-item>Horseshoe crabs</button>
+</mat-menu>

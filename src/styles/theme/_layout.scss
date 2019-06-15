@@ -35,3 +35,12 @@
   height: calc(100% - 64px);
   overflow: auto;
 }
+
+// Collapsed sidebar
+.matero-sidenav-collapsed .mat-sidenav-content {
+  margin-left: 50px !important
+}
+
+.matero-sidenav-collapsed .matero-sidenav {
+  width: 50px;
+}

@@ -4,7 +4,7 @@ $mat-toolbar-height-desktop: 64px !default;
 $mat-toolbar-height-mobile-portrait: 56px !default;
 $mat-toolbar-height-mobile-landscape: 48px !default;
 
-.matero-sidebar {
+.matero-sidenav {
   position: absolute;
   overflow-x: hidden;
   width: $sidebar-width;
@@ -14,29 +14,29 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     0 1px 5px 0 rgba(0, 0, 0, .12);
   border-width: 0;
 
-  .matero-sidenav {
+  .matero-sidemenu {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .matero-sidenav-item {
+  .matero-sidemenu-item {
     display: block;
     height: auto;
     padding: 0;
     // background: mat-color($background, "hover");
   }
 
-  .matero-sidenav-item.open {
+  .matero-sidemenu-item.open {
     background: rgba(0, 0, 0, .02);
 
-    >.matero-sidenav {
+    >.matero-sidemenu {
       max-height: 2000px;
       background: rgba(0, 0, 0, .05);
     }
   }
 
-  .matero-sidenav.submenu {
+  .matero-sidemenu.submenu {
     padding-top: 0;
     overflow: hidden;
     max-height: 0;
@@ -48,7 +48,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     }
   }
 
-  .matero-sidenav a {
+  .matero-sidemenu a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,11 +58,11 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     color: rgba(0, 0, 0, .87);
   }
 
-  .matero-sidenav {
+  .matero-sidemenu {
     mat-icon:not(.menu-caret) {
       width: 18px;
       height: 18px;
-      margin-right: 14px;
+      margin-right: 16px;
       font-size: 18px;
       line-height: 18px;
     }
