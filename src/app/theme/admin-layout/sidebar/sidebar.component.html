@@ -2,7 +2,7 @@
   <img src="../../../../assets/matero.jpg" style="height:30px;margin-right:10px;" alt="">
   <span>MATERO</span>
   <span fxFlex></span>
-  <mat-slide-toggle (change)="toggleCollapsed.emit()"></mat-slide-toggle>
+  <mat-slide-toggle (change)="toggleCollapsed.emit()" *ngIf="showToggle"></mat-slide-toggle>
 </div>
 <div class="matero-menu-wrap">
   <app-menu></app-menu>
