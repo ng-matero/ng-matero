@@ -1,3 +1,6 @@
+/*----------------------------------------------------------------------------
+  Layout
+  ----------------------------------------------------------------------------*/
 .matero-container-wrap,
 .matero-container {
   height: 100%;
@@ -6,7 +9,8 @@
 .matero-topbar {
   background: #fff;
   color: rgba(0, 0, 0, .76);
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+  box-shadow:
+    0 3px 1px -2px rgba(0, 0, 0, .2),
     0 2px 2px 0 rgba(0, 0, 0, .14),
     0 1px 5px 0 rgba(0, 0, 0, .12);
 }
@@ -19,12 +23,12 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 16px;
-  height: 64px;
-  line-height: 64px;
   top: 0;
   left: 0;
   z-index: 999;
+  padding: 0 10px;
+  height: 64px;
+  line-height: 64px;
   color: #444;
   background: #fff;
   transition: all .3s cubic-bezier(.35, 0, .25, 1);
@@ -37,10 +41,24 @@
 }
 
 // Collapsed sidebar
-.matero-sidenav-collapsed .mat-sidenav-content {
-  margin-left: 50px !important
+.matero-sidenav-collapsed {
+  .matero-sidenav {
+    width: $sidebar-collapsed-width;
+
+    &:hover {
+      width: $sidebar-width;
+    }
+  }
+
+  .mat-sidenav-content {
+    margin-left: $sidebar-collapsed-width !important;
+  }
 }
 
-.matero-sidenav-collapsed .matero-sidenav {
-  width: 50px;
-}
+// .matero-transition {
+//   .mat-sidenav-content {
+//     transition-duration: .4s;
+//     transition-timing-function: cubic-bezier(.25, .8, .25, 1);
+//     transition-property: width, margin-left, margin-right, transform;
+//   }
+// }
