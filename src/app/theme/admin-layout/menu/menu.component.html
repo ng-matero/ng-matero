@@ -2,27 +2,27 @@
   <li class="matero-sidemenu-item" appAccordionLink *ngFor="let menuItem of menuService.getAll()"
     group="{{menuItem.state}}">
     <a appAccordionToggle [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
-      <mat-icon>{{ menuItem.icon }}</mat-icon>
-      <span>{{ menuItem.name }}</span>
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name }}</span>
       <span fxFlex></span>
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
     </a>
     <a appAccordionToggle href="{{menuItem.state}}" *ngIf="menuItem.type === 'extLink'" matRipple>
-      <mat-icon>{{ menuItem.icon }}</mat-icon>
-      <span>{{ menuItem.name }}</span>
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name }}</span>
       <span fxFlex></span>
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
     </a>
     <a appAccordionToggle href="{{menuItem.state}}" target="_blank" *ngIf="menuItem.type === 'extTabLink'" matRipple>
-      <mat-icon>{{ menuItem.icon }}</mat-icon>
-      <span>{{ menuItem.name }}</span>
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name }}</span>
       <span fxFlex></span>
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
     </a>
     <!-- level 1 -->
     <a appAccordionToggle href="javascript:;" *ngIf="menuItem.type === 'sub'" matRipple>
-      <mat-icon>{{ menuItem.icon }}</mat-icon>
-      <span>{{ menuItem.name }}</span>
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name }}</span>
       <span fxFlex></span>
       <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>

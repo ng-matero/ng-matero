@@ -8,7 +8,7 @@ import {
 import { MenuService } from './menu.service';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-sidemenu',
   templateUrl: './menu.component.html',
   providers: [MenuService],
 })

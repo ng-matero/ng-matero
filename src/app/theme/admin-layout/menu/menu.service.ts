@@ -85,7 +85,9 @@ const MENUITEMS: Menu[] = [
   },
 ];
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class MenuService {
   getAll(): Menu[] {
     return MENUITEMS;

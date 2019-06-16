@@ -19,46 +19,8 @@
   padding: 10px;
 }
 
-.matero-branding {
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  padding: 0 10px;
-  height: 64px;
-  line-height: 64px;
-  color: #444;
-  background: #fff;
-  transition: all .3s cubic-bezier(.35, 0, .25, 1);
-  overflow: hidden;
-}
-
-.matero-menu-wrap {
-  height: calc(100% - 64px);
-  overflow: auto;
-}
-
-// Collapsed sidebar
-.matero-sidenav-collapsed {
-  .matero-sidenav {
-    width: $sidebar-collapsed-width;
-
-    &:hover {
-      width: $sidebar-width;
-    }
-  }
-
-  .mat-sidenav-content {
-    margin-left: $sidebar-collapsed-width !important;
-  }
-}
-
-// .matero-transition {
-//   .mat-sidenav-content {
-//     transition-duration: .4s;
-//     transition-timing-function: cubic-bezier(.25, .8, .25, 1);
-//     transition-property: width, margin-left, margin-right, transform;
-//   }
+// card
+// .mat-card {
+//   margin: .5rem;
+//   font-size: .875rem;
 // }

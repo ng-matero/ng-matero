@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------
-  Sidebar
+  Sidenav
   ----------------------------------------------------------------------------*/
 $mat-toolbar-height-desktop: 64px !default;
 $mat-toolbar-height-mobile-portrait: 56px !default;
@@ -16,6 +16,12 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
   border-width: 0;
   transition: width .4s cubic-bezier(.25, .8, .25, 1); // Only set width property
 
+
+  .matero-sidemenu-wrap {
+    height: calc(100% - 64px);
+    overflow: auto;
+  }
+
   .matero-sidemenu {
     margin: 0;
     padding: 0;
@@ -26,7 +32,10 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     display: block;
     height: auto;
     padding: 0;
-    // background: mat-color($background, "hover");
+
+    &:hover {
+      background: mat-color($background, "hover");
+    }
   }
 
   .matero-sidemenu-item.open {
@@ -39,10 +48,10 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
   }
 
   .matero-sidemenu.submenu {
+    max-height: 0;
     padding-top: 0;
     overflow: hidden;
-    max-height: 0;
-    transform: translateZ(0);
+    transform: translateZ(0) !important;
     transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
 
     a {
@@ -61,7 +70,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
   }
 
   .matero-sidemenu {
-    mat-icon:not(.menu-caret) {
+    .menu-icon {
       width: 18px;
       height: 18px;
       margin-right: 16px;
@@ -69,12 +78,17 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
       line-height: 18px;
     }
 
+    .menu-name,
+    .menu-badge {
+      transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+    }
+
     .menu-caret {
       display: block;
-      transition: transform $transition-duration cubic-bezier(0.7, 0, 0.3, 1);
       float: right;
-      margin-left: (0.3125rem);
+      margin-left: 0.3125rem;
       text-align: center;
+      transition: transform .3s cubic-bezier(.7, 0, .3, 1);
     }
 
     .open>[appAccordionToggle]>.menu-caret {
@@ -92,5 +106,59 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
       font-weight: 700;
       padding: 0 4px;
     }
+  }
+}
+
+// collapsed sidebar
+.matero-sidenav-collapsed {
+  .matero-sidenav {
+    width: $sidebar-collapsed-width;
+
+    &:hover {
+      width: $sidebar-width;
+
+      .menu-name,
+      .menu-badge,
+      .menu-caret {
+        opacity: 1;
+      }
+    }
+
+    .menu-name,
+    .menu-badge,
+    .menu-caret {
+      opacity: 0;
+    }
+  }
+
+  .mat-sidenav-content {
+    margin-left: $sidebar-collapsed-width !important;
+  }
+}
+
+// fix initial toggle animation issue
+.mat-sidenav-content {
+  transition: margin-left .4s cubic-bezier(.25, .8, .25, 1);
+}
+
+// branding
+.matero-branding {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 0 10px;
+  height: 64px;
+  line-height: 64px;
+  color: #444;
+  background: #fff;
+  overflow: hidden;
+  transition: all .3s cubic-bezier(.35, 0, .25, 1);
+
+  .matero-branding-logo-expanded {
+    height: 30px;
+    margin-right: 10px;
   }
 }
