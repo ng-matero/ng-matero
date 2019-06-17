@@ -21,16 +21,13 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   options = {
     navigationPos: 'side',
-    sidebarStyle: 'full',
-    sidebarColor: 'white',
+    sidenavStyle: 'full',
+    sidenavColor: 'white',
     topbarColor: 'white',
     topbarFixed: false,
-    dir: 'ltr',
     useBreadcrumb: true,
-    breadcrumb: 'simple',
-    matTheme: 'egret-navy',
-    isMobile: false,
-    sidebarCollapsed: false,
+    sidenavCollapsed: false,
+    dir: 'ltr',
   };
 
   // tslint:disable-next-line: variable-name
@@ -55,7 +52,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   toggleCollapsed() {
-    this.options.sidebarCollapsed = !this.options.sidebarCollapsed;
+    this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
     this.cdr.detectChanges();
   }
 
