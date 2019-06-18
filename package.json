@@ -5,10 +5,14 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --prod",
+    "build:release": "ng build --prod --build-optimizer --base-href 'https://ng-matero.github.io/ng-matero/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "hmr": "ng serve -c=hmr --disable-host-check"
+    "hmr": "ng serve -c=hmr --disable-host-check",
+    "hmr-host": "ng serve -c=hmr --disable-host-check --host=172.18.20.144 --port=4201",
+    "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +41,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
