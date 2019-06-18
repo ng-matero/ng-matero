@@ -14,12 +14,17 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        data: { title: '仪表盘', titleI18n: 'dashboard' },
+        data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
       {
         path: 'apps',
         loadChildren: './apps/apps.module#AppsModule',
-        data: { title: '应用程序', titleI18n: 'apps' },
+        data: { title: 'Apps', titleI18n: 'apps' },
+      },
+      {
+        path: 'material',
+        loadChildren: './material/material.module#MaterialModule',
+        data: { title: 'Material', titleI18n: 'material' },
       },
     ],
   },

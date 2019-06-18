@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MediaComponent } from './media/media.component';
+import { GridComponent } from './grid/grid.component';
 
 const routes: Routes = [
   {
-    path: 'media',
-    component: MediaComponent,
-    data: { title: 'Media' },
+    path: 'layout/grid',
+    component: GridComponent,
+    data: { title: 'Grid' },
   },
 ];
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppsRoutingModule {}
+export class MaterialRoutingModule {}
