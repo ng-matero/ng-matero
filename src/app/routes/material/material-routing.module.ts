@@ -7,7 +7,7 @@ import { GridComponent } from './grid/grid.component';
 const routes: Routes = [
   {
     path: 'layout/card',
-    component: GridComponent,
+    component: CardComponent,
     data: { title: 'Card' },
   },
   {
