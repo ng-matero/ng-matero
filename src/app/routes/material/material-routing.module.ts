@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CardComponent } from './card/card.component';
 import { GridComponent } from './grid/grid.component';
 
 const routes: Routes = [
+  {
+    path: 'layout/card',
+    component: GridComponent,
+    data: { title: 'Card' },
+  },
   {
     path: 'layout/grid',
     component: GridComponent,
