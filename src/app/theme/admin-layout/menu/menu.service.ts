@@ -57,6 +57,15 @@ const MENUITEMS: Menu[] = [
           { state: 'grid', name: 'Grid', type: 'link' },
         ],
       },
+      {
+        state: 'navigation',
+        name: 'Navigation',
+        type: 'sub',
+        children: [
+          { state: 'menu', name: 'Menu', type: 'link' },
+          { state: 'sidenav', name: 'Sidenav', type: 'link' },
+        ],
+      },
     ],
   },
   {
