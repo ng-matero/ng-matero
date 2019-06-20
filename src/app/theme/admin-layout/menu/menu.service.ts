@@ -34,13 +34,7 @@ const MENUITEMS: Menu[] = [
     type: 'sub',
     icon: 'apps',
     badge: [{ type: 'red', value: '5' }],
-    children: [
-      { state: 'media', name: 'MEDIA', type: 'link' },
-      { state: 'calendar', name: 'CALENDAR', type: 'link' },
-      { state: 'messages', name: 'MESSAGES', type: 'link' },
-      { state: 'social', name: 'SOCIAL', type: 'link' },
-      { state: 'chat', name: 'CHAT', type: 'link' },
-    ],
+    children: [{ state: 'media', name: 'MEDIA', type: 'link' }],
   },
   {
     state: 'material',

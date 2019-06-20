@@ -6,7 +6,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./media.component.scss'],
 })
 export class MediaComponent implements OnInit {
-  constructor() {}
+  images: any[] = [];
+
+  constructor() {
+    for (let i = 1; i <= 20; i++) {
+      this.images.push(i);
+    }
+  }
 
   ngOnInit() {}
 }

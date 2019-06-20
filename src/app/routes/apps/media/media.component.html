@@ -1,3 +1,17 @@
 <p>
   media works!
 </p>
+
+<mat-grid-list cols="4" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let id of images">
+    <mat-grid-tile-header>
+      <span matLine>Gallery Image: {{ id }}</span>
+    </mat-grid-tile-header>
+
+    <img class="gallery-img" src="./assets/images/pixabay/{{id}}.jpg" alt="Gallery Image" />
+
+    <mat-grid-tile-footer>
+      <mat-icon>favorite</mat-icon>
+    </mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>
