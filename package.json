@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
-    "build:release": "ng build --prod --build-optimizer",
+    "build:release": "ng build --prod --build-optimizer --baseHref=/ng-matero/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
