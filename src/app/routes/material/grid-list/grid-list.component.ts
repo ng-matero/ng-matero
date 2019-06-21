@@ -8,11 +8,11 @@ export interface Tile {
 }
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss'],
+  selector: 'app-grid-list',
+  templateUrl: './grid-list.component.html',
+  styleUrls: ['./grid-list.component.scss'],
 })
-export class GridComponent implements OnInit {
+export class GridListComponent implements OnInit {
   tiles: Tile[] = [
     { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
     { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },

@@ -29,14 +29,6 @@ const MENUITEMS: Menu[] = [
     icon: 'explore',
   },
   {
-    state: 'apps',
-    name: 'APPS',
-    type: 'sub',
-    icon: 'apps',
-    badge: [{ type: 'red', value: '5' }],
-    children: [{ state: 'media', name: 'MEDIA', type: 'link' }],
-  },
-  {
     state: 'material',
     name: 'Material',
     type: 'sub',
@@ -48,7 +40,13 @@ const MENUITEMS: Menu[] = [
         type: 'sub',
         children: [
           { state: 'card', name: 'Card', type: 'link' },
-          { state: 'grid', name: 'Grid', type: 'link' },
+          { state: 'divider', name: 'Divider', type: 'link' },
+          { state: 'expansion-panel', name: 'Expansion Panel', type: 'link' },
+          { state: 'grid-list', name: 'Grid List', type: 'link' },
+          { state: 'list', name: 'List', type: 'link' },
+          { state: 'stepper', name: 'Stepper', type: 'link' },
+          { state: 'tab', name: 'Tab', type: 'link' },
+          { state: 'tree', name: 'Tree', type: 'link' },
         ],
       },
       {
@@ -61,6 +59,14 @@ const MENUITEMS: Menu[] = [
         ],
       },
     ],
+  },
+  {
+    state: 'apps',
+    name: 'APPS',
+    type: 'sub',
+    icon: 'apps',
+    badge: [{ type: 'red', value: '5' }],
+    children: [{ state: 'media', name: 'MEDIA', type: 'link' }],
   },
   {
     state: 'forms',

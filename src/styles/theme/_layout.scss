@@ -16,11 +16,10 @@
 }
 
 .matero-content-inner {
-  padding: 10px;
+  padding: $gutter/2;
 }
 
 // card
 .mat-card {
-  margin: 6px;
-  overflow: hidden;
+  margin: $gutter/2;
 }

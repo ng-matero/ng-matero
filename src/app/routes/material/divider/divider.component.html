@@ -1,0 +1,30 @@
+<p>
+  divider works!
+</p>
+
+<div fxLayout="row wrap">
+  <div [fxFlex.gt-sm]="50" [fxFlex]="100">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Title</mat-card-title>
+        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>Item 1</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 2</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions align="start">
+        <button mat-button (click)="onAction1">Action1</button>
+
+      </mat-card-actions>
+      <mat-card-footer>
+        Footer
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

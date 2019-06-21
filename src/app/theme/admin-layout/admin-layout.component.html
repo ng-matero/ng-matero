@@ -1,6 +1,6 @@
 <div class="matero-container-wrap" [dir]="options.dir"
   [ngClass]="{'matero-sidenav-collapsed':options.sidenavCollapsed}">
-  <!-- <ngx-loading-bar color="#009688"></ngx-loading-bar> -->
+  <ng-progress></ng-progress>
 
   <mat-sidenav-container class="matero-container" autosize>
     <mat-sidenav #sidenav class="matero-sidenav" [mode]="isOver ? 'over' : 'side'" [opened]="!isOver">
