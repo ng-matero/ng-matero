@@ -35,6 +35,16 @@ const MENUITEMS: Menu[] = [
     icon: 'favorite',
     children: [
       {
+        state: 'navigation',
+        name: 'Navigation',
+        type: 'sub',
+        children: [
+          { state: 'menu', name: 'Menu', type: 'link' },
+          { state: 'sidenav', name: 'Sidenav', type: 'link' },
+          { state: 'toolbar', name: 'Toolbar', type: 'link' },
+        ],
+      },
+      {
         state: 'layout',
         name: 'Layout',
         type: 'sub',
@@ -47,15 +57,6 @@ const MENUITEMS: Menu[] = [
           { state: 'stepper', name: 'Stepper', type: 'link' },
           { state: 'tab', name: 'Tab', type: 'link' },
           { state: 'tree', name: 'Tree', type: 'link' },
-        ],
-      },
-      {
-        state: 'navigation',
-        name: 'Navigation',
-        type: 'sub',
-        children: [
-          { state: 'menu', name: 'Menu', type: 'link' },
-          { state: 'sidenav', name: 'Sidenav', type: 'link' },
         ],
       },
     ],

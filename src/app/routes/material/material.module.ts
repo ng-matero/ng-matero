@@ -11,9 +11,12 @@ import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { TabComponent } from './tab/tab.component';
 import { TreeComponent } from './tree/tree.component';
+import { MenuComponent } from './menu/menu.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MaterialRoutingModule],
-  declarations: [GridListComponent, CardComponent, DividerComponent, ExpansionPanelComponent, ListComponent, StepperComponent, TabComponent, TreeComponent],
+  declarations: [GridListComponent, CardComponent, DividerComponent, ExpansionPanelComponent, ListComponent, StepperComponent, TabComponent, TreeComponent, MenuComponent, SidenavComponent, ToolbarComponent],
 })
 export class MaterialModule {}

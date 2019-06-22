@@ -9,6 +9,9 @@ import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { TabComponent } from './tab/tab.component';
 import { TreeComponent } from './tree/tree.component';
+import { MenuComponent } from './menu/menu.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,21 @@ const routes: Routes = [
     path: 'layout/tree',
     component: TreeComponent,
     data: { title: 'Tree' },
+  },
+  {
+    path: 'navigation/menu',
+    component: MenuComponent,
+    data: { title: 'Menu' },
+  },
+  {
+    path: 'navigation/sidenav',
+    component: SidenavComponent,
+    data: { title: 'Sidenav' },
+  },
+  {
+    path: 'navigation/toolbar',
+    component: ToolbarComponent,
+    data: { title: 'Toolbar' },
   },
 ];
 
