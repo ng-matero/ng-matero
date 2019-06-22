@@ -116,13 +116,23 @@ THE SOFTWARE.
 
 @angular/material/card
 
+@angular/material/core
+
 @angular/material/datepicker
 
 @angular/material/dialog
 
+@angular/material/divider
+
+@angular/material/expansion
+
+@angular/material/form-field
+
 @angular/material/grid-list
 
 @angular/material/icon
+
+@angular/material/list
 
 @angular/material/menu
 
@@ -142,6 +152,12 @@ THE SOFTWARE.
 MIT
 
 @angular/router
+MIT
+
+@ngx-progressbar/core
+MIT
+
+@ngx-progressbar/router
 MIT
 
 core-js
