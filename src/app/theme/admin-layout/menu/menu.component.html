@@ -32,24 +32,24 @@
       <li appAccordionLink class="matero-sidemenu-item" *ngFor="let childItemLvl1 of menuItem.children"
         group="{{childItemLvl1.state}}" routerLinkActive="active">
         <a [routerLink]="['/', menuItem.state, childItemLvl1.state]" *ngIf="childItemLvl1.type === 'link'" matRipple>
-          <span>{{ childItemLvl1.name }}</span>
+          <span class="menu-name">{{ childItemLvl1.name }}</span>
         </a>
         <a href="{{childItemLvl1.state}}" *ngIf="childItemLvl1.type === 'extLink'" matRipple>
-          <span>{{ childItemLvl1.name }}</span>
+          <span class="menu-name">{{ childItemLvl1.name }}</span>
         </a>
         <a href="{{childItemLvl1.state}}" target="_blank" *ngIf="childItemLvl1.type === 'extTabLink'" matRipple>
-          <span>{{ childItemLvl1.name }}</span>
+          <span class="menu-name">{{ childItemLvl1.name }}</span>
         </a>
         <!-- level 2 -->
         <a appAccordionToggle href="javascript:;" *ngIf="childItemLvl1.type === 'sub'" matRipple>
-          <span>{{ childItemLvl1.name }}</span>
+          <span class="menu-name">{{ childItemLvl1.name }}</span>
           <span fxFlex></span>
           <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
         </a>
         <ul class="matero-sidemenu submenu level-2" *ngIf="childItemLvl1.type === 'sub'">
           <li class="matero-sidemenu-item" *ngFor="let childItemLvl2 of childItemLvl1.children"
             routerLinkActive="active">
-            <a [routerLink]="['/', menuItem.state, childItemLvl1.state, childItemLvl2.state ]"
+            <a class="menu-name" [routerLink]="['/', menuItem.state, childItemLvl1.state, childItemLvl2.state ]"
               matRipple>{{ childItemLvl2.name }}</a>
           </li>
         </ul>

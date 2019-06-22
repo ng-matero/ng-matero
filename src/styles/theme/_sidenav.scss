@@ -18,6 +18,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 
 
   .matero-sidemenu-wrap {
+    width: $sidenav-width;
     height: calc(100% - 64px);
     overflow: auto;
   }

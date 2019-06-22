@@ -16,10 +16,27 @@
 }
 
 .matero-content-inner {
-  padding: $gutter/2;
+  padding: $gutter;
+}
+
+// Grid
+.matero-row {
+  margin-right: -$gutter/2;
+  margin-left: -$gutter/2;
+}
+
+.matero-col {
+  padding-right: $gutter/2;
+  padding-left: $gutter/2;
 }
 
 // card
 .mat-card {
-  margin: $gutter/2;
+  margin-bottom: $gutter;
+}
+
+// accordion
+.mat-accordion {
+  display: block;
+  margin-bottom: $gutter;
 }

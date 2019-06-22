@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
     'Moccasins',
     'Sneakers',
   ];
+
   constructor(private menuService: MenuService) {}
 
   ngOnInit() {}
