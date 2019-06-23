@@ -43,7 +43,6 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-import 'hammerjs';
 
 @NgModule({
   exports: [

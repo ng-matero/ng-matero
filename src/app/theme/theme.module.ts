@@ -10,6 +10,7 @@ import { AccordionLinkDirective } from './admin-layout/menu/accordionlink.direct
 import { NotificationComponent } from './admin-layout/notification/notification.component';
 import { HeaderComponent } from './admin-layout/header/header.component';
 import { CustomizerComponent } from './admin-layout/customizer/customizer.component';
+import { BreadcrumbComponent } from './admin-layout/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CustomizerComponent } from './admin-layout/customizer/customizer.compon
     NotificationComponent,
     HeaderComponent,
     CustomizerComponent,
+    BreadcrumbComponent,
   ],
   imports: [SharedModule],
 })

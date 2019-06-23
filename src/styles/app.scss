@@ -1,9 +1,7 @@
+// Material Core
 @import "material.variables";
 // Core Variables and Mixins
 @import "app.variables";
 @import "mixins/flex";
 // Theme Parts
-@import "theme/base";
-@import "theme/layout";
-@import "theme/sidenav";
-// @import "theme/scrollbar";
+@import "theme/theme";
