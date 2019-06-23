@@ -14,9 +14,39 @@ import { TreeComponent } from './tree/tree.component';
 import { MenuComponent } from './menu/menu.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { FormFieldComponent } from './form-field/form-field.component';
+import { InputComponent } from './input/input.component';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
+import { SelectComponent } from './select/select.component';
+import { SliderComponent } from './slider/slider.component';
+import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MaterialRoutingModule],
-  declarations: [GridListComponent, CardComponent, DividerComponent, ExpansionPanelComponent, ListComponent, StepperComponent, TabComponent, TreeComponent, MenuComponent, SidenavComponent, ToolbarComponent],
+  declarations: [
+    CardComponent,
+    DividerComponent,
+    ExpansionPanelComponent,
+    GridListComponent,
+    ListComponent,
+    StepperComponent,
+    TabComponent,
+    TreeComponent,
+    MenuComponent,
+    SidenavComponent,
+    ToolbarComponent,
+    AutocompleteComponent,
+    CheckboxComponent,
+    DatepickerComponent,
+    FormFieldComponent,
+    InputComponent,
+    RadioButtonComponent,
+    SelectComponent,
+    SliderComponent,
+    SlideToggleComponent,
+  ],
 })
 export class MaterialModule {}

@@ -1,3 +1,35 @@
 <p>
   tab works!
 </p>
+<mat-card>
+  <mat-card-content>
+    <div>
+      <span class="example-input-label"> Selected tab index: </span>
+      <mat-form-field>
+        <input matInput type="number" [formControl]="selected">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-raised-button class="example-add-tab-button" (click)="addTab(selectAfterAdding.checked)">
+        Add new tab
+      </button>
+      <mat-checkbox #selectAfterAdding> Select tab after adding </mat-checkbox>
+    </div>
+
+    <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+      <mat-tab *ngFor="let tab of tabs; let index = index">
+        <ng-template mat-tab-label>
+          tab
+          <mat-icon class="example-tab-icon">clock</mat-icon>
+        </ng-template>
+        Contents for {{tab}} tab
+
+        <button mat-raised-button class="example-delete-tab-button" [disabled]="tabs.length === 1"
+          (click)="removeTab(index)">
+          Delete Tab
+        </button>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

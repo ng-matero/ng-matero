@@ -35,6 +35,22 @@ const MENUITEMS: Menu[] = [
     icon: 'favorite',
     children: [
       {
+        state: 'form-controls',
+        name: 'Form Controls',
+        type: 'sub',
+        children: [
+          { state: 'autocomplete', name: 'Autocomplete', type: 'link' },
+          { state: 'checkbox', name: 'Checkbox', type: 'link' },
+          { state: 'datepicker', name: 'Datepicker', type: 'link' },
+          { state: 'form-field', name: 'Form Field', type: 'link' },
+          { state: 'input', name: 'Input', type: 'link' },
+          { state: 'radio', name: 'Radio', type: 'link' },
+          { state: 'select', name: 'Select', type: 'link' },
+          { state: 'slider', name: 'Slider', type: 'link' },
+          { state: 'slide-toggle', name: 'Slide Toggle', type: 'link' },
+        ],
+      },
+      {
         state: 'navigation',
         name: 'Navigation',
         type: 'sub',
@@ -51,7 +67,7 @@ const MENUITEMS: Menu[] = [
         children: [
           { state: 'card', name: 'Card', type: 'link' },
           { state: 'divider', name: 'Divider', type: 'link' },
-          { state: 'expansion-panel', name: 'Expansion Panel', type: 'link' },
+          { state: 'expansion', name: 'Expansion Panel', type: 'link' },
           { state: 'grid-list', name: 'Grid List', type: 'link' },
           { state: 'list', name: 'List', type: 'link' },
           { state: 'stepper', name: 'Stepper', type: 'link' },

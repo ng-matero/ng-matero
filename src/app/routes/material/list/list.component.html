@@ -1,3 +1,22 @@
 <p>
   list works!
 </p>
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <h3 mat-subheader>Folders</h3>
+      <mat-list-item *ngFor="let folder of folders">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{folder.name}}</h4>
+        <p mat-line> {{folder.updated | date}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Notes</h3>
+      <mat-list-item *ngFor="let note of notes">
+        <mat-icon mat-list-icon>note</mat-icon>
+        <h4 mat-line>{{note.name}}</h4>
+        <p mat-line> {{note.updated | date}} </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
