@@ -1,23 +1,55 @@
+// ----------------------------------------------------------------------------
+// SCROLLBAR
+// ----------------------------------------------------------------------------
+
 $mediumgray: #6e6e6e;
 $darkgray: #333;
 
-body::-webkit-scrollbar,
-.matero-sidemenu-wrap::-webkit-scrollbar,
-.mat-sidenav-content::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
-}
+// body::-webkit-scrollbar,
+// .matero-sidemenu-wrap::-webkit-scrollbar,
+// .mat-sidenav-content::-webkit-scrollbar {
+//   height: 6px;
+//   width: 6px;
+// }
 
-body::-webkit-scrollbar-track,
-.matero-sidemenu-wrap::-webkit-scrollbar-track,
-.mat-sidenav-content::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
+// body::-webkit-scrollbar-track,
+// .matero-sidemenu-wrap::-webkit-scrollbar-track,
+// .mat-sidenav-content::-webkit-scrollbar-track {
+//   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+// }
 
-body::-webkit-scrollbar-thumb,
-.matero-sidemenu-wrap::-webkit-scrollbar-thumb,
+// body::-webkit-scrollbar-thumb,
+// .matero-sidemenu-wrap::-webkit-scrollbar-thumb,
+// .mat-sidenav-content::-webkit-scrollbar-thumb {
+//   background-color: $mediumgray;
+//   outline: 1px solid $darkgray;
+// }
+
+.mat-sidenav-content::-webkit-scrollbar-track,
 .mat-sidenav-content::-webkit-scrollbar-thumb {
-  background-color: $mediumgray;
-  outline: 1px solid $darkgray;
+  border-radius: 999px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+}
+
+.mat-sidenav-content::-webkit-scrollbar-track {
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 5px inset;
+}
+
+.mat-sidenav-content::-webkit-scrollbar-thumb {
+  min-height: 20px;
+  background-clip: content-box;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 5px inset;
+}
+
+.mat-sidenav-content::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.mat-sidenav-content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }

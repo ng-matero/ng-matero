@@ -9,15 +9,15 @@ $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
 $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
-$background: map-get($theme, 'background');
-$foreground: map-get($theme, 'foreground');
+$background: mat-color($theme, 'background');
+$foreground: mat-color($theme, 'foreground');
 
 $dark-primary: mat-palette($mat-blue-grey);
 $dark-accent: mat-palette($mat-amber, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-$dark-background: map-get($dark-theme, 'background');
-$dark-foreground: map-get($dark-theme, 'foreground');
+$dark-background: mat-color($dark-theme, 'background');
+$dark-foreground: mat-color($dark-theme, 'foreground');
 
 $config: mat-typography-config();
 

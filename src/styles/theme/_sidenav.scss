@@ -27,50 +27,37 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     margin: 0;
     padding: 0;
     list-style: none;
-  }
 
-  .matero-sidemenu-item {
-    display: block;
-    height: auto;
-    padding: 0;
+    &.submenu {
+      max-height: 0;
+      padding-top: 0;
+      overflow: hidden;
+      transform: translateZ(0) !important;
+      transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
 
-    &:hover {
-      background: mat-color($background, "hover");
+      .matero-sidemenu-item {
+        border-left-width: 0;
+      }
     }
-  }
 
-  .matero-sidemenu-item.open {
-    background: rgba(0, 0, 0, .02);
-
-    >.matero-sidemenu {
-      max-height: 2000px;
-      background: rgba(0, 0, 0, .05);
-    }
-  }
-
-  .matero-sidemenu.submenu {
-    max-height: 0;
-    padding-top: 0;
-    overflow: hidden;
-    transform: translateZ(0) !important;
-    transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
-
-    a {
+    &.level-1 a {
       padding-left: 50px;
     }
-  }
 
-  .matero-sidemenu a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 48px;
-    padding: 0 16px;
-    text-decoration: none;
-    color: rgba(0, 0, 0, .87);
-  }
+    &.level-2 a {
+      padding-left: 64px;
+    }
 
-  .matero-sidemenu {
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 48px;
+      padding: 0 16px;
+      text-decoration: none;
+      color: rgba(0, 0, 0, .87);
+    }
+
     .menu-icon {
       width: 18px;
       height: 18px;
@@ -92,7 +79,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
       transition: transform .3s cubic-bezier(.7, 0, .3, 1);
     }
 
-    .open>[appAccordionToggle]>.menu-caret {
+    .open>.matero-sidemenu-toggle>.menu-caret {
       transform: rotate(-180deg);
     }
 
@@ -106,6 +93,32 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
       font-size: 10px;
       font-weight: 700;
       padding: 0 4px;
+    }
+  }
+
+  .matero-sidemenu-item {
+    display: block;
+    height: auto;
+    padding: 0;
+
+    &:hover {
+      background: mat-color($background, hover);
+    }
+
+    &.open {
+      background: rgba(0, 0, 0, .02);
+
+      >.matero-sidemenu {
+        max-height: 2000px;
+      }
+    }
+
+    &.active {
+      box-shadow: 3px 0 0 0 mat-color($mat-pink, A100) inset;
+
+      >a {
+        color: mat-color($mat-pink, A100)
+      }
     }
   }
 }
