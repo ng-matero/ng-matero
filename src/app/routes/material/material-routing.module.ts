@@ -21,6 +21,14 @@ import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { ButtonComponent } from './button/button.component';
+import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
+import { BadgeComponent } from './badge/badge.component';
+import { ChipsComponent } from './chips/chips.component';
+import { IconComponent } from './icon/icon.component';
+import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { RippleComponent } from './ripple/ripple.component';
 
 const routes: Routes = [
   {
@@ -124,6 +132,47 @@ const routes: Routes = [
     path: 'navigation/toolbar',
     component: ToolbarComponent,
     data: { title: 'Toolbar' },
+  },
+  // buttons-indicators
+  {
+    path: 'buttons-indicators/button',
+    component: ButtonComponent,
+    data: { title: 'Button' },
+  },
+  {
+    path: 'buttons-indicators/button-toggle',
+    component: ButtonToggleComponent,
+    data: { title: 'Button Toggle' },
+  },
+  {
+    path: 'buttons-indicators/badge',
+    component: BadgeComponent,
+    data: { title: 'Badge' },
+  },
+  {
+    path: 'buttons-indicators/chips',
+    component: ChipsComponent,
+    data: { title: 'Chips' },
+  },
+  {
+    path: 'buttons-indicators/icon',
+    component: IconComponent,
+    data: { title: 'Icon' },
+  },
+  {
+    path: 'buttons-indicators/progress-spinner',
+    component: ProgressSpinnerComponent,
+    data: { title: 'Progress Spinner' },
+  },
+  {
+    path: 'buttons-indicators/progress-bar',
+    component: ProgressBarComponent,
+    data: { title: 'Progress Bar' },
+  },
+  {
+    path: 'buttons-indicators/ripple',
+    component: RippleComponent,
+    data: { title: 'Ripple' },
   },
 ];
 

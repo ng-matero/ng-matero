@@ -23,6 +23,14 @@ import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { ButtonComponent } from './button/button.component';
+import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
+import { BadgeComponent } from './badge/badge.component';
+import { ChipsComponent } from './chips/chips.component';
+import { IconComponent } from './icon/icon.component';
+import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { RippleComponent } from './ripple/ripple.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MaterialRoutingModule],
@@ -47,6 +55,14 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
     SelectComponent,
     SliderComponent,
     SlideToggleComponent,
+    ButtonComponent,
+    ButtonToggleComponent,
+    BadgeComponent,
+    ChipsComponent,
+    IconComponent,
+    ProgressSpinnerComponent,
+    ProgressBarComponent,
+    RippleComponent,
   ],
 })
 export class MaterialModule {}

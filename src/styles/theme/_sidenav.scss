@@ -1,9 +1,6 @@
 // ----------------------------------------------------------------------------
 // SIDENAV
 // ----------------------------------------------------------------------------
-$mat-toolbar-height-desktop: 64px !default;
-$mat-toolbar-height-mobile-portrait: 56px !default;
-$mat-toolbar-height-mobile-landscape: 48px !default;
 
 .matero-sidenav {
   position: absolute;
@@ -102,7 +99,7 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     padding: 0;
 
     &:hover {
-      background: mat-color($background, hover);
+      background: $sidenav-item-hover;
     }
 
     &.open {
@@ -114,10 +111,10 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
     }
 
     &.active {
-      box-shadow: 3px 0 0 0 mat-color($mat-pink, A100) inset;
+      box-shadow: 3px 0 0 0 $sidenav-item-active inset;
 
       >a {
-        color: mat-color($mat-pink, A100)
+        color: $sidenav-item-active
       }
     }
   }

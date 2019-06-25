@@ -75,6 +75,21 @@ const MENUITEMS: Menu[] = [
           { state: 'tree', name: 'Tree', type: 'link' },
         ],
       },
+      {
+        state: 'buttons-indicators',
+        name: 'Buttons & Indicators',
+        type: 'sub',
+        children: [
+          { state: 'button', name: 'Button', type: 'link' },
+          { state: 'button-toggle', name: 'Button Toggle', type: 'link' },
+          { state: 'badge', name: 'Badge', type: 'link' },
+          { state: 'chips', name: 'Chips', type: 'link' },
+          { state: 'icon', name: 'Icon', type: 'link' },
+          { state: 'progress-spinner', name: 'Progress Spinner', type: 'link' },
+          { state: 'progress-bar', name: 'Progress Bar', type: 'link' },
+          { state: 'ripple', name: 'Ripple', type: 'link' },
+        ],
+      },
     ],
   },
   {

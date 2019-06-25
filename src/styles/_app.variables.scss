@@ -1,19 +1,19 @@
-//
 // General
-//
-$transition-duration: 300ms !default;
-$gutter: 12px !default;
+$gutter: 16px !default;
 
-//
-// Widths
-//
+// Sidenav
 $sidenav-width: 240px !default;
 $sidenav-collapsed-width: 50px !default;
-$sidenav-width-mobile: 18rem !default;
+$sidenav-width-mobile: 280px !default;
+$sidenav-item-hover: mat-color($background, hover);
+$sidenav-item-active: mat-color($mat-pink, A100);
 
-//
+// Toolbar
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
+
 // Typography
-//
 $font-size-base: 0.875rem !default;
 $font-weight-base: 400 !default;
 $font-weight-medium: 500 !default;
@@ -32,62 +32,25 @@ $headings-font-weight: 400 !default;
 $headings-line-height: 1.1 !default;
 $headings-color: inherit !default;
 
-//
-// Radius
-//
-$border-radius-base: 2px !default;
-$border-radius-large: 2px !default;
-$border-radius-small: 1px !default;
-
-//
-// Spacing
-//
-$spacer: 1rem !default;
-$spacer-x: $spacer !default;
-$spacer-y: $spacer !default;
-$spacers: (
-  0: (
-    x: 0,
-    y: 0),
-  xs: (
-    x: ($spacer-x / 1.8),
-    y: ($spacer-y / 1.8)),
-  1: (
-    x: $spacer-x,
-    y: $spacer-y),
-  2: (
-    x: ($spacer-x * 1.5),
-    y: ($spacer-y * 1.5)),
-  3: (
-    x: ($spacer-x * 3),
-    y: ($spacer-y * 3))) !default;
-$border-width: 1px !default;
-
-
-// Media queries breakpoints
-// --------------------------------------------------
-
-// Grid breakpoints
-//
-// Define the minimum and maximum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
-$grid-breakpoints: ( // Extra small screen / phone
-  xs: 0,
-  // Small screen / phone
-  sm: 600px,
-  // Medium screen / tablet
-  md: 960px,
-  // Large screen / desktop
-  lg: 1280px,
-  // Extra large screen / wide desktop
-  xl: 1920px) !default;
-
-
-// Grid containers
-//
-// Define the maximum width of `.container` for different screen sizes.
-$container-max-widths: (
-  sm: 576px,
-  md: 720px,
-  lg: 940px,
-  xl: 1140px) !default;
+// Colors
+$mat-colors: (
+  red: $mat-red,
+  pink: $mat-pink,
+  purple: $mat-purple,
+  deep-purple: $mat-deep-purple,
+  indigo: $mat-indigo,
+  blue: $mat-blue,
+  light-blue: $mat-light-blue,
+  cyan: $mat-cyan,
+  teal: $mat-teal,
+  green: $mat-green,
+  light-green: $mat-light-green,
+  lime: $mat-lime,
+  yellow: $mat-yellow,
+  amber: $mat-amber,
+  orange: $mat-orange,
+  deep-orange: $mat-deep-orange,
+  brown: $mat-brown,
+  grey: $mat-grey,
+  blue-grey: $mat-blue-grey,
+);

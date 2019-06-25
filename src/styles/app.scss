@@ -1,7 +1,8 @@
-// Material Core
-@import "material.variables";
 // Core Variables and Mixins
+@import "material.variables";
 @import "app.variables";
-@import "mixins/flex";
-// Theme Parts
+@import "mixins/mixins";
+// Core Styles
+@import "material/material";
 @import "theme/theme";
+@import "utilities/utilities";
