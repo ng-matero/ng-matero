@@ -90,6 +90,27 @@ const MENUITEMS: Menu[] = [
           { state: 'ripple', name: 'Ripple', type: 'link' },
         ],
       },
+      {
+        state: 'popups-modals',
+        name: 'Popups & Modals',
+        type: 'sub',
+        children: [
+          { state: 'bottom-sheet', name: 'Bottom Sheet', type: 'link' },
+          { state: 'dialog', name: 'Dialog', type: 'link' },
+          { state: 'snack-bar', name: 'Snackbar', type: 'link' },
+          { state: 'tooltip', name: 'tooltip', type: 'link' },
+        ],
+      },
+      {
+        state: 'data-table',
+        name: 'Data Table',
+        type: 'sub',
+        children: [
+          { state: 'paginator', name: 'Paginator', type: 'link' },
+          { state: 'sort', name: 'Sort', type: 'link' },
+          { state: 'table', name: 'Table', type: 'link' },
+        ],
+      },
     ],
   },
   {

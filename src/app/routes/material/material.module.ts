@@ -31,6 +31,13 @@ import { IconComponent } from './icon/icon.component';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RippleComponent } from './ripple/ripple.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { SortComponent } from './sort/sort.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, MaterialRoutingModule],
@@ -63,6 +70,13 @@ import { RippleComponent } from './ripple/ripple.component';
     ProgressSpinnerComponent,
     ProgressBarComponent,
     RippleComponent,
+    BottomSheetComponent,
+    DialogComponent,
+    SnackBarComponent,
+    TooltipComponent,
+    PaginatorComponent,
+    SortComponent,
+    TableComponent,
   ],
 })
 export class MaterialModule {}

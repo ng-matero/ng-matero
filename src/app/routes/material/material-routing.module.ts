@@ -29,6 +29,13 @@ import { IconComponent } from './icon/icon.component';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RippleComponent } from './ripple/ripple.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { TooltipComponent } from './tooltip/tooltip.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { SortComponent } from './sort/sort.component';
+import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
   {
@@ -173,6 +180,43 @@ const routes: Routes = [
     path: 'buttons-indicators/ripple',
     component: RippleComponent,
     data: { title: 'Ripple' },
+  },
+  // popups-modals
+  {
+    path: 'popups-modals/bottom-sheet',
+    component: BottomSheetComponent,
+    data: { title: 'Button Sheet' },
+  },
+  {
+    path: 'popups-modals/dialog',
+    component: DialogComponent,
+    data: { title: 'Dialog' },
+  },
+  {
+    path: 'popups-modals/snack-bar',
+    component: SnackBarComponent,
+    data: { title: 'Snack Bar' },
+  },
+  {
+    path: 'popups-modals/tooltip',
+    component: TooltipComponent,
+    data: { title: 'Tooltip' },
+  },
+  // Data table
+  {
+    path: 'data-table/paginator',
+    component: PaginatorComponent,
+    data: { title: 'Paginator' },
+  },
+  {
+    path: 'data-table/sort',
+    component: SortComponent,
+    data: { title: 'Sort' },
+  },
+  {
+    path: 'data-table/table',
+    component: TableComponent,
+    data: { title: 'Table' },
   },
 ];
 
