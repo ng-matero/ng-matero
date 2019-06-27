@@ -1,0 +1,21 @@
+// ----------------------------------------------------------------------------
+// BREADCRUMB
+// ----------------------------------------------------------------------------
+
+.matero-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: #e9ecef;
+  border-radius: .25rem;
+}
+
+.matero-breadcrumb-item+.matero-breadcrumb-item::before {
+  display: inline-block;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  color: #6c757d;
+  content: "/";
+}

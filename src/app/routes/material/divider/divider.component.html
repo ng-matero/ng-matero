@@ -1,14 +1,8 @@
-<p>
-  divider works!
-</p>
+<app-breadcrumb></app-breadcrumb>
 
-<div fxLayout="row wrap">
-  <div [fxFlex.gt-sm]="50" [fxFlex]="100">
+<div fxLayout="row wrap" class="matero-row">
+  <div [fxFlex.gt-sm]="50" [fxFlex]="100" class="matero-col">
     <mat-card>
-      <mat-card-header>
-        <mat-card-title>Title</mat-card-title>
-        <mat-card-subtitle>Subtitle</mat-card-subtitle>
-      </mat-card-header>
       <mat-card-content>
         <mat-list>
           <mat-list-item>Item 1</mat-list-item>
@@ -18,10 +12,32 @@
           <mat-list-item>Item 3</mat-list-item>
         </mat-list>
       </mat-card-content>
-      <mat-card-actions align="start"></mat-card-actions>
-      <mat-card-footer>
-        Footer
-      </mat-card-footer>
+    </mat-card>
+  </div>
+  <div [fxFlex.gt-sm]="50" [fxFlex]="100" class="matero-col">
+    <mat-card>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>Item 1</mat-list-item>
+          <mat-divider [inset]="true"></mat-divider>
+          <mat-list-item>Item 2</mat-list-item>
+          <mat-divider [inset]="true"></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div [fxFlex.gt-sm]="50" [fxFlex]="100" class="matero-col">
+    <mat-card>
+      <mat-card-content>
+        <mat-list fxLayout="row">
+          <mat-list-item>Item 1</mat-list-item>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-list-item>Item 2</mat-list-item>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-list-item>Item 3</mat-list-item>
+        </mat-list>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>

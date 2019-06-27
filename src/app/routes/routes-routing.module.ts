@@ -17,9 +17,9 @@ const routes: Routes = [
         data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
       {
-        path: 'apps',
-        loadChildren: './apps/apps.module#AppsModule',
-        data: { title: 'Apps', titleI18n: 'apps' },
+        path: 'gallery',
+        loadChildren: './gallery/gallery.module#GalleryModule',
+        data: { title: 'Gallery', titleI18n: 'Gallery' },
       },
       {
         path: 'material',

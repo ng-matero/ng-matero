@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { MenuService } from './menu.service';
+import { MenuService } from '@core';
 
 @Component({
   selector: 'app-sidemenu',

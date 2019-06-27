@@ -114,12 +114,12 @@ const MENUITEMS: Menu[] = [
     ],
   },
   {
-    state: 'apps',
-    name: 'APPS',
+    state: 'gallery',
+    name: 'Gallery',
     type: 'sub',
-    icon: 'apps',
+    icon: 'image',
     badge: [{ type: 'red', value: '5' }],
-    children: [{ state: 'media', name: 'MEDIA', type: 'link' }],
+    children: [{ state: 'media', name: 'Media', type: 'link' }],
   },
   {
     state: 'forms',

@@ -7,6 +7,7 @@ import { MaterialModule } from './material-module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 const THIRDMODULES = [
   MaterialModule,
@@ -14,7 +15,7 @@ const THIRDMODULES = [
   NgProgressModule,
   NgProgressRouterModule,
 ];
-const COMPONENTS = [];
+const COMPONENTS = [BreadcrumbComponent];
 const DIRECTIVES = [];
 const PIPES = [];
 

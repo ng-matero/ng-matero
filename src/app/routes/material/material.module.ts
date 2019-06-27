@@ -40,6 +40,8 @@ import { SortComponent } from './sort/sort.component';
 import { TableComponent } from './table/table.component';
 
 import { DialogOverviewExampleDialogComponent } from './dialog/dialog.component';
+import { BottomSheetOverviewExampleSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { PizzaPartyComponent } from './snack-bar/snack-bar.component';
 
 const COMPONENTS = [
   CardComponent,
@@ -78,7 +80,11 @@ const COMPONENTS = [
   SortComponent,
   TableComponent,
 ];
-const COMPONENTS_DYNAMIC = [DialogOverviewExampleDialogComponent];
+const COMPONENTS_DYNAMIC = [
+  DialogOverviewExampleDialogComponent,
+  BottomSheetOverviewExampleSheetComponent,
+  PizzaPartyComponent,
+];
 
 @NgModule({
   imports: [CommonModule, SharedModule, MaterialRoutingModule],

@@ -7,7 +7,7 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-dialog-overview-example-dialog',
+  selector: 'dialog-overview-example-dialog',
   template: `
     <h1 mat-dialog-title>Hi {{ data.name }}</h1>
     <div mat-dialog-content>
