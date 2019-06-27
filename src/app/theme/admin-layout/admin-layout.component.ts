@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   ViewChild,
 } from '@angular/core';
@@ -12,7 +11,6 @@ import { MatSidenav } from '@angular/material';
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav: MatSidenav;
@@ -29,8 +27,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     dir: 'ltr',
   };
 
-  // tslint:disable-next-line: variable-name
-  private _mobileQueryListener: () => void;
+  private mobileQueryListener: () => void;
 
   get isOver(): boolean {
     return this.mobileQuery.matches;
@@ -38,25 +35,23 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private media: MediaMatcher) {
     this.mobileQuery = this.media.matchMedia('(max-width: 960px)');
-    this._mobileQueryListener = () => this.cdr.detectChanges();
+    this.mobileQueryListener = () => this.cdr.detectChanges();
     // tslint:disable-next-line: deprecation
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
   ngOnInit() {}
 
   ngOnDestroy() {
     // tslint:disable-next-line: deprecation
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
   toggleCollapsed() {
     this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
-    this.cdr.detectChanges();
   }
 
   toggleSidenav() {
     this.sidenav.toggle();
-    this.cdr.detectChanges();
   }
 }
