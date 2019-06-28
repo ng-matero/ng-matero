@@ -54,3 +54,69 @@ $mat-colors: (
   grey: $mat-grey,
   blue-grey: $mat-blue-grey,
 );
+
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+  ),
+  $spacers
+);
+$spacings: (
+  "margin": (
+    property: margin,
+    class: m,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-top": (
+    property: margin-top,
+    class: m-t,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-right": (
+    property: margin-right,
+    class: m-r,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-bottom": (
+    property: margin-bottom,
+    class: m-b,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-left": (
+    property: margin-left,
+    class: m-l,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "padding": (
+    property: padding,
+    class: p,
+    values: $spacers
+  ),
+  "padding-top": (
+    property: padding-top,
+    class: p-t,
+    values: $spacers
+  ),
+  "padding-right": (
+    property: padding-right,
+    class: p-r,
+    values: $spacers
+  ),
+  "padding-bottom": (
+    property: padding-bottom,
+    class: p-b,
+    values: $spacers
+  ),
+  "padding-left": (
+    property: padding-left,
+    class: p-l,
+    values: $spacers
+  ),
+)

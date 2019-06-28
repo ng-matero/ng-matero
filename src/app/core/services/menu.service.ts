@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface BadgeItem {
+export interface Badge {
   type: string;
   value: string;
 }
@@ -17,7 +17,8 @@ export interface Menu {
   name: string;
   type: string;
   icon: string;
-  badge?: BadgeItem[];
+  label?: Badge;
+  badge?: Badge;
   children?: ChildrenItems[];
 }
 
@@ -27,6 +28,7 @@ const MENUITEMS: Menu[] = [
     name: 'Dashboard',
     type: 'link',
     icon: 'explore',
+    badge: { type: 'red-500', value: '5' },
   },
   {
     state: 'material',
@@ -118,7 +120,7 @@ const MENUITEMS: Menu[] = [
     name: 'Gallery',
     type: 'sub',
     icon: 'image',
-    badge: [{ type: 'red', value: '5' }],
+    label: { type: 'indigo-500', value: 'new' },
     children: [{ state: 'media', name: 'Media', type: 'link' }],
   },
   {
@@ -143,7 +145,7 @@ const MENUITEMS: Menu[] = [
     state: 'sessions',
     name: 'Sessions',
     type: 'sub',
-    icon: 'view_carousel',
+    icon: 'question_answer',
   },
 ];
 

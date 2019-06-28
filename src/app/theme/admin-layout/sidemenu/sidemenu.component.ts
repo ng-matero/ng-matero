@@ -9,10 +9,10 @@ import { MenuService } from '@core';
 
 @Component({
   selector: 'app-sidemenu',
-  templateUrl: './menu.component.html',
+  templateUrl: './sidemenu.component.html',
   providers: [MenuService],
 })
-export class MenuComponent {
+export class SidemenuComponent {
   currentLang = 'en';
 
   constructor(public menuService: MenuService) {

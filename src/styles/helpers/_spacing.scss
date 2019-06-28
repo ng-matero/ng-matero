@@ -1,0 +1,16 @@
+// ----------------------------------------------------------------------------
+// SPACING
+// ----------------------------------------------------------------------------
+
+@each $key, $spacing in $spacings {
+  $values: map-get($spacing, values);
+
+  @each $num, $value in $values {
+    $property: map-get($spacing, property);
+    $property-class-prefix: map-get($spacing, class);
+
+    .#{$property-class-prefix}-#{$num} {
+      #{$property}: $value !important;
+    }
+  }
+}

@@ -17,14 +17,16 @@ const routes: Routes = [
         data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
       {
-        path: 'gallery',
-        loadChildren: './gallery/gallery.module#GalleryModule',
-        data: { title: 'Gallery', titleI18n: 'Gallery' },
+        path: 'material',
+        loadChildren: () =>
+          import('./material/material.module').then(m => m.MaterialModule),
+        data: { title: 'Material', titleI18n: 'material' },
       },
       {
-        path: 'material',
-        loadChildren: './material/material.module#MaterialModule',
-        data: { title: 'Material', titleI18n: 'material' },
+        path: 'gallery',
+        loadChildren: () =>
+          import('./gallery/gallery.module').then(m => m.GalleryModule),
+        data: { title: 'Gallery', titleI18n: 'Gallery' },
       },
     ],
   },

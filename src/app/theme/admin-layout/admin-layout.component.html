@@ -12,7 +12,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="matero-content">
-      <app-header #header (toggleSidenav)="toggleSidenav()" (toggleNotificationSidenav)="notifications.toggle()"
+      <app-header #header (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()"
         [collapsed]="options.sidenavCollapsed"></app-header>
 
       <div class="matero-content-inner">

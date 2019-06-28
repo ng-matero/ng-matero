@@ -42,9 +42,8 @@ export class AccordionDirective implements AfterContentChecked {
   }
 
   constructor(private router: Router) {
-    // Fix
-    // ERROR Error: ExpressionChangedAfterItHasBeenCheckedError:
-    // Expression has changed after it was checked.
+    // Fix: `ERROR Error: ExpressionChangedAfterItHasBeenCheckedError:
+    // Expression has changed after it was checked`.
     setTimeout(() => this.checkOpenLinks());
   }
 

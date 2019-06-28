@@ -6,14 +6,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
   mobileQuery: MediaQueryList;
   options = {
@@ -49,9 +49,5 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   toggleCollapsed() {
     this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
-  }
-
-  toggleSidenav() {
-    this.sidenav.toggle();
   }
 }

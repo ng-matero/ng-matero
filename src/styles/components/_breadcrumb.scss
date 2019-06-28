@@ -5,17 +5,25 @@
 .matero-breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: .75rem 1rem;
+  padding: 0;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #e9ecef;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
 }
 
-.matero-breadcrumb-item+.matero-breadcrumb-item::before {
-  display: inline-block;
-  padding-right: .5rem;
-  padding-left: .5rem;
-  color: #6c757d;
-  content: "/";
+.matero-breadcrumb-item {
+  line-height: 18px;
+
+  >a {
+    color: #333;
+  }
+
+  >.chevron {
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+    vertical-align: middle;
+    user-select: none;
+  }
 }

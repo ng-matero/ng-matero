@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MaterialModule } from './material-module';
+import { MaterialModule } from '../material.module';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 const THIRDMODULES = [
   MaterialModule,
@@ -15,7 +17,7 @@ const THIRDMODULES = [
   NgProgressModule,
   NgProgressRouterModule,
 ];
-const COMPONENTS = [BreadcrumbComponent];
+const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent];
 const DIRECTIVES = [];
 const PIPES = [];
 
@@ -25,6 +27,7 @@ const PIPES = [];
     ...COMPONENTS,
     ...DIRECTIVES,
     ...PIPES,
+    PageHeaderComponent,
   ],
   imports: [
     CommonModule,

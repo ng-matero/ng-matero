@@ -13,6 +13,9 @@ import { AccordionDirective } from './accordion.directive';
   selector: '[appAccordionLink]',
 })
 export class AccordionLinkDirective implements OnInit, OnDestroy {
+  protected OPEN = false;
+  protected nav: AccordionDirective;
+
   @Input() public group: any;
 
   @HostBinding('class.open')
@@ -27,9 +30,6 @@ export class AccordionLinkDirective implements OnInit, OnDestroy {
       this.nav.closeOtherLinks(this);
     }
   }
-
-  protected OPEN = false;
-  protected nav: AccordionDirective;
 
   constructor(@Inject(AccordionDirective) nav: AccordionDirective) {
     this.nav = nav;
