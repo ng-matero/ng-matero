@@ -1,5 +1,9 @@
-<div class="matero-customizer-handle">
-  <button mat-fab>
+<div class="customizer-handle">
+  <button mat-fab (click)="openPanel()">
     <mat-icon aria-label="Example icon-button with a settings icon">settings</mat-icon>
   </button>
 </div>
+<div [ngClass]="{'customizer-panel':true,'mat-elevation-z4 opened':opened}">
+
+</div>
+<div *ngIf="opened" class="customizer-panel-overlay" (click)="closePanel()"></div>

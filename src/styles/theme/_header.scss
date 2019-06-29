@@ -1,10 +1,14 @@
 // ----------------------------------------------------------------------------
-// TOOLBAR
+// HEADER
 // ----------------------------------------------------------------------------
 
-.matero-toolbar {
+.matero-header {
+  display: block;
   position: sticky;
   top: 0;
+}
+
+.matero-toolbar {
   background: #fff;
   color: rgba(0, 0, 0, .76);
   box-shadow:
