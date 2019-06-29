@@ -5,11 +5,11 @@ export interface Badge {
   value: string;
 }
 
-export interface ChildrenItems {
+export interface ChildrenItem {
   state: string;
   name: string;
   type?: string;
-  children?: ChildrenItems[];
+  children?: ChildrenItem[];
 }
 
 export interface Menu {
@@ -19,7 +19,7 @@ export interface Menu {
   icon: string;
   label?: Badge;
   badge?: Badge;
-  children?: ChildrenItems[];
+  children?: ChildrenItem[];
 }
 
 const MENUITEMS: Menu[] = [

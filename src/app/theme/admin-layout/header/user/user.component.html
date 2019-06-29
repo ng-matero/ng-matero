@@ -1,3 +1,15 @@
-<p>
-  user works!
-</p>
+<a class="user-wrap" href="javascript:void(0)" [matMenuTriggerFor]="menu">
+  <img class="user-avatar" src="assets/images/avatar.jpg" alt="">
+  <span class="user-name">Zongbin</span>
+</a>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>Profile</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

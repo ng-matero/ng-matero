@@ -12,8 +12,8 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="matero-content">
-      <app-header #header (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()"
-        [collapsed]="options.sidenavCollapsed"></app-header>
+      <app-header #header class="matero-header" (toggleSidenav)="sidenav.toggle()"
+        (toggleNotificationSidenav)="notifications.toggle()" [collapsed]="options.sidenavCollapsed"></app-header>
 
       <div class="matero-content-inner">
         <router-outlet></router-outlet>
