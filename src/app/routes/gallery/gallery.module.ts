@@ -6,7 +6,7 @@ import { GalleryRoutingModule } from './gallery-routing.module';
 import { MediaComponent } from './media/media.component';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, GalleryRoutingModule],
   declarations: [MediaComponent],
+  imports: [CommonModule, SharedModule, GalleryRoutingModule],
 })
 export class GalleryModule {}

@@ -1,4 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,11 @@ export class DashboardComponent implements OnInit {
     'Sneakers',
   ];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.http.get('assets/data/projects.json').subscribe(res => {
+      console.log(res);
+    });
+  }
 }

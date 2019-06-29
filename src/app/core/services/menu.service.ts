@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface Badge {
-  type: string;
+  color: string; // Background Color
   value: string;
 }
 
@@ -28,7 +28,18 @@ const MENUITEMS: Menu[] = [
     name: 'Dashboard',
     type: 'link',
     icon: 'explore',
-    badge: { type: 'red-500', value: '5' },
+    badge: { color: 'red-500', value: '5' },
+  },
+  {
+    state: 'design',
+    name: 'Design',
+    type: 'sub',
+    icon: 'color_lens',
+    label: { color: 'indigo-500', value: 'new' },
+    children: [
+      { state: 'colors', name: 'Color System', type: 'link' },
+      { state: 'icons', name: 'Icons', type: 'link' },
+    ],
   },
   {
     state: 'material',
@@ -120,7 +131,7 @@ const MENUITEMS: Menu[] = [
     name: 'Gallery',
     type: 'sub',
     icon: 'image',
-    label: { type: 'indigo-500', value: 'new' },
+    label: { color: 'indigo-500', value: 'new' },
     children: [{ state: 'media', name: 'Media', type: 'link' }],
   },
   {
