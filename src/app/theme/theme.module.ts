@@ -13,6 +13,7 @@ import { CustomizerComponent } from './admin-layout/customizer/customizer.compon
 import { UserComponent } from './admin-layout/header/user/user.component';
 import { FullscreenComponent } from './admin-layout/header/fullscreen/fullscreen.component';
 import { UserPanelComponent } from './admin-layout/sidebar/user-panel/user-panel.component';
+import { TopmenuComponent } from './admin-layout/topmenu/topmenu.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UserPanelComponent } from './admin-layout/sidebar/user-panel/user-panel
     UserComponent,
     FullscreenComponent,
     UserPanelComponent,
+    TopmenuComponent,
   ],
   imports: [SharedModule],
 })

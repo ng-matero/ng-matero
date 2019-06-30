@@ -12,7 +12,7 @@ import {
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
-  @Input() collapsed = false;
+  @Input() showToggle = true;
   @Input() showBranding = false;
 
   @Output() toggleSidenav = new EventEmitter<void>();

@@ -8,14 +8,14 @@ export interface Badge {
 export interface ChildrenItem {
   state: string;
   name: string;
-  type?: string;
+  type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   children?: ChildrenItem[];
 }
 
 export interface Menu {
   state: string;
   name: string;
-  type: string;
+  type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   icon: string;
   label?: Badge;
   badge?: Badge;

@@ -2,10 +2,9 @@
 // HEADER
 // ----------------------------------------------------------------------------
 
-.matero-header.matero-header-fixed {
+.matero-header {
   display: block;
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 2;
 }
 
@@ -32,4 +31,12 @@
   color: #fff;
   text-align: center;
   border-radius: 999px;
+}
+
+// special
+.matero-header-fixed {
+  .matero-header {
+    position: sticky;
+    top: 0;
+  }
 }

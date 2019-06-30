@@ -1,5 +1,5 @@
 <mat-toolbar class="matero-toolbar">
-  <button mat-icon-button (click)="toggleSidenav.emit()" *ngIf="!collapsed">
+  <button mat-icon-button (click)="toggleSidenav.emit()" *ngIf="showToggle">
     <mat-icon>menu</mat-icon>
   </button>
   <div class="matero-branding" *ngIf="showBranding">
