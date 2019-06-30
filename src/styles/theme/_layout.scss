@@ -32,3 +32,14 @@
   display: block;
   margin-bottom: $gutter;
 }
+
+// Header Above
+.matero-header-above {
+  .matero-container {
+    height: calc(100% - 64px) !important;
+  }
+
+  .matero-sidebar-inner {
+    height: 100% !important;
+  }
+}

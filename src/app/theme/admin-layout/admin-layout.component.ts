@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
+import { SettingsService } from '@core';
 
 @Component({
   selector: 'app-admin-layout',
@@ -15,17 +16,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
+  sidenavCollapsed = false;
+  options = this.settings.getOptions();
   mobileQuery: MediaQueryList;
-  options = {
-    navigationPos: 'side',
-    sidenavStyle: 'full',
-    sidenavColor: 'white',
-    topbarColor: 'white',
-    topbarFixed: false,
-    useBreadcrumb: true,
-    sidenavCollapsed: false,
-    dir: 'ltr',
-  };
 
   private mobileQueryListener: () => void;
 
@@ -33,7 +26,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     return this.mobileQuery.matches;
   }
 
-  constructor(private cdr: ChangeDetectorRef, private media: MediaMatcher) {
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private media: MediaMatcher,
+    private settings: SettingsService
+  ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 960px)');
     this.mobileQueryListener = () => this.cdr.detectChanges();
     // tslint:disable-next-line: deprecation
@@ -48,6 +45,10 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   toggleCollapsed() {
-    this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
+    this.sidenavCollapsed = !this.sidenavCollapsed;
+  }
+
+  receiveOptions(options: any): void {
+    this.options = options;
   }
 }

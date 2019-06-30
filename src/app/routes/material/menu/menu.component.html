@@ -22,3 +22,26 @@
   <button mat-menu-item>Velvet worms</button>
   <button mat-menu-item>Horseshoe crabs</button>
 </mat-menu>
+
+<p>
+  Build this dynamically using json object
+  <code>
+    <pre>
+        {{ '{' }}
+          'main1': ['sub1', 'sub2'],
+          'main2': ['sub1', 'sub2', 'sub3'],
+        {{ '}' }}
+      </pre>
+  </code>
+</p>
+
+<button mat-button [matMenuTriggerFor]="main_menu">My menu</button>
+
+<mat-menu #main_menu="matMenu">
+  <ng-container *ngFor="let mainItem of objectKeys(menu)">
+    <button mat-menu-item [matMenuTriggerFor]="sub_menu">{{ mainItem }}</button>
+    <mat-menu #sub_menu="matMenu">
+      <button *ngFor="let subItem of menu[mainItem]" mat-menu-item>{{ subItem }}</button>
+    </mat-menu>
+  </ng-container>
+</mat-menu>

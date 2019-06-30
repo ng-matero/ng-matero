@@ -4,6 +4,25 @@
   </button>
 </div>
 <div [ngClass]="{'customizer-panel':true,'mat-elevation-z4 opened':opened}">
-
+  <h2>Configuration</h2>
+  <div>
+    <h3>Header</h3>
+    <mat-slide-toggle [(ngModel)]="options.showHeader" (change)="sendOptions()">visible</mat-slide-toggle>
+    <h4>position</h4>
+    <mat-radio-group [(ngModel)]="options.headerPos" (change)="sendOptions()">
+      <mat-radio-button class="m-r-2" [value]="'above'">Above</mat-radio-button>
+      <mat-radio-button class="m-r-2" [value]="'fixed'">Fixed</mat-radio-button>
+      <mat-radio-button class="m-r-2" [value]="'static'">Static</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div>
+    <h3>Navigation</h3>
+    <mat-checkbox [(ngModel)]="options.showUserPanel" (change)="sendOptions()">Show User Panel</mat-checkbox>
+    <h4>position</h4>
+    <mat-radio-group [(ngModel)]="options.navPos" (change)="sendOptions()">
+      <mat-radio-button class="m-r-2" [value]="'top'">top</mat-radio-button>
+      <mat-radio-button class="m-r-2" [value]="'side'">side</mat-radio-button>
+    </mat-radio-group>
+  </div>
 </div>
-<div *ngIf="opened" class="customizer-panel-overlay" (click)="closePanel()"></div>
+<div [ngClass]="{'customizer-panel-overlay':true,'opened':opened} " (click)="closePanel()"></div>

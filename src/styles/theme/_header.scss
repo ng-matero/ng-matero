@@ -2,10 +2,11 @@
 // HEADER
 // ----------------------------------------------------------------------------
 
-.matero-header {
+.matero-header.matero-header-fixed {
   display: block;
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .matero-toolbar {
@@ -22,7 +23,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  min-width: 10px;
+  min-width: 20px;
   height: 20px;
   padding: 0 5px;
   font-size: 12px;

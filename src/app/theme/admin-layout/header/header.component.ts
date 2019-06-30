@@ -13,6 +13,8 @@ import {
 })
 export class HeaderComponent implements OnInit {
   @Input() collapsed = false;
+  @Input() showBranding = false;
+
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleNotificationSidenav = new EventEmitter<void>();
 

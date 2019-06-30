@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SettingsService } from '@core';
 
 @Component({
   selector: 'app-customizer',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customizer.component.scss'],
 })
 export class CustomizerComponent implements OnInit {
+  options = this.settings.getOptions();
   opened = false;
 
-  constructor() {}
+  @Output() optionsEvent = new EventEmitter<object>();
+
+  constructor(private settings: SettingsService) {}
 
   ngOnInit() {}
 
@@ -22,5 +26,9 @@ export class CustomizerComponent implements OnInit {
 
   closePanel() {
     this.opened = false;
+  }
+
+  sendOptions() {
+    this.optionsEvent.emit(this.options);
   }
 }
