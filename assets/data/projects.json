@@ -1,0 +1,27 @@
+[
+    {
+        "project": "UI Prototyping",
+        "date": 1427207139000,
+        "progress": 5
+    },
+    {
+        "project": "Design",
+        "date": 1427412725000,
+        "progress": 46
+    },
+    {
+        "project": "Development",
+        "date": 1427546580000,
+        "progress": 23
+    },
+    {
+        "project": "Testing and Delivery",
+        "date": 1427891640000,
+        "progress": 67
+    },
+    {
+        "project": "Ongoing Maintanance",
+        "date": 1428830580000,
+        "progress": 12
+    }
+]
