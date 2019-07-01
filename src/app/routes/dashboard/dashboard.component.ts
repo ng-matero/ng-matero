@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get('assets/data/projects.json').subscribe(res => {
+    this.http.get('assets/data/dashboard.json').subscribe(res => {
       console.log(res);
     });
   }

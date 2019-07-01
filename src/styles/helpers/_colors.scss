@@ -2,24 +2,26 @@
 // COLORS
 // ----------------------------------------------------------------------------
 
-// Text Color
-@each $name, $value in $mat-colors {
-  @each $hue, $color in $value {
-    @if ($hue != 'contrast') {
-      .text-#{'' + $name}-#{'' + $hue} {
-        color: $color !important;
-      }
-    }
-  }
-}
+$colors: (
+  "text-color": (
+    property: color,
+    class: text,
+    values: (
+      white: #fff,
+      black: #000
+    )
+  ),
+  "bg-color": (
+    property: background-color,
+    class: bg,
+    values: (
+      white: #fff,
+      black: #000
+    )
+  ),
+);
 
-// Background Color
-@each $name, $value in $mat-colors {
-  @each $hue, $color in $value {
-    @if ($hue != 'contrast') {
-      .bg-#{'' + $name}-#{'' + $hue} {
-        background-color: $color !important;
-      }
-    }
-  }
-}
+$utilities: map-merge(
+  $colors,
+  $utilities
+);

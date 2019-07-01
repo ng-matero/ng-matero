@@ -30,6 +30,8 @@ $font-size-h5: 1.25rem !default;
 $font-size-h6: 1rem !default;
 
 // Helpers
+$utilities: () !default;
+
 $spacer: 1rem !default;
 $spacers: () !default;
 $spacers: map-merge(

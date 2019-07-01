@@ -1,3 +1,21 @@
-// Helpers
+// Helpers Map
+@import "mat-colors";
 @import "colors";
+@import "icons";
 @import "spacing";
+@import "radius";
+@import "text";
+
+// Generate Helpers
+@each $key, $utility in $utilities {
+  $values: map-get($utility, values);
+
+  @each $class-modifier, $value in $values {
+    $property: map-get($utility, property);
+    $property-class-prefix: map-get($utility, class);
+
+    .#{$property-class-prefix + '-' + $class-modifier} {
+      #{$property}: $value !important;
+    }
+  }
+}

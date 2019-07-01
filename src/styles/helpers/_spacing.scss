@@ -2,15 +2,85 @@
 // SPACING
 // ----------------------------------------------------------------------------
 
-@each $key, $spacing in $spacings {
-  $values: map-get($spacing, values);
+$spacing: (
+  "margin": (
+    property: margin,
+    class: m,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-top": (
+    property: margin-top,
+    class: m-t,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-right": (
+    property: margin-right,
+    class: m-r,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-bottom": (
+    property: margin-bottom,
+    class: m-b,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "margin-left": (
+    property: margin-left,
+    class: m-l,
+    values: map-merge($spacers, (auto: auto))
+  ),
+  "negative-margin": (
+    property: margin,
+    class: m,
+    values: $negative-spacers
+  ),
+  "negative-margin-top": (
+    property: margin-top,
+    class: m-t,
+    values: $negative-spacers
+  ),
+  "negative-margin-right": (
+    property: margin-right,
+    class: m-r,
+    values: $negative-spacers
+  ),
+  "negative-margin-bottom": (
+    property: margin-bottom,
+    class: m-b,
+    values: $negative-spacers
+  ),
+  "negative-margin-left": (
+    property: margin-left,
+    class: m-l,
+    values: $negative-spacers
+  ),
+  "padding": (
+    property: padding,
+    class: p,
+    values: $spacers
+  ),
+  "padding-top": (
+    property: padding-top,
+    class: p-t,
+    values: $spacers
+  ),
+  "padding-right": (
+    property: padding-right,
+    class: p-r,
+    values: $spacers
+  ),
+  "padding-bottom": (
+    property: padding-bottom,
+    class: p-b,
+    values: $spacers
+  ),
+  "padding-left": (
+    property: padding-left,
+    class: p-l,
+    values: $spacers
+  ),
+);
 
-  @each $num, $value in $values {
-    $property: map-get($spacing, property);
-    $property-class-prefix: map-get($spacing, class);
-
-    .#{$property-class-prefix}-#{$num} {
-      #{$property}: $value !important;
-    }
-  }
-}
+$utilities: map-merge(
+  $spacing,
+  $utilities
+);
