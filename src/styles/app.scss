@@ -1,10 +1,11 @@
+// Material Customizing
+@import "material";
 // Variables and Mixins
-@import "material.variables";
-@import "app.variables";
-@import "mixins/mixins";
-@import "utilities/utilities";
-// Core Styles
-@import "material/material";
-@import "theme/theme";
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "utilities";
+// Themeing Styles
 @import "components/components";
 @import "helpers/helpers";
+@import "theme/theme";

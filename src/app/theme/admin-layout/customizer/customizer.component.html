@@ -4,7 +4,11 @@
   </button>
 </div>
 <div [ngClass]="{'customizer-panel':true,'mat-elevation-z4 opened':opened}">
-  <h2>Configuration</h2>
+  <h2 fxLayout="row" fxLayoutAlign="space-between center"><span>Configuration</span>
+    <button mat-icon-button (click)="closePanel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
   <div>
     <h3>Header</h3>
     <mat-slide-toggle [(ngModel)]="options.showHeader" (change)="sendOptions()"

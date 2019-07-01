@@ -3,22 +3,15 @@
 // ----------------------------------------------------------------------------
 
 .matero-branding {
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  padding: 0 10px;
-  height: 64px;
-  line-height: 64px;
-  color: #444;
-  background: #fff;
-  overflow: hidden;
-  transition: all .3s cubic-bezier(.35, 0, .25, 1);
+  white-space: nowrap;
 
   .matero-branding-logo-expanded {
     height: 30px;
     margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .matero-branding-name {
+    vertical-align: middle;
   }
 }

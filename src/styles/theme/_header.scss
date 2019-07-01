@@ -24,7 +24,7 @@
   left: 50%;
   min-width: 20px;
   height: 20px;
-  padding: 0 5px;
+  padding: 0 6px;
   font-size: 12px;
   font-weight: 700;
   line-height: 20px;
@@ -39,4 +39,29 @@
     position: sticky;
     top: 0;
   }
+}
+
+// header user
+.matero-user {
+  display: inline-block;
+  padding: 0 8px;
+  color: #333;
+  font-size: 14px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .05);
+  }
+}
+
+.matero-user-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  vertical-align: middle;
+}
+
+.matero-user-name {
+  margin-left: 8px;
+  vertical-align: middle;
 }

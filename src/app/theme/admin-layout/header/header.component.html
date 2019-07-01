@@ -4,10 +4,10 @@
   </button>
   <div class="matero-branding" *ngIf="showBranding">
     <img src="./assets/matero.png" class="matero-branding-logo-expanded" alt="">
-    <span>MATERO</span>
+    <span class="matero-branding-name">MATERO</span>
   </div>
   <span fxFlex></span>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
   </button>
   <button mat-icon-button (click)="toggleNotificationSidenav.emit()">

@@ -1,4 +1,5 @@
-<div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{'matero-sidenav-collapsed':sidenavCollapsed,
+<div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{
+  'matero-sidenav-collapsed':sidenavCollapsed && options.navPos!=='top',
   'matero-header-above':options.headerPos==='above',
   'matero-header-fixed':options.headerPos==='fixed',
   'matero-navbar-top':options.navPos==='top'}">
@@ -13,7 +14,7 @@
     <mat-sidenav #sidenav class="matero-sidenav" [mode]="isOver ? 'over' : 'side'"
       [opened]="options.navPos==='side' && !isOver">
       <app-sidebar (toggleCollapsed)="toggleCollapsed()" [showToggle]="!isOver" [showUser]="options.showUserPanel"
-        [showBranding]="options.headerPos!=='above'">
+        [showHeader]="options.headerPos!=='above'">
       </app-sidebar>
     </mat-sidenav>
 

@@ -7,7 +7,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 export class SidebarComponent {
   @Input() showToggle = true;
   @Input() showUser = true;
-  @Input() showBranding = true;
+  @Input() showHeader = true;
 
   @Output() toggleCollapsed = new EventEmitter<void>();
 

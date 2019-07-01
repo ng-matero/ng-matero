@@ -6,29 +6,29 @@
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        [ngClass]="['menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
+        [ngClass]="['badge menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        [ngClass]="['menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
+        [ngClass]="['badge menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'" matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        [ngClass]="['menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
+        [ngClass]="['badge menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        [ngClass]="['menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
+        [ngClass]="['badge menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'"
       matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        [ngClass]="['menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
+        [ngClass]="['badge menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        [ngClass]="['menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
+        [ngClass]="['badge menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
     </a>
     <!-- level 1 -->
     <a class="matero-sidemenu-toggle" appAccordionToggle href="javascript:void(0);" *ngIf="menuItem.type === 'sub'"
@@ -36,10 +36,10 @@
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        [ngClass]="['menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
+        [ngClass]="['badge menu-label','bg-'+menuItem.label.color]">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        [ngClass]="['menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
+        [ngClass]="['badge menu-badge','bg-'+menuItem.badge.color]">{{ menuItem.badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
     <ul appAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">

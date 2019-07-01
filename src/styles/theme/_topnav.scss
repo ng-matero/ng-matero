@@ -4,7 +4,7 @@
 
 .matero-topmenu {
   display: block;
-  position: relative;
+  position: sticky;
   z-index: 3;
   background: #fff;
   color: rgba(0, 0, 0, .76);
@@ -24,14 +24,20 @@
 // special
 .matero-navbar-top {
   .matero-topmenu {
-    position: sticky;
     top: 0;
   }
 }
 
 .matero-header-fixed {
   .matero-topmenu {
-    position: sticky;
-    top: 64px;
+    top: $topmenu-sticky-position-desktop;
+  }
+}
+
+@media (max-width: 599px) {
+  .matero-header-fixed {
+    .matero-topmenu {
+      top: $topmenu-sticky-position-mobile;
+    }
   }
 }

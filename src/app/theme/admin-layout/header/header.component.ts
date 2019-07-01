@@ -6,6 +6,7 @@ import {
   Input,
   HostBinding,
 } from '@angular/core';
+import * as screenfull from 'screenfull';
 
 @Component({
   selector: 'app-header',
@@ -21,4 +22,12 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  toggleFullscreen() {
+    // tslint:disable-next-line: no-string-literal
+    if (screenfull['enabled']) {
+      // tslint:disable-next-line: no-string-literal
+      screenfull['toggle']();
+    }
+  }
 }

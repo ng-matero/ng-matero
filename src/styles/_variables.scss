@@ -1,0 +1,46 @@
+// General
+$gutter: 16px !default;
+
+// Sidenav
+$sidenav-width: 240px !default;
+$sidenav-collapsed-width: 50px !default;
+$sidenav-width-mobile: 280px !default;
+$sidenav-item-hover: mat-color($background, hover) !default;
+$sidenav-item-active: mat-color($mat-pink, A100) !default;
+
+// Toolbar
+$toolbar-height-desktop: 64px !default;
+$toolbar-height-mobile: 56px !default;
+
+// Topmenu
+$topmenu-sticky-position-desktop: $toolbar-height-desktop;
+$topmenu-sticky-position-mobile: $toolbar-height-mobile;
+
+// Typography
+$font-size-base: 0.875rem !default;
+$font-weight-base: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bold: 600 !default;
+
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
+
+// Helpers
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer * .25,
+    2: $spacer * .5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+  ),
+  $spacers
+);
+$negative-spacers: negativify-map($spacers) !default;
