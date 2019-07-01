@@ -9,10 +9,58 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <link href="assets/fonts/Material_Icons.css" rel="stylesheet">
-<link rel="stylesheet" href="styles.3c25ffaa971ee7a6b018.css"></head>
+  <style type="text/css">
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1999;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .loader h1 {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-weight: normal;
+      font-size: 24px;
+      letter-spacing: 0.04rem;
+      white-space: pre;
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: repeating-linear-gradient(to right,
+          #F44336, #9C27B0, #3F51B5, #03A9F4, #009688, #8BC34A, #FFEB3B, #FF9800);
+      background-size: 750% auto;
+      background-position: 0 100%;
+      animation: gradient 20s infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: -750% 0;
+      }
+    }
+
+  </style>
+<link rel="stylesheet" href="styles.4f7482e326069a30ce2e.css"></head>
 
 <body>
-  <app-root></app-root>
-<script src="runtime-es2015.aa6d763c7366b8e180b9.js" type="module"></script><script src="polyfills-es2015.542631dca76648d5efd5.js" type="module"></script><script src="runtime-es5.b1ab0e4e530894e77b31.js" nomodule></script><script src="polyfills-es5.458738624b0334e8b01d.js" nomodule></script><script src="main-es2015.162e8f2c6b9f7bc63de9.js" type="module"></script><script src="main-es5.05bf360c2eb2097184ea.js" nomodule></script></body>
+  <app-root>
+    <div class="loader">
+      <h1>LOADING</h1>
+    </div>
+  </app-root>
+<script src="runtime-es2015.99905c4b5f236fcb621c.js" type="module"></script><script src="polyfills-es2015.542631dca76648d5efd5.js" type="module"></script><script src="runtime-es5.ea352afdfbe2511443b7.js" nomodule></script><script src="polyfills-es5.458738624b0334e8b01d.js" nomodule></script><script src="main-es2015.c626950b16a535d6fd8d.js" type="module"></script><script src="main-es5.0d8b1c5db3246543249f.js" nomodule></script></body>
 
 </html>
