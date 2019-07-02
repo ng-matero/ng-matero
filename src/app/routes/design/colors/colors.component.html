@@ -1,1 +1,5 @@
-<p>colors works!</p>
+<ng-container *ngFor="let color of colors|keyvalue">
+  <ng-container *ngFor="let hue of color.value|keyvalue:valueAscOrder">
+    <div *ngIf="hue.key !== 'contrast'" [ngClass]="'bg-'+color.key+'-'+hue.key">{{hue.value}}</div>
+  </ng-container>
+</ng-container>

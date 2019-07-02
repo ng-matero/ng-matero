@@ -7,16 +7,18 @@ $colors: (
     property: color,
     class: text,
     values: (
-      white: #fff,
-      black: #000
+      white: white,
+      black: black,
+      light: $light-primary-text, // material variable
+      dark: $dark-primary-text, // material variable
     )
   ),
   "bg-color": (
     property: background-color,
     class: bg,
     values: (
-      white: #fff,
-      black: #000
+      white: white,
+      black: black
     )
   ),
 );
