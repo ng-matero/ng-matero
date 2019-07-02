@@ -5,6 +5,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
+
+// Light Style
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
 $warn: mat-palette($mat-red);
@@ -12,6 +14,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 $background: mat-color($theme, 'background');
 $foreground: mat-color($theme, 'foreground');
 
+// Dark Style
 $dark-primary: mat-palette($mat-blue-grey);
 $dark-accent: mat-palette($mat-amber, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
@@ -27,3 +30,6 @@ $config: mat-typography-config();
 @include angular-material-theme($theme);
 
 // Material Components Special Style
+.mat-table {
+  width: 100%;
+}

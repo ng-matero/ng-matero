@@ -1,139 +1,177 @@
 <app-breadcrumb></app-breadcrumb>
 
 <div class="matero-row" fxLayout="row wrap">
+
+  <!-- Statistics -->
   <div class="matero-col" [fxFlex.gt-sm]="25" [fxFlex.gt-xs]="50" [fxFlex]="100">
     <mat-card class="bg-indigo-500 text-white">
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">Total Sales</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">1</h3>
+        <h2>180,200</h2>
         <small class="text-muted">Monthly</small>
       </mat-card-content>
     </mat-card>
   </div>
   <div class="matero-col" [fxFlex.gt-sm]="25" [fxFlex.gt-xs]="50" [fxFlex]="100">
     <mat-card class="bg-blue-500 text-white">
-      <mat-card-title>
-        <small class="text-muted">Revenue</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">Revenue</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">2</h3>
+        <h2>70,205</h2>
         <small class="text-muted">Monthly</small>
       </mat-card-content>
     </mat-card>
   </div>
   <div class="matero-col" [fxFlex.gt-sm]="25" [fxFlex.gt-xs]="50" [fxFlex]="100">
     <mat-card class="bg-green-500 text-white">
-      <mat-card-title>
-        <small class="text-muted">Traffic</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">Traffic</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">3</h3>
+        <h2>1,291,922</h2>
         <small class="text-muted">Monthly</small>
       </mat-card-content>
     </mat-card>
   </div>
   <div class="matero-col" [fxFlex.gt-sm]="25" [fxFlex.gt-xs]="50" [fxFlex]="100">
     <mat-card class="bg-teal-500 text-white">
-      <mat-card-title>
-        <small class="text-muted">New User</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">New User</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">4</h3>
+        <h2>1,922</h2>
         <small class="text-muted">Monthly</small>
       </mat-card-content>
     </mat-card>
   </div>
-  <!-- </div>
 
-<div class="matero-row" fxLayout="row wrap"> -->
-  <div class="matero-col" [fxFlex]="100">
+  <!-- Charts -->
+  <div class="matero-col" [fxFlex.gt-sm]="60" [fxFlex]="100">
     <mat-card>
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">Temprature</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">5</h3>
-        <small class="text-muted">Monthly</small>
+        <div id="chart1"></div>
       </mat-card-content>
     </mat-card>
   </div>
-  <!-- </div>
-
-<div class="matero-row" fxLayout="row wrap"> -->
-  <div class="matero-col" [fxFlex.gt-sm]="33.33" [fxFlex]="100">
+  <div class="matero-col" [fxFlex.gt-sm]="40" [fxFlex]="100">
     <mat-card>
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">Daily Routine</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">6</h3>
-        <small class="text-muted">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
-      <mat-card-content>
-        <h3 class="m-0 font-normal">7</h3>
-        <small class="text-muted">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
-      <mat-card-content>
-        <h3 class="m-0 font-normal">8</h3>
-        <small class="text-muted">Monthly</small>
+        <div id="chart2"></div>
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="matero-col" [fxFlex.gt-sm]="66.66" [fxFlex]="100">
+
+  <!-- others -->
+  <div class="matero-col" [fxFlex.gt-sm]="50" [fxFlex]="100">
     <mat-card>
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
+      <mat-tab-group class="m--16">
+        <mat-tab label="First">
+          <div class="m-16">
+            <h3>Aenean viverra arcu nec pellentesque ultrices. In erat purus, adipiscing nec lacinia at, ornare ac eros.
+            </h3>
+            <p>
+              Nullam at risus metus. Quisque nisl purus, pulvinar ut mauris vel, elementum suscipit eros. Praesent
+              ornare ante massa, egestas pellentesque orci convallis ut. Curabitur consequat convallis est, id luctus
+              mauris lacinia vel. Nullam tristique lobortis mauris, ultricies fermentum lacus bibendum id. Proin non
+              ante tortor. Suspendisse pulvinar ornare tellus nec pulvinar. Nam pellentesque accumsan mi, non
+              pellentesque sem convallis sed. Quisque rutrum erat id auctor gravida.</p>
+          </div>
+        </mat-tab>
+        <mat-tab label="Second">
+          <div class="m-16">
+            <h3>Vestibulum vitae diam nec odio dapibus placerat. Ut ut lorem justo.</h3>
+            <p>
+              Fusce bibendum augue nec fermentum tempus. Sed laoreet dictum tempus. Aenean ac sem quis nulla malesuada
+              volutpat. Nunc vitae urna pulvinar velit commodo cursus. Nullam eu felis quis diam adipiscing hendrerit
+              vel ac turpis. Nam mattis fringilla euismod. Donec eu ipsum sit amet mauris iaculis aliquet. Quisque sit
+              amet feugiat odio. Cras convallis lorem at libero lobortis, placerat lobortis sapien lacinia. Duis sit
+              amet elit bibendum sapien dignissim bibendum.</p>
+
+          </div>
+        </mat-tab>
+        <mat-tab label="Third">
+          <div class="m-16">
+            <h3>Maecenas eget turpis luctus, scelerisque arcu id, iaculis urna. Interdum et malesuada fames ac ante
+              ipsum primis in faucibus.</h3>
+            <p>
+              Morbi placerat est nec pharetra placerat. Ut laoreet nunc accumsan orci aliquam accumsan. Maecenas
+              volutpat dolor vitae sapien ultricies fringilla. Suspendisse vitae orci sed nibh ultrices tristique.
+              Aenean in ante eget urna semper imperdiet. Pellentesque sagittis a nulla at scelerisque. Nam augue nulla,
+              accumsan quis nisi a, facilisis eleifend nulla. Praesent aliquet odio non imperdiet fringilla.</p>
+
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+    <mat-card>
+      <mat-card-title class="f-s-12 f-w-100">Album</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">9</h3>
-        <small class="text-muted">Monthly</small>
+        <mat-grid-list cols="2">
+          <mat-grid-tile class="bg-red-50">1</mat-grid-tile>
+          <mat-grid-tile class="bg-purple-50">2</mat-grid-tile>
+          <mat-grid-tile class="bg-orange-50">3</mat-grid-tile>
+          <mat-grid-tile class="bg-cyan-50">4</mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="matero-col" [fxFlex.gt-sm]="50" [fxFlex]="100">
+    <mat-card>
+      <mat-card-title class="f-s-12 f-w-100">Revenue Table</mat-card-title>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="w-full">
+
+          <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Weight </th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
       </mat-card-content>
     </mat-card>
     <mat-card>
-      <mat-card-title>
-        <small class="text-muted">Total Sales</small>
-      </mat-card-title>
+      <mat-card-title class="f-s-12 f-w-100">Chips & Buttons</mat-card-title>
       <mat-card-content>
-        <h3 class="m-0 font-normal">10</h3>
-        <small class="text-muted">Monthly</small>
+        <div class="m-b-16">
+          <mat-chip-list>
+            <mat-chip>One fish</mat-chip>
+            <mat-chip color="primary" selected>Primary fish</mat-chip>
+            <mat-chip color="accent" selected>Accent fish</mat-chip>
+            <mat-chip color="warn" selected>Two fish</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div>
+          <button mat-raised-button class="m-r-8">Basic</button>
+          <button mat-raised-button color="primary" class="m-r-8">Primary</button>
+          <button mat-raised-button color="accent" class="m-r-8">Accent</button>
+          <button mat-raised-button color="warn" class="m-r-8">Warn</button>
+          <button mat-raised-button disabled class="m-r-8">Disabled</button>
+          <a mat-raised-button routerLink="." class="m-r-8">Link</a>
+        </div>
       </mat-card-content>
     </mat-card>
 
-    <div class="matero-row" fxLayout="row wrap">
-      <div class="matero-col" [fxFlex.gt-xs]="50" [fxFlex]="100">
-        <mat-card>
-          <mat-card-title>
-            <small class="text-muted">Total Sales</small>
-          </mat-card-title>
-          <mat-card-content>
-            <h3 class="m-0 font-normal">11</h3>
-            <small class="text-muted">Monthly</small>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="matero-col" [fxFlex.gt-xs]="50" [fxFlex]="100">
-        <mat-card>
-          <mat-card-title>
-            <small class="text-muted">Total Sales</small>
-          </mat-card-title>
-          <mat-card-content>
-            <h3 class="m-0 font-normal">12</h3>
-            <small class="text-muted">Monthly</small>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
   </div>
 </div>

@@ -46,9 +46,17 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   toggleCollapsed() {
     this.sidenavCollapsed = !this.sidenavCollapsed;
+    // TODO: trigger when animation end
+    setTimeout(() => {
+      this.settings.setCollapseStatus(this.sidenavCollapsed);
+    }, 400);
   }
 
   receiveOptions(options: any): void {
     this.options = options;
+  }
+
+  openedChang(e: boolean) {
+    this.settings.setOpenStatus(e);
   }
 }

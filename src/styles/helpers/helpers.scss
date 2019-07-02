@@ -1,10 +1,14 @@
-// Helpers Map
 @import "mat-colors";
+// Helpers
+@import "variables";
 @import "colors";
 @import "icons";
 @import "spacing";
 @import "radius";
 @import "text";
+@import "fonts";
+@import "image";
+@import "size";
 
 // Generate Helpers
 @each $key, $utility in $utilities {

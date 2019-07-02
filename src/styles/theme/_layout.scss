@@ -36,7 +36,7 @@
 // Header Above
 .matero-header-above {
   .matero-container {
-    height: calc(100% - 64px) !important;
+    height: calc(100% - #{$toolbar-height-desktop}) !important;
   }
 
   .matero-sidebar-inner {

@@ -1,0 +1,21 @@
+// ----------------------------------------------------------------------------
+// Fonts
+// ----------------------------------------------------------------------------
+
+$fonts: (
+  "font-weight": (
+    property: font-weight,
+    class: f-w,
+    values: $font-wieght
+  ),
+  "font-size": (
+    property: font-size,
+    class: f-s,
+    values: $font-size
+  ),
+);
+
+$utilities: map-merge(
+  $fonts,
+  $utilities
+);

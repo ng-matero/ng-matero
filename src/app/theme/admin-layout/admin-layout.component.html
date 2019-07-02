@@ -10,9 +10,9 @@
     (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()" showBranding="true">
   </app-header>
 
-  <mat-sidenav-container class="matero-container" autosize>
+  <mat-sidenav-container class="matero-container" autosize autoFocus>
     <mat-sidenav #sidenav class="matero-sidenav" [mode]="isOver ? 'over' : 'side'"
-      [opened]="options.navPos==='side' && !isOver">
+      [opened]="options.navPos==='side' && !isOver" (openedChange)="openedChang($event)">
       <app-sidebar (toggleCollapsed)="toggleCollapsed()" [showToggle]="!isOver" [showUser]="options.showUserPanel"
         [showHeader]="options.headerPos!=='above'">
       </app-sidebar>
