@@ -55,11 +55,21 @@ $size: (
 // border radius
 $radius-base: 4px !default;
 $radius: (
-    0: 0,
-    4: $radius-base,
-    8: $radius-base * 2,
-    16: $radius-base * 4,
-    24: $radius-base * 6,
-    32: $radius-base * 8,
-    full: 9999px
+  0: 0,
+  4: $radius-base,
+  8: $radius-base * 2,
+  16: $radius-base * 4,
+  24: $radius-base * 6,
+  32: $radius-base * 8,
+  full: 9999px
+);
+
+// border width
+$border-solid: (
+  0: 0,
+  1: 1px solid rgba(0,0,0,.12),
+  2: 2px solid rgba(0,0,0,.12),
+  3: 3px solid rgba(0,0,0,.12),
+  4: 4px solid rgba(0,0,0,.12),
+  5: 5px solid rgba(0,0,0,.12),
 );

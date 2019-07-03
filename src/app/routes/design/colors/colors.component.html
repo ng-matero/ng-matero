@@ -1,9 +1,13 @@
 <div fxLayout="row wrap" fxLayoutGap="16px grid">
-  <div [fxFlex.gt-sm]="25" [fxFlex.gt-xs]="50" [fxFlex]="100" *ngFor="let color of colorsArr">
-    <ng-container *ngFor="let hue of color.value|keyvalue:keyAscOrder">
-      <div *ngIf="hue.key !== 'contrast'"
-        [ngClass]="['bg-'+color.key+'-'+hue.key,'text'+'-'+color.value['contrast'][hue.key]]">
-        {{hue.value}}</div>
-    </ng-container>
+  <div [fxFlex.gt-md]="20" [fxFlex.gt-sm]="25" [fxFlex.gt-xs]="50" [fxFlex]="100" *ngFor="let color of colorsArr">
+    <div class="b-1">
+      <ng-container *ngFor="let hue of color.value|keyvalue:keyAscOrder; first as isFirst">
+        <div *ngIf="hue.key !== 'contrast'"
+          [ngClass]="['bg-'+color.key+'-'+hue.key,'text'+'-'+color.value['contrast'][hue.key],'p-8']">
+          <span *ngIf="isFirst" class="m-r-4 text-capitalize">{{color.key}}</span>
+          <span>{{hue.key}}</span><span fxFlex></span><span>{{hue.value}}</span>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>

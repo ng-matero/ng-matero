@@ -1,1 +1,13 @@
-<p>icons works!</p>
+<ng-container *ngFor="let group of icons|keyvalue">
+  <mat-card>
+    <mat-card-title class="mat-h1 f-w-100">{{group.key}}</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div *ngFor="let icon of group.value" [fxFlex.gt-md]="11.11" [fxFlex.gt-sm]="20" [fxFlex.gt-xs]="25" fxFlex="10">
+          <mat-icon>{{icon}}</mat-icon>
+          <p class="f-s-10">{{icon}}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

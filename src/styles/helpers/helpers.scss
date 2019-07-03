@@ -9,6 +9,7 @@
 @import "fonts";
 @import "image";
 @import "size";
+@import "border";
 
 // Generate Helpers
 @each $key, $utility in $utilities {

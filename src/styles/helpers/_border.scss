@@ -1,3 +1,36 @@
 // ----------------------------------------------------------------------------
 // BORDER
 // ----------------------------------------------------------------------------
+
+$borders: (
+  "border": (
+    property: border,
+    class: b,
+    values: $border-solid
+  ),
+  "border-top": (
+    property: border-top,
+    class: b-t,
+    values: $border-solid
+  ),
+  "border-bottom": (
+    property: border-bottom,
+    class: b-b,
+    values: $border-solid
+  ),
+  "border-right": (
+    property: border-right,
+    class: b-r,
+    values: $border-solid
+  ),
+  "border-left": (
+    property: border-left,
+    class: b-l,
+    values: $border-solid
+  ),
+);
+
+$utilities: map-merge(
+  $borders,
+  $utilities
+);

@@ -20,15 +20,15 @@ $mat-colors: (
   orange: $mat-orange,
   deep-orange: $mat-deep-orange,
   brown: $mat-brown,
-  grey: $mat-grey,
-  blue-grey: $mat-blue-grey,
+  gray: $mat-gray,
+  blue-gray: $mat-blue-gray,
 );
 
 // Text Color
 @each $name, $value in $mat-colors {
   @each $hue, $color in $value {
     @if ($hue != 'contrast') {
-      #{'.text-' + $name + '-' + $hue} {
+      .#{'text-' + $name + '-' + $hue} {
         color: $color !important;
       }
     }
@@ -39,7 +39,7 @@ $mat-colors: (
 @each $name, $value in $mat-colors {
   @each $hue, $color in $value {
     @if ($hue != 'contrast') {
-      #{'.bg-' + $name + '-' + $hue} {
+      .#{'bg-' + $name + '-' + $hue} {
         background-color: $color !important;
       }
     }

@@ -27,7 +27,7 @@ const MENUITEMS: Menu[] = [
     state: 'dashboard',
     name: 'Dashboard',
     type: 'link',
-    icon: 'explore',
+    icon: 'dashboard',
     badge: { color: 'red-500', value: '5' },
   },
   {
