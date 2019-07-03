@@ -29,17 +29,19 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/@antv/g2/dist/g2.min.js",
+              "node_modules/@antv/data-set/dist/data-set.min.js",
+              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -49,21 +51,17 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
             },
             "hmr": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.hmr.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.hmr.ts"
+              }]
             }
           }
         },
@@ -98,7 +96,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/@antv/g2/dist/g2.min.js",
+              "node_modules/@antv/data-set/dist/data-set.min.js",
+              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

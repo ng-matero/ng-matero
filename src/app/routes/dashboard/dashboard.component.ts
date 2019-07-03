@@ -8,8 +8,6 @@ import {
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import * as G2 from '@antv/g2';
-import * as DataSet from '@antv/data-set';
 import { SettingsService } from '@core';
 
 export interface PeriodicElement {
