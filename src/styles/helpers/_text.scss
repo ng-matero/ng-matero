@@ -2,7 +2,8 @@
 // TEXT
 // ----------------------------------------------------------------------------
 
-.text-ellipsis {
+.text-ellipsis,
+.text-truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -19,4 +20,8 @@
 
 .text-lowercase {
   text-transform: lowercase;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-<app-breadcrumb></app-breadcrumb>
+<breadcrumb></breadcrumb>
 
 <mat-grid-list cols="4" rowHeight="1:1">
   <mat-grid-tile *ngFor="let id of images">
@@ -6,7 +6,7 @@
       <span matLine>Gallery Image: {{ id }}</span>
     </mat-grid-tile-header>
 
-    <img class="gallery-img" src="assets/images/pixabay/{{id}}.jpg" alt="Gallery Image" />
+    <img class="fit-cover" src="assets/images/pixabay/{{id}}.jpg" alt="Gallery Image" />
 
   </mat-grid-tile>
 </mat-grid-list>

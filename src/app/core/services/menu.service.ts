@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface Badge {
+export interface Tag {
   color: string; // Background Color
   value: string;
 }
@@ -17,8 +17,8 @@ export interface Menu {
   name: string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   icon: string;
-  label?: Badge;
-  badge?: Badge;
+  label?: Tag;
+  badge?: Tag;
   children?: ChildrenItem[];
 }
 
@@ -35,7 +35,6 @@ const MENUITEMS: Menu[] = [
     name: 'Design',
     type: 'sub',
     icon: 'color_lens',
-    label: { color: 'indigo-500', value: 'new' },
     children: [
       { state: 'colors', name: 'Color System', type: 'link' },
       { state: 'icons', name: 'Icons', type: 'link' },
@@ -139,24 +138,32 @@ const MENUITEMS: Menu[] = [
     name: 'Forms',
     type: 'sub',
     icon: 'description',
+    children: [{ state: 'elements', name: 'Form Elements', type: 'link' }],
   },
   {
     state: 'tables',
     name: 'Tables',
     type: 'sub',
     icon: 'format_line_spacing',
+    children: [{ state: 'basic', name: 'Basic Table', type: 'link' }],
   },
   {
     state: 'profile',
     name: 'Profile',
-    type: 'sub',
+    type: 'link',
     icon: 'person',
+    label: { color: 'red-500', value: 'coming soon' },
   },
   {
     state: 'sessions',
     name: 'Sessions',
     type: 'sub',
     icon: 'question_answer',
+    children: [
+      { state: '403', name: '403', type: 'link' },
+      { state: '404', name: '404', type: 'link' },
+      { state: '500', name: '500', type: 'link' },
+    ],
   },
 ];
 

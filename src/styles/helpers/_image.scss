@@ -3,13 +3,9 @@
 // ----------------------------------------------------------------------------
 
 .fit-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  @include image-fit(cover)
 }
 
 .fit-contain {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  @include image-fit(contain)
 }

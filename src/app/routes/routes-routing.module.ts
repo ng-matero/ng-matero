@@ -34,8 +34,21 @@ const routes: Routes = [
           import('./gallery/gallery.module').then(m => m.GalleryModule),
         data: { title: 'Gallery', titleI18n: 'Gallery' },
       },
+      {
+        path: 'forms',
+        loadChildren: () =>
+          import('./forms/forms.module').then(m => m.FormsModule),
+        data: { title: 'Forms', titleI18n: 'Forms' },
+      },
+      {
+        path: 'tables',
+        loadChildren: () =>
+          import('./tables/tables.module').then(m => m.TablesModule),
+        data: { title: 'Tables', titleI18n: 'Tables' },
+      },
     ],
   },
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({

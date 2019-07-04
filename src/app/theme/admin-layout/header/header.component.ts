@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
+  // TODO:
   toggleFullscreen() {
     // tslint:disable-next-line: no-string-literal
     if (screenfull['enabled']) {

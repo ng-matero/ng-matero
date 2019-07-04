@@ -61,30 +61,54 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   genChart1() {
     const data = [
-      { month: 'Jan', city: 'Tokyo', temperature: 7 },
-      { month: 'Jan', city: 'London', temperature: 3.9 },
-      { month: 'Feb', city: 'Tokyo', temperature: 6.9 },
-      { month: 'Feb', city: 'London', temperature: 4.2 },
-      { month: 'Mar', city: 'Tokyo', temperature: 9.5 },
-      { month: 'Mar', city: 'London', temperature: 5.7 },
-      { month: 'Apr', city: 'Tokyo', temperature: 14.5 },
-      { month: 'Apr', city: 'London', temperature: 8.5 },
-      { month: 'May', city: 'Tokyo', temperature: 18.4 },
-      { month: 'May', city: 'London', temperature: 11.9 },
-      { month: 'Jun', city: 'Tokyo', temperature: 21.5 },
-      { month: 'Jun', city: 'London', temperature: 15.2 },
-      { month: 'Jul', city: 'Tokyo', temperature: 25.2 },
-      { month: 'Jul', city: 'London', temperature: 17 },
-      { month: 'Aug', city: 'Tokyo', temperature: 26.5 },
-      { month: 'Aug', city: 'London', temperature: 16.6 },
-      { month: 'Sep', city: 'Tokyo', temperature: 23.3 },
-      { month: 'Sep', city: 'London', temperature: 14.2 },
-      { month: 'Oct', city: 'Tokyo', temperature: 18.3 },
-      { month: 'Oct', city: 'London', temperature: 10.3 },
-      { month: 'Nov', city: 'Tokyo', temperature: 13.9 },
-      { month: 'Nov', city: 'London', temperature: 6.6 },
-      { month: 'Dec', city: 'Tokyo', temperature: 9.6 },
-      { month: 'Dec', city: 'London', temperature: 4.8 },
+      { time: '00:00', day: 'Today', total: 5.9 },
+      { time: '00:00', day: 'Yesterday', total: 3.2 },
+      { time: '01:00', day: 'Today', total: 1.3 },
+      { time: '01:00', day: 'Yesterday', total: 0.8 },
+      { time: '02:00', day: 'Today', total: 1.5 },
+      { time: '02:00', day: 'Yesterday', total: 4.2 },
+      { time: '03:00', day: 'Today', total: 0.2 },
+      { time: '03:00', day: 'Yesterday', total: 0.4 },
+      { time: '04:00', day: 'Today', total: 0.3 },
+      { time: '04:00', day: 'Yesterday', total: 0.2 },
+      { time: '05:00', day: 'Today', total: 1.5 },
+      { time: '05:00', day: 'Yesterday', total: 1.8 },
+      { time: '06:00', day: 'Today', total: 2.8 },
+      { time: '06:00', day: 'Yesterday', total: 2.1 },
+      { time: '07:00', day: 'Today', total: 5.2 },
+      { time: '07:00', day: 'Yesterday', total: 6.5 },
+      { time: '08:00', day: 'Today', total: 10.5 },
+      { time: '08:00', day: 'Yesterday', total: 8.1 },
+      { time: '09:00', day: 'Today', total: 8.2 },
+      { time: '09:00', day: 'Yesterday', total: 9.7 },
+      { time: '10:00', day: 'Today', total: 13.5 },
+      { time: '10:00', day: 'Yesterday', total: 14.7 },
+      { time: '11:00', day: 'Today', total: 13.9 },
+      { time: '11:00', day: 'Yesterday', total: 16.2 },
+      { time: '12:00', day: 'Today', total: 11.7 },
+      { time: '12:00', day: 'Yesterday', total: 16.8 },
+      { time: '13:00', day: 'Today', total: 13.2 },
+      { time: '13:00', day: 'Yesterday', total: 9.3 },
+      { time: '14:00', day: 'Today', total: 18.6 },
+      { time: '14:00', day: 'Yesterday', total: 17.9 },
+      { time: '15:00', day: 'Today', total: 26.1 },
+      { time: '15:00', day: 'Yesterday', total: 23.2 },
+      { time: '16:00', day: 'Today', total: 21.3 },
+      { time: '16:00', day: 'Yesterday', total: 23.9 },
+      { time: '17:00', day: 'Today', total: 25.2 },
+      { time: '17:00', day: 'Yesterday', total: 18.1 },
+      { time: '18:00', day: 'Today', total: 19.2 },
+      { time: '18:00', day: 'Yesterday', total: 17.6 },
+      { time: '19:00', day: 'Today', total: 14.8 },
+      { time: '19:00', day: 'Yesterday', total: 13.1 },
+      { time: '20:00', day: 'Today', total: 10.1 },
+      { time: '20:00', day: 'Yesterday', total: 11.2 },
+      { time: '21:00', day: 'Today', total: 6.9 },
+      { time: '21:00', day: 'Yesterday', total: 8.4 },
+      { time: '22:00', day: 'Today', total: 5.2 },
+      { time: '22:00', day: 'Yesterday', total: 7.5 },
+      { time: '23:00', day: 'Today', total: 3.8 },
+      { time: '23:00', day: 'Yesterday', total: 6.7 },
     ];
 
     const chart = new G2.Chart({
@@ -94,7 +118,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       padding: [20, 20, 80, 50],
     });
     chart.source(data, {
-      month: {
+      time: {
         range: [0, 1],
       },
     });
@@ -103,21 +127,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         type: 'line',
       },
     });
-    chart.axis('temperature', {
+    chart.axis('total', {
       label: {
         formatter: function formatter(val) {
-          return val + '°C';
+          return val + 'K';
         },
       },
     });
     chart
       .line()
-      .position('month*temperature')
-      .color('city');
+      .position('time*total')
+      .color('day');
     chart
       .point()
-      .position('month*temperature')
-      .color('city')
+      .position('time*total')
+      .color('day')
       .size(4)
       .shape('circle')
       .style({
@@ -221,14 +245,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       });
 
     const userData = [
-      { type: '睡眠', value: 70 },
-      { type: '淡茶 & 烟斗 & 冥想', value: 10 },
-      { type: '写作', value: 10 },
-      { type: '教课', value: 40 },
-      { type: '酒吧吃肉配白酒', value: 40 },
-      { type: '散步', value: 10 },
-      { type: '拜访马大大', value: 30 },
-      { type: '阅读', value: 30 },
+      { type: '社交', value: 60 },
+      { type: '健身', value: 10 },
+      { type: '购物', value: 10 },
+      { type: '视频', value: 40 },
+      { type: '其它', value: 20 },
+      { type: '学习', value: 10 },
+      { type: '音乐', value: 30 },
+      { type: '游戏', value: 30 },
     ];
     const userDv = new DataView();
     userDv.source(userData).transform({
