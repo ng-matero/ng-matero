@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  Input,
+  HostBinding,
+} from '@angular/core';
 
 @Component({
   selector: 'page-header',
@@ -7,6 +13,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class PageHeaderComponent implements OnInit {
+  @HostBinding('class.matero-page-header') show = true;
+
+  @Input() title = '';
+  @Input() subtitle = '';
+  @Input() showBreadCrumb = true;
+
   constructor() {}
 
   ngOnInit() {}

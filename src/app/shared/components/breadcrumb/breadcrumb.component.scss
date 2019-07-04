@@ -10,9 +10,10 @@
 
 .matero-breadcrumb-item {
   line-height: 18px;
+  text-transform: capitalize;
 
   >a {
-    color: #333;
+    color: currentColor;
   }
 
   >.chevron {

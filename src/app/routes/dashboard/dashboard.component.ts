@@ -59,6 +59,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // Line Chart
   genChart1() {
     const data = [
       { time: '00:00', day: 'Today', total: 5.9 },
@@ -71,26 +72,26 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       { time: '03:00', day: 'Yesterday', total: 0.4 },
       { time: '04:00', day: 'Today', total: 0.3 },
       { time: '04:00', day: 'Yesterday', total: 0.2 },
-      { time: '05:00', day: 'Today', total: 1.5 },
-      { time: '05:00', day: 'Yesterday', total: 1.8 },
-      { time: '06:00', day: 'Today', total: 2.8 },
-      { time: '06:00', day: 'Yesterday', total: 2.1 },
+      { time: '05:00', day: 'Today', total: 1.0 },
+      { time: '05:00', day: 'Yesterday', total: 1.3 },
+      { time: '06:00', day: 'Today', total: 2.5 },
+      { time: '06:00', day: 'Yesterday', total: 3.1 },
       { time: '07:00', day: 'Today', total: 5.2 },
       { time: '07:00', day: 'Yesterday', total: 6.5 },
       { time: '08:00', day: 'Today', total: 10.5 },
       { time: '08:00', day: 'Yesterday', total: 8.1 },
       { time: '09:00', day: 'Today', total: 8.2 },
       { time: '09:00', day: 'Yesterday', total: 9.7 },
-      { time: '10:00', day: 'Today', total: 13.5 },
+      { time: '10:00', day: 'Today', total: 12.1 },
       { time: '10:00', day: 'Yesterday', total: 14.7 },
       { time: '11:00', day: 'Today', total: 13.9 },
-      { time: '11:00', day: 'Yesterday', total: 16.2 },
+      { time: '11:00', day: 'Yesterday', total: 17.2 },
       { time: '12:00', day: 'Today', total: 11.7 },
       { time: '12:00', day: 'Yesterday', total: 16.8 },
       { time: '13:00', day: 'Today', total: 13.2 },
       { time: '13:00', day: 'Yesterday', total: 9.3 },
       { time: '14:00', day: 'Today', total: 18.6 },
-      { time: '14:00', day: 'Yesterday', total: 17.9 },
+      { time: '14:00', day: 'Yesterday', total: 19.9 },
       { time: '15:00', day: 'Today', total: 26.1 },
       { time: '15:00', day: 'Yesterday', total: 23.2 },
       { time: '16:00', day: 'Today', total: 21.3 },
@@ -152,7 +153,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     return chart;
   }
-
+  // Pie Chart
   genChart2() {
     const text = [
       'MIDNIGHT',

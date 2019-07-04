@@ -1,3 +1,18 @@
 .matero-page-header {
-  padding: 24px 0;
+  display: block;
+  padding: 16px;
+  margin: -16px -16px 16px;
+  background-color: #3f51b5;
+  color: #fff;
+
+  .matero-breadcrumb {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+}
+
+.matero-page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
 }

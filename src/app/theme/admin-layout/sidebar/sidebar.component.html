@@ -1,8 +1,5 @@
 <div class="matero-sidebar-header" *ngIf="showHeader">
-  <div class="matero-branding">
-    <img src="./assets/images/matero.png" class="matero-branding-logo-expanded" alt="">
-    <span class="matero-branding-name">MATERO</span>
-  </div>
+  <app-branding></app-branding>
   <span fxFlex></span>
   <mat-slide-toggle (change)="toggleCollapsed.emit()" *ngIf="showToggle"></mat-slide-toggle>
 </div>

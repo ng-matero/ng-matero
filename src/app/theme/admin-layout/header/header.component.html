@@ -2,10 +2,7 @@
   <button mat-icon-button (click)="toggleSidenav.emit()" *ngIf="showToggle">
     <mat-icon>menu</mat-icon>
   </button>
-  <div class="matero-branding" *ngIf="showBranding">
-    <img src="./assets/images/matero.png" class="matero-branding-logo-expanded" alt="">
-    <span class="matero-branding-name">MATERO</span>
-  </div>
+  <app-branding class="m-l-8" *ngIf="showBranding"></app-branding>
   <span fxFlex></span>
   <button mat-icon-button (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
