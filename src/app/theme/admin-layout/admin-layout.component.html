@@ -7,7 +7,7 @@
 
   <!-- header above -->
   <app-header *ngIf="options.showHeader && options.headerPos==='above'" #header class="matero-header"
-    (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()" showBranding="true">
+    (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()" [showBranding]="true">
   </app-header>
 
   <mat-sidenav-container class="matero-container" autosize autoFocus>

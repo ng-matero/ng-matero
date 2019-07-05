@@ -175,6 +175,8 @@ export class MenuService {
     return MENUITEMS;
   }
 
+  set() {}
+
   add(menu: Menu) {
     MENUITEMS.push(menu);
   }
