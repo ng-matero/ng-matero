@@ -5,7 +5,8 @@
     <a mat-button [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'">{{menuItem.name}}</a>
     <a mat-button [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'">{{menuItem.name}}</a>
     <!-- level 1 -->
-    <button mat-button *ngIf="menuItem.type === 'sub'" [matMenuTriggerFor]="menulevel1">{{menuItem.name}}</button>
+    <button mat-button *ngIf="menuItem.type === 'sub'" [matMenuTriggerFor]="menulevel1">{{menuItem.name}} <mat-icon>
+        arrow_drop_down</mat-icon></button>
     <mat-menu #menulevel1="matMenu">
       <ng-container *ngFor="let childLvl1 of menuItem.children">
 

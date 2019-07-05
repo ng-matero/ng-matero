@@ -22,7 +22,7 @@
       <app-notification></app-notification>
     </mat-sidenav>
 
-    <mat-sidenav-content class="matero-content">
+    <mat-sidenav-content class="matero-content" #content>
       <app-header *ngIf="options.showHeader && options.headerPos!=='above'" #header class="matero-header"
         (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()"
         [showToggle]="!sidenavCollapsed && options.navPos!=='top'" [showBranding]="options.navPos==='top'"></app-header>

@@ -4,9 +4,11 @@ import {
   OnDestroy,
   ChangeDetectorRef,
   ViewChild,
+  ElementRef,
 } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { MatSidenav } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SettingsService } from '@core';
 
 @Component({
@@ -15,6 +17,7 @@ import { SettingsService } from '@core';
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
+  @ViewChild('content', { static: true }) content: MatSidenavContent;
 
   sidenavCollapsed = false;
   options = this.settings.getOptions();
@@ -27,6 +30,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   constructor(
+    private router: Router,
     private cdr: ChangeDetectorRef,
     private media: MediaMatcher,
     private settings: SettingsService
@@ -35,6 +39,13 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.mobileQueryListener = () => this.cdr.detectChanges();
     // tslint:disable-next-line: deprecation
     this.mobileQuery.addListener(this.mobileQueryListener);
+
+    // TODO: scroll top to container
+    this.router.events.subscribe(evt => {
+      if (evt instanceof NavigationEnd) {
+        this.content.scrollTo({ top: 0 });
+      }
+    });
   }
 
   ngOnInit() {}
