@@ -13,6 +13,7 @@
   z-index: 11;
   width: 320px;
   padding: 0 16px;
+  box-sizing: border-box;
   background-color: #fff;
   transform: translateX(0);
   transition: transform .3s ease-in-out;

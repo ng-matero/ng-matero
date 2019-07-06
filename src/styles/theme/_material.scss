@@ -1,0 +1,23 @@
+// ----------------------------------------------------------------------------
+// Material Components Special Style
+// ----------------------------------------------------------------------------
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-card {
+  margin-bottom: $gutter;
+}
+
+.mat-accordion {
+  display: block;
+  margin-bottom: $gutter;
+}
+
+// form
+.matero-form-horizontal {
+  .mat-form-field {
+    width: 100%;
+  }
+}

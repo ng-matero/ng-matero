@@ -1,1 +1,200 @@
 <page-header [title]="'Form Elements'"></page-header>
+
+<div fxLayout="row wrap" class="matero-row">
+  <div fxFlex="100" class="matero-col">
+    <mat-card>
+      <mat-card-title>Form Inline</mat-card-title>
+      <mat-card-content>
+        <form>
+          <mat-form-field class="m-r-8">
+            <input matInput placeholder="Username" [(ngModel)]="q.username" name="username">
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <input matInput placeholder="Email" [(ngModel)]="q.email" name="email">
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Gender</mat-label>
+            <mat-select [(ngModel)]="q.gender" name="gender">
+              <mat-option>-- None --</mat-option>
+              <mat-option value="1">male</mat-option>
+              <mat-option value="2">female</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary">Search</button>
+        </form>
+        {{q|json}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="33.33" fxFlex.lt-sm="100" class="matero-col">
+    <mat-card>
+      <mat-card-title>Form Horizontal</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="reactiveForm1" class="matero-form-horizontal">
+          <mat-form-field class="m-r-8">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Simple placeholder" formControlName="username" required>
+            <mat-error *ngIf="reactiveForm1.get('username').invalid">Please enter username</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Simple placeholder" formControlName="email" required>
+            <mat-error *ngIf="reactiveForm1.get('email').invalid">
+              {{getErrorMessage(reactiveForm1)}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Gender</mat-label>
+            <mat-select required formControlName="gender" required>
+              <mat-option>-- None --</mat-option>
+              <mat-option value="1">male</mat-option>
+              <mat-option value="2">female</mat-option>
+            </mat-select>
+            <mat-error *ngIf="reactiveForm1.get('gender').invalid">Please select gender</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>City</mat-label>
+            <input matInput placeholder="Simple placeholder" formControlName="city" required>
+            <mat-error *ngIf="reactiveForm1.get('city').invalid">Please enter city</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Simple placeholder" formControlName="address" required>
+            <mat-error *ngIf="reactiveForm1.get('address').invalid">Please enter address</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Company</mat-label>
+            <input matInput placeholder="Simple placeholder" formControlName="company" required>
+            <mat-error *ngIf="reactiveForm1.get('company').invalid">Please enter company</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Mobile</mat-label>
+            <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile" required>
+            <mat-icon matSuffix>smartphone</mat-icon>
+            <mat-error *ngIf="reactiveForm1.get('mobile').invalid">Please enter mobile</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Tele</mat-label>
+            <input matInput placeholder="Simple placeholder" type="number" formControlName="tele" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="reactiveForm1.get('tele').invalid">Please enter tele</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="m-r-8">
+            <mat-label>Website</mat-label>
+            <input matInput placeholder="Simple placeholder" formControlName="website" required>
+            <mat-error *ngIf="reactiveForm1.get('website').invalid">Please enter website</mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" class="m-t-8">Save</button>
+        </form>
+        {{reactiveForm1.value|json}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxFlex="66.66" fxFlex.lt-sm="100" class="matero-col">
+    <mat-card>
+      <mat-card-title>Form Horizontal</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="reactiveForm2" class="matero-form-horizontal">
+          <div fxLayout="row wrap" fxLayoutGap="8px grid">
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="username" required>
+                <mat-error *ngIf="reactiveForm2.get('username').invalid">Please enter username</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="email" required>
+                <mat-error *ngIf="reactiveForm2.get('email').invalid">
+                  {{getErrorMessage(reactiveForm2)}}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Gender</mat-label>
+                <mat-select required formControlName="gender" required>
+                  <mat-option>-- None --</mat-option>
+                  <mat-option value="1">male</mat-option>
+                  <mat-option value="2">female</mat-option>
+                </mat-select>
+                <mat-error *ngIf="reactiveForm2.get('gender').invalid">Please select gender</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="city" required>
+                <mat-error *ngIf="reactiveForm2.get('city').invalid">Please enter city</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="address" required>
+                <mat-error *ngIf="reactiveForm2.get('address').invalid">Please enter address</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Company</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="company" required>
+                <mat-error *ngIf="reactiveForm2.get('company').invalid">Please enter company</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Mobile</mat-label>
+                <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile" required>
+                <mat-icon matSuffix>smartphone</mat-icon>
+                <mat-error *ngIf="reactiveForm1.get('mobile').invalid">Please enter mobile</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Tele</mat-label>
+                <input matInput placeholder="Simple placeholder" type="number" formControlName="tele" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="reactiveForm1.get('tele').invalid">Please enter tele</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="50" fxFlex.lt-sm="100">
+              <mat-form-field class="m-r-8">
+                <mat-label>Website</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="website" required>
+                <mat-error *ngIf="reactiveForm1.get('website').invalid">Please enter website</mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <button mat-raised-button color="primary" class="m-t-8">Save</button>
+
+        </form>
+        {{reactiveForm2.value|json}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

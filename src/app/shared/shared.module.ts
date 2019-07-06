@@ -10,12 +10,14 @@ import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const THIRDMODULES = [
   MaterialModule,
   FlexLayoutModule,
   NgProgressModule,
   NgProgressRouterModule,
+  NgSelectModule,
 ];
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent];
 const DIRECTIVES = [];

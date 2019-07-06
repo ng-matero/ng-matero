@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { environment } from '@env/environment';
 
 import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -47,6 +48,11 @@ const routes: Routes = [
         data: { title: 'Tables', titleI18n: 'Tables' },
       },
     ],
+  },
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    children: [],
   },
   { path: '**', redirectTo: 'dashboard' },
 ];

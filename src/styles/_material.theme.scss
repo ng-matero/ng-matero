@@ -28,8 +28,3 @@ $config: mat-typography-config();
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
-
-// Material Components Special Style
-.mat-table {
-  width: 100%;
-}

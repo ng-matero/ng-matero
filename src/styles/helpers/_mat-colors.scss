@@ -3,25 +3,25 @@
 // ----------------------------------------------------------------------------
 
 $mat-colors: (
-  red: $mat-red,
-  pink: $mat-pink,
-  purple: $mat-purple,
-  deep-purple: $mat-deep-purple,
-  indigo: $mat-indigo,
-  blue: $mat-blue,
-  light-blue: $mat-light-blue,
-  cyan: $mat-cyan,
-  teal: $mat-teal,
-  green: $mat-green,
-  light-green: $mat-light-green,
-  lime: $mat-lime,
-  yellow: $mat-yellow,
-  amber: $mat-amber,
-  orange: $mat-orange,
-  deep-orange: $mat-deep-orange,
-  brown: $mat-brown,
-  gray: $mat-gray,
-  blue-gray: $mat-blue-gray,
+  'red': $mat-red,
+  'pink': $mat-pink,
+  'purple': $mat-purple,
+  'deep-purple': $mat-deep-purple,
+  'indigo': $mat-indigo,
+  'blue': $mat-blue,
+  'light-blue': $mat-light-blue,
+  'cyan': $mat-cyan,
+  'teal': $mat-teal,
+  'green': $mat-green,
+  'light-green': $mat-light-green,
+  'lime': $mat-lime,
+  'yellow': $mat-yellow,
+  'amber': $mat-amber,
+  'orange': $mat-orange,
+  'deep-orange': $mat-deep-orange,
+  'brown': $mat-brown,
+  'gray': $mat-gray,
+  'blue-gray': $mat-blue-gray,
 );
 
 // Text Color
@@ -30,6 +30,12 @@ $mat-colors: (
     @if ($hue != 'contrast') {
       .#{'text-' + $name + '-' + $hue} {
         color: $color !important;
+      }
+    }
+    // alias
+    @if ($name == 'gray') {
+      .#{'text-grey-' + $hue} {
+        @extend .#{'text-gray-' + $hue} !optional;
       }
     }
   }
@@ -43,5 +49,12 @@ $mat-colors: (
         background-color: $color !important;
       }
     }
+    // alias
+    @if ($name == 'gray') {
+      .#{'bg-grey-' + $hue} {
+        @extend .#{'bg-gray-' + $hue} !optional;
+      }
+    }
   }
 }
+

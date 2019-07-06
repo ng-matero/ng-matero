@@ -6,7 +6,7 @@ export interface Defaults {
   headerPos?: 'fixed' | 'static' | 'above';
   navPos?: 'side' | 'top';
   sidenavCollapsed?: boolean;
-  sidenavOpened: boolean;
+  sidenavOpened?: boolean;
   showUserPanel?: boolean;
   dir?: 'ltr' | 'rtl';
 }
@@ -38,12 +38,8 @@ export class SettingsService {
     return this.options;
   }
 
-  setOpenStatus(value: boolean) {
-    this.notice$.next({ type: 'opened', value } as any);
-  }
-
-  setCollapseStatus(value: boolean) {
-    this.notice$.next({ type: 'collapsed', value } as any);
+  setNavState(type: string, value: boolean) {
+    this.notice$.next({ type, value } as any);
   }
 
   getOptions() {

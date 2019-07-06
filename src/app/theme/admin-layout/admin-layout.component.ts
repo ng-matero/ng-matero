@@ -4,7 +4,6 @@ import {
   OnDestroy,
   ChangeDetectorRef,
   ViewChild,
-  ElementRef,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -57,9 +56,10 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   toggleCollapsed() {
     this.sidenavCollapsed = !this.sidenavCollapsed;
+
     // TODO: trigger when animation end
     setTimeout(() => {
-      this.settings.setCollapseStatus(this.sidenavCollapsed);
+      this.settings.setNavState('collapsed', this.sidenavCollapsed);
     }, 400);
   }
 
@@ -68,6 +68,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   openedChang(e: boolean) {
-    this.settings.setOpenStatus(e);
+    this.settings.setNavState('opened', e);
   }
 }

@@ -11,26 +11,16 @@
   padding: $gutter;
 }
 
-// Grid
+// TODO: Grid
 .matero-row {
   margin-right: -$gutter/2;
   margin-left: -$gutter/2;
 }
 
+// TODO: Col
 .matero-col {
   padding-right: $gutter/2;
   padding-left: $gutter/2;
-}
-
-// card
-.mat-card {
-  margin-bottom: $gutter;
-}
-
-// accordion
-.mat-accordion {
-  display: block;
-  margin-bottom: $gutter;
 }
 
 // Header Above
@@ -42,4 +32,13 @@
   .matero-sidebar-inner {
     height: 100% !important;
   }
+}
+
+// 
+// Auth
+// 
+.matero-auth-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

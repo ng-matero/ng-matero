@@ -16,11 +16,17 @@
   $values: map-get($utility, values);
 
   @each $class-modifier, $value in $values {
-    $property: map-get($utility, property);
+    $properties: map-get($utility, property);
     $property-class-prefix: map-get($utility, class);
 
+    @if type-of($properties) == "string" {
+      $properties: append((), $properties);
+    }
+
     .#{$property-class-prefix + '-' + $class-modifier} {
-      #{$property}: $value !important;
+      @each $property in $properties {
+        #{$property}: $value !important;
+      }
     }
   }
 }
