@@ -157,6 +157,9 @@ MIT
 @angular/router
 MIT
 
+@ng-select/ng-select
+MIT
+
 @ngx-progressbar/core
 MIT
 
