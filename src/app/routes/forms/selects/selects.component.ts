@@ -31,6 +31,9 @@ export class SelectsComponent implements OnInit {
   companies: any[] = [];
   loading = false;
   companiesNames = ['Miškas', 'Žalias', 'Flexigen'];
+  selectedCompany = '';
+  selectedCompanyCustom = '';
+  selectedCompanyCustomPromise = '';
 
   constructor(private dataService: DataService) {}
 
