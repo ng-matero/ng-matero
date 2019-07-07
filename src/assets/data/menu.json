@@ -291,7 +291,7 @@
       "type": "link",
       "icon": "person",
       "label": {
-        "color": "red-500",
+        "color": "green-500",
         "value": "coming soon"
       }
     },

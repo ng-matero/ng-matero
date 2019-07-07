@@ -1,34 +1,34 @@
 <!-- Warning: Ripple effect make page flashing on mobile-->
-<ul navAccordion class="matero-sidemenu">
+<ul navAccordion class="matero-sidemenu level-0">
   <li navAccordionLink class="matero-sidemenu-item" *ngFor="let menuItem of menus" [group]="menuItem.state"
     routerLinkActive="active">
     <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'" matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'"
       matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <!-- level 1 -->
     <a class="matero-sidemenu-toggle" navAccordionToggle href="javascript:void(0);" *ngIf="menuItem.type === 'sub'"
@@ -36,10 +36,10 @@
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
     <ul navAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">

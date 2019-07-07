@@ -11,6 +11,7 @@
 @import "size";
 @import "border";
 @import "cursor";
+@import "display";
 
 // Generate Helpers
 @each $key, $utility in $utilities {

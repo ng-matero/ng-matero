@@ -30,6 +30,39 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
 ];
 
+const MESSAGES = [
+  {
+    img: 'assets/images/avatars/avatar-1.jpg',
+    subject: 'Hydrogen',
+    content: `Cras sit amet nibh libero, in gravida nulla.
+     Nulla vel metus scelerisque ante sollicitudin commodo.`,
+  },
+  {
+    img: 'assets/images/avatars/avatar-2.jpg',
+    subject: 'Helium',
+    content: `Cras sit amet nibh libero, in gravida nulla.
+     Nulla vel metus scelerisque ante sollicitudin commodo.`,
+  },
+  {
+    img: 'assets/images/avatars/avatar-3.jpg',
+    subject: 'Lithium',
+    content: `Cras sit amet nibh libero, in gravida nulla.
+     Nulla vel metus scelerisque ante sollicitudin commodo.`,
+  },
+  {
+    img: 'assets/images/avatars/avatar-4.jpg',
+    subject: 'Beryllium',
+    content: `Cras sit amet nibh libero, in gravida nulla.
+     Nulla vel metus scelerisque ante sollicitudin commodo.`,
+  },
+  {
+    img: 'assets/images/avatars/avatar-6.jpg',
+    subject: 'Boron',
+    content: `Cras sit amet nibh libero, in gravida nulla.
+     Nulla vel metus scelerisque ante sollicitudin commodo.`,
+  },
+];
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -47,11 +80,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor(
-    private http: HttpClient,
-    private cdr: ChangeDetectorRef,
-    private settings: SettingsService
-  ) {}
+  messages = MESSAGES;
+
+  constructor(private settings: SettingsService) {}
 
   ngOnInit() {}
 

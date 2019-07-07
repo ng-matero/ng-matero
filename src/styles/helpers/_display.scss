@@ -1,0 +1,20 @@
+// ----------------------------------------------------------------------------
+// Display
+// ----------------------------------------------------------------------------
+
+$display: (
+  "display": (
+    property: display,
+    class: d,
+    values: (
+        block: block,
+        inline-block: inline-block,
+        inline: inline
+    )
+  ),
+);
+
+$utilities: map-merge(
+  $display,
+  $utilities
+);

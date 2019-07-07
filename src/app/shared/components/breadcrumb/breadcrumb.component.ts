@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuService } from '@core';
 
 @Component({
@@ -9,23 +9,17 @@ import { MenuService } from '@core';
   encapsulation: ViewEncapsulation.None,
 })
 export class BreadcrumbComponent implements OnInit {
-  routes = [];
+  routeNames = [];
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private menuService: MenuService
-  ) {}
+  constructor(private router: Router, private menuService: MenuService) {}
 
   ngOnInit() {
     this.genBreadcrumb();
   }
 
   genBreadcrumb() {
-    const menu = this.menuService.getAll();
-    const url = this.router.url;
-
-    this.routes = url.slice(1).split('/');
-    this.routes.unshift('home');
+    const states = this.router.url.slice(1).split('/');
+    this.routeNames = this.menuService.getMenuLevel(states);
+    this.routeNames.unshift('home');
   }
 }

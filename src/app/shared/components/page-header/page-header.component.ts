@@ -5,6 +5,8 @@ import {
   Input,
   HostBinding,
 } from '@angular/core';
+import { MenuService } from '@core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'page-header',
@@ -19,7 +21,10 @@ export class PageHeaderComponent implements OnInit {
   @Input() subtitle = '';
   @Input() showBreadCrumb = true;
 
-  constructor() {}
+  constructor(private router: Router, private menuService: MenuService) {
+    const states = this.router.url.slice(1).split('/');
+    this.title = this.menuService.getMenuItemName(states);
+  }
 
   ngOnInit() {}
 }
