@@ -37,9 +37,9 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ## 🗺 Road Map
 
-[] Material Extral Components
-[] Schematics Support
-[] VS Code Snippet
+- [ ] Material Extral Components
+- [ ] Schematics Support
+- [ ] VS Code Snippet
 
 ## 📃 License
 
