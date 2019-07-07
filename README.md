@@ -9,6 +9,7 @@ NG-MATERO
 </h1>
 
 <div align="center">
+
 This Ng-Matero is an Angular admin templete made with Material componnets.
 
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
