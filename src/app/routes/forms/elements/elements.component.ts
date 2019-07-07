@@ -17,27 +17,29 @@ export class ElementsComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.reactiveForm1 = fb.group({
-      username: [''],
+      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      gender: [''],
-      city: [''],
-      address: [''],
-      company: [''],
-      mobile: [''],
-      tele: [''],
-      website: [''],
+      gender: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      company: ['', [Validators.required]],
+      mobile: ['', [Validators.required]],
+      tele: ['', [Validators.required]],
+      website: ['', [Validators.required]],
+      date: ['', [Validators.required]],
     });
 
     this.reactiveForm2 = fb.group({
-      username: [''],
+      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      gender: [''],
-      city: [''],
-      address: [''],
-      company: [''],
-      mobile: [''],
-      tele: [''],
-      website: [''],
+      gender: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      company: ['', [Validators.required]],
+      mobile: ['', [Validators.required]],
+      tele: ['', [Validators.required]],
+      website: ['', [Validators.required]],
+      date: ['', [Validators.required]],
     });
   }
 

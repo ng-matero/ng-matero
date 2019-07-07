@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 import { AccordionLinkDirective } from './accordionlink.directive';
 
 @Directive({
-  selector: '[appAccordion]',
+  selector: '[navAccordion]',
 })
 export class AccordionDirective implements AfterContentChecked {
   protected navlinks: Array<AccordionLinkDirective> = [];

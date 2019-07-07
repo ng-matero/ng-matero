@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  {{data|json}}
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</div>

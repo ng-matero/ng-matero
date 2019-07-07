@@ -10,6 +10,7 @@
 @import "image";
 @import "size";
 @import "border";
+@import "cursor";
 
 // Generate Helpers
 @each $key, $utility in $utilities {

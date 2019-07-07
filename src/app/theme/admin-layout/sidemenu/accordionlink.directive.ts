@@ -10,7 +10,7 @@ import {
 import { AccordionDirective } from './accordion.directive';
 
 @Directive({
-  selector: '[appAccordionLink]',
+  selector: '[navAccordionLink]',
 })
 export class AccordionLinkDirective implements OnInit, OnDestroy {
   protected OPEN = false;

@@ -1,0 +1,21 @@
+// ----------------------------------------------------------------------------
+// CURSOR
+// ----------------------------------------------------------------------------
+
+$cursor: (
+  "cursor": (
+    property: cursor,
+    class: cursor,
+    values: (
+        default: default,
+        pointer: pointer,
+        crosshair: crosshair,
+        copy: copy
+    )
+  ),
+);
+
+$utilities: map-merge(
+  $cursor,
+  $utilities
+);

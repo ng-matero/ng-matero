@@ -32,6 +32,24 @@ ul {
 }
 
 a {
+  color: #007bff;
   text-decoration: none;
   background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+
+  &:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }

@@ -10,22 +10,35 @@
   text-transform: capitalize;
 }
 
-.text-capitalize {
-  text-transform: capitalize;
-}
+$text: (
+  "text-transform": (
+    property: text-transform,
+    class: text,
+    values: (
+      capitalize: capitalize,
+      uppercase: uppercase,
+      lowercase: lowercase,
+    )
+  ),
+  "text-align": (
+    property: text-align,
+    class: text,
+    values: (
+      center: center,
+      right: uppercase,
+      left: left,
+    )
+  ),
+  "white-space": (
+    property: white-space,
+    class: text,
+    values: (
+      nowrap: nowrap,
+    )
+  )
+);
 
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-.text-lowercase {
-  text-transform: lowercase;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-nowrap {
-  white-space: nowrap;
-}
+$utilities: map-merge(
+  $text,
+  $utilities
+);

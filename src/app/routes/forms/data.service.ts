@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 export interface Person {
   id: string;
@@ -16,9 +15,7 @@ export interface Person {
   disabled?: boolean;
 }
 
-@Injectable({
-  providedIn: FormsModule,
-})
+@Injectable()
 export class DataService {
   constructor(private http: HttpClient) {}
 

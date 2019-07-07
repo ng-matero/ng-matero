@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 
 export interface PeriodicElement {
   name: string;
@@ -26,10 +27,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [];
   dataSource = ELEMENT_DATA;
 
-  constructor() {}
+  tables = [0];
 
+  constructor() {
+    this.displayedColumns.length = 24;
+    this.displayedColumns.fill('filler');
+
+    // The first two columns should be position and name; the last two columns: weight, symbol
+    this.displayedColumns[0] = 'position';
+    this.displayedColumns[1] = 'name';
+    this.displayedColumns[22] = 'weight';
+    this.displayedColumns[23] = 'symbol';
+  }
   ngOnInit() {}
+
+  /** Whether the button toggle group contains the id as an active value. */
+  isSticky(buttonToggleGroup: MatButtonToggleGroup, id: string) {
+    return (buttonToggleGroup.value || []).indexOf(id) !== -1;
+  }
 }

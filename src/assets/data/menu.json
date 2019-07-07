@@ -268,6 +268,10 @@
         "state": "elements",
         "name": "Form Elements",
         "type": "link"
+      }, {
+        "state": "ng-select",
+        "name": "Ng Select",
+        "type": "link"
       }]
     },
     {

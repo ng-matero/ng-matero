@@ -1,6 +1,6 @@
 <!-- Warning: Ripple effect make page flashing on mobile-->
-<ul appAccordion class="matero-sidemenu">
-  <li appAccordionLink class="matero-sidemenu-item" *ngFor="let menuItem of menus" [group]="menuItem.state"
+<ul navAccordion class="matero-sidemenu">
+  <li navAccordionLink class="matero-sidemenu-item" *ngFor="let menuItem of menus" [group]="menuItem.state"
     routerLinkActive="active">
     <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
@@ -31,7 +31,7 @@
         class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <!-- level 1 -->
-    <a class="matero-sidemenu-toggle" appAccordionToggle href="javascript:void(0);" *ngIf="menuItem.type === 'sub'"
+    <a class="matero-sidemenu-toggle" navAccordionToggle href="javascript:void(0);" *ngIf="menuItem.type === 'sub'"
       matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
@@ -42,8 +42,8 @@
         class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
-    <ul appAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">
-      <li appAccordionLink class="matero-sidemenu-item" *ngFor="let childLvl1 of menuItem.children"
+    <ul navAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">
+      <li navAccordionLink class="matero-sidemenu-item" *ngFor="let childLvl1 of menuItem.children"
         [group]="childLvl1.state" routerLinkActive="active">
         <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state, childLvl1.state]"
           *ngIf="childLvl1.type === 'link'" matRipple>
@@ -57,7 +57,7 @@
           <span class="menu-name">{{ childLvl1.name }}</span>
         </a>
         <!-- level 2 -->
-        <a class="matero-sidemenu-toggle" appAccordionToggle href="javascript:void(0);" *ngIf="childLvl1.type === 'sub'"
+        <a class="matero-sidemenu-toggle" navAccordionToggle href="javascript:void(0);" *ngIf="childLvl1.type === 'sub'"
           matRipple>
           <span class="menu-name">{{ childLvl1.name }}</span>
           <span fxFlex></span>

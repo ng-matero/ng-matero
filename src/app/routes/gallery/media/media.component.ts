@@ -1,18 +1,31 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import PhotoViewer from 'photoviewer';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss'],
 })
 export class MediaComponent implements OnInit {
+  dir = 'assets/images/pixabay/';
   images: any[] = [];
 
   constructor() {
     for (let i = 1; i <= 20; i++) {
-      this.images.push(i);
+      this.images.push({
+        title: i,
+        src: this.dir + i + '.jpg',
+      });
     }
   }
 
   ngOnInit() {}
+
+  // 预览图片
+  preview(index: number) {
+    const options: PhotoViewer.Options = {
+      index,
+    };
+
+    const viewer = new PhotoViewer(this.images, options);
+  }
 }
