@@ -17,6 +17,15 @@ This Ng-Matero is an Angular admin templete made with Material componnets.
 
 </div>
 
+## ✨ Features
+
+- Modern design style
+- Various layout
+- Powerful color system
+- Rich helpers
+- Common Page Templates
+
+
 ## 📦 Installation
 
 The project isn't support `ng add` yet. I hope you can use it in the next version. Now you should git clone the repo and use it.
