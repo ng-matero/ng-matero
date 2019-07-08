@@ -14,8 +14,8 @@ import { UserComponent } from './admin-layout/header/user/user.component';
 import { FullscreenComponent } from './admin-layout/header/fullscreen/fullscreen.component';
 import { UserPanelComponent } from './admin-layout/sidebar/user-panel/user-panel.component';
 import { TopmenuComponent } from './admin-layout/topmenu/topmenu.component';
-import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { BrandingComponent } from './admin-layout/header/branding/branding.component';
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { BrandingComponent } from './admin-layout/header/branding/branding.compo
     FullscreenComponent,
     UserPanelComponent,
     TopmenuComponent,
-    AuthLayoutComponent,
     BrandingComponent,
+    AuthLayoutComponent,
   ],
   imports: [SharedModule],
 })

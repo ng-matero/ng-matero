@@ -5,6 +5,8 @@ import { environment } from '@env/environment';
 import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './sessions/login/login.component';
+import { RegisterComponent } from './sessions/register/register.component';
 
 const routes: Routes = [
   {
@@ -47,12 +49,29 @@ const routes: Routes = [
           import('./tables/tables.module').then(m => m.TablesModule),
         data: { title: 'Tables', titleI18n: 'Tables' },
       },
+      {
+        path: 'sessions',
+        loadChildren: () =>
+          import('./sessions/sessions.module').then(m => m.SessionsModule),
+        data: { title: 'Sessions', titleI18n: 'Sessions' },
+      },
     ],
   },
   {
     path: 'auth',
     component: AuthLayoutComponent,
-    children: [],
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: 'Login', titleI18n: 'Login' },
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        data: { title: 'Register', titleI18n: 'Register' },
+      },
+    ],
   },
   { path: '**', redirectTo: 'dashboard' },
 ];

@@ -7,10 +7,6 @@ import { SelectsComponent } from './selects/selects.component';
 
 @NgModule({
   declarations: [ElementsComponent, SelectsComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, FormsRoutingModule],
 })
-export class FormsModule { }
+export class FormsModule {}

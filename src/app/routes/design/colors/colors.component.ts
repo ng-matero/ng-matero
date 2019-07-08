@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KeyValue } from '@angular/common';
 
 import { ColorsService } from './colors.service';
+import { MAT_COLORS } from '@shared';
 
 @Component({
   selector: 'app-colors',
@@ -29,7 +30,7 @@ export class ColorsComponent implements OnInit {
   constructor(private colorsService: ColorsService) {}
 
   ngOnInit() {
-    const colors = this.colorsService.colors;
+    const colors = MAT_COLORS;
     for (const key of Object.keys(colors)) {
       this.colorsArr.push({
         key,

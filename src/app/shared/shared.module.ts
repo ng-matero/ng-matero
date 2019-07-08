@@ -12,7 +12,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
-const THIRDMODULES = [
+const THIRD_MODULES = [
   MaterialModule,
   FlexLayoutModule,
   NgProgressModule,
@@ -37,7 +37,7 @@ const PIPES = [];
     RouterModule,
     ReactiveFormsModule,
     // third libs
-    ...THIRDMODULES,
+    ...THIRD_MODULES,
   ],
   exports: [
     CommonModule,
@@ -45,7 +45,7 @@ const PIPES = [];
     RouterModule,
     ReactiveFormsModule,
     // third libs
-    ...THIRDMODULES,
+    ...THIRD_MODULES,
     // your components
     ...COMPONENTS,
     ...DIRECTIVES,
