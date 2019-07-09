@@ -1,18 +1,18 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center" class="w-full h-full bg-deep-purple-500">
-  <mat-card class="mat-elevation-z4 m-b-0">
+  <mat-card class="mat-elevation-z4 m-b-0" style="max-width: 380px;">
     <mat-card-title class="text-center">Welcome Back!</mat-card-title>
     <mat-card-content>
-      <form [formGroup]="loginForm" class="matero-form-horizontal">
+      <form [formGroup]="reactiveForm" class="matero-form-horizontal">
         <mat-form-field>
           <mat-label>Username</mat-label>
           <input matInput placeholder="Simple placeholder" formControlName="username" required>
-          <mat-error *ngIf="loginForm.get('username').invalid">Please enter username</mat-error>
+          <mat-error *ngIf="reactiveForm.get('username').invalid">Please enter username</mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Password</mat-label>
           <input matInput placeholder="Simple placeholder" type="password" formControlName="password" required>
-          <mat-error *ngIf="loginForm.get('password').invalid">Please enter password</mat-error>
+          <mat-error *ngIf="reactiveForm.get('password').invalid">Please enter password</mat-error>
         </mat-form-field>
 
         <div fxLayout="row" fxLayoutAlign="space-between center" class="m-y-16">
@@ -21,6 +21,8 @@
         </div>
 
         <button mat-raised-button color="primary" class="w-full">Save</button>
+
+        <div class="m-t-16">Don't have an account? <a routerLink="/auth/register">Click here to create one</a></div>
       </form>
     </mat-card-content>
   </mat-card>

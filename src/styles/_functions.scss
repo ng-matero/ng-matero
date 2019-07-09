@@ -1,10 +1,194 @@
-// It makes the value negative.
-@function negativify-map($map) {
-  $result: ();
-  @each $key, $value in $map {
-    @if $key != 0 {
-      $result: map-merge($result, ('-' + $key: (-$value)));
+///////////////////////////////////////////////////////////
+// Plain SASS Trigonometry Algorithm in Taylor Expansion //
+//                                                       //
+// Based on                                              //
+//      http://japborst.net/posts/sass-sines-and-cosines //
+///////////////////////////////////////////////////////////
+
+$pi: 3.14159265359;
+$_precision: 10;
+
+@function pow($base, $exp) {
+  $value: $base;
+
+  @if $exp>1 {
+    @for $i from 2 through $exp {
+      $value: $value * $base;
     }
   }
+
+  @if $exp < 1 {
+    @for $i from 0 through -$exp {
+      $value: $value / $base;
+    }
+  }
+
+  @return $value;
+}
+
+@function fact($num) {
+  $fact: 1;
+
+  @if $num>0 {
+    @for $i from 1 through $num {
+      $fact: $fact * $i;
+    }
+  }
+
+  @return $fact;
+}
+
+@function _to_unitless_rad($angle) {
+  @if unit($angle)=="deg" {
+    $angle: $angle / 180deg * $pi;
+  }
+
+  @if unit($angle)=="rad" {
+    $angle: $angle / 1rad;
+  }
+
+  @return $angle;
+}
+
+@function sin($angle) {
+  $a: _to_unitless_rad($angle);
+  $sin: $a;
+
+  @for $n from 1 through $_precision {
+    $sin: $sin + (pow(-1, $n) / fact(2 * $n + 1)) * pow($a, (2 * $n + 1));
+  }
+
+  @return $sin;
+}
+
+@function cos($angle) {
+  $a: _to_unitless_rad($angle);
+  $cos: 1;
+
+  @for $n from 1 through $_precision {
+    $cos: $cos + (pow(-1, $n) / fact(2*$n)) * pow($a, 2*$n);
+  }
+
+  @return $cos;
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
+}
+
+// It makes the value negative.
+// Bootstrap
+@function negativify-map($map) {
+  $result: ();
+
+  @each $key,
+  $value in $map {
+    @if $key !=0 {
+      $result: map-merge($result, ('-'+ $key: (-$value)));
+    }
+  }
+
   @return $result;
+}
+
+// Long Shadow
+// https://codepen.io/photodow/pen/vJWoKp
+@function long-shadow($angle: 45deg, $length: 100px, $colors: #000, $spacing: 1, 
+$blur: 0, $spread: null, $prepend: null, $append: null) {
+  $first: true;
+  $performance: 0;
+  $unit-length: unit($length);
+  $length: $length / ($length * 0 + 1);
+  $num-of-shadows: $length / $spacing;
+  $shadow-list: null;
+  $color-list: shadow-gradient-list($colors, $num-of-shadows, get-function('calc-shadow-color-gradient'));
+  $blur-list: shadow-gradient-list($blur, $num-of-shadows, get-function('calc-shadow-blur-gradient'));
+  $spread-list: shadow-gradient-list($spread, $num-of-shadows, get-function('calc-shadow-spread-gradient'));
+  $index: 0;
+  $i: 0;
+
+  @while $i < $length {
+    $performance: $performance + 1;
+    $i: $i + $spacing;
+    $index: $index + 1;
+
+    $x: sin($angle) * ($i * 1);
+    $y: cos($angle) * ($i * 1);
+
+    $shadow: #{$x}#{$unit-length} #{$y}#{$unit-length} nth($blur-list, $index) nth($spread-list, $index) nth($color-list, $index);
+    // $shadow: #{$i}#{$unit-length} 0 nth($blur-list, $index) nth($spread-list, $index) nth($color-list, $index);
+
+    @if ($first) {
+      $shadow-list: $shadow;
+    }
+
+    @else {
+      $shadow-list: $shadow-list, $shadow;
+    }
+
+    $first: false;
+  }
+
+  @return $prepend,
+  $shadow-list,
+  $append;
+}
+
+@function calc-shadow-spread-gradient($list, $i, $percent, $ii, $num-mixes) {
+  $min: nth($list, $i);
+  $max: nth($list, $i + 1);
+  $add-by: ($max - $min) / $num-mixes;
+
+  @return $min+($add-by * $ii);
+}
+
+@function calc-shadow-blur-gradient($list, $i, $percent, $ii, $num-mixes) {
+  $min: nth($list, $i);
+  $max: nth($list, $i + 1);
+  $add-by: ($max - $min) / $num-mixes;
+
+  @return $min+($add-by * $ii);
+}
+
+@function calc-shadow-color-gradient($list, $i, $percent, $ii, $num-mixes) {
+  $start: nth($list, $i);
+  $end: nth($list, $i + 1);
+
+  @return mix($start, $end, $percent);
+}
+
+@function shadow-gradient-list($list, $num-of-shadows, $callback) {
+  $list-length: length($list);
+  $new-list: ();
+
+  @if ($list-length > 1) {
+    $num-gradients: $list-length - 1;
+    $num-whole-mixes: floor($num-of-shadows / $num-gradients);
+    $remainder: $num-of-shadows % $num-gradients;
+    $reverse-index: $list-length;
+
+    @for $i from 1 through $num-gradients {
+      $num-mixes: $num-whole-mixes;
+
+      @if ($remainder > 0) {
+        $num-mixes: $num-mixes + 1;
+        $remainder: $remainder - 1;
+      }
+
+      @for $ii from 1 through $num-mixes {
+        $percent: $ii * 100 / $num-mixes;
+        $new-list: append($new-list, call($callback, $list, $i, 100 - $percent, $ii, $num-mixes));
+      }
+
+      $reverse-index: $reverse-index - 1;
+    }
+  }
+
+  @else {
+    @for $i from 1 through ceil($num-of-shadows) {
+      $new-list: append($new-list, $list);
+    }
+  }
+
+  @return $new-list;
 }

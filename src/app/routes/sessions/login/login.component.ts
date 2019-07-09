@@ -6,10 +6,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  reactiveForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
+    this.reactiveForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
