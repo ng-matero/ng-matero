@@ -288,12 +288,21 @@
     {
       "state": "profile",
       "name": "Profile",
-      "type": "link",
+      "type": "sub",
       "icon": "person",
       "label": {
         "color": "green-500",
-        "value": "coming soon"
-      }
+        "value": "new"
+      },
+      "children": [{
+        "state": "overview",
+        "name": "Overview",
+        "type": "link"
+      }, {
+        "state": "settings",
+        "name": "Settings",
+        "type": "link"
+      }]
     },
     {
       "state": "sessions",
