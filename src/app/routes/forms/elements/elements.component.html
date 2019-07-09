@@ -110,7 +110,7 @@
     </mat-card>
   </div>
 
-  <div fxFlex="66.66" fxFlex.lt-sm="100" class="matero-col">
+  <div fxFlex="66.67" fxFlex.lt-sm="100" class="matero-col">
     <mat-card>
       <mat-card-title>Form Horizontal</mat-card-title>
       <mat-card-content>
@@ -175,7 +175,7 @@
                 <mat-label>Mobile</mat-label>
                 <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile" required>
                 <mat-icon matSuffix>smartphone</mat-icon>
-                <mat-error *ngIf="reactiveForm1.get('mobile').invalid">Please enter mobile</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('mobile').invalid">Please enter mobile</mat-error>
               </mat-form-field>
             </div>
 
@@ -184,7 +184,7 @@
                 <mat-label>Tele</mat-label>
                 <input matInput placeholder="Simple placeholder" type="number" formControlName="tele" required>
                 <mat-icon matSuffix>phone</mat-icon>
-                <mat-error *ngIf="reactiveForm1.get('tele').invalid">Please enter tele</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('tele').invalid">Please enter tele</mat-error>
               </mat-form-field>
             </div>
 
@@ -192,7 +192,7 @@
               <mat-form-field>
                 <mat-label>Website</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="website" required>
-                <mat-error *ngIf="reactiveForm1.get('website').invalid">Please enter website</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('website').invalid">Please enter website</mat-error>
               </mat-form-field>
             </div>
 

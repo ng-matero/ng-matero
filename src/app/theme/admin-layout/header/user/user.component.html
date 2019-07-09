@@ -4,16 +4,16 @@
 </a>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
+  <a routerLink="/profile/overview" mat-menu-item>
     <mat-icon>account_circle</mat-icon>
     <span>Profile</span>
-  </button>
-  <button mat-menu-item>
+  </a>
+  <a routerLink="/profile/settings" mat-menu-item>
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
-  </button>
-  <button mat-menu-item>
+  </a>
+  <a routerLink="/auth/login" mat-menu-item>
     <mat-icon>exit_to_app</mat-icon>
     <span>Logout</span>
-  </button>
+  </a>
 </mat-menu>

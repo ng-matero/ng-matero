@@ -1,0 +1,31 @@
+<page-header [title]="'Personal Profile'" [showBreadCrumb]="false" class="p-t-32 p-b-48 m-b--24 bg-gray-900">
+</page-header>
+
+<div fxLayout="row wrap" class="matero-row">
+  <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="25" class="matero-col">
+    <mat-card>
+      <div class="text-center">
+        <img class="m-b-8 r-full" src="assets/images/avatar.jpg" alt="" width="80">
+        <h2 class="m-t-0 m-b-8 f-w-400">Zongbin</h2>
+        <p class="m-t-0 m-b-8">FE Developer, UE designer</p>
+        <p class="m-t-0 text-grey-500">I like reading, writing and drawing.</p>
+
+        <button mat-raised-button color="primary">Follow Me</button>
+        <button mat-raised-button color="accent" class="m-l-8">Contact Me</button>
+      </div>
+      <mat-nav-list class="m-x--16 m-b--16 m-t-16">
+        <mat-divider inset></mat-divider>
+        <a mat-list-item routerLink="/profile/overview">
+          <mat-icon class="icon-18 m-r-8">account_circle</mat-icon> Overview
+        </a>
+        <mat-divider inset></mat-divider>
+        <a mat-list-item routerLink="/profile/settings">
+          <mat-icon class="icon-18 m-r-8">settings</mat-icon> Settings
+        </a>
+      </mat-nav-list>
+    </mat-card>
+  </div>
+  <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="66.67" fxFlex.gt-md="75" class="matero-col">
+    <router-outlet></router-outlet>
+  </div>
+</div>

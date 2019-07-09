@@ -50,6 +50,12 @@ const routes: Routes = [
         data: { title: 'Tables', titleI18n: 'Tables' },
       },
       {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then(m => m.ProfileModule),
+        data: { title: 'Profile', titleI18n: 'Profile' },
+      },
+      {
         path: 'sessions',
         loadChildren: () =>
           import('./sessions/sessions.module').then(m => m.SessionsModule),
