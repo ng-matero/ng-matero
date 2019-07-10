@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { state } from '@angular/animations';
 
 export interface Tag {
   color: string; // Background Color
@@ -43,22 +42,6 @@ export class MenuService {
   add(menu: Menu) {
     this.menu.push(menu);
   }
-
-  // recurseMenu(menu: Menu[] | ChildrenItem[], stateName: string): string {
-  //   for (const item of menu) {
-  //     if (item.state === stateName) {
-  //       this.haveFindNode = true;
-  //       return item.name;
-  //     } else if (item.children && item.children.length) {
-  //       this.recurseMenu(item.children, stateName);
-  //     }
-  //     // Ended Outer Cycle
-  //     if (this.haveFindNode) {
-  //       break;
-  //     }
-  //   }
-  //   return '';
-  // }
 
   getMenuItemName(stateArr: string[]): string {
     return this.getMenuLevel(stateArr)[stateArr.length - 1];
