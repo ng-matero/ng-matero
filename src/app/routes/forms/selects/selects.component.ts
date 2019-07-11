@@ -9,7 +9,7 @@ import { Person, DataService } from '../data.service';
   providers: [DataService],
 })
 export class SelectsComponent implements OnInit {
-  // Data Source
+  // Data source
   people$: Observable<Person[]>;
   people: Person[] = [];
   selectedPersonId = '5a15b13c36e7a7f00cf0d7cb';

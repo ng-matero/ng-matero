@@ -26,8 +26,6 @@ export interface Menu {
   providedIn: 'root',
 })
 export class MenuService {
-  haveFindNode = false; // the condition to end recursive
-
   menu: Menu[] = [];
 
   getAll(): Menu[] {
@@ -53,12 +51,12 @@ export class MenuService {
     this.menu.map(item => {
       if (item.state === stateArr[0]) {
         tempArr.push(item.name);
-        // level1
+        // Level1
         if (item.children && item.children.length) {
           item.children.forEach(itemlvl1 => {
             if (stateArr[1] && itemlvl1.state === stateArr[1]) {
               tempArr.push(itemlvl1.name);
-              // level2
+              // Level2
               if (itemlvl1.children && itemlvl1.children.length) {
                 itemlvl1.children.forEach(itemlvl2 => {
                   if (stateArr[2] && itemlvl2.state === stateArr[2]) {
@@ -67,7 +65,7 @@ export class MenuService {
                 });
               }
             } else if (stateArr[1]) {
-              // level2
+              // Level2
               if (itemlvl1.children && itemlvl1.children.length) {
                 itemlvl1.children.forEach(itemlvl2 => {
                   if (itemlvl2.state === stateArr[1]) {

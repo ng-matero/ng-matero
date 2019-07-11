@@ -147,7 +147,7 @@
   overflow: auto;
 }
 
-// user panel
+// User panel
 .matero-user-panel-avatar {
   transition: transform .4s cubic-bezier(.25, .8, .25, 1);
 }
@@ -167,7 +167,7 @@
   }
 }
 
-// special
+// Layout control
 .matero-sidenav-collapsed {
   .matero-sidenav {
     width: $sidenav-collapsed-width;
