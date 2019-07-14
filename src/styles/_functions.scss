@@ -91,7 +91,7 @@ $_precision: 10;
   @return $result;
 }
 
-// Long Shadow
+// Long shadow
 // https://codepen.io/photodow/pen/vJWoKp
 @function long-shadow($angle: 45deg, $length: 100px, $colors: #000, $spacing: 1, 
 $blur: 0, $spread: null, $prepend: null, $append: null) {

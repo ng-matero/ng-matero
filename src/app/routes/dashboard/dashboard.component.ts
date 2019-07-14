@@ -91,14 +91,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     const chart1 = this.genChart1();
     const chart2 = this.genChart2();
 
-    // NOTICE:
+    // NOTE:
     this.settings.notice.subscribe(res => {
       chart1.forceFit();
       chart2.forceFit();
     });
   }
 
-  // Line Chart
+  // Line chart
   genChart1() {
     const data = [
       { date: '2019-6-24', indicator: 'UV', count: 7 },
@@ -170,7 +170,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     return chart;
   }
-  // Pie Chart
+  // Pie chart
   genChart2() {
     const text = [
       'MIDNIGHT',

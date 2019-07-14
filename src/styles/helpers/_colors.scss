@@ -24,7 +24,10 @@ $mat-colors: (
   'blue-gray': $mat-blue-gray,
 );
 
-// contrast color
+@include generate-color('text', 'color');
+@include generate-color('bg', 'background-color');
+
+// Contrast color
 $contrast-colors: (
   "text-color": (
     property: color,
@@ -50,38 +53,3 @@ $utilities: map-merge(
   $contrast-colors,
   $utilities
 );
-
-// Generate Text Color
-@each $name, $value in $mat-colors {
-  @each $hue, $color in $value {
-    @if ($hue != 'contrast') {
-      .#{'text-' + $name + '-' + $hue} {
-        color: $color !important;
-      }
-    }
-    // alias
-    @if ($name == 'gray') {
-      .#{'text-grey-' + $hue} {
-        @extend .#{'text-gray-' + $hue} !optional;
-      }
-    }
-  }
-}
-
-// Generate Background Color
-@each $name, $value in $mat-colors {
-  @each $hue, $color in $value {
-    @if ($hue != 'contrast') {
-      .#{'bg-' + $name + '-' + $hue} {
-        background-color: $color !important;
-      }
-    }
-    // alias
-    @if ($name == 'gray') {
-      .#{'bg-grey-' + $hue} {
-        @extend .#{'bg-gray-' + $hue} !optional;
-      }
-    }
-  }
-}
-

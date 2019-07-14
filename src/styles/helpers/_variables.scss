@@ -1,7 +1,7 @@
 // All Map
 $utilities: () !default;
 
-// spacing
+// Spacing
 $spacer: 16px !default;
 $spacers: () !default;
 $spacers: map-merge(
@@ -18,7 +18,7 @@ $spacers: map-merge(
 );
 $negative-spacers: negativify-map($spacers) !default;
 
-// fonts
+// Fonts
 $font-wieghts:(
   100: 100,
   200: 200,
@@ -41,7 +41,7 @@ $font-sizes: (
   20: 20px,
 );
 
-// size
+// Size
 $size: (
   20: 20%,
   25: 25%,
@@ -54,7 +54,7 @@ $size: (
   auto: auto
 );
 
-// border radius
+// Border radius
 $radius-base: 4px !default;
 $radius: (
   0: 0,
@@ -66,7 +66,7 @@ $radius: (
   full: 9999px
 );
 
-// border width
+// Border width
 $border-solid: (
   0: 0,
   1: 1px solid rgba(0,0,0,.12),

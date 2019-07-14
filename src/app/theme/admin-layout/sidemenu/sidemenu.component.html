@@ -5,41 +5,33 @@
     <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
-      <span *ngIf="menuItem.label"
-        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+      <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
-      <span *ngIf="menuItem.badge"
-        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+      <span *ngIf="menuItem.badge" class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'" matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
-      <span *ngIf="menuItem.label"
-        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+      <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
-      <span *ngIf="menuItem.badge"
-        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+      <span *ngIf="menuItem.badge" class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'"
       matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
-      <span *ngIf="menuItem.label"
-        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+      <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
-      <span *ngIf="menuItem.badge"
-        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+      <span *ngIf="menuItem.badge" class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <!-- level 1 -->
     <a class="matero-sidemenu-toggle" navAccordionToggle href="javascript:void(0);" *ngIf="menuItem.type === 'sub'"
       matRipple>
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
-      <span *ngIf="menuItem.label"
-        class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+      <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
-      <span *ngIf="menuItem.badge"
-        class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+      <span *ngIf="menuItem.badge" class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
     <ul navAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">
@@ -65,7 +57,7 @@
         </a>
         <ul class="matero-sidemenu submenu level-2" *ngIf="childLvl1.type === 'sub'">
           <li class="matero-sidemenu-item" *ngFor="let childLvl2 of childLvl1.children" routerLinkActive="active">
-            <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state, childLvl1.state, childLvl2.state]"
+            <a class="matero-sidemenu-link" [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])"
               matRipple *ngIf="childLvl2.type === 'link'"><span class="menu-name">{{ childLvl2.name }}</span></a>
             <a class="matero-sidemenu-link" [href]="childLvl2.state" *ngIf="childLvl2.type === 'extLink'" matRipple>
               <span class="menu-name">{{ childLvl2.name }}</span>
