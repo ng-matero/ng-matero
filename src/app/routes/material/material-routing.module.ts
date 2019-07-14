@@ -39,182 +39,182 @@ import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
   {
-    path: 'form-controls/autocomplete',
+    path: 'autocomplete',
     component: AutocompleteComponent,
     data: { title: 'Autocomplete' },
   },
   {
-    path: 'form-controls/checkbox',
+    path: 'checkbox',
     component: CheckboxComponent,
     data: { title: 'Checkbox' },
   },
   {
-    path: 'form-controls/datepicker',
+    path: 'datepicker',
     component: DatepickerComponent,
     data: { title: 'Datepicker' },
   },
   {
-    path: 'form-controls/form-field',
+    path: 'form-field',
     component: FormFieldComponent,
     data: { title: 'Form Field' },
   },
   {
-    path: 'form-controls/input',
+    path: 'input',
     component: InputComponent,
     data: { title: 'Input' },
   },
   {
-    path: 'form-controls/radio',
+    path: 'radio',
     component: RadioButtonComponent,
     data: { title: 'Radio' },
   },
   {
-    path: 'form-controls/select',
+    path: 'select',
     component: SelectComponent,
     data: { title: 'Select' },
   },
   {
-    path: 'form-controls/slider',
+    path: 'slider',
     component: SliderComponent,
     data: { title: 'Slider' },
   },
   {
-    path: 'form-controls/slide-toggle',
+    path: 'slide-toggle',
     component: SlideToggleComponent,
     data: { title: 'Slide Toggle' },
   },
   // layout
   {
-    path: 'layout/card',
+    path: 'card',
     component: CardComponent,
     data: { title: 'Card' },
   },
   {
-    path: 'layout/divider',
+    path: 'divider',
     component: DividerComponent,
     data: { title: 'Divider' },
   },
   {
-    path: 'layout/expansion',
+    path: 'expansion',
     component: ExpansionPanelComponent,
     data: { title: 'Expansion Panel' },
   },
   {
-    path: 'layout/grid-list',
+    path: 'grid-list',
     component: GridListComponent,
     data: { title: 'Grid' },
   },
   {
-    path: 'layout/list',
+    path: 'list',
     component: ListComponent,
     data: { title: 'List' },
   },
   {
-    path: 'layout/stepper',
+    path: 'stepper',
     component: StepperComponent,
     data: { title: 'Stepper' },
   },
   {
-    path: 'layout/tab',
+    path: 'tab',
     component: TabComponent,
     data: { title: 'Tab' },
   },
   {
-    path: 'layout/tree',
+    path: 'tree',
     component: TreeComponent,
     data: { title: 'Tree' },
   },
   // navigation
   {
-    path: 'navigation/menu',
+    path: 'menu',
     component: MenuComponent,
     data: { title: 'Menu' },
   },
   {
-    path: 'navigation/sidenav',
+    path: 'sidenav',
     component: SidenavComponent,
     data: { title: 'Sidenav' },
   },
   {
-    path: 'navigation/toolbar',
+    path: 'toolbar',
     component: ToolbarComponent,
     data: { title: 'Toolbar' },
   },
   // buttons-indicators
   {
-    path: 'buttons-indicators/button',
+    path: 'button',
     component: ButtonComponent,
     data: { title: 'Button' },
   },
   {
-    path: 'buttons-indicators/button-toggle',
+    path: 'button-toggle',
     component: ButtonToggleComponent,
     data: { title: 'Button Toggle' },
   },
   {
-    path: 'buttons-indicators/badge',
+    path: 'badge',
     component: BadgeComponent,
     data: { title: 'Badge' },
   },
   {
-    path: 'buttons-indicators/chips',
+    path: 'chips',
     component: ChipsComponent,
     data: { title: 'Chips' },
   },
   {
-    path: 'buttons-indicators/icon',
+    path: 'icon',
     component: IconComponent,
     data: { title: 'Icon' },
   },
   {
-    path: 'buttons-indicators/progress-spinner',
+    path: 'progress-spinner',
     component: ProgressSpinnerComponent,
     data: { title: 'Progress Spinner' },
   },
   {
-    path: 'buttons-indicators/progress-bar',
+    path: 'progress-bar',
     component: ProgressBarComponent,
     data: { title: 'Progress Bar' },
   },
   {
-    path: 'buttons-indicators/ripple',
+    path: 'ripple',
     component: RippleComponent,
     data: { title: 'Ripple' },
   },
   // popups-modals
   {
-    path: 'popups-modals/bottom-sheet',
+    path: 'bottom-sheet',
     component: BottomSheetComponent,
     data: { title: 'Button Sheet' },
   },
   {
-    path: 'popups-modals/dialog',
+    path: 'dialog',
     component: DialogComponent,
     data: { title: 'Dialog' },
   },
   {
-    path: 'popups-modals/snack-bar',
+    path: 'snack-bar',
     component: SnackBarComponent,
     data: { title: 'Snack Bar' },
   },
   {
-    path: 'popups-modals/tooltip',
+    path: 'tooltip',
     component: TooltipComponent,
     data: { title: 'Tooltip' },
   },
   // Data table
   {
-    path: 'data-table/paginator',
+    path: 'paginator',
     component: PaginatorComponent,
     data: { title: 'Paginator' },
   },
   {
-    path: 'data-table/sort',
+    path: 'sort',
     component: SortComponent,
     data: { title: 'Sort' },
   },
   {
-    path: 'data-table/table',
+    path: 'table',
     component: TableComponent,
     data: { title: 'Table' },
   },

@@ -9,8 +9,8 @@
       <mat-icon>close</mat-icon>
     </button>
   </h2>
-  <div>
-    <h3 class="f-w-400">Header</h3>
+  <h3 class="f-w-400">Header</h3>
+  <div class="m-l-8">
     <mat-slide-toggle [(ngModel)]="options.showHeader" (change)="sendOptions()"
       [disabled]="options.headerPos==='above'">visible</mat-slide-toggle>
     <h4 class="f-w-400">position</h4>
@@ -21,14 +21,19 @@
       <mat-radio-button class="m-r-8" [value]="'static'">Static</mat-radio-button>
     </mat-radio-group>
   </div>
-  <div>
-    <h3 class="f-w-400">Navigation</h3>
+  <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
+  <h3 class="f-w-400">Navigation</h3>
+  <div class="m-l-8">
     <mat-slide-toggle [(ngModel)]="options.showUserPanel" (change)="sendOptions()">Show User Panel</mat-slide-toggle>
     <h4 class="f-w-400">position</h4>
     <mat-radio-group [(ngModel)]="options.navPos" (change)="sendOptions()">
       <mat-radio-button class="m-r-8" [value]="'side'">side</mat-radio-button>
       <mat-radio-button class="m-r-8" [value]="'top'" [disabled]="options.headerPos==='above'">top</mat-radio-button>
     </mat-radio-group>
+  </div>
+  <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
+  <div class="m-l-8">
+    <mat-checkbox (change)="options.dir = (options.dir === 'rtl' ? 'ltr' : 'rtl'); sendOptions()">RTL</mat-checkbox>
   </div>
 </div>
 <div [ngClass]="{'customizer-panel-overlay':true,'opened':opened} " (click)="closePanel()"></div>

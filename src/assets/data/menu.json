@@ -32,7 +32,7 @@
       "type": "sub",
       "icon": "favorite",
       "children": [{
-          "state": "form-controls",
+          "state": "",
           "name": "Form Controls",
           "type": "sub",
           "children": [{
@@ -83,7 +83,7 @@
           ]
         },
         {
-          "state": "navigation",
+          "state": "",
           "name": "Navigation",
           "type": "sub",
           "children": [{
@@ -104,7 +104,7 @@
           ]
         },
         {
-          "state": "layout",
+          "state": "",
           "name": "Layout",
           "type": "sub",
           "children": [{
@@ -150,7 +150,7 @@
           ]
         },
         {
-          "state": "buttons-indicators",
+          "state": "",
           "name": "Buttons & Indicators",
           "type": "sub",
           "children": [{
@@ -196,7 +196,7 @@
           ]
         },
         {
-          "state": "popups-modals",
+          "state": "",
           "name": "Popups & Modals",
           "type": "sub",
           "children": [{
@@ -222,7 +222,7 @@
           ]
         },
         {
-          "state": "data-table",
+          "state": "",
           "name": "Data Table",
           "type": "sub",
           "children": [{
