@@ -4,13 +4,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../material.module';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { NgSelectModule } from '@ng-select/ng-select';
+import { ProgressComponent } from './components/progress/progress.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -19,7 +20,11 @@ const THIRD_MODULES = [
   NgProgressRouterModule,
   NgSelectModule,
 ];
-const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent];
+const COMPONENTS = [
+  BreadcrumbComponent,
+  PageHeaderComponent,
+  ProgressComponent,
+];
 const DIRECTIVES = [];
 const PIPES = [];
 
@@ -30,6 +35,7 @@ const PIPES = [];
     ...DIRECTIVES,
     ...PIPES,
     PageHeaderComponent,
+    ProgressComponent,
   ],
   imports: [
     CommonModule,

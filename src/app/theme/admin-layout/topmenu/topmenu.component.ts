@@ -11,4 +11,9 @@ export class TopmenuComponent implements OnInit {
   constructor(public menuService: MenuService) {}
 
   ngOnInit() {}
+
+  // 删除数组内的空值
+  filterStates(states: string[]) {
+    return states.filter(item => item && item.trim());
+  }
 }
