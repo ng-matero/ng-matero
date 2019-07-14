@@ -21,7 +21,7 @@
         <mat-menu #menulevel2="matMenu">
           <ng-container *ngFor="let childLvl2 of childLvl1.children">
 
-            <a mat-menu-item [routerLink]="['/', menuItem.state, childLvl1.state, childLvl2.state]"
+            <a mat-menu-item [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])"
               *ngIf="childLvl2.type === 'link'">{{childLvl2.name}}</a>
             <a mat-menu-item [href]="childLvl2.state" *ngIf="childLvl2.type === 'extLink'">{{childLvl2.name}}</a>
             <a mat-menu-item [href]="childLvl2.state" target="_blank"

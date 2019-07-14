@@ -7,6 +7,7 @@ import { MenuService } from '@core';
 })
 export class SidemenuComponent {
   menus = this.menuService.getAll();
+
   constructor(private menuService: MenuService) {}
 
   // 删除数组内的空值

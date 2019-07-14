@@ -7,6 +7,7 @@ import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
+import { HelpersComponent } from './helpers/helpers.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./sessions/sessions.module').then(m => m.SessionsModule),
         data: { title: 'Sessions', titleI18n: 'Sessions' },
+      },
+      {
+        path: 'helpers',
+        component: HelpersComponent,
+        data: { title: 'Helpers', titleI18n: 'Helpers' },
       },
     ],
   },
