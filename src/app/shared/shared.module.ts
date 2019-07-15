@@ -11,7 +11,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { ProgressComponent } from './components/progress/progress.component';
+import { MiniProgressComponent } from './components/mini-progress/mini-progress.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -23,26 +23,18 @@ const THIRD_MODULES = [
 const COMPONENTS = [
   BreadcrumbComponent,
   PageHeaderComponent,
-  ProgressComponent,
+  MiniProgressComponent,
 ];
 const DIRECTIVES = [];
 const PIPES = [];
 
 @NgModule({
-  declarations: [
-    // your components
-    ...COMPONENTS,
-    ...DIRECTIVES,
-    ...PIPES,
-    PageHeaderComponent,
-    ProgressComponent,
-  ],
+  declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    // third libs
     ...THIRD_MODULES,
   ],
   exports: [
@@ -50,9 +42,7 @@ const PIPES = [];
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    // third libs
     ...THIRD_MODULES,
-    // your components
     ...COMPONENTS,
     ...DIRECTIVES,
     ...PIPES,
