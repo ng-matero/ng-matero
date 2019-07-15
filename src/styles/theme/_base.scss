@@ -53,3 +53,16 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: 'Roboto Mono', monospace;
+}
+
+code {
+  font-size: 87.5%;
+  color: red;
+  word-break: break-word;
+}

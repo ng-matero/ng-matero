@@ -1,10 +1,11 @@
 .matero-progress {
   display: flex;
-  height: 2px;
+  height: 8px;
+  margin: 8px 0;
   overflow: hidden;
   font-size: .75rem;
-  background-color: rgba(0, 0, 0, .5);
-  border-radius: 999px;
+  background-color: #e9ecef;
+  border-radius: .25rem;
 }
 
 .matero-progress-bar {
@@ -13,6 +14,6 @@
   justify-content: center;
   color: #fff;
   text-align: center;
-  background-color: #fff;
+  background-color: #007bff;
   transition: width .6s ease;
 }
