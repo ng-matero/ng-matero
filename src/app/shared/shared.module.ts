@@ -12,6 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { MiniProgressComponent } from './components/mini-progress/mini-progress.component';
+import { Text3dComponent } from './components/text3d/text3d.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -24,6 +25,7 @@ const COMPONENTS = [
   BreadcrumbComponent,
   PageHeaderComponent,
   MiniProgressComponent,
+  Text3dComponent,
 ];
 const DIRECTIVES = [];
 const PIPES = [];
