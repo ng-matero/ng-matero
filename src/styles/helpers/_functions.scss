@@ -1,0 +1,13 @@
+// It makes the value negative.
+// Bootstrap
+@function negativify-map($map) {
+  $result: ();
+
+  @each $key, $value in $map {
+    @if $key !=0 {
+      $result: map-merge($result, ('-'+ $key: (-$value)));
+    }
+  }
+
+  @return $result;
+}
