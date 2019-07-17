@@ -1,0 +1,20 @@
+// ==================================================
+// ALIGNMENT
+// ==================================================
+
+$alignment: (
+  "alignment": (
+    property: vertical-align,
+    class: align,
+    values: (
+      top: top,
+      middle: middle,
+      bottom: bottom
+    )
+  ),
+);
+
+$utilities: map-merge(
+  $alignment,
+  $utilities
+);

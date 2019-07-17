@@ -9,8 +9,10 @@ $cursor: (
     values: (
       default: default,
       pointer: pointer,
-      crosshair: crosshair,
-      copy: copy
+      text: text,
+      move: move,
+      copy: copy,
+      not-allowed: not-allowed,
     )
   ),
 );
