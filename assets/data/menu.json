@@ -291,7 +291,7 @@
       "type": "sub",
       "icon": "person",
       "label": {
-        "color": "green-500",
+        "color": "indigo-500",
         "value": "new"
       },
       "children": [{
@@ -330,7 +330,11 @@
       "state": "helpers",
       "name": "Helpers",
       "type": "link",
-      "icon": "all_inbox"
+      "icon": "all_inbox",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      }
     }
   ]
 }
