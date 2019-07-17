@@ -76,25 +76,10 @@ $_precision: 10;
   @return sin($angle) / cos($angle);
 }
 
-// It makes the value negative.
-// Bootstrap
-@function negativify-map($map) {
-  $result: ();
-
-  @each $key,
-  $value in $map {
-    @if $key !=0 {
-      $result: map-merge($result, ('-'+ $key: (-$value)));
-    }
-  }
-
-  @return $result;
-}
-
 // Long shadow
 // https://codepen.io/photodow/pen/vJWoKp
-@function long-shadow($angle: 45deg, $length: 100px, $colors: #000, $spacing: 1, 
-$blur: 0, $spread: null, $prepend: null, $append: null) {
+@function long-shadow($angle: 45deg, $length: 100px, $colors: #000, $spacing: 1,
+  $blur: 0, $spread: null, $prepend: null, $append: null) {
   $first: true;
   $performance: 0;
   $unit-length: unit($length);

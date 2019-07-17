@@ -6,13 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./helpers.component.scss'],
 })
 export class HelpersComponent implements OnInit {
-  elevations = [];
-
-  constructor() {
-    for (let i = 0; i < 24; i++) {
-      this.elevations.push(i);
-    }
-  }
+  constructor() {}
 
   ngOnInit() {}
 }

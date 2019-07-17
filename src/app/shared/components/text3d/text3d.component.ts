@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ContentChild,
+  TemplateRef,
+} from '@angular/core';
 
 @Component({
   selector: 'text3d',
@@ -6,7 +12,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./text3d.component.scss'],
 })
 export class Text3dComponent implements OnInit {
-  constructor() {}
+  @ContentChild(TemplateRef, { static: false }) template: TemplateRef<any>;
+
+  @Input() text = '';
+  @Input() num = 20;
+
+  arr = [];
+
+  constructor() {
+    for (let i = 1; i <= this.num; i++) {
+      this.arr.push(i);
+    }
+  }
 
   ngOnInit() {}
 }
