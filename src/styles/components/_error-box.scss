@@ -7,15 +7,11 @@
   padding: 20px 60px;
   font-size: 160px;
   font-weight: bold;
-  color: #fff;
+  color: #212121;
   border-radius: 8px;
-  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: long-shadow(45deg, 100px,
-      (map-get($mat-gray, 200), map-get($mat-gray, 100)),
-      5,
-      (0, 15px),
-      (0, 15px),
-      (inset 1px 1px 1px rgba(255, 255, 255, .75),
-        1px 1px 1px rgba(0, 0, 0, .5),
-        3px 3px 3px rgba(0, 0, 0, .2)));
+  text-shadow: long-shadow($direction: 45deg,
+      $length: 60px,
+      $color: rgba(0, 0, 0, .03),
+      $fade: rgba(0, 0, 0, .0015),
+      $shadow-count: 20);
 }
