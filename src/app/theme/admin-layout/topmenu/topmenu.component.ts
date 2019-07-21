@@ -12,7 +12,7 @@ export class TopmenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  // 删除数组内的空值
+  // Delete empty value in array
   filterStates(states: string[]) {
     return states.filter(item => item && item.trim());
   }

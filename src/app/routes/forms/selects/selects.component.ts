@@ -5,7 +5,6 @@ import { Person, DataService } from '../data.service';
 @Component({
   selector: 'app-selects',
   templateUrl: './selects.component.html',
-  styleUrls: ['./selects.component.scss'],
   providers: [DataService],
 })
 export class SelectsComponent implements OnInit {

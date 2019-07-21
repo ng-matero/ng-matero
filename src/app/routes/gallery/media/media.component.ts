@@ -20,7 +20,7 @@ export class MediaComponent implements OnInit {
 
   ngOnInit() {}
 
-  // 预览图片
+  // Preview images
   preview(index: number) {
     const options: PhotoViewer.Options = {
       index,
