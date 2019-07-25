@@ -8,6 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
@@ -20,6 +22,7 @@ const THIRD_MODULES = [
   NgProgressModule,
   NgProgressRouterModule,
   NgSelectModule,
+  FormlyMaterialModule,
 ];
 const COMPONENTS = [
   BreadcrumbComponent,
@@ -37,6 +40,7 @@ const PIPES = [];
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    FormlyModule.forRoot(),
     ...THIRD_MODULES,
   ],
   exports: [
@@ -44,6 +48,7 @@ const PIPES = [];
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    FormlyModule,
     ...THIRD_MODULES,
     ...COMPONENTS,
     ...DIRECTIVES,
