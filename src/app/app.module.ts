@@ -15,6 +15,9 @@ export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
 }
 
+import { FormlyModule } from '@ngx-formly/core';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,6 +28,8 @@ export function StartupServiceFactory(startupService: StartupService) {
     SharedModule,
     ThemeModule,
     RoutesModule,
+    FormlyModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
