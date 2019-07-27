@@ -11,7 +11,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "hmr": "ng serve -c=hmr --disable-host-check",
-    "hmr-host": "ng serve -c=hmr --disable-host-check --host=172.18.20.144 --port=4201",
     "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero"
   },
   "private": true,
@@ -33,7 +32,6 @@
     "@ng-select/ng-select": "^2.20.3",
     "@ngx-formly/core": "^5.0.0",
     "@ngx-formly/material": "^5.0.0",
-    "@ngx-formly/schematics": "^5.3.0",
     "@ngx-progressbar/core": "^5.3.2",
     "@ngx-progressbar/router": "^5.3.2",
     "@ngx-translate/core": "^11.0.1",
@@ -56,6 +54,7 @@
     "@angular/compiler-cli": "~8.0.3",
     "@angular/language-service": "~8.0.3",
     "@angularclass/hmr": "^2.1.3",
+    "@ngx-formly/schematics": "^5.3.0",
     "@types/jasmine": "~3.3.13",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~12.0.10",
