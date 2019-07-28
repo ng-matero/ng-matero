@@ -272,6 +272,10 @@
         "state": "ng-select",
         "name": "Ng Select",
         "type": "link"
+      }, {
+        "state": "dynamic",
+        "name": "Dynamic Form",
+        "type": "link"
       }]
     },
     {
