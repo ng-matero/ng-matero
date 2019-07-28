@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-dynamic',
   templateUrl: './dynamic.component.html',
@@ -41,11 +43,15 @@ export class DynamicComponent implements OnInit {
     },
   ];
 
-  submit() {
-    console.log(this.model);
-  }
-
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
 
   ngOnInit() {}
+
+  submit() {
+    this.showToast();
+  }
+
+  showToast() {
+    this.toastr.show(JSON.stringify(this.model));
+  }
 }

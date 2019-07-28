@@ -1,7 +1,7 @@
 <page-header></page-header>
 
 <mat-card>
-  <form [formGroup]="form" (ngSubmit)="submit(model)">
+  <form [formGroup]="form" (ngSubmit)="submit()">
     <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
     <button mat-raised-button color="primary">Submit</button>
   </form>

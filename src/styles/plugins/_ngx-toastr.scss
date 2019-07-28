@@ -1,1 +1,54 @@
 @import '~ngx-toastr/toastr';
+
+.toast-container {
+  .ngx-toastr {
+    min-height: 48px;
+    padding: 14px 16px;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #323232;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+      0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      box-shadow: 0 6px 6px -3px rgba(0, 0, 0, .2),
+        0 10px 14px 1px rgba(0, 0, 0, .14),
+        0 4px 18px 3px rgba(0, 0, 0, .12);
+    }
+  }
+
+  .toast-success,
+  .toast-info,
+  .toast-warning,
+  .toast-error {
+    padding-left: 50px;
+    color: #fff;
+  }
+
+  .toast-success {
+    background-color: #4CAF50;
+  }
+
+  .toast-info {
+    background-color: #009688;
+  }
+
+  .toast-warning {
+    background-color: #FF9800;
+  }
+
+  .toast-error {
+    background-color: #f44336;
+  }
+
+  .toast-close-button {
+    font-size: inherit;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+
+    &:hover {
+      color: inherit;
+      opacity: 0.6;
+    }
+  }
+}
