@@ -1,15 +1,16 @@
-<!-- Warning: Ripple effect make page flashing on mobile-->
 <ul navAccordion class="matero-sidemenu level-0">
   <li navAccordionLink class="matero-sidemenu-item" *ngFor="let menuItem of menus" [group]="menuItem.state"
     routerLinkActive="active">
-    <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple>
+    <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'" matRipple
+      [matRippleDisabled]="!ripple">
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span fxFlex></span>
       <span *ngIf="menuItem.badge" class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
-    <a class="matero-sidemenu-link" [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'" matRipple>
+    <a class="matero-sidemenu-link" [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'" matRipple
+      [matRippleDisabled]="!ripple">
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
@@ -17,7 +18,7 @@
       <span *ngIf="menuItem.badge" class="menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'"
-      matRipple>
+      matRipple [matRippleDisabled]="!ripple">
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
@@ -26,7 +27,7 @@
     </a>
     <!-- level 1 -->
     <a class="matero-sidemenu-toggle" navAccordionToggle href="javascript:void(0);" *ngIf="menuItem.type === 'sub'"
-      matRipple>
+      matRipple [matRippleDisabled]="!ripple">
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
       <span class="menu-name">{{ menuItem.name }}</span>
       <span *ngIf="menuItem.label" class="menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
@@ -38,32 +39,36 @@
       <li navAccordionLink class="matero-sidemenu-item" *ngFor="let childLvl1 of menuItem.children"
         [group]="childLvl1.state" routerLinkActive="active">
         <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state, childLvl1.state]"
-          *ngIf="childLvl1.type === 'link'" matRipple>
+          *ngIf="childLvl1.type === 'link'" matRipple [matRippleDisabled]="!ripple">
           <span class="menu-name">{{ childLvl1.name }}</span>
         </a>
-        <a class="matero-sidemenu-link" [href]="childLvl1.state" *ngIf="childLvl1.type === 'extLink'" matRipple>
+        <a class="matero-sidemenu-link" [href]="childLvl1.state" *ngIf="childLvl1.type === 'extLink'" matRipple
+          [matRippleDisabled]="!ripple">
           <span class="menu-name">{{ childLvl1.name }}</span>
         </a>
         <a class="matero-sidemenu-link" [href]="childLvl1.state" target="_blank" *ngIf="childLvl1.type === 'extTabLink'"
-          matRipple>
+          matRipple [matRippleDisabled]="!ripple">
           <span class="menu-name">{{ childLvl1.name }}</span>
         </a>
         <!-- level 2 -->
         <a class="matero-sidemenu-toggle" navAccordionToggle href="javascript:void(0);" *ngIf="childLvl1.type === 'sub'"
-          matRipple>
+          matRipple [matRippleDisabled]="!ripple">
           <span class="menu-name">{{ childLvl1.name }}</span>
           <span fxFlex></span>
           <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
         </a>
         <ul class="matero-sidemenu submenu level-2" *ngIf="childLvl1.type === 'sub'">
           <li class="matero-sidemenu-item" *ngFor="let childLvl2 of childLvl1.children" routerLinkActive="active">
-            <a class="matero-sidemenu-link" [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])"
-              matRipple *ngIf="childLvl2.type === 'link'"><span class="menu-name">{{ childLvl2.name }}</span></a>
-            <a class="matero-sidemenu-link" [href]="childLvl2.state" *ngIf="childLvl2.type === 'extLink'" matRipple>
+            <a class="matero-sidemenu-link"
+              [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])" matRipple
+              [matRippleDisabled]="!ripple" *ngIf="childLvl2.type === 'link'"><span
+                class="menu-name">{{ childLvl2.name }}</span></a>
+            <a class="matero-sidemenu-link" [href]="childLvl2.state" *ngIf="childLvl2.type === 'extLink'" matRipple
+              [matRippleDisabled]="!ripple">
               <span class="menu-name">{{ childLvl2.name }}</span>
             </a>
             <a class="matero-sidemenu-link" [href]="childLvl2.state" target="_blank"
-              *ngIf="childLvl2.type === 'extTabLink'" matRipple>
+              *ngIf="childLvl2.type === 'extTabLink'" matRipple [matRippleDisabled]="!ripple">
               <span class="menu-name">{{ childLvl2.name }}</span>
             </a>
           </li>

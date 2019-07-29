@@ -52,6 +52,6 @@ export class DynamicComponent implements OnInit {
   }
 
   showToast() {
-    this.toastr.show(JSON.stringify(this.model));
+    this.toastr.success(JSON.stringify(this.model));
   }
 }

@@ -4,13 +4,14 @@ import {
   Output,
   EventEmitter,
   Input,
-  HostBinding,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import * as screenfull from 'screenfull';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
   @Input() showToggle = true;
@@ -19,15 +20,18 @@ export class HeaderComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleNotificationSidenav = new EventEmitter<void>();
 
+  private get screenfull(): screenfull.Screenfull {
+    return screenfull as screenfull.Screenfull;
+  }
+
   constructor() {}
 
   ngOnInit() {}
+
   // TODO:
   toggleFullscreen() {
-    // tslint:disable-next-line: no-string-literal
-    if (screenfull['enabled']) {
-      // tslint:disable-next-line: no-string-literal
-      screenfull['toggle']();
+    if (this.screenfull.enabled) {
+      this.screenfull.toggle();
     }
   }
 }
