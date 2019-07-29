@@ -1,0 +1,38 @@
+// ==================================================
+//  Media queries
+// ==================================================
+
+@function bp($name, $breakpoints: $breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return $min;
+}
+
+// Media of at least the minimum breakpoint width.
+@mixin bp-gt($name, $breakpoints: $breakpoints) {
+  $min: bp($name, $breakpoints);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+
+  @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width.
+@mixin bp-lt($name, $breakpoints: $breakpoints) {
+  $max: bp($name, $breakpoints);
+
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+
+  @else {
+    @content;
+  }
+}

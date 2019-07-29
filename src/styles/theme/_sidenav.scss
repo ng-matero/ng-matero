@@ -6,12 +6,9 @@
   position: absolute;
   overflow-x: hidden;
   width: $sidenav-width;
-  box-shadow:
-    0 3px 1px -2px rgba(0, 0, 0, .2),
-    0 2px 2px 0 rgba(0, 0, 0, .14),
-    0 1px 5px 0 rgba(0, 0, 0, .12);
   border-width: 0;
   transition: width .4s cubic-bezier(.25, .8, .25, 1); // Only set width property
+  @include mat-elevation(2);
 
   .matero-sidemenu {
     width: $sidenav-width;
@@ -210,7 +207,7 @@
   }
 }
 
-@media (max-width: 599px) {
+@include bp-lt(tiny) {
   .matero-sidebar-header {
     height: $toolbar-height-mobile;
   }

@@ -28,3 +28,16 @@ $font-size-h3: 28px !default;
 $font-size-h4: 24px !default;
 $font-size-h5: 20px !default;
 $font-size-h6: 16px !default;
+
+// Breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$breakpoints: (
+  xsmall: 320px,
+  teeny: 480px,
+  tiny: 600px,
+  small: 650px,
+  medium: 800px,
+  big: 1000px
+) !default;
