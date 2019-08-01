@@ -16,6 +16,7 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { MiniProgressComponent } from './components/mini-progress/mini-progress.component';
 import { Text3dComponent } from './components/text3d/text3d.component';
+import { ErrorCodeComponent } from './components/error-code/error-code.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -32,6 +33,7 @@ const COMPONENTS = [
   PageHeaderComponent,
   MiniProgressComponent,
   Text3dComponent,
+  ErrorCodeComponent,
 ];
 const DIRECTIVES = [];
 const PIPES = [];

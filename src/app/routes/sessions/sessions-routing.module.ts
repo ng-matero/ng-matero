@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Error403Component } from './403/403.component';
-import { Error404Component } from './404/404.component';
-import { Error500Component } from './500/500.component';
+import { Error403Component } from './403.component';
+import { Error404Component } from './404.component';
+import { Error500Component } from './500.component';
 
 const routes: Routes = [
   {
