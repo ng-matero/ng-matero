@@ -5,9 +5,7 @@
 $scrollbar-selectors: 'body', '.mat-sidenav-content';
 
 @each $selector in $scrollbar-selectors {
-
   #{$selector} {
-
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
@@ -23,13 +21,13 @@ $scrollbar-selectors: 'body', '.mat-sidenav-content';
     }
 
     &::-webkit-scrollbar-track {
-      box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 5px inset;
+      box-shadow: rgba(0, 0, 0, .2) 1px 1px 5px inset;
     }
 
     &::-webkit-scrollbar-thumb {
       min-height: 20px;
       background-clip: content-box;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 5px inset;
+      box-shadow: rgba(0, 0, 0, .2) 0 0 0 5px inset;
     }
 
     &::-webkit-scrollbar-corner {

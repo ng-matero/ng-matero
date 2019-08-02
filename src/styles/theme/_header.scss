@@ -11,6 +11,7 @@
 .matero-toolbar {
   background: #fff;
   color: rgba(0, 0, 0, .76);
+
   @include mat-elevation(2);
 
   .badge {

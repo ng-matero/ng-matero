@@ -23,17 +23,17 @@
   <button mat-menu-item>Horseshoe crabs</button>
 </mat-menu>
 
-<p>
+<div>
   Build this dynamically using json object
-  <code>
+
     <pre>
-        {{ '{' }}
-          'main1': ['sub1', 'sub2'],
-          'main2': ['sub1', 'sub2', 'sub3'],
-        {{ '}' }}
-      </pre>
-  </code>
-</p>
+      {{ '{' }}
+        'main1': ['sub1', 'sub2'],
+        'main2': ['sub1', 'sub2', 'sub3'],
+      {{ '}' }}
+    </pre>
+
+</div>
 
 <button mat-button [matMenuTriggerFor]="main_menu">My menu</button>
 

@@ -15,7 +15,7 @@ $shadow:#7c7c7c;
     display: inline-block;
     text-align: center;
     font-size: 10rem;
-    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 1px rgba(0, 0, 0, .5);
 
     &:not(:first-child) {
       position: absolute;
@@ -25,7 +25,7 @@ $shadow:#7c7c7c;
       margin: auto;
       transform-style: preserve-3d;
       color: $white;
-      text-shadow: 0px 0px 20px rgba($shadow, 0.4);
+      text-shadow: 0 0 20px rgba($shadow, .4);
     }
 
     // &:first-child {

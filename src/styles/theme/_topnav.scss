@@ -10,6 +10,7 @@
   color: rgba(0, 0, 0, .76);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+
   @include mat-elevation(2);
 }
 

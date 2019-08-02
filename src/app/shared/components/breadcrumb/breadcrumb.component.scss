@@ -4,15 +4,15 @@
   padding: 0;
   margin-bottom: 1rem;
   list-style: none;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
+  border-radius: .25rem;
+  font-size: .875rem;
 }
 
 .matero-breadcrumb-item {
   line-height: 18px;
   text-transform: capitalize;
 
-  >a {
+  > a {
     color: currentColor;
 
     &:hover {
@@ -20,7 +20,7 @@
     }
   }
 
-  >.chevron {
+  > .chevron {
     height: 18px;
     width: 18px;
     font-size: 18px;

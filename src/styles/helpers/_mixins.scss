@@ -12,6 +12,7 @@
           @extend .#{$prefix + '-gray-' + $hue} !optional;
         }
       }
+
       @if ($name == 'blue-gray') {
         .#{$prefix + '-blue-grey-' + $hue} {
           @extend .#{$prefix + '-blue-gray-' + $hue} !optional;

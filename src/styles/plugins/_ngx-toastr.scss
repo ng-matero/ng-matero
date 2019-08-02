@@ -5,8 +5,9 @@
     min-height: 48px;
     padding: 14px 16px;
     border-radius: 4px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, .7);
     background-color: #323232;
+
     @include mat-elevation(6);
 
     &:hover {
@@ -23,15 +24,15 @@
   }
 
   .toast-success {
-    background-color: #4CAF50;
+    background-color: #4caf50;
   }
 
   .toast-info {
-    background-color: #2196F3;
+    background-color: #2196f3;
   }
 
   .toast-warning {
-    background-color: #FF9800;
+    background-color: #ff9800;
   }
 
   .toast-error {
@@ -44,7 +45,7 @@
 
     &:hover {
       color: inherit;
-      opacity: 0.6;
+      opacity: .6;
     }
   }
 }
