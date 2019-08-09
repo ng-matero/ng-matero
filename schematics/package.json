@@ -2,12 +2,7 @@
   "name": "ng-matero",
   "version": "0.0.1",
   "scripts": {
-    "build": "../node_modules/.bin/tsc -p tsconfig.json",
-    "copy:pkg": "rsync package.json ../dist/schematics/",
-    "copy:schemas": "rsync -R **/schema.json ../dist/schematics/",
-    "copy:files": "rsync -R **/files/** ../dist/schematics/",
-    "copy:collection": "rsync collection.json ../dist/schematics/",
-    "postbuild": "npm run copy:pkg && npm run copy:schemas && npm run copy:files && npm run copy:collection"
+    "build": "../node_modules/.bin/tsc -p tsconfig.json"
   },
   "peerDependencies": {
     "@angular/common": "~8.0.3",
