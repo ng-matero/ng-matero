@@ -1,7 +1,14 @@
 import {
-  Rule, Tree, SchematicsException,
-  apply, url, applyTemplates, move,
-  chain, mergeWith
+  Rule,
+  Tree,
+  SchematicsException,
+  apply,
+  url,
+  applyTemplates,
+  move,
+  chain,
+  mergeWith,
+  template,
 } from '@angular-devkit/schematics';
 
 import { strings, normalize, experimental } from '@angular-devkit/core';
@@ -12,14 +19,18 @@ export function myService(options: MyServiceSchema): Rule {
   return (tree: Tree) => {
     const workspaceConfig = tree.read('/angular.json');
     if (!workspaceConfig) {
-      throw new SchematicsException('Could not find Angular workspace configuration');
+      throw new SchematicsException(
+        'Could not find Angular workspace configuration'
+      );
     }
 
     // convert workspace to string
     const workspaceContent = workspaceConfig.toString();
 
     // parse workspace string into JSON object
-    const workspace: experimental.workspace.WorkspaceSchema = JSON.parse(workspaceContent);
+    const workspace: experimental.workspace.WorkspaceSchema = JSON.parse(
+      workspaceContent
+    );
     if (!options.project) {
       options.project = workspace.defaultProject;
     }
@@ -35,16 +46,14 @@ export function myService(options: MyServiceSchema): Rule {
     }
 
     const templateSource = apply(url('./files'), [
-      applyTemplates({
+      template({
         classify: strings.classify,
         dasherize: strings.dasherize,
-        name: options.name
+        name: options.name,
       }),
-      move(normalize(options.path as string))
+      move(normalize(options.path as string)),
     ]);
 
-    return chain([
-      mergeWith(templateSource)
-    ]);
+    return chain([mergeWith(templateSource)]);
   };
 }

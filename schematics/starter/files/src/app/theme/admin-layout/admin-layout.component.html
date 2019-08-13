@@ -1,0 +1,40 @@
+<div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{
+  'matero-sidenav-collapsed':sidenavCollapsed && options.navPos!=='top',
+  'matero-header-above':options.headerPos==='above',
+  'matero-header-fixed':options.headerPos==='fixed',
+  'matero-navbar-top':options.navPos==='top'}">
+  <ng-progress></ng-progress>
+
+  <!-- header above -->
+  <app-header *ngIf="options.showHeader && options.headerPos==='above'" #header class="matero-header"
+    (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()" [showBranding]="true">
+  </app-header>
+
+  <mat-sidenav-container class="matero-container" autosize autoFocus>
+    <mat-sidenav #sidenav class="matero-sidenav" [mode]="isOver ? 'over' : 'side'"
+      [opened]="options.navPos==='side' && !isOver" (openedChange)="openedChang($event)">
+      <app-sidebar (toggleCollapsed)="toggleCollapsed()" [showToggle]="!isOver" [showUser]="options.showUserPanel"
+        [showHeader]="options.headerPos!=='above'">
+      </app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav #notifications position="end" mode="over" opened="false">
+      <app-notification></app-notification>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="matero-content" #content>
+      <app-header *ngIf="options.showHeader && options.headerPos!=='above'" #header class="matero-header"
+        (toggleSidenav)="sidenav.toggle()" (toggleNotificationSidenav)="notifications.toggle()"
+        [showToggle]="!sidenavCollapsed && options.navPos!=='top'" [showBranding]="options.navPos==='top'"></app-header>
+
+      <app-topmenu class="matero-topmenu" *ngIf="options.navPos==='top'"></app-topmenu>
+
+      <div class="matero-content-inner">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Demo Purposes Only -->
+  <app-customizer (optionsEvent)="receiveOptions($event)"></app-customizer>
+</div>

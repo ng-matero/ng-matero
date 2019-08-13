@@ -1,0 +1,15 @@
+<mat-toolbar class="matero-toolbar">
+  <button mat-icon-button (click)="toggleSidenav.emit()" *ngIf="showToggle">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <app-branding class="m-l-8" *ngIf="showBranding"></app-branding>
+  <span fxFlex></span>
+  <button mat-icon-button (click)="toggleFullscreen()">
+    <mat-icon>fullscreen</mat-icon>
+  </button>
+  <button mat-icon-button (click)="toggleNotificationSidenav.emit()">
+    <mat-icon>notifications</mat-icon>
+    <span class="badge bg-red-500">5</span>
+  </button>
+  <app-user></app-user>
+</mat-toolbar>
