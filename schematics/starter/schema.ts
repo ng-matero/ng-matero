@@ -15,12 +15,4 @@ export interface Schema {
 
   /** Whether Angular browser animations should be set up. */
   animations: boolean;
-
-  /** Name of pre-built theme to install. */
-  theme:
-    | 'indigo-pink'
-    | 'deeppurple-amber'
-    | 'pink-bluegrey'
-    | 'purple-green'
-    | 'custom';
 }

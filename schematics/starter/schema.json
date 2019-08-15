@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "ng-matero-ng-add",
+  "title": "Angular Matero ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "layout": {
+      "description": "The layout to apply",
+      "type": "string",
+      "default": "1",
+      "x-prompt": {
+        "message": "Choose a prebuilt admin layout:",
+        "type": "list",
+        "items": [{
+          "value": "1",
+          "label": "Side Navigation"
+        }, {
+          "value": "2",
+          "label": "Top Navigation"
+        }, {
+          "value": "3",
+          "label": "Both"
+        }]
+      }
+    },
+    "gestures": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether gesture support should be set up.",
+      "x-prompt": "Set up HammerJS for gesture recognition?"
+    },
+    "animations": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether Angular browser animations should be set up.",
+      "x-prompt": "Set up browser animations for Angular Material?"
+    },
+    "form": {
+      "type": "boolean",
+      "default": true,
+      "description": "Add dynamic form.",
+      "x-prompt": "Add dynamic form (ngx-formly)?"
+    }
+  },
+  "required": []
+}
