@@ -189,6 +189,12 @@ function updatePackageJson(options: Schema) {
 //   return (host: Tree) => {};
 // }
 
+function updateIndexHtml() {
+  return (host: Tree) => {
+    return host;
+  };
+}
+
 // Add starter files to root
 function addStarterFiles(options: Schema) {
   return chain([
