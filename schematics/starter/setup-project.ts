@@ -115,7 +115,6 @@ function addAnimationsModule(options: Schema) {
 
 /** delete exsiting files to be overwrite */
 function deleteExsitingFiles() {
-  console.log(addModuleImportToRootModule);
   return (host: Tree) => {
     const workspace = getWorkspace(host);
     const project = getProjectFromWorkspace(workspace);

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {strings, template as interpolateTemplate} from '@angular-devkit/core';
+import { strings, template as interpolateTemplate } from '@angular-devkit/core';
 import {
   apply,
   applyTemplates,
@@ -21,24 +21,24 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import {FileSystemSchematicContext} from '@angular-devkit/schematics/tools';
-import {Schema as ComponentOptions, Style} from '@schematics/angular/component/schema';
+import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
+import { Schema as ComponentOptions, Style } from '@schematics/angular/component/schema';
 import {
   addDeclarationToModule,
   addEntryComponentToModule,
   addExportToModule,
 } from '@schematics/angular/utility/ast-utils';
-import {InsertChange} from '@schematics/angular/utility/change';
-import {getWorkspace} from '@schematics/angular/utility/config';
-import {buildRelativePath, findModuleFromOptions} from '@schematics/angular/utility/find-module';
-import {parseName} from '@schematics/angular/utility/parse-name';
-import {buildDefaultPath} from '@schematics/angular/utility/project';
-import {validateHtmlSelector, validateName} from '@schematics/angular/utility/validation';
-import {readFileSync, statSync} from 'fs';
-import {dirname, join, resolve} from 'path';
-import {getProjectFromWorkspace} from './get-project';
-import {getDefaultComponentOptions} from './schematic-options';
-import {ts} from './version-agnostic-typescript';
+import { InsertChange } from '@schematics/angular/utility/change';
+import { getWorkspace } from '@schematics/angular/utility/config';
+import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
+import { parseName } from '@schematics/angular/utility/parse-name';
+import { buildDefaultPath } from '@schematics/angular/utility/project';
+import { validateHtmlSelector, validateName } from '@schematics/angular/utility/validation';
+import { readFileSync, statSync } from 'fs';
+import { dirname, join, resolve } from 'path';
+import { getProjectFromWorkspace } from './get-project';
+import { getDefaultComponentOptions } from './schematic-options';
+import { ts } from './version-agnostic-typescript';
 
 /**
  * List of style extensions which are CSS compatible. All supported CLI style extensions can be
@@ -64,10 +64,11 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
     const modulePath = options.module;
     let source = readIntoSourceFile(host, modulePath);
 
-    const componentPath = `/${options.path}/`
-      + (options.flat ? '' : strings.dasherize(options.name) + '/')
-      + strings.dasherize(options.name)
-      + '.component';
+    const componentPath =
+      `/${options.path}/` +
+      (options.flat ? '' : strings.dasherize(options.name) + '/') +
+      strings.dasherize(options.name) +
+      '.component';
     const relativePath = buildRelativePath(modulePath, componentPath);
     const classifiedName = strings.classify(`${options.name}Component`);
 
@@ -77,7 +78,8 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
       source as any,
       modulePath,
       classifiedName,
-      relativePath);
+      relativePath
+    );
 
     const declarationRecorder = host.beginUpdate(modulePath);
     for (const change of declarationChanges) {
@@ -98,7 +100,8 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
         source as any,
         modulePath,
         strings.classify(`${options.name}Component`),
-        relativePath);
+        relativePath
+      );
 
       for (const change of exportChanges) {
         if (change instanceof InsertChange) {
@@ -119,7 +122,8 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
         source as any,
         modulePath,
         strings.classify(`${options.name}Component`),
-        relativePath);
+        relativePath
+      );
 
       for (const change of entryComponentChanges) {
         if (change instanceof InsertChange) {
@@ -129,11 +133,9 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
       host.commitUpdate(entryComponentRecorder);
     }
 
-
     return host;
   };
 }
-
 
 function buildSelector(options: ComponentOptions, projectPrefix: string) {
   let selector = strings.dasherize(options.name);
@@ -165,21 +167,22 @@ function indentTextContent(text: string, numSpaces: number): string {
  * This allows inlining the external template or stylesheet files in EJS without having
  * to manually duplicate the file content.
  */
-export function buildComponent(options: ComponentOptions,
-                               additionalFiles: {[key: string]: string} = {}): Rule {
-
+export function buildComponent(
+  options: ComponentOptions | any,
+  additionalFiles: { [key: string]: string } = {}
+): Rule {
   return (host: Tree, context: FileSystemSchematicContext) => {
     const workspace = getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
-    const defaultComponentOptions = getDefaultComponentOptions(project);
+    const defaultComponentOptions: any = getDefaultComponentOptions(project);
 
     // TODO(devversion): Remove if we drop support for older CLI versions.
     // This handles an unreported breaking change from the @angular-devkit/schematics. Previously
     // the description path resolved to the factory file, but starting from 6.2.0, it resolves
     // to the factory directory.
-    const schematicPath = statSync(context.schematic.description.path).isDirectory() ?
-        context.schematic.description.path :
-        dirname(context.schematic.description.path);
+    const schematicPath = statSync(context.schematic.description.path).isDirectory()
+      ? context.schematic.description.path
+      : dirname(context.schematic.description.path);
 
     const schematicFilesUrl = './files';
     const schematicFilesPath = resolve(schematicPath, schematicFilesUrl);
@@ -188,7 +191,7 @@ export function buildComponent(options: ComponentOptions,
     // specified but a default component option is available.
     Object.keys(options)
       .filter(optionName => options[optionName] == null && defaultComponentOptions[optionName])
-      .forEach(optionName => options[optionName] = defaultComponentOptions[optionName]);
+      .forEach(optionName => (options[optionName] = defaultComponentOptions[optionName]));
 
     if (options.path === undefined) {
       // TODO(jelbourn): figure out if the need for this `as any` is a bug due to two different
@@ -220,15 +223,15 @@ export function buildComponent(options: ComponentOptions,
     // Object that will be used as context for the EJS templates.
     const baseTemplateContext = {
       ...strings,
-      'if-flat': (s: string) => options.flat ? '' : s,
+      'if-flat': (s: string) => (options.flat ? '' : s),
       ...options,
     };
 
     // Key-value object that includes the specified additional files with their loaded content.
     // The resolved contents can be used inside EJS templates.
-    const resolvedFiles = {};
+    const resolvedFiles: any = {};
 
-    for (let key in additionalFiles) {
+    for (const key in additionalFiles) {
       if (additionalFiles[key]) {
         const fileContent = readFileSync(join(schematicFilesPath, additionalFiles[key]), 'utf-8');
 
@@ -243,17 +246,14 @@ export function buildComponent(options: ComponentOptions,
       options.inlineTemplate ? filter(path => !path.endsWith('.html.template')) : noop(),
       // Treat the template options as any, because the type definition for the template options
       // is made unnecessarily explicit. Every type of object can be used in the EJS template.
-      applyTemplates({indentTextContent, resolvedFiles, ...baseTemplateContext} as any),
+      applyTemplates({ indentTextContent, resolvedFiles, ...baseTemplateContext } as any),
       // TODO(devversion): figure out why we cannot just remove the first parameter
       // See for example: angular-cli#schematics/angular/component/index.ts#L160
       move(null as any, parsedPath.path),
     ]);
 
     return chain([
-      branchAndMerge(chain([
-        addDeclarationToNgModule(options),
-        mergeWith(templateSource),
-      ])),
+      branchAndMerge(chain([addDeclarationToNgModule(options), mergeWith(templateSource)])),
     ])(host, context);
   };
 }
