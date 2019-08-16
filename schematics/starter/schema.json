@@ -47,6 +47,12 @@
       "default": true,
       "description": "Add dynamic form.",
       "x-prompt": "Add dynamic form (ngx-formly)?"
+    },
+    "i18n": {
+      "type": "boolean",
+      "default": true,
+      "description": "Add i18n.",
+      "x-prompt": "Add i18n translator (ngx-translate)?"
     }
   },
   "required": []

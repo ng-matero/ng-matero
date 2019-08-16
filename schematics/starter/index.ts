@@ -1,11 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
 import { strings, normalize, experimental } from '@angular-devkit/core';
 import {
   chain,
@@ -22,20 +14,20 @@ import chalk from 'chalk';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { Schema } from './schema';
-import { addFontsToIndex } from './fonts/material-fonts';
-import { addHammerJsToMain } from './gestures/hammerjs-import';
+import { addHammerJsToMain } from './hammerjs-import';
+import { addFontsToIndex } from './material-fonts';
+import { addLoaderToIndex } from './global-loader';
 import {
-  getPackageVersionFromPackageJson,
-  addPackageToPackageJson,
+  addScriptToPackageJson,
   getProjectFromWorkspace,
   getProjectMainFile,
   hasNgModuleImport,
   addModuleImportToRootModule,
-  requiredAngularVersionRange,
-  materialVersion,
-  hammerjsVersion,
+  addPackage,
 } from '../utils';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+
+const VERSION = require('../package.json').version;
 
 const { red, bold, italic } = chalk;
 
@@ -49,19 +41,24 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Packages to package.json
+ *  - Add Scripts to package.json
+ *  - Add Hmr to angular.json
  *  - Add Hammer.js
  *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to index.html
+ *  - Add Preloader to index.html
  */
 export default function(options: Schema): Rule {
   return chain([
     deleteExsitingFiles(),
     addStarterFiles(options),
-    updatePackageJson(options),
-    // updateAngularJson(options),
+    addPackagesToPackageJson(options),
+    addScriptsToPackageJson(),
+    addHmrToAngularJson(),
     options && options.gestures ? addHammerJsToMain(options) : noop(),
     addAnimationsModule(options),
     addFontsToIndex(options),
+    addLoaderToIndex(options),
     installPackages(),
   ]);
 }
@@ -121,6 +118,7 @@ function deleteExsitingFiles() {
 
     [
       `${project.root}/README.md`,
+      `${project.root}/tsconfig.json`,
       `${project.sourceRoot}/app/app-routing.module.ts`,
       `${project.sourceRoot}/app/app.module.ts`,
       `${project.sourceRoot}/app/app.component.spec.ts`,
@@ -129,7 +127,6 @@ function deleteExsitingFiles() {
       `${project.sourceRoot}/app/app.component.scss`,
       `${project.sourceRoot}/environments/environment.prod.ts`,
       `${project.sourceRoot}/environments/environment.ts`,
-      // `${project.sourceRoot}/index.html`,
       `${project.sourceRoot}/main.ts`,
       `${project.sourceRoot}/styles.scss`,
     ]
@@ -138,64 +135,85 @@ function deleteExsitingFiles() {
   };
 }
 
-// Update package.json
-function updatePackageJson(options: Schema) {
+/** Add dependencies to package.json */
+function addPackagesToPackageJson(options: Schema) {
   return (host: Tree) => {
-    // Version tag of the `@angular/core` dependency that has been loaded from the `package.json`
-    // of the CLI project. This tag should be preferred because all Angular dependencies should
-    // have the same version tag if possible.
-    const ngCoreVersionTag = getPackageVersionFromPackageJson(host, '@angular/core');
-    const angularDependencyVersion = ngCoreVersionTag || requiredAngularVersionRange;
-
+    // TODO:
+    addPackage(host, `ng-matero@~${VERSION}`);
     // In order to align the Material and CDK version with the other Angular dependencies,
     // we use tilde instead of caret. This is default for Angular dependencies in new CLI projects.
-    addPackageToPackageJson(host, '@angular/cdk', `~${materialVersion}`);
-    addPackageToPackageJson(host, '@angular/material', `~${materialVersion}`);
-    addPackageToPackageJson(host, '@angular/forms', angularDependencyVersion);
-    addPackageToPackageJson(host, '@angular/animations', angularDependencyVersion);
+    addPackage(host, '@angular/cdk@0.0.0-PLACEHOLDER');
+    addPackage(host, '@angular/material@0.0.0-PLACEHOLDER');
+    addPackage(host, '@angular/flex-layout@0.0.0-PLACEHOLDER');
 
     if (options.gestures) {
-      addPackageToPackageJson(host, 'hammerjs', hammerjsVersion);
+      addPackage(host, 'hammerjs@0.0.0-PLACEHOLDER');
     }
 
-    addPackageToPackageJson(host, '@angular/flex-layout', '~8.0.0-beta.26');
-    addPackageToPackageJson(host, 'ng-matero', '0.1.0');
-
     // 3rd lib
-    addPackageToPackageJson(host, '@ngx-formly/core', '~5.0.0');
-    addPackageToPackageJson(host, '@ngx-formly/material', '~5.0.0');
-    addPackageToPackageJson(host, '@ngx-progressbar/core', '~5.3.2');
-    addPackageToPackageJson(host, '@ngx-progressbar/router', '~5.3.2');
-    addPackageToPackageJson(host, '@ngx-translate/core', '~11.0.1');
-    addPackageToPackageJson(host, '@ngx-translate/http-loader', '~4.0.0');
-    addPackageToPackageJson(host, '@ng-select/ng-select', '~2.20.3');
-    addPackageToPackageJson(host, 'ngx-toastr', '~10.0.4');
-    addPackageToPackageJson(host, 'screenfull', '~4.2.1');
+    addPackage(host, '@ngx-formly/core@0.0.0-PLACEHOLDER');
+    addPackage(host, '@ngx-formly/material@0.0.0-PLACEHOLDER');
+    addPackage(host, '@ngx-progressbar/core@0.0.0-PLACEHOLDER');
+    addPackage(host, '@ngx-progressbar/router@0.0.0-PLACEHOLDER');
+    addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
+    addPackage(host, '@ngx-translate/http-loader@0.0.0-PLACEHOLDER');
+    addPackage(host, '@ng-select/ng-select@0.0.0-PLACEHOLDER');
+    addPackage(host, 'ngx-toastr@0.0.0-PLACEHOLDER');
+    addPackage(host, 'screenfull@0.0.0-PLACEHOLDER');
 
     // Dev
-    addPackageToPackageJson(host, '@angularclass/hmr', '~2.1.3', 'devDependencies');
-    addPackageToPackageJson(host, 'husky', '~3.0.1', 'devDependencies');
-    addPackageToPackageJson(host, 'prettier', '~1.18.2', 'devDependencies');
-    addPackageToPackageJson(host, 'prettier-stylelint', '~0.4.2', 'devDependencies');
-    addPackageToPackageJson(host, 'stylelint', '~10.1.0', 'devDependencies');
-    addPackageToPackageJson(host, 'stylelint-config-recommended-scss', '~3.3.0', 'devDependencies');
-    addPackageToPackageJson(host, 'stylelint-config-standard', '~18.3.0', 'devDependencies');
-    addPackageToPackageJson(host, 'stylelint-scss', '~3.9.2', 'devDependencies');
+    addPackage(host, '@angularclass/hmr@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'husky@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'prettier-stylelint@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'stylelint-config-recommended-scss@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'stylelint-config-standard@0.0.0-PLACEHOLDER', 'dev');
+    addPackage(host, 'stylelint-scss@0.0.0-PLACEHOLDER', 'dev');
   };
 }
 
-// Update angular.json
-// function updateAngularJson(options: Schema) {
-//   return (host: Tree) => {};
-// }
-
-function updateIndexHtml() {
+/** Add scripts to package.json */
+function addScriptsToPackageJson() {
   return (host: Tree) => {
-    return host;
+    addScriptToPackageJson(host, 'build:prod', 'ng build --prod --build-optimizer');
+    addScriptToPackageJson(
+      host,
+      'lint:ts',
+      `tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'`
+    );
+    addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss 'src/**/*.scss' --fix'`);
+    addScriptToPackageJson(host, 'hmr', `ng serve -c=hmr --disable-host-check`);
   };
 }
 
-// Add starter files to root
+/** Add hmr to angular.json */
+function addHmrToAngularJson() {
+  return (host: Tree) => {
+    const workspace = getWorkspace(host);
+    const ngJson = Object.assign(workspace);
+    const project = ngJson.projects[ngJson.defaultProject];
+
+    // build
+    project.architect.build.configurations.hmr = {
+      fileReplacements: [
+        {
+          replace: `${project.sourceRoot}/environments/environment.ts`,
+          with: `${project.sourceRoot}/environments/environment.hmr.ts`,
+        },
+      ],
+    };
+    // serve
+    project.architect.serve.configurations.hmr = {
+      browserTarget: `${workspace.defaultProject}:build:hmr`,
+      hmr: true,
+    };
+
+    host.overwrite('angular.json', JSON.stringify(ngJson, null, 2));
+  };
+}
+
+/** Add starter files to root */
 function addStarterFiles(options: Schema) {
   return chain([
     mergeWith(
@@ -209,6 +227,7 @@ function addStarterFiles(options: Schema) {
   ]);
 }
 
+/** Install packages */
 function installPackages() {
   return (host: Tree, context: SchematicContext) => {
     context.addTask(new NodePackageInstallTask());

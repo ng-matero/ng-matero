@@ -8,9 +8,9 @@
 
 import { Tree } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
-import { appendHtmlElementToHead, getProjectFromWorkspace } from '../../utils';
-import { Schema } from '../schema';
-import { getIndexHtmlPath } from './project-index-html';
+import { appendHtmlElementToHead, getProjectFromWorkspace } from '../utils';
+import { Schema } from './schema';
+import { getIndexHtmlPath } from '../utils/project-index-html';
 
 /** Adds the Material Design fonts to the index HTML file. */
 export function addFontsToIndex(options: Schema): (host: Tree) => Tree {

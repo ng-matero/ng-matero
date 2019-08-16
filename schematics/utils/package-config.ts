@@ -18,6 +18,16 @@ function sortObjectByKeys(obj: any) {
     .reduce((result: any, key: string) => (result[key] = obj[key]) && result, {});
 }
 
+/** The shortcut of `addPackageToPackageJson` */
+export function addPackage(host: Tree, pkgverion: string, type = '') {
+  const pos = pkgverion.lastIndexOf('@');
+  const pkg = pkgverion.substring(0, pos);
+  const verstion = pkgverion.substring(pos + 1);
+  type === 'dev'
+    ? addPackageToPackageJson(host, pkg, verstion, 'devDependencies')
+    : addPackageToPackageJson(host, pkg, verstion);
+}
+
 /** Adds a package to the package.json in the given host tree. */
 export function addPackageToPackageJson(
   host: Tree,
@@ -57,4 +67,24 @@ export function getPackageVersionFromPackageJson(tree: Tree, name: string): stri
   }
 
   return null;
+}
+
+/** Adds scripts to the package.json */
+export function addScriptToPackageJson(host: Tree, name: string, value: string): Tree {
+  if (host.exists('package.json')) {
+    const sourceText = host.read('package.json')!.toString('utf-8');
+    const json = JSON.parse(sourceText);
+
+    if (!json.scripts) {
+      json.scripts = {};
+    }
+
+    if (!json.scripts[name]) {
+      json.scripts[name] = value;
+    }
+
+    host.overwrite('package.json', JSON.stringify(json, null, 2));
+  }
+
+  return host;
 }
