@@ -4,7 +4,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 @Component({
   selector: 'app-user',
   template: `
-    <a class="matero-user" href="javascript:void(0)" [matMenuTriggerFor]="menu">
+    <a mat-button href="javascript:void(0)" [matMenuTriggerFor]="menu">
       <img class="r-full align-middle" src="assets/images/avatar.jpg" width="24" alt="" />
       <span class="m-l-8 align-middle">Zongbin</span>
     </a>
