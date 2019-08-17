@@ -53,6 +53,8 @@ function copySrcApp(cb) {
     '!src/app/routes/**/*',
     '!src/app/shared/shared.module.ts',
     '!src/app/theme/admin-layout/*.html',
+    '!src/app/theme/admin-layout/customizer/*',
+    '!src/app/theme/theme.module.ts',
     '!src/app/app.module.ts',
   ]).pipe(dest(`${DEST_FILES}/src/app`));
 }

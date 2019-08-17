@@ -10,6 +10,9 @@ export interface Schema {
   /** Name of the project. */
   project: string;
 
+  /** Which admin layout should be set up. */
+  layout: string;
+
   /** Whether gesture support should be set up. */
   gestures: boolean;
 

@@ -41,18 +41,6 @@
       "default": true,
       "description": "Whether Angular browser animations should be set up.",
       "x-prompt": "Set up browser animations for Angular Material?"
-    },
-    "form": {
-      "type": "boolean",
-      "default": true,
-      "description": "Add dynamic form.",
-      "x-prompt": "Add dynamic form (ngx-formly)?"
-    },
-    "i18n": {
-      "type": "boolean",
-      "default": true,
-      "description": "Add i18n.",
-      "x-prompt": "Add i18n translator (ngx-translate)?"
     }
   },
   "required": []

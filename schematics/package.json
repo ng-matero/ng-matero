@@ -4,6 +4,9 @@
   "scripts": {
     "build": "../node_modules/.bin/tsc -p tsconfig.json"
   },
+  "dependencies": {
+    "parse5": "^5.0.0"
+  },
   "peerDependencies": {
     "@angular/common": "~8.0.3",
     "@angular/core": "~8.0.3"
