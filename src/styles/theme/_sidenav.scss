@@ -43,24 +43,11 @@
 
     .menu-label,
     .menu-badge {
-      display: inline-block;
-      min-width: 18px;
-      padding: 3px 5px;
-      font-size: 75%;
-      font-weight: 700;
-      line-height: 1;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: baseline;
-      color: #fff;
-    }
-
-    .menu-label {
-      border-radius: 2px;
+      @include badge();
     }
 
     .menu-badge {
-      border-radius: 16px;
+      border-radius: 10px;
     }
 
     .menu-caret {

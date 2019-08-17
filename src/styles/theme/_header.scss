@@ -15,14 +15,10 @@
   @include mat-elevation(2);
 
   .badge {
-    display: inline-block;
     position: absolute;
     top: 0;
     left: 50%;
-    min-width: 20px;
-    height: 20px;
     font-size: 12px;
-    line-height: 1.2;
     border-radius: 10px;
   }
 }

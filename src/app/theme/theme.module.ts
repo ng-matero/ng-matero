@@ -8,13 +8,14 @@ import { AccordionAnchorDirective } from './admin-layout/sidemenu/accordionancho
 import { AccordionDirective } from './admin-layout/sidemenu/accordion.directive';
 import { AccordionLinkDirective } from './admin-layout/sidemenu/accordionlink.directive';
 import { HeaderComponent } from './admin-layout/header/header.component';
-import { NotificationComponent } from './admin-layout/header/notification/notification.component';
+import { NotificationComponent } from './admin-layout/header/notification.component';
+import { UserComponent } from './admin-layout/header/user.component';
+import { BrandingComponent } from './admin-layout/header/branding.component';
 import { CustomizerComponent } from './admin-layout/customizer/customizer.component';
-import { UserComponent } from './admin-layout/header/user/user.component';
 import { UserPanelComponent } from './admin-layout/sidebar/user-panel/user-panel.component';
 import { TopmenuComponent } from './admin-layout/topmenu/topmenu.component';
-import { BrandingComponent } from './admin-layout/header/branding/branding.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import { SidebarRightComponent } from './admin-layout/sidebar-right/sidebar-right.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
     AccordionLinkDirective,
     HeaderComponent,
     NotificationComponent,
-    CustomizerComponent,
     UserComponent,
+    BrandingComponent,
+    CustomizerComponent,
     UserPanelComponent,
     TopmenuComponent,
-    BrandingComponent,
     AuthLayoutComponent,
+    SidebarRightComponent,
   ],
   imports: [SharedModule],
 })

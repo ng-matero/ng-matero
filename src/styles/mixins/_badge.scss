@@ -1,17 +1,14 @@
-// ==================================================
-// BADGE
-// ==================================================
-
-.badge {
+// Basic badge style
+@mixin badge() {
   display: inline-block;
   min-width: 18px;
-  padding: .25em .4em;
+  padding: 3px 5px;
   font-size: 75%;
   font-weight: 700;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25em;
   color: #fff;
+  border-radius: 2px;
 }

@@ -1,14 +1,10 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ChangeDetectorRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SettingsService } from '@core';
+
+const MAX_WIDTH = '960px';
 
 @Component({
   selector: 'app-admin-layout',
@@ -34,12 +30,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     private media: MediaMatcher,
     private settings: SettingsService
   ) {
-    this.mobileQuery = this.media.matchMedia('(max-width: 960px)');
+    this.mobileQuery = this.media.matchMedia(`(max-width: ${MAX_WIDTH})`);
     this.mobileQueryListener = () => this.cdr.detectChanges();
-    // tslint:disable-next-line: deprecation
-    this.mobileQuery.addListener(this.mobileQueryListener);
+    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
 
-    // TODO: scroll top to container
+    // TODO: Scroll top to container
     this.router.events.subscribe(evt => {
       if (evt instanceof NavigationEnd) {
         this.content.scrollTo({ top: 0 });
@@ -50,14 +45,13 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   ngOnDestroy() {
-    // tslint:disable-next-line: deprecation
-    this.mobileQuery.removeListener(this.mobileQueryListener);
+    this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
   }
 
   toggleCollapsed() {
     this.sidenavCollapsed = !this.sidenavCollapsed;
 
-    // TODO: trigger when animation end
+    // TODO: Trigger when animation end
     setTimeout(() => {
       this.settings.setNavState('collapsed', this.sidenavCollapsed);
     }, 400);
@@ -67,7 +61,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.options = options;
   }
 
-  openedChang(e: boolean) {
+  openedChange(e: boolean) {
     this.settings.setNavState('opened', e);
   }
 }
