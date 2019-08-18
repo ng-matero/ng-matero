@@ -24,7 +24,7 @@ import { Schema } from './schema';
 import { addHammerJsToMain } from './hammerjs-import';
 import { addFontsToIndex } from './material-fonts';
 import { addLoaderToIndex } from './global-loader';
-import { addScriptToPackageJson } from '../utils';
+import { addScriptToPackageJson } from './package-config';
 import { addPackagesToPackageJson } from './packages';
 
 const { red, bold, italic } = chalk;

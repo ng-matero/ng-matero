@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "id": "ng-matero-ng-add",
-  "title": "Angular Matero ng-add schematic",
+  "title": "Ng-Matero ng-add schematic",
   "type": "object",
   "properties": {
     "project": {

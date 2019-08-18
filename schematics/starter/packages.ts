@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { addPackage } from '../utils';
+import { addPackage } from './package-config';
 import { Schema } from './schema';
 
 const VERSION = require('../package.json').version;
