@@ -6,6 +6,10 @@
   display: block;
   position: relative;
   z-index: 9;
+
+  .matero-toolbar {
+    padding: 0;
+  }
 }
 
 .matero-toolbar {
@@ -20,6 +24,17 @@
     left: 50%;
     font-size: 12px;
     border-radius: 10px;
+  }
+}
+
+.matero-hamburger.mat-button {
+  height: 100%;
+  padding: 0;
+}
+
+@include bp-lt(tiny) {
+  .matero-hamburger.mat-button {
+    min-width: 15%;
   }
 }
 
