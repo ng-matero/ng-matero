@@ -3,13 +3,14 @@
   "schematics": {
     "ng-add": {
       "description": "Add ng-matero to the project.",
-      "factory": "./ng-add/index"
+      "factory": "./ng-add/index",
+      "schema": "./ng-add/schema.json"
     },
     "ng-add-setup-project": {
       "description": "Sets up the specified project after the ng-add dependencies have been installed.",
       "private": true,
       "factory": "./starter/index",
-      "schema": "./starter/schema.json"
+      "schema": "./ng-add/schema.json"
     }
   }
 }

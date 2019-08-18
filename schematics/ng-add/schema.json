@@ -11,22 +11,38 @@
         "$source": "projectName"
       }
     },
-    "layout": {
+    "nav": {
       "description": "The layout to apply",
       "type": "string",
-      "default": "1",
+      "default": "side",
       "x-prompt": {
         "message": "Choose a prebuilt admin layout:",
         "type": "list",
         "items": [{
-          "value": "1",
+          "value": "side",
           "label": "Side Navigation"
         }, {
-          "value": "2",
+          "value": "top",
           "label": "Top Navigation"
         }, {
-          "value": "3",
+          "value": "both",
           "label": "Both"
+        }]
+      }
+    },
+    "dir": {
+      "description": "The dir to apply",
+      "type": "string",
+      "default": "ltr",
+      "x-prompt": {
+        "message": "Choose a prebuilt dir option:",
+        "type": "list",
+        "items": [{
+          "value": "ltr",
+          "label": "LTR"
+        }, {
+          "value": "rtl",
+          "label": "RTL"
         }]
       }
     },

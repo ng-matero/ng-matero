@@ -1,4 +1,4 @@
-<% if(layout==='1') { %><div class="matero-container-wrap" [ngClass]="{'matero-sidenav-collapsed': sidenavCollapsed}">
+<% if(nav==='side') { %><div class="matero-container-wrap" dir="<%= dir %>" [ngClass]="{'matero-sidenav-collapsed': sidenavCollapsed}">
   <ng-progress></ng-progress>
 
   <mat-sidenav-container class="matero-container" autosize autoFocus>
@@ -22,7 +22,7 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div><% } %>
-<% if(layout==='2') { %><div class="matero-container-wrap matero-header-fixed">
+<% if(nav==='top') { %><div class="matero-container-wrap matero-header-fixed" dir="<%= dir %>">
   <ng-progress></ng-progress>
 
   <mat-sidenav-container class="matero-container" autosize autoFocus>
@@ -43,7 +43,7 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div><% } %>
-<% if(layout==='3') { %><div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{
+<% if(nav==='both') { %><div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{
   'matero-sidenav-collapsed': sidenavCollapsed && options.navPos!=='top',
   'matero-header-above': options.headerPos==='above',
   'matero-header-fixed': options.headerPos==='fixed',

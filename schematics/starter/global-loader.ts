@@ -1,16 +1,8 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
 import { Tree } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
-import { appendHtmlElementToHead, getProjectFromWorkspace, appendHtmlElement } from '../utils';
+import { getProjectFromWorkspace } from '@angular/cdk/schematics';
 import { Schema } from './schema';
-import { getIndexHtmlPath } from '../utils/project-index-html';
+import { getIndexHtmlPath, appendHtmlElement } from '../utils';
 
 /** Adds the Material Design fonts to the index HTML file. */
 export function addLoaderToIndex(options: Schema): (host: Tree) => Tree {

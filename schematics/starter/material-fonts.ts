@@ -8,7 +8,7 @@
 
 import { Tree } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
-import { appendHtmlElementToHead, getProjectFromWorkspace } from '../utils';
+import { appendHtmlElementToHead, getProjectFromWorkspace } from '@angular/cdk/schematics';
 import { Schema } from './schema';
 import { getIndexHtmlPath } from '../utils/project-index-html';
 

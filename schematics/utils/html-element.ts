@@ -1,5 +1,5 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { getChildElementIndentation } from './parse5-element';
+import { getChildElementIndentation } from '@angular/cdk/schematics';
 import { DefaultTreeDocument, DefaultTreeElement, parse as parseHtml } from 'parse5';
 
 /** Appends the given element HTML fragment to the `<head>` element of the specified HTML file. */

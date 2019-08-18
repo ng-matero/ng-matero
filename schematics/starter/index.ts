@@ -10,24 +10,22 @@ import {
   template,
   SchematicContext,
 } from '@angular-devkit/schematics';
-import chalk from 'chalk';
+import {
+  addModuleImportToRootModule,
+  getProjectFromWorkspace,
+  getProjectMainFile,
+  hasNgModuleImport,
+} from '@angular/cdk/schematics';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
+import chalk from 'chalk';
 import { Schema } from './schema';
 import { addHammerJsToMain } from './hammerjs-import';
 import { addFontsToIndex } from './material-fonts';
 import { addLoaderToIndex } from './global-loader';
-import {
-  addScriptToPackageJson,
-  getProjectFromWorkspace,
-  getProjectMainFile,
-  hasNgModuleImport,
-  addModuleImportToRootModule,
-  addPackage,
-} from '../utils';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-
-const VERSION = require('../package.json').version;
+import { addScriptToPackageJson } from '../utils';
+import { addPackagesToPackageJson } from './packages';
 
 const { red, bold, italic } = chalk;
 
@@ -40,26 +38,25 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
 /**
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
- *  - Add Packages to package.json
  *  - Add Scripts to package.json
  *  - Add Hmr to angular.json
  *  - Add Hammer.js
  *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to index.html
  *  - Add Preloader to index.html
+ *  - Add Packages to package.json
  */
 export default function(options: Schema): Rule {
   return chain([
     deleteExsitingFiles(),
     addStarterFiles(options),
-    addPackagesToPackageJson(options),
     addScriptsToPackageJson(),
     addHmrToAngularJson(),
     options && options.gestures ? addHammerJsToMain(options) : noop(),
     addAnimationsModule(options),
     addFontsToIndex(options),
     addLoaderToIndex(options),
-    installPackages(),
+    installPackages(options),
   ]);
 }
 
@@ -127,49 +124,10 @@ function deleteExsitingFiles() {
       `${project.sourceRoot}/app/app.component.scss`,
       `${project.sourceRoot}/environments/environment.prod.ts`,
       `${project.sourceRoot}/environments/environment.ts`,
-      `${project.sourceRoot}/main.ts`,
       `${project.sourceRoot}/styles.scss`,
     ]
       .filter(p => host.exists(p))
       .forEach(p => host.delete(p));
-  };
-}
-
-/** Add dependencies to package.json */
-function addPackagesToPackageJson(options: Schema) {
-  return (host: Tree) => {
-    // TODO:
-    addPackage(host, `ng-matero@~${VERSION}`);
-    // In order to align the Material and CDK version with the other Angular dependencies,
-    // we use tilde instead of caret. This is default for Angular dependencies in new CLI projects.
-    addPackage(host, '@angular/cdk@0.0.0-PLACEHOLDER');
-    addPackage(host, '@angular/material@0.0.0-PLACEHOLDER');
-    addPackage(host, '@angular/flex-layout@0.0.0-PLACEHOLDER');
-
-    if (options.gestures) {
-      addPackage(host, 'hammerjs@0.0.0-PLACEHOLDER');
-    }
-
-    // 3rd lib
-    addPackage(host, '@ngx-formly/core@0.0.0-PLACEHOLDER');
-    addPackage(host, '@ngx-formly/material@0.0.0-PLACEHOLDER');
-    addPackage(host, '@ngx-progressbar/core@0.0.0-PLACEHOLDER');
-    addPackage(host, '@ngx-progressbar/router@0.0.0-PLACEHOLDER');
-    addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
-    addPackage(host, '@ngx-translate/http-loader@0.0.0-PLACEHOLDER');
-    addPackage(host, '@ng-select/ng-select@0.0.0-PLACEHOLDER');
-    addPackage(host, 'ngx-toastr@0.0.0-PLACEHOLDER');
-    addPackage(host, 'screenfull@0.0.0-PLACEHOLDER');
-
-    // Dev
-    addPackage(host, '@angularclass/hmr@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'husky@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'prettier-stylelint@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'stylelint-config-recommended-scss@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'stylelint-config-standard@0.0.0-PLACEHOLDER', 'dev');
-    addPackage(host, 'stylelint-scss@0.0.0-PLACEHOLDER', 'dev');
   };
 }
 
@@ -228,8 +186,11 @@ function addStarterFiles(options: Schema) {
 }
 
 /** Install packages */
-function installPackages() {
+function installPackages(options: Schema) {
   return (host: Tree, context: SchematicContext) => {
+    // Add 3rd packages
+    addPackagesToPackageJson(host, options);
+
     context.addTask(new NodePackageInstallTask());
     return host;
   };

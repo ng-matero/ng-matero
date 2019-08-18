@@ -6,8 +6,10 @@ const del = require('del');
 
 const pkg = require('./package.json');
 
-const DEST = 'dist/schematics/starter';
-const DEST_FILES = DEST + '/files';
+const DEST = 'dist/schematics';
+const NG_ADD = DEST + '/ng-add';
+const STARTER = DEST + '/starter';
+const FILES = DEST + '/starter/files';
 
 // root
 function copyRoot(cb) {
@@ -18,31 +20,27 @@ function copyRoot(cb) {
     'LICENSE',
     'README.md',
     'tsconfig.json',
-  ]).pipe(dest(`${DEST_FILES}/`));
+  ]).pipe(dest(`${FILES}/`));
 }
 
 // src/
 function copySrcRoot(cb) {
-  return src(['src/hmr.ts', 'src/main.ts', 'src/styles.scss', 'src/typings.d.ts']).pipe(
-    dest(`${DEST_FILES}/src`)
-  );
+  return src(['src/hmr.ts', 'src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
 }
 
 // src/assets
 function copyAssets(cb) {
-  return src(['src/assets/**/*', '!src/assets/data/menu.json']).pipe(
-    dest(`${DEST_FILES}/src/assets`)
-  );
+  return src(['src/assets/**/*', '!src/assets/data/menu.json']).pipe(dest(`${FILES}/src/assets`));
 }
 
 // src/styles
 function copyStyles(cb) {
-  return src(['src/styles/**/*', '!src/styles/app.scss']).pipe(dest(`${DEST_FILES}/src/styles`));
+  return src(['src/styles/**/*', '!src/styles/app.scss']).pipe(dest(`${FILES}/src/styles`));
 }
 
 // src/environments
 function copyEnvironments(cb) {
-  return src(['src/environments/*']).pipe(dest(`${DEST_FILES}/src/environments`));
+  return src(['src/environments/*']).pipe(dest(`${FILES}/src/environments`));
 }
 
 // src/app/
@@ -56,24 +54,24 @@ function copySrcApp(cb) {
     '!src/app/theme/admin-layout/customizer/*',
     '!src/app/theme/theme.module.ts',
     '!src/app/app.module.ts',
-  ]).pipe(dest(`${DEST_FILES}/src/app`));
+  ]).pipe(dest(`${FILES}/src/app`));
 }
 
 // src/app/routes
 function copySrcAppRoutes(cb) {
-  return src(['src/app/routes/sessions/**/*']).pipe(dest(`${DEST_FILES}/src/app/routes/sessions`));
+  return src(['src/app/routes/sessions/**/*']).pipe(dest(`${FILES}/src/app/routes/sessions`));
 }
 
 // Replace version placeholder
-function replaceVersion(cb) {
-  return src([`${DEST}/index.js`, `${DEST}/index.ts`])
+function updateVersions(cb) {
+  return src([`${STARTER}/packages.js`, `${STARTER}/packages.ts`])
     .pipe(
       each(function(content, file, callback) {
         [
           '@angular/cdk',
           '@angular/material',
-          '@angular/flex-layout',
           'hammerjs',
+          '@angular/flex-layout',
           '@ngx-formly/core',
           '@ngx-formly/material',
           '@ngx-progressbar/core',
@@ -103,7 +101,7 @@ function replaceVersion(cb) {
         callback(null, content);
       })
     )
-    .pipe(dest(DEST));
+    .pipe(dest(STARTER));
 }
 
 exports.default = series(
@@ -114,5 +112,5 @@ exports.default = series(
   copyEnvironments,
   copySrcApp,
   copySrcAppRoutes,
-  replaceVersion
+  updateVersions
 );

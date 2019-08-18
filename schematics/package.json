@@ -1,15 +1,26 @@
 {
   "name": "ng-matero",
   "version": "0.1.0",
+  "description": "Angular Material Admin Dashboard",
+  "author": "nzbin<nzb329@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ng-matero/ng-matero.git"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "material design",
+    "admin dashboard",
+    "ng-matero"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ng-matero/ng-matero/issues"
+  },
+  "homepage": "https://github.com/ng-matero/ng-matero#readme",
   "scripts": {
     "build": "../node_modules/.bin/tsc -p tsconfig.json"
-  },
-  "dependencies": {
-    "parse5": "^5.0.0"
-  },
-  "peerDependencies": {
-    "@angular/common": "~8.0.3",
-    "@angular/core": "~8.0.3"
   },
   "schematics": "./collection.json"
 }
