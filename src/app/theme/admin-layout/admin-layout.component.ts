@@ -4,7 +4,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SettingsService } from '@core';
 
-const MAX_WIDTH = '960px';
+const WIDTH_BREAKPOINT = '960px';
 
 @Component({
   selector: 'app-admin-layout',
@@ -30,9 +30,13 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     private media: MediaMatcher,
     private settings: SettingsService
   ) {
-    this.mobileQuery = this.media.matchMedia(`(max-width: ${MAX_WIDTH})`);
+    this.mobileQuery = this.media.matchMedia(`(max-width: ${WIDTH_BREAKPOINT})`);
     this.mobileQueryListener = () => this.cdr.detectChanges();
-    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    // Safari & IE don't support `addEventListener`
+    // this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+
+    // tslint:disable-next-line: deprecation
+    this.mobileQuery.addListener(this.mobileQueryListener);
 
     // TODO: Scroll top to container
     this.router.events.subscribe(evt => {
@@ -45,7 +49,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   ngOnDestroy() {
-    this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+    // Safari & IE don't support `removeEventListener`
+    // this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+
+    // tslint:disable-next-line: deprecation
+    this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
   toggleCollapsed() {
