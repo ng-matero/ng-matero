@@ -17,7 +17,8 @@
     "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'",
     "lint:scss": "stylelint --syntax scss 'src/**/*.scss' --fix",
     "hmr": "ng serve -c=hmr --disable-host-check",
-    "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero"
+    "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero",
+    "publish": "cd dist/schematics && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -82,7 +83,6 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "parse5": "^5.1.0",
-    "path": "^0.12.7",
     "prettier": "1.18.2",
     "prettier-stylelint": "^0.4.2",
     "protractor": "~5.4.0",

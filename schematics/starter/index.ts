@@ -25,7 +25,7 @@ import { addHammerJsToMain } from './hammerjs-import';
 import { addFontsToIndex } from './material-fonts';
 import { addLoaderToIndex } from './global-loader';
 import { addScriptToPackageJson } from './package-config';
-import { addPackagesToPackageJson } from './packages';
+import { add3rdPkgsToPackageJson } from './packages';
 
 const { red, bold, italic } = chalk;
 
@@ -189,7 +189,7 @@ function addStarterFiles(options: Schema) {
 function installPackages(options: Schema) {
   return (host: Tree, context: SchematicContext) => {
     // Add 3rd packages
-    addPackagesToPackageJson(host, options);
+    add3rdPkgsToPackageJson(host, options);
 
     context.addTask(new NodePackageInstallTask());
     return host;

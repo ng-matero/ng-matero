@@ -7,7 +7,6 @@ const del = require('del');
 const pkg = require('./package.json');
 
 const DEST = 'dist/schematics';
-const NG_ADD = DEST + '/ng-add';
 const STARTER = DEST + '/starter';
 const FILES = DEST + '/starter/files';
 
@@ -30,9 +29,12 @@ function copySrcRoot(cb) {
 
 // src/assets
 function copyAssets(cb) {
-  return src(['src/assets/**/*', '!src/assets/data/menu.json', '!src/assets/images/**/*']).pipe(
-    dest(`${FILES}/src/assets`)
-  );
+  return src([
+    'src/assets/**/*',
+    '!src/assets/data/menu.json',
+    '!src/assets/images/avatars/*',
+    '!src/assets/images/pixabay/*',
+  ]).pipe(dest(`${FILES}/src/assets`));
 }
 
 // src/styles
@@ -85,6 +87,7 @@ function updateVersions(cb) {
           'screenfull',
           '@angularclass/hmr',
           'husky',
+          'parse5',
           'prettier',
           'prettier-stylelint',
           'stylelint',

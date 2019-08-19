@@ -5,14 +5,14 @@ import { Schema } from './schema';
 const VERSION = require('../package.json').version;
 
 /** Add dependencies to package.json */
-export function addCdkToPackageJson(host: Tree) {
+export function addKeyPkgsToPackageJson(host: Tree) {
   addPackage(host, '@angular/cdk@0.0.0-PLACEHOLDER');
+  addPackage(host, 'parse5@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, `ng-matero@~${VERSION}`);
 }
 
 /** Add dependencies to package.json */
-export function addPackagesToPackageJson(host: Tree, options: Schema) {
-  // TODO:
+export function add3rdPkgsToPackageJson(host: Tree, options: Schema) {
   addPackage(host, '@angular/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@angular/flex-layout@0.0.0-PLACEHOLDER');
 
