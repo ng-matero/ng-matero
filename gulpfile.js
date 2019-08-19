@@ -30,7 +30,9 @@ function copySrcRoot(cb) {
 
 // src/assets
 function copyAssets(cb) {
-  return src(['src/assets/**/*', '!src/assets/data/menu.json']).pipe(dest(`${FILES}/src/assets`));
+  return src(['src/assets/**/*', '!src/assets/data/menu.json', '!src/assets/images/**/*']).pipe(
+    dest(`${FILES}/src/assets`)
+  );
 }
 
 // src/styles

@@ -1,6 +1,6 @@
 {
   "name": "ng-matero",
-  "version": "0.0.0",
+  "version": "0.0.0-NOT-USED",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

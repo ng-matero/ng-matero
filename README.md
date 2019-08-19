@@ -28,10 +28,18 @@ This Ng-Matero is an Angular admin templete made with Material componnets.
 
 ## 🔧 Installation
 
-The project does not support `ng add` yet. I hope you can use it in the next version. Now you should git clone the repo and use it.
+The project has support `ng add` yet.
 
 ```bash
-$ git clone --depth git@github.com:ng-matero/ng-matero.git
+$ ng new PROJECT_NAME
+$ cd PROJECT_NAME
+$ ng add ng-matero
+```
+
+You can also git clone the starter repo to start. But it's not recommended.
+
+```bash
+$ git clone --depth git@github.com:ng-matero/starter.git
 ```
 
 ## 💻 Development
@@ -47,8 +55,8 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ## 🗺 Road Map
 
+- [X] Schematics Support
 - [ ] Material Extral Components
-- [ ] Schematics Support
 - [ ] VS Code Snippet
 
 ## 📃 License
