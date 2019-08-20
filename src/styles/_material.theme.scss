@@ -15,7 +15,7 @@ $background: mat-color($theme, 'background');
 $foreground: mat-color($theme, 'foreground');
 
 // Dark style
-$dark-primary: mat-palette($mat-blue-grey);
+$dark-primary: mat-palette($mat-purple);
 $dark-accent: mat-palette($mat-amber, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);

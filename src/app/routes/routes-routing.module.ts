@@ -22,44 +22,37 @@ const routes: Routes = [
       },
       {
         path: 'design',
-        loadChildren: () =>
-          import('./design/design.module').then(m => m.DesignModule),
+        loadChildren: () => import('./design/design.module').then(m => m.DesignModule),
         data: { title: 'Material', titleI18n: 'material' },
       },
       {
         path: 'material',
-        loadChildren: () =>
-          import('./material/material.module').then(m => m.MaterialModule),
+        loadChildren: () => import('./material/material.module').then(m => m.MaterialModule),
         data: { title: 'Material', titleI18n: 'material' },
       },
       {
         path: 'gallery',
-        loadChildren: () =>
-          import('./gallery/gallery.module').then(m => m.GalleryModule),
+        loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule),
         data: { title: 'Gallery', titleI18n: 'Gallery' },
       },
       {
         path: 'forms',
-        loadChildren: () =>
-          import('./forms/forms.module').then(m => m.FormsModule),
+        loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule),
         data: { title: 'Forms', titleI18n: 'Forms' },
       },
       {
         path: 'tables',
-        loadChildren: () =>
-          import('./tables/tables.module').then(m => m.TablesModule),
+        loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule),
         data: { title: 'Tables', titleI18n: 'Tables' },
       },
       {
         path: 'profile',
-        loadChildren: () =>
-          import('./profile/profile.module').then(m => m.ProfileModule),
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
         data: { title: 'Profile', titleI18n: 'Profile' },
       },
       {
         path: 'sessions',
-        loadChildren: () =>
-          import('./sessions/sessions.module').then(m => m.SessionsModule),
+        loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
         data: { title: 'Sessions', titleI18n: 'Sessions' },
       },
       {

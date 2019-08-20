@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatPaginator } from '@angular/material';
+import { DataSource } from '@angular/cdk/table';
+import { BehaviorSubject, Observable, merge } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-export interface PeriodicElement {
+export interface UserData {
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  color: string;
+  age: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+const exampleData = [
+  { name: 'Austin', color: 'blue', age: 30 },
+  { name: 'Jeremy', color: 'green', age: 33 },
+  { name: 'Kara', color: 'purple', age: 29 },
+  { name: 'Tina', color: 'yellow', age: 35 },
+  { name: 'Brad', color: 'pink', age: 40 },
+  { name: 'Jules', color: 'red', age: 21 },
 ];
 
 @Component({
@@ -27,25 +25,83 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = [];
-  dataSource = ELEMENT_DATA;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) pager: MatPaginator;
 
-  tables = [0];
+  displayedColumns = ['name', 'color', 'age'];
+  basicDataSource: BasicDataSource;
+  sortDataSource: SortDataSource;
+  paginatedDataSource: PaginatedDataSource;
+
+  ngOnInit(): void {
+    this.basicDataSource = new BasicDataSource();
+    this.sortDataSource = new SortDataSource(this.sort);
+    this.paginatedDataSource = new PaginatedDataSource(this.pager);
+  }
+}
+
+export class BasicDataSource extends DataSource<UserData> {
+  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
 
   constructor() {
-    this.displayedColumns.length = 24;
-    this.displayedColumns.fill('filler');
-
-    // The first two columns should be position and name; the last two columns: weight, symbol
-    this.displayedColumns[0] = 'position';
-    this.displayedColumns[1] = 'name';
-    this.displayedColumns[22] = 'weight';
-    this.displayedColumns[23] = 'symbol';
+    super();
+    this.dataChange.next(exampleData);
   }
-  ngOnInit() {}
 
-  /** Whether the button toggle group contains the id as an active value. */
-  isSticky(buttonToggleGroup: MatButtonToggleGroup, id: string) {
-    return (buttonToggleGroup.value || []).indexOf(id) !== -1;
+  connect(): Observable<UserData[]> {
+    return this.dataChange;
   }
+
+  disconnect() {}
+}
+
+export class SortDataSource extends DataSource<UserData> {
+  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
+
+  constructor(private sort: MatSort) {
+    super();
+    this.dataChange.next(exampleData);
+  }
+
+  connect(): Observable<UserData[]> {
+    const displayDataChanges = [this.dataChange, this.sort.sortChange];
+
+    return merge(...displayDataChanges).pipe(map(() => this.getSortedData()));
+  }
+
+  disconnect() {}
+
+  getSortedData(): UserData[] {
+    const data = [...exampleData];
+    if (!this.sort.active || this.sort.direction === '') {
+      return data;
+    }
+
+    return data.sort((a: UserData, b: UserData) => {
+      return (a.age < b.age ? -1 : 1) * (this.sort.direction === 'asc' ? 1 : -1);
+    });
+  }
+}
+
+export class PaginatedDataSource extends DataSource<UserData> {
+  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
+
+  constructor(private paginator: MatPaginator) {
+    super();
+    this.dataChange.next(exampleData);
+  }
+
+  connect(): Observable<UserData[]> {
+    const displayDataChanges = [this.dataChange, this.paginator.page];
+
+    return merge(...displayDataChanges).pipe(
+      map(() => {
+        const data = [...exampleData];
+        const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+        return data.splice(startIndex, this.paginator.pageSize);
+      })
+    );
+  }
+
+  disconnect() {}
 }

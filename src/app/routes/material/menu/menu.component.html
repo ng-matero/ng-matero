@@ -1,47 +1,55 @@
 <breadcrumb></breadcrumb>
 
-<button mat-button [matMenuTriggerFor]="level1">Animal index</button>
+<div class="demo-menu">
 
-<mat-menu #level1="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="level2" [matMenuTriggerData]="{arr: [1,2,3]}">Vertebrates</button>
-  <button mat-menu-item [matMenuTriggerFor]="level2" [matMenuTriggerData]="{arr: [1,2]}">Invertebrates</button>
-</mat-menu>
+  <section>
+    <h2>Icon Trigger</h2>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item> Settings </button>
+      <button mat-menu-item> Help </button>
+    </mat-menu>
 
-<mat-menu #level2="matMenu">
-  <ng-template matMenuContent let-arr="arr">
-    <button mat-menu-item *ngFor="let item of arr" [matMenuTriggerFor]="level3">{{item}}</button>
-  </ng-template>
-</mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu1" aria-label="Open Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </section>
 
-<mat-menu #level3="matMenu">
-  <button mat-menu-item [routerLink]="['/', 'dashboard']">Insects</button>
-  <button mat-menu-item>Molluscs</button>
-  <button mat-menu-item>Crustaceans</button>
-  <button mat-menu-item>Corals</button>
-  <button mat-menu-item>Arachnids</button>
-  <button mat-menu-item>Velvet worms</button>
-  <button mat-menu-item>Horseshoe crabs</button>
-</mat-menu>
+  <section>
+    <h2>Menu with Icons</h2>
+    <button mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Open Menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
 
-<div>
-  Build this dynamically using json object
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voicemail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </section>
 
-    <pre>
-      {{ '{' }}
-        'main1': ['sub1', 'sub2'],
-        'main2': ['sub1', 'sub2', 'sub3'],
-      {{ '}' }}
-    </pre>
+  <section>
+    <h2>Menu with links</h2>
+    <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Learn more about Angular">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu3="matMenu">
+      <a href="http://angular.io" mat-menu-item>
+        Angular
+      </a>
+      <a href="http://material.angular.io" mat-menu-item>
+        Angular Material
+      </a>
+    </mat-menu>
+  </section>
 
 </div>
-
-<button mat-button [matMenuTriggerFor]="main_menu">My menu</button>
-
-<mat-menu #main_menu="matMenu">
-  <ng-container *ngFor="let mainItem of objectKeys(menu)">
-    <button mat-menu-item [matMenuTriggerFor]="sub_menu">{{ mainItem }}</button>
-    <mat-menu #sub_menu="matMenu">
-      <button *ngFor="let subItem of menu[mainItem]" mat-menu-item>{{ subItem }}</button>
-    </mat-menu>
-  </ng-container>
-</mat-menu>

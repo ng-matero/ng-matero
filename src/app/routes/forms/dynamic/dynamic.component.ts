@@ -25,8 +25,7 @@ export class DynamicComponent implements OnInit {
       type: 'input',
       templateOptions: {
         label: 'Hey!',
-        placeholder:
-          'This one is disabled if there is no text in the other input',
+        placeholder: 'This one is disabled if there is no text in the other input',
       },
       expressionProperties: {
         'templateOptions.disabled': '!model.text',

@@ -2,37 +2,24 @@
 
 <mat-card>
   <mat-card-content>
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-            <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
-            <span>{{state.name}}</span> |
-            <small>Population: {{state.population}}</small>
+    <section>
+      <h2>Filtering and selection</h2>
+      <p>Select your favorite state</p>
+      <mat-form-field>
+        <mat-label>Search for a state</mat-label>
+        <input matInput
+               [matAutocomplete]="autocomplete"
+               [(ngModel)]="value"
+               (ngModelChange)="filteredStates = filter(value)">
+        <mat-autocomplete #autocomplete="matAutocomplete">
+          <mat-option *ngFor="let state of filteredStates" [value]="state.name">
+            <span>{{ state.name }}</span>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
-      <br>
-
-      <mat-slide-toggle [checked]="stateCtrl.disabled"
-        (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
-        Disable Input?
-      </mat-slide-toggle>
-    </form>
-
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-          [matAutocomplete]="auto2">
-        <mat-autocomplete #auto2="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
+      <p>Selected value: {{ value }}</p>
+    </section>
 
   </mat-card-content>
 </mat-card>

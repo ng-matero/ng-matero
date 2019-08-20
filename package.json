@@ -14,7 +14,7 @@
     "copy:schematics": "npm run clean:schematics && cpr schematics dist/schematics",
     "clean:schematics": "rimraf dist/schematics",
     "lint": "npm run lint:ts && npm run lint:style",
-    "lint:ts": "tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'",
+    "lint:ts": "tslint -p tsconfig.app.json -c tslint.json 'src/**/*.ts'",
     "lint:scss": "stylelint --syntax scss 'src/**/*.scss' --fix",
     "hmr": "ng serve -c=hmr --disable-host-check",
     "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero",

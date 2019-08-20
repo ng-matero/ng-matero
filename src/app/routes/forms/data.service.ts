@@ -40,9 +40,7 @@ export class DataService {
   getPeople(term: string = null): Observable<Person[]> {
     let items = getMockPeople();
     if (term) {
-      items = items.filter(
-        x => x.name.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1
-      );
+      items = items.filter(x => x.name.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1);
     }
     return of(items).pipe(delay(500));
   }

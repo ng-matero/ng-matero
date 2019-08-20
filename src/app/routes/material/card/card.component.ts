@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
+  showProgress = false;
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) {}
 
-  ngOnInit() {
+  openSnackbar(message: string) {
+    this.snackBar.open(message, '', { duration: 2000 });
   }
-
 }
