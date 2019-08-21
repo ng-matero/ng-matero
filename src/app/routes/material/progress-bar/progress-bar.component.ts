@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-progress-bar',
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
 })
-export class ProgressBarComponent implements OnInit {
-  color = 'primary';
-  mode = 'determinate';
-  value = 50;
-  bufferValue = 75;
-
-  constructor() {}
-
-  ngOnInit() {}
+export class ProgressBarComponent {
+  surveyProgress: number = 30;
+  videoPlayValue: number = 20;
+  videoBufferValue: number = 60;
 }

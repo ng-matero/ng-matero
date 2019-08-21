@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-slide-toggle',
   templateUrl: './slide-toggle.component.html',
   styleUrls: ['./slide-toggle.component.scss'],
 })
-export class SlideToggleComponent implements OnInit {
-  color = 'accent';
-  checked = false;
-  disabled = false;
+export class SlideToggleComponent {
+  emailToggle = true;
+  termsToggle = false;
+  musicToggle = false;
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
 
-  ngOnInit() {}
+  onFormSubmit() {
+    this.snackBar.open('Terms and condistions accepted!', '', { duration: 2000 });
+  }
 }

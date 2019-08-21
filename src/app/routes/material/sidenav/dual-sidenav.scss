@@ -1,0 +1,13 @@
+.demo-sidenav-spacer {
+  flex: 1;
+}
+
+mat-sidenav.demo-sidenav-playlist {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.demo-sidenav-playlist-header {
+  text-align: center;
+}

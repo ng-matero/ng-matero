@@ -1,0 +1,29 @@
+.demo-sidenav-app {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.demo-sidenav-container {
+  flex: 1;
+}
+
+.demo-sidenav-container-fixed {
+  flex: none;
+}
+
+h1.demo-sidenav-app-name {
+  margin-left: 8px;
+}
+
+button.demo-sidenav-close {
+  margin: 20px;
+}
+
+.demo-sidenav-filler {
+  margin: 100px 20px;
+}

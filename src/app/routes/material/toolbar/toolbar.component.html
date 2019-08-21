@@ -1,20 +1,48 @@
 <breadcrumb></breadcrumb>
 
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Custom Toolbar</span>
-  </mat-toolbar-row>
+<mat-card>
+  <mat-card-content>
 
-  <mat-toolbar-row>
-    <span>Second Line</span>
-    <span fxFlex></span>
-    <mat-icon class="example-icon">verified_user</mat-icon>
-  </mat-toolbar-row>
+    <div class="demo-toolbar">
+      <section>
+        <h2>Basic Toolbar with Text (e.g. Only display app’s name)</h2>
+        <mat-toolbar role="heading">
+          <h1>My App</h1>
+        </mat-toolbar>
+        <p>Hello World!</p>
+      </section>
 
-  <mat-toolbar-row>
-    <span>Third Line</span>
-    <span fxFlex></span>
-    <mat-icon class="example-icon">favorite</mat-icon>
-    <mat-icon class="example-icon">delete</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
+      <section>
+        <h2>Multiple Lines Toolbar</h2>
+        <mat-toolbar>
+          <h1>Settings</h1>
+        </mat-toolbar>
+        <mat-toolbar>
+          <h1>Profile</h1>
+        </mat-toolbar>
+        <p>My profile</p>
+      </section>
+
+      <section>
+        <h2>Toolbar with favorite icon</h2>
+        <mat-toolbar>
+          <h1>My App</h1>
+          <span class="demo-spacer"></span>
+          <button mat-button>
+            <mat-icon aria-label="favorite">favorite</mat-icon>
+          </button>
+        </mat-toolbar>
+        <p>Hello World!</p>
+      </section>
+
+      <section>
+        <h2>Toolbar colors</h2>
+        <mat-toolbar color="primary">
+          <h1>My App</h1>
+        </mat-toolbar>
+        <p>Hello World!</p>
+      </section>
+    </div>
+
+  </mat-card-content>
+</mat-card>

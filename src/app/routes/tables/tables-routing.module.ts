@@ -4,11 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BasicComponent } from './basic/basic.component';
 
 const routes: Routes = [
-  {
-    path: 'basic',
-    component: BasicComponent,
-    data: { title: 'Table Basic' },
-  },
+  { path: 'basic', component: BasicComponent, data: { title: 'Table Basic' } },
 ];
 
 @NgModule({

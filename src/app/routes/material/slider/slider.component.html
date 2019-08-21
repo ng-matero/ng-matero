@@ -2,55 +2,45 @@
 
 <mat-card>
   <mat-card-content>
-    <h2 class="example-h2">Slider configuration</h2>
-
-    <section class="example-section">
-      <mat-form-field class="example-margin">
-        <input matInput type="number" placeholder="Value" [(ngModel)]="value">
-      </mat-form-field>
-      <mat-form-field class="example-margin">
-        <input matInput type="number" placeholder="Min value" [(ngModel)]="min">
-      </mat-form-field>
-      <mat-form-field class="example-margin">
-        <input matInput type="number" placeholder="Max value" [(ngModel)]="max">
-      </mat-form-field>
-      <mat-form-field class="example-margin">
-        <input matInput type="number" placeholder="Step size" [(ngModel)]="step">
-      </mat-form-field>
+    <section>
+      <h2>Continuous slider (e.g. color component sliders)</h2>
+      <p>Move the red, green, and blue sliders to choose a color.</p>
+      <div class="demo-color-container">
+        <div class="demo-color-sliders">
+          <div>
+            <label class="demo-color-label" for="r-slider">Red</label>
+            <mat-slider aria-label="Red" id="r-slider" min="0" max="255" [(ngModel)]="red"></mat-slider>
+          </div>
+          <div>
+            <label class="demo-color-label" for="g-slider">Green</label>
+            <mat-slider aria-label="Green" id="g-slider" min="0" max="255" [(ngModel)]="green"></mat-slider>
+          </div>
+          <div>
+            <label class="demo-color-label" for="b-slider">Blue</label>
+            <mat-slider aria-label="Blue" id="b-slider" min="0" max="255" [(ngModel)]="blue"></mat-slider>
+          </div>
+        </div>
+        <div class="demo-color-swatch" [style.background]="swatchBackground"></div>
+      </div>
     </section>
 
-    <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="showTicks">Show ticks</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="autoTicks" *ngIf="showTicks">
-        Auto ticks
-      </mat-checkbox>
-      <mat-form-field class="example-margin" *ngIf="showTicks && !autoTicks">
-        <input matInput type="number" placeholder="Tick interval" [(ngModel)]="tickInterval">
-      </mat-form-field>
+    <section>
+      <h2>Discrete slider (e.g. rate a product)</h2>
+      <p>Please rate our product on a scale of 1 (not satisfied) to 5 (extremely satisfied).</p>
+      <mat-slider min="1" max="5" tickInterval="1" thumbLabel aria-label="Rating"></mat-slider>
     </section>
 
-    <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="thumbLabel">Show thumb label</mat-checkbox>
+    <section>
+      <h2>Vertical slider (e.g. volume control)</h2>
+      <p>Use the slider to adjust the volume.</p>
+      <div class="demo-volume-container">
+        <label for="vol-slider">
+          <mat-icon aria-hidden>volume_up</mat-icon>
+          <span class="cdk-visually-hidden">Volume</span>
+        </label>
+        <mat-slider aria-label="Volume" id="vol-slider" min="0" max="100" vertical inverted></mat-slider>
+      </div>
     </section>
 
-    <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="vertical">Vertical</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="invert">Inverted</mat-checkbox>
-    </section>
-
-    <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
-    </section>
-
-  </mat-card-content>
-</mat-card>
-
-<mat-card class="result">
-  <mat-card-content>
-    <h2 class="example-h2">Result</h2>
-
-    <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min" [step]="step"
-      [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" [(ngModel)]="value" [vertical]="vertical">
-    </mat-slider>
   </mat-card-content>
 </mat-card>

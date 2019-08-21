@@ -5,16 +5,8 @@ import { ColorsComponent } from './colors/colors.component';
 import { IconsComponent } from './icons/icons.component';
 
 const routes: Routes = [
-  {
-    path: 'colors',
-    component: ColorsComponent,
-    data: { title: 'Material Colors' },
-  },
-  {
-    path: 'icons',
-    component: IconsComponent,
-    data: { title: 'Material Icons' },
-  },
+  { path: 'colors', component: ColorsComponent, data: { title: 'Material Colors' } },
+  { path: 'icons', component: IconsComponent, data: { title: 'Material Icons' } },
 ];
 
 @NgModule({

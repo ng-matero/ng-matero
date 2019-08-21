@@ -1,21 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
 })
-export class IconComponent implements OnInit {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'thumbs-up',
-      sanitizer.bypassSecurityTrustResourceUrl(
-        'assets/img/examples/thumbup-icon.svg'
-      )
-    );
-  }
+export class IconComponent {
+  constructor(private snackBar: MatSnackBar) {}
 
-  ngOnInit() {}
+  deleteIcon() {
+    this.snackBar.open('Item deleted', '', { duration: 2000 });
+  }
 }

@@ -1,62 +1,83 @@
-import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  template: `
-    <h1 mat-dialog-title>Hi {{ data.name }}</h1>
-    <div mat-dialog-content>
-      <p>What's your favorite animal?</p>
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" />
-      </mat-form-field>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button (click)="onNoClick()">No Thanks</button>
-      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
-        Ok
-      </button>
-    </div>
-  `,
-})
-export class DialogOverviewExampleDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
 })
-export class DialogComponent implements OnInit {
-  animal: string;
-  name: string;
+export class DialogComponent {
+  fruitSelectedOption = '';
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
-      width: '250px',
-      data: { name: this.name, animal: this.animal },
-    });
-
+  openFruitDialog() {
+    const dialogRef = this.dialog.open(DialogFruitComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      this.fruitSelectedOption = result;
     });
   }
 
-  ngOnInit() {}
+  openWelcomeDialog() {
+    this.dialog.open(DialogWelcomeComponent);
+  }
+
+  openNeptuneDialog() {
+    this.dialog.open(DialogNeptuneComponent);
+  }
+
+  openAddressDialog() {
+    this.dialog.open(DialogAddressFormComponent);
+  }
 }
+
+// Dialog
+@Component({
+  selector: 'dialog-fruit',
+  templateUrl: 'dialog-fruit.html',
+})
+export class DialogFruitComponent {}
+
+@Component({
+  selector: 'dialog-welcome',
+  templateUrl: 'dialog-welcome.html',
+})
+export class DialogWelcomeComponent {}
+
+@Component({
+  selector: 'dialog-neptune-dialog',
+  templateUrl: './dialog-neptune.html',
+})
+export class DialogNeptuneComponent {
+  constructor(public dialog: MatDialog) {}
+
+  showInStackedDialog() {
+    this.dialog.open(DialogNeptuneIFrameComponent);
+  }
+}
+
+@Component({
+  selector: 'dialog-neptune-iframe-dialog',
+  styles: [
+    `
+      iframe {
+        width: 800px;
+      }
+    `,
+  ],
+  templateUrl: './dialog-neptune-iframe.html',
+})
+export class DialogNeptuneIFrameComponent {}
+
+@Component({
+  selector: 'dialog-address-form',
+  styles: [
+    `
+      .demo-full-width {
+        width: 100%;
+      }
+    `,
+  ],
+  templateUrl: 'dialog-address-form.html',
+})
+export class DialogAddressFormComponent {}

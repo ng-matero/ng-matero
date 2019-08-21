@@ -1,42 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface Section {
-  name: string;
-  updated: Date;
-}
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
-  folders: Section[] = [
+export class ListComponent {
+  items: string[] = ['Pepper', 'Salt', 'Paprika'];
+
+  messages = [
     {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
+      from: 'Nancy',
+      subject: 'Brunch?',
+      message: 'Did you want to go on Sunday? I was thinking that might work.',
+      image: 'https://angular.io/generated/images/bios/julie-ralph.jpg',
     },
     {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
+      from: 'Mary',
+      subject: 'Summer BBQ',
+      message: 'Wish I could come, but I have some prior obligations.',
+      image: 'https://angular.io/generated/images/bios/juleskremer.jpg',
     },
     {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    },
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
+      from: 'Bobby',
+      subject: 'Oui oui',
+      message: 'Do you have Paris reservations for the 15th? I just booked!',
+      image: 'https://angular.io/generated/images/bios/jelbourn.jpg',
     },
   ];
 
-  constructor() {}
+  links = [{ name: 'Inbox' }, { name: 'Outbox' }, { name: 'Spam' }, { name: 'Trash' }];
 
-  ngOnInit() {}
+  folders = [
+    { name: 'Imported', updated: 'Miles' },
+    { name: 'Important', updated: 'Tina' },
+    { name: 'Unread', updated: 'Jeremy' },
+  ];
+
+  notes = [
+    { name: 'Update screenshots', updated: 'Kara' },
+    { name: 'Install new application', updated: 'Andrew' },
+  ];
 }

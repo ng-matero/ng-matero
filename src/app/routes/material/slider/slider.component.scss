@@ -1,22 +1,21 @@
-.example-h2 {
-  margin: 10px;
-}
-
-.example-section {
+.demo-color-container {
   display: flex;
-  align-content: center;
   align-items: center;
+}
+
+.demo-color-label {
+  display: inline-block;
+  width: 50px;
+}
+
+.demo-color-swatch {
+  width: 60px;
   height: 60px;
+  margin-left: 60px;
 }
 
-.example-margin {
-  margin: 10px;
-}
-
-.mat-slider-horizontal {
-  width: 300px;
-}
-
-.mat-slider-vertical {
-  height: 300px;
+.demo-volume-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 }

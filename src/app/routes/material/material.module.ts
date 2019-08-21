@@ -9,10 +9,18 @@ import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.compo
 import { GridListComponent } from './grid-list/grid-list.component';
 import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
-import { TabComponent } from './tab/tab.component';
+import {
+  TabComponent,
+  FoggyTabContentComponent,
+  RainyTabContentComponent,
+  SunnyTabContentComponent,
+} from './tab/tab.component';
 import { TreeComponent } from './tree/tree.component';
 import { MenuComponent } from './menu/menu.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavBasicComponent } from './sidenav/basic-sidenav';
+import { SidenavDualComponent } from './sidenav/dual-sidenav';
+import { SidenavMobileComponent } from './sidenav/mobile-sidenav';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -32,15 +40,21 @@ import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.co
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { RippleComponent } from './ripple/ripple.component';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
-import { DialogComponent } from './dialog/dialog.component';
+import {
+  DialogComponent,
+  DialogAddressFormComponent,
+  DialogFruitComponent,
+  DialogNeptuneComponent,
+  DialogNeptuneIFrameComponent,
+  DialogWelcomeComponent,
+} from './dialog/dialog.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SortComponent } from './sort/sort.component';
 import { TableComponent } from './table/table.component';
 
-import { DialogOverviewExampleDialogComponent } from './dialog/dialog.component';
-import { BottomSheetOverviewExampleSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { BottomSheetOverviewExampleComponent } from './bottom-sheet/bottom-sheet.component';
 import { PizzaPartyComponent } from './snack-bar/snack-bar.component';
 
 const COMPONENTS = [
@@ -51,9 +65,15 @@ const COMPONENTS = [
   ListComponent,
   StepperComponent,
   TabComponent,
+  FoggyTabContentComponent,
+  RainyTabContentComponent,
+  SunnyTabContentComponent,
   TreeComponent,
   MenuComponent,
   SidenavComponent,
+  SidenavBasicComponent,
+  SidenavDualComponent,
+  SidenavMobileComponent,
   ToolbarComponent,
   AutocompleteComponent,
   CheckboxComponent,
@@ -81,8 +101,12 @@ const COMPONENTS = [
   TableComponent,
 ];
 const COMPONENTS_DYNAMIC = [
-  DialogOverviewExampleDialogComponent,
-  BottomSheetOverviewExampleSheetComponent,
+  DialogAddressFormComponent,
+  DialogFruitComponent,
+  DialogNeptuneComponent,
+  DialogNeptuneIFrameComponent,
+  DialogWelcomeComponent,
+  BottomSheetOverviewExampleComponent,
   PizzaPartyComponent,
 ];
 

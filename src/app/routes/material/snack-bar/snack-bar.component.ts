@@ -1,20 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'snack-bar-component-example-snack',
-  template: `
-    <span class="example-pizza-party">
-      Pizza party!!! 🍕
-    </span>
-  `,
-  styles: [
-    `
-      .example-pizza-party {
-        color: hotpink;
-      }
-    `,
-  ],
+  templateUrl: './snack-bar.component.html',
 })
 export class PizzaPartyComponent {}
 
@@ -23,14 +12,14 @@ export class PizzaPartyComponent {}
   templateUrl: './snack-bar.component.html',
   styleUrls: ['./snack-bar.component.scss'],
 })
-export class SnackBarComponent implements OnInit {
-  constructor(public snackBar: MatSnackBar) {}
+export class SnackBarComponent {
+  constructor(private snackBar: MatSnackBar) {}
 
-  openSnackBar() {
-    this.snackBar.openFromComponent(PizzaPartyComponent, {
-      duration: 500,
-    });
+  openDiscoPartySnackBar() {
+    this.snackBar.open('Disco party!', 'Dismiss', { duration: 5000 });
   }
 
-  ngOnInit() {}
+  openNotificationSnackBar() {
+    this.snackBar.open('Thank you for your support!', '', { duration: 2000 });
+  }
 }
