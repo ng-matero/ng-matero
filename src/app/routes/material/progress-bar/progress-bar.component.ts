@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./progress-bar.component.scss'],
 })
 export class ProgressBarComponent {
-  surveyProgress: number = 30;
-  videoPlayValue: number = 20;
-  videoBufferValue: number = 60;
+  surveyProgress = 30;
+  videoPlayValue = 20;
+  videoBufferValue = 60;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 export interface Dessert {
@@ -18,7 +18,7 @@ function compare(a: number | string, b: number | string, isAsc: boolean) {
   templateUrl: './sort.component.html',
   styleUrls: ['./sort.component.scss'],
 })
-export class SortComponent implements OnInit {
+export class SortComponent {
   desserts: Dessert[] = [
     { name: 'Frozen yogurt', calories: 159, fat: 6, carbs: 24, protein: 4 },
     {
@@ -64,6 +64,4 @@ export class SortComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
 }
