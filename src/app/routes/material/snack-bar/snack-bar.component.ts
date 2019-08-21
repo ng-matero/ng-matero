@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'snack-bar-component-example-snack',
-  templateUrl: './snack-bar.component.html',
-})
-export class PizzaPartyComponent {}
-
-@Component({
   selector: 'app-snack-bar',
   templateUrl: './snack-bar.component.html',
   styleUrls: ['./snack-bar.component.scss'],
