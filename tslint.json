@@ -1,69 +1,36 @@
 {
   "extends": "tslint:recommended",
-  "rulesDirectory": [
-    "codelyzer"
-  ],
+  "rulesDirectory": ["codelyzer"],
   "rules": {
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
       "severity": "warn"
     },
-    "import-blacklist": [
-      true,
-      "rxjs/Rx"
-    ],
+    "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "max-classes-per-file": false,
-    "max-line-length": [
-      false,
-      100
-    ],
+    "max-line-length": [false, 100],
     "member-access": false,
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "no-consecutive-blank-lines": false,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-empty": false,
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
+    "no-inferrable-types": [true, "ignore-params"],
     "no-non-null-assertion": false,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
+    "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "quotemark": [
-      true,
-      "single"
-    ],
-    "semicolon": [
-      true,
-      "always",
-      "ignore-bound-class-methods"
-    ],
+    "quotemark": [true, "single"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "trailing-comma": false,
     "no-output-on-prefix": true,
     "no-inputs-metadata-property": true,
