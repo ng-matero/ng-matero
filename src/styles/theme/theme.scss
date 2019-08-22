@@ -1,8 +1,14 @@
-@import "base";
-@import "layout";
-@import "header";
-@import "sidenav";
-@import "topnav";
-@import "branding";
+@import 'base';
+@import 'layout';
+@import 'header';
+@import 'sidenav';
+@import 'topnav';
+@import 'branding';
 // @import "scrollbar";
-@import "material";
+@import 'material';
+
+// Create a theme.
+@mixin matero-admin-theme($theme) {
+  @include matero-sidenav-theme($theme);
+  @include matero-topnav-theme($theme);
+}

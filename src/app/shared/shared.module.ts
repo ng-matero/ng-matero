@@ -40,13 +40,7 @@ const PIPES = [];
 
 @NgModule({
   declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    ...THIRD_MODULES,
-  ],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ...THIRD_MODULES],
   exports: [
     CommonModule,
     FormsModule,

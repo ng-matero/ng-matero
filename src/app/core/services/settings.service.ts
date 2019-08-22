@@ -3,6 +3,7 @@ import { Subject, Observable } from 'rxjs';
 
 export interface Defaults {
   showHeader?: boolean;
+  theme?: 'light' | 'dark';
   headerPos?: 'fixed' | 'static' | 'above';
   navPos?: 'side' | 'top';
   sidenavCollapsed?: boolean;
@@ -13,6 +14,7 @@ export interface Defaults {
 
 const defaults: Defaults = {
   showHeader: true,
+  theme: 'light',
   headerPos: 'fixed',
   navPos: 'side',
   sidenavCollapsed: false,

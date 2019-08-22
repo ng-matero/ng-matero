@@ -4,52 +4,55 @@
     <a mat-button [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'">
       <span>{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+            class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+            class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a mat-button [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'">
       <span>{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+            class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+            class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a mat-button [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'">
       <span>{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+            class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+            class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <!-- level 1 -->
     <button mat-button *ngIf="menuItem.type === 'sub'" [matMenuTriggerFor]="menulevel1">
       <span>{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
-        class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
+            class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
-        class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
+            class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </button>
     <mat-menu #menulevel1="matMenu">
       <ng-container *ngFor="let childLvl1 of menuItem.children">
 
         <a mat-menu-item [routerLink]="['/', menuItem.state, childLvl1.state]"
-          *ngIf="childLvl1.type === 'link'">{{childLvl1.name}}</a>
-        <a mat-menu-item [href]="childLvl1.state" *ngIf="childLvl1.type === 'extLink'">{{childLvl1.name}}</a>
+           *ngIf="childLvl1.type === 'link'">{{childLvl1.name}}</a>
+        <a mat-menu-item [href]="childLvl1.state"
+           *ngIf="childLvl1.type === 'extLink'">{{childLvl1.name}}</a>
         <a mat-menu-item [href]="childLvl1.state" target="_blank"
-          *ngIf="childLvl1.type === 'extTabLink'">{{childLvl1.name}}</a>
+           *ngIf="childLvl1.type === 'extTabLink'">{{childLvl1.name}}</a>
         <!-- level 2 -->
         <button mat-menu-item *ngIf="childLvl1.type === 'sub'"
-          [matMenuTriggerFor]="menulevel2">{{ childLvl1.name }}</button>
+                [matMenuTriggerFor]="menulevel2">{{ childLvl1.name }}</button>
         <mat-menu #menulevel2="matMenu">
           <ng-container *ngFor="let childLvl2 of childLvl1.children">
 
-            <a mat-menu-item [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])"
-              *ngIf="childLvl2.type === 'link'">{{childLvl2.name}}</a>
-            <a mat-menu-item [href]="childLvl2.state" *ngIf="childLvl2.type === 'extLink'">{{childLvl2.name}}</a>
+            <a mat-menu-item
+               [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])"
+               *ngIf="childLvl2.type === 'link'">{{childLvl2.name}}</a>
+            <a mat-menu-item [href]="childLvl2.state"
+               *ngIf="childLvl2.type === 'extLink'">{{childLvl2.name}}</a>
             <a mat-menu-item [href]="childLvl2.state" target="_blank"
-              *ngIf="childLvl2.type === 'extTabLink'">{{childLvl1.name}}</a>
+               *ngIf="childLvl2.type === 'extTabLink'">{{childLvl1.name}}</a>
 
           </ng-container>
         </mat-menu>

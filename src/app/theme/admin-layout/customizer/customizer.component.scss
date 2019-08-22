@@ -1,3 +1,13 @@
+@import '../../../../styles/variables';
+
+// Dark style
+$primary: mat-palette($mat-pink, 700, 500, 900);
+$accent: mat-palette($mat-blue-grey, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-dark-theme($primary, $accent, $warn);
+$background: mat-color($theme, 'background');
+$foreground: mat-color($theme, 'foreground');
+
 .customizer-handle {
   position: fixed;
   bottom: 30px;
@@ -39,5 +49,12 @@
   &.opened {
     background-color: rgba(0, 0, 0, .15);
     visibility: visible;
+  }
+}
+
+.theme-dark {
+  .customizer-panel {
+    color: mat-color($foreground, text);
+    background-color: mat-color($background, background);
   }
 }

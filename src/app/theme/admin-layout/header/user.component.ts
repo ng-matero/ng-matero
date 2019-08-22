@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -25,8 +24,4 @@ import { MatMenuTrigger } from '@angular/material/menu';
     </mat-menu>
   `,
 })
-export class UserComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class UserComponent {}

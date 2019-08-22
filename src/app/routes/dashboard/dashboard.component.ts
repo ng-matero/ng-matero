@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Injectable,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { SettingsService } from '@core';
@@ -172,16 +165,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
   // Pie chart
   genChart2() {
-    const text = [
-      'MIDNIGHT',
-      '3 AM',
-      '6 AM',
-      '9 AM',
-      'NOON',
-      '3 PM',
-      '6 PM',
-      '9 PM',
-    ];
+    const text = ['MIDNIGHT', '3 AM', '6 AM', '9 AM', 'NOON', '3 PM', '6 PM', '9 PM'];
     const data = [];
     for (let i = 0; i < 24; i++) {
       const item: any = {};

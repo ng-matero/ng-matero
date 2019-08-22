@@ -13,16 +13,20 @@
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" type="password" formControlName="password" required>
+          <input matInput placeholder="Password" type="password" formControlName="password"
+                 required>
           <mat-error *ngIf="reactiveForm.get('password').invalid">Please enter password</mat-error>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Confirm Password</mat-label>
-          <input matInput placeholder="Confirm Password" type="password" formControlName="confirmPassword" required>
-          <mat-error *ngIf="reactiveForm.get('confirmPassword').hasError('required')">Please confirm your password!
+          <input matInput placeholder="Confirm Password" type="password"
+                 formControlName="confirmPassword" required>
+          <mat-error *ngIf="reactiveForm.get('confirmPassword').hasError('required')">Please confirm
+            your password!
           </mat-error>
-          <mat-error *ngIf="reactiveForm.get('confirmPassword').hasError('confirm')">Password is inconsistent!
+          <mat-error *ngIf="reactiveForm.get('confirmPassword').hasError('confirm')">Password is
+            inconsistent!
           </mat-error>
         </mat-form-field>
 

@@ -1,6 +1,7 @@
 <nav aria-label="breadcrumb">
   <ol class="matero-breadcrumb">
-    <li class="matero-breadcrumb-item" *ngFor="let item of routeNames; first as isFirst; last as isLast">
+    <li class="matero-breadcrumb-item"
+        *ngFor="let item of routeNames; first as isFirst; last as isLast">
       <a href="#" class="link" *ngIf="isFirst">{{item}}</a>
       <ng-container *ngIf="!isFirst">
         <mat-icon class="chevron">chevron_right</mat-icon>

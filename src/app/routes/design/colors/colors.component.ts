@@ -12,18 +12,12 @@ import { MAT_COLORS } from '@shared';
 export class ColorsComponent implements OnInit {
   colorsArr = [];
 
-  valueAscOrder(
-    a: KeyValue<number, string>,
-    b: KeyValue<number, string>
-  ): number {
+  valueAscOrder(a: KeyValue<number, string>, b: KeyValue<number, string>): number {
     console.log(a.value);
     return a.value.localeCompare(b.value);
   }
 
-  keyAscOrder(
-    a: KeyValue<number, string>,
-    b: KeyValue<number, string>
-  ): number {
+  keyAscOrder(a: KeyValue<number, string>, b: KeyValue<number, string>): number {
     return a.key - b.key;
   }
 

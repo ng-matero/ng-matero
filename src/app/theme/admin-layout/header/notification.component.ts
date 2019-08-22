@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-notification',
@@ -20,9 +20,6 @@ import { Component, OnInit } from '@angular/core';
     </mat-menu>
   `,
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent {
   messages = ['Server Error Reports', 'Server Error Reports', 'Server Error Reports'];
-  constructor() {}
-
-  ngOnInit() {}
 }

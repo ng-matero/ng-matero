@@ -247,13 +247,7 @@ export class IconsService {
       'zoom_in',
       'zoom_out',
     ],
-    alert: [
-      'add_alert',
-      'error',
-      'error_outline',
-      'notification_important',
-      'warning',
-    ],
+    alert: ['add_alert', 'error', 'error_outline', 'notification_important', 'warning'],
     av: [
       '4k',
       'add_to_queue',

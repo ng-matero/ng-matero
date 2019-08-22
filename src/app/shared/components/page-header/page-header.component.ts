@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-  Input,
-  HostBinding,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, HostBinding } from '@angular/core';
 import { MenuService } from '@core';
 import { Router } from '@angular/router';
 

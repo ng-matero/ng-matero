@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ViewEncapsulation,
-  HostBinding,
-} from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'mini-progress',

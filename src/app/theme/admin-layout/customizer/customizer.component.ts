@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { SettingsService } from '@core';
 
 @Component({
   selector: 'app-customizer',
   templateUrl: './customizer.component.html',
   styleUrls: ['./customizer.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CustomizerComponent implements OnInit {
   options = this.settings.getOptions();

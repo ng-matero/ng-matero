@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-helpers',
   templateUrl: './helpers.component.html',
-  styleUrls: ['./helpers.component.scss'],
 })
-export class HelpersComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class HelpersComponent {
+  colorArr = 'red|pink|purple|deep-purple|indigo|blue|light-blue|cyan|teal|green|ligh-green|lime|yellow|amber|orange|deep-orange|brown|gray|grey|blue-gray|blue-grey'.split(
+    '|'
+  );
 }

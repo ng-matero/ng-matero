@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-branding',
@@ -9,8 +9,4 @@ import { Component, OnInit, Input } from '@angular/core';
     </div>
   `,
 })
-export class BrandingComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class BrandingComponent {}

@@ -54,8 +54,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { SortComponent } from './sort/sort.component';
 import { TableComponent } from './table/table.component';
 
-import { BottomSheetOverviewExampleComponent } from './bottom-sheet/bottom-sheet.component';
-import { PizzaPartyComponent } from './snack-bar/snack-bar.component';
+import { BottomSheetOverviewComponent } from './bottom-sheet/bottom-sheet.component';
 
 const COMPONENTS = [
   CardComponent,
@@ -106,8 +105,7 @@ const COMPONENTS_DYNAMIC = [
   DialogNeptuneComponent,
   DialogNeptuneIFrameComponent,
   DialogWelcomeComponent,
-  BottomSheetOverviewExampleComponent,
-  PizzaPartyComponent,
+  BottomSheetOverviewComponent,
 ];
 
 @NgModule({

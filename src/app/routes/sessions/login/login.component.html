@@ -11,7 +11,8 @@
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Simple placeholder" type="password" formControlName="password" required>
+          <input matInput placeholder="Simple placeholder" type="password"
+                 formControlName="password" required>
           <mat-error *ngIf="reactiveForm.get('password').invalid">Please enter password</mat-error>
         </mat-form-field>
 
@@ -21,9 +22,10 @@
         </div>
 
         <button mat-raised-button color="primary" class="w-full" (click)="login()"
-          [disabled]="reactiveForm.invalid">Save</button>
+                [disabled]="reactiveForm.invalid">Save</button>
 
-        <div class="m-t-16">Don't have an account? <a routerLink="/auth/register">Click here to create one</a></div>
+        <div class="m-t-16">Don't have an account? <a routerLink="/auth/register">Click here to
+            create one</a></div>
       </form>
     </mat-card-content>
   </mat-card>

@@ -7,7 +7,8 @@
                 The actual rendered columns are set as a property on the row definition" -->
 
     <ng-container *ngFor="let col of columns.slice(0,-1)">
-      <ng-container [matColumnDef]="col.index" [sticky]="col.fixed==='left'" [stickyEnd]="col.fixed==='right'">
+      <ng-container [matColumnDef]="col.index" [sticky]="col.fixed==='left'"
+                    [stickyEnd]="col.fixed==='right'">
         <th mat-header-cell *matHeaderCellDef> {{col.title}} </th>
         <td mat-cell *matCellDef="let element"> {{element[col.index]}} </td>
       </ng-container>

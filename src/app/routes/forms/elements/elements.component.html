@@ -37,7 +37,8 @@
           <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="username" required>
-            <mat-error *ngIf="reactiveForm1.get('username').invalid">Please enter username</mat-error>
+            <mat-error *ngIf="reactiveForm1.get('username').invalid">Please enter username
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field>
@@ -77,14 +78,16 @@
 
           <mat-form-field>
             <mat-label>Mobile</mat-label>
-            <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile" required>
+            <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile"
+                   required>
             <mat-icon matSuffix>smartphone</mat-icon>
             <mat-error *ngIf="reactiveForm1.get('mobile').invalid">Please enter mobile</mat-error>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Tele</mat-label>
-            <input matInput placeholder="Simple placeholder" type="number" formControlName="tele" required>
+            <input matInput placeholder="Simple placeholder" type="number" formControlName="tele"
+                   required>
             <mat-icon matSuffix>phone</mat-icon>
             <mat-error *ngIf="reactiveForm1.get('tele').invalid">Please enter tele</mat-error>
           </mat-form-field>
@@ -96,7 +99,8 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                   formControlName="date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="reactiveForm1.get('date').invalid">Please enter website</mat-error>
@@ -119,8 +123,10 @@
             <div fxFlex="50" fxFlex.lt-sm="100">
               <mat-form-field>
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="username" required>
-                <mat-error *ngIf="reactiveForm2.get('username').invalid">Please enter username</mat-error>
+                <input matInput placeholder="Simple placeholder" formControlName="username"
+                       required>
+                <mat-error *ngIf="reactiveForm2.get('username').invalid">Please enter username
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -141,7 +147,8 @@
                   <mat-option value="1">male</mat-option>
                   <mat-option value="2">female</mat-option>
                 </mat-select>
-                <mat-error *ngIf="reactiveForm2.get('gender').invalid">Please select gender</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('gender').invalid">Please select gender
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -157,7 +164,8 @@
               <mat-form-field>
                 <mat-label>Address</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="address" required>
-                <mat-error *ngIf="reactiveForm2.get('address').invalid">Please enter address</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('address').invalid">Please enter address
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -165,23 +173,27 @@
               <mat-form-field>
                 <mat-label>Company</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="company" required>
-                <mat-error *ngIf="reactiveForm2.get('company').invalid">Please enter company</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('company').invalid">Please enter company
+                </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="50" fxFlex.lt-sm="100">
               <mat-form-field>
                 <mat-label>Mobile</mat-label>
-                <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile" required>
+                <input matInput placeholder="Simple placeholder" type="number"
+                       formControlName="mobile" required>
                 <mat-icon matSuffix>smartphone</mat-icon>
-                <mat-error *ngIf="reactiveForm2.get('mobile').invalid">Please enter mobile</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('mobile').invalid">Please enter mobile
+                </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="50" fxFlex.lt-sm="100">
               <mat-form-field>
                 <mat-label>Tele</mat-label>
-                <input matInput placeholder="Simple placeholder" type="number" formControlName="tele" required>
+                <input matInput placeholder="Simple placeholder" type="number"
+                       formControlName="tele" required>
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="reactiveForm2.get('tele').invalid">Please enter tele</mat-error>
               </mat-form-field>
@@ -191,16 +203,19 @@
               <mat-form-field>
                 <mat-label>Website</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="website" required>
-                <mat-error *ngIf="reactiveForm2.get('website').invalid">Please enter website</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('website').invalid">Please enter website
+                </mat-error>
               </mat-form-field>
             </div>
 
             <div fxFlex="50" fxFlex.lt-sm="100">
               <mat-form-field>
-                <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="date">
+                <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
+                       formControlName="date">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
-                <mat-error *ngIf="reactiveForm2.get('date').invalid">Please enter website</mat-error>
+                <mat-error *ngIf="reactiveForm2.get('date').invalid">Please enter website
+                </mat-error>
               </mat-form-field>
             </div>
 

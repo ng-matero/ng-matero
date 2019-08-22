@@ -1,3 +1,33 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+// Light style
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// When we use the Schematics (`ng add`) to start, the following variables will be used to create //
+// a dark theme! This strategy will not generate redundant codes.                                 //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Dark style
+// $primary: mat-palette($mat-pink, 700, 500, 900);
+// $accent: mat-palette($mat-blue-grey, A200, A100, A400);
+// $warn: mat-palette($mat-red);
+// $theme: mat-dark-theme($primary, $accent, $warn);
+
+$config: mat-typography-config();
+
+//
+// Matero Variables
+//
 // Layout
 $gutter: 16px !default;
 
@@ -5,8 +35,6 @@ $gutter: 16px !default;
 $sidenav-width: 240px !default;
 $sidenav-collapsed-width: 50px !default;
 $sidenav-width-mobile: 280px !default;
-$sidenav-item-hover: mat-color($background, hover) !default;
-$sidenav-item-active: mat-color($mat-pink, A100) !default;
 
 // Toolbar
 $toolbar-height-desktop: 64px !default;

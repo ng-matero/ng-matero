@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ContentChild,
-  TemplateRef,
-} from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'text3d',

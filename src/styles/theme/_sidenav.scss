@@ -2,177 +2,162 @@
 // SIDENAV
 // ==================================================
 
-.matero-sidenav {
-  position: absolute;
-  overflow-x: hidden;
-  width: $sidenav-width;
-  border-width: 0;
-  transition: width .4s cubic-bezier(.25, .8, .25, 1); // Only set width property
+@mixin matero-sidenav-theme($theme) {
+  $background: mat-color($theme, 'background');
+  $foreground: mat-color($theme, 'foreground');
 
-  @include mat-elevation(2);
-
-  .matero-sidemenu {
+  .matero-sidenav {
+    position: absolute;
+    overflow-x: hidden;
     width: $sidenav-width;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    border-width: 0;
+    transition: width .4s cubic-bezier(.25, .8, .25, 1); // Only set width property
 
-    a {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      height: 48px;
-      padding: 0 16px;
-      text-decoration: none;
-      color: rgba(0, 0, 0, .87);
-    }
+    @include mat-elevation(2);
 
-    .menu-icon {
-      width: 18px;
-      height: 18px;
-      margin-right: 16px;
-      font-size: 18px;
-      line-height: 18px;
-    }
-
-    .menu-name,
-    .menu-label,
-    .menu-badge {
-      transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
-    }
-
-    .menu-label,
-    .menu-badge {
-      @include badge();
-    }
-
-    .menu-badge {
-      border-radius: 10px;
-    }
-
-    .menu-caret {
-      display: block;
-      float: right;
-      text-align: center;
-      transition: transform .3s cubic-bezier(.7, 0, .3, 1);
-    }
-
-    &.level-0 > li > a > .menu-name {
-      margin-right: 5px;
-    }
-
-    &.level-1 > li > a {
-      padding-left: 50px;
-    }
-
-    &.level-2 > li > a {
-      padding-left: 64px;
-    }
-
-    .matero-sidemenu-item {
-      display: block;
-      height: auto;
+    .matero-sidemenu {
+      width: $sidenav-width;
+      margin: 0;
       padding: 0;
+      list-style: none;
 
-      &:hover {
-        background: $sidenav-item-hover;
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 48px;
+        padding: 0 16px;
+        text-decoration: none;
+        color: mat-color($foreground, text);
       }
 
-      &.open {
-        background: rgba(0, 0, 0, .02);
-
-        > .matero-sidemenu {
-          max-height: 2000px;
-        }
-
-        > .matero-sidemenu-toggle > .menu-caret {
-          transform: rotate(-180deg);
-        }
+      .menu-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 16px;
+        font-size: 18px;
+        line-height: 18px;
       }
 
-      &.active {
-        box-shadow: 3px 0 0 0 $sidenav-item-active inset;
-
-        > a {
-          color: $sidenav-item-active
-        }
+      .menu-name,
+      .menu-label,
+      .menu-badge {
+        transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
       }
-    }
 
-    &.submenu {
-      max-height: 0;
-      padding-top: 0;
-      overflow: hidden;
-      transform: translateZ(0) !important;
-      transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+      .menu-label,
+      .menu-badge {
+        @include badge();
+      }
+
+      .menu-badge {
+        border-radius: 10px;
+      }
+
+      .menu-caret {
+        display: block;
+        float: right;
+        text-align: center;
+        transition: transform .3s cubic-bezier(.7, 0, .3, 1);
+      }
+
+      &.level-0 > li > a > .menu-name {
+        margin-right: 5px;
+      }
+
+      &.level-1 > li > a {
+        padding-left: 50px;
+      }
+
+      &.level-2 > li > a {
+        padding-left: 64px;
+      }
 
       .matero-sidemenu-item {
-        border-left-width: 0;
+        display: block;
+        height: auto;
+        padding: 0;
+
+        &:hover {
+          background: mat-color($background, hover);
+        }
+
+        &.open {
+          background: rgba(0, 0, 0, .02);
+
+          > .matero-sidemenu {
+            max-height: 2000px;
+          }
+
+          > .matero-sidemenu-toggle > .menu-caret {
+            transform: rotate(-180deg);
+          }
+        }
+
+        &.active {
+          > a {
+            color: mat-color($mat-pink, A100);
+          }
+        }
+      }
+
+      &.submenu {
+        max-height: 0;
+        padding-top: 0;
+        overflow: hidden;
+        transform: translateZ(0) !important;
+        transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+
+        .matero-sidemenu-item {
+          border-left-width: 0;
+        }
       }
     }
   }
-}
 
-.matero-sidebar-header {
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  height: $toolbar-height-desktop;
-  padding: 0 10px;
-  color: #444;
-  background: #fff;
-  overflow: hidden;
-}
-
-.matero-sidebar-inner {
-  height: calc(100% - #{$toolbar-height-desktop});
-  overflow: auto;
-}
-
-// User panel
-.matero-user-panel-avatar {
-  transition: transform .4s cubic-bezier(.25, .8, .25, 1);
-}
-
-.matero-user-panel-name,
-.matero-user-panel-email,
-.matero-user-panel-icons {
-  opacity: 1;
-  transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
-}
-
-.matero-user-panel-icons {
-  .mat-icon-button {
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+  .matero-sidebar-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: $toolbar-height-desktop;
+    padding: 0 10px;
+    color: mat-color($foreground, text);
+    background: mat-color($background, app-bar);
+    overflow: hidden;
   }
-}
 
-// Layout control
-.matero-sidenav-collapsed {
-  .matero-sidenav {
-    width: $sidenav-collapsed-width;
+  .matero-sidebar-inner {
+    height: calc(100% - #{$toolbar-height-desktop});
+    overflow: auto;
+  }
 
-    .menu-name,
-    .menu-label,
-    .menu-badge,
-    .menu-caret,
-    .matero-user-panel-name,
-    .matero-user-panel-email,
-    .matero-user-panel-icons {
-      opacity: 0;
+  // User panel
+  .matero-user-panel-avatar {
+    transition: transform .4s cubic-bezier(.25, .8, .25, 1);
+  }
+
+  .matero-user-panel-name,
+  .matero-user-panel-email,
+  .matero-user-panel-icons {
+    opacity: 1;
+    transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+  }
+
+  .matero-user-panel-icons {
+    .mat-icon-button {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
     }
+  }
 
-    .matero-user-panel-avatar {
-      transform: scale(.5)
-    }
-
-    &:hover {
-      width: $sidenav-width;
+  // Layout control
+  .matero-sidenav-collapsed {
+    .matero-sidenav {
+      width: $sidenav-collapsed-width;
 
       .menu-name,
       .menu-label,
@@ -181,26 +166,44 @@
       .matero-user-panel-name,
       .matero-user-panel-email,
       .matero-user-panel-icons {
-        opacity: 1;
+        opacity: 0;
       }
 
       .matero-user-panel-avatar {
-        transform: scale(1)
+        transform: scale(.5);
       }
+
+      &:hover {
+        width: $sidenav-width;
+
+        .menu-name,
+        .menu-label,
+        .menu-badge,
+        .menu-caret,
+        .matero-user-panel-name,
+        .matero-user-panel-email,
+        .matero-user-panel-icons {
+          opacity: 1;
+        }
+
+        .matero-user-panel-avatar {
+          transform: scale(1);
+        }
+      }
+    }
+
+    .matero-content-wrap {
+      margin-left: $sidenav-collapsed-width !important;
     }
   }
 
-  .matero-content-wrap {
-    margin-left: $sidenav-collapsed-width !important;
-  }
-}
+  @include bp-lt(tiny) {
+    .matero-sidebar-header {
+      height: $toolbar-height-mobile;
+    }
 
-@include bp-lt(tiny) {
-  .matero-sidebar-header {
-    height: $toolbar-height-mobile;
-  }
-
-  .matero-sidebar-inner {
-    height: calc(100% - #{$toolbar-height-mobile});
+    .matero-sidebar-inner {
+      height: calc(100% - #{$toolbar-height-mobile});
+    }
   }
 }

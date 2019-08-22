@@ -2,58 +2,63 @@
 // TOPNAV
 // ==================================================
 
-.matero-topmenu {
-  display: block;
-  position: sticky;
-  z-index: 9;
-  background: #fff;
-  color: rgba(0, 0, 0, .76);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+@mixin matero-topnav-theme($theme) {
+  $background: mat-color($theme, 'background');
+  $foreground: mat-color($theme, 'foreground');
 
-  @include mat-elevation(2);
-
-  .menu-label,
-  .menu-badge {
-    margin-left: 8px;
-    font-size: 12px;
-  }
-
-  .menu-badge {
-    border-radius: 10px;
-  }
-
-  .menu-caret {
-    margin-right: -8px;
-  }
-}
-
-.matero-topmenu-inner {
-  padding: 8px;
-  white-space: nowrap;
-}
-
-// Layout control
-.matero-navbar-top {
   .matero-topmenu {
-    top: 0;
+    display: block;
+    position: sticky;
+    z-index: 9;
+    background: #fff;
+    color: rgba(0, 0, 0, .76);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include mat-elevation(2);
+
+    .menu-label,
+    .menu-badge {
+      margin-left: 8px;
+      font-size: 12px;
+    }
+
+    .menu-badge {
+      border-radius: 10px;
+    }
+
+    .menu-caret {
+      margin-right: -8px;
+    }
   }
 
-  .matero-branding {
-    margin-left: 16px;
+  .matero-topmenu-inner {
+    padding: 8px;
+    white-space: nowrap;
   }
-}
 
-.matero-header-fixed {
-  .matero-topmenu {
-    top: $topmenu-sticky-position-desktop;
+  // Layout control
+  .matero-navbar-top {
+    .matero-topmenu {
+      top: 0;
+    }
+
+    .matero-branding {
+      margin-left: 16px;
+    }
   }
-}
 
-@include bp-lt(tiny) {
   .matero-header-fixed {
     .matero-topmenu {
-      top: $topmenu-sticky-position-mobile;
+      top: $topmenu-sticky-position-desktop;
+    }
+  }
+
+  @include bp-lt(tiny) {
+    .matero-header-fixed {
+      .matero-topmenu {
+        top: $topmenu-sticky-position-mobile;
+      }
     }
   }
 }
