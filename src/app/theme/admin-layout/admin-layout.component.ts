@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild } from '@ang
 import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
-import { SettingsService } from '@core';
+import { SettingsService, AppSettings } from '@core';
 
 const WIDTH_BREAKPOINT = '960px';
 
@@ -65,11 +65,20 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     }, 400);
   }
 
-  receiveOptions(options: any): void {
-    this.options = options;
-  }
-
   openedChange(e: boolean) {
     this.settings.setNavState('opened', e);
+  }
+
+  // Demo purposes only
+  receiveOptions(options: AppSettings): void {
+    this.options = options;
+    this.setTheme(options);
+  }
+  setTheme(options: AppSettings) {
+    if (options.theme === 'dark') {
+      document.body.classList.add('theme-dark');
+    } else {
+      document.body.classList.remove('theme-dark');
+    }
   }
 }

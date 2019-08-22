@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
-export interface Defaults {
+export interface AppSettings {
   showHeader?: boolean;
   theme?: 'light' | 'dark';
   headerPos?: 'fixed' | 'static' | 'above';
@@ -12,7 +12,7 @@ export interface Defaults {
   dir?: 'ltr' | 'rtl';
 }
 
-const defaults: Defaults = {
+const defaults: AppSettings = {
   showHeader: true,
   theme: 'light',
   headerPos: 'fixed',
@@ -35,7 +35,7 @@ export class SettingsService {
     return this.notice$.asObservable();
   }
 
-  setLayout(options?: Defaults) {
+  setLayout(options?: AppSettings) {
     this.options = Object.assign(defaults, options);
     return this.options;
   }

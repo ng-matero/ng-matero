@@ -10,8 +10,8 @@
     display: block;
     position: sticky;
     z-index: 9;
-    background: #fff;
-    color: rgba(0, 0, 0, .76);
+    background: mat-color($background, app-bar);
+    color: mat-color($foreground, text);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
