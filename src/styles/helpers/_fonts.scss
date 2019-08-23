@@ -3,19 +3,16 @@
 // ==================================================
 
 $fonts: (
-  "font-weight": (
+  'font-weight': (
     property: font-weight,
     class: f-w,
     values: $font-wieghts
   ),
-  "font-size": (
+  'font-size': (
     property: font-size,
     class: f-s,
     values: $font-sizes
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $fonts,
-  $utilities
-);
+$utilities: map-merge($fonts, $utilities);

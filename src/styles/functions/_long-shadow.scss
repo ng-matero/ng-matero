@@ -1,0 +1,47 @@
+// Long shadow
+// https://codepen.io/c_fitzmaurice/pen/ZYJeRY
+@function long-shadow($direction, $length, $color, $fade: false, $shadow-count: 100) {
+  $shadows: ();
+  $conversion-map: (
+    to top: 180deg,
+    to top right: 135deg,
+    to right top: 135deg,
+    to right: 90deg,
+    to bottom right: 45deg,
+    to right bottom: 45deg,
+    to bottom: 0deg,
+    to bottom left: 315deg,
+    to left bottom: 315deg,
+    to left: 270deg,
+    to left top: 225deg,
+    to top left: 225deg
+  );
+
+  @if map-has-key($conversion-map, $direction) {
+    $direction: map-get($conversion-map, $direction);
+  }
+
+  @for $i from 1 through $shadow-count {
+    $current-step: ($i * $length / $shadow-count);
+    $current-color: if(
+      not $fade,
+      $color,
+      if(
+        type-of($fade) == 'color',
+        mix($fade, $color, ($i / $shadow-count * 100)),
+        rgba($color, 1 - $i / $shadow-count)
+      )
+    );
+
+    $shadows: append(
+      $shadows,
+      (sin(0deg + $direction) * $current-step)
+      (cos(0deg + $direction) * $current-step)
+      0
+      $current-color,
+      'comma'
+    );
+  }
+
+  @return $shadows;
+}

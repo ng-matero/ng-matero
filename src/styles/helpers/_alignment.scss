@@ -3,7 +3,7 @@
 // ==================================================
 
 $alignment: (
-  "alignment": (
+  'alignment': (
     property: vertical-align,
     class: align,
     values: (
@@ -11,10 +11,7 @@ $alignment: (
       middle: middle,
       bottom: bottom
     )
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $alignment,
-  $utilities
-);
+$utilities: map-merge($alignment, $utilities);

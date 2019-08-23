@@ -16,9 +16,9 @@
 @include angular-material-theme($theme);
 @include matero-admin-theme($theme);
 
-/*
- * Demo purpose only
- */
+//
+// Demo purpose only
+//
 .theme-dark {
   $primary: mat-palette($mat-pink, 700, 500, 900);
   $accent: mat-palette($mat-blue-grey, A200, A100, A400);

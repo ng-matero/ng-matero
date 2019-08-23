@@ -21,7 +21,7 @@ $mat-colors: (
   'deep-orange': $mat-deep-orange,
   'brown': $mat-brown,
   'gray': $mat-gray,
-  'blue-gray': $mat-blue-gray,
+  'blue-gray': $mat-blue-gray
 );
 
 @include generate-color('text', 'color');
@@ -29,27 +29,24 @@ $mat-colors: (
 
 // Contrast color
 $contrast-colors: (
-  "text-color": (
+  'text-color': (
     property: color,
     class: text,
     values: (
       white: white,
       black: black,
-      light: $light-primary-text, // material variable
-      dark: $dark-primary-text, // material variable
+      light: $light-primary-text,
+      dark: $dark-primary-text
     )
   ),
-  "bg-color": (
+  'bg-color': (
     property: background-color,
     class: bg,
     values: (
       white: white,
       black: black
     )
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $contrast-colors,
-  $utilities
-);
+$utilities: map-merge($contrast-colors, $utilities);

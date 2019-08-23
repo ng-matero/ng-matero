@@ -1,0 +1,33 @@
+@mixin scrollbar() {
+  @each $selector in $scrollbar-selectors {
+    #{$selector} {
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      &::-webkit-scrollbar-track,
+      &::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: transparent;
+        border-image: initial;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: rgba(0, 0, 0, .2) 1px 1px 5px inset;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        min-height: 20px;
+        background-clip: content-box;
+        box-shadow: rgba(0, 0, 0, .2) 0 0 0 5px inset;
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+    }
+  }
+}

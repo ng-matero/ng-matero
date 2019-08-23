@@ -1,4 +1,5 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/functions';
 
 // Dark style
 $primary: mat-palette($mat-pink, 700, 500, 900);
@@ -26,7 +27,7 @@ $foreground: mat-color($theme, 'foreground');
   box-sizing: border-box;
   background-color: #fff;
   transform: translateX(0);
-  transition: transform .3s ease-in-out;
+  transition: swift-ease-out(transform);
   overflow: auto;
 
   &.opened {
@@ -41,8 +42,8 @@ $foreground: mat-color($theme, 'foreground');
   bottom: 0;
   left: 0;
   z-index: 10;
-  transition-duration: .4s;
-  transition-timing-function: cubic-bezier(.25, .8, .25, 1);
+  transition-duration: $swift-ease-out-duration;
+  transition-timing-function: $swift-ease-out-timing-function;
   transition-property: background-color, visibility;
   visibility: hidden;
 

@@ -1,4 +1,4 @@
-@mixin generate-color($prefix, $property){
+@mixin generate-color($prefix, $property) {
   @each $name, $value in $mat-colors {
     @each $hue, $color in $value {
       @if ($hue != 'contrast') {

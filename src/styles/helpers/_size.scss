@@ -3,19 +3,16 @@
 // ==================================================
 
 $size: (
-  "width": (
+  'width': (
     property: width,
     class: w,
     values: $size
   ),
-  "height": (
+  'height': (
     property: height,
     class: h,
     values: $size
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $size,
-  $utilities
-);
+$utilities: map-merge($size, $utilities);

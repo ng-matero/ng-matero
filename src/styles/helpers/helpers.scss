@@ -1,20 +1,21 @@
 // Helpers
-@import "functions";
-@import "variables";
-@import "mixins";
+@import 'functions';
+@import 'variables';
+@import 'mixins';
 // -----------------
-@import "colors";
-@import "spacing";
-@import "radius";
-@import "icons";
-@import "text";
-@import "fonts";
-@import "image";
-@import "size";
-@import "border";
-@import "cursor";
-@import "display";
-@import "alignment";
+@import 'display';
+@import 'position';
+@import 'size';
+@import 'spacing';
+@import 'border';
+@import 'radius';
+@import 'fonts';
+@import 'text';
+@import 'alignment';
+@import 'colors';
+@import 'cursor';
+@import 'image';
+@import 'icons';
 
 // Generate Helpers
 @each $key, $utility in $utilities {
@@ -23,12 +24,17 @@
   @each $class-modifier, $value in $values {
     $properties: map-get($utility, property);
     $property-class-prefix: map-get($utility, class);
+    $property-class-prefix-hyphen: if(
+      $property-class-prefix== '',
+      $property-class-prefix,
+      $property-class-prefix + '-'
+    );
 
-    @if type-of($properties) == "string" {
+    @if type-of($properties) == 'string' {
       $properties: append((), $properties);
     }
 
-    .#{$property-class-prefix + '-' + $class-modifier} {
+    .#{$property-class-prefix-hyphen + $class-modifier} {
       @each $property in $properties {
         #{$property}: $value !important;
       }

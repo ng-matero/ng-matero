@@ -11,35 +11,32 @@
 }
 
 $text: (
-  "text-transform": (
+  'text-transform': (
     property: text-transform,
     class: text,
     values: (
       capitalize: capitalize,
       uppercase: uppercase,
-      lowercase: lowercase,
+      lowercase: lowercase
     )
   ),
-  "text-align": (
+  'text-align': (
     property: text-align,
     class: text,
     values: (
       center: center,
       right: right,
-      left: left,
+      left: left
     )
   ),
-  "white-space": (
+  'white-space': (
     property: white-space,
     class: text,
     values: (
       wrap: normal,
-      nowrap: nowrap,
+      nowrap: nowrap
     )
   )
 );
 
-$utilities: map-merge(
-  $text,
-  $utilities
-);
+$utilities: map-merge($text, $utilities);

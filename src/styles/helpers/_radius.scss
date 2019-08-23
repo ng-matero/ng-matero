@@ -3,34 +3,31 @@
 // ==================================================
 
 $border-radius: (
-  "border-radius": (
+  'border-radius': (
     property: border-radius,
     class: r,
     values: $radius
   ),
-  "border-top-left-radius": (
+  'border-top-left-radius': (
     property: border-top-left-radius,
     class: r-t-l,
     values: $radius
   ),
-  "border-top-right-radius": (
+  'border-top-right-radius': (
     property: border-top-right-radius,
     class: r-t-r,
     values: $radius
   ),
-  "border-bottom-right-radius": (
+  'border-bottom-right-radius': (
     property: border-bottom-right-radius,
     class: r-b-r,
     values: $radius
   ),
-  "border-bottom-left-radius": (
+  'border-bottom-left-radius': (
     property: border-bottom-left-radius,
     class: r-b-l,
     values: $radius
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $border-radius,
-  $utilities
-);
+$utilities: map-merge($border-radius, $utilities);

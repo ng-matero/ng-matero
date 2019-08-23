@@ -2,115 +2,116 @@
 // SPACING
 // ==================================================
 
+$margin-auto: (
+  auto: auto
+);
+
 $spacing: (
-  "margin": (
+  'margin': (
     property: margin,
     class: m,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "margin-x": (
-    property: margin-left  margin-right,
+  'margin-x': (
+    property: margin-left margin-right,
     class: m-x,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "margin-y": (
-    property: margin-top  margin-bottom,
+  'margin-y': (
+    property: margin-top margin-bottom,
     class: m-y,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "margin-top": (
+  'margin-top': (
     property: margin-top,
     class: m-t,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "margin-right": (
+  'margin-right': (
     property: margin-right,
     class: m-r,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "margin-bottom": (
+  'margin-bottom': (
     property: margin-bottom,
     class: m-b,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "margin-left": (
+  'margin-left': (
     property: margin-left,
     class: m-l,
-    values: map-merge($spacers, (auto: auto))
+    values: map-merge($spacers, $margin-auto)
   ),
-  "negative-margin": (
+  'negative-margin': (
     property: margin,
     class: m,
     values: $negative-spacers
   ),
-  "negative-margin-x": (
+  'negative-margin-x': (
     property: margin-left margin-right,
     class: m-x,
     values: $negative-spacers
   ),
-  "negative-margin-y": (
+  'negative-margin-y': (
     property: margin-top margin-bottom,
     class: m-y,
     values: $negative-spacers
   ),
-  "negative-margin-top": (
+  'negative-margin-top': (
     property: margin-top,
     class: m-t,
     values: $negative-spacers
   ),
-  "negative-margin-right": (
+  'negative-margin-right': (
     property: margin-right,
     class: m-r,
     values: $negative-spacers
   ),
-  "negative-margin-bottom": (
+  'negative-margin-bottom': (
     property: margin-bottom,
     class: m-b,
     values: $negative-spacers
   ),
-  "negative-margin-left": (
+  'negative-margin-left': (
     property: margin-left,
     class: m-l,
     values: $negative-spacers
   ),
-  "padding": (
+  'padding': (
     property: padding,
     class: p,
     values: $spacers
   ),
-  "padding-x": (
+  'padding-x': (
     property: padding-left padding-right,
     class: p-x,
     values: $spacers
   ),
-  "padding-y": (
+  'padding-y': (
     property: padding-top padding-bottom,
     class: p-y,
     values: $spacers
   ),
-  "padding-top": (
+  'padding-top': (
     property: padding-top,
     class: p-t,
     values: $spacers
   ),
-  "padding-right": (
+  'padding-right': (
     property: padding-right,
     class: p-r,
     values: $spacers
   ),
-  "padding-bottom": (
+  'padding-bottom': (
     property: padding-bottom,
     class: p-b,
     values: $spacers
   ),
-  "padding-left": (
+  'padding-left': (
     property: padding-left,
     class: p-l,
     values: $spacers
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $spacing,
-  $utilities
-);
+$utilities: map-merge($spacing, $utilities);

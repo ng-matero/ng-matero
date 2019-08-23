@@ -11,7 +11,7 @@
     overflow-x: hidden;
     width: $sidenav-width;
     border-width: 0;
-    transition: width .4s cubic-bezier(.25, .8, .25, 1); // Only set width property
+    transition: swift-ease-out(width); // Only set width property
 
     @include mat-elevation(2);
 
@@ -42,7 +42,7 @@
       .menu-name,
       .menu-label,
       .menu-badge {
-        transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+        transition: swift-ease-out(opacity);
       }
 
       .menu-label,
@@ -58,7 +58,7 @@
         display: block;
         float: right;
         text-align: center;
-        transition: transform .3s cubic-bezier(.7, 0, .3, 1);
+        transition: fast-out-slow(transform);
       }
 
       &.level-0 > li > a > .menu-name {
@@ -106,51 +106,12 @@
         padding-top: 0;
         overflow: hidden;
         transform: translateZ(0) !important;
-        transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+        transition: fast-out-slow(max-height);
 
         .matero-sidemenu-item {
           border-left-width: 0;
         }
       }
-    }
-  }
-
-  .matero-sidebar-header {
-    display: flex;
-    align-items: center;
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    height: $toolbar-height-desktop;
-    padding: 0 10px;
-    color: mat-color($foreground, text);
-    background: mat-color($background, app-bar);
-    overflow: hidden;
-  }
-
-  .matero-sidebar-inner {
-    height: calc(100% - #{$toolbar-height-desktop});
-    overflow: auto;
-  }
-
-  // User panel
-  .matero-user-panel-avatar {
-    transition: transform .4s cubic-bezier(.25, .8, .25, 1);
-  }
-
-  .matero-user-panel-name,
-  .matero-user-panel-email,
-  .matero-user-panel-icons {
-    opacity: 1;
-    transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
-  }
-
-  .matero-user-panel-icons {
-    .mat-icon-button {
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
     }
   }
 
@@ -194,6 +155,50 @@
 
     .matero-content-wrap {
       margin-left: $sidenav-collapsed-width !important;
+    }
+  }
+
+  .matero-sidebar-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: $toolbar-height-desktop;
+    padding: 0 10px;
+    color: mat-color($foreground, text);
+    background: mat-color($background, app-bar);
+    overflow: hidden;
+
+    // Colorful
+    .matero-header-white & {
+      background-color: white;
+    }
+  }
+
+  .matero-sidebar-inner {
+    height: calc(100% - #{$toolbar-height-desktop});
+    overflow: auto;
+  }
+
+  // User panel
+  .matero-user-panel-avatar {
+    transition: swift-ease-out(transform);
+  }
+
+  .matero-user-panel-name,
+  .matero-user-panel-email,
+  .matero-user-panel-icons {
+    opacity: 1;
+    transition: swift-ease-out(opacity);
+  }
+
+  .matero-user-panel-icons {
+    .mat-icon-button {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
     }
   }
 

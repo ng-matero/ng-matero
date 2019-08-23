@@ -12,14 +12,14 @@ $spacers: map-merge(
     16: $spacer,
     24: $spacer * 1.5,
     32: $spacer * 2,
-    48: $spacer * 3,
+    48: $spacer * 3
   ),
   $spacers
 );
 $negative-spacers: negativify-map($spacers) !default;
 
 // Fonts
-$font-wieghts:(
+$font-wieghts: (
   100: 100,
   200: 200,
   300: 300,
@@ -28,7 +28,7 @@ $font-wieghts:(
   600: 600,
   700: 700,
   800: 800,
-  900: 900,
+  900: 900
 );
 
 $font-sizes: (
@@ -38,7 +38,7 @@ $font-sizes: (
   14: 14px,
   16: 16px,
   18: 18px,
-  20: 20px,
+  20: 20px
 );
 
 // Size
@@ -69,9 +69,9 @@ $radius: (
 // Border width
 $border-solid: (
   0: 0,
-  1: 1px solid rgba(0,0,0,.12),
-  2: 2px solid rgba(0,0,0,.12),
-  3: 3px solid rgba(0,0,0,.12),
-  4: 4px solid rgba(0,0,0,.12),
-  5: 5px solid rgba(0,0,0,.12),
+  1: 1px solid rgba(0, 0, 0, .12),
+  2: 2px solid rgba(0, 0, 0, .12),
+  3: 3px solid rgba(0, 0, 0, .12),
+  4: 4px solid rgba(0, 0, 0, .12),
+  5: 5px solid rgba(0, 0, 0, .12)
 );

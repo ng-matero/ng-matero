@@ -3,7 +3,7 @@
 // ==================================================
 
 $cursor: (
-  "cursor": (
+  'cursor': (
     property: cursor,
     class: cursor,
     values: (
@@ -12,12 +12,9 @@ $cursor: (
       text: text,
       move: move,
       copy: copy,
-      not-allowed: not-allowed,
+      not-allowed: not-allowed
     )
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $cursor,
-  $utilities
-);
+$utilities: map-merge($cursor, $utilities);

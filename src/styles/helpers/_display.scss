@@ -3,7 +3,7 @@
 // ==================================================
 
 $display: (
-  "display": (
+  'display': (
     property: display,
     class: d,
     values: (
@@ -11,10 +11,7 @@ $display: (
       inline-block: inline-block,
       inline: inline
     )
-  ),
+  )
 );
 
-$utilities: map-merge(
-  $display,
-  $utilities
-);
+$utilities: map-merge($display, $utilities);
