@@ -21,8 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'sessions',
-        loadChildren: () =>
-          import('./sessions/sessions.module').then(m => m.SessionsModule),
+        loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
         data: { title: 'Sessions', titleI18n: 'Sessions' },
       },
     ],

@@ -1,6 +1,6 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { RunSchematicTask, NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { addKeyPkgsToPackageJson } from '../starter/packages';
+import { addKeyPkgsToPackageJson } from './packages';
 
 // Just return the tree
 export default function(options: any): Rule {

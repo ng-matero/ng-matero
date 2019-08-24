@@ -15,6 +15,7 @@ import { UserPanelComponent } from './admin-layout/sidebar/user-panel/user-panel
 import { TopmenuComponent } from './admin-layout/topmenu/topmenu.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { SidebarRightComponent } from './admin-layout/sidebar-right/sidebar-right.component';
+import { GithubButtonComponent } from './admin-layout/header/github.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SidebarRightComponent } from './admin-layout/sidebar-right/sidebar-righ
     TopmenuComponent,
     AuthLayoutComponent,
     SidebarRightComponent,
+    GithubButtonComponent,
   ],
   imports: [SharedModule],
 })

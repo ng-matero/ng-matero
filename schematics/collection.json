@@ -9,8 +9,13 @@
     "ng-add-setup-project": {
       "description": "Sets up the specified project after the ng-add dependencies have been installed.",
       "private": true,
-      "factory": "./starter/index",
+      "factory": "./ng-add/setup-project",
       "schema": "./ng-add/schema.json"
+    },
+    "my-service": {
+      "description": "Generate a service in the project.",
+      "factory": "./ng-generate/module/index#myService",
+      "schema": "./ng-generate/module/schema.json"
     }
   }
 }

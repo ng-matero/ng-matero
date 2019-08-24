@@ -18,16 +18,39 @@
       "x-prompt": {
         "message": "Choose a prebuilt admin layout:",
         "type": "list",
-        "items": [{
-          "value": "side",
-          "label": "Side Navigation"
-        }, {
-          "value": "top",
-          "label": "Top Navigation"
-        }, {
-          "value": "both",
-          "label": "Both"
-        }]
+        "items": [
+          {
+            "value": "side",
+            "label": "Side Navigation"
+          },
+          {
+            "value": "top",
+            "label": "Top Navigation"
+          },
+          {
+            "value": "both",
+            "label": "Both"
+          }
+        ]
+      }
+    },
+    "theme": {
+      "description": "The theme to apply",
+      "type": "string",
+      "default": "light",
+      "x-prompt": {
+        "message": "Choose a prebuilt admin theme:",
+        "type": "list",
+        "items": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ]
       }
     },
     "dir": {
@@ -35,15 +58,18 @@
       "type": "string",
       "default": "ltr",
       "x-prompt": {
-        "message": "Choose a prebuilt dir option:",
+        "message": "Choose a prebuilt direction option:",
         "type": "list",
-        "items": [{
-          "value": "ltr",
-          "label": "LTR"
-        }, {
-          "value": "rtl",
-          "label": "RTL"
-        }]
+        "items": [
+          {
+            "value": "ltr",
+            "label": "LTR"
+          },
+          {
+            "value": "rtl",
+            "label": "RTL"
+          }
+        ]
       }
     },
     "gestures": {
