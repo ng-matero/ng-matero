@@ -7,8 +7,8 @@ const del = require('del');
 const pkg = require('./package.json');
 
 const DEST = 'dist/schematics';
-const STARTER = DEST + '/starter';
-const FILES = DEST + '/starter/files';
+const NG_ADD = DEST + '/ng-add';
+const FILES = NG_ADD + '/files';
 
 // root
 function copyRoot(cb) {
@@ -39,7 +39,9 @@ function copyAssets(cb) {
 
 // src/styles
 function copyStyles(cb) {
-  return src(['src/styles/**/*', '!src/styles/app.scss']).pipe(dest(`${FILES}/src/styles`));
+  return src(['src/styles/**/*', '!src/styles/app.scss', '!src/styles/_variables.scss']).pipe(
+    dest(`${FILES}/src/styles`)
+  );
 }
 
 // src/environments
@@ -68,7 +70,7 @@ function copySrcAppRoutes(cb) {
 
 // Replace version placeholder
 function updateVersions(cb) {
-  return src([`${STARTER}/packages.js`, `${STARTER}/packages.ts`])
+  return src([`${NG_ADD}/packages.js`, `${NG_ADD}/packages.ts`])
     .pipe(
       each(function(content, file, callback) {
         [
@@ -106,7 +108,7 @@ function updateVersions(cb) {
         callback(null, content);
       })
     )
-    .pipe(dest(STARTER));
+    .pipe(dest(NG_ADD));
 }
 
 exports.default = series(
