@@ -1,17 +1,22 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsMyService",
-  "title": "My Service Schema",
+  "id": "SchematicsNgMateroModule",
+  "title": "Ng-Matero Module Schema",
   "type": "object",
   "properties": {
     "name": {
-      "description": "The name of the service.",
-      "type": "string"
+      "type": "string",
+      "description": "The name of the module.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What should be the name of the module?"
     },
     "path": {
       "type": "string",
       "format": "path",
-      "description": "The path to create the service.",
+      "description": "The path to create the module.",
       "visible": false
     },
     "project": {
@@ -20,9 +25,45 @@
       "$default": {
         "$source": "projectName"
       }
+    },
+    "routing": {
+      "type": "boolean",
+      "description": "When true, creates a routing module.",
+      "default": false,
+      "x-user-analytics": 17
+    },
+    "routingScope": {
+      "enum": ["Child", "Root"],
+      "type": "string",
+      "description": "The scope for the new routing module.",
+      "default": "Child"
+    },
+    "route": {
+      "type": "string",
+      "description": "Creates lazy loaded routing module. Requires --module option."
+    },
+    "flat": {
+      "type": "boolean",
+      "description": "When true, creates the new files at the top level of the current project root. ",
+      "default": false
+    },
+    "commonModule": {
+      "type": "boolean",
+      "description": "When true, the new NgModule imports \"CommonModule\". ",
+      "default": true,
+      "visible": false
+    },
+    "module": {
+      "type": "string",
+      "description": "The declaring NgModule.",
+      "alias": "m"
+    },
+    "lintFix": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, applies lint fixes after generating the module.",
+      "x-user-analytics": 15
     }
-   },
-  "required": [
-    "name"
-  ]
+  },
+  "required": ["name"]
 }

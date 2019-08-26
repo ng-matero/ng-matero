@@ -12,9 +12,9 @@
       "factory": "./ng-add/setup-project",
       "schema": "./ng-add/schema.json"
     },
-    "my-service": {
+    "module": {
       "description": "Generate a service in the project.",
-      "factory": "./ng-generate/module/index#myService",
+      "factory": "./ng-generate/module/index",
       "schema": "./ng-generate/module/schema.json"
     }
   }

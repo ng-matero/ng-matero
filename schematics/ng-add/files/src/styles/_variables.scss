@@ -16,11 +16,6 @@ $warn: mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 <% } %>
 
-//////////////////////////////////////////////////////////////////////////////////////
-// When we use the Schematics (`ng add`) to start, the following variables will be  //
-// used to create a dark theme! This strategy will not generate redundant codes.    //
-//////////////////////////////////////////////////////////////////////////////////////
-
 <% if(theme==='dark') { %>
 //
 // Dark style
