@@ -1,12 +1,14 @@
-@import "../../../../styles/functions";
+@import '../../../../styles/functions';
 
 .error-code {
   padding: 20px 0;
   font-size: 150px;
   color: #212121;
-  text-shadow: long-shadow($direction: 45deg,
-  $length: 60px,
-  $color: rgba(0, 0, 0, .03),
-  $fade: rgba(0, 0, 0, .0015),
-  $shadow-count: 20);
+  text-shadow: long-shadow(
+    $direction: 45deg,
+    $length: 60px,
+    $color: rgba(0, 0, 0, .03),
+    $fade: rgba(0, 0, 0, .0015),
+    $shadow-count: 20
+  );
 }

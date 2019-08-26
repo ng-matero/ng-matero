@@ -1,0 +1,24 @@
+<mat-toolbar class="matero-toolbar">
+  <button mat-button class="matero-hamburger" (click)="toggleSidenav.emit()" *ngIf="showToggle">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <app-branding *ngIf="showBranding"></app-branding>
+  <span fxFlex></span>
+
+  <button mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="toggleFullscreen()" fxHide.lt-sm>
+    <mat-icon>fullscreen</mat-icon>
+  </button>
+
+  <app-notification fxHide.lt-sm></app-notification>
+
+  <app-user></app-user>
+
+  <button mat-button class="matero-hamburger" (click)="toggleSidenavRight.emit()" fxHide.lt-sm>
+    <mat-icon>list</mat-icon>
+  </button>
+</mat-toolbar>

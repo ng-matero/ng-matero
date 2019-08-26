@@ -1,4 +1,5 @@
-<% if(nav==='side') { %><div class="matero-container-wrap" dir="<%= dir %>"
+<% if(nav==='side') { %><div class="matero-container-wrap <% if(theme==='light') { %>matero-header-white<% } %>"
+     dir="<%= dir %>"
      [ngClass]="{'matero-sidenav-collapsed': sidenavCollapsed}">
   <ng-progress></ng-progress>
 
@@ -24,8 +25,7 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div><% } %><% if(nav==='top') { %><div
-     class="matero-container-wrap matero-header-fixed matero-navbar-top"
+</div><% } %><% if(nav==='top') { %><div class="matero-container-wrap matero-header-fixed matero-navbar-top <% if(theme==='light') { %>matero-header-white<% } %>"
      dir="<%= dir %>">
   <ng-progress></ng-progress>
 

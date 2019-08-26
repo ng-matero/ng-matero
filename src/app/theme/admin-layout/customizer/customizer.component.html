@@ -22,7 +22,7 @@
     <mat-slide-toggle
       [(ngModel)]="options.showHeader"
       (change)="sendOptions()"
-      [disabled]="options.headerPos === 'above'"
+      [disabled]="options.headerPos === 'above' || options.navPos === 'top'"
       >visible</mat-slide-toggle
     >
     <h4 class="f-w-400">position</h4>

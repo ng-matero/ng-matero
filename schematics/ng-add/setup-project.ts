@@ -26,6 +26,7 @@ import { addFontsToIndex } from './material-fonts';
 import { addLoaderToIndex } from './global-loader';
 import { addScriptToPackageJson } from './package-config';
 import { add3rdPkgsToPackageJson } from './packages';
+import { addThemeStyleToTarget } from '../utils';
 
 const { red, bold, italic } = chalk;
 
@@ -39,7 +40,7 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Scripts to package.json
- *  - Add Hmr to angular.json
+ *  - Add Hmr & style to angular.json
  *  - Add Hammer.js
  *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to index.html
@@ -52,6 +53,7 @@ export default function(options: Schema): Rule {
     addStarterFiles(options),
     addScriptsToPackageJson(),
     addHmrToAngularJson(),
+    addStyleToAngularJson(),
     options && options.gestures ? addHammerJsToMain(options) : noop(),
     addAnimationsModule(options),
     addFontsToIndex(options),
@@ -168,6 +170,18 @@ function addHmrToAngularJson() {
     };
 
     host.overwrite('angular.json', JSON.stringify(ngJson, null, 2));
+  };
+}
+
+/** Add style to angular.json */
+function addStyleToAngularJson() {
+  return (host: Tree) => {
+    const workspace = getWorkspace(host);
+    const ngJson = Object.assign(workspace);
+    const project = ngJson.projects[ngJson.defaultProject];
+    const themePath = `src/styles.scss`;
+    addThemeStyleToTarget(project, 'build', host, themePath, workspace);
+    addThemeStyleToTarget(project, 'test', host, themePath, workspace);
   };
 }
 
