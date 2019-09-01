@@ -51,7 +51,7 @@
     "commonModule": {
       "type": "boolean",
       "description": "When true, the new NgModule imports \"CommonModule\". ",
-      "default": true,
+      "default": false,
       "visible": false
     },
     "module": {

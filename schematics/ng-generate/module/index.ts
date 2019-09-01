@@ -1,29 +1,25 @@
 import {
   Rule,
   Tree,
-  SchematicsException,
   apply,
   url,
   move,
   chain,
   mergeWith,
-  template,
-  noop,
+  applyTemplates,
 } from '@angular-devkit/schematics';
 
 import { strings, normalize, Path } from '@angular-devkit/core';
 
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
-import {
-  addImportToModule,
-  addRouteDeclarationToModule,
-} from '@schematics/angular/utility/ast-utils';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { parseName } from '@schematics/angular/utility/parse-name';
+import { InsertChange } from '@schematics/angular/utility/change';
 
 import { Schema as ModuleOptions, RoutingScope } from './schema';
-import { InsertChange } from '@schematics/angular/utility/change';
+
+import { addRouteDeclarationToModule } from '../../utils';
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
   const importModulePath = normalize(
@@ -33,42 +29,6 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
       '.module'
   );
   return buildRelativePath(modulePath, importModulePath);
-}
-
-function addDeclarationToNgModule(options: ModuleOptions): Rule {
-  return (host: Tree) => {
-    if (!options.module) {
-      return host;
-    }
-
-    const modulePath = options.module;
-
-    const text = host.read(modulePath);
-
-    if (text === null) {
-      throw new SchematicsException(`File ${modulePath} does not exist.`);
-    }
-    const sourceText = text.toString();
-    const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
-
-    const relativePath = buildRelativeModulePath(options, modulePath);
-    const changes = addImportToModule(
-      source,
-      modulePath,
-      strings.classify(`${options.name}Module`),
-      relativePath
-    );
-
-    const recorder = host.beginUpdate(modulePath);
-    for (const change of changes) {
-      if (change instanceof InsertChange) {
-        recorder.insertLeft(change.pos, change.toAdd);
-      }
-    }
-    host.commitUpdate(recorder);
-
-    return host;
-  };
 }
 
 function buildRoute(options: ModuleOptions, modulePath: string) {
@@ -109,7 +69,7 @@ function addRouteDeclarationToNgModule(
       path,
       buildRoute(options, options.module)
     ) as InsertChange;
-    // console.log(addDeclaration);
+
     const recorder = host.beginUpdate(path);
     recorder.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
     host.commitUpdate(recorder);
@@ -121,9 +81,8 @@ function addRouteDeclarationToNgModule(
 function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefined {
   let path: Path | undefined;
   const modulePath = options.module as string;
-
-  // Fix modulePath `/src/app/*/*-routing.module.ts` -> `/*/*-routing.module.ts`
   let routingModuleName = modulePath.split('.')[0] + '-routing';
+  // Fix modulePath `/src/app/*/*-routing.module.ts` -> `/*/*-routing.module.ts`
   if (options.path) {
     routingModuleName = routingModuleName.replace(options.path, '');
   }
@@ -150,7 +109,7 @@ export default function(options: ModuleOptions): Rule {
     // Set default route
     options.route = options.route || options.name;
     let routingModulePath: Path | undefined;
-    const isLazyLoadedModuleGen = options.route && options.module;
+    const isLazyLoadedModuleGen = options.route && options.module; // must be true
     if (isLazyLoadedModuleGen) {
       options.routingScope = RoutingScope.Child;
       routingModulePath = getRoutingModulePath(host, options);
@@ -166,7 +125,7 @@ export default function(options: ModuleOptions): Rule {
       // options.routing || (isLazyLoadedModuleGen && !!routingModulePath)
       //   ? noop()
       //   : filter(path => !path.endsWith('-routing.module.ts.template')),
-      template({
+      applyTemplates({
         ...strings,
         'if-flat': (s: string) => (options.flat ? '' : s),
         // lazyRoute: isLazyLoadedModuleGen,
@@ -176,13 +135,8 @@ export default function(options: ModuleOptions): Rule {
       }),
       move(parsedPath.path),
     ]);
-    // const moduleDasherized = strings.dasherize(options.name);
-    // const modulePath = `${
-    //   !options.flat ? moduleDasherized + '/' : ''
-    // }${moduleDasherized}.module.ts`;
 
     return chain([
-      !isLazyLoadedModuleGen ? addDeclarationToNgModule(options) : noop(),
       addRouteDeclarationToNgModule(options, routingModulePath),
       mergeWith(templateSource),
     ]);

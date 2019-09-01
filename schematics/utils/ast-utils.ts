@@ -1,10 +1,33 @@
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
-  getRouterModuleDeclaration,
   findNodes,
+  getRouterModuleDeclaration,
   insertAfterLastOccurrence,
 } from '@schematics/angular/utility/ast-utils';
 import { Change } from '@schematics/angular/utility/change';
+
+export function findRouteNode(
+  node: ts.Node,
+  kind: ts.SyntaxKind,
+  textKey: string,
+  textValue?: string
+): ts.Node | null {
+  if (
+    node.kind === kind &&
+    node.getText() === textKey &&
+    (node.parent as any).initializer.text === textValue
+  ) {
+    // throw new Error(node.getText());
+    return node.parent.parent;
+  }
+
+  let foundNode: ts.Node | null = null;
+  ts.forEachChild(node, childNode => {
+    foundNode = foundNode || findRouteNode(childNode, kind, textKey, textValue);
+  });
+
+  return foundNode;
+}
 
 /**
  * Adds a new route declaration to a router module (i.e. has a RouterModule declaration)
@@ -68,11 +91,24 @@ export function addRouteDeclarationToModule(
     route = `,${identation[0] || ' '}${routeLiteral}`;
   }
 
+  // Find a route which `path` equals to `''`
+  const routeNode = findRouteNode(routesArr, ts.SyntaxKind.Identifier, 'path', '');
+
+  if (!routeNode) {
+    throw new Error(`Couldn't find a route definition which path is empty string`);
+  }
+
+  const routeNodeArr = findNodes(
+    routeNode,
+    ts.SyntaxKind.ArrayLiteralExpression,
+    1
+  )[0] as ts.ArrayLiteralExpression;
+
   return insertAfterLastOccurrence(
-    (routesArr.elements as unknown) as ts.Node[],
+    (routeNodeArr.elements as unknown) as ts.Node[],
     route,
     fileToAdd,
-    routesArr.elements.pos,
+    routeNodeArr.elements.pos,
     ts.SyntaxKind.ObjectLiteralExpression
   );
 }
