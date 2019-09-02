@@ -16,6 +16,11 @@
       "description": "Generate a module in the project.",
       "factory": "./ng-generate/module/index",
       "schema": "./ng-generate/module/schema.json"
+    },
+    "list": {
+      "description": "Generate a list component in the project.",
+      "factory": "./ng-generate/list/index",
+      "schema": "./ng-generate/list/schema.json"
     }
   }
 }
