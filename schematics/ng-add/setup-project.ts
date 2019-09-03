@@ -118,6 +118,7 @@ function deleteExsitingFiles() {
     [
       `${project.root}/README.md`,
       `${project.root}/tsconfig.json`,
+      `${project.root}/tslint.json`,
       `${project.sourceRoot}/app/app-routing.module.ts`,
       `${project.sourceRoot}/app/app.module.ts`,
       `${project.sourceRoot}/app/app.component.spec.ts`,

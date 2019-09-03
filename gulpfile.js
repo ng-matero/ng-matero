@@ -19,6 +19,7 @@ function copyRoot(cb) {
     'LICENSE',
     'README.md',
     'tsconfig.json',
+    'tslint.json',
   ]).pipe(dest(`${FILES}/`));
 }
 
