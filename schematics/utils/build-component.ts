@@ -16,13 +16,11 @@ import {
 import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
 import { Schema as ComponentOptions, Style } from '@schematics/angular/component/schema';
 import {
-  addDeclarationToModule,
-  addEntryComponentToModule,
-  addExportToModule,
-  addRouteDeclarationToModule,
-  findNodes,
   insertAfterLastOccurrence,
   insertImport,
+  findNode,
+  addRouteDeclarationToModule,
+  addExportToModule,
 } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
 import { getWorkspace } from '@schematics/angular/utility/config';
@@ -61,20 +59,79 @@ function readIntoSourceFile(host: Tree, modulePath: string) {
   return ts.createSourceFile(modulePath, text.toString('utf-8'), ts.ScriptTarget.Latest, true);
 }
 
-// New
-function addImportDeclaration(
-  host: Tree,
-  source: any,
-  modulePath: string,
-  fileName: string,
-  filePath: string
-) {
+/**
+ * Add a new component to a declaration array (e.g. `COMPONENTS`)
+ */
+function addComponent(host: Tree, modulePath: string, fileName: string, symbolName: string) {
+  const source = readIntoSourceFile(host, modulePath);
+
+  const node = findNode(source, ts.SyntaxKind.Identifier, symbolName);
+  if (!node) {
+    throw new Error(`Couldn't find a ${symbolName} declaration in '${modulePath}'.`);
+  }
+  const nodeArr = (node.parent as any).initializer as ts.ArrayLiteralExpression;
+
+  // If need a comma...
+  const occurencesCount = nodeArr.elements.length;
+  const text = node.getFullText(source);
+
+  let componentName: string = fileName;
+  if (occurencesCount > 0) {
+    const identation = text.match(/\r?\n(\r?)\s*/) || [];
+    componentName = `,${identation[0] || ' '}${fileName}`;
+  }
+
+  const addDeclaration = insertAfterLastOccurrence(
+    (nodeArr.elements as unknown) as ts.Node[],
+    componentName,
+    modulePath,
+    nodeArr.elements.pos,
+    ts.SyntaxKind.Identifier
+  ) as InsertChange;
+
+  const record = host.beginUpdate(modulePath);
+  record.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
+  host.commitUpdate(record);
+}
+
+/**
+ * Add a import declaration (i.e. insert `import ... from ...`)
+ */
+function addImportDeclaration(host: Tree, modulePath: string, fileName: string, filePath: string) {
+  const source = readIntoSourceFile(host, modulePath);
   const changes = insertImport(source as any, modulePath, fileName, filePath);
   const declarationRecorder = host.beginUpdate(modulePath);
+
   if (changes instanceof InsertChange) {
     declarationRecorder.insertLeft(changes.pos, changes.toAdd);
   }
+
   host.commitUpdate(declarationRecorder);
+}
+
+/**
+ * Add export declaration
+ */
+function addExportToNgModule(host: Tree, modulePath: string, fileName: string, filePath: string) {
+  // Need to refresh the AST because we overwrote the file in the host.
+  const source = readIntoSourceFile(host, modulePath);
+
+  const exportRecorder = host.beginUpdate(modulePath);
+  const exportChanges = addExportToModule(
+    // TODO: TypeScript version mismatch due to @schematics/angular using a different version
+    // than Material. Cast to any to avoid the type assignment failure.
+    source as any,
+    modulePath,
+    fileName,
+    filePath
+  );
+
+  for (const change of exportChanges) {
+    if (change instanceof InsertChange) {
+      exportRecorder.insertLeft(change.pos, change.toAdd);
+    }
+  }
+  host.commitUpdate(exportRecorder);
 }
 
 function addDeclarationToNgModule(options: ComponentOptions): Rule {
@@ -84,42 +141,19 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
     }
 
     const modulePath = options.module;
-    let source = readIntoSourceFile(host, modulePath);
-
     const relativePath = buildRelativeComponentPath(options, modulePath);
     const classifiedName = strings.classify(`${options.name}Component`);
 
-    addImportDeclaration(host, source, modulePath, classifiedName, relativePath);
+    addImportDeclaration(host, modulePath, classifiedName, relativePath);
 
-    // New
-    source = readIntoSourceFile(host, modulePath);
-
-    const node = findNodes(
-      source,
-      ts.SyntaxKind.ArrayLiteralExpression,
-      1
-    )[0] as ts.ArrayLiteralExpression;
-
-    const occurencesCount = node.elements.length;
-    const text = node.getFullText(source);
-
-    let comp: string = classifiedName;
-    if (occurencesCount > 0) {
-      const identation = text.match(/\r?\n(\r?)\s*/) || [];
-      comp = `,${identation[0] || ' '}${classifiedName}`;
+    if (!options.entryComponent) {
+      addComponent(host, modulePath, classifiedName, 'COMPONENTS');
+    } else {
+      addComponent(host, modulePath, classifiedName, 'COMPONENTS_DYNAMIC');
     }
 
-    const addDeclaration = new InsertChange(modulePath, node.elements.end, comp);
-
-    const record = host.beginUpdate(modulePath);
-    record.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
-    host.commitUpdate(record);
-
-    // TODO:
     if (options.export) {
-    }
-    // TODO:
-    if (options.entryComponent) {
+      addExportToNgModule(host, modulePath, classifiedName, relativePath);
     }
 
     return host;
@@ -136,13 +170,10 @@ function buildSelector(options: ComponentOptions, projectPrefix: string) {
 
   return selector;
 }
-// New
-function buildRoute(options: ComponentOptions) {
-  const componentName = `${strings.classify(options.name)}Component`;
 
-  return `{ path: '${options.name}', component: ${componentName} }`;
-}
-// New
+/**
+ * Add a new component route declaration
+ */
 function addRouteDeclarationToNgModule(options: ComponentOptions, routingModulePath: Path): Rule {
   return (host: Tree) => {
     if (!options.module) {
@@ -161,24 +192,25 @@ function addRouteDeclarationToNgModule(options: ComponentOptions, routingModuleP
       throw new Error(`Couldn't find the module nor its routing module.`);
     }
 
-    let source = readIntoSourceFile(host, routingModulePath);
-
     const relativePath = buildRelativeComponentPath(options, routingModulePath);
     const classifiedName = strings.classify(`${options.name}Component`);
 
-    addImportDeclaration(host, source, routingModulePath, classifiedName, relativePath);
+    if (!options.entryComponent) {
+      addImportDeclaration(host, routingModulePath, classifiedName, relativePath);
 
-    // Update routes array
-    source = readIntoSourceFile(host, routingModulePath);
-    const addDeclaration = addRouteDeclarationToModule(
-      source,
-      path,
-      buildRoute(options)
-    ) as InsertChange;
+      // Update component routes array
+      const source = readIntoSourceFile(host, routingModulePath);
+      const componentRoute = `{ path: '${options.name}', component: ${classifiedName} }`;
+      const addDeclaration = addRouteDeclarationToModule(
+        source,
+        path,
+        componentRoute
+      ) as InsertChange;
 
-    const recorder = host.beginUpdate(path);
-    recorder.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
-    host.commitUpdate(recorder);
+      const recorder = host.beginUpdate(path);
+      recorder.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
+      host.commitUpdate(recorder);
+    }
 
     return host;
   };
@@ -233,11 +265,13 @@ export function buildComponent(
       // TODO(jelbourn): figure out if the need for this `as any` is a bug due to two different
       // incompatible `WorkspaceProject` classes in @angular-devkit
       options.path = buildDefaultPath(project as any);
+      // Fix default path (i.e. `src/app/routes/{{modulePath}}`)
+      options.path += '/routes/' + options.module;
     }
 
     options.module = findModuleFromOptions(host, options);
 
-    // Route path
+    // Route module path
     const routingModulePath = options.module.replace('.module', '-routing.module');
 
     const parsedPath = parseName(options.path!, options.name);

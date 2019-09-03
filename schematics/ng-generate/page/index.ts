@@ -17,6 +17,5 @@ export default function(options: Schema): Rule {
           './__path__/__name@dasherize@if-flat__/__name@dasherize__.component.__style__.template',
       }
     ),
-    // options.skipImport ? noop() : addNavModulesToModule(options),
   ]);
 }

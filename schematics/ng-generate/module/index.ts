@@ -82,7 +82,7 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
   let path: Path | undefined;
   const modulePath = options.module as string;
   let routingModuleName = modulePath.split('.')[0] + '-routing';
-  // Fix modulePath `/src/app/*/*-routing.module.ts` -> `/*/*-routing.module.ts`
+  // Fix modulePath (i.e. `/src/app/*/*-routing.module.ts` -> `/*/*-routing.module.ts`)
   if (options.path) {
     routingModuleName = routingModuleName.replace(options.path, '');
   }

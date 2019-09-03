@@ -61,7 +61,8 @@
     },
     "skipTests": {
       "type": "boolean",
-      "description": "When true, does not generate a test file."
+      "description": "When true, does not generate a test file.",
+      "default": true
     },
     "flat": {
       "type": "boolean",
@@ -91,7 +92,8 @@
     "entryComponent": {
       "type": "boolean",
       "default": false,
-      "description": "Specifies if the component is an entry component of declaring module."
+      "description": "Specifies if the component is an entry component of declaring module.",
+      "alias": "e"
     }
   },
   "required": ["name"]
