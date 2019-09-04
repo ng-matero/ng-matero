@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialRoutingModule } from './material-routing.module';
 
@@ -109,8 +108,8 @@ const COMPONENTS_DYNAMIC = [
 ];
 
 @NgModule({
-  imports: [CommonModule, SharedModule, MaterialRoutingModule],
+  imports: [SharedModule, MaterialRoutingModule],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
-  entryComponents: [...COMPONENTS_DYNAMIC],
+  entryComponents: COMPONENTS_DYNAMIC,
 })
 export class MaterialModule {}

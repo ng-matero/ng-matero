@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { GalleryRoutingModule } from './gallery-routing.module';
 
 import { MediaComponent } from './media/media.component';
 
+const COMPONENTS = [MediaComponent];
+const COMPONENTS_DYNAMIC = [];
+
 @NgModule({
-  declarations: [MediaComponent],
-  imports: [CommonModule, SharedModule, GalleryRoutingModule],
+  imports: [SharedModule, GalleryRoutingModule],
+  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  entryComponents: COMPONENTS_DYNAMIC,
 })
 export class GalleryModule {}
