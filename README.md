@@ -34,8 +34,8 @@ The project has support `ng add` yet.
 When you create a new angular project, you must choose the `scss` style format.
 
 ```bash
-$ ng new PROJECT_NAME
-$ cd PROJECT_NAME
+$ ng new <project-name>
+$ cd <project-name>
 $ ng add ng-matero
 ```
 
@@ -45,7 +45,7 @@ You can also git clone the starter repo to start. But it's not recommended.
 $ git clone --depth git@github.com:ng-matero/starter.git
 ```
 
-## Schematics
+## 🎩 Schematics
 
 You can use the ng-matero schematics to generate a module or a page.
 
