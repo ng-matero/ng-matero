@@ -13,6 +13,6 @@ import { Component<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(
   encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
   changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
 })
-export class <%= classify(name) %>Component {
+export class <%= classify(pageName) %>Component {
   constructor() {}
 }

@@ -116,7 +116,6 @@ function deleteExsitingFiles() {
     const project = getProjectFromWorkspace(workspace);
 
     [
-      `${project.root}/README.md`,
       `${project.root}/tsconfig.json`,
       `${project.root}/tslint.json`,
       `${project.sourceRoot}/app/app-routing.module.ts`,

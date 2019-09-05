@@ -14,7 +14,7 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
-import { Schema as ComponentOptions, Style } from '@schematics/angular/component/schema';
+import { Schema, Style } from '@schematics/angular/component/schema';
 import {
   insertAfterLastOccurrence,
   insertImport,
@@ -33,6 +33,10 @@ import { dirname, join, resolve } from 'path';
 import { getProjectFromWorkspace } from '@angular/cdk/schematics/utils/get-project';
 import { getDefaultComponentOptions } from '@angular/cdk/schematics/utils/schematic-options';
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+
+export interface ComponentOptions extends Schema {
+  pageName: string;
+}
 
 /**
  * List of style extensions which are CSS compatible. All supported CLI style extensions can be
@@ -71,7 +75,7 @@ function addComponent(host: Tree, modulePath: string, fileName: string, symbolNa
   }
   const nodeArr = (node.parent as any).initializer as ts.ArrayLiteralExpression;
 
-  // If need a comma...
+  // Whether the declaration added needs a comma...
   const occurencesCount = nodeArr.elements.length;
   const text = node.getFullText(source);
 
@@ -134,6 +138,35 @@ function addExportToNgModule(host: Tree, modulePath: string, fileName: string, f
   host.commitUpdate(exportRecorder);
 }
 
+/**
+ * build selector with page name
+ */
+function buildSelector(options: ComponentOptions, projectPrefix: string) {
+  let selector = options.pageName;
+  if (options.prefix) {
+    selector = `${options.prefix}-${selector}`;
+  } else if (options.prefix === undefined && projectPrefix) {
+    selector = `${projectPrefix}-${selector}`;
+  }
+
+  return selector;
+}
+
+/**
+ * Build page name with module and name
+ */
+function buildPageName(options: ComponentOptions) {
+  const tempNameArr = [];
+  if (options.module) {
+    tempNameArr.push(options.module);
+  }
+  tempNameArr.push(...options.name.split('/'));
+  return tempNameArr.join('-');
+}
+
+/**
+ * Add declarations to module
+ */
 function addDeclarationToNgModule(options: ComponentOptions): Rule {
   return (host: Tree) => {
     if (options.skipImport || !options.module) {
@@ -142,7 +175,7 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
 
     const modulePath = options.module;
     const relativePath = buildRelativeComponentPath(options, modulePath);
-    const classifiedName = strings.classify(`${options.name}Component`);
+    const classifiedName = strings.classify(`${options.pageName}Component`);
 
     addImportDeclaration(host, modulePath, classifiedName, relativePath);
 
@@ -158,17 +191,6 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
 
     return host;
   };
-}
-
-function buildSelector(options: ComponentOptions, projectPrefix: string) {
-  let selector = strings.dasherize(options.name);
-  if (options.prefix) {
-    selector = `${options.prefix}-${selector}`;
-  } else if (options.prefix === undefined && projectPrefix) {
-    selector = `${projectPrefix}-${selector}`;
-  }
-
-  return selector;
 }
 
 /**
@@ -193,7 +215,7 @@ function addRouteDeclarationToNgModule(options: ComponentOptions, routingModuleP
     }
 
     const relativePath = buildRelativeComponentPath(options, routingModulePath);
-    const classifiedName = strings.classify(`${options.name}Component`);
+    const classifiedName = strings.classify(`${options.pageName}Component`);
 
     if (!options.entryComponent) {
       addImportDeclaration(host, routingModulePath, classifiedName, relativePath);
@@ -268,6 +290,8 @@ export function buildComponent(
       // Fix default path (i.e. `src/app/routes/{{modulePath}}`)
       options.path += '/routes/' + options.module;
     }
+
+    options.pageName = buildPageName(options) || '';
 
     options.module = findModuleFromOptions(host, options);
 

@@ -3,7 +3,7 @@ import { SharedModule } from '@shared/shared.module';
 
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { SidebarComponent } from './admin-layout/sidebar/sidebar.component';
-import { UserPanelComponent } from './admin-layout/sidebar/user-panel/user-panel.component';
+import { UserPanelComponent } from './admin-layout/sidebar/user-panel.component';
 import { SidemenuComponent } from './admin-layout/sidemenu/sidemenu.component';
 import { AccordionAnchorDirective } from './admin-layout/sidemenu/accordionanchor.directive';
 import { AccordionDirective } from './admin-layout/sidemenu/accordion.directive';
