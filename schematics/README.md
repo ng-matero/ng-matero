@@ -1,8 +1,8 @@
 # Ng-Matero
 
-This Ng-Matero is an Angular admin templete made with Material componnets. 
+Ng-Matero is an Angular admin templete made with Material componnets. 
 
-You can use the Anglar Cli Schematics to install the project.
+You can use the Anglar CLI Schematics to install the project.
 
 ## Installation
 
