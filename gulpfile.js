@@ -32,8 +32,8 @@ function copyAssets(cb) {
   return src([
     'src/assets/**/*',
     '!src/assets/data/menu.json',
-    '!src/assets/images/avatars/*',
-    '!src/assets/images/pixabay/*',
+    '!src/assets/images/avatars/**',
+    '!src/assets/images/pixabay/**',
   ]).pipe(dest(`${FILES}/src/assets`));
 }
 
@@ -58,7 +58,8 @@ function copySrcApp(cb) {
     '!src/app/shared/shared.module.ts',
     '!src/app/theme/admin-layout/*.html',
     '!src/app/theme/admin-layout/header/*.html',
-    '!src/app/theme/admin-layout/customizer/*',
+    '!src/app/theme/admin-layout/header/github.*',
+    '!src/app/theme/admin-layout/customizer/**',
     '!src/app/theme/theme.module.ts',
     '!src/app/app.module.ts',
   ]).pipe(dest(`${FILES}/src/app`));

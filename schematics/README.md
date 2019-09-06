@@ -40,6 +40,16 @@ Generate a entry component in the page component.
 $ ng g ng-matero:page <page-name>/<entry-component-name> -m=<module-name> -e=true
 ```
 
+### Example
+
+Just two steps after initializing the project, you can get a route page.
+
+```bash
+$ ng g ng-matero:module abc
+$ ng g ng-matero:page def -m=abc
+```
+Take a look at `http://localhost:4200/#/abc/def`, enjoy it!
+
 ## License
 
 MIT
