@@ -7,57 +7,73 @@
   $foreground: mat-color($theme, 'foreground');
 
   .matero-topmenu {
-    display: block;
-    position: sticky;
-    z-index: 9;
     background: mat-color($background, app-bar);
     color: mat-color($foreground, text);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  }
+}
 
-    @include mat-elevation(2);
+.matero-topmenu {
+  display: block;
+  position: sticky;
+  z-index: 9;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 
-    .menu-label,
-    .menu-badge {
-      margin-left: 8px;
-      font-size: 12px;
-    }
+  @include mat-elevation(2);
 
-    .menu-badge {
-      border-radius: 10px;
-    }
+  .menu-label,
+  .menu-badge {
+    margin-left: 8px;
+    font-size: 12px;
 
-    .menu-caret {
-      margin-right: -8px;
+    [dir='rtl'] & {
+      margin-left: auto;
+      margin-right: 8px;
     }
   }
 
-  .matero-topmenu-inner {
-    padding: 8px;
-    white-space: nowrap;
+  .menu-badge {
+    border-radius: 10px;
   }
 
-  // Layout control
-  .matero-navbar-top {
-    .matero-topmenu {
-      top: 0;
-    }
+  .menu-caret {
+    margin-right: -8px;
 
-    .matero-branding {
-      margin-left: 16px;
+    [dir='rtl'] & {
+      margin-left: -8px;
+      margin-right: auto;
     }
   }
+}
 
-  // Layout control
-  .matero-header-fixed {
-    .matero-topmenu {
-      top: $topmenu-sticky-position-desktop;
-    }
+.matero-topmenu-inner {
+  padding: 8px;
+  white-space: nowrap;
+}
+
+// Layout control
+.matero-navbar-top {
+  .matero-topmenu {
+    top: 0;
   }
 
-  @include bp-lt(tiny) {
-    .matero-header-fixed {
-      .matero-topmenu {
+  .matero-branding {
+    margin-left: 16px;
+
+    [dir='rtl'] & {
+      margin-left: auto;
+      margin-right: 16px;
+    }
+  }
+}
+
+// Layout control
+.matero-header-fixed {
+  .matero-topmenu {
+    top: $topmenu-sticky-position-desktop;
+
+    @include bp-lt(tiny) {
+      & {
         top: $topmenu-sticky-position-mobile;
       }
     }

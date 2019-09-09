@@ -4,8 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-user',
   template: `
     <a mat-button href="javascript:void(0)" [matMenuTriggerFor]="menu">
-      <img class="r-full align-middle" src="assets/images/avatar.jpg" width="24" alt="" />
-      <span class="m-l-8 align-middle">Zongbin</span>
+      <img
+        class="matero-user-avatar r-full align-middle"
+        src="assets/images/avatar.jpg"
+        width="24"
+        alt="avatar"
+      />
+      <span class="align-middle">Zongbin</span>
     </a>
 
     <mat-menu #menu="matMenu">

@@ -2,21 +2,21 @@
   <ng-container *ngFor="let menuItem of menus">
 
     <a mat-button [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'">
-      <span>{{menuItem.name}}</span>
+      <span class="menu-name">{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
             class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
             class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a mat-button [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'">
-      <span>{{menuItem.name}}</span>
+      <span class="menu-name">{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
             class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
             class="badge menu-badge bg-{{ menuItem.badge.color }}">{{ menuItem.badge.value }}</span>
     </a>
     <a mat-button [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'">
-      <span>{{menuItem.name}}</span>
+      <span class="menu-name">{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
             class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"
@@ -24,7 +24,7 @@
     </a>
     <!-- level 1 -->
     <button mat-button *ngIf="menuItem.type === 'sub'" [matMenuTriggerFor]="menulevel1">
-      <span>{{menuItem.name}}</span>
+      <span class="menu-name">{{menuItem.name}}</span>
       <span *ngIf="menuItem.label"
             class="badge menu-label bg-{{ menuItem.label.color }}">{{ menuItem.label.value }}</span>
       <span *ngIf="menuItem.badge"

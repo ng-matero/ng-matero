@@ -11,6 +11,15 @@
     padding: 0;
   }
 
+  .matero-user-avatar {
+    margin-right: 8px;
+
+    [dir='rtl'] & {
+      margin-left: 8px;
+      margin-right: auto;
+    }
+  }
+
   // Layout control
   .matero-header-fixed & {
     position: sticky;
@@ -41,10 +50,10 @@
 .matero-hamburger.mat-button {
   height: 100%;
   padding: 0;
-}
 
-@include bp-lt(tiny) {
-  .matero-hamburger.mat-button {
-    min-width: 15%;
+  @include bp-lt(tiny) {
+    & {
+      min-width: 15%;
+    }
   }
 }

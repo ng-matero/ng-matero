@@ -7,154 +7,146 @@
   $foreground: mat-color($theme, 'foreground');
 
   .matero-sidenav {
-    position: absolute;
-    overflow-x: hidden;
-    width: $sidenav-width;
-    border-width: 0;
-    transition: swift-ease-out(width); // Only set width property
-
-    @include mat-elevation(2);
-
     .matero-sidemenu {
-      width: $sidenav-width;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
       a {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 48px;
-        padding: 0 16px;
-        text-decoration: none;
         color: mat-color($foreground, text);
       }
 
-      .menu-icon {
-        width: 18px;
-        height: 18px;
-        margin-right: 16px;
-        font-size: 18px;
-        line-height: 18px;
-      }
-
-      .menu-name,
-      .menu-label,
-      .menu-badge {
-        transition: swift-ease-out(opacity);
-      }
-
-      .menu-label,
-      .menu-badge {
-        @include badge();
-      }
-
-      .menu-badge {
-        border-radius: 10px;
-      }
-
-      .menu-caret {
-        display: block;
-        float: right;
-        text-align: center;
-        transition: fast-out-slow(transform);
-      }
-
-      &.level-0 > li > a > .menu-name {
-        margin-right: 5px;
-      }
-
-      &.level-1 > li > a {
-        padding-left: 50px;
-      }
-
-      &.level-2 > li > a {
-        padding-left: 64px;
-      }
-
       .matero-sidemenu-item {
-        display: block;
-        height: auto;
-        padding: 0;
-
         &:hover {
           background: mat-color($background, hover);
         }
 
         &.open {
           background: rgba(0, 0, 0, .02);
-
-          > .matero-sidemenu {
-            max-height: 2000px;
-          }
-
-          > .matero-sidemenu-toggle > .menu-caret {
-            transform: rotate(-180deg);
-          }
         }
 
         &.active {
           > a {
-            color: mat-color($mat-pink, A100);
+            color: mat-color(map-get($theme, accent));
           }
         }
       }
+    }
 
-      &.submenu {
-        max-height: 0;
-        padding-top: 0;
-        overflow: hidden;
-        transform: translateZ(0) !important;
-        transition: fast-out-slow(max-height);
-
-        .matero-sidemenu-item {
-          border-left-width: 0;
-        }
-      }
+    .matero-sidebar-header {
+      color: mat-color($foreground, text);
+      background: mat-color($background, app-bar);
     }
   }
+}
 
-  // Layout control
-  .matero-sidenav-collapsed {
-    .matero-sidenav {
-      width: $sidenav-collapsed-width;
+.matero-sidenav {
+  position: absolute;
+  overflow-x: hidden;
+  width: $sidenav-width;
+  border-width: 0;
+  transition: swift-ease-out(width); // Only set width property
 
-      .menu-name,
-      .menu-label,
-      .menu-badge,
-      .menu-caret,
-      .matero-user-panel-name,
-      .matero-user-panel-email,
-      .matero-user-panel-icons {
-        opacity: 0;
-      }
+  @include mat-elevation(2);
 
-      .matero-user-panel-avatar {
-        transform: scale(.5);
-      }
+  .matero-sidemenu {
+    width: $sidenav-width;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 
-      &:hover {
-        width: $sidenav-width;
+    .matero-sidemenu-item {
+      display: block;
+      height: auto;
+      padding: 0;
 
-        .menu-name,
-        .menu-label,
-        .menu-badge,
-        .menu-caret,
-        .matero-user-panel-name,
-        .matero-user-panel-email,
-        .matero-user-panel-icons {
-          opacity: 1;
+      &.open {
+        > .matero-sidemenu {
+          max-height: 2000px;
         }
 
-        .matero-user-panel-avatar {
-          transform: scale(1);
+        > .matero-sidemenu-toggle > .menu-caret {
+          transform: rotate(-180deg);
         }
       }
     }
 
-    .matero-content-wrap {
-      margin-left: $sidenav-collapsed-width !important;
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 48px;
+      padding: 0 16px;
+      text-decoration: none;
+    }
+
+    .menu-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 16px;
+      font-size: 18px;
+      line-height: 18px;
+
+      [dir='rtl'] & {
+        margin-left: 16px;
+        margin-right: auto;
+      }
+    }
+
+    .menu-name,
+    .menu-label,
+    .menu-badge {
+      transition: swift-ease-out(opacity);
+    }
+
+    .menu-label,
+    .menu-badge {
+      @include badge();
+    }
+
+    .menu-badge {
+      border-radius: 10px;
+    }
+
+    .menu-caret {
+      display: block;
+      text-align: center;
+      transition: fast-out-slow(transform);
+    }
+
+    &.level-0 > li > a > .menu-name {
+      margin-right: 5px;
+
+      [dir='rtl'] & {
+        margin-left: 5px;
+        margin-right: auto;
+      }
+    }
+
+    &.level-1 > li > a {
+      padding-left: 50px;
+
+      [dir='rtl'] & {
+        padding-left: 16px;
+        padding-right: 50px;
+      }
+    }
+
+    &.level-2 > li > a {
+      padding-left: 64px;
+
+      [dir='rtl'] & {
+        padding-left: 16px;
+        padding-right: 64px;
+      }
+    }
+
+    &.submenu {
+      max-height: 0;
+      padding-top: 0;
+      overflow: hidden;
+      transform: translateZ(0) !important;
+      transition: fast-out-slow(max-height);
+
+      .matero-sidemenu-item {
+        border-left-width: 0;
+      }
     }
   }
 
@@ -167,9 +159,13 @@
     z-index: 1;
     height: $toolbar-height-desktop;
     padding: 0 10px;
-    color: mat-color($foreground, text);
-    background: mat-color($background, app-bar);
     overflow: hidden;
+
+    @include bp-lt(tiny) {
+      & {
+        height: $toolbar-height-mobile;
+      }
+    }
 
     // Colorful
     .matero-header-white & {
@@ -180,35 +176,84 @@
   .matero-sidebar-inner {
     height: calc(100% - #{$toolbar-height-desktop});
     overflow: auto;
-  }
 
-  // User panel
-  .matero-user-panel-avatar {
-    transition: swift-ease-out(transform);
+    @include bp-lt(tiny) {
+      & {
+        height: calc(100% - #{$toolbar-height-mobile});
+      }
+    }
   }
+}
 
-  .matero-user-panel-name,
-  .matero-user-panel-email,
-  .matero-user-panel-icons {
-    opacity: 1;
-    transition: swift-ease-out(opacity);
+// User panel
+.matero-user-panel-avatar {
+  transition: swift-ease-out(transform);
+}
+
+.matero-user-panel-name,
+.matero-user-panel-email,
+.matero-user-panel-icons {
+  opacity: 1;
+  transition: swift-ease-out(opacity);
+}
+
+.matero-user-panel-icons {
+  .mat-icon-button {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
   }
+}
 
-  .matero-user-panel-icons {
-    .mat-icon-button {
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
+// Layout control
+.matero-sidenav-collapsed {
+  .matero-sidenav {
+    width: $sidenav-collapsed-width;
+
+    .menu-name,
+    .menu-label,
+    .menu-badge,
+    .menu-caret,
+    .matero-user-panel-name,
+    .matero-user-panel-email,
+    .matero-user-panel-icons {
+      opacity: 0;
+    }
+
+    .matero-user-panel-avatar {
+      transform: scale(.5);
+    }
+
+    &:hover {
+      width: $sidenav-width;
+
+      .menu-name,
+      .menu-label,
+      .menu-badge,
+      .menu-caret,
+      .matero-user-panel-name,
+      .matero-user-panel-email,
+      .matero-user-panel-icons {
+        opacity: 1;
+      }
+
+      .matero-user-panel-avatar {
+        transform: scale(1);
+      }
     }
   }
 
-  @include bp-lt(tiny) {
-    .matero-sidebar-header {
-      height: $toolbar-height-mobile;
-    }
+  .matero-content-wrap {
+    margin-left: $sidenav-collapsed-width !important;
 
-    .matero-sidebar-inner {
-      height: calc(100% - #{$toolbar-height-mobile});
+    [dir='rtl'] & {
+      margin-left: auto !important;
+      margin-right: $sidenav-collapsed-width !important;
     }
+  }
+
+  &[dir='rtl'] .matero-content-wrap {
+    margin-left: auto !important;
+    margin-right: $sidenav-collapsed-width !important;
   }
 }

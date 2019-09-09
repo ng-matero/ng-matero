@@ -11,8 +11,8 @@
 //
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
+
+$theme: mat-light-theme($primary, $accent);
 
 //////////////////////////////////////////////////////////////////////////////////////
 // When we use the Schematics (`ng add`) to start, the following variables will be  //
@@ -22,10 +22,10 @@ $theme: mat-light-theme($primary, $accent, $warn);
 //
 // Dark style
 //
-// $primary: mat-palette($mat-pink, 700, 500, 900);
-// $accent: mat-palette($mat-blue-grey, A200, A100, A400);
-// $warn: mat-palette($mat-red);
-// $theme: mat-dark-theme($primary, $accent, $warn);
+// $primary: mat-palette($mat-blue);
+// $accent: mat-palette($mat-amber, A200, A100, A400);
+
+// $theme: mat-dark-theme($primary, $accent);
 
 $config: mat-typography-config();
 

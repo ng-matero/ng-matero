@@ -14,6 +14,11 @@ $foreground: mat-color($theme, 'foreground');
   bottom: 30px;
   right: 30px;
   z-index: 9;
+
+  [dir='rtl'] & {
+    left: 30px;
+    right: auto;
+  }
 }
 
 .customizer-panel {
@@ -33,6 +38,20 @@ $foreground: mat-color($theme, 'foreground');
   &.opened {
     transform: translateX(-100%);
   }
+
+  [dir='rtl'] & {
+    left: -320px;
+    right: auto;
+
+    &.opened {
+      transform: translateX(100%);
+    }
+  }
+
+  .theme-dark & {
+    color: mat-color($foreground, text);
+    background-color: mat-color($background, background);
+  }
 }
 
 .customizer-panel-overlay {
@@ -50,12 +69,5 @@ $foreground: mat-color($theme, 'foreground');
   &.opened {
     background-color: rgba(0, 0, 0, .15);
     visibility: visible;
-  }
-}
-
-.theme-dark {
-  .customizer-panel {
-    color: mat-color($foreground, text);
-    background-color: mat-color($background, background);
   }
 }

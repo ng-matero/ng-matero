@@ -1,27 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-
-export interface AppSettings {
-  showHeader?: boolean;
-  theme?: 'light' | 'dark';
-  headerPos?: 'fixed' | 'static' | 'above';
-  navPos?: 'side' | 'top';
-  sidenavCollapsed?: boolean;
-  sidenavOpened?: boolean;
-  showUserPanel?: boolean;
-  dir?: 'ltr' | 'rtl';
-}
-
-const defaults: AppSettings = {
-  showHeader: true,
-  theme: 'light',
-  headerPos: 'fixed',
-  navPos: 'side',
-  sidenavCollapsed: false,
-  sidenavOpened: true,
-  showUserPanel: true,
-  dir: 'ltr',
-};
+import { AppSettings, defaults } from '../settings';
 
 @Injectable({
   providedIn: 'root',

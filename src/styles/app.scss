@@ -20,10 +20,10 @@
 // Demo purpose only
 //
 .theme-dark {
-  $primary: mat-palette($mat-pink, 700, 500, 900);
-  $accent: mat-palette($mat-blue-grey, A200, A100, A400);
-  $warn: mat-palette($mat-red);
-  $theme: mat-dark-theme($primary, $accent, $warn);
+  $primary: mat-palette($mat-blue);
+  $accent: mat-palette($mat-amber, A200, A100, A400);
+
+  $theme: mat-dark-theme($primary, $accent);
 
   @include angular-material-theme($theme);
   @include matero-admin-theme($theme);

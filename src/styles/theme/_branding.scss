@@ -9,6 +9,11 @@
     height: 30px;
     margin-right: 10px;
     vertical-align: middle;
+
+    [dir='rtl'] & {
+      margin-left: 10px;
+      margin-right: auto;
+    }
   }
 
   .matero-branding-name {

@@ -1,7 +1,15 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  ViewChild,
+  HostBinding,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { SettingsService, AppSettings } from '@core';
 
 const WIDTH_BREAKPOINT = '960px';
@@ -14,12 +22,16 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   @ViewChild('content', { static: true }) content: MatSidenavContent;
 
-  sidenavCollapsed = false;
   options = this.settings.getOptions();
+  sidenavCollapsed = false;
+
+  // Demo purposes only
+  @HostBinding('class.theme-dark') get themeDark() {
+    return this.options.theme === 'dark';
+  }
+
   mobileQuery: MediaQueryList;
-
   private mobileQueryListener: () => void;
-
   get isOver(): boolean {
     return this.mobileQuery.matches;
   }
@@ -28,13 +40,15 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private media: MediaMatcher,
-    private settings: SettingsService
+    private settings: SettingsService,
+    private overlay: OverlayContainer
   ) {
     this.mobileQuery = this.media.matchMedia(`(max-width: ${WIDTH_BREAKPOINT})`);
     this.mobileQueryListener = () => this.cdr.detectChanges();
-    // Safari & IE don't support `addEventListener`
-    // this.mobileQuery.addEventListener('change', this.mobileQueryListener);
-
+    /**
+     * Safari & IE don't support `addEventListener`
+     * this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+     */
     // tslint:disable-next-line: deprecation
     this.mobileQuery.addListener(this.mobileQueryListener);
 
@@ -49,9 +63,10 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   ngOnDestroy() {
-    // Safari & IE don't support `removeEventListener`
-    // this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
-
+    /**
+     * Safari & IE don't support `removeEventListener`
+     * this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+     */
     // tslint:disable-next-line: deprecation
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
@@ -73,12 +88,20 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   receiveOptions(options: AppSettings): void {
     this.options = options;
     this.setTheme(options);
+    this.setBodyAttr(options);
   }
   setTheme(options: AppSettings) {
     if (options.theme === 'dark') {
-      document.body.classList.add('theme-dark');
+      this.overlay.getContainerElement().classList.add('theme-dark');
     } else {
-      document.body.classList.remove('theme-dark');
+      this.overlay.getContainerElement().classList.remove('theme-dark');
+    }
+  }
+  setBodyAttr(options: AppSettings) {
+    if (options.dir === 'rtl') {
+      document.body.dir = 'rtl';
+    } else {
+      document.body.dir = 'ltr';
     }
   }
 }
