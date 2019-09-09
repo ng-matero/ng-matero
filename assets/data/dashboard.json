@@ -1,28 +1,28 @@
 {
-  "project": [{
-      "project": "UI Prototyping",
-      "date": 1427207139000,
-      "progress": 5
+  "dashboard": [
+    {
+      "type": "Total Sales",
+      "amount": 180200,
+      "progress": 50,
+      "date": 1427207139000
     },
     {
-      "project": "Design",
-      "date": 1427412725000,
-      "progress": 46
+      "type": "Revenue",
+      "amount": 70205,
+      "progress": 70,
+      "date": 1427412725000
     },
     {
-      "project": "Development",
-      "date": 1427546580000,
-      "progress": 23
+      "type": "Traffic",
+      "amount": 1291922,
+      "progress": 80,
+      "date": 1427546580000
     },
     {
-      "project": "Testing and Delivery",
-      "date": 1427891640000,
-      "progress": 67
-    },
-    {
-      "project": "Ongoing Maintanance",
-      "date": 1428830580000,
-      "progress": 12
+      "type": "New User",
+      "amount": 1922,
+      "progress": 40,
+      "date": 1427891640000
     }
   ]
 }
