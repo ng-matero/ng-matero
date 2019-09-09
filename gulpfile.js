@@ -54,6 +54,7 @@ function copySrcApp(cb) {
   return src([
     'src/app/**/*',
     '!src/app/core/core.module.ts',
+    '!src/app/core/settings.ts',
     '!src/app/routes/**/*',
     '!src/app/shared/shared.module.ts',
     '!src/app/theme/admin-layout/*.html',

@@ -1,4 +1,4 @@
-<% if(nav==='side') { %><div
+<% if(layout==='static' && nav==='side') { %><div
      class="matero-container-wrap <% if(theme==='light') { %>matero-header-white<% } %>"
      dir="<%= dir %>"
      [ngClass]="{'matero-sidenav-collapsed': sidenavCollapsed}">
@@ -29,7 +29,7 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div><% } %><% if(nav==='top') { %><div
+</div><% } %><% if(layout==='static' && nav==='top') { %><div
      class="matero-container-wrap matero-header-fixed matero-navbar-top <% if(theme==='light') { %>matero-header-white<% } %>"
      dir="<%= dir %>">
   <ng-progress></ng-progress>
@@ -53,7 +53,7 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div><% } %><% if(nav==='both') { %><div class="matero-container-wrap" [dir]="options.dir"
+</div><% } %><% if(layout==='dynamic') { %><div class="matero-container-wrap" [dir]="options.dir"
      [ngClass]="{
   'matero-sidenav-collapsed': sidenavCollapsed && options.navPos!=='top',
   'matero-header-above': options.headerPos==='above',
@@ -102,6 +102,4 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <!-- Demo Purposes Only -->
-  <app-customizer (optionsEvent)="receiveOptions($event)"></app-customizer>
 </div><% } %>

@@ -11,12 +11,31 @@
         "$source": "projectName"
       }
     },
+    "layout": {
+      "description": "The layout template to apply",
+      "type": "string",
+      "default": "static",
+      "x-prompt": {
+        "message": "Choose a prebuilt layout template:",
+        "type": "list",
+        "items": [
+          {
+            "value": "static",
+            "label": "Static"
+          },
+          {
+            "value": "dynamic",
+            "label": "Dynamic"
+          }
+        ]
+      }
+    },
     "nav": {
-      "description": "The layout to apply",
+      "description": "The navigation type to apply",
       "type": "string",
       "default": "side",
       "x-prompt": {
-        "message": "Choose a prebuilt admin layout:",
+        "message": "Choose a prebuilt navigation type:",
         "type": "list",
         "items": [
           {
@@ -26,20 +45,16 @@
           {
             "value": "top",
             "label": "Top Navigation"
-          },
-          {
-            "value": "both",
-            "label": "Both"
           }
         ]
       }
     },
     "theme": {
-      "description": "The theme to apply",
+      "description": "The theme style to apply",
       "type": "string",
       "default": "light",
       "x-prompt": {
-        "message": "Choose a prebuilt admin theme:",
+        "message": "Choose a prebuilt theme style:",
         "type": "list",
         "items": [
           {
