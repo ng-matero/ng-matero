@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  AfterViewInit,
   OnDestroy,
   ChangeDetectorRef,
   ViewChild,
@@ -10,7 +11,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { SettingsService, AppSettings } from '@core';
+import { SettingsService, AppSettings, PreloaderService } from '@core';
 
 const WIDTH_BREAKPOINT = '960px';
 
@@ -18,17 +19,12 @@ const WIDTH_BREAKPOINT = '960px';
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
 })
-export class AdminLayoutComponent implements OnInit, OnDestroy {
+export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   @ViewChild('content', { static: true }) content: MatSidenavContent;
 
   options = this.settings.getOptions();
   sidenavCollapsed = false;
-
-  // Demo purposes only
-  @HostBinding('class.theme-dark') get themeDark() {
-    return this.options.theme === 'dark';
-  }
 
   mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
@@ -36,13 +32,27 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     return this.mobileQuery.matches;
   }
 
+  contentWidthFix = true;
+  @HostBinding('class.matero-content-width-fix') get widthFix() {
+    return this.contentWidthFix && this.options.navPos === 'side' && !this.isOver;
+  }
+
+  // Demo purposes only
+  @HostBinding('class.theme-dark') get themeDark() {
+    return this.options.theme === 'dark';
+  }
+
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
     private media: MediaMatcher,
     private settings: SettingsService,
-    private overlay: OverlayContainer
+    private overlay: OverlayContainer,
+    private preloader: PreloaderService
   ) {
+    // Set dir attr on body
+    document.body.dir = this.options.dir;
+
     this.mobileQuery = this.media.matchMedia(`(max-width: ${WIDTH_BREAKPOINT})`);
     this.mobileQueryListener = () => this.cdr.detectChanges();
     /**
@@ -60,7 +70,16 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => (this.contentWidthFix = false));
+  }
+
+  /**
+   * The preloader should be hidden after the admin layout initializing.
+   */
+  ngAfterViewInit() {
+    this.preloader.hide();
+  }
 
   ngOnDestroy() {
     /**

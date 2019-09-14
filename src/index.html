@@ -22,6 +22,16 @@
       width: 100%;
       height: 100%;
       background-color: #fff;
+      opacity: 1;
+      transition: opacity .5s ease-in-out;
+    }
+
+    .global-loader-fade-in {
+      opacity: 0;
+    }
+
+    .global-loader-hidden {
+      display: none;
     }
 
     .global-loader h1 {
@@ -52,16 +62,14 @@
         background-position: -750% 0;
       }
     }
-
   </style>
 </head>
 
 <body>
-  <app-root>
-    <div class="global-loader">
-      <h1>LOADING</h1>
-    </div>
-  </app-root>
+  <app-root></app-root>
+  <div id="globalLoader" class="global-loader">
+    <h1>LOADING</h1>
+  </div>
 </body>
 
 </html>

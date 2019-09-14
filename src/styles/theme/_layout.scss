@@ -35,6 +35,18 @@
   }
 }
 
+// Fix the initializing content width
+.matero-content-width-fix {
+  .matero-content-wrap {
+    margin-left: 240px;
+
+    [dir='rtl'] & {
+      margin-left: auto;
+      margin-right: 240px;
+    }
+  }
+}
+
 //
 // Auth
 //

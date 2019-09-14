@@ -1,8 +1,8 @@
 <div class="matero-container-wrap" [dir]="options.dir" [ngClass]="{
   'matero-sidenav-collapsed': sidenavCollapsed && options.navPos!=='top',
+  'matero-navbar-top': options.navPos==='top',
   'matero-header-above': options.headerPos==='above',
   'matero-header-fixed': options.headerPos==='fixed',
-  'matero-navbar-top': options.navPos==='top',
   'matero-header-white': options.theme==='light'}">
   <ng-progress></ng-progress>
 
@@ -36,7 +36,8 @@
                   (toggleSidenav)="sidenav.toggle()"
                   (toggleSidenavRight)="sidenavRight.toggle()"
                   [showToggle]="!sidenavCollapsed && options.navPos!=='top'"
-                  [showBranding]="options.navPos==='top'"></app-header>
+                  [showBranding]="options.navPos==='top'">
+      </app-header>
 
       <app-topmenu class="matero-topmenu" *ngIf="options.navPos==='top'"></app-topmenu>
 

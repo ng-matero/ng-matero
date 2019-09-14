@@ -222,7 +222,7 @@
           ]
         },
         {
-          "state": "",
+          "state": "data-table",
           "name": "Data Table",
           "type": "sub",
           "children": [{

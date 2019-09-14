@@ -86,9 +86,9 @@ const routes: Routes = [
   { path: 'snack-bar', component: SnackBarComponent, data: { title: 'Snack Bar' } },
   { path: 'tooltip', component: TooltipComponent, data: { title: 'Tooltip' } },
   // Data table
-  { path: 'paginator', component: PaginatorComponent, data: { title: 'Paginator' } },
-  { path: 'sort', component: SortComponent, data: { title: 'Sort' } },
-  { path: 'table', component: TableComponent, data: { title: 'Table' } },
+  { path: 'data-table/paginator', component: PaginatorComponent, data: { title: 'Paginator' } },
+  { path: 'data-table/sort', component: SortComponent, data: { title: 'Sort' } },
+  { path: 'data-table/table', component: TableComponent, data: { title: 'Table' } },
 ];
 
 @NgModule({

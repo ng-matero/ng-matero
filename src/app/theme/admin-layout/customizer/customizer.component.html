@@ -47,7 +47,8 @@
   </div>
   <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
   <div class="m-l-8">
-    <mat-checkbox (change)="options.dir = options.dir === 'rtl' ? 'ltr' : 'rtl'; sendOptions()">
+    <mat-checkbox [checked]="options.dir === 'rtl'"
+                  (change)="options.dir = options.dir === 'rtl' ? 'ltr' : 'rtl'; sendOptions()">
       RTL</mat-checkbox>
   </div>
 </div>
