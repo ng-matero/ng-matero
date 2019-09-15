@@ -23,6 +23,16 @@ export function addLoaderToIndex(options: Schema): (host: Tree) => Tree {
       width: 100%;
       height: 100%;
       background-color: #fff;
+      opacity: 1;
+      transition: opacity .5s ease-in-out;
+    }
+
+    .global-loader-fade-in {
+      opacity: 0;
+    }
+
+    .global-loader-hidden {
+      display: none;
     }
 
     .global-loader h1 {
@@ -55,7 +65,7 @@ export function addLoaderToIndex(options: Schema): (host: Tree) => Tree {
     }
     `;
 
-    const loaderHtml = `<div class="global-loader"><h1>LOADING</h1></div>`;
+    const loaderHtml = `<div id="globalLoader" class="global-loader"><h1>LOADING</h1></div>`;
 
     appendHtmlElement(
       host,
@@ -64,7 +74,7 @@ export function addLoaderToIndex(options: Schema): (host: Tree) => Tree {
       'head'
     );
 
-    appendHtmlElement(host, projectIndexHtmlPath, loaderHtml, 'app-root');
+    appendHtmlElement(host, projectIndexHtmlPath, loaderHtml, 'body');
 
     return host;
   };

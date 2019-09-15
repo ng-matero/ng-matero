@@ -9,8 +9,7 @@
                  [mode]="isOver ? 'over' : 'side'"
                  [opened]="!isOver"
                  (openedChange)="openedChange($event)">
-      <app-sidebar (toggleCollapsed)="toggleCollapsed()" [showToggle]="!isOver">
-      </app-sidebar>
+      <app-sidebar (toggleCollapsed)="toggleCollapsed()" [showToggle]="!isOver"></app-sidebar>
     </mat-sidenav>
 
     <mat-sidenav #sidenavRight position="end" mode="over" opened="false">
@@ -30,7 +29,7 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div><% } %><% if(layout==='static' && nav==='top') { %><div
-     class="matero-container-wrap matero-header-fixed matero-navbar-top <% if(theme==='light') { %>matero-header-white<% } %>"
+     class="matero-container-wrap matero-navbar-top matero-header-fixed <% if(theme==='light') { %>matero-header-white<% } %>"
      dir="<%= dir %>">
   <ng-progress></ng-progress>
 
@@ -44,7 +43,8 @@
       <app-header #header class="matero-header"
                   (toggleSidenavRight)="sidenavRight.toggle()"
                   [showToggle]="false"
-                  [showBranding]="true"></app-header>
+                  [showBranding]="true">
+      </app-header>
 
       <app-topmenu class="matero-topmenu"></app-topmenu>
 
@@ -56,9 +56,9 @@
 </div><% } %><% if(layout==='dynamic') { %><div class="matero-container-wrap" [dir]="options.dir"
      [ngClass]="{
   'matero-sidenav-collapsed': sidenavCollapsed && options.navPos!=='top',
+  'matero-navbar-top': options.navPos==='top',
   'matero-header-above': options.headerPos==='above',
   'matero-header-fixed': options.headerPos==='fixed',
-  'matero-navbar-top': options.navPos==='top',
   'matero-header-white': options.theme==='light'}">
   <ng-progress></ng-progress>
 
@@ -92,7 +92,8 @@
                   (toggleSidenav)="sidenav.toggle()"
                   (toggleSidenavRight)="sidenavRight.toggle()"
                   [showToggle]="!sidenavCollapsed && options.navPos!=='top'"
-                  [showBranding]="options.navPos==='top'"></app-header>
+                  [showBranding]="options.navPos==='top'">
+      </app-header>
 
       <app-topmenu class="matero-topmenu" *ngIf="options.navPos==='top'"></app-topmenu>
 
