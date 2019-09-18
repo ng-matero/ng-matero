@@ -8,13 +8,13 @@ import { AppSettings, defaults } from '../settings';
 export class SettingsService {
   private notice$ = new Subject<any>();
 
-  options = defaults;
+  private options = defaults;
 
   get notice(): Observable<any> {
     return this.notice$.asObservable();
   }
 
-  setLayout(options?: AppSettings) {
+  setLayout(options?: AppSettings): AppSettings {
     this.options = Object.assign(defaults, options);
     return this.options;
   }
@@ -23,7 +23,7 @@ export class SettingsService {
     this.notice$.next({ type, value } as any);
   }
 
-  getOptions() {
+  getOptions(): AppSettings {
     return this.options;
   }
 }

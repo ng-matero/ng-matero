@@ -1,9 +1,10 @@
-<page-header [title]="'Personal Profile'" [showBreadCrumb]="false"
-             class="p-t-32 p-b-48 m-b--24 bg-gray-900">
+<page-header class="p-t-32 p-b-48 m-b--24 bg-gray-900"
+             [title]="'Personal Profile'"
+             [showBreadCrumb]="false">
 </page-header>
 
 <div fxLayout="row wrap" class="matero-row">
-  <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="25" class="matero-col">
+  <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33.33" fxFlex.gt-md="25">
     <mat-card>
       <div class="text-center">
         <img class="m-b-8 r-full" src="assets/images/avatar.jpg" alt="" width="80">
@@ -26,7 +27,7 @@
       </mat-nav-list>
     </mat-card>
   </div>
-  <div fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="66.67" fxFlex.gt-md="75" class="matero-col">
+  <div class="matero-col" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="66.67" fxFlex.gt-md="75">
     <router-outlet></router-outlet>
   </div>
 </div>

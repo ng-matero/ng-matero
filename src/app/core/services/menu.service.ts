@@ -26,13 +26,13 @@ export interface Menu {
   providedIn: 'root',
 })
 export class MenuService {
-  menu: Menu[] = [];
+  private menu: Menu[] = [];
 
   getAll(): Menu[] {
     return this.menu;
   }
 
-  set(menu: Menu[]) {
+  set(menu: Menu[]): Menu[] {
     this.menu = this.menu.concat(menu);
     return this.menu;
   }

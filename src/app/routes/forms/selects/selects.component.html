@@ -10,7 +10,7 @@
           API and with ng-select this is extremely simple since you can bind directly to
           observable when using angular <b> | async</b> pipe
         </p>
-        <ng-select [items]="people$ | async" bindLabel="name" autofocus bindValue="id"
+        <ng-select [items]="people$ | async" bindLabel="name" bindValue="id" autofocus
                    [(ngModel)]="selectedPersonId"
                    placeholder="select person">
         </ng-select>

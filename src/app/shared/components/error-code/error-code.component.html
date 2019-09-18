@@ -1,8 +1,8 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center" class="w-full">
   <div class="text-center">
     <div class="error-code">{{code}}</div>
-    <div *ngIf="title" class="error-title mat-h2 f-s-32">{{title}}</div>
-    <div *ngIf="message" class="error-message mat-h3">{{message}}</div>
+    <div class="error-title mat-h2 f-s-32" *ngIf="title">{{title}}</div>
+    <div class="error-message mat-h3" *ngIf="message">{{message}}</div>
     <div><a mat-raised-button color="primary" routerLink="/">Back to Home</a></div>
   </div>
 </div>

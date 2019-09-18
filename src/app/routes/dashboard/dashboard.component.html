@@ -151,7 +151,7 @@
     <mat-card>
       <mat-card-subtitle>Revenue Table</mat-card-subtitle>
       <mat-card-content>
-        <table mat-table [dataSource]="dataSource" class="w-full">
+        <table class="w-full" mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> No. </th>
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>

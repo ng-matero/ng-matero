@@ -1,5 +1,6 @@
 <div class="text3d-wrap">
-  <span class="text3d" *ngFor="let i of arr"
+  <span class="text3d"
+        *ngFor="let i of arr"
         [ngStyle]="{'z-index': -i,'transform':'translate3d(0,0,'+ -i + 'px)'}">
     {{text}}
     <ng-container [ngTemplateOutlet]="template"></ng-container>
