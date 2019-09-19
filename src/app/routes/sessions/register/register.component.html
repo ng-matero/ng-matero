@@ -1,24 +1,24 @@
-<div class="w-full h-full bg-deep-purple-500" fxLayout="row wrap" fxLayoutAlign="center center">
+<div class="w-full h-full" fxLayout="row wrap" fxLayoutAlign="center center">
   <mat-card class="mat-elevation-z4 m-b-0" style="max-width: 380px;">
-    <mat-card-title>
+    <mat-card-title class="m-b-24">
       <div>Welcome, </div>It only takes a few seconds to create your account
     </mat-card-title>
     <mat-card-content>
       <form class="matero-form-horizontal" [formGroup]="reactiveForm">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>
           <input matInput placeholder="Username" formControlName="username" required>
           <mat-error *ngIf="reactiveForm.get('username').invalid">Please enter username</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput placeholder="Password" type="password" formControlName="password"
                  required>
           <mat-error *ngIf="reactiveForm.get('password').invalid">Please enter password</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Confirm Password</mat-label>
           <input matInput placeholder="Confirm Password" type="password"
                  formControlName="confirmPassword" required>

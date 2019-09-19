@@ -3,10 +3,6 @@
  */
 export interface Schema {
   /**
-   * When true, the new NgModule imports "CommonModule".
-   */
-  commonModule?: boolean;
-  /**
    * When true, creates the new files at the top level of the current project root.
    */
   flat?: boolean;
@@ -38,10 +34,12 @@ export interface Schema {
   route?: string;
   /**
    * When true, creates a routing module.
+   * 无效参数
    */
   routing?: boolean;
   /**
    * The scope for the new routing module.
+   * 无效参数
    */
   routingScope?: RoutingScope;
 }

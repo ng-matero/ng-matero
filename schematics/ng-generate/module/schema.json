@@ -48,12 +48,6 @@
       "description": "When true, creates the new files at the top level of the current project root. ",
       "default": false
     },
-    "commonModule": {
-      "type": "boolean",
-      "description": "When true, the new NgModule imports \"CommonModule\". ",
-      "default": false,
-      "visible": false
-    },
     "module": {
       "type": "string",
       "description": "The declaring NgModule.",

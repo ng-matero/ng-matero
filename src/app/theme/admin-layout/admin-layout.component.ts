@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
   OnDestroy,
   ChangeDetectorRef,
   ViewChild,
@@ -11,7 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { SettingsService, AppSettings, PreloaderService } from '@core';
+import { SettingsService, AppSettings } from '@core';
 
 const WIDTH_BREAKPOINT = '960px';
 
@@ -19,7 +18,7 @@ const WIDTH_BREAKPOINT = '960px';
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
 })
-export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   @ViewChild('content', { static: true }) content: MatSidenavContent;
 
@@ -47,8 +46,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     private cdr: ChangeDetectorRef,
     private media: MediaMatcher,
     private settings: SettingsService,
-    private overlay: OverlayContainer,
-    private preloader: PreloaderService
+    private overlay: OverlayContainer
   ) {
     // Set dir attr on body
     document.body.dir = this.options.dir;
@@ -72,13 +70,6 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     setTimeout(() => (this.contentWidthFix = false));
-  }
-
-  /**
-   * The preloader should be hidden after the admin layout initializing.
-   */
-  ngAfterViewInit() {
-    this.preloader.hide();
   }
 
   ngOnDestroy() {
@@ -107,7 +98,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   receiveOptions(options: AppSettings): void {
     this.options = options;
     this.setTheme(options);
-    this.setBodyAttr(options);
+    this.setBodyDir(options);
   }
   setTheme(options: AppSettings) {
     if (options.theme === 'dark') {
@@ -116,7 +107,7 @@ export class AdminLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       this.overlay.getContainerElement().classList.remove('theme-dark');
     }
   }
-  setBodyAttr(options: AppSettings) {
+  setBodyDir(options: AppSettings) {
     if (options.dir === 'rtl') {
       document.body.dir = 'rtl';
     } else {
