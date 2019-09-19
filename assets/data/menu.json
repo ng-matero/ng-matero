@@ -1,5 +1,6 @@
 {
-  "menu": [{
+  "menu": [
+    {
       "state": "dashboard",
       "name": "Dashboard",
       "type": "link",
@@ -14,7 +15,8 @@
       "name": "Design",
       "type": "sub",
       "icon": "color_lens",
-      "children": [{
+      "children": [
+        {
           "state": "colors",
           "name": "Color System",
           "type": "link"
@@ -31,11 +33,13 @@
       "name": "Material",
       "type": "sub",
       "icon": "favorite",
-      "children": [{
+      "children": [
+        {
           "state": "",
           "name": "Form Controls",
           "type": "sub",
-          "children": [{
+          "children": [
+            {
               "state": "autocomplete",
               "name": "Autocomplete",
               "type": "link"
@@ -86,7 +90,8 @@
           "state": "",
           "name": "Navigation",
           "type": "sub",
-          "children": [{
+          "children": [
+            {
               "state": "menu",
               "name": "Menu",
               "type": "link"
@@ -107,7 +112,8 @@
           "state": "",
           "name": "Layout",
           "type": "sub",
-          "children": [{
+          "children": [
+            {
               "state": "card",
               "name": "Card",
               "type": "link"
@@ -153,7 +159,8 @@
           "state": "",
           "name": "Buttons & Indicators",
           "type": "sub",
-          "children": [{
+          "children": [
+            {
               "state": "button",
               "name": "Button",
               "type": "link"
@@ -199,7 +206,8 @@
           "state": "",
           "name": "Popups & Modals",
           "type": "sub",
-          "children": [{
+          "children": [
+            {
               "state": "bottom-sheet",
               "name": "Bottom Sheet",
               "type": "link"
@@ -225,7 +233,8 @@
           "state": "data-table",
           "name": "Data Table",
           "type": "sub",
-          "children": [{
+          "children": [
+            {
               "state": "paginator",
               "name": "Paginator",
               "type": "link"
@@ -253,41 +262,49 @@
         "color": "indigo-500",
         "value": "new"
       },
-      "children": [{
-        "state": "media",
-        "name": "Media",
-        "type": "link"
-      }]
+      "children": [
+        {
+          "state": "media",
+          "name": "Media",
+          "type": "link"
+        }
+      ]
     },
     {
       "state": "forms",
       "name": "Forms",
       "type": "sub",
       "icon": "description",
-      "children": [{
-        "state": "elements",
-        "name": "Form Elements",
-        "type": "link"
-      }, {
-        "state": "ng-select",
-        "name": "Ng Select",
-        "type": "link"
-      }, {
-        "state": "dynamic",
-        "name": "Dynamic Form",
-        "type": "link"
-      }]
+      "children": [
+        {
+          "state": "elements",
+          "name": "Form Elements",
+          "type": "link"
+        },
+        {
+          "state": "ng-select",
+          "name": "Ng Select",
+          "type": "link"
+        },
+        {
+          "state": "dynamic",
+          "name": "Dynamic Form",
+          "type": "link"
+        }
+      ]
     },
     {
       "state": "tables",
       "name": "Tables",
       "type": "sub",
       "icon": "format_line_spacing",
-      "children": [{
-        "state": "basic",
-        "name": "Basic Table",
-        "type": "link"
-      }]
+      "children": [
+        {
+          "state": "basic",
+          "name": "Basic Table",
+          "type": "link"
+        }
+      ]
     },
     {
       "state": "profile",
@@ -298,22 +315,26 @@
         "color": "indigo-500",
         "value": "new"
       },
-      "children": [{
-        "state": "overview",
-        "name": "Overview",
-        "type": "link"
-      }, {
-        "state": "settings",
-        "name": "Settings",
-        "type": "link"
-      }]
+      "children": [
+        {
+          "state": "overview",
+          "name": "Overview",
+          "type": "link"
+        },
+        {
+          "state": "settings",
+          "name": "Settings",
+          "type": "link"
+        }
+      ]
     },
     {
       "state": "sessions",
       "name": "Sessions",
       "type": "sub",
       "icon": "question_answer",
-      "children": [{
+      "children": [
+        {
           "state": "403",
           "name": "403",
           "type": "link"
