@@ -17,7 +17,9 @@
     "lint:ts": "tslint -p tsconfig.app.json -c tslint.json 'src/**/*.ts'",
     "lint:scss": "stylelint --syntax scss 'src/**/*.scss' --fix",
     "hmr": "ng serve -c=hmr --disable-host-check",
-    "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero",
+    "predeploy": "npm run build:release",
+    "deploy:ghpages": "angular-cli-ghpages --no-silent --dir=dist/ng-matero",
+    "deploy": "npm run deploy:ghpages",
     "publish": "cd dist/schematics && npm publish"
   },
   "private": true,
