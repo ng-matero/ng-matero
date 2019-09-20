@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "ng lint ng-matero"
+    "pre-commit": "npm run lint"
   }
 }
