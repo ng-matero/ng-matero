@@ -1,5 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "npm run lint"
+    "pre-commit": "npx tslint -p tsconfig.app.json -c tslint.json 'src/**/*.ts' && npx stylelint --syntax scss 'src/**/*.scss'",
+    "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS --config ./tools/commitlint.config.js"
   }
 }
