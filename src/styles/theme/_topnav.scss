@@ -13,9 +13,9 @@
 }
 
 .matero-topmenu {
-  display: block;
   position: sticky;
-  z-index: 9;
+  z-index: 200;
+  display: block;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 

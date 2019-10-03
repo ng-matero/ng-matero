@@ -151,12 +151,12 @@
   }
 
   .matero-sidebar-header {
-    display: flex;
-    align-items: center;
     position: relative;
     top: 0;
     left: 0;
     z-index: 1;
+    display: flex;
+    align-items: center;
     height: $toolbar-height-desktop;
     padding: 0 10px;
     overflow: hidden;
@@ -187,7 +187,7 @@
 
 // User panel
 .matero-user-panel-avatar {
-  // Set default width and height can avoid flashing before avatar img loaded.
+  // Set default width and height can avoid flashing before avatar image loaded.
   width: 64px;
   height: 64px;
   transition: swift-ease-out(transform);
