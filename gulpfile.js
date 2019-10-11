@@ -89,6 +89,7 @@ function updateVersions(cb) {
           '@ngx-translate/http-loader',
           '@ng-select/ng-select',
           'ngx-toastr',
+          'photoviewer',
           'screenfull',
           '@angularclass/hmr',
           'husky',
