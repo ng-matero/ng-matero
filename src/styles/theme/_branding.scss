@@ -3,9 +3,11 @@
 // ==================================================
 
 .matero-branding {
+  color: inherit;
   white-space: nowrap;
 
   .matero-branding-logo-expanded {
+    width: 30px;
     height: 30px;
     margin-right: 10px;
     vertical-align: middle;
