@@ -22,5 +22,12 @@
   "scripts": {
     "build": "../node_modules/.bin/tsc -p tsconfig.json"
   },
-  "schematics": "./collection.json"
+  "schematics": "./collection.json",
+  "ng-update": {
+    "migrations": "./migration.json",
+    "packageGroup": [
+      "ng-matero"
+    ]
+  },
+  "sideEffects": false
 }
