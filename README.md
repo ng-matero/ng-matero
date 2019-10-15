@@ -104,7 +104,11 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 ## 🗺 Road Map
 
 - [X] Schematics Support
-- [ ] Material Extral Components
+  - [X] `ng add`
+  - [X] `ng generate`
+  - [X] `ng update` (incomplete)
+- [ ] Internationalization (i18n)
+- [ ] Material Extentions
 - [ ] VS Code Snippet
 
 ## 📃 License
