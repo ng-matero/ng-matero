@@ -1,18 +1,42 @@
-// Configuration
-@import 'functions';
-@import 'variables';
-@import 'mixins';
-// Themeing
-@import 'theme/theme';
-@import 'widgets/widgets';
-@import 'plugins/plugins';
-// Helpers
-@import 'helpers/helpers';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+//
+// Light style
+//
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+//////////////////////////////////////////////////////////////////////////////////////
+// When we use the Schematics (`ng add`) to start, the following variables will be  //
+// used to create a dark theme! This strategy will not generate redundant codes.    //
+//////////////////////////////////////////////////////////////////////////////////////
+
+//
+// Dark style
+//
+// $primary: mat-palette($mat-blue);
+// $accent: mat-palette($mat-amber, A200, A100, A400);
+// $theme: mat-dark-theme($primary, $accent);
+
+$config: mat-typography-config();
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
+
+//
+// Matero theme
+//
+@import 'matero';
+
 @include matero-admin-theme($theme);
 
 //

@@ -2,6 +2,9 @@
 // LAYOUT
 // ==================================================
 
+//
+// Admin
+//
 .matero-container-wrap,
 .matero-container {
   height: 100%;
@@ -12,13 +15,13 @@
   padding: $gutter;
 }
 
-// TODO: Grid
+// TODO: Grid row
 .matero-row {
   margin-right: -$gutter/2;
   margin-left: -$gutter/2;
 }
 
-// TODO: Col
+// TODO: Grid col
 .matero-col {
   padding-right: $gutter/2;
   padding-left: $gutter/2;

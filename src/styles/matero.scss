@@ -1,0 +1,16 @@
+// Configuration
+@import 'functions';
+@import 'variables';
+@import 'mixins';
+// Themeing
+@import 'theme/theme';
+@import 'widgets/widgets';
+@import 'plugins/plugins';
+// Helpers
+@import 'helpers/helpers';
+
+// Create a theme
+@mixin matero-admin-theme($theme) {
+  @include matero-sidenav-theme($theme);
+  @include matero-topnav-theme($theme);
+}

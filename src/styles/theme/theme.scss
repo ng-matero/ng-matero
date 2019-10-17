@@ -5,9 +5,3 @@
 @import 'topnav';
 @import 'branding';
 @import 'material';
-
-// Create a theme
-@mixin matero-admin-theme($theme) {
-  @include matero-sidenav-theme($theme);
-  @include matero-topnav-theme($theme);
-}

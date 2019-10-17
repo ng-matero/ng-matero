@@ -1,5 +1,4 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/functions';
+@import '~@angular/material/theming';
 
 // Dark style
 $primary: mat-palette($mat-pink, 700, 500, 900);
@@ -32,7 +31,7 @@ $foreground: mat-color($theme, 'foreground');
   box-sizing: border-box;
   background-color: #fff;
   transform: translateX(0);
-  transition: swift-ease-out(transform);
+  transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
   overflow: auto;
 
   &.opened {
