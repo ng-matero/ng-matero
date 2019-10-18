@@ -178,7 +178,9 @@ function addStyleToAngularJson() {
     const workspace = getWorkspace(host);
     const ngJson = Object.assign(workspace);
     const project = ngJson.projects[ngJson.defaultProject];
+
     const themePath = `src/styles.scss`;
+
     addThemeStyleToTarget(project, 'build', host, themePath, workspace);
     addThemeStyleToTarget(project, 'test', host, themePath, workspace);
   };
@@ -190,7 +192,10 @@ function addProxyToAngularJson() {
     const workspace = getWorkspace(host);
     const ngJson = Object.assign(workspace);
     const project = ngJson.projects[ngJson.defaultProject];
+
     project.architect.serve.options.proxyConfig = 'proxy.config.js';
+
+    host.overwrite('angular.json', JSON.stringify(ngJson, null, 2));
   };
 }
 
