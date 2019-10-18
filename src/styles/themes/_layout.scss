@@ -2,9 +2,6 @@
 // LAYOUT
 // ==================================================
 
-//
-// Admin
-//
 .matero-container-wrap,
 .matero-container {
   height: 100%;
@@ -27,7 +24,7 @@
   padding-left: $gutter/2;
 }
 
-// Header above
+// Layout control
 .matero-header-above {
   .matero-container {
     height: calc(100% - #{$toolbar-height-desktop}) !important;
