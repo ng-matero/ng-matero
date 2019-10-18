@@ -68,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-matero:build"
+            "browserTarget": "ng-matero:build",
+            "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {

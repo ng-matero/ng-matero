@@ -34,7 +34,6 @@ export function add3rdPkgsToPackageJson(host: Tree, options: Schema) {
 
   // Dev
   addPackage(host, '@angularclass/hmr@0.0.0-PLACEHOLDER', 'dev');
-  addPackage(host, 'husky@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier-stylelint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');

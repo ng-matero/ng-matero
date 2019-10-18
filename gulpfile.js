@@ -17,6 +17,7 @@ function copyRoot(cb) {
     '.prettierrc',
     '.stylelintrc',
     'LICENSE',
+    'proxy.config.js',
     'tsconfig.json',
     'tslint.json',
   ]).pipe(dest(`${FILES}/`));
@@ -39,9 +40,7 @@ function copyAssets(cb) {
 
 // src/styles
 function copyStyles(cb) {
-  return src(['src/styles/**/*', '!src/styles/app.scss', '!src/styles/_variables.scss']).pipe(
-    dest(`${FILES}/src/styles`)
-  );
+  return src(['src/styles/**/*', '!src/styles/app.scss']).pipe(dest(`${FILES}/src/styles`));
 }
 
 // src/environments
@@ -92,7 +91,6 @@ function updateVersions(cb) {
           'photoviewer',
           'screenfull',
           '@angularclass/hmr',
-          'husky',
           'parse5',
           'prettier',
           'prettier-stylelint',

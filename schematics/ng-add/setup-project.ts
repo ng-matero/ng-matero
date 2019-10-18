@@ -28,8 +28,6 @@ import { addScriptToPackageJson } from './package-config';
 import { add3rdPkgsToPackageJson } from './packages';
 import { addThemeStyleToTarget } from '../utils';
 
-const { red, bold, italic } = chalk;
-
 /** Name of the Angular module that enables Angular browser animations. */
 const browserAnimationsModuleName = 'BrowserAnimationsModule';
 
@@ -40,7 +38,7 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Scripts to package.json
- *  - Add Hmr & style to angular.json
+ *  - Add Hmr & style & proxy to angular.json
  *  - Add Hammer.js
  *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to index.html
@@ -54,6 +52,7 @@ export default function(options: Schema): Rule {
     addScriptsToPackageJson(),
     addHmrToAngularJson(),
     addStyleToAngularJson(),
+    addProxyToAngularJson(),
     options && options.gestures ? addHammerJsToMain(options) : noop(),
     addAnimationsModule(options),
     addFontsToIndex(options),
@@ -80,10 +79,10 @@ function addAnimationsModule(options: Schema) {
       // is already configured, we would cause unexpected behavior and runtime exceptions.
       if (hasNgModuleImport(host, appModulePath, noopAnimationsModuleName)) {
         return console.warn(
-          red(
-            `Could not set up "${bold(browserAnimationsModuleName)}" ` +
-              `because "${bold(noopAnimationsModuleName)}" is already imported. Please manually ` +
-              `set up browser animations.`
+          chalk.red(
+            `Could not set up "${chalk.bold(browserAnimationsModuleName)}" ` +
+              `because "${chalk.bold(noopAnimationsModuleName)}" is already imported. Please ` +
+              `manually set up browser animations.`
           )
         );
       }
@@ -182,6 +181,16 @@ function addStyleToAngularJson() {
     const themePath = `src/styles.scss`;
     addThemeStyleToTarget(project, 'build', host, themePath, workspace);
     addThemeStyleToTarget(project, 'test', host, themePath, workspace);
+  };
+}
+
+/** Add proxy to angular.json */
+function addProxyToAngularJson() {
+  return (host: Tree) => {
+    const workspace = getWorkspace(host);
+    const ngJson = Object.assign(workspace);
+    const project = ngJson.projects[ngJson.defaultProject];
+    project.architect.serve.options.proxyConfig = 'proxy.config.js';
   };
 }
 
