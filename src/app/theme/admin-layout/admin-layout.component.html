@@ -18,7 +18,8 @@
     <mat-sidenav #sidenav class="matero-sidenav"
                  [mode]="isOver ? 'over' : 'side'"
                  [opened]="options.navPos==='side' && options.sidenavOpened && !isOver"
-                 (openedChange)="openedChange($event)">
+                 (openedChange)="sidenavOpenedChange($event)"
+                 (closedStart)="sidenavCloseStart()">
       <app-sidebar (toggleCollapsed)="toggleCollapsed()"
                    [toggleChecked]="options.sidenavCollapsed"
                    [showToggle]="!isOver"

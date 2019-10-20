@@ -7,6 +7,7 @@ import { SettingsService, AppSettings } from '@core';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
 const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
+const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
 
 @Component({
   selector: 'app-admin-layout',
@@ -29,6 +30,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   // get isTablet(): boolean {
   //   return this.tabletQuery.matches;
   // }
+
+  private monitorQuery: MediaQueryList;
+  private monitorQueryListener: () => void;
 
   private contentWidthFix = true;
   @HostBinding('class.matero-content-width-fix') get isContentWidthFix() {
@@ -64,13 +68,17 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
     this.mobileQuery = this.media.matchMedia(MOBILE_MEDIAQUERY);
     this.tabletQuery = this.media.matchMedia(TABLET_MEDIAQUERY);
+    this.monitorQuery = this.media.matchMedia(MONITOR_MEDIAQUERY);
 
     this.mobileQueryListener = () => {};
     this.tabletQueryListener = () => {
       this.options.sidenavOpened = true;
       this.options.sidenavCollapsed = this.tabletQuery.matches;
-      this.resetCollapsedState(1200);
     };
+    this.monitorQueryListener = () => {
+      this.contentWidthFix = this.monitorQuery.matches;
+    };
+
     /**
      * Safari & IE don't support `addEventListener`
      * this.mobileQuery.addEventListener('change', this.mobileQueryListener);
@@ -79,6 +87,8 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.mobileQuery.addListener(this.mobileQueryListener);
     // tslint:disable-next-line: deprecation
     this.tabletQuery.addListener(this.tabletQueryListener);
+    // tslint:disable-next-line: deprecation
+    this.monitorQuery.addListener(this.monitorQueryListener);
 
     // TODO: Scroll top to container
     this.router.events.subscribe(evt => {
@@ -101,6 +111,8 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.mobileQuery.removeListener(this.mobileQueryListener);
     // tslint:disable-next-line: deprecation
     this.tabletQuery.removeListener(this.tabletQueryListener);
+    // tslint:disable-next-line: deprecation
+    this.monitorQuery.removeListener(this.monitorQueryListener);
   }
 
   toggleCollapsed() {
@@ -115,7 +127,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     }, timer);
   }
 
-  openedChange(isOpened: boolean) {
+  sidenavCloseStart() {
+    this.contentWidthFix = false;
+  }
+
+  sidenavOpenedChange(isOpened: boolean) {
     this.options.sidenavOpened = isOpened;
     this.settings.setNavState('opened', isOpened);
 
