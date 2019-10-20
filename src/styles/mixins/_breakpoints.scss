@@ -1,6 +1,4 @@
-// ==================================================
-//  Media queries
-// ==================================================
+//  Media Queries
 
 @function bp($name, $breakpoints: $breakpoints) {
   $min: map-get($breakpoints, $name);
@@ -25,7 +23,7 @@
 
 // Media of at most the maximum breakpoint width.
 @mixin bp-lt($name, $breakpoints: $breakpoints) {
-  $max: bp($name, $breakpoints);
+  $max: bp($name, $breakpoints) - 1px;
 
   @if $max {
     @media (max-width: $max) {

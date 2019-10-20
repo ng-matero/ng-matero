@@ -36,12 +36,11 @@ $font-size-h6: 16px !default;
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 $breakpoints: (
-  xsmall: 320px,
-  teeny: 480px,
-  tiny: 600px,
-  small: 650px,
-  medium: 800px,
-  big: 1000px
+  xsmall: 0,
+  small: 600px,
+  medium: 960px,
+  large: 1280px,
+  xlarge: 1920px
 ) !default;
 
 //

@@ -2,8 +2,10 @@
 @import 'functions';
 @import 'variables';
 @import 'mixins';
+// Material
+@import 'material';
 // Themeing
-@import 'themes/themes';
+@import 'core/core';
 @import 'widgets/widgets';
 @import 'plugins/plugins';
 // Helpers

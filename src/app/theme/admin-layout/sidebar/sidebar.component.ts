@@ -8,6 +8,7 @@ export class SidebarComponent {
   @Input() showToggle = true;
   @Input() showUser = true;
   @Input() showHeader = true;
+  @Input() toggleChecked = false;
 
   @Output() toggleCollapsed = new EventEmitter<void>();
 

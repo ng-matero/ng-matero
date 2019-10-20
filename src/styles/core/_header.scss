@@ -51,7 +51,7 @@
   height: 100%;
   padding: 0;
 
-  @include bp-lt(tiny) {
+  @include bp-lt(small) {
     & {
       min-width: 15%;
     }

@@ -38,11 +38,11 @@
 // Fix the init content width
 .matero-content-width-fix {
   .matero-content-wrap {
-    margin-left: 240px;
+    margin-left: $sidenav-width;
 
     [dir='rtl'] & {
       margin-left: auto;
-      margin-right: 240px;
+      margin-right: $sidenav-width;
     }
   }
 }

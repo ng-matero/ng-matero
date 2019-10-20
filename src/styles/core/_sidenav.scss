@@ -164,7 +164,7 @@
     padding: 0 10px;
     overflow: hidden;
 
-    @include bp-lt(tiny) {
+    @include bp-lt(small) {
       & {
         height: $toolbar-height-mobile;
       }
@@ -180,7 +180,7 @@
     height: calc(100% - #{$toolbar-height-desktop});
     overflow: auto;
 
-    @include bp-lt(tiny) {
+    @include bp-lt(small) {
       & {
         height: calc(100% - #{$toolbar-height-mobile});
       }
@@ -212,7 +212,8 @@
 }
 
 // Layout control
-.matero-sidenav-collapsed {
+.matero-sidenav-collapsed,
+.matero-sidenav-collapsed-fix {
   .matero-sidenav {
     width: $sidenav-collapsed-width;
 
@@ -248,7 +249,9 @@
       }
     }
   }
+}
 
+.matero-sidenav-collapsed {
   .matero-content-wrap {
     margin-left: $sidenav-collapsed-width !important;
 

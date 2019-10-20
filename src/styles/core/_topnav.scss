@@ -72,7 +72,7 @@
   .matero-topmenu {
     top: $topmenu-sticky-position-desktop;
 
-    @include bp-lt(tiny) {
+    @include bp-lt(small) {
       & {
         top: $topmenu-sticky-position-mobile;
       }

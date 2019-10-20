@@ -1,18 +1,12 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ChangeDetectorRef,
-  ViewChild,
-  HostBinding,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, HostBinding } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { SettingsService, AppSettings } from '@core';
 
-const WIDTH_BREAKPOINT = '960px';
+const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
+const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
 
 @Component({
   selector: 'app-admin-layout',
@@ -23,17 +17,37 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('content', { static: true }) content: MatSidenavContent;
 
   options = this.settings.getOptions();
-  sidenavCollapsed = false;
 
-  mobileQuery: MediaQueryList;
+  private mobileQuery: MediaQueryList;
   private mobileQueryListener: () => void;
   get isOver(): boolean {
     return this.mobileQuery.matches;
   }
 
-  contentWidthFix = true;
-  @HostBinding('class.matero-content-width-fix') get widthFix() {
-    return this.contentWidthFix && this.options.navPos === 'side' && !this.isOver;
+  private tabletQuery: MediaQueryList;
+  private tabletQueryListener: () => void;
+  // get isTablet(): boolean {
+  //   return this.tabletQuery.matches;
+  // }
+
+  private contentWidthFix = true;
+  @HostBinding('class.matero-content-width-fix') get isContentWidthFix() {
+    return (
+      this.contentWidthFix &&
+      this.options.navPos === 'side' &&
+      this.options.sidenavOpened &&
+      !this.isOver
+    );
+  }
+
+  private collapsedWidthFix = true;
+  @HostBinding('class.matero-sidenav-collapsed-fix') get isCollapsedWidthFix() {
+    return (
+      this.collapsedWidthFix &&
+      this.options.navPos === 'side' &&
+      this.options.sidenavOpened &&
+      this.isOver
+    );
   }
 
   // Demo purposes only
@@ -43,7 +57,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private cdr: ChangeDetectorRef,
     private media: MediaMatcher,
     private settings: SettingsService,
     private overlay: OverlayContainer
@@ -51,14 +64,23 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     // Set dir attr on body
     document.body.dir = this.options.dir;
 
-    this.mobileQuery = this.media.matchMedia(`(max-width: ${WIDTH_BREAKPOINT})`);
-    this.mobileQueryListener = () => this.cdr.detectChanges();
+    this.mobileQuery = this.media.matchMedia(MOBILE_MEDIAQUERY);
+    this.tabletQuery = this.media.matchMedia(TABLET_MEDIAQUERY);
+
+    this.mobileQueryListener = () => {};
+    this.tabletQueryListener = () => {
+      this.options.sidenavOpened = true;
+      this.options.sidenavCollapsed = this.tabletQuery.matches;
+      this.resetCollapsedState(1400);
+    };
     /**
      * Safari & IE don't support `addEventListener`
      * this.mobileQuery.addEventListener('change', this.mobileQueryListener);
      */
     // tslint:disable-next-line: deprecation
     this.mobileQuery.addListener(this.mobileQueryListener);
+    // tslint:disable-next-line: deprecation
+    this.tabletQuery.addListener(this.tabletQueryListener);
 
     // TODO: Scroll top to container
     this.router.events.subscribe(evt => {
@@ -69,7 +91,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    setTimeout(() => (this.contentWidthFix = false));
+    setTimeout(() => (this.contentWidthFix = this.collapsedWidthFix = false));
   }
 
   ngOnDestroy() {
@@ -79,19 +101,26 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
      */
     // tslint:disable-next-line: deprecation
     this.mobileQuery.removeListener(this.mobileQueryListener);
+    // tslint:disable-next-line: deprecation
+    this.tabletQuery.removeListener(this.tabletQueryListener);
   }
 
   toggleCollapsed() {
-    this.sidenavCollapsed = !this.sidenavCollapsed;
-
-    // TODO: Trigger when animation end
-    setTimeout(() => {
-      this.settings.setNavState('collapsed', this.sidenavCollapsed);
-    }, 400);
+    this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
+    this.resetCollapsedState();
   }
 
-  openedChange(e: boolean) {
-    this.settings.setNavState('opened', e);
+  resetCollapsedState(timer = 400) {
+    // TODO: Trigger when transition end
+    setTimeout(() => {
+      this.settings.setNavState('collapsed', this.options.sidenavCollapsed);
+    }, timer);
+  }
+
+  openedChange(isOpened: boolean) {
+    this.options.sidenavOpened = isOpened;
+    this.settings.setNavState('opened', isOpened);
+    this.collapsedWidthFix = !this.isOver;
   }
 
   // Demo purposes only
