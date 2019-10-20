@@ -8,7 +8,7 @@ import { SidemenuComponent } from './admin-layout/sidemenu/sidemenu.component';
 import { AccordionAnchorDirective } from './admin-layout/sidemenu/accordionanchor.directive';
 import { AccordionDirective } from './admin-layout/sidemenu/accordion.directive';
 import { AccordionLinkDirective } from './admin-layout/sidemenu/accordionlink.directive';
-import { SidebarRightComponent } from './admin-layout/sidebar-right/sidebar-right.component';
+import { SidebarNoticeComponent } from './admin-layout/sidebar-notice/sidebar-notice.component';
 import { HeaderComponent } from './admin-layout/header/header.component';
 import { BrandingComponent } from './admin-layout/header/branding.component';
 import { NotificationComponent } from './admin-layout/header/notification.component';
@@ -25,7 +25,7 @@ import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
     AccordionAnchorDirective,
     AccordionDirective,
     AccordionLinkDirective,
-    SidebarRightComponent,
+    SidebarNoticeComponent,
     HeaderComponent,
     BrandingComponent,
     NotificationComponent,
