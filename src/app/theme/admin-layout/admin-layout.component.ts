@@ -44,9 +44,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   @HostBinding('class.matero-sidenav-collapsed-fix') get isCollapsedWidthFix() {
     return (
       this.collapsedWidthFix &&
-      this.options.navPos === 'side' &&
-      this.options.sidenavOpened &&
-      this.isOver
+      (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
     );
   }
 
@@ -71,7 +69,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.tabletQueryListener = () => {
       this.options.sidenavOpened = true;
       this.options.sidenavCollapsed = this.tabletQuery.matches;
-      this.resetCollapsedState(1400);
+      this.resetCollapsedState(1200);
     };
     /**
      * Safari & IE don't support `addEventListener`
@@ -120,7 +118,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   openedChange(isOpened: boolean) {
     this.options.sidenavOpened = isOpened;
     this.settings.setNavState('opened', isOpened);
+
     this.collapsedWidthFix = !this.isOver;
+    this.resetCollapsedState();
   }
 
   // Demo purposes only

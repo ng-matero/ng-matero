@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   @Input() showBranding = false;
 
   @Output() toggleSidenav = new EventEmitter<void>();
-  @Output() toggleSidenavRight = new EventEmitter<void>();
+  @Output() toggleSidenavNotice = new EventEmitter<void>();
 
   private get screenfull(): screenfull.Screenfull {
     return screenfull as screenfull.Screenfull;
