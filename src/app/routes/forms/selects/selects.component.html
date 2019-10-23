@@ -4,7 +4,7 @@
   <div fxFlex="100" fxFlex.gt-sm="50" class="matero-col">
     <mat-card>
       <mat-card-title>Data Source</mat-card-title>
-      <mat-card-content>
+      <div>
         <p>
           Most common case is showing data from backend
           API and with ng-select this is extremely simple since you can bind directly to
@@ -49,14 +49,14 @@
         </ng-select>
 
         Selected car ID: {{selectedCarId | json}}
-      </mat-card-content>
+      </div>
     </mat-card>
   </div>
 
   <div fxFlex="100" fxFlex.gt-sm="50" class="matero-col">
     <mat-card>
       <mat-card-title>Tags</mat-card-title>
-      <mat-card-content>
+      <div>
         <label>Default tags</label>
 
         <ng-select [items]="[]" [addTag]="true" [(ngModel)]="selectedCompany">
@@ -98,7 +98,7 @@
                    [isOpen]="false">
         </ng-select>
 
-      </mat-card-content>
+      </div>
     </mat-card>
   </div>
 </div>
