@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-elements',
+  selector: 'app-forms-elements',
   templateUrl: './elements.component.html',
 })
-export class ElementsComponent implements OnInit {
+export class FormsElementsComponent implements OnInit {
   q = {
     username: '',
     email: '',

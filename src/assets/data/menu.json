@@ -254,8 +254,8 @@
       ]
     },
     {
-      "state": "gallery",
-      "name": "Gallery",
+      "state": "media",
+      "name": "Media",
       "type": "sub",
       "icon": "image",
       "label": {
@@ -264,8 +264,8 @@
       },
       "children": [
         {
-          "state": "media",
-          "name": "Media",
+          "state": "gallery",
+          "name": "Gallery",
           "type": "link"
         }
       ]
@@ -354,12 +354,19 @@
     {
       "state": "helpers",
       "name": "Helpers",
-      "type": "link",
+      "type": "sub",
       "icon": "all_inbox",
       "label": {
         "color": "indigo-500",
         "value": "new"
-      }
+      },
+      "children": [
+        {
+          "state": "css-class",
+          "name": "CSS Class",
+          "type": "link"
+        }
+      ]
     }
   ]
 }

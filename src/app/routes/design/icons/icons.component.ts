@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IconsService } from './icons.service';
+import { DesignIconsService } from './icons.service';
 
 @Component({
-  selector: 'app-icons',
+  selector: 'app-design-icons',
   templateUrl: './icons.component.html',
-  providers: [IconsService],
+  providers: [DesignIconsService],
 })
-export class IconsComponent implements OnInit {
+export class DesignIconsComponent implements OnInit {
   icons: any;
-  constructor(private iconsService: IconsService) {}
+  constructor(private iconsService: DesignIconsService) {}
 
   ngOnInit() {
     this.icons = this.iconsService.icons;

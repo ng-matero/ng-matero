@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-user-panel',
   template: `
     <div
-      class="matero-user-panel p-y-16 b-t-1 b-b-1"
+      class="matero-user-panel p-y-16 b-b-1"
       fxLayout="column"
       fxLayoutAlign="center center"
     >

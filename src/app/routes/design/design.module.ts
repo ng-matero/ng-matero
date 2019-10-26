@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { DesignRoutingModule } from './design-routing.module';
 
-import { ColorsComponent } from './colors/colors.component';
-import { IconsComponent } from './icons/icons.component';
+import { DesignColorsComponent } from './colors/colors.component';
+import { DesignIconsComponent } from './icons/icons.component';
 
-const COMPONENTS = [ColorsComponent, IconsComponent];
+const COMPONENTS = [DesignColorsComponent, DesignIconsComponent];
 const COMPONENTS_DYNAMIC = [];
 
 @NgModule({

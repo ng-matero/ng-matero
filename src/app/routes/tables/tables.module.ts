@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { TableRoutingModule } from './tables-routing.module';
 
-import { BasicComponent } from './basic/basic.component';
-import { BasicEditComponent } from './basic/edit/edit.component';
+import { TableBasicComponent } from './basic/basic.component';
+import { TableBasicEditComponent } from './basic/edit/edit.component';
 
-const COMPONENTS = [BasicComponent];
-const COMPONENTS_DYNAMIC = [BasicEditComponent];
+const COMPONENTS = [TableBasicComponent];
+const COMPONENTS_DYNAMIC = [TableBasicEditComponent];
 
 @NgModule({
   imports: [SharedModule, TableRoutingModule],

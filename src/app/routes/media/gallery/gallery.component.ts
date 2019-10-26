@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import PhotoViewer from 'photoviewer';
 
 @Component({
-  selector: 'app-media',
-  templateUrl: './media.component.html',
+  selector: 'app-media-gallery',
+  templateUrl: './gallery.component.html',
 })
-export class MediaComponent implements OnInit {
+export class MediaGalleryComponent {
   dir = 'assets/images/pixabay/';
   images: any[] = [];
 
@@ -17,8 +17,6 @@ export class MediaComponent implements OnInit {
       });
     }
   }
-
-  ngOnInit() {}
 
   // Preview images
   preview(index: number) {

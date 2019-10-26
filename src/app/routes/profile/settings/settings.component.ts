@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'app-profile-settings',
   templateUrl: './settings.component.html',
 })
-export class SettingsComponent implements OnInit {
+export class ProfileSettingsComponent implements OnInit {
   reactiveForm: FormGroup;
 
   constructor(private fb: FormBuilder) {

@@ -5,9 +5,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   selector: 'app-edit',
   templateUrl: './edit.component.html',
 })
-export class BasicEditComponent implements OnInit {
+export class TableBasicEditComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<BasicEditComponent>,
+    public dialogRef: MatDialogRef<TableBasicEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 

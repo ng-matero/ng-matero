@@ -5,10 +5,10 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-dynamic',
+  selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
 })
-export class DynamicComponent implements OnInit {
+export class FormsDynamicComponent implements OnInit {
   form = new FormGroup({});
   model = { email: 'email@gmail.com' };
   fields: FormlyFieldConfig[] = [

@@ -12,21 +12,28 @@
             <mat-list-item><code>.mat-display-2</code></mat-list-item>
             <mat-list-item><code>.mat-display-1</code></mat-list-item>
 
-            <mat-list-item><code>.mat-h1</code>, <code>.mat-headline</code></mat-list-item>
+            <mat-list-item><code>.mat-h1</code>, <code>.mat-headline</code>
+            </mat-list-item>
             <mat-list-item><code>.mat-h2</code>, <code>.mat-title</code></mat-list-item>
-            <mat-list-item><code>.mat-h3</code>, <code>.mat-subheading-2</code></mat-list-item>
-            <mat-list-item><code>.mat-h4</code>, <code>.mat-subheading-1</code></mat-list-item>
+            <mat-list-item><code>.mat-h3</code>, <code>.mat-subheading-2</code>
+            </mat-list-item>
+            <mat-list-item><code>.mat-h4</code>, <code>.mat-subheading-1</code>
+            </mat-list-item>
 
-            <mat-list-item><code>.mat-body</code>, <code>.mat-body-1</code></mat-list-item>
-            <mat-list-item><code>.mat-body-strong</code>, <code>.mat-body-2</code></mat-list-item>
-            <mat-list-item><code>.mat-small</code>, <code>.mat-caption</code></mat-list-item>
+            <mat-list-item><code>.mat-body</code>, <code>.mat-body-1</code>
+            </mat-list-item>
+            <mat-list-item><code>.mat-body-strong</code>, <code>.mat-body-2</code>
+            </mat-list-item>
+            <mat-list-item><code>.mat-small</code>, <code>.mat-caption</code>
+            </mat-list-item>
           </mat-list>
         </div>
         <div fxFlex="25" fxFlex.lt-sm="50">
           <mat-list>
             <h3 matSubheader>Elevation</h3>
             <ng-container *ngFor="let i of [0,1,2,3]">
-              <mat-list-item *ngFor="let j of [1,2,3,4,5,6]"><code>.mat-elevation-z{{j+6*i}}</code>
+              <mat-list-item *ngFor="let j of [1,2,3,4,5,6]">
+                <code>.mat-elevation-z{{j+6*i}}</code>
               </mat-list-item>
             </ng-container>
           </mat-list>
@@ -95,14 +102,16 @@
         <div fxFlex="25" fxFlex.lt-sm="50">
           <mat-list>
             <h3 matSubheader>Font Weight</h3>
-            <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]"><code>.f-w-{{i*100}}</code>
+            <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
+              <code>.f-w-{{i*100}}</code>
             </mat-list-item>
           </mat-list>
         </div>
         <div fxFlex="25" fxFlex.lt-sm="50">
           <mat-list>
             <h3 matSubheader>Font Size</h3>
-            <mat-list-item *ngFor="let i of [0,10,12,14,16,18,20]"><code>.f-s-{{i}}</code>
+            <mat-list-item *ngFor="let i of [0,10,12,14,16,18,20]">
+              <code>.f-s-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
@@ -114,7 +123,8 @@
         <div fxFlex="25" fxFlex.lt-sm="50">
           <mat-list>
             <h3 matSubheader>Border Width</h3>
-            <mat-list-item *ngFor="let i of [0,1,2,3,4,5]"><code>.b[-[t|b|r|l]]-{{i}}</code>
+            <mat-list-item *ngFor="let i of [0,1,2,3,4,5]">
+              <code>.b[-[t|b|r|l]]-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
@@ -175,14 +185,16 @@
         <div fxFlex="25" fxFlex.lt-sm="50">
           <mat-list>
             <h3 matSubheader>Vertical Align</h3>
-            <mat-list-item *ngFor="let i of ['top','middle','bottom']"><code>.align-{{i}}</code>
+            <mat-list-item *ngFor="let i of ['top','middle','bottom']">
+              <code>.align-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
         <div fxFlex="25" fxFlex.lt-sm="50">
           <mat-list>
             <h3 matSubheader>Ellipsis</h3>
-            <mat-list-item><code>.text-ellipsis</code>, <code>.text-truncate</code></mat-list-item>
+            <mat-list-item><code>.text-ellipsis</code>, <code>.text-truncate</code>
+            </mat-list-item>
           </mat-list>
         </div>
       </div>

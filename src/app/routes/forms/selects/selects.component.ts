@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { Person, DataService } from '../data.service';
 
 @Component({
-  selector: 'app-selects',
+  selector: 'app-forms-selects',
   templateUrl: './selects.component.html',
   providers: [DataService],
 })
-export class SelectsComponent implements OnInit {
+export class FormsSelectsComponent implements OnInit {
   // Data source
   people$: Observable<Person[]>;
   people: Person[] = [];

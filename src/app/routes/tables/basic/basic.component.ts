@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { BasicEditComponent } from './edit/edit.component';
+import { TableBasicEditComponent } from './edit/edit.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-basic',
+  selector: 'app-table-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
   providers: [DataService],
 })
-export class BasicComponent implements OnInit {
-  columns = [
+export class TableBasicComponent implements OnInit {
+  columns: any = [
     {
       title: 'Position',
       index: 'position',
@@ -55,7 +55,7 @@ export class BasicComponent implements OnInit {
     {
       title: 'Address',
       index: 'address',
-      width: 'auto',
+      width: '200px',
     },
     {
       title: 'Date',
@@ -81,6 +81,8 @@ export class BasicComponent implements OnInit {
       title: 'Options',
       index: 'options',
       width: 'auto',
+      type: 'button',
+      fixed: 'right',
     },
   ];
 
@@ -92,7 +94,7 @@ export class BasicComponent implements OnInit {
   ngOnInit() {}
 
   edit(value: any) {
-    const dialogRef = this.dialog.open(BasicEditComponent, {
+    const dialogRef = this.dialog.open(TableBasicEditComponent, {
       width: '600px',
       data: { record: value },
     });
