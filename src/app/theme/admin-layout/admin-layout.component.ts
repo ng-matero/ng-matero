@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostBinding } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+import { Subscription } from 'rxjs';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { SettingsService, AppSettings } from '@core';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
@@ -19,20 +20,12 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   options = this.settings.getOptions();
 
-  private mobileQuery: MediaQueryList;
-  private mobileQueryListener: () => void;
+  private layoutChanges: Subscription;
+
+  private isMobileScreen = false;
   get isOver(): boolean {
-    return this.mobileQuery.matches;
+    return this.isMobileScreen;
   }
-
-  private tabletQuery: MediaQueryList;
-  private tabletQueryListener: () => void;
-  // get isTablet(): boolean {
-  //   return this.tabletQuery.matches;
-  // }
-
-  private monitorQuery: MediaQueryList;
-  private monitorQueryListener: () => void;
 
   private contentWidthFix = true;
   @HostBinding('class.matero-content-width-fix') get isContentWidthFix() {
@@ -59,36 +52,23 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private media: MediaMatcher,
-    private settings: SettingsService,
-    private overlay: OverlayContainer
+    private breakpointObserver: BreakpointObserver,
+    private overlay: OverlayContainer,
+    private settings: SettingsService
   ) {
     // Set dir attr on body
     document.body.dir = this.options.dir;
 
-    this.mobileQuery = this.media.matchMedia(MOBILE_MEDIAQUERY);
-    this.tabletQuery = this.media.matchMedia(TABLET_MEDIAQUERY);
-    this.monitorQuery = this.media.matchMedia(MONITOR_MEDIAQUERY);
+    this.layoutChanges = this.breakpointObserver
+      .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
+      .subscribe(state => {
+        // SidenavOpened must be reset true when layout changes
+        this.options.sidenavOpened = true;
 
-    this.mobileQueryListener = () => {};
-    this.tabletQueryListener = () => {
-      this.options.sidenavOpened = true;
-      this.options.sidenavCollapsed = this.tabletQuery.matches;
-    };
-    this.monitorQueryListener = () => {
-      this.contentWidthFix = this.monitorQuery.matches;
-    };
-
-    /**
-     * Safari & IE don't support `addEventListener`
-     * this.mobileQuery.addEventListener('change', this.mobileQueryListener);
-     */
-    // tslint:disable-next-line: deprecation
-    this.mobileQuery.addListener(this.mobileQueryListener);
-    // tslint:disable-next-line: deprecation
-    this.tabletQuery.addListener(this.tabletQueryListener);
-    // tslint:disable-next-line: deprecation
-    this.monitorQuery.addListener(this.monitorQueryListener);
+        this.isMobileScreen = state.breakpoints[MOBILE_MEDIAQUERY];
+        this.options.sidenavCollapsed = state.breakpoints[TABLET_MEDIAQUERY];
+        this.contentWidthFix = state.breakpoints[MONITOR_MEDIAQUERY];
+      });
 
     // TODO: Scroll top to container
     this.router.events.subscribe(evt => {
@@ -103,16 +83,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    /**
-     * Safari & IE don't support `removeEventListener`
-     * this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
-     */
-    // tslint:disable-next-line: deprecation
-    this.mobileQuery.removeListener(this.mobileQueryListener);
-    // tslint:disable-next-line: deprecation
-    this.tabletQuery.removeListener(this.tabletQueryListener);
-    // tslint:disable-next-line: deprecation
-    this.monitorQuery.removeListener(this.monitorQueryListener);
+    this.layoutChanges.unsubscribe();
   }
 
   toggleCollapsed() {
