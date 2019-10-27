@@ -41,7 +41,7 @@
     margin-left: $sidenav-width !important;
 
     [dir='rtl'] & {
-      margin-left: auto;
+      margin-left: auto !important;
       margin-right: $sidenav-width !important;
     }
   }
