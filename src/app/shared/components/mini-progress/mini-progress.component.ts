@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ViewEncapsulation, HostBinding } from '@angul
 @Component({
   selector: 'mini-progress',
   host: {
-    class: 'matero-progress',
+    class: 'matero-mini-progress',
   },
   templateUrl: './mini-progress.component.html',
   styleUrls: ['./mini-progress.component.scss'],
