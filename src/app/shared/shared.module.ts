@@ -14,9 +14,9 @@ import { NgxPopperModule } from 'ngx-popper';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { MiniProgressComponent } from './components/mini-progress/mini-progress.component';
-import { Text3dComponent } from './components/text3d/text3d.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
+import { EasyProgressComponent } from './components/easy-progress/easy-progress.component';
+import { Text3dComponent } from './components/text3d/text3d.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -31,9 +31,9 @@ const THIRD_MODULES = [
 const COMPONENTS = [
   BreadcrumbComponent,
   PageHeaderComponent,
-  MiniProgressComponent,
-  Text3dComponent,
   ErrorCodeComponent,
+  EasyProgressComponent,
+  Text3dComponent,
 ];
 const DIRECTIVES = [];
 const PIPES = [];

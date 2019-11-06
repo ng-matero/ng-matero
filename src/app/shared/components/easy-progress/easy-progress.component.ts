@@ -1,15 +1,15 @@
 import { Component, OnInit, Input, ViewEncapsulation, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'mini-progress',
+  selector: 'easy-progress',
   host: {
-    class: 'matero-mini-progress',
+    class: 'matero-easy-progress',
   },
-  templateUrl: './mini-progress.component.html',
-  styleUrls: ['./mini-progress.component.scss'],
+  templateUrl: './easy-progress.component.html',
+  styleUrls: ['./easy-progress.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class MiniProgressComponent implements OnInit {
+export class EasyProgressComponent implements OnInit {
   @Input() value = 0;
   @Input() foreground = 'rgba(255,255,255,1)';
 
