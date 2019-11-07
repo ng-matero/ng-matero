@@ -1,0 +1,8 @@
+<h1 mat-dialog-title *ngIf="data.title">{{data.title}}</h1>
+<div mat-dialog-content *ngIf="data.description">
+  <p>{{data.description}}</p>
+</div>
+<div mat-dialog-actions fxLayoutAlign="end center">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="warn" cdkFocusInitial (click)="onOk()">Ok</button>
+</div>
