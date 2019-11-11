@@ -7,7 +7,7 @@ import { MenuService } from '@core';
 })
 export class SidemenuComponent {
   // NOTE: Ripple effect make page flashing on mobile
-  @Input() ripple = true;
+  @Input() ripple = false;
 
   menus = this.menuService.getAll();
 

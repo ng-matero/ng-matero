@@ -4,3 +4,4 @@ export * from './shared.module';
 export * from './components/easy-dialog/easy-dialog';
 // Utils
 export * from './utils/colors';
+export * from './utils/icons';

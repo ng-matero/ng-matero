@@ -10,10 +10,9 @@ import { MAT_COLORS } from '@shared';
   providers: [DesignColorsService],
 })
 export class DesignColorsComponent implements OnInit {
-  colorsArr = [];
+  colors = [];
 
   valueAscOrder(a: KeyValue<number, string>, b: KeyValue<number, string>): number {
-    console.log(a.value);
     return a.value.localeCompare(b.value);
   }
 
@@ -21,15 +20,19 @@ export class DesignColorsComponent implements OnInit {
     return a.key - b.key;
   }
 
-  constructor(private colorsService: DesignColorsService) {}
+  constructor(private colorsSrv: DesignColorsService) {}
 
   ngOnInit() {
-    const colors = MAT_COLORS;
-    for (const key of Object.keys(colors)) {
-      this.colorsArr.push({
+    const _colors = MAT_COLORS;
+    for (const key of Object.keys(_colors)) {
+      this.colors.push({
         key,
-        value: colors[key],
+        value: _colors[key],
       });
     }
+  }
+
+  trackByColor(index: number, color: { key: string; value: {} }): string {
+    return color.key;
   }
 }

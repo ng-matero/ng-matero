@@ -47,20 +47,20 @@ export class MenuService {
 
   // TODO:
   getMenuLevel(stateArr: string[]): string[] {
-    const tempArr = [];
+    const tmpArr = [];
     this.menu.map(item => {
       if (item.state === stateArr[0]) {
-        tempArr.push(item.name);
+        tmpArr.push(item.name);
         // Level1
         if (item.children && item.children.length) {
           item.children.forEach(itemlvl1 => {
             if (stateArr[1] && itemlvl1.state === stateArr[1]) {
-              tempArr.push(itemlvl1.name);
+              tmpArr.push(itemlvl1.name);
               // Level2
               if (itemlvl1.children && itemlvl1.children.length) {
                 itemlvl1.children.forEach(itemlvl2 => {
                   if (stateArr[2] && itemlvl2.state === stateArr[2]) {
-                    tempArr.push(itemlvl2.name);
+                    tmpArr.push(itemlvl2.name);
                   }
                 });
               }
@@ -69,7 +69,7 @@ export class MenuService {
               if (itemlvl1.children && itemlvl1.children.length) {
                 itemlvl1.children.forEach(itemlvl2 => {
                   if (itemlvl2.state === stateArr[1]) {
-                    tempArr.push(itemlvl1.name, itemlvl2.name);
+                    tmpArr.push(itemlvl1.name, itemlvl2.name);
                   }
                 });
               }
@@ -78,6 +78,6 @@ export class MenuService {
         }
       }
     });
-    return tempArr;
+    return tmpArr;
   }
 }

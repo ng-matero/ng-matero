@@ -14,12 +14,24 @@ import { Router } from '@angular/router';
 export class PageHeaderComponent implements OnInit {
   @Input() title = '';
   @Input() subtitle = '';
+  @Input() nav: string[] = [];
   @Input() showBreadCrumb = true;
 
-  constructor(private router: Router, private menuService: MenuService) {
-    const states = this.router.url.slice(1).split('/');
-    this.title = this.menuService.getMenuItemName(states);
+  constructor(private router: Router, private menuService: MenuService) {}
+
+  ngOnInit() {
+    this.nav = Array.isArray(this.nav) ? this.nav : [];
+
+    if (this.nav.length === 0) {
+      this.genBreadcrumb();
+    }
+
+    this.title = this.nav[this.nav.length - 1];
   }
 
-  ngOnInit() {}
+  genBreadcrumb() {
+    const states = this.router.url.slice(1).split('/');
+    this.nav = this.menuService.getMenuLevel(states);
+    this.nav.unshift('home');
+  }
 }
