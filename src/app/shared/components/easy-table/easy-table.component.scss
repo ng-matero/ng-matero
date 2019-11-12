@@ -1,0 +1,36 @@
+.matero-easy-table {
+  position: relative;
+  display: block;
+
+  .mat-progress-bar {
+    position: absolute;
+    top: 0;
+    z-index: 109;
+  }
+
+  .matero-easy-table-content {
+    max-width: 100%;
+    max-height: 80vh;
+    overflow: auto;
+  }
+
+  .mat-header-cell,
+  .mat-footer-cell,
+  .mat-cell {
+    min-width: 80px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  .mat-table-sticky-left {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .mat-table-sticky-right {
+    border-left: 1px solid #e0e0e0;
+  }
+
+  .mat-paginator {
+    border-top: 1px solid #e0e0e0;
+  }
+}

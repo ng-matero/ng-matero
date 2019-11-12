@@ -1,0 +1,71 @@
+<!-- 可编辑单元格 -->
+<ng-container *ngIf="cell.edit; else uneditTpl"></ng-container>
+
+<!-- 非编辑单元格 -->
+<ng-template #uneditTpl>
+  <div [ngSwitch]="cell.type">
+    <!-- 标签 -->
+    <ng-container *ngSwitchCase="'tag'">
+
+    </ng-container>
+    <!-- 图片 -->
+    <ng-container *ngSwitchCase="'img'">
+      <img class="img" [src]="data[cell.index]" (click)="preview(data[cell.index])">
+    </ng-container>
+    <!-- 图片列表 -->
+    <ng-container *ngSwitchCase="'imgs'">
+      <button *ngIf="data[cell.index]"
+              mat-raised-button color="primary"
+              (click)="preview(data[cell.index], true)">查看详情
+      </button>
+    </ng-container>
+    <!-- 视频 -->
+    <ng-container *ngSwitchCase="'video'">
+      <ng-container *ngIf="data[cell.index]; else videolinkTpl">
+        <img class="img" [src]="data[cell.index]" (click)="preview(data[cell.index])">
+      </ng-container>
+      <ng-template #videolinkTpl>
+        <a [href]="data[cell.videoLink]" target="_blank">{{data[cell.videoLink]}}</a>
+      </ng-template>
+    </ng-container>
+    <!-- 链接 -->
+    <ng-container *ngSwitchCase="'link'">
+      <a [href]="data[cell.index]" target="_blank">{{data[cell.index]}}</a>
+    </ng-container>
+    <!-- 按钮 -->
+    <ng-container *ngSwitchCase="'button'">
+      <ng-container *ngFor="let btn of cell.buttons; let i=index; last as isLast">
+        <ng-container *ngIf="!btn.iif || btn.iif(data)">
+          <button *ngIf="btn.pop; else btnDefaultTpl"
+                  mat-icon-button color="primary"
+                  (click)="confirm(btn.popTitle, btn.click, data)">
+            <mat-icon class="icon-18">{{btn.icon}}</mat-icon>
+          </button>
+          <ng-template #btnDefaultTpl>
+            <button mat-icon-button color="primary" (click)="fnCall(btn.click, data)">
+              <mat-icon class="icon-18">{{btn.icon}}</mat-icon>
+            </button>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <!-- 格式化 -->
+    <ng-container *ngSwitchCase="'format'">
+      <span [innerHTML]="fnCall(cell.format,data) || '--'"></span>
+    </ng-container>
+    <!-- 数字 -->
+    <ng-container *ngSwitchCase="'number'">
+      <!-- {{(data[cell.index] | number:'1.2-2') || '--'}} -->
+      <!-- {{(data[cell.index] | numberFixed) || '--'}} -->
+    </ng-container>
+    <!-- 金钱 -->
+    <ng-container *ngSwitchCase="'currency'">
+      <!-- {{(data[cell.index] | currency:'¥') || '--'}} -->
+      <!-- {{(data[cell.index] | numberFixed | numberFormat:cell.type) || '--'}} -->
+    </ng-container>
+    <!-- 普通 -->
+    <ng-container *ngSwitchDefault>
+      {{data[cell.index] || '--'}}
+    </ng-container>
+  </div>
+</ng-template>

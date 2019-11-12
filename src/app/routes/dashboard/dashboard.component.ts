@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { SettingsService } from '@core';
@@ -69,11 +75,14 @@ const MESSAGES = [
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
   messages = MESSAGES;
+
+  chart1 = null;
+  chart2 = null;
 
   constructor(private settings: SettingsService) {}
 
@@ -81,14 +90,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     // TODO:
-    const chart1 = this.genChart1();
-    const chart2 = this.genChart2();
+    this.chart1 = this.genChart1();
+    this.chart2 = this.genChart2();
 
     // NOTE:
     this.settings.notice.subscribe(res => {
-      chart1.forceFit();
-      chart2.forceFit();
+      this.chart1.forceFit();
+      this.chart2.forceFit();
     });
+  }
+
+  ngOnDestroy() {
+    if (this.chart1) {
+      this.chart1.destroy();
+    }
+    if (this.chart2) {
+      this.chart2.destroy();
+    }
   }
 
   // Line chart

@@ -18,6 +18,8 @@ import { ErrorCodeComponent } from './components/error-code/error-code.component
 import { Text3dComponent } from './components/text3d/text3d.component';
 import { EasyProgressComponent } from './components/easy-progress/easy-progress.component';
 import { EasyDialogComponent } from './components/easy-dialog/easy-dialog.component';
+import { EasyTableComponent } from './components/easy-table/easy-table.component';
+import { EasyTableCellComponent } from './components/easy-table/easy-table-cell.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -36,6 +38,8 @@ const COMPONENTS = [
   Text3dComponent,
   EasyProgressComponent,
   EasyDialogComponent,
+  EasyTableComponent,
+  EasyTableCellComponent,
 ];
 const COMPONENTS_DYNAMIC = [EasyDialogComponent];
 const DIRECTIVES = [];

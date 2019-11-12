@@ -1,0 +1,46 @@
+<div class="mat-elevation-z1">
+  <!-- 进度条 -->
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  <!-- 主表格 -->
+  <div class="matero-easy-table-content">
+    <table mat-table [dataSource]="data">
+
+      <ng-container *ngFor="let col of columns; let c=index">
+        <ng-container [matColumnDef]="col.index"
+                      [sticky]="col.fixed==='left'"
+                      [stickyEnd]="col.fixed==='right'">
+
+          <th mat-header-cell
+              *matHeaderCellDef
+              [ngClass]="{'mat-table-sticky-left':col.fixed==='left','mat-table-sticky-right':col.fixed==='right'}"
+              [ngStyle]="{'width':col.width,'min-width':col.width}">
+            {{col.title}}
+          </th>
+          <td mat-cell
+              *matCellDef="let element; let r=index"
+              [ngClass]="{'mat-table-sticky-left':col.fixed==='left','mat-table-sticky-right':col.fixed==='right'}"
+              [ngStyle]="{'width':col.width,'min-width':col.width}">
+
+            <easy-table-cell [data]="element"
+                             [cell]="col">
+            </easy-table-cell>
+
+          </td>
+
+        </ng-container>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <!-- 分页器 -->
+  <mat-paginator [pageSizeOptions]="[10]"
+                 showFirstLastButtons
+                 [length]="total"
+                 [pageIndex]="pageIndex"
+                 [pageSize]="pageSize"
+                 (page)="page.emit($event)">
+  </mat-paginator>
+
+</div>
