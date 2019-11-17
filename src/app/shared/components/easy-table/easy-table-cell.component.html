@@ -37,12 +37,17 @@
       <ng-container *ngFor="let btn of cell.buttons; let i=index; last as isLast">
         <ng-container *ngIf="!btn.iif || btn.iif(data)">
           <button *ngIf="btn.pop; else btnDefaultTpl"
-                  mat-icon-button color="primary"
+                  mat-icon-button
+                  color="primary"
+                  [matTooltip]="btn.text"
                   (click)="confirm(btn.popTitle, btn.click, data)">
             <mat-icon class="icon-18">{{btn.icon}}</mat-icon>
           </button>
           <ng-template #btnDefaultTpl>
-            <button mat-icon-button color="primary" (click)="fnCall(btn.click, data)">
+            <button mat-icon-button
+                    color="primary"
+                    [matTooltip]="btn.text"
+                    (click)="fnCall(btn.click, data)">
               <mat-icon class="icon-18">{{btn.icon}}</mat-icon>
             </button>
           </ng-template>

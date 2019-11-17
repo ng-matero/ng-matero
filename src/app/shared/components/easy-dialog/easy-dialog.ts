@@ -8,8 +8,18 @@ const defaults: DialogData = {
   title: '',
   description: '',
   disableClose: true,
-  onOk: () => {},
-  onCancel: () => {},
+  buttons: [
+    {
+      type: '',
+      text: 'Cancel',
+      onClick: () => {},
+    },
+    {
+      type: 'warn',
+      text: 'Ok',
+      onClick: () => {},
+    },
+  ],
 };
 
 @Injectable({
@@ -27,7 +37,40 @@ export class EasyDialog {
     });
   }
 
-  alert() {}
+  alert(title: string, onOk = () => {}) {
+    this.open({
+      title,
+      buttons: [
+        {
+          type: 'warn',
+          text: 'Ok',
+          onClick: () => {
+            onOk();
+          },
+        },
+      ],
+    });
+  }
 
-  confirm() {}
+  confirm(title: string, onOk = () => {}, onCancel = () => {}) {
+    this.open({
+      title,
+      buttons: [
+        {
+          type: '',
+          text: 'Cancel',
+          onClick: () => {
+            onCancel();
+          },
+        },
+        {
+          type: 'warn',
+          text: 'Ok',
+          onClick: () => {
+            onOk();
+          },
+        },
+      ],
+    });
+  }
 }

@@ -15,8 +15,8 @@ export class EasyDialogComponent implements OnInit {
 
   ngOnInit() {}
 
-  onOk() {
-    this.data.onOk();
+  onClick(fn: () => void) {
+    fn.call(this);
     this.onCancel();
   }
 

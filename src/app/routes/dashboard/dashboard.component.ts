@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   chart1 = null;
   chart2 = null;
 
-  constructor(private settings: SettingsService) {}
+  constructor(private http: HttpClient, private settings: SettingsService) {}
 
   ngOnInit() {}
 

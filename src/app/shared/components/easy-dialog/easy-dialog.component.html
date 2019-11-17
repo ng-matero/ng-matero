@@ -3,6 +3,8 @@
   <p>{{data.description}}</p>
 </div>
 <div mat-dialog-actions fxLayoutAlign="end center">
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="warn" cdkFocusInitial (click)="onOk()">Ok</button>
+  <button *ngFor="let btn of data.buttons"
+          mat-button
+          [color]="btn.type"
+          (click)="onClick(btn.onClick)">{{btn.text}}</button>
 </div>

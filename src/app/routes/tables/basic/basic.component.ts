@@ -1,28 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material';
 
 import { TableBasicService } from './basic.service';
 import { TableDataService } from '../data.service';
 import { TableBasicEditComponent } from './edit/edit.component';
+import { EasyDialog } from '@shared';
 
 @Component({
   selector: 'app-table-basic',
   templateUrl: './basic.component.html',
-  styleUrls: ['./basic.component.scss'],
   providers: [TableBasicService, TableDataService],
 })
 export class TableBasicComponent implements OnInit {
-  columns = this.basicSrv.columns;
-  displayedColumns: string[] = this.basicSrv.columns.map(item => item.index);
-  dataSource = this.dataSrv.getData();
+  columns = [];
+  list = [];
+  isLoading = true;
 
   constructor(
     private basicSrv: TableBasicService,
     private dataSrv: TableDataService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private easyDialog: EasyDialog
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.columns = this.basicSrv.getColumns(
+      record => this.edit(record),
+      record => this.delete(record)
+    );
+    this.list = this.dataSrv.getData();
+    this.isLoading = false;
+  }
 
   edit(value: any) {
     const dialogRef = this.dialog.open(TableBasicEditComponent, {
@@ -33,5 +42,13 @@ export class TableBasicComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  delete(value: any) {
+    this.easyDialog.alert(`You have deleted ${value.position}!`);
+  }
+
+  changePage(e: PageEvent) {
+    console.log(e);
   }
 }

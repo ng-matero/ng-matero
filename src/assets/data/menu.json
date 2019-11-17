@@ -303,6 +303,11 @@
           "state": "basic",
           "name": "Basic Table",
           "type": "link"
+        },
+        {
+          "state": "advanced",
+          "name": "Advanced Table",
+          "type": "link"
         }
       ]
     },

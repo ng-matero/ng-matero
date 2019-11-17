@@ -1,9 +1,9 @@
-<div class="mat-elevation-z1">
+<div class="matero-easy-table-wrap mat-elevation-z1">
   <!-- 进度条 -->
   <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
   <!-- 主表格 -->
   <div class="matero-easy-table-content">
-    <table mat-table [dataSource]="data">
+    <table mat-table [dataSource]="dataSource">
 
       <ng-container *ngFor="let col of columns; let c=index">
         <ng-container [matColumnDef]="col.index"
@@ -35,7 +35,7 @@
     </table>
   </div>
   <!-- 分页器 -->
-  <mat-paginator [pageSizeOptions]="[10]"
+  <mat-paginator [pageSizeOptions]="[10,50,100]"
                  showFirstLastButtons
                  [length]="total"
                  [pageIndex]="pageIndex"

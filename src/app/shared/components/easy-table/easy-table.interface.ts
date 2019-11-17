@@ -29,30 +29,18 @@ export interface EasyColumnTag {
 }
 export interface EasyColumnTagValue {
   text?: string;
-  color?:
-    | 'geekblue'
-    | 'blue'
-    | 'purple'
-    | 'success'
-    | 'red'
-    | 'volcano'
-    | 'orange'
-    | 'gold'
-    | 'lime'
-    | 'green'
-    | 'cyan'
-    | string;
+  color?: string;
 }
 
 /**
  * 按钮配置
  */
 export interface EasyColumnButton {
-  text?: string;
-  icon?: string;
+  icon: string;
+  text: string;
   type?: string;
   color?: string;
-  click?: (record: any) => any;
+  click?: (record: any) => void;
   pop?: boolean;
   popTitle?: string;
   children?: EasyColumnButton[];
@@ -75,7 +63,7 @@ export interface EasyColumn {
   right?: string;
   width?: string;
   desc?: string;
-  sort?: true | string;
+  sort?: boolean | string;
   type?:
     | 'text'
     | 'checkbox'
@@ -100,4 +88,5 @@ export interface EasyColumn {
   videoLink?: string;
   iif?: boolean | (() => any);
   sum?: string; // 标记是否是总计列
+  order?: number; // 排序
 }

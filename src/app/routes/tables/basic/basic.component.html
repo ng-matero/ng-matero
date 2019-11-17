@@ -1,40 +1,9 @@
-<page-header class="bg-green-500"></page-header>
+<page-header class="bg-green-600"></page-header>
 
-<div class="matero-table-container mat-elevation-z1">
-  <table mat-table [dataSource]="dataSource">
-
-    <ng-container *ngFor="let col of columns">
-      <ng-container [matColumnDef]="col.index"
-                    [sticky]="col.fixed==='left'"
-                    [stickyEnd]="col.fixed==='right'">
-
-        <th mat-header-cell
-            *matHeaderCellDef
-            [ngStyle]="{'width':col.width,'min-width':col.width}">
-          {{col.title}}
-        </th>
-
-        <td mat-cell
-            *matCellDef="let element"
-            [ngStyle]="{'width':col.width,'min-width':col.width}">
-
-          <div [ngSwitch]="col.type">
-            <ng-container *ngSwitchCase="'button'">
-              <button mat-icon-button (click)="edit(element)">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              {{element[col.index]}}
-            </ng-container>
-          </div>
-
-        </td>
-      </ng-container>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-</div>
+<easy-table [data]="list"
+            [columns]="columns"
+            [loading]="isLoading"
+            [pageIndex]="0"
+            [pageSize]="10"
+            (page)="changePage($event)">
+</easy-table>

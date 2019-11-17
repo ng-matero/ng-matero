@@ -4,8 +4,9 @@ import { TableRoutingModule } from './tables-routing.module';
 
 import { TableBasicComponent } from './basic/basic.component';
 import { TableBasicEditComponent } from './basic/edit/edit.component';
+import { TablesAdvancedComponent } from './advanced/advanced.component';
 
-const COMPONENTS = [TableBasicComponent];
+const COMPONENTS = [TableBasicComponent, TablesAdvancedComponent];
 const COMPONENTS_DYNAMIC = [TableBasicEditComponent];
 
 @NgModule({

@@ -25,11 +25,8 @@ export class EasyTableCellComponent implements OnInit {
 
   // 确认操作
   confirm(title: string, fn?: (p: any) => void, data?: any) {
-    this.easyDialog.open({
-      title,
-      onOk: () => {
-        fn(data);
-      },
+    this.easyDialog.confirm(title, () => {
+      fn(data);
     });
   }
 

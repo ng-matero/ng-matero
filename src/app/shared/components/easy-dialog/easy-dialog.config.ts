@@ -3,6 +3,11 @@ export interface DialogData {
   title: string;
   description?: string;
   disableClose?: boolean;
-  onOk?: () => void;
-  onCancel?: () => void;
+  buttons: DialogBtns[];
+}
+
+export interface DialogBtns {
+  type?: '' | 'primary' | 'accent' | 'warn';
+  text: string;
+  onClick: () => void;
 }
