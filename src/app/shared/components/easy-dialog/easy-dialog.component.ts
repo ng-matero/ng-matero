@@ -17,10 +17,10 @@ export class EasyDialogComponent implements OnInit {
 
   onClick(fn: () => void) {
     fn.call(this);
-    this.onCancel();
+    this.onClose();
   }
 
-  onCancel() {
+  onClose() {
     this.dialogRef.close();
   }
 }

@@ -36,8 +36,8 @@ export interface EasyColumnTagValue {
  * 按钮配置
  */
 export interface EasyColumnButton {
-  icon: string;
-  text: string;
+  icon?: string;
+  text?: string;
   type?: string;
   color?: string;
   click?: (record: any) => void;

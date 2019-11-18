@@ -47,8 +47,4 @@ export class TableBasicComponent implements OnInit {
   delete(value: any) {
     this.easyDialog.alert(`You have deleted ${value.position}!`);
   }
-
-  changePage(e: PageEvent) {
-    console.log(e);
-  }
 }

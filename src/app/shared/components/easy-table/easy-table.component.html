@@ -35,11 +35,11 @@
     </table>
   </div>
   <!-- 分页器 -->
-  <mat-paginator [pageSizeOptions]="[10,50,100]"
-                 showFirstLastButtons
+  <mat-paginator showFirstLastButtons
                  [length]="total"
                  [pageIndex]="pageIndex"
                  [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
                  (page)="page.emit($event)">
   </mat-paginator>
 

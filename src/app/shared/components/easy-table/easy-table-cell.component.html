@@ -38,15 +38,15 @@
         <ng-container *ngIf="!btn.iif || btn.iif(data)">
           <button *ngIf="btn.pop; else btnDefaultTpl"
                   mat-icon-button
-                  color="primary"
-                  [matTooltip]="btn.text"
+                  [color]="btn.color || 'primary'"
+                  [matTooltip]="btn.tooltip"
                   (click)="confirm(btn.popTitle, btn.click, data)">
             <mat-icon class="icon-18">{{btn.icon}}</mat-icon>
           </button>
           <ng-template #btnDefaultTpl>
             <button mat-icon-button
-                    color="primary"
-                    [matTooltip]="btn.text"
+                    [color]="btn.color || 'primary'"
+                    [matTooltip]="btn.tooltip"
                     (click)="fnCall(btn.click, data)">
               <mat-icon class="icon-18">{{btn.icon}}</mat-icon>
             </button>

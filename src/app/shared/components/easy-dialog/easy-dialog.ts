@@ -11,7 +11,7 @@ const defaults: DialogData = {
   buttons: [
     {
       type: '',
-      text: 'Cancel',
+      text: 'Close',
       onClick: () => {},
     },
     {
@@ -52,15 +52,15 @@ export class EasyDialog {
     });
   }
 
-  confirm(title: string, onOk = () => {}, onCancel = () => {}) {
+  confirm(title: string, onOk = () => {}, onClose = () => {}) {
     this.open({
       title,
       buttons: [
         {
           type: '',
-          text: 'Cancel',
+          text: 'Close',
           onClick: () => {
-            onCancel();
+            onClose();
           },
         },
         {
