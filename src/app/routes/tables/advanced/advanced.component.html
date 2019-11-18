@@ -1,3 +1,11 @@
 <page-header [title]="'advanced'" class="bg-blue-600"></page-header>
 
-<p>advanced works!</p>
+<easy-table [data]="list"
+            [columns]="columns"
+            [total]="total"
+            [loading]="isLoading"
+            [pageIndex]="query.page"
+            [pageSize]="query.per_page"
+            [pageSizeOptions]="[5,10,20]"
+            (page)="getNextPage($event)">
+</easy-table>

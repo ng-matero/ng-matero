@@ -1,9 +1,8 @@
-<div class="customizer-handle">
-  <button mat-fab
-          matTooltip="Drag me around"
-          cdkDrag
-          (cdkDragStarted)="handleDragStart($event)"
-          (click)="openPanel($event)">
+<div class="customizer-handle"
+     matTooltip="Drag me around"
+     cdkDrag
+     (cdkDragStarted)="handleDragStart($event)">
+  <button mat-fab (click)="openPanel($event)">
     <mat-icon aria-label="Example icon-button with a settings icon">settings</mat-icon>
   </button>
 </div>
