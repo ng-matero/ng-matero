@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { SettingsService } from '@core';
+import { CdkDragStart } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-customizer',
@@ -10,23 +11,31 @@ import { SettingsService } from '@core';
 export class CustomizerComponent implements OnInit {
   options = this.settings.getOptions();
   opened = false;
-
+  dragging = false;
   @Output() optionsEvent = new EventEmitter<object>();
 
   constructor(private settings: SettingsService) {}
 
   ngOnInit() {}
 
-  togglePanel() {
-    this.opened = !this.opened;
+  handleDragStart(event: CdkDragStart): void {
+    this.dragging = true;
   }
 
-  openPanel() {
+  openPanel(event: MouseEvent) {
+    if (this.dragging) {
+      this.dragging = false;
+      return;
+    }
     this.opened = true;
   }
 
   closePanel() {
     this.opened = false;
+  }
+
+  togglePanel() {
+    this.opened = !this.opened;
   }
 
   sendOptions() {
