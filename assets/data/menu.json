@@ -258,10 +258,6 @@
       "name": "Media",
       "type": "sub",
       "icon": "image",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "state": "gallery",
@@ -298,10 +294,19 @@
       "name": "Tables",
       "type": "sub",
       "icon": "format_line_spacing",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      },
       "children": [
         {
           "state": "basic",
           "name": "Basic Table",
+          "type": "link"
+        },
+        {
+          "state": "advanced",
+          "name": "Advanced Table",
           "type": "link"
         }
       ]
@@ -311,10 +316,6 @@
       "name": "Profile",
       "type": "sub",
       "icon": "person",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "state": "overview",
@@ -356,10 +357,6 @@
       "name": "Helpers",
       "type": "sub",
       "icon": "all_inbox",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "state": "css-class",
