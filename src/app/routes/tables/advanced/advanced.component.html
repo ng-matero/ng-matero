@@ -22,10 +22,11 @@
     </mat-select>
   </mat-form-field>
 
-  <button class="m-r-8" mat-raised-button color="primary" (click)="search()">查询</button>
+  <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
 </form>
 
-<easy-table [data]="list"
+<easy-table class="mat-elevation-z1"
+            [data]="list"
             [columns]="columns"
             [total]="total"
             [loading]="isLoading"

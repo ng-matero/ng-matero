@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { EasyColumn, UTILS } from '@shared';
+import { EasyColumn, serialize } from '@shared';
 
 const TAG = {
   true: { text: 'Yes', color: 'red-100' },
@@ -89,6 +89,6 @@ export class TableAdvancedService {
   constructor(private http: HttpClient) {}
 
   getData(query = {}) {
-    return this.http.get('https://api.github.com/search/repositories?' + UTILS.serialize(query));
+    return this.http.get('https://api.github.com/search/repositories?' + serialize(query));
   }
 }

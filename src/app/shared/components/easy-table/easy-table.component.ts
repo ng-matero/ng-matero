@@ -23,6 +23,8 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EasyTableComponent implements OnInit, OnChanges {
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   @Input() columns: EasyColumn[] = [];
   @Input() data = [];
   @Input() sum = [];
@@ -30,7 +32,8 @@ export class EasyTableComponent implements OnInit, OnChanges {
   @Input() loading = true;
   @Input() tooltip = true; // 是否显示字段提示
 
-  @Input() front = false; // 是否前端分页
+  @Input() showPager = true; // 是否显示分页
+  @Input() front = true; // 是否前端分页
   @Input() sizeChanger = true;
   @Input() pageIndex = 0;
   @Input() pageSize = 10;
@@ -39,19 +42,19 @@ export class EasyTableComponent implements OnInit, OnChanges {
 
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource<any>(this.data);
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnChanges() {
     this.displayedColumns = this.columns.map(item => item.index);
+    this.dataSource = new MatTableDataSource<any>(this.data);
     if (this.front) {
-      this.dataSource = new MatTableDataSource<any>(this.data);
       this.dataSource.paginator = this.paginator;
-    } else {
-      this.dataSource = new MatTableDataSource<any>(this.data);
     }
   }
 }

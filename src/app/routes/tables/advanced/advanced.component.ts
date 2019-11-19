@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 
 import { TableAdvancedService } from './advanced.service';
 import { PageEvent } from '@angular/material';
-import { UTILS } from '@shared';
+import { delEmptyKey } from '@shared';
 
 @Component({
   selector: 'app-tables-advanced',
@@ -27,7 +27,7 @@ export class TablesAdvancedComponent implements OnInit {
   get params() {
     const p = Object.assign({}, this.query);
     p.page += 1;
-    return UTILS.delEmptyKey(p);
+    return delEmptyKey(p);
   }
 
   constructor(private advancedSrv: TableAdvancedService, private cdr: ChangeDetectorRef) {}

@@ -27,6 +27,11 @@
   th.mat-header-cell:first-of-type {
     padding-left: 10px;
     box-sizing: content-box;
+
+    [dir='rtl'] & {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 
   td.mat-cell:last-of-type,
@@ -34,14 +39,29 @@
   th.mat-header-cell:last-of-type {
     padding-right: 10px;
     box-sizing: content-box;
+
+    [dir='rtl'] & {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 
   .mat-table-sticky-left {
     border-right: 1px solid #e0e0e0;
+
+    [dir='rtl'] & {
+      border-right-width: 0;
+      border-left: 1px solid #e0e0e0;
+    }
   }
 
   .mat-table-sticky-right {
     border-left: 1px solid #e0e0e0;
+
+    [dir='rtl'] & {
+      border-left-width: 0;
+      border-right: 1px solid #e0e0e0;
+    }
   }
 
   .mat-paginator {
