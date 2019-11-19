@@ -52,4 +52,9 @@ export class TablesAdvancedComponent implements OnInit {
     this.query.per_page = e.pageSize;
     this.getData();
   }
+
+  search() {
+    this.query.page = 0;
+    this.getData();
+  }
 }

@@ -72,15 +72,13 @@ export interface EasyColumn {
     | 'button'
     | 'link'
     | 'img'
-    | 'imgs'
-    | 'video'
     | 'number'
     | 'currency'
     | 'percent'
     | 'format';
   edit?: boolean; // 是否可编辑
   editType?: 'text' | 'number' | 'select' | 'textarea';
-  format?: () => any; // 数值类型，金钱格式等
+  format?: (data: any) => any; // 数值类型，金钱格式等
   tag?: EasyColumnTag;
   cat?: string; // 字段分类
   static?: boolean; // 是否是固定显示的值

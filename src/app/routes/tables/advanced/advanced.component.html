@@ -1,5 +1,30 @@
 <page-header [title]="'advanced'" class="bg-blue-600"></page-header>
 
+<form>
+  <mat-form-field class="m-r-8">
+    <input matInput [(ngModel)]="query.q" name="q" placeholder="Query String">
+  </mat-form-field>
+
+  <mat-form-field class="m-r-8">
+    <mat-select [(ngModel)]="query.sort" name="sort" placeholder="Sort">
+      <mat-option>-- None --</mat-option>
+      <mat-option value="stars">stars</mat-option>
+      <mat-option value="forks">forks</mat-option>
+      <mat-option value="updated">updated</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="m-r-8">
+    <mat-select [(ngModel)]="query.order" name="order" placeholder="Order">
+      <mat-option>-- None --</mat-option>
+      <mat-option value="desc">desc</mat-option>
+      <mat-option value="asc">asc</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button class="m-r-8" mat-raised-button color="primary" (click)="search()">查询</button>
+</form>
+
 <easy-table [data]="list"
             [columns]="columns"
             [total]="total"

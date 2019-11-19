@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { EasyColumn, Cell } from './easy-table.interface';
+import { EasyColumn } from './easy-table.interface';
 import { EasyDialog } from '../easy-dialog/easy-dialog';
 import PhotoViewer from 'photoviewer';
 
@@ -11,13 +11,33 @@ export class EasyTableCellComponent implements OnInit {
   @Input() data = {}; // 表格数据
   @Input() cell: EasyColumn; // td
 
+  cellValue = '';
+
   constructor(private easyDialog: EasyDialog) {}
 
   private str2arr(str: string) {
     return str.replace(/[\r\n\s]/g, '').split(',');
   }
 
-  ngOnInit() {}
+  private isObject(obj: any) {
+    return Object.prototype.toString.call(obj) === '[Object Object]';
+  }
+
+  private getObjValue(obj: {}, keyArr: string[]) {
+    let tmp = '';
+    keyArr.forEach((key, i) => {
+      if (i === 0) {
+        tmp = obj[key];
+      } else {
+        tmp = tmp && tmp[key];
+      }
+    });
+    return tmp;
+  }
+
+  ngOnInit() {
+    this.cellValue = this.getObjValue(this.data, this.cell.index.split('.'));
+  }
 
   fnCall(fn?: (p: any) => void, data?: any) {
     return fn(data);

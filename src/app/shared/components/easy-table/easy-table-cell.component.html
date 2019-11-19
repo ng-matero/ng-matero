@@ -6,35 +6,24 @@
   <div [ngSwitch]="cell.type">
     <!-- 标签 -->
     <ng-container *ngSwitchCase="'tag'">
-
+      <mat-chip-list *ngIf="cell.tag[cellValue]; else tagEmptyTpl">
+        <mat-chip color="primary" [ngClass]="['bg-' + cell.tag[cellValue].color]">
+          {{cell.tag[cellValue].text}}
+        </mat-chip>
+      </mat-chip-list>
+      <ng-template #tagEmptyTpl>{{cellValue}}</ng-template>
     </ng-container>
     <!-- 图片 -->
     <ng-container *ngSwitchCase="'img'">
-      <img class="img" [src]="data[cell.index]" (click)="preview(data[cell.index])">
-    </ng-container>
-    <!-- 图片列表 -->
-    <ng-container *ngSwitchCase="'imgs'">
-      <button *ngIf="data[cell.index]"
-              mat-raised-button color="primary"
-              (click)="preview(data[cell.index], true)">查看详情
-      </button>
-    </ng-container>
-    <!-- 视频 -->
-    <ng-container *ngSwitchCase="'video'">
-      <ng-container *ngIf="data[cell.index]; else videolinkTpl">
-        <img class="img" [src]="data[cell.index]" (click)="preview(data[cell.index])">
-      </ng-container>
-      <ng-template #videolinkTpl>
-        <a [href]="data[cell.videoLink]" target="_blank">{{data[cell.videoLink]}}</a>
-      </ng-template>
+      <img class="img" [src]="cellValue" (click)="preview(cellValue)">
     </ng-container>
     <!-- 链接 -->
     <ng-container *ngSwitchCase="'link'">
-      <a [href]="data[cell.index]" target="_blank">{{data[cell.index]}}</a>
+      <a [href]="cellValue" target="_blank">{{cellValue}}</a>
     </ng-container>
     <!-- 按钮 -->
     <ng-container *ngSwitchCase="'button'">
-      <ng-container *ngFor="let btn of cell.buttons; let i=index; last as isLast">
+      <ng-container *ngFor="let btn of cell.buttons; index as i; last as isLast">
         <ng-container *ngIf="!btn.iif || btn.iif(data)">
           <button *ngIf="btn.pop; else btnDefaultTpl"
                   mat-icon-button
@@ -56,21 +45,26 @@
     </ng-container>
     <!-- 格式化 -->
     <ng-container *ngSwitchCase="'format'">
-      <span [innerHTML]="fnCall(cell.format,data) || '--'"></span>
+      <span [innerHTML]="fnCall(cell.format, data) || '--'"></span>
     </ng-container>
     <!-- 数字 -->
     <ng-container *ngSwitchCase="'number'">
-      <!-- {{(data[cell.index] | number:'1.2-2') || '--'}} -->
-      <!-- {{(data[cell.index] | numberFixed) || '--'}} -->
+      <!-- {{(cellValue | number:'1.2-2') || '--'}} -->
+      <!-- {{(cellValue | numberFixed) || '--'}} -->
     </ng-container>
     <!-- 金钱 -->
     <ng-container *ngSwitchCase="'currency'">
-      <!-- {{(data[cell.index] | currency:'¥') || '--'}} -->
-      <!-- {{(data[cell.index] | numberFixed | numberFormat:cell.type) || '--'}} -->
+      <!-- {{(cellValue | currency:'¥') || '--'}} -->
+      <!-- {{(cellValue | numberFixed | numberFormat:cell.type) || '--'}} -->
+    </ng-container>
+    <!-- 百分比 -->
+    <ng-container *ngSwitchCase="'percent'">
+      <!-- {{(cellValue | percent) || '--'}} -->
+      <!-- {{(cellValue | numberFixed | numberFormat:cell.type) || '--'}} -->
     </ng-container>
     <!-- 普通 -->
     <ng-container *ngSwitchDefault>
-      {{data[cell.index] || '--'}}
+      {{cellValue || '--'}}
     </ng-container>
   </div>
 </ng-template>
