@@ -25,25 +25,13 @@
   td.mat-cell:first-of-type,
   td.mat-footer-cell:first-of-type,
   th.mat-header-cell:first-of-type {
-    padding-left: 10px;
     box-sizing: content-box;
-
-    [dir='rtl'] & {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
   }
 
   td.mat-cell:last-of-type,
   td.mat-footer-cell:last-of-type,
   th.mat-header-cell:last-of-type {
-    padding-right: 10px;
     box-sizing: content-box;
-
-    [dir='rtl'] & {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
   }
 
   .mat-table-sticky-left {
@@ -72,5 +60,10 @@
     width: 30px;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  // Fix checkbox height issue
+  .mat-checkbox {
+    display: flex;
   }
 }

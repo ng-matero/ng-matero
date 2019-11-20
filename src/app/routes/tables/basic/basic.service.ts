@@ -5,15 +5,23 @@ import { EasyColumn } from '@shared';
 export class TableBasicService {
   columns: EasyColumn[] = [
     {
+      title: 'Select',
+      index: 'select',
+      type: 'checkbox',
+      fixed: 'left',
+      width: '30px',
+    },
+    {
       title: 'Position',
       index: 'position',
       width: 'auto',
-      fixed: 'left',
+      sort: true,
     },
     {
       title: 'Name',
       index: 'name',
       width: 'auto',
+      sort: true,
     },
     {
       title: 'Weight',

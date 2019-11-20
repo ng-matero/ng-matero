@@ -1,10 +1,10 @@
-<!-- 可编辑单元格 -->
+<!-- Editable Cell -->
 <ng-container *ngIf="cell.edit; else uneditTpl"></ng-container>
 
-<!-- 非编辑单元格 -->
+<!-- Uneditable Cell -->
 <ng-template #uneditTpl>
   <div [ngSwitch]="cell.type">
-    <!-- 标签 -->
+    <!-- Tag -->
     <ng-container *ngSwitchCase="'tag'">
       <mat-chip-list *ngIf="cell.tag[cellValue]; else tagEmptyTpl">
         <mat-chip color="primary" [ngClass]="['bg-' + cell.tag[cellValue].color]">
@@ -13,15 +13,15 @@
       </mat-chip-list>
       <ng-template #tagEmptyTpl>{{cellValue}}</ng-template>
     </ng-container>
-    <!-- 图片 -->
+    <!-- Image -->
     <ng-container *ngSwitchCase="'img'">
       <img class="img" [src]="cellValue" (click)="preview(cellValue)">
     </ng-container>
-    <!-- 链接 -->
+    <!-- Link -->
     <ng-container *ngSwitchCase="'link'">
       <a [href]="cellValue" target="_blank">{{cellValue}}</a>
     </ng-container>
-    <!-- 按钮 -->
+    <!-- Buttons -->
     <ng-container *ngSwitchCase="'button'">
       <ng-container *ngFor="let btn of cell.buttons; index as i; last as isLast">
         <ng-container *ngIf="!btn.iif || btn.iif(data)">
@@ -43,26 +43,26 @@
         </ng-container>
       </ng-container>
     </ng-container>
-    <!-- 格式化 -->
+    <!-- Format -->
     <ng-container *ngSwitchCase="'format'">
       <span [innerHTML]="fnCall(cell.format, data) || '--'"></span>
     </ng-container>
-    <!-- 数字 -->
+    <!-- Number -->
     <ng-container *ngSwitchCase="'number'">
       <!-- {{(cellValue | number:'1.2-2') || '--'}} -->
       <!-- {{(cellValue | numberFixed) || '--'}} -->
     </ng-container>
-    <!-- 金钱 -->
+    <!-- Currency -->
     <ng-container *ngSwitchCase="'currency'">
       <!-- {{(cellValue | currency:'¥') || '--'}} -->
       <!-- {{(cellValue | numberFixed | numberFormat:cell.type) || '--'}} -->
     </ng-container>
-    <!-- 百分比 -->
+    <!-- Percent -->
     <ng-container *ngSwitchCase="'percent'">
       <!-- {{(cellValue | percent) || '--'}} -->
       <!-- {{(cellValue | numberFixed | numberFormat:cell.type) || '--'}} -->
     </ng-container>
-    <!-- 默认 -->
+    <!-- Default -->
     <ng-container *ngSwitchDefault>
       {{cellValue || '--'}}
     </ng-container>

@@ -8,7 +8,7 @@ import PhotoViewer from 'photoviewer';
   templateUrl: './easy-table-cell.component.html',
 })
 export class EasyTableCellComponent implements OnInit {
-  @Input() data = {}; // 表格数据
+  @Input() data = {}; // cell data
   @Input() cell: EasyColumn; // td
 
   cellValue = '';
@@ -17,10 +17,6 @@ export class EasyTableCellComponent implements OnInit {
 
   private str2arr(str: string) {
     return str.replace(/[\r\n\s]/g, '').split(',');
-  }
-
-  private isObject(obj: any) {
-    return Object.prototype.toString.call(obj) === '[Object Object]';
   }
 
   private getObjValue(obj: {}, keyArr: string[]) {
@@ -43,14 +39,13 @@ export class EasyTableCellComponent implements OnInit {
     return fn(data);
   }
 
-  // 确认操作
   confirm(title: string, fn?: (p: any) => void, data?: any) {
     this.easyDialog.confirm(title, () => {
       fn(data);
     });
   }
 
-  // 预览表格内图片
+  // Preview the image
   preview(urlStr: string, multi = false) {
     const imgs = [];
 

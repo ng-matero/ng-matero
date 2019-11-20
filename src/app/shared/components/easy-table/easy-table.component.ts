@@ -9,8 +9,10 @@ import {
   ViewChild,
   OnChanges,
 } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource, MatPaginator, Sort, PageEvent } from '@angular/material';
+
 import { EasyColumn } from './easy-table.interface';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'easy-table',
@@ -23,25 +25,30 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EasyTableComponent implements OnInit, OnChanges {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
   @Input() columns: EasyColumn[] = [];
   @Input() data = [];
   @Input() sum = [];
-  @Input() total = 0;
+  @Input() length = 0;
   @Input() loading = true;
-  @Input() tooltip = true; // 是否显示字段提示
+  @Input() tooltip = true;
+  @Input() front = false; // If to page on the front end
 
-  @Input() showPager = true; // 是否显示分页
-  @Input() front = true; // 是否前端分页
-  @Input() sizeChanger = true;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @Input() showPager = true;
+  @Input() pageDisabled = false;
+  @Input() showFirstLastButtons = true;
   @Input() pageIndex = 0;
   @Input() pageSize = 10;
   @Input() pageSizeOptions = [10, 50, 100];
-  @Output() page = new EventEmitter<any>();
+  @Input() hidePageSize = false;
+  @Output() page = new EventEmitter<PageEvent>();
+
+  @Output() changeSort = new EventEmitter<Sort>(); // sort
+  @Output() changeSelect = new EventEmitter<any[]>(); // checkbox
 
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
+  selection: SelectionModel<any>;
 
   constructor() {}
 
@@ -53,8 +60,34 @@ export class EasyTableComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.displayedColumns = this.columns.map(item => item.index);
     this.dataSource = new MatTableDataSource<any>(this.data);
+    this.selection = new SelectionModel<any>(true, []);
     if (this.front) {
       this.dataSource.paginator = this.paginator;
     }
+  }
+
+  handleSortChange(sort: Sort) {
+    this.changeSort.emit(sort);
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach(row => this.selection.select(row));
+    this.changeSelect.emit(this.selection.selected);
+  }
+
+  /** Select single row */
+  singleToggle(row: any) {
+    this.selection.toggle(row);
+    this.changeSelect.emit(this.selection.selected);
   }
 }

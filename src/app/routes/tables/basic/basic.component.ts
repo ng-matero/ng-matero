@@ -47,4 +47,12 @@ export class TableBasicComponent implements OnInit {
   delete(value: any) {
     this.easyDialog.alert(`You have deleted ${value.position}!`);
   }
+
+  changeSelect(e: any) {
+    console.log(e);
+  }
+
+  changeSort(e: any) {
+    console.log(e);
+  }
 }
