@@ -2,22 +2,9 @@
  * 可编辑单元格矩阵
  */
 export interface Cell {
-  value: string;
   key: string;
+  value: string;
   visible: boolean;
-}
-
-/**
- * 排序
- */
-export interface EasyColumnSort {
-  default?: 'ascend' | 'descend';
-  compare?: (() => number) | null;
-  key?: string | null;
-  reName?: {
-    ascend?: string;
-    descend?: string;
-  };
 }
 
 /**
