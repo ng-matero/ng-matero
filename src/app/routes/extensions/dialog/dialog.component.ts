@@ -11,19 +11,27 @@ export class ExtensionsDialogComponent {
   constructor(private easyDialog: EasyDialog) {}
 
   alert() {
-    this.easyDialog.alert(`My name is Zongbin!`);
+    this.easyDialog.alert(`My name is Zongbin!`, () => {
+      this.easyDialog.alert(`Glad to meet you!`);
+    });
   }
 
   confirm() {
-    this.easyDialog.confirm(`What's your name?`);
+    this.easyDialog.confirm(
+      `What's your name?`,
+      () => {
+        this.easyDialog.alert(`Zongbin`);
+      },
+      () => {
+        this.easyDialog.alert(`I don't know.`);
+      }
+    );
   }
 
   open() {
     this.easyDialog.open({
-      width: '100vw',
       title: 'This is the title',
       description: 'You can write some messages here.',
-      disableClose: false,
       buttons: [
         {
           type: '',
@@ -36,6 +44,8 @@ export class ExtensionsDialogComponent {
           onClick: () => {},
         },
       ],
+      disableClose: false,
+      width: '300px',
     });
   }
 }

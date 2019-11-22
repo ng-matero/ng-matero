@@ -4,10 +4,8 @@ import { EasyDialogComponent } from './easy-dialog.component';
 import { DialogData } from './easy-dialog.config';
 
 const defaults: DialogData = {
-  width: '300px',
   title: '',
   description: '',
-  disableClose: true,
   buttons: [
     {
       type: '',
@@ -20,6 +18,8 @@ const defaults: DialogData = {
       onClick: () => {},
     },
   ],
+  disableClose: true,
+  width: '300px',
 };
 
 @Injectable({
