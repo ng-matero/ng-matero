@@ -20,7 +20,7 @@ export class ExtensionsDialogComponent {
     this.easyDialog.confirm(
       `What's your name?`,
       () => {
-        this.easyDialog.alert(`Zongbin`);
+        this.easyDialog.alert(`Hi, Zongbin!`);
       },
       () => {
         this.easyDialog.alert(`I don't know.`);
@@ -35,17 +35,26 @@ export class ExtensionsDialogComponent {
       buttons: [
         {
           type: '',
-          text: '关闭',
-          onClick: () => {},
+          text: 'Close',
+          onClick: () => {
+            this.easyDialog.alert(`You click Close button.`);
+          },
+        },
+        {
+          type: 'primary',
+          text: 'View',
+          onClick: () => {
+            this.easyDialog.alert(`You click View button.`);
+          },
         },
         {
           type: 'warn',
-          text: '确定',
-          onClick: () => {},
+          text: 'Ok',
+          onClick: () => {
+            this.easyDialog.alert(`You click Ok button.`);
+          },
         },
       ],
-      disableClose: false,
-      width: '300px',
     });
   }
 }

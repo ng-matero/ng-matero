@@ -32,8 +32,7 @@ export class EasyDialog {
     const data = Object.assign({}, defaults, config);
 
     this.dialog.open(EasyDialogComponent, {
-      width: data.width,
-      disableClose: data.disableClose,
+      ...data,
       data,
     });
   }
