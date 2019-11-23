@@ -11,6 +11,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgxPopperModule } from 'ngx-popper';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
@@ -30,6 +31,7 @@ const THIRD_MODULES = [
   FormlyModule,
   FormlyMaterialModule,
   NgxPopperModule,
+  NgApexchartsModule,
 ];
 const COMPONENTS = [
   BreadcrumbComponent,

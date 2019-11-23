@@ -30,9 +30,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/@antv/g2/dist/g2.min.js",
-              "node_modules/@antv/data-set/dist/data-set.min.js",
-              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
+              "node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "es5BrowserSupport": true
           },
@@ -98,9 +96,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/@antv/g2/dist/g2.min.js",
-              "node_modules/@antv/data-set/dist/data-set.min.js",
-              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
+              "node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "assets": [
               "src/favicon.ico",
