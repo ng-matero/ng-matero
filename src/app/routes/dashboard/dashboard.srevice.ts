@@ -80,13 +80,13 @@ const charts = [
     xaxis: {
       type: 'datetime',
       categories: [
-        '2018-09-19T00:00:00',
-        '2018-09-19T01:30:00',
-        '2018-09-19T02:30:00',
-        '2018-09-19T03:30:00',
-        '2018-09-19T04:30:00',
-        '2018-09-19T05:30:00',
-        '2018-09-19T06:30:00',
+        '2019-11-24T00:00:00',
+        '2019-11-24T01:30:00',
+        '2019-11-24T02:30:00',
+        '2019-11-24T03:30:00',
+        '2019-11-24T04:30:00',
+        '2019-11-24T05:30:00',
+        '2019-11-24T06:30:00',
       ],
     },
     tooltip: {
@@ -95,36 +95,60 @@ const charts = [
       },
     },
     legend: {
-      offsetY: -10,
+      position: 'top',
+      horizontalAlign: 'right',
     },
   },
   {
     chart: {
-      height: 365,
-      type: 'radialBar',
+      height: 350,
+      type: 'radar',
       toolbar: false,
     },
+    series: [
+      {
+        name: 'Weekly Revenue',
+        data: [20, 100, 40, 30, 50, 80, 33],
+      },
+    ],
+    labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     plotOptions: {
-      radialBar: {
-        dataLabels: {
-          name: {
-            fontSize: '22px',
-          },
-          value: {
-            fontSize: '16px',
-          },
-          total: {
-            show: true,
-            label: 'Total',
-            formatter: (w: number) => {
-              return 249;
-            },
+      radar: {
+        size: 140,
+        polygons: {
+          strokeColor: '#e9e9e9',
+          fill: {
+            colors: ['#f8f8f8', '#fff'],
           },
         },
       },
     },
-    series: [44, 55, 67, 83],
-    labels: ['Clothing', 'Foods', 'Electronics', 'Others'],
+    colors: ['#FF4560'],
+    markers: {
+      size: 4,
+      colors: ['#fff'],
+      strokeColor: '#FF4560',
+      strokeWidth: 2,
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => {
+          return val;
+        },
+      },
+    },
+    yaxis: {
+      tickAmount: 7,
+      labels: {
+        formatter: (val: number, i: number) => {
+          if (i % 2 === 0) {
+            return val;
+          } else {
+            return '';
+          }
+        },
+      },
+    },
   },
 ];
 

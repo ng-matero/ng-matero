@@ -4,6 +4,8 @@ import {
   AfterViewInit,
   OnDestroy,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  NgZone,
 } from '@angular/core';
 
 import { DashboardService } from './dashboard.srevice';
@@ -32,15 +34,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   chart1 = null;
   chart2 = null;
 
-  constructor(private dashboardSrv: DashboardService) {}
+  constructor(
+    private dashboardSrv: DashboardService,
+    private ngZone: NgZone,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    this.chart1 = new ApexCharts(document.querySelector('#chart1'), this.charts[0]);
-    this.chart1.render();
-    this.chart2 = new ApexCharts(document.querySelector('#chart2'), this.charts[1]);
-    this.chart2.render();
+    this.ngZone.runOutsideAngular(() => this.initChart());
   }
 
   ngOnDestroy() {
@@ -50,5 +53,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.chart2) {
       this.chart2.destroy();
     }
+  }
+
+  initChart() {
+    this.chart1 = new ApexCharts(document.querySelector('#chart1'), this.charts[0]);
+    this.chart1.render();
+    this.chart2 = new ApexCharts(document.querySelector('#chart2'), this.charts[1]);
+    this.chart2.render();
   }
 }
