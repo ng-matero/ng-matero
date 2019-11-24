@@ -330,6 +330,23 @@
       ]
     },
     {
+      "state": "extensions",
+      "name": "Extensions",
+      "type": "sub",
+      "icon": "extension",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      },
+      "children": [
+        {
+          "state": "dialog",
+          "name": "Dialog",
+          "type": "link"
+        }
+      ]
+    },
+    {
       "state": "sessions",
       "name": "Sessions",
       "type": "sub",
