@@ -54,6 +54,80 @@ const MESSAGES = [
   },
 ];
 
+const charts = [
+  {
+    chart: {
+      height: 350,
+      type: 'area',
+      toolbar: false,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: 'smooth',
+    },
+    series: [
+      {
+        name: 'UV',
+        data: [31, 40, 28, 51, 42, 109, 100],
+      },
+      {
+        name: 'Download',
+        data: [11, 32, 45, 32, 34, 52, 41],
+      },
+    ],
+    xaxis: {
+      type: 'datetime',
+      categories: [
+        '2018-09-19T00:00:00',
+        '2018-09-19T01:30:00',
+        '2018-09-19T02:30:00',
+        '2018-09-19T03:30:00',
+        '2018-09-19T04:30:00',
+        '2018-09-19T05:30:00',
+        '2018-09-19T06:30:00',
+      ],
+    },
+    tooltip: {
+      x: {
+        format: 'dd/MM/yy HH:mm',
+      },
+    },
+    legend: {
+      offsetY: -10,
+    },
+  },
+  {
+    chart: {
+      height: 365,
+      type: 'radialBar',
+      toolbar: false,
+    },
+    plotOptions: {
+      radialBar: {
+        dataLabels: {
+          name: {
+            fontSize: '22px',
+          },
+          value: {
+            fontSize: '16px',
+          },
+          total: {
+            show: true,
+            label: 'Total',
+            formatter: (w: number) => {
+              return 249;
+            },
+          },
+        },
+      },
+    },
+    series: [44, 55, 67, 83],
+    labels: ['Clothing', 'Foods', 'Electronics', 'Others'],
+  },
+];
+
 @Injectable()
 export class DashboardService {
   constructor(private http: HttpClient) {}
@@ -64,5 +138,9 @@ export class DashboardService {
 
   getMessages() {
     return MESSAGES;
+  }
+
+  getCharts() {
+    return charts;
   }
 }

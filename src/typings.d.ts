@@ -1,1 +1,1 @@
-
+declare var ApexCharts: any;

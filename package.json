@@ -45,7 +45,6 @@
     "apexcharts": "^3.10.1",
     "core-js": "^3.1.4",
     "hammerjs": "^2.0.8",
-    "ng-apexcharts": "^1.1.1",
     "ngx-popper": "^6.2.0",
     "ngx-toastr": "^11.2.1",
     "photoviewer": "^3.4.0",

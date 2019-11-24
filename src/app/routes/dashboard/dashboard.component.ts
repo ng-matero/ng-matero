@@ -6,7 +6,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { SettingsService } from '@core';
 import { DashboardService } from './dashboard.srevice';
 
 @Component({
@@ -29,14 +28,27 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   messages = this.dashboardSrv.getMessages();
 
+  charts = this.dashboardSrv.getCharts();
   chart1 = null;
   chart2 = null;
 
-  constructor(private settings: SettingsService, private dashboardSrv: DashboardService) {}
+  constructor(private dashboardSrv: DashboardService) {}
 
   ngOnInit() {}
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+    this.chart1 = new ApexCharts(document.querySelector('#chart1'), this.charts[0]);
+    this.chart1.render();
+    this.chart2 = new ApexCharts(document.querySelector('#chart2'), this.charts[1]);
+    this.chart2.render();
+  }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    if (this.chart1) {
+      this.chart1.destroy();
+    }
+    if (this.chart2) {
+      this.chart2.destroy();
+    }
+  }
 }
