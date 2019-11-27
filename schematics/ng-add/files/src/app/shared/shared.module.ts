@@ -13,9 +13,12 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { MiniProgressComponent } from './components/mini-progress/mini-progress.component';
-import { Text3dComponent } from './components/text3d/text3d.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
+import { Text3dComponent } from './components/text3d/text3d.component';
+import { EasyProgressComponent } from './components/easy-progress/easy-progress.component';
+import { EasyDialogComponent } from './components/easy-dialog/easy-dialog.component';
+import { EasyTableComponent } from './components/easy-table/easy-table.component';
+import { EasyTableCellComponent } from './components/easy-table/easy-table-cell.component';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -29,10 +32,14 @@ const THIRD_MODULES = [
 const COMPONENTS = [
   BreadcrumbComponent,
   PageHeaderComponent,
-  MiniProgressComponent,
-  Text3dComponent,
   ErrorCodeComponent,
+  Text3dComponent,
+  EasyProgressComponent,
+  EasyDialogComponent,
+  EasyTableComponent,
+  EasyTableCellComponent,
 ];
+const COMPONENTS_DYNAMIC = [EasyDialogComponent];
 const DIRECTIVES = [];
 const PIPES = [];
 
@@ -49,5 +56,6 @@ const PIPES = [];
     ...DIRECTIVES,
     ...PIPES,
   ],
+  entryComponents: COMPONENTS_DYNAMIC,
 })
 export class SharedModule {}
