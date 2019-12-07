@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { EasyDialog } from '@shared';
+import { MtxDialog } from '@ng-matero/extensions/dialog';
 
 @Component({
   selector: 'app-extensions-dialog',
@@ -8,28 +8,28 @@ import { EasyDialog } from '@shared';
   styleUrls: ['./dialog.component.scss'],
 })
 export class ExtensionsDialogComponent {
-  constructor(private easyDialog: EasyDialog) {}
+  constructor(private dialog: MtxDialog) {}
 
   alert() {
-    this.easyDialog.alert(`My name is Zongbin!`, () => {
-      this.easyDialog.alert(`Glad to meet you!`);
+    this.dialog.alert(`My name is Zongbin!`, () => {
+      this.dialog.alert(`Glad to meet you!`);
     });
   }
 
   confirm() {
-    this.easyDialog.confirm(
+    this.dialog.confirm(
       `What's your name?`,
       () => {
-        this.easyDialog.alert(`Hi, Zongbin!`);
+        this.dialog.alert(`Hi, Zongbin!`);
       },
       () => {
-        this.easyDialog.alert(`I don't know.`);
+        this.dialog.alert(`I don't know.`);
       }
     );
   }
 
   open() {
-    this.easyDialog.open({
+    this.dialog.open({
       title: 'This is the title',
       description: 'You can write some messages here.',
       buttons: [
@@ -37,21 +37,21 @@ export class ExtensionsDialogComponent {
           type: '',
           text: 'Close',
           onClick: () => {
-            this.easyDialog.alert(`You click Close button.`);
+            this.dialog.alert(`You click Close button.`);
           },
         },
         {
           type: 'primary',
           text: 'View',
           onClick: () => {
-            this.easyDialog.alert(`You click View button.`);
+            this.dialog.alert(`You click View button.`);
           },
         },
         {
           type: 'warn',
           text: 'Ok',
           onClick: () => {
-            this.easyDialog.alert(`You click Ok button.`);
+            this.dialog.alert(`You click Ok button.`);
           },
         },
       ],

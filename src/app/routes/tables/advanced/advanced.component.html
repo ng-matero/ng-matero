@@ -25,13 +25,13 @@
   <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
 </form>
 
-<easy-table class="mat-elevation-z1"
-            [data]="list"
-            [columns]="columns"
-            [length]="total"
-            [loading]="isLoading"
-            [pageIndex]="query.page"
-            [pageSize]="query.per_page"
-            [pageSizeOptions]="[5,10,20]"
-            (page)="getNextPage($event)">
-</easy-table>
+<mtx-grid class="mat-elevation-z1"
+          [data]="list"
+          [columns]="columns"
+          [length]="total"
+          [loading]="isLoading"
+          [pageIndex]="query.page"
+          [pageSize]="query.per_page"
+          [pageSizeOptions]="[5,10,20]"
+          (page)="getNextPage($event)">
+</mtx-grid>

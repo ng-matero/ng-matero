@@ -34,6 +34,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   chart1 = null;
   chart2 = null;
 
+  stats = this.dashboardSrv.getStats();
+
   constructor(
     private dashboardSrv: DashboardService,
     private ngZone: NgZone,

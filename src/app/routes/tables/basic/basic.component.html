@@ -1,11 +1,11 @@
 <page-header class="bg-green-600"></page-header>
 
-<easy-table class="mat-elevation-z1"
-            [data]="list"
-            [columns]="columns"
-            [loading]="isLoading"
-            [front]="true"
-            [pageSizeOptions]="[5,10,50,100]"
-            (changeSort)="changeSort($event)"
-            (changeSelect)="changeSelect($event)">
-</easy-table>
+<mtx-grid class="mat-elevation-z1"
+          [data]="list"
+          [columns]="columns"
+          [loading]="isLoading"
+          [frontPage]="true"
+          [pageSizeOptions]="[5,10,50,100]"
+          (changeSort)="changeSort($event)"
+          (changeSelect)="changeSelect($event)">
+</mtx-grid>

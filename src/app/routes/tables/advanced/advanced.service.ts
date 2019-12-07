@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { EasyColumn, serialize } from '@shared';
+import { GridColumn } from '@ng-matero/extensions';
+import { serialize } from '@shared';
 
 const TAG = {
   true: { text: 'Yes', color: 'red-100' },
@@ -10,7 +11,7 @@ const TAG = {
 
 @Injectable()
 export class TableAdvancedService {
-  columns: EasyColumn[] = [
+  columns: GridColumn[] = [
     {
       title: 'Name',
       index: 'name',

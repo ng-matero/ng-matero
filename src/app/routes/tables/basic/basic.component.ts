@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { PageEvent } from '@angular/material';
+
+import { MtxDialog } from '@ng-matero/extensions/dialog';
 
 import { TableBasicService } from './basic.service';
 import { TableDataService } from '../data.service';
 import { TableBasicEditComponent } from './edit/edit.component';
-import { EasyDialog } from '@shared';
 
 @Component({
   selector: 'app-table-basic',
@@ -20,8 +19,7 @@ export class TableBasicComponent implements OnInit {
   constructor(
     private basicSrv: TableBasicService,
     private dataSrv: TableDataService,
-    public dialog: MatDialog,
-    private easyDialog: EasyDialog
+    public dialog: MtxDialog
   ) {}
 
   ngOnInit() {
@@ -34,10 +32,13 @@ export class TableBasicComponent implements OnInit {
   }
 
   edit(value: any) {
-    const dialogRef = this.dialog.open(TableBasicEditComponent, {
-      width: '600px',
-      data: { record: value },
-    });
+    const dialogRef = this.dialog.open(
+      {
+        width: '600px',
+        data: { record: value },
+      },
+      TableBasicEditComponent
+    );
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
@@ -45,7 +46,7 @@ export class TableBasicComponent implements OnInit {
   }
 
   delete(value: any) {
-    this.easyDialog.alert(`You have deleted ${value.position}!`);
+    this.dialog.alert(`You have deleted ${value.position}!`);
   }
 
   changeSelect(e: any) {

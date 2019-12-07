@@ -3,42 +3,17 @@
 <div class="matero-row" fxLayout="row wrap">
 
   <!-- Statistics -->
-  <div class="matero-col" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-    <mat-card class="bg-indigo-500 text-white">
-      <mat-card-title class="f-s-12 f-w-100">Total Sales</mat-card-title>
+  <div class="matero-col" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100"
+       *ngFor="let stat of stats">
+    <mat-card [ngClass]="['text-white', stat.color]">
+      <mat-card-title class="f-s-12 f-w-100">{{stat.title}}</mat-card-title>
       <mat-card-content>
-        <h2>180,200</h2>
-        <easy-progress [value]="50"></easy-progress>
-        <small class="text-muted">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="matero-col" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-    <mat-card class="bg-blue-500 text-white">
-      <mat-card-title class="f-s-12 f-w-100">Revenue</mat-card-title>
-      <mat-card-content>
-        <h2>70,205</h2>
-        <easy-progress [value]="70"></easy-progress>
-        <small class="text-muted">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="matero-col" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-    <mat-card class="bg-green-500 text-white">
-      <mat-card-title class="f-s-12 f-w-100">Traffic</mat-card-title>
-      <mat-card-content>
-        <h2>1,291,922</h2>
-        <easy-progress [value]="80"></easy-progress>
-        <small class="text-muted">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="matero-col" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
-    <mat-card class="bg-teal-500 text-white">
-      <mat-card-title class="f-s-12 f-w-100">New User</mat-card-title>
-      <mat-card-content>
-        <h2>1,922</h2>
-        <easy-progress [value]="40"></easy-progress>
+        <h2>{{stat.amount}}</h2>
+        <mtx-progress [value]="stat.progress.value"
+                      height="2px"
+                      foreground="rgba(255,255,255,1)"
+                      background='rgba(0,0,0,.5)'>
+        </mtx-progress>
         <small class="text-muted">Monthly</small>
       </mat-card-content>
     </mat-card>

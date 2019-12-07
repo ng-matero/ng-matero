@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { EasyColumn } from '@shared';
+
+import { GridColumn } from '@ng-matero/extensions';
 
 @Injectable()
 export class TableBasicService {
-  columns: EasyColumn[] = [
+  columns: GridColumn[] = [
     {
       title: 'Select',
       index: 'select',
