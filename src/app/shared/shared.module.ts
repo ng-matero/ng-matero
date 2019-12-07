@@ -11,10 +11,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgxPopperModule } from 'ngx-popper';
-import { MtxProgressModule } from '@ng-matero/extensions/progress';
-import { MtxDialogModule } from '@ng-matero/extensions/dialog';
-import { MtxDataGridModule } from '@ng-matero/extensions/data-grid';
-import { MtxAlertModule } from '@ng-matero/extensions/alert';
+import { MaterialExtensionsModule } from '@ng-matero/extensions';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
@@ -29,10 +26,7 @@ const THIRD_MODULES = [
   FormlyModule,
   FormlyMaterialModule,
   NgxPopperModule,
-  MtxProgressModule,
-  MtxDialogModule,
-  MtxDataGridModule,
-  MtxAlertModule,
+  MaterialExtensionsModule,
 ];
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC = [];

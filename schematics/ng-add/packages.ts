@@ -21,13 +21,14 @@ export function add3rdPkgsToPackageJson(host: Tree, options: Schema) {
   }
 
   // 3rd lib
+  addPackage(host, '@ng-matero/extensions@0.0.0-PLACEHOLDER');
+  addPackage(host, '@ng-select/ng-select@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-progressbar/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-progressbar/router@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/http-loader@0.0.0-PLACEHOLDER');
-  addPackage(host, '@ng-select/ng-select@0.0.0-PLACEHOLDER');
   addPackage(host, 'ngx-toastr@0.0.0-PLACEHOLDER');
   addPackage(host, 'photoviewer@0.0.0-PLACEHOLDER');
   addPackage(host, 'screenfull@0.0.0-PLACEHOLDER');
