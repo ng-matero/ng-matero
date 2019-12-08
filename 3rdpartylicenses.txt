@@ -182,6 +182,17 @@ MIT
 @angular/router
 MIT
 
+@ng-matero/extensions
+MIT
+
+@ng-matero/extensions/alert
+
+@ng-matero/extensions/data-grid
+
+@ng-matero/extensions/dialog
+
+@ng-matero/extensions/progress
+
 @ng-select/ng-select
 MIT
 
