@@ -1,0 +1,34 @@
+<page-header [title]="'alert'" class="bg-amber-600 text-dark"></page-header>
+
+<h3>Normal</h3>
+<mtx-alert type="info">
+  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</mtx-alert>
+<mtx-alert type="success">
+  <strong>Well done!</strong> You successfully read this important alert message.
+</mtx-alert>
+<mtx-alert type="warning">
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</mtx-alert>
+<mtx-alert type="danger">
+  <strong>Oh snap!</strong> Change a few things up and try submitting again.
+</mtx-alert>
+
+<h3>Dismissible</h3>
+<mtx-alert type="info" [dismissible]="true">
+  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</mtx-alert>
+<mtx-alert type="success" [dismissible]="true">
+  <strong>Well done!</strong> You successfully read this important alert message.
+</mtx-alert>
+
+<h3>Elevation</h3>
+<mtx-alert type="danger" elevation="3">
+  <strong>Well done!</strong> You successfully read this important alert message.
+</mtx-alert>
+<mtx-alert type="warning" elevation="3">
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</mtx-alert>
+<mtx-alert type="default" elevation="3">
+  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+</mtx-alert>

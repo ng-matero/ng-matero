@@ -32,13 +32,10 @@ export class TableBasicComponent implements OnInit {
   }
 
   edit(value: any) {
-    const dialogRef = this.dialog.open(
-      {
-        width: '600px',
-        data: { record: value },
-      },
-      TableBasicEditComponent
-    );
+    const dialogRef = this.dialog.originalOpen(TableBasicEditComponent, {
+      width: '600px',
+      data: { record: value },
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

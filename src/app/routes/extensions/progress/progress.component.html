@@ -1,0 +1,25 @@
+<page-header [title]="'progress'"></page-header>
+
+<h3>Normal</h3>
+<mtx-progress [value]="30" type="info">30%</mtx-progress>
+<mtx-progress [value]="60" type="success">60%</mtx-progress>
+<mtx-progress [value]="50" type="warning">50%</mtx-progress>
+<mtx-progress [value]="80" type="danger">80%</mtx-progress>
+
+<h3>Striped</h3>
+<mtx-progress [value]="45" [striped]="true">45%</mtx-progress>
+<mtx-progress [value]="35" type="success" [striped]="true">35%</mtx-progress>
+
+<h3>Animated</h3>
+<mtx-progress [value]="75" type="warning" [striped]="true" [animate]="true">75%</mtx-progress>
+<mtx-progress [value]="90" type="success" [striped]="true" [animate]="true">90%</mtx-progress>
+
+<h3>Custom color</h3>
+<mtx-progress [value]="55" foreground="#3949AB">55%</mtx-progress>
+<mtx-progress [value]="70" [striped]="true" foreground="#6D4C41">70%</mtx-progress>
+
+<h3>Custom height</h3>
+<mtx-progress [value]="35" type="info" height="2px"></mtx-progress>
+<mtx-progress [value]="55" type="success" height="2px"></mtx-progress>
+<mtx-progress [value]="75" type="warning" height="2px"></mtx-progress>
+<mtx-progress [value]="95" type="danger" height="2px"></mtx-progress>
