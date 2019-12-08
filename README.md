@@ -103,13 +103,7 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ## 🗺 Road Map
 
-- [X] Schematics Support
-  - [X] `ng add`
-  - [X] `ng generate`
-  - [X] `ng update` (incomplete)
-- [ ] Internationalization (i18n)
-- [ ] Material Extentions
-- [ ] VS Code Snippet
+Check [this issue](https://github.com/ng-matero/ng-matero/issues/18) to know the develop plans.
 
 ## 📃 License
 
