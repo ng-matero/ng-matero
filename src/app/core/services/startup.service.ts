@@ -11,7 +11,7 @@ export class StartupService {
   load(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http
-        .get('assets/data/menu.json')
+        .get('assets/data/menu.json?_t=' + Date.now())
         .pipe(
           catchError(res => {
             resolve();
