@@ -25,7 +25,7 @@ function copyRoot(cb) {
 
 // src/
 function copySrcRoot(cb) {
-  return src(['src/hmr.ts', 'src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
+  return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
 }
 
 // src/assets
@@ -87,11 +87,13 @@ function updateVersions(cb) {
           '@ngx-progressbar/router',
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
+          '@ngxs/store',
           'hammerjs',
           'ngx-toastr',
           'photoviewer',
           'screenfull',
           '@angularclass/hmr',
+          '@ngxs/hmr-plugin',
           'parse5',
           'prettier',
           'prettier-stylelint',
