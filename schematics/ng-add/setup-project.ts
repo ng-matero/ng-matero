@@ -125,6 +125,7 @@ function deleteExsitingFiles() {
       `${project.sourceRoot}/app/app.component.scss`,
       `${project.sourceRoot}/environments/environment.prod.ts`,
       `${project.sourceRoot}/environments/environment.ts`,
+      `${project.sourceRoot}/main.ts`,
       `${project.sourceRoot}/styles.scss`,
     ]
       .filter(p => host.exists(p))
@@ -142,7 +143,7 @@ function addScriptsToPackageJson() {
       `tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'`
     );
     addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss 'src/**/*.scss' --fix'`);
-    addScriptToPackageJson(host, 'hmr', `ng serve -c=hmr --disable-host-check`);
+    addScriptToPackageJson(host, 'hmr', `ng serve --configuration hmr --disable-host-check`);
   };
 }
 
@@ -164,8 +165,8 @@ function addHmrToAngularJson() {
     };
     // serve
     project.architect.serve.configurations.hmr = {
-      browserTarget: `${workspace.defaultProject}:build:hmr`,
       hmr: true,
+      browserTarget: `${workspace.defaultProject}:build:hmr`,
     };
 
     host.overwrite('angular.json', JSON.stringify(ngJson, null, 2));

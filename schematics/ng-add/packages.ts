@@ -29,12 +29,14 @@ export function add3rdPkgsToPackageJson(host: Tree, options: Schema) {
   addPackage(host, '@ngx-progressbar/router@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/http-loader@0.0.0-PLACEHOLDER');
+  addPackage(host, '@ngxs/store@0.0.0-PLACEHOLDER');
   addPackage(host, 'ngx-toastr@0.0.0-PLACEHOLDER');
   addPackage(host, 'photoviewer@0.0.0-PLACEHOLDER');
   addPackage(host, 'screenfull@0.0.0-PLACEHOLDER');
 
   // Dev
   addPackage(host, '@angularclass/hmr@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@ngxs/hmr-plugin@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier-stylelint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');
