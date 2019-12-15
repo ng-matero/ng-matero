@@ -13,8 +13,9 @@ NG-MATERO
 Ng-Matero is an Angular admin templete made with Material components.
 
 [![npm](https://img.shields.io/npm/v/ng-matero.svg?style=flat-square)](https://www.npmjs.com/package/ng-matero)
+[![GitHub Release Date](https://img.shields.io/github/release-date/ng-matero/ng-matero?style=flat-square)](https://github.com/ng-matero/ng-matero/releases)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ng-matero/ng-matero/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ng-matero/ng-matero/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/ng-matero/ng-matero.svg?style=flat-square)](https://gitter.im/matero-io/ng-matero)
 [![docs](https://img.shields.io/badge/docs-gitbook-blue?style=flat-square)](https://ng-matero.github.io/docs/zh/)
 
@@ -29,6 +30,7 @@ Ng-Matero is an Angular admin templete made with Material components.
 - Rich helpers
 - Common Page Templates
 - RTL support
+- Material Extensions
 
 ## 📖 Documents
 
@@ -36,7 +38,7 @@ Ng-Matero is an Angular admin templete made with Material components.
 
 ## 🔧 Installation
 
-The project has support `ng add` yet. 
+The project has support `ng add` yet.
 
 ```bash
 $ ng new <project-name>
@@ -88,6 +90,7 @@ Just two steps after initializing the project, you can get a route page.
 $ ng g ng-matero:module abc
 $ ng g ng-matero:page def -m=abc
 ```
+
 Take a look at `http://localhost:4200/#/abc/def`, enjoy it!
 
 ## 💻 Development
