@@ -115,6 +115,7 @@ function deleteExsitingFiles() {
     const project = getProjectFromWorkspace(workspace);
 
     [
+      `${project.root}/tsconfig.app.json`,
       `${project.root}/tsconfig.json`,
       `${project.root}/tslint.json`,
       `${project.sourceRoot}/app/app-routing.module.ts`,
@@ -143,7 +144,7 @@ function addScriptsToPackageJson() {
       `tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'`
     );
     addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss 'src/**/*.scss' --fix'`);
-    addScriptToPackageJson(host, 'hmr', `ng serve --configuration hmr --disable-host-check`);
+    addScriptToPackageJson(host, 'hmr', `ng serve --hmr -c hmr --disable-host-check`);
   };
 }
 

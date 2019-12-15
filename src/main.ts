@@ -8,6 +8,8 @@ import { hmrBootstrap } from './hmr';
 
 import 'hammerjs';
 
+declare const module: any;
+
 if (environment.production) {
   enableProdMode();
 }
@@ -15,8 +17,7 @@ if (environment.production) {
 const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 
 if (environment.hmr) {
-  // tslint:disable-next-line: no-string-literal
-  if (module['hot']) {
+  if (module.hot) {
     hmrBootstrap(module, bootstrap);
   } else {
     console.error('HMR is not enabled for webpack-dev-server!');
