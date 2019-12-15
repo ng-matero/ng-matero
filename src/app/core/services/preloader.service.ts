@@ -19,7 +19,9 @@ export class PreloaderService {
         el.className = 'global-loader-hidden';
       });
 
-      el.className += ' global-loader-fade-in';
+      if (!el.className.includes('global-loader-hidden')) {
+        el.className += ' global-loader-fade-in';
+      }
     }
   }
 }
