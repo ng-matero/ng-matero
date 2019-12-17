@@ -18,6 +18,7 @@ Ng-Matero is an Angular admin templete made with Material components.
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ng-matero/ng-matero/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/ng-matero/ng-matero.svg?style=flat-square)](https://gitter.im/matero-io/ng-matero)
 [![docs](https://img.shields.io/badge/docs-gitbook-blue?style=flat-square)](https://ng-matero.github.io/docs/zh/)
+[![Material Extensions](https://img.shields.io/badge/material-extensions-blue?style=flat-square)](https://github.com/ng-matero/extensions#readme)
 
 </div>
 
