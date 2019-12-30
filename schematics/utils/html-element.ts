@@ -21,14 +21,14 @@ export function appendHtmlElement(
     return;
   }
 
-  const ElemTag = getHtmlTagElement(htmlContent, tag);
+  const elemTag = getHtmlTagElement(htmlContent, tag);
 
-  if (!ElemTag) {
+  if (!elemTag) {
     throw new Error(`Could not find '<${tag}>' element in HTML file: ${htmlFileBuffer}`);
   }
 
-  const endTagOffset = ElemTag.sourceCodeLocation!.endTag.startOffset;
-  const indentationOffset = getChildElementIndentation(ElemTag);
+  const endTagOffset = elemTag.sourceCodeLocation!.endTag.startOffset;
+  const indentationOffset = getChildElementIndentation(elemTag);
   const insertion = `${' '.repeat(indentationOffset)}${elementHtml}`;
 
   const recordedChange = host.beginUpdate(htmlFilePath).insertRight(endTagOffset, `${insertion}\n`);
