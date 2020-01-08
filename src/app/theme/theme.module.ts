@@ -17,6 +17,7 @@ import { TopmenuComponent } from './admin-layout/topmenu/topmenu.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { CustomizerComponent } from './admin-layout/customizer/customizer.component';
 import { GithubButtonComponent } from './admin-layout/header/github.component';
+import { TranslateComponent } from './admin-layout/header/translate.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GithubButtonComponent } from './admin-layout/header/github.component';
     AuthLayoutComponent,
     CustomizerComponent,
     GithubButtonComponent,
+    TranslateComponent,
   ],
   imports: [SharedModule],
 })
