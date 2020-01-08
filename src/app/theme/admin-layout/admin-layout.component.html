@@ -41,7 +41,7 @@
                   [showBranding]="options.navPos==='top'">
       </app-header>
 
-      <app-topmenu class="matero-topmenu" *ngIf="options.navPos==='top'"></app-topmenu>
+      <app-topmenu *ngIf="options.navPos==='top'"></app-topmenu>
 
       <div class="matero-content">
         <router-outlet></router-outlet>

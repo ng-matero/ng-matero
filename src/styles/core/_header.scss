@@ -28,7 +28,13 @@
 }
 
 .matero-toolbar {
-  @include mat-elevation(2);
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+
+  .matero-header-fixed & {
+    border-bottom: unset;
+
+    @include mat-elevation(2);
+  }
 
   .badge {
     position: absolute;
