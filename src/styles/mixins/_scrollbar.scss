@@ -19,8 +19,7 @@
 
   &::-webkit-scrollbar-thumb {
     min-height: 20px;
-    background-clip: content-box;
-    box-shadow: rgba(0, 0, 0, .2) 0 0 0 5px inset;
+    background-color: rgba(0, 0, 0, .2);
   }
 
   &::-webkit-scrollbar-corner {

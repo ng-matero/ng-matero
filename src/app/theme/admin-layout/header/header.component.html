@@ -1,5 +1,6 @@
 <mat-toolbar class="matero-toolbar">
-  <button mat-button class="matero-hamburger" (click)="toggleSidenav.emit()" *ngIf="showToggle">
+  <button mat-icon-button class="matero-toolbar-button" *ngIf="showToggle"
+          (click)="toggleSidenav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
 
@@ -8,21 +9,23 @@
 
   <app-github-button></app-github-button>
 
-  <button mat-icon-button>
+  <button mat-icon-button class="matero-toolbar-button">
     <mat-icon>search</mat-icon>
   </button>
 
-  <button mat-icon-button (click)="toggleFullscreen()" fxHide.lt-sm>
+  <button mat-icon-button class="matero-toolbar-button" fxHide.lt-sm
+          (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
   </button>
 
-  <app-translate fxHide.lt-sm></app-translate>
-
   <app-notification fxHide.lt-sm></app-notification>
+
+  <app-translate fxHide.lt-sm></app-translate>
 
   <app-user></app-user>
 
-  <button mat-button class="matero-hamburger" (click)="toggleSidenavNotice.emit()" fxHide.lt-sm>
+  <button mat-icon-button class="matero-toolbar-button" fxHide.lt-sm
+          (click)="toggleSidenavNotice.emit()">
     <mat-icon>list</mat-icon>
   </button>
 </mat-toolbar>

@@ -3,14 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-user',
   template: `
-    <a mat-button href="javascript:void(0)" [matMenuTriggerFor]="menu">
+    <a
+      mat-button
+      class="matero-toolbar-button matero-avatar-button"
+      href="javascript:void(0)"
+      [matMenuTriggerFor]="menu"
+    >
       <img
-        class="matero-user-avatar r-full align-middle"
+        class="matero-user-avatar r-full"
         src="assets/images/avatar.jpg"
-        width="24"
+        width="32"
         alt="avatar"
       />
-      <span class="align-middle">Zongbin</span>
+      <span class="matero-user-name" fxHide.lt-sm>Zongbin</span>
     </a>
 
     <mat-menu #menu="matMenu">

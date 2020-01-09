@@ -8,16 +8,7 @@
   display: block;
 
   .matero-toolbar {
-    padding: 0;
-  }
-
-  .matero-user-avatar {
-    margin-right: 8px;
-
-    [dir='rtl'] & {
-      margin-left: 8px;
-      margin-right: auto;
-    }
+    padding: 0 8px;
   }
 
   // Layout control
@@ -30,7 +21,7 @@
 .matero-toolbar {
   border-bottom: 1px solid rgba(0, 0, 0, .12);
 
-  .matero-header-fixed & {
+  .matero-navbar-side.matero-header-fixed & {
     border-bottom: unset;
 
     @include mat-elevation(2);
@@ -53,13 +44,39 @@
   }
 }
 
-.matero-hamburger.mat-button {
-  height: 100%;
-  padding: 0;
+// Customize toolbar button
+.matero-toolbar-button {
+  &.mat-button,
+  &.mat-icon-button {
+    margin: 0 4px;
+  }
 
-  @include bp-lt(small) {
-    & {
-      min-width: 15%;
+  &.mat-button {
+    min-width: unset;
+    line-height: 40px;
+    border-radius: 999px;
+  }
+
+  &.matero-avatar-button {
+    display: block;
+    padding: 0 4px;
+    font-size: 0;
+
+    .matero-user-name {
+      margin: 0 8px;
+      font-size: 14px;
+    }
+  }
+}
+
+@mixin matero-toolbar-button-theme($theme) {
+  $background: mat-color($theme, 'background');
+
+  .matero-toolbar-button {
+    &.mat-icon-button {
+      &:hover {
+        background-color: mat-color($background, hover);
+      }
     }
   }
 }

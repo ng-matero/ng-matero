@@ -15,4 +15,5 @@
 @mixin matero-admin-theme($theme) {
   @include matero-sidenav-theme($theme);
   @include matero-topnav-theme($theme);
+  @include matero-toolbar-button-theme($theme);
 }
