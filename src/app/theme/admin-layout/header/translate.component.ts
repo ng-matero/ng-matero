@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
-        <span>🇨🇳</span>
+        <span class="flag-icon flag-icon-cn m-r-8"></span>
         <span>Chinese</span>
       </button>
       <button mat-menu-item>
-        <span>🇺🇸</span>
+        <span class="flag-icon flag-icon-us m-r-8"></span>
         <span>English</span>
       </button>
     </mat-menu>
