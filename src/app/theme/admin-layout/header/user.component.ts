@@ -10,12 +10,12 @@ import { Component } from '@angular/core';
       [matMenuTriggerFor]="menu"
     >
       <img
-        class="matero-user-avatar r-full"
+        class="matero-avatar r-full"
         src="assets/images/avatar.jpg"
         width="32"
         alt="avatar"
       />
-      <span class="matero-user-name" fxHide.lt-sm>Zongbin</span>
+      <span class="matero-username" fxHide.lt-sm>Zongbin</span>
     </a>
 
     <mat-menu #menu="matMenu">
