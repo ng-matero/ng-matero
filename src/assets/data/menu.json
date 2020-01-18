@@ -330,31 +330,14 @@
       ]
     },
     {
-      "state": "extensions",
+      "state": "https://ng-matero.github.io/extensions/",
       "name": "Extensions",
-      "type": "sub",
+      "type": "extTabLink",
       "icon": "extension",
       "label": {
         "color": "indigo-500",
         "value": "new"
-      },
-      "children": [
-        {
-          "state": "alert",
-          "name": "Alert",
-          "type": "link"
-        },
-        {
-          "state": "dialog",
-          "name": "Dialog",
-          "type": "link"
-        },
-        {
-          "state": "progress",
-          "name": "Progress",
-          "type": "link"
-        }
-      ]
+      }
     },
     {
       "state": "sessions",

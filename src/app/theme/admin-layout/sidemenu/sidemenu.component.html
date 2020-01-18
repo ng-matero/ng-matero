@@ -26,6 +26,7 @@
       <span class="menu-badge bg-{{ menuItem.badge.color }}" *ngIf="menuItem.badge">
         {{ menuItem.badge.value }}
       </span>
+      <mat-icon class="menu-caret">launch</mat-icon>
     </a>
     <a class="matero-sidemenu-link" [href]="menuItem.state" target="_blank"
        *ngIf="menuItem.type === 'extTabLink'"
@@ -39,6 +40,7 @@
       <span class="menu-badge bg-{{ menuItem.badge.color }}" *ngIf="menuItem.badge">
         {{ menuItem.badge.value }}
       </span>
+      <mat-icon class="menu-caret">launch</mat-icon>
     </a>
     <!-- level 1 -->
     <a navAccordionToggle class="matero-sidemenu-toggle" href="javascript:void(0);"
@@ -68,11 +70,15 @@
            *ngIf="childLvl1.type === 'extLink'"
            matRipple [matRippleDisabled]="!ripple">
           <span class="menu-name">{{ childLvl1.name }}</span>
+          <span fxFlex></span>
+          <mat-icon class="menu-caret">launch</mat-icon>
         </a>
         <a class="matero-sidemenu-link" [href]="childLvl1.state" target="_blank"
            *ngIf="childLvl1.type === 'extTabLink'"
            matRipple [matRippleDisabled]="!ripple">
           <span class="menu-name">{{ childLvl1.name }}</span>
+          <span fxFlex></span>
+          <mat-icon class="menu-caret">launch</mat-icon>
         </a>
         <!-- level 2 -->
         <a navAccordionToggle class="matero-sidemenu-toggle" href="javascript:void(0);"
@@ -95,11 +101,15 @@
                *ngIf="childLvl2.type === 'extLink'"
                matRipple [matRippleDisabled]="!ripple">
               <span class="menu-name">{{ childLvl2.name }}</span>
+              <span fxFlex></span>
+              <mat-icon class="menu-caret">launch</mat-icon>
             </a>
             <a class="matero-sidemenu-link" [href]="childLvl2.state" target="_blank"
                *ngIf="childLvl2.type === 'extTabLink'"
                matRipple [matRippleDisabled]="!ripple">
               <span class="menu-name">{{ childLvl2.name }}</span>
+              <span fxFlex></span>
+              <mat-icon class="menu-caret">launch</mat-icon>
             </a>
           </li>
         </ul>
