@@ -10,6 +10,7 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
+import { ToastrModule } from 'ngx-toastr';
 import { NgxPopperModule } from 'ngx-popper';
 import { MaterialExtensionsModule } from '@ng-matero/extensions';
 
@@ -23,7 +24,6 @@ const THIRD_MODULES = [
   NgProgressModule,
   NgProgressRouterModule,
   NgSelectModule,
-  FormlyModule,
   FormlyMaterialModule,
   NgxPopperModule,
   MaterialExtensionsModule,
@@ -35,12 +35,22 @@ const PIPES = [];
 
 @NgModule({
   declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES, ...COMPONENTS_DYNAMIC],
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ...THIRD_MODULES],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot(),
+    ToastrModule.forRoot(),
+    ...THIRD_MODULES,
+  ],
   exports: [
     CommonModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    FormlyModule,
+    ToastrModule,
     ...THIRD_MODULES,
     ...COMPONENTS,
     ...DIRECTIVES,
