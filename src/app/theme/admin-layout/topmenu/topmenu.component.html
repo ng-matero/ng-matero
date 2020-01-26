@@ -2,7 +2,7 @@
   <div class="matero-topmenu-inner">
     <ng-container *ngFor="let menuItem of menus">
 
-      <a mat-button [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'">
+      <a mat-button [routerLink]="buildState([menuItem.state])" *ngIf="menuItem.type === 'link'">
         <span class="menu-name">{{ menuItem.name }}</span>
         <span *ngIf="menuItem.label" class="badge menu-label bg-{{ menuItem.label.color }}">
           {{ menuItem.label.value }}
@@ -45,7 +45,7 @@
       <mat-menu #menulevel1="matMenu">
         <ng-container *ngFor="let childLvl1 of menuItem.children">
 
-          <a mat-menu-item [routerLink]="['/', menuItem.state, childLvl1.state]"
+          <a mat-menu-item [routerLink]="buildState([menuItem.state, childLvl1.state])"
              *ngIf="childLvl1.type === 'link'">
             {{ childLvl1.name }}
           </a>
@@ -67,7 +67,7 @@
             <ng-container *ngFor="let childLvl2 of childLvl1.children">
 
               <a mat-menu-item
-                 [routerLink]="filterStates(['/', menuItem.state, childLvl1.state, childLvl2.state])"
+                 [routerLink]="buildState([menuItem.state, childLvl1.state, childLvl2.state])"
                  *ngIf="childLvl2.type === 'link'">
                 {{ childLvl2.name }}
               </a>

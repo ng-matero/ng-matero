@@ -13,8 +13,14 @@ export class SidemenuComponent {
 
   constructor(private menuService: MenuService) {}
 
-  // Delete empty value in array
-  filterStates(states: string[]) {
-    return states.filter(item => item && item.trim());
+  // Delete empty values and rebuild state
+  buildState(states: string[]) {
+    let state = '';
+    states.forEach(item => {
+      if (item && item.trim()) {
+        state += '/' + item.replace(/^\/+|\/+$/g, '');
+      }
+    });
+    return state;
   }
 }

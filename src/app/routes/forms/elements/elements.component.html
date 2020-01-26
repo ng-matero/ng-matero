@@ -25,7 +25,8 @@
 
         <button mat-raised-button color="primary">Search</button>
       </form>
-      {{q|json}}
+
+      <div>{{q|json}}</div>
 
     </mat-card>
   </div>
@@ -108,7 +109,8 @@
 
         <button mat-raised-button color="primary" class="m-t-8">Save</button>
       </form>
-      {{reactiveForm1.value|json}}
+
+      <div class="m-t-16">{{reactiveForm1.value|json}}</div>
 
     </mat-card>
   </div>
@@ -224,7 +226,8 @@
         <button mat-raised-button color="primary" class="m-t-8">Save</button>
 
       </form>
-      {{reactiveForm2.value|json}}
+
+      <div class="m-t-16">{{reactiveForm2.value|json}}</div>
 
     </mat-card>
   </div>
