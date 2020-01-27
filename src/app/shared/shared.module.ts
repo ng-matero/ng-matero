@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../material.module';
+import { MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
@@ -12,7 +13,6 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPopperModule } from 'ngx-popper';
-import { MaterialExtensionsModule } from '@ng-matero/extensions';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
