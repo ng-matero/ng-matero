@@ -20,13 +20,13 @@ import { ErrorCodeComponent } from './components/error-code/error-code.component
 
 const THIRD_MODULES = [
   MaterialModule,
+  MaterialExtensionsModule,
   FlexLayoutModule,
   NgProgressModule,
   NgProgressRouterModule,
   NgSelectModule,
   FormlyMaterialModule,
   NgxPopperModule,
-  MaterialExtensionsModule,
 ];
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC = [];
@@ -34,7 +34,7 @@ const DIRECTIVES = [];
 const PIPES = [];
 
 @NgModule({
-  declarations: [...COMPONENTS, ...DIRECTIVES, ...PIPES, ...COMPONENTS_DYNAMIC],
+  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],
   imports: [
     CommonModule,
     FormsModule,
