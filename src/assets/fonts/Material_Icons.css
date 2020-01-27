@@ -2,6 +2,7 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
+  font-display: block;
   src: url(./flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
 }
 
@@ -17,4 +18,6 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
