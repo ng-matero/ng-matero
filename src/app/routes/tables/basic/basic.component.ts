@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { MtxDialog } from '@ng-matero/extensions/dialog';
 
@@ -10,16 +10,19 @@ import { TableBasicEditComponent } from './edit/edit.component';
   selector: 'app-table-basic',
   templateUrl: './basic.component.html',
   providers: [TableBasicService, TableDataService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableBasicComponent implements OnInit {
   columns = [];
+  displayedColumns = [];
   list = [];
   isLoading = true;
 
   constructor(
     private basicSrv: TableBasicService,
     private dataSrv: TableDataService,
-    public dialog: MtxDialog
+    public dialog: MtxDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -27,6 +30,9 @@ export class TableBasicComponent implements OnInit {
       record => this.edit(record),
       record => this.delete(record)
     );
+
+    this.displayedColumns = this.columns.filter(item => item.checked);
+
     this.list = this.dataSrv.getData();
     this.isLoading = false;
   }
@@ -52,5 +58,9 @@ export class TableBasicComponent implements OnInit {
 
   changeSort(e: any) {
     console.log(e);
+  }
+
+  toggleColumns() {
+    this.displayedColumns = this.columns.filter(item => item.checked);
   }
 }
