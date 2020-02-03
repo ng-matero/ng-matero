@@ -9,14 +9,21 @@ import { Component } from '@angular/core';
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
-        <span class="flag-icon flag-icon-cn m-r-8"></span>
+        <span class="flag-icon flag-icon-cn"></span>
         <span>Chinese</span>
       </button>
       <button mat-menu-item>
-        <span class="flag-icon flag-icon-us m-r-8"></span>
+        <span class="flag-icon flag-icon-us"></span>
         <span>English</span>
       </button>
     </mat-menu>
   `,
+  styles: [
+    `
+      .flag-icon {
+        margin-right: 8px;
+      }
+    `,
+  ],
 })
 export class TranslateComponent {}

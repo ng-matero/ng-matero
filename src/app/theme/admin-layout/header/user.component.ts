@@ -9,12 +9,7 @@ import { Component } from '@angular/core';
       href="javascript:void(0)"
       [matMenuTriggerFor]="menu"
     >
-      <img
-        class="matero-avatar r-full"
-        src="assets/images/avatar.jpg"
-        width="32"
-        alt="avatar"
-      />
+      <img class="matero-avatar" src="assets/images/avatar.jpg" width="32" alt="avatar" />
       <span class="matero-username" fxHide.lt-sm>Zongbin</span>
     </a>
 
