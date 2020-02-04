@@ -58,10 +58,6 @@ const routes: Routes = [
         path: 'helpers',
         loadChildren: () => import('./helpers/helpers.module').then(m => m.HelpersModule),
       },
-      {
-        path: 'extensions',
-        loadChildren: () => import('./extensions/extensions.module').then(m => m.ExtensionsModule),
-      },
     ],
   },
   {

@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <error-code
       code="500"
       [title]="'Server went wrong!'"
-      [message]="
-        'Just kidding, looks like we have an internal issue, please try refreshing.'
-      "
+      [message]="'Just kidding, looks like we have an internal issue, please try refreshing.'"
     >
     </error-code>
   `,

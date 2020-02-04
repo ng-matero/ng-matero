@@ -21,8 +21,8 @@ export class TableBasicComponent implements OnInit {
   constructor(
     private basicSrv: TableBasicService,
     private dataSrv: TableDataService,
-    public dialog: MtxDialog,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public dialog: MtxDialog
   ) {}
 
   ngOnInit() {
