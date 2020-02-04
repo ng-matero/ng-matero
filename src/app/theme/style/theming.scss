@@ -3,13 +3,11 @@
 @import 'variables';
 @import 'mixins';
 // Material
+@import 'colors';
 @import 'material';
 // Themeing
-@import 'core/core';
-@import 'widgets/widgets';
-@import 'plugins/plugins';
-// Helpers
-@import 'helpers/helpers';
+@import 'core';
+@import 'widgets';
 
 // Create a theme
 @mixin matero-admin-theme($theme) {

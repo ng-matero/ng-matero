@@ -1,27 +1,3 @@
-@mixin generate-color($prefix, $property) {
-  @each $name, $value in $mat-colors {
-    @each $hue, $color in $value {
-      @if ($hue != 'contrast') {
-        .#{$prefix + '-' + $name + '-' + $hue} {
-          #{$property}: $color !important;
-        }
-      }
-      // alias
-      @if ($name == 'gray') {
-        .#{$prefix + '-grey-' + $hue} {
-          @extend .#{$prefix + '-gray-' + $hue} !optional;
-        }
-      }
-
-      @if ($name == 'blue-gray') {
-        .#{$prefix + '-blue-grey-' + $hue} {
-          @extend .#{$prefix + '-blue-gray-' + $hue} !optional;
-        }
-      }
-    }
-  }
-}
-
 @mixin icon($size) {
   width: $size * 1px !important;
   height: $size * 1px !important;

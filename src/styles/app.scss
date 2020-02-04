@@ -35,7 +35,7 @@ $config: mat-typography-config();
 //
 // Matero theme
 //
-@import 'theming';
+@import 'app/theme/style/theming';
 
 @include matero-admin-theme($theme);
 
@@ -51,3 +51,13 @@ $config: mat-typography-config();
   @include angular-material-theme($theme);
   @include matero-admin-theme($theme);
 }
+
+//
+// Helpers
+//
+@import 'helpers';
+
+//
+// Plugins
+//
+@import 'plugins';

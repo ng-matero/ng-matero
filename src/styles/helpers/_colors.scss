@@ -1,33 +1,7 @@
 // ==================================================
-// MATERIAL COLORS
+// COLORS
 // ==================================================
 
-$mat-colors: (
-  'red': $mat-red,
-  'pink': $mat-pink,
-  'purple': $mat-purple,
-  'deep-purple': $mat-deep-purple,
-  'indigo': $mat-indigo,
-  'blue': $mat-blue,
-  'light-blue': $mat-light-blue,
-  'cyan': $mat-cyan,
-  'teal': $mat-teal,
-  'green': $mat-green,
-  'light-green': $mat-light-green,
-  'lime': $mat-lime,
-  'yellow': $mat-yellow,
-  'amber': $mat-amber,
-  'orange': $mat-orange,
-  'deep-orange': $mat-deep-orange,
-  'brown': $mat-brown,
-  'gray': $mat-gray,
-  'blue-gray': $mat-blue-gray
-);
-
-@include generate-color('text', 'color');
-@include generate-color('bg', 'background-color');
-
-// Contrast color
 $contrast-colors: (
   'text-color': (
     property: color,
@@ -44,7 +18,9 @@ $contrast-colors: (
     class: bg,
     values: (
       white: white,
-      black: black
+      black: black,
+      light: $light-primary-text,
+      dark: $dark-primary-text
     )
   )
 );

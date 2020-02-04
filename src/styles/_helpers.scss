@@ -1,21 +1,21 @@
-// -----------------
-@import 'functions';
-@import 'variables';
-@import 'mixins';
-// -----------------
-@import 'display';
-@import 'position';
-@import 'size';
-@import 'spacing';
-@import 'border';
-@import 'radius';
-@import 'fonts';
-@import 'text';
-@import 'alignment';
-@import 'colors';
-@import 'cursor';
-@import 'image';
-@import 'icons';
+// ---------------------------
+@import 'helpers/functions';
+@import 'helpers/variables';
+@import 'helpers/mixins';
+// ---------------------------
+@import 'helpers/display';
+@import 'helpers/position';
+@import 'helpers/size';
+@import 'helpers/spacing';
+@import 'helpers/border';
+@import 'helpers/radius';
+@import 'helpers/fonts';
+@import 'helpers/text';
+@import 'helpers/alignment';
+@import 'helpers/colors';
+@import 'helpers/cursor';
+@import 'helpers/image';
+@import 'helpers/icons';
 
 // Generate Helpers
 @each $key, $utility in $utilities {
