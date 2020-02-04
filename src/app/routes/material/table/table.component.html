@@ -9,15 +9,15 @@
                aria-label="Users favorite colors and age">
       <ng-container cdkColumnDef="name">
         <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.name}}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="color">
         <mat-header-cell *cdkHeaderCellDef>Color</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.color}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.color}}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="age">
         <mat-header-cell *cdkHeaderCellDef>Age</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.age}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
       </ng-container>
       <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -34,15 +34,15 @@
                matSortDirection="asc">
       <ng-container cdkColumnDef="name">
         <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.name}}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="color">
         <mat-header-cell *cdkHeaderCellDef>Color</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.color}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.color}}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="age">
         <mat-header-cell *cdkHeaderCellDef mat-sort-header>Age</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.age}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
       </ng-container>
       <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -57,15 +57,15 @@
                aria-label="Users favorite colors and age">
       <ng-container cdkColumnDef="name">
         <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.name}}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="color">
         <mat-header-cell *cdkHeaderCellDef>Color</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.color}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.color}}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="age">
         <mat-header-cell *cdkHeaderCellDef>Age</mat-header-cell>
-        <mat-cell *cdkCellDef="let row">{{row.age}}</mat-cell>
+        <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
       </ng-container>
       <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
