@@ -45,7 +45,6 @@ $config: mat-typography-config();
 .theme-dark {
   $primary: mat-palette($mat-blue);
   $accent: mat-palette($mat-amber, A200, A100, A400);
-
   $theme: mat-dark-theme($primary, $accent);
 
   @include angular-material-theme($theme);
