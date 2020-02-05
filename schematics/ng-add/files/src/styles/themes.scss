@@ -30,6 +30,6 @@ $config: mat-typography-config();
 //
 // Matero theme
 //
-@import 'theming';
+@import 'app/theme/style/theming';
 
 @include matero-admin-theme($theme);
