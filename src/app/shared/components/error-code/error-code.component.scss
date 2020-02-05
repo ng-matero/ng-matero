@@ -1,5 +1,9 @@
 @import '../../../theme/style/functions';
 
+.matero-error-wrap {
+  text-align: center;
+}
+
 .matero-error-code {
   padding: 20px 0;
   font-size: 150px;
@@ -11,4 +15,18 @@
     $fade: rgba(0, 0, 0, .0015),
     $shadow-count: 20
   );
+}
+
+.matero-error-title {
+  margin: 0 0 16px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.matero-error-message {
+  margin: 0 0 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
 }
