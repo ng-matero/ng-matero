@@ -50,13 +50,3 @@ $config: mat-typography-config();
   @include angular-material-theme($theme);
   @include matero-admin-theme($theme);
 }
-
-//
-// Helpers
-//
-@import 'helpers';
-
-//
-// Plugins
-//
-@import 'plugins';

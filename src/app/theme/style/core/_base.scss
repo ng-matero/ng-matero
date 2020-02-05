@@ -7,8 +7,7 @@ body {
   height: 100%;
   min-height: 100%;
   line-height: normal;
-  font-family: Roboto, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande',
-    sans-serif;
+  font-family: $font-family-base;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
@@ -33,15 +32,8 @@ ul {
 }
 
 a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-
-  // &:hover {
-  //   color: #0056b3;
-  //   text-decoration: underline;
-  // }
+  color: $link-color;
+  text-decoration: $link-decoration;
 }
 
 input,
@@ -59,15 +51,11 @@ code,
 kbd,
 pre,
 samp {
-  font-family: 'Roboto Mono', monospace;
+  font-family: $font-family-monospace;
 }
 
 code {
-  font-size: 87.5%;
-  color: red;
+  font-size: $code-font-size;
+  color: $code-color;
   word-break: break-word;
-}
-
-.clearfix {
-  @include clearfix();
 }
