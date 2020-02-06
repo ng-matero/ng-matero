@@ -2,13 +2,15 @@
 @import 'functions';
 @import 'variables';
 @import 'mixins';
-// Material
-@import 'material';
-// Themeing
+
+// Layout & widgets
 @import 'core';
 @import 'widgets';
 
-// Create a theme
+// Material
+@import 'material';
+
+// Create admin theme
 @mixin matero-admin-theme($theme) {
   @include matero-sidenav-theme($theme);
   @include matero-topnav-theme($theme);
