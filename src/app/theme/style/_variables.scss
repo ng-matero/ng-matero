@@ -26,17 +26,14 @@ $font-family-sans-serif: Roboto, 'Helvetica Neue Light', 'Helvetica Neue', Helve
 $font-family-monospace: 'Roboto Mono', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 
-$font-size-base: 14px !default;
-
 // Links
 $link-color: map-get($mat-blue, A400) !default;
 $link-decoration: none !default;
 
 // Code
-$code-font-size: $small-font-size !default;
 $code-color: map-get($mat-red, A400);
+$code-font-size: $small-font-size !default;
 
-//
 // Breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
@@ -49,10 +46,11 @@ $breakpoints: (
   xlarge: 1920px
 ) !default;
 
-//
 // Scrollbar
 //
+// If you want to a customized thin scrollbar, you can add the element class
+// to the following variable (for example `$scrollbar-selectors: '.a', '.b', '.c';`)
 $scrollbar-selectors: '.mtx-data-grid-content';
 
-// Color
+// Borders
 $boder-color: rgba(0, 0, 0, .12);
