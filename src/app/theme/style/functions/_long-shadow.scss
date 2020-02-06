@@ -1,5 +1,7 @@
-// Long shadow
+// Long Shadow
+//
 // https://codepen.io/c_fitzmaurice/pen/ZYJeRY
+
 @function long-shadow($direction, $length, $color, $fade: false, $shadow-count: 100) {
   $shadows: ();
   $conversion-map: (

@@ -34,6 +34,9 @@ $link-decoration: none !default;
 $code-color: map-get($mat-red, A400);
 $code-font-size: $small-font-size !default;
 
+// Border
+$boder-color: rgba(0, 0, 0, .12);
+
 // Breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
@@ -48,9 +51,6 @@ $breakpoints: (
 
 // Scrollbar
 //
-// If you want to a customized thin scrollbar, you can add the element class
+// If you need a customized thin scrollbar, you can add the element class
 // to the following variable (for example `$scrollbar-selectors: '.a', '.b', '.c';`)
 $scrollbar-selectors: '.mtx-data-grid-content';
-
-// Borders
-$boder-color: rgba(0, 0, 0, .12);
