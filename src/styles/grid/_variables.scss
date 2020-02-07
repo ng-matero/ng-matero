@@ -1,0 +1,14 @@
+//
+// grid
+//
+
+$grid-columns: 12 !default;
+$grid-gutter: 16px !default;
+
+$breakpoint-infixs: (
+  xsmall: '',
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  xlarge: 'xl'
+) !default;

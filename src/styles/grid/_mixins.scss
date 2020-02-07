@@ -1,0 +1,33 @@
+@import '../../app/theme/style/mixins/breakpoints';
+
+@mixin make-grid-columns($i: 1, $list: '.col') {
+  @each $breakpoint, $infix in $breakpoint-infixs {
+    $infix: if($infix == '', '', '-#{$infix}');
+
+    @for $i from 1 through $grid-columns {
+      $list: '#{$list}, .col#{$infix}-#{$i}';
+    }
+  }
+
+  #{$list} {
+    position: relative;
+    width: 100%;
+    padding-left: ceil(($grid-gutter / 2));
+    padding-right: floor(($grid-gutter / 2));
+  }
+}
+
+@mixin loop-grid-columns($columns: $grid-columns, $breakpoint-infix: '') {
+  $infix: if($breakpoint-infix == '', '', '-#{$breakpoint-infix}');
+
+  @for $i from 1 through $columns {
+    .col#{$infix}-#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+
+    .offset#{$infix}-#{$i} {
+      margin-left: percentage($i / $columns);
+    }
+  }
+}
