@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -42,15 +42,98 @@ export class FormsDynamicComponent implements OnInit {
     },
   ];
 
+  // Advanced Layout
+  form2 = new FormGroup({});
+  model2: any = {};
+  options: FormlyFormOptions = {};
+
+  fields2: FormlyFieldConfig[] = [
+    {
+      fieldGroupClassName: 'row',
+      fieldGroup: [
+        {
+          className: 'col-sm-6',
+          type: 'input',
+          key: 'firstName',
+          templateOptions: {
+            label: 'First Name',
+          },
+        },
+        {
+          className: 'col-sm-6',
+          type: 'input',
+          key: 'lastName',
+          templateOptions: {
+            label: 'Last Name',
+          },
+          expressionProperties: {
+            'templateOptions.disabled': '!model.firstName',
+          },
+        },
+      ],
+    },
+    {
+      fieldGroupClassName: 'row',
+      fieldGroup: [
+        {
+          className: 'col-sm-6',
+          type: 'input',
+          key: 'street',
+          templateOptions: {
+            label: 'Street',
+          },
+        },
+        {
+          className: 'col-sm-3',
+          type: 'input',
+          key: 'cityName',
+          templateOptions: {
+            label: 'City',
+          },
+        },
+        {
+          className: 'col-sm-3',
+          type: 'input',
+          key: 'zip',
+          templateOptions: {
+            type: 'number',
+            label: 'Zip',
+            max: 99999,
+            min: 0,
+            pattern: '\\d{5}',
+          },
+        },
+      ],
+    },
+    {
+      type: 'textarea',
+      key: 'otherInput',
+      templateOptions: {
+        label: 'Other Input',
+      },
+    },
+    {
+      type: 'checkbox',
+      key: 'otherToo',
+      templateOptions: {
+        label: 'Other Checkbox',
+      },
+    },
+  ];
+
   constructor(private toastr: ToastrService) {}
 
   ngOnInit() {}
 
   submit() {
-    this.showToast();
+    this.showToast(this.model);
   }
 
-  showToast() {
-    this.toastr.success(JSON.stringify(this.model));
+  submit2() {
+    this.showToast(this.model2);
+  }
+
+  showToast(obj: any) {
+    this.toastr.success(JSON.stringify(obj));
   }
 }
