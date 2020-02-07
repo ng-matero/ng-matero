@@ -390,8 +390,6 @@ Apache-2.0
 @ng-matero/extensions
 MIT
 
-@ng-matero/extensions/alert
-
 @ng-matero/extensions/data-grid
 
 @ng-matero/extensions/dialog
