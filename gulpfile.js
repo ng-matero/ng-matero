@@ -41,7 +41,7 @@ function copyAssets(cb) {
 
 // src/styles
 function copyStyles(cb) {
-  return src(['src/styles/**/*', '!src/styles/app.scss']).pipe(dest(`${FILES}/src/styles`));
+  return src(['src/styles/**/*', '!src/styles/themes.scss']).pipe(dest(`${FILES}/src/styles`));
 }
 
 // src/environments
