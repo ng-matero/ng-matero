@@ -4,6 +4,10 @@
   @each $breakpoint, $infix in $breakpoint-infixs {
     $infix: if($infix == '', '', '-#{$infix}');
 
+    @if ($infix != '') {
+      $list: '#{$list}, .col#{$infix}';
+    }
+
     @for $i from 1 through $grid-columns {
       $list: '#{$list}, .col#{$infix}-#{$i}';
     }
@@ -19,6 +23,12 @@
 
 @mixin loop-grid-columns($columns: $grid-columns, $breakpoint-infix: '') {
   $infix: if($breakpoint-infix == '', '', '-#{$breakpoint-infix}');
+
+  .col#{$infix} {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
 
   @for $i from 1 through $columns {
     .col#{$infix}-#{$i} {

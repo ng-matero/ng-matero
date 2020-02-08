@@ -20,12 +20,6 @@
   }
 }
 
-.col {
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-}
-
 @include make-grid-columns();
 
 // xsmall: 0,
@@ -35,7 +29,13 @@
 // xlarge: 1920px
 
 @each $breakpoint, $infix in $breakpoint-infixs {
-  @include bp-gt($breakpoint) {
+  @if ($breakpoint== 'xsmall') {
     @include loop-grid-columns($grid-columns, $infix);
+  }
+
+  @else {
+    @include bp-gt($breakpoint) {
+      @include loop-grid-columns($grid-columns, $infix);
+    }
   }
 }
