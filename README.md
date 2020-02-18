@@ -10,7 +10,7 @@ NG-MATERO
 
 <div align="center">
 
-Ng-Matero is an Angular admin templete made with Material components.
+Ng-Matero is an Angular admin template made with Material components.
 
 [![npm](https://img.shields.io/npm/v/ng-matero.svg?style=flat-square)](https://www.npmjs.com/package/ng-matero)
 [![GitHub Release Date](https://img.shields.io/github/release-date/ng-matero/ng-matero?style=flat-square)](https://github.com/ng-matero/ng-matero/releases)
