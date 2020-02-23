@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { GridColumn } from '@ng-matero/extensions';
+import { MtxGridColumn } from '@ng-matero/extensions';
 import { serialize } from '@shared';
 
 const TAG = {
@@ -11,7 +11,7 @@ const TAG = {
 
 @Injectable()
 export class TableAdvancedService {
-  columns: GridColumn[] = [
+  columns: MtxGridColumn[] = [
     {
       title: 'Name',
       index: 'name',
