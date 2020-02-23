@@ -5,10 +5,9 @@
     "./node_modules/prettier-stylelint/config.js"
   ],
   "rules": {
+    "no-descending-specificity": null,
     "no-empty-source": null,
     "number-leading-zero": "never",
-    "selector-type-no-unknown": null,
-    "no-descending-specificity": null,
     "selector-pseudo-element-no-unknown": [
         true,
         {
@@ -16,6 +15,8 @@
                 "ng-deep"
             ]
         }
-    ]
+    ],
+    "selector-type-no-unknown": null,
+    "value-keyword-case": null
   }
 }
