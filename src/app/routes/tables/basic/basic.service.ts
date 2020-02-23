@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { GridColumn } from '@ng-matero/extensions';
+import { MtxGridColumn } from '@ng-matero/extensions';
 
 @Injectable()
 export class TableBasicService {
-  columns: GridColumn[] = [
+  columns: MtxGridColumn[] = [
     {
       title: 'Select',
       index: 'select',
