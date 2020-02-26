@@ -16,9 +16,7 @@ export class TableAdvancedService {
       title: 'Name',
       index: 'name',
       type: 'format',
-      format: (data: any) => {
-        return `<a href="${data.html_url}" target="_blank">${data.name}</a>`;
-      },
+      format: (data: any) => `<a href="${data.html_url}" target="_blank">${data.name}</a>`,
     },
     {
       title: 'Owner',
@@ -67,9 +65,7 @@ export class TableAdvancedService {
       title: 'Is forked',
       index: 'fork',
       type: 'format',
-      format: (data: any) => {
-        return JSON.stringify(data.fork);
-      },
+      format: (data: any) => JSON.stringify(data.fork),
     },
     {
       title: 'Archived',
