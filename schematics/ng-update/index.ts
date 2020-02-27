@@ -8,7 +8,7 @@
 
 import { Rule } from '@angular-devkit/schematics';
 import { createUpgradeRule, TargetVersion } from '@angular/cdk/schematics';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 import { materialUpgradeData } from './upgrade-data';
 

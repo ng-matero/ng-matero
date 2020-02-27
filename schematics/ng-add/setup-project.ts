@@ -19,7 +19,7 @@ import {
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import { Schema } from './schema';
 import { addHammerJsToMain } from './hammerjs-import';
 import { addFontsToIndex } from './material-fonts';

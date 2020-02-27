@@ -29,6 +29,22 @@ export function findRouteNode(
   return foundNode;
 }
 
+export function findRouteNodeByKey(
+  node: ts.Node,
+  kind: ts.SyntaxKind,
+  textKey: string
+): ts.Node | null {
+  let foundNode: ts.Node | null = null;
+
+  ts.forEachChild(node, (childNode: any) => {
+    if (childNode.initializer.kind === kind && childNode.name.text === textKey) {
+      foundNode = childNode.initializer;
+    }
+  });
+
+  return foundNode;
+}
+
 /**
  * Adds a new route declaration to a router module (i.e. has a RouterModule declaration)
  */
@@ -92,23 +108,28 @@ export function addRouteDeclarationToModule(
   }
 
   // Find a route which `path` equals to `''`
-  const routeNode = findRouteNode(routesArr, ts.SyntaxKind.Identifier, 'path', '');
+  const routeNodeInsertedTo = findRouteNode(
+    routesArr,
+    ts.SyntaxKind.Identifier,
+    'path',
+    ''
+  ) as ts.ObjectLiteralExpression;
 
-  if (!routeNode) {
+  if (!routeNodeInsertedTo) {
     throw new Error(`Couldn't find a route definition which path is empty string`);
   }
 
-  const routeNodeArr = findNodes(
-    routeNode,
+  const routeNodeChildren = findRouteNodeByKey(
+    routeNodeInsertedTo,
     ts.SyntaxKind.ArrayLiteralExpression,
-    1
-  )[0] as ts.ArrayLiteralExpression;
+    'children'
+  ) as ts.ArrayLiteralExpression;
 
   return insertAfterLastOccurrence(
-    (routeNodeArr.elements as unknown) as ts.Node[],
+    (routeNodeChildren.elements as unknown) as ts.Node[],
     route,
     fileToAdd,
-    routeNodeArr.elements.pos,
+    routeNodeChildren.elements.pos,
     ts.SyntaxKind.ObjectLiteralExpression
   );
 }

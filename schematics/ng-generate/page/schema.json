@@ -62,7 +62,7 @@
     "skipTests": {
       "type": "boolean",
       "description": "When true, does not generate a test file.",
-      "default": true
+      "default": false
     },
     "flat": {
       "type": "boolean",

@@ -1,4 +1,4 @@
-import { Component<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';
+import { Component, OnInit<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';
 
 @Component({
   selector: '<%= selector %>',<% if(inlineTemplate) { %>
@@ -13,6 +13,11 @@ import { Component<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(
   encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
   changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
 })
-export class <%= classify(pageName) %>Component {
-  constructor() {}
+export class <%= classify(pageName) %>Component implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }
