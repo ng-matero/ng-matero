@@ -33,12 +33,16 @@ export class MenuService {
   }
 
   set(menu: Menu[]): Menu[] {
-    this.menu = this.menu.concat(menu);
+    this.menu = [].concat(menu);
     return this.menu;
   }
 
   add(menu: Menu) {
     this.menu.push(menu);
+  }
+
+  reset() {
+    this.menu = [];
   }
 
   getMenuItemName(stateArr: string[]): string {

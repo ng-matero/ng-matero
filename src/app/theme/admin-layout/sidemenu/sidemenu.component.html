@@ -2,7 +2,7 @@
   <li navAccordionLink class="matero-sidemenu-item" routerLinkActive="active"
       *ngFor="let menuItem of menus"
       [group]="menuItem.state">
-    <a class="matero-sidemenu-link" [routerLink]="buildState([menuItem.state])"
+    <a class="matero-sidemenu-link" [routerLink]="buildRoute([menuItem.state])"
        *ngIf="menuItem.type === 'link'"
        matRipple [matRippleDisabled]="!ripple">
       <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
@@ -62,7 +62,7 @@
           *ngFor="let childLvl1 of menuItem.children"
           [group]="childLvl1.state">
         <a class="matero-sidemenu-link"
-           [routerLink]="buildState([menuItem.state, childLvl1.state])"
+           [routerLink]="buildRoute([menuItem.state, childLvl1.state])"
            *ngIf="childLvl1.type === 'link'"
            matRipple [matRippleDisabled]="!ripple">
           <span class="menu-name">{{childLvl1.name}}</span>
@@ -93,7 +93,7 @@
           <li class="matero-sidemenu-item" routerLinkActive="active"
               *ngFor="let childLvl2 of childLvl1.children">
             <a class="matero-sidemenu-link"
-               [routerLink]="buildState([menuItem.state, childLvl1.state, childLvl2.state])"
+               [routerLink]="buildRoute([menuItem.state, childLvl1.state, childLvl2.state])"
                *ngIf="childLvl2.type === 'link'"
                matRipple [matRippleDisabled]="!ripple">
               <span class="menu-name">{{childLvl2.name}}</span>

@@ -13,14 +13,14 @@ export class SidemenuComponent {
 
   constructor(private menuService: MenuService) {}
 
-  // Delete empty values and rebuild state
-  buildState(states: string[]) {
-    let state = '';
+  // Delete empty values and rebuild route
+  buildRoute(states: string[]) {
+    let route = '';
     states.forEach(item => {
       if (item && item.trim()) {
-        state += '/' + item.replace(/^\/+|\/+$/g, '');
+        route += '/' + item.replace(/^\/+|\/+$/g, '');
       }
     });
-    return state;
+    return route;
   }
 }
