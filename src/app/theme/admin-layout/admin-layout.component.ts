@@ -1,10 +1,21 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostBinding } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  HostBinding,
+  ElementRef,
+  Inject,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { Directionality } from '@angular/cdk/bidi';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
+
 import { SettingsService, AppSettings } from '@core';
+import { AppDirectionality } from '@shared';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
 const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
@@ -45,20 +56,14 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     );
   }
 
-  // Demo purposes only
-  @HostBinding('class.theme-dark') get themeDark() {
-    return this.options.theme === 'dark';
-  }
-
   constructor(
     private router: Router,
     private breakpointObserver: BreakpointObserver,
     private overlay: OverlayContainer,
-    private settings: SettingsService
+    private element: ElementRef,
+    private settings: SettingsService,
+    @Inject(Directionality) public dir: AppDirectionality
   ) {
-    // Set dir attr on body
-    document.body.dir = this.options.dir;
-
     this.layoutChanges = this.breakpointObserver
       .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
       .subscribe(state => {
@@ -113,21 +118,21 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   // Demo purposes only
   receiveOptions(options: AppSettings): void {
     this.options = options;
-    this.setTheme(options);
-    this.setBodyDir(options);
+    this.toggleDarkTheme(options);
+    this.toggleDirection(options);
   }
-  setTheme(options: AppSettings) {
+
+  toggleDarkTheme(options: AppSettings) {
     if (options.theme === 'dark') {
+      this.element.nativeElement.classList.add('theme-dark');
       this.overlay.getContainerElement().classList.add('theme-dark');
     } else {
+      this.element.nativeElement.classList.remove('theme-dark');
       this.overlay.getContainerElement().classList.remove('theme-dark');
     }
   }
-  setBodyDir(options: AppSettings) {
-    if (options.dir === 'rtl') {
-      document.body.dir = 'rtl';
-    } else {
-      document.body.dir = 'ltr';
-    }
+
+  toggleDirection(options: AppSettings) {
+    this.dir.value = options.dir;
   }
 }

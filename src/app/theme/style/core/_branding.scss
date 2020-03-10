@@ -3,9 +3,10 @@
 // ==================================================
 
 .matero-branding {
+  display: inline-block;
   color: inherit;
-  white-space: nowrap;
   font-size: 16px;
+  white-space: nowrap;
 
   .matero-branding-logo-expanded {
     width: 30px;

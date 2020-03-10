@@ -21,25 +21,25 @@
                  [opened]="options.navPos==='side' && options.sidenavOpened && !isOver"
                  (openedChange)="sidenavOpenedChange($event)"
                  (closedStart)="sidenavCloseStart()">
-      <app-sidebar (toggleCollapsed)="toggleCollapsed()"
-                   [toggleChecked]="options.sidenavCollapsed"
-                   [showToggle]="!isOver"
+      <app-sidebar [showToggle]="!isOver"
                    [showUser]="options.showUserPanel"
-                   [showHeader]="options.headerPos!=='above'">
+                   [showHeader]="options.headerPos!=='above'"
+                   (toggleCollapsed)="toggleCollapsed()"
+                   [toggleChecked]="options.sidenavCollapsed">
       </app-sidebar>
     </mat-sidenav>
 
-    <mat-sidenav #sidenavNotice position="end" mode="over" opened="false">
+    <mat-sidenav #sidenavNotice position="end" mode="over">
       <app-sidebar-notice></app-sidebar-notice>
     </mat-sidenav>
 
     <mat-sidenav-content #content class="matero-content-wrap">
       <app-header #header class="matero-header"
                   *ngIf="options.showHeader && options.headerPos!=='above'"
-                  (toggleSidenav)="sidenav.toggle()"
-                  (toggleSidenavNotice)="sidenavNotice.toggle()"
                   [showToggle]="!options.sidenavCollapsed && options.navPos!=='top'"
-                  [showBranding]="options.navPos==='top'">
+                  [showBranding]="options.navPos==='top'"
+                  (toggleSidenav)="sidenav.toggle()"
+                  (toggleSidenavNotice)="sidenavNotice.toggle()">
       </app-header>
 
       <app-topmenu *ngIf="options.navPos==='top'"></app-topmenu>
