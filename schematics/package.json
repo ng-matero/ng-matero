@@ -1,6 +1,6 @@
 {
   "name": "ng-matero",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Angular Material Admin Dashboard",
   "author": "nzbin<nzb329@163.com>",
   "repository": {
@@ -9,10 +9,14 @@
   },
   "keywords": [
     "angular",
-    "material",
-    "material design",
-    "admin dashboard",
-    "ng-matero"
+    "angular-material",
+    "admin-dashboard",
+    "ng-matero",
+    "ng-admin",
+    "ngx-admin",
+    "responsive",
+    "schematics",
+    "material-extensions"
   ],
   "license": "MIT",
   "bugs": {
