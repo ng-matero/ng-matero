@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared';
+import { SharedModule } from '@shared/shared.module';
 import { MediaRoutingModule } from './media-routing.module';
 import { MediaGalleryComponent } from './gallery/gallery.component';
 
