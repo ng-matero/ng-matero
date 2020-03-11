@@ -5,5 +5,5 @@ module.exports = {
       : `tslint --format verbose --project ./tsconfig.json --config ./tslint.json ${filenames.join(
           ' '
         )}`,
-  '*.scss': filenames => `stylelint --syntax scss ${filenames.join(' ')}`,
+  'src/*.scss': filenames => `stylelint --syntax scss ${filenames.join(' ')}`,
 };
