@@ -3,6 +3,7 @@
     <ng-container *ngFor="let menuItem of menus">
 
       <a mat-button [routerLink]="buildRoute([menuItem.state])" *ngIf="menuItem.type === 'link'">
+        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
         <span class="menu-name">{{menuItem.name}}</span>
         <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
           {{menuItem.label.value}}
@@ -12,6 +13,7 @@
         </span>
       </a>
       <a mat-button [href]="menuItem.state" *ngIf="menuItem.type === 'extLink'">
+        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
         <span class="menu-name">{{menuItem.name}}</span>
         <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
           {{menuItem.label.value}}
@@ -22,6 +24,7 @@
         <mat-icon>launch</mat-icon>
       </a>
       <a mat-button [href]="menuItem.state" target="_blank" *ngIf="menuItem.type === 'extTabLink'">
+        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
         <span class="menu-name">{{menuItem.name}}</span>
         <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
           {{menuItem.label.value}}
@@ -31,8 +34,8 @@
         </span>
         <mat-icon>launch</mat-icon>
       </a>
-      <!-- level 1 -->
       <button mat-button *ngIf="menuItem.type === 'sub'" [matMenuTriggerFor]="menulevel1">
+        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
         <span class="menu-name">{{menuItem.name}}</span>
         <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
           {{menuItem.label.value}}
@@ -42,6 +45,8 @@
         </span>
         <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
       </button>
+
+      <!-- level 1 -->
       <mat-menu #menulevel1="matMenu">
         <ng-container *ngFor="let childLvl1 of menuItem.children">
 
@@ -59,10 +64,11 @@
             <span class="menu-name">{{childLvl1.name}}</span>
             <mat-icon>launch</mat-icon>
           </a>
-          <!-- level 2 -->
           <button mat-menu-item *ngIf="childLvl1.type === 'sub'" [matMenuTriggerFor]="menulevel2">
             {{childLvl1.name}}
           </button>
+
+          <!-- level 2 -->
           <mat-menu #menulevel2="matMenu">
             <ng-container *ngFor="let childLvl2 of childLvl1.children">
 
@@ -81,9 +87,9 @@
                 <span class="menu-name">{{childLvl2.name}}</span>
                 <mat-icon>launch</mat-icon>
               </a>
-
             </ng-container>
           </mat-menu>
+
         </ng-container>
       </mat-menu>
 

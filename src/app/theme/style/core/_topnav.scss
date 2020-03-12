@@ -21,6 +21,19 @@
 
   @include mat-elevation(2);
 
+  .menu-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    font-size: 18px;
+    line-height: 18px;
+
+    [dir='rtl'] & {
+      margin-left: 8px;
+      margin-right: auto;
+    }
+  }
+
   .menu-label,
   .menu-badge {
     margin-left: 8px;
