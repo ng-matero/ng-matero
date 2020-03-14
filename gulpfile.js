@@ -88,7 +88,6 @@ function updateVersions(cb) {
           '@ngx-progressbar/router',
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
-          'hammerjs',
           'ngx-toastr',
           'photoviewer',
           'screenfull',
@@ -102,7 +101,7 @@ function updateVersions(cb) {
           'stylelint-scss',
         ].forEach(name => {
           if (!pkg.dependencies[name] && !pkg.devDependencies[name]) {
-            cb('依赖名称不存在！');
+            cb(`${name} not found！`);
           }
           content = content.replace(
             `${name}@0.0.0-PLACEHOLDER`,
