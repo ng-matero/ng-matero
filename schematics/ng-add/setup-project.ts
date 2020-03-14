@@ -138,7 +138,7 @@ function addScriptsToPackageJson() {
       'postinstall',
       'ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points'
     );
-    addScriptToPackageJson(host, 'build:prod', 'ng build --prod --build-optimizer');
+    addScriptToPackageJson(host, 'build:prod', 'ng build --prod');
     addScriptToPackageJson(
       host,
       'lint:ts',
