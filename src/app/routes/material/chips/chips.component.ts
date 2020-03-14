@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MatSnackBar, MatChipInputEvent } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Person {
   name: string;

@@ -6,8 +6,6 @@ import { environment } from './environments/environment';
 
 import { hmrBootstrap } from './hmr';
 
-import 'hammerjs';
-
 declare const module: any;
 
 if (environment.production) {
