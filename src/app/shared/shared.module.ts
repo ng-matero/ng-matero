@@ -12,7 +12,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { ToastrModule } from 'ngx-toastr';
-import { NgxPopperModule } from 'ngx-popper';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
@@ -26,7 +25,6 @@ const THIRD_MODULES = [
   NgProgressRouterModule,
   NgSelectModule,
   FormlyMaterialModule,
-  NgxPopperModule,
 ];
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC = [];
