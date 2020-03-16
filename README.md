@@ -38,6 +38,15 @@ Ng-Matero is an Angular admin template made with Material components.
 
 [English](https://nzbin.gitbook.io/ng-matero/v/en/) ｜[简体中文](https://nzbin.gitbook.io/ng-matero/)
 
+## Compatibility
+
+Which version to use?
+
+| Angular | Material | Ng-Matero | Extensions |
+| ------- | -------- | --------- | ---------- |
+| v9      | v9       | 9.x.x     | 9.x.x      |
+| v8      | v8       | 0.16.0    | 0.9.3      |
+
 ## 🔧 Installation
 
 The project has support `ng add` yet.
