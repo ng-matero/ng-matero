@@ -3,12 +3,20 @@
 @import 'variables';
 @import 'mixins';
 
-// Layout & Widgets
-@import 'core';
-@import 'widgets';
+// Core styles of layout
+@import 'core/reboot';
+@import 'core/branding';
+@import 'core/header';
+@import 'core/layout';
+@import 'core/sidenav';
+@import 'core/topnav';
 
-// Material
-@import 'material';
+// Material color helpers
+@import 'colors';
+
+// Decorative widgets
+@import 'widgets/badge';
+@import 'widgets/scrollbar';
 
 // Create admin theme
 @mixin matero-admin-theme($theme) {
