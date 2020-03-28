@@ -12,9 +12,11 @@ body {
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+  overflow: auto;
 }
 
 body {
+  position: relative;
   margin: 0;
 }
 
