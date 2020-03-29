@@ -4,19 +4,13 @@
 @import 'mixins';
 
 // Core styles of layout
-@import 'core/reboot';
-@import 'core/branding';
-@import 'core/header';
-@import 'core/layout';
-@import 'core/sidenav';
-@import 'core/topnav';
+@import 'core';
 
 // Material color helpers
 @import 'colors';
 
 // Decorative widgets
-@import 'widgets/badge';
-@import 'widgets/scrollbar';
+@import 'widgets';
 
 // Create admin theme
 @mixin matero-admin-theme($theme) {
