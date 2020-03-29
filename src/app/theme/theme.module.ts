@@ -10,10 +10,9 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { AccordionAnchorDirective } from './sidemenu/accordionanchor.directive';
 import { AccordionDirective } from './sidemenu/accordion.directive';
 import { AccordionLinkDirective } from './sidemenu/accordionlink.directive';
+import { SidebarNoticeComponent } from './sidebar-notice/sidebar-notice.component';
 
 import { TopmenuComponent } from './topmenu/topmenu.component';
-
-import { SidebarNoticeComponent } from './sidebar-notice/sidebar-notice.component';
 
 import { HeaderComponent } from './header/header.component';
 import { BrandingComponent } from './header/branding.component';
@@ -34,8 +33,8 @@ import { CustomizerComponent } from './customizer/customizer.component';
     AccordionAnchorDirective,
     AccordionDirective,
     AccordionLinkDirective,
-    TopmenuComponent,
     SidebarNoticeComponent,
+    TopmenuComponent,
     HeaderComponent,
     BrandingComponent,
     GithubButtonComponent,
