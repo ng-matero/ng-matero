@@ -6,8 +6,9 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgProgressModule } from '@ngx-progressbar/core';
-import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { NgProgressModule } from 'ngx-progressbar';
+import { NgProgressHttpModule } from 'ngx-progressbar/http';
+import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
@@ -23,6 +24,7 @@ const THIRD_MODULES = [
   FlexLayoutModule,
   NgProgressModule,
   NgProgressRouterModule,
+  NgProgressHttpModule,
   NgSelectModule,
   FormlyMaterialModule,
 ];
