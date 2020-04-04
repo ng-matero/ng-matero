@@ -46,7 +46,7 @@
     "apexcharts": "^3.17.1",
     "core-js": "^3.6.4",
     "ngx-permissions": "^7.0.3",
-    "ngx-toastr": "^12.0.0",
+    "ngx-toastr": "^12.0.1",
     "photoviewer": "^3.4.0",
     "rxjs": "~6.5.4",
     "screenfull": "^4.2.1",
