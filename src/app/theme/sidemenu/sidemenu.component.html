@@ -1,6 +1,6 @@
 <ul navAccordion class="matero-sidemenu level-0">
   <li navAccordionLink class="matero-sidemenu-item" routerLinkActive="active"
-      *ngFor="let menuItem of menus"
+      *ngFor="let menuItem of menus | async"
       [group]="menuItem.state">
     <a class="matero-sidemenu-link" [routerLink]="buildRoute([menuItem.state])"
        *ngIf="menuItem.type === 'link'"

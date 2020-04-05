@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs/internal/Observable';
 
 export interface Tag {
   color: string; // Background Color
@@ -26,23 +28,25 @@ export interface Menu {
   providedIn: 'root',
 })
 export class MenuService {
-  private menu: Menu[] = [];
+  private menu: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
 
-  getAll(): Menu[] {
-    return this.menu;
+  getAll(): Observable<Menu[]> {
+    return this.menu.asObservable();
   }
 
-  set(menu: Menu[]): Menu[] {
-    this.menu = [].concat(menu);
-    return this.menu;
+  set(menu: Menu[]): Observable<Menu[]> {
+    this.menu.next(menu);
+    return this.menu.asObservable();
   }
 
   add(menu: Menu) {
-    this.menu.push(menu);
+    const tmpMenu = this.menu.value;
+    tmpMenu.push(menu);
+    this.menu.next(tmpMenu);
   }
 
   reset() {
-    this.menu = [];
+    this.menu.next([]);
   }
 
   getMenuItemName(stateArr: string[]): string {
@@ -52,7 +56,7 @@ export class MenuService {
   // TODO:
   getMenuLevel(stateArr: string[]): string[] {
     const tmpArr = [];
-    this.menu.map(item => {
+    this.menu.value.map(item => {
       if (item.state === stateArr[0]) {
         tmpArr.push(item.name);
         // Level1
