@@ -1,6 +1,6 @@
 <div class="matero-topmenu scrollbar-thin">
   <div class="matero-topmenu-inner">
-    <ng-container *ngFor="let menuItem of menus">
+    <ng-container *ngFor="let menuItem of menus | async">
 
       <a mat-button [routerLink]="buildRoute([menuItem.state])" *ngIf="menuItem.type === 'link'">
         <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
