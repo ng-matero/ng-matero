@@ -1,5 +1,3 @@
-@import '../../app/theme/style/mixins/breakpoints';
-
 @mixin make-grid-columns($i: 1, $list: '.col') {
   @each $breakpoint, $infix in $breakpoint-infixs {
     $infix: if($infix == '', '', '-#{$infix}');

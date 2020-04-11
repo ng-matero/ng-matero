@@ -6,24 +6,24 @@ import { AppSettings, defaults } from '../settings';
   providedIn: 'root',
 })
 export class SettingsService {
-  private notice$ = new Subject<any>();
+  private notify$ = new Subject<any>();
 
-  private options = defaults;
+  private _options = defaults;
 
-  get notice(): Observable<any> {
-    return this.notice$.asObservable();
+  get notify(): Observable<any> {
+    return this.notify$.asObservable();
   }
 
   setLayout(options?: AppSettings): AppSettings {
-    this.options = Object.assign(defaults, options);
-    return this.options;
+    this._options = Object.assign(defaults, options);
+    return this._options;
   }
 
   setNavState(type: string, value: boolean) {
-    this.notice$.next({ type, value } as any);
+    this.notify$.next({ type, value } as any);
   }
 
   getOptions(): AppSettings {
-    return this.options;
+    return this._options;
   }
 }
