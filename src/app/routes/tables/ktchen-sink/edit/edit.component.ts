@@ -2,12 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-table-basic-edit',
+  selector: 'app-table-kitchen-sink-edit',
   templateUrl: './edit.component.html',
 })
-export class TableBasicEditComponent implements OnInit {
+export class TablesKtchenSinkEditComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<TableBasicEditComponent>,
+    public dialogRef: MatDialogRef<TablesKtchenSinkEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 

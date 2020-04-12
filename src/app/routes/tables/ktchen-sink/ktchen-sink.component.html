@@ -1,0 +1,41 @@
+<page-header class="bg-green-600"></page-header>
+
+<div class="m-b-16">
+    <mat-checkbox [(ngModel)]="rowSelectable">Row Selectable</mat-checkbox>
+    <mat-radio-group class="m-x-8" [(ngModel)]="multiSelectable">
+        <mat-radio-button [value]="false">Single Selectable</mat-radio-button>
+        <mat-radio-button class="m-x-8" [value]="true">Multiple Selectable</mat-radio-button>
+    </mat-radio-group>
+    <mat-checkbox class="m-x-8" [(ngModel)]="showToolbar">Show Toolbar</mat-checkbox>
+    <mat-checkbox class="m-x-8" [(ngModel)]="columnHideable">Column Hiding</mat-checkbox>
+    <mat-checkbox class="m-x-8" [(ngModel)]="columnMovable">Column Moving</mat-checkbox>
+    <mat-checkbox class="m-x-8" [(ngModel)]="rowHover">Hover</mat-checkbox>
+    <mat-checkbox class="m-x-8" [(ngModel)]="rowStriped">Striped</mat-checkbox>
+</div>
+<p>
+    <a href="https://ng-matero.github.io/extensions/data-grid" target="_blank">View more examples</a>
+</p>
+
+<mtx-grid [data]="list"
+          [columns]="columns"
+          [loading]="isLoading"
+          [multiSelectable]="multiSelectable"
+          [rowSelectable]="rowSelectable"
+          [rowHover]="rowHover"
+          [rowStriped]="rowStriped"
+          [showToolbar]="showToolbar"
+          [columnHideable]="columnHideable"
+          [columnMovable]="columnMovable"
+          [expandable]="expandable"
+          [expansionTemplate]="expansionTpl"
+          [pageOnFront]="true"
+          [showPaginator]="showPaginator"
+          [pageSizeOptions]="[5,10,50,100]"
+          [pageIndex]="0"
+          [pageSize]="5"
+          (sortChange)="changeSort($event)"
+          (selectionChange)="changeSelect($event)">
+</mtx-grid>
+<ng-template #expansionTpl let-row>
+    {{row.name}}
+</ng-template>

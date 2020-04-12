@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TableBasicComponent } from './basic/basic.component';
-import { TablesAdvancedComponent } from './advanced/advanced.component';
+import { TablesKtchenSinkComponent } from './ktchen-sink/ktchen-sink.component';
+import { TablesRemoteDataComponent } from './remote-data/remote-data.component';
 
 const routes: Routes = [
-  { path: 'basic', component: TableBasicComponent, data: { title: 'Table Basic' } },
-  { path: 'advanced', component: TablesAdvancedComponent },
+  { path: 'kitchen-sink', component: TablesKtchenSinkComponent, data: { title: 'Kitchen Sink' } },
+  { path: 'remote-data', component: TablesRemoteDataComponent },
 ];
 
 @NgModule({

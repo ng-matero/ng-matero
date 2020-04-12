@@ -300,13 +300,13 @@
       },
       "children": [
         {
-          "state": "basic",
-          "name": "Basic Table",
+          "state": "kitchen-sink",
+          "name": "Kitchen Sink",
           "type": "link"
         },
         {
-          "state": "advanced",
-          "name": "Advanced Table",
+          "state": "remote-data",
+          "name": "Remote Data",
           "type": "link"
         }
       ]
