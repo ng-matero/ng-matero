@@ -1,24 +1,7 @@
 <page-header class="bg-green-600"></page-header>
 
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Toggle Columns</mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <ng-container *ngFor="let item of columns; first as isFirst; last as isLast;">
-            <mat-checkbox class="m-r-8"
-                          *ngIf="!isFirst && !isLast"
-                          [(ngModel)]="item.checked"
-                          (change)="toggleColumns()">{{item.title}}
-            </mat-checkbox>
-        </ng-container>
-    </mat-expansion-panel>
-</mat-accordion>
-
-<mtx-grid class="mat-elevation-z1"
-          [data]="list"
-          [columns]="displayedColumns"
+<mtx-grid [data]="list"
+          [columns]="columns"
           [loading]="isLoading"
           [pageSizeOptions]="[5,10,50,100]"
           (sortChange)="changeSort($event)"

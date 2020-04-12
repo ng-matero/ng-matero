@@ -14,7 +14,6 @@ import { TableBasicEditComponent } from './edit/edit.component';
 })
 export class TableBasicComponent implements OnInit {
   columns = [];
-  displayedColumns = [];
   list = [];
   isLoading = true;
 
@@ -30,8 +29,6 @@ export class TableBasicComponent implements OnInit {
       record => this.edit(record),
       record => this.delete(record)
     );
-
-    this.displayedColumns = this.columns.filter(item => item.checked);
 
     this.list = this.dataSrv.getData();
     this.isLoading = false;
@@ -58,9 +55,5 @@ export class TableBasicComponent implements OnInit {
 
   changeSort(e: any) {
     console.log(e);
-  }
-
-  toggleColumns() {
-    this.displayedColumns = this.columns.filter(item => item.checked);
   }
 }

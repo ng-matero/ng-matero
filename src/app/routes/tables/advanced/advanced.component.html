@@ -25,8 +25,7 @@
   <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
 </form>
 
-<mtx-grid class="mat-elevation-z1"
-          [data]="list"
+<mtx-grid [data]="list"
           [columns]="columns"
           [length]="total"
           [loading]="isLoading"
