@@ -2,18 +2,19 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 
 import { MtxDialog } from '@ng-matero/extensions/dialog';
 
-import { TablesKtchenSinkService } from './ktchen-sink.service';
+import { TablesKitchenSinkService } from './kitchen-sink.service';
 import { TablesDataService } from '../data.service';
-import { TablesKtchenSinkEditComponent } from './edit/edit.component';
+import { TablesKitchenSinkEditComponent } from './edit/edit.component';
 import { MtxGridColumn } from '@ng-matero/extensions';
 
 @Component({
-  selector: 'app-table-ktchen-sink',
-  templateUrl: './ktchen-sink.component.html',
-  providers: [TablesKtchenSinkService, TablesDataService],
+  selector: 'app-table-kitchen-sink',
+  templateUrl: './kitchen-sink.component.html',
+  styleUrls: ['./kitchen-sink.component.scss'],
+  providers: [TablesKitchenSinkService, TablesDataService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TablesKtchenSinkComponent implements OnInit {
+export class TablesKitchenSinkComponent implements OnInit {
   columns: MtxGridColumn[] = [
     { header: 'Position', field: 'position', sortable: true },
     { header: 'Name', field: 'name', sortable: true, disabled: true },
@@ -59,6 +60,7 @@ export class TablesKtchenSinkComponent implements OnInit {
 
   multiSelectable = true;
   rowSelectable = true;
+  hideRowSelectionCheckbox = false;
   showToolbar = true;
   columnHideable = true;
   columnMovable = true;
@@ -68,7 +70,7 @@ export class TablesKtchenSinkComponent implements OnInit {
   expandable = false;
 
   constructor(
-    private kitchenSrv: TablesKtchenSinkService,
+    private kitchenSrv: TablesKitchenSinkService,
     private dataSrv: TablesDataService,
     private cdr: ChangeDetectorRef,
     public dialog: MtxDialog
@@ -80,7 +82,7 @@ export class TablesKtchenSinkComponent implements OnInit {
   }
 
   edit(value: any) {
-    const dialogRef = this.dialog.originalOpen(TablesKtchenSinkEditComponent, {
+    const dialogRef = this.dialog.originalOpen(TablesKitchenSinkEditComponent, {
       width: '600px',
       data: { record: value },
     });

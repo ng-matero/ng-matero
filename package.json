@@ -36,7 +36,7 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
-    "@ng-matero/extensions": "^9.1.1",
+    "@ng-matero/extensions": "^9.1.2",
     "@ng-select/ng-select": "^4.0.0",
     "@ngx-formly/core": "^5.5.15",
     "@ngx-formly/material": "^5.5.15",
