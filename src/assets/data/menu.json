@@ -1,8 +1,8 @@
 {
   "menu": [
     {
-      "state": "dashboard",
-      "name": "Dashboard",
+      "route": "dashboard",
+      "name": "menu.dashboard",
       "type": "link",
       "icon": "dashboard",
       "badge": {
@@ -11,242 +11,242 @@
       }
     },
     {
-      "state": "design",
-      "name": "Design",
+      "route": "design",
+      "name": "menu.design",
       "type": "sub",
       "icon": "color_lens",
       "children": [
         {
-          "state": "colors",
-          "name": "Color System",
+          "route": "colors",
+          "name": "menu.design.colors",
           "type": "link"
         },
         {
-          "state": "icons",
-          "name": "Icons",
+          "route": "icons",
+          "name": "menu.design.icons",
           "type": "link"
         }
       ]
     },
     {
-      "state": "material",
-      "name": "Material",
+      "route": "material",
+      "name": "menu.material",
       "type": "sub",
       "icon": "favorite",
       "children": [
         {
-          "state": "",
-          "name": "Form Controls",
+          "route": "",
+          "name": "menu.material.form-controls",
           "type": "sub",
           "children": [
             {
-              "state": "autocomplete",
-              "name": "Autocomplete",
+              "route": "autocomplete",
+              "name": "menu.material.form-controls.autocomplete",
               "type": "link"
             },
             {
-              "state": "checkbox",
-              "name": "Checkbox",
+              "route": "checkbox",
+              "name": "menu.material.form-controls.checkbox",
               "type": "link"
             },
             {
-              "state": "datepicker",
-              "name": "Datepicker",
+              "route": "datepicker",
+              "name": "menu.material.form-controls.datepicker",
               "type": "link"
             },
             {
-              "state": "form-field",
-              "name": "Form Field",
+              "route": "form-field",
+              "name": "menu.material.form-controls.form-field",
               "type": "link"
             },
             {
-              "state": "input",
-              "name": "Input",
+              "route": "input",
+              "name": "menu.material.form-controls.input",
               "type": "link"
             },
             {
-              "state": "radio",
-              "name": "Radio",
+              "route": "radio",
+              "name": "menu.material.form-controls.radio",
               "type": "link"
             },
             {
-              "state": "select",
-              "name": "Select",
+              "route": "select",
+              "name": "menu.material.form-controls.select",
               "type": "link"
             },
             {
-              "state": "slider",
-              "name": "Slider",
+              "route": "slider",
+              "name": "menu.material.form-controls.slider",
               "type": "link"
             },
             {
-              "state": "slide-toggle",
-              "name": "Slide Toggle",
+              "route": "slide-toggle",
+              "name": "menu.material.form-controls.slide-toggle",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Navigation",
+          "route": "",
+          "name": "menu.material.navigation",
           "type": "sub",
           "children": [
             {
-              "state": "menu",
-              "name": "Menu",
+              "route": "menu",
+              "name": "menu.material.navigation.menu",
               "type": "link"
             },
             {
-              "state": "sidenav",
-              "name": "Sidenav",
+              "route": "sidenav",
+              "name": "menu.material.navigation.sidenav",
               "type": "link"
             },
             {
-              "state": "toolbar",
-              "name": "Toolbar",
+              "route": "toolbar",
+              "name": "menu.material.navigation.toolbar",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Layout",
+          "route": "",
+          "name": "menu.material.layout",
           "type": "sub",
           "children": [
             {
-              "state": "card",
-              "name": "Card",
+              "route": "card",
+              "name": "menu.material.layout.card",
               "type": "link"
             },
             {
-              "state": "divider",
-              "name": "Divider",
+              "route": "divider",
+              "name": "menu.material.layout.divider",
               "type": "link"
             },
             {
-              "state": "expansion",
-              "name": "Expansion Panel",
+              "route": "expansion",
+              "name": "menu.material.layout.expansion-panel",
               "type": "link"
             },
             {
-              "state": "grid-list",
-              "name": "Grid List",
+              "route": "grid-list",
+              "name": "menu.material.layout.grid-list",
               "type": "link"
             },
             {
-              "state": "list",
-              "name": "List",
+              "route": "list",
+              "name": "menu.material.layout.list",
               "type": "link"
             },
             {
-              "state": "stepper",
-              "name": "Stepper",
+              "route": "stepper",
+              "name": "menu.material.layout.stepper",
               "type": "link"
             },
             {
-              "state": "tab",
-              "name": "Tab",
+              "route": "tab",
+              "name": "menu.material.layout.tab",
               "type": "link"
             },
             {
-              "state": "tree",
-              "name": "Tree",
+              "route": "tree",
+              "name": "menu.material.layout.tree",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Buttons & Indicators",
+          "route": "",
+          "name": "menu.material.buttons-indicators",
           "type": "sub",
           "children": [
             {
-              "state": "button",
-              "name": "Button",
+              "route": "button",
+              "name": "menu.material.buttons-indicators.button",
               "type": "link"
             },
             {
-              "state": "button-toggle",
-              "name": "Button Toggle",
+              "route": "button-toggle",
+              "name": "menu.material.buttons-indicators.button-toggle",
               "type": "link"
             },
             {
-              "state": "badge",
-              "name": "Badge",
+              "route": "badge",
+              "name": "menu.material.buttons-indicators.badge",
               "type": "link"
             },
             {
-              "state": "chips",
-              "name": "Chips",
+              "route": "chips",
+              "name": "menu.material.buttons-indicators.chips",
               "type": "link"
             },
             {
-              "state": "icon",
-              "name": "Icon",
+              "route": "icon",
+              "name": "menu.material.buttons-indicators.icon",
               "type": "link"
             },
             {
-              "state": "progress-spinner",
-              "name": "Progress Spinner",
+              "route": "progress-spinner",
+              "name": "menu.material.buttons-indicators.progress-spinner",
               "type": "link"
             },
             {
-              "state": "progress-bar",
-              "name": "Progress Bar",
+              "route": "progress-bar",
+              "name": "menu.material.buttons-indicators.progress-bar",
               "type": "link"
             },
             {
-              "state": "ripple",
-              "name": "Ripple",
+              "route": "ripple",
+              "name": "menu.material.buttons-indicators.ripple",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Popups & Modals",
+          "route": "",
+          "name": "menu.material.popups-modals",
           "type": "sub",
           "children": [
             {
-              "state": "bottom-sheet",
-              "name": "Bottom Sheet",
+              "route": "bottom-sheet",
+              "name": "menu.material.popups-modals.bottom-sheet",
               "type": "link"
             },
             {
-              "state": "dialog",
-              "name": "Dialog",
+              "route": "dialog",
+              "name": "menu.material.popups-modals.dialog",
               "type": "link"
             },
             {
-              "state": "snack-bar",
-              "name": "Snackbar",
+              "route": "snack-bar",
+              "name": "menu.material.popups-modals.snackbar",
               "type": "link"
             },
             {
-              "state": "tooltip",
-              "name": "tooltip",
+              "route": "tooltip",
+              "name": "menu.material.popups-modals.tooltip",
               "type": "link"
             }
           ]
         },
         {
-          "state": "data-table",
-          "name": "Data Table",
+          "route": "data-table",
+          "name": "menu.material.data-table",
           "type": "sub",
           "children": [
             {
-              "state": "paginator",
-              "name": "Paginator",
+              "route": "paginator",
+              "name": "menu.material.data-table.paginator",
               "type": "link"
             },
             {
-              "state": "sort",
-              "name": "Sort",
+              "route": "sort",
+              "name": "menu.material.data-table.sort",
               "type": "link"
             },
             {
-              "state": "table",
-              "name": "Table",
+              "route": "table",
+              "name": "menu.material.data-table.table",
               "type": "link"
             }
           ]
@@ -254,44 +254,44 @@
       ]
     },
     {
-      "state": "media",
-      "name": "Media",
+      "route": "media",
+      "name": "menu.media",
       "type": "sub",
       "icon": "image",
       "children": [
         {
-          "state": "gallery",
+          "route": "gallery",
           "name": "Gallery",
           "type": "link"
         }
       ]
     },
     {
-      "state": "forms",
-      "name": "Forms",
+      "route": "forms",
+      "name": "menu.forms",
       "type": "sub",
       "icon": "description",
       "children": [
         {
-          "state": "elements",
-          "name": "Form Elements",
+          "route": "elements",
+          "name": "menu.forms.form-elements",
           "type": "link"
         },
         {
-          "state": "ng-select",
-          "name": "Ng Select",
+          "route": "ng-select",
+          "name": "menu.forms.ng-select",
           "type": "link"
         },
         {
-          "state": "dynamic",
-          "name": "Dynamic Form",
+          "route": "dynamic",
+          "name": "menu.forms.dynamic-form",
           "type": "link"
         }
       ]
     },
     {
-      "state": "tables",
-      "name": "Tables",
+      "route": "tables",
+      "name": "menu.tables",
       "type": "sub",
       "icon": "format_line_spacing",
       "label": {
@@ -300,38 +300,38 @@
       },
       "children": [
         {
-          "state": "kitchen-sink",
-          "name": "Kitchen Sink",
+          "route": "kitchen-sink",
+          "name": "menu.tables.kitchen-sink",
           "type": "link"
         },
         {
-          "state": "remote-data",
-          "name": "Remote Data",
+          "route": "remote-data",
+          "name": "menu.tables.remote-data",
           "type": "link"
         }
       ]
     },
     {
-      "state": "profile",
-      "name": "Profile",
+      "route": "profile",
+      "name": "menu.profile",
       "type": "sub",
       "icon": "person",
       "children": [
         {
-          "state": "overview",
-          "name": "Overview",
+          "route": "overview",
+          "name": "menu.profile.overview",
           "type": "link"
         },
         {
-          "state": "settings",
-          "name": "Settings",
+          "route": "settings",
+          "name": "menu.profile.settings",
           "type": "link"
         }
       ]
     },
     {
-      "state": "https://ng-matero.github.io/extensions/",
-      "name": "Extensions",
+      "route": "https://ng-matero.github.io/extensions/",
+      "name": "menu.extensions",
       "type": "extTabLink",
       "icon": "extension",
       "label": {
@@ -340,37 +340,37 @@
       }
     },
     {
-      "state": "sessions",
-      "name": "Sessions",
+      "route": "sessions",
+      "name": "menu.sessions",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
-          "state": "403",
-          "name": "403",
+          "route": "403",
+          "name": "menu.sessions.403",
           "type": "link"
         },
         {
-          "state": "404",
-          "name": "404",
+          "route": "404",
+          "name": "menu.sessions.404",
           "type": "link"
         },
         {
-          "state": "500",
-          "name": "500",
+          "route": "500",
+          "name": "menu.sessions.500",
           "type": "link"
         }
       ]
     },
     {
-      "state": "helpers",
-      "name": "Helpers",
+      "route": "helpers",
+      "name": "menu.helpers",
       "type": "sub",
       "icon": "all_inbox",
       "children": [
         {
-          "state": "css-class",
-          "name": "CSS Class",
+          "route": "css-class",
+          "name": "menu.helpers.css-class",
           "type": "link"
         }
       ]

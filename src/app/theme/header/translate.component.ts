@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from '@core';
 
 @Component({
   selector: 'app-translate',
@@ -8,13 +10,8 @@ import { Component } from '@angular/core';
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <span class="flag-icon flag-icon-cn"></span>
-        <span>Chinese</span>
-      </button>
-      <button mat-menu-item>
-        <span class="flag-icon flag-icon-us"></span>
-        <span>English</span>
+      <button mat-menu-item *ngFor="let lang of langs | keyvalue" (click)="useLanguage(lang.key)">
+        <span>{{ lang.value }}</span>
       </button>
     </mat-menu>
   `,
@@ -26,4 +23,22 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class TranslateComponent {}
+export class TranslateComponent {
+  langs = {
+    'en-US': 'English',
+    'zh-CN': '中文简体',
+  };
+
+  constructor(public translate: TranslateService, private settings: SettingsService) {
+    translate.addLangs(['en-US', 'zh-CN']);
+    translate.setDefaultLang('en-US');
+
+    const browserLang = navigator.language;
+    translate.use(browserLang.match(/en-US|zh-CN/) ? browserLang : 'en-US');
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+    this.settings.setLanguage(language);
+  }
+}

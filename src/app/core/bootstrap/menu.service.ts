@@ -8,14 +8,14 @@ export interface Tag {
 }
 
 export interface ChildrenItem {
-  state: string;
+  route: string;
   name: string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   children?: ChildrenItem[];
 }
 
 export interface Menu {
-  state: string;
+  route: string;
   name: string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   icon: string;
@@ -49,34 +49,34 @@ export class MenuService {
     this.menu.next([]);
   }
 
-  getMenuItemName(stateArr: string[]): string {
-    return this.getMenuLevel(stateArr)[stateArr.length - 1];
+  getMenuItemName(routeArr: string[]): string {
+    return this.getMenuLevel(routeArr)[routeArr.length - 1];
   }
 
   // TODO:
-  getMenuLevel(stateArr: string[]): string[] {
+  getMenuLevel(routeArr: string[]): string[] {
     const tmpArr = [];
     this.menu.value.map(item => {
-      if (item.state === stateArr[0]) {
+      if (item.route === routeArr[0]) {
         tmpArr.push(item.name);
         // Level1
         if (item.children && item.children.length) {
           item.children.forEach(itemlvl1 => {
-            if (stateArr[1] && itemlvl1.state === stateArr[1]) {
+            if (routeArr[1] && itemlvl1.route === routeArr[1]) {
               tmpArr.push(itemlvl1.name);
               // Level2
               if (itemlvl1.children && itemlvl1.children.length) {
                 itemlvl1.children.forEach(itemlvl2 => {
-                  if (stateArr[2] && itemlvl2.state === stateArr[2]) {
+                  if (routeArr[2] && itemlvl2.route === routeArr[2]) {
                     tmpArr.push(itemlvl2.name);
                   }
                 });
               }
-            } else if (stateArr[1]) {
+            } else if (routeArr[1]) {
               // Level2
               if (itemlvl1.children && itemlvl1.children.length) {
                 itemlvl1.children.forEach(itemlvl2 => {
-                  if (itemlvl2.state === stateArr[1]) {
+                  if (itemlvl2.route === routeArr[1]) {
                     tmpArr.push(itemlvl1.name, itemlvl2.name);
                   }
                 });

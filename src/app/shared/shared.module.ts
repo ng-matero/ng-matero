@@ -13,6 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { ToastrModule } from 'ngx-toastr';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
@@ -26,7 +27,10 @@ const THIRD_MODULES = [
   NgProgressRouterModule,
   NgProgressHttpModule,
   NgSelectModule,
+  FormlyModule,
   FormlyMaterialModule,
+  ToastrModule,
+  TranslateModule,
 ];
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC = [];
@@ -35,22 +39,12 @@ const PIPES = [];
 
 @NgModule({
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    FormlyModule.forRoot(),
-    ToastrModule.forRoot(),
-    ...THIRD_MODULES,
-  ],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ...THIRD_MODULES],
   exports: [
     CommonModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    FormlyModule,
-    ToastrModule,
     ...THIRD_MODULES,
     ...COMPONENTS,
     ...DIRECTIVES,

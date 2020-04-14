@@ -7,6 +7,7 @@ export interface AppSettings {
   showUserPanel?: boolean;
   sidenavOpened?: boolean;
   sidenavCollapsed?: boolean;
+  language?: string;
 }
 
 export const defaults: AppSettings = {
@@ -18,4 +19,5 @@ export const defaults: AppSettings = {
   showUserPanel: true,
   sidenavOpened: true,
   sidenavCollapsed: false,
+  language: 'en-US',
 };
