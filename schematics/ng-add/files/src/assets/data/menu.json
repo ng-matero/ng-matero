@@ -1,7 +1,7 @@
 {
   "menu": [{
       "state": "dashboard",
-      "name": "Dashboard",
+      "name": "dashboard",
       "type": "link",
       "icon": "dashboard",
       "badge": {
@@ -11,7 +11,7 @@
     },
     {
       "state": "sessions",
-      "name": "Sessions",
+      "name": "sessions",
       "type": "sub",
       "icon": "question_answer",
       "children": [{
