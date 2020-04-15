@@ -53,7 +53,6 @@ function copyEnvironments(cb) {
 function copySrcApp(cb) {
   return src([
     'src/app/**/*',
-    '!src/app/core/core.module.ts',
     '!src/app/core/settings.ts',
     '!src/app/routes/**/*',
     '!src/app/shared/shared.module.ts',
@@ -84,10 +83,9 @@ function updateVersions(cb) {
           '@ng-select/ng-select',
           '@ngx-formly/core',
           '@ngx-formly/material',
-          '@ngx-progressbar/core',
-          '@ngx-progressbar/router',
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
+          'ngx-progressbar',
           'ngx-toastr',
           'photoviewer',
           'screenfull',

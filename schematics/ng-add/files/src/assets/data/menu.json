@@ -1,6 +1,6 @@
 {
   "menu": [{
-      "state": "dashboard",
+      "route": "dashboard",
       "name": "dashboard",
       "type": "link",
       "icon": "dashboard",
@@ -10,22 +10,22 @@
       }
     },
     {
-      "state": "sessions",
+      "route": "sessions",
       "name": "sessions",
       "type": "sub",
       "icon": "question_answer",
       "children": [{
-          "state": "403",
+          "route": "403",
           "name": "403",
           "type": "link"
         },
         {
-          "state": "404",
+          "route": "404",
           "name": "404",
           "type": "link"
         },
         {
-          "state": "500",
+          "route": "500",
           "name": "500",
           "type": "link"
         }
