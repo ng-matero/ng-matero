@@ -6,7 +6,9 @@ import {
   HostBinding,
   ElementRef,
   Inject,
+  Optional,
 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -62,8 +64,12 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     private overlay: OverlayContainer,
     private element: ElementRef,
     private settings: SettingsService,
+    @Optional() @Inject(DOCUMENT) private _document: Document,
     @Inject(Directionality) public dir: AppDirectionality
   ) {
+    this.dir.value = this.options.dir;
+    this._document.body.dir = this.dir.value;
+
     this.layoutChanges = this.breakpointObserver
       .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
       .subscribe(state => {
@@ -134,5 +140,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   toggleDirection(options: AppSettings) {
     this.dir.value = options.dir;
+    this._document.body.dir = this.dir.value;
   }
 }
