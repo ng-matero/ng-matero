@@ -5,7 +5,7 @@
       <a href="#" class="link" *ngIf="isFirst">{{navlink}}</a>
       <ng-container *ngIf="!isFirst">
         <mat-icon class="chevron">chevron_right</mat-icon>
-        <span class="link">{{navlink}}</span>
+        <span class="link">{{navlink | translate}}</span>
       </ng-container>
     </li>
   </ol>

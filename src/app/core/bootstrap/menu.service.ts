@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 
-export interface Tag {
+export interface MenuTag {
   color: string; // Background Color
   value: string;
 }
 
-export interface ChildrenItem {
+export interface MenuChildrenItem {
   route: string;
   name: string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
-  children?: ChildrenItem[];
+  children?: MenuChildrenItem[];
 }
 
 export interface Menu {
@@ -19,9 +19,9 @@ export interface Menu {
   name: string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   icon: string;
-  label?: Tag;
-  badge?: Tag;
-  children?: ChildrenItem[];
+  label?: MenuTag;
+  badge?: MenuTag;
+  children?: MenuChildrenItem[];
 }
 
 @Injectable({
@@ -87,5 +87,14 @@ export class MenuService {
       }
     });
     return tmpArr;
+  }
+
+  recursMenuForTranslation(menu: Menu[] | MenuChildrenItem[], namespace: string) {
+    menu.forEach(menuItem => {
+      menuItem.name = `${namespace}.${menuItem.name}`;
+      if (menuItem.children && menuItem.children.length > 0) {
+        this.recursMenuForTranslation(menuItem.children, menuItem.name);
+      }
+    });
   }
 }

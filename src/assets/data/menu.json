@@ -2,7 +2,7 @@
   "menu": [
     {
       "route": "dashboard",
-      "name": "menu.dashboard",
+      "name": "dashboard",
       "type": "link",
       "icon": "dashboard",
       "badge": {
@@ -12,241 +12,241 @@
     },
     {
       "route": "design",
-      "name": "menu.design",
+      "name": "design",
       "type": "sub",
       "icon": "color_lens",
       "children": [
         {
           "route": "colors",
-          "name": "menu.design.colors",
+          "name": "colors",
           "type": "link"
         },
         {
           "route": "icons",
-          "name": "menu.design.icons",
+          "name": "icons",
           "type": "link"
         }
       ]
     },
     {
       "route": "material",
-      "name": "menu.material",
+      "name": "material",
       "type": "sub",
       "icon": "favorite",
       "children": [
         {
           "route": "",
-          "name": "menu.material.form-controls",
+          "name": "form-controls",
           "type": "sub",
           "children": [
             {
               "route": "autocomplete",
-              "name": "menu.material.form-controls.autocomplete",
+              "name": "autocomplete",
               "type": "link"
             },
             {
               "route": "checkbox",
-              "name": "menu.material.form-controls.checkbox",
+              "name": "checkbox",
               "type": "link"
             },
             {
               "route": "datepicker",
-              "name": "menu.material.form-controls.datepicker",
+              "name": "datepicker",
               "type": "link"
             },
             {
               "route": "form-field",
-              "name": "menu.material.form-controls.form-field",
+              "name": "form-field",
               "type": "link"
             },
             {
               "route": "input",
-              "name": "menu.material.form-controls.input",
+              "name": "input",
               "type": "link"
             },
             {
               "route": "radio",
-              "name": "menu.material.form-controls.radio",
+              "name": "radio",
               "type": "link"
             },
             {
               "route": "select",
-              "name": "menu.material.form-controls.select",
+              "name": "select",
               "type": "link"
             },
             {
               "route": "slider",
-              "name": "menu.material.form-controls.slider",
+              "name": "slider",
               "type": "link"
             },
             {
               "route": "slide-toggle",
-              "name": "menu.material.form-controls.slide-toggle",
+              "name": "slide-toggle",
               "type": "link"
             }
           ]
         },
         {
           "route": "",
-          "name": "menu.material.navigation",
+          "name": "navigation",
           "type": "sub",
           "children": [
             {
               "route": "menu",
-              "name": "menu.material.navigation.menu",
+              "name": "menu",
               "type": "link"
             },
             {
               "route": "sidenav",
-              "name": "menu.material.navigation.sidenav",
+              "name": "sidenav",
               "type": "link"
             },
             {
               "route": "toolbar",
-              "name": "menu.material.navigation.toolbar",
+              "name": "toolbar",
               "type": "link"
             }
           ]
         },
         {
           "route": "",
-          "name": "menu.material.layout",
+          "name": "layout",
           "type": "sub",
           "children": [
             {
               "route": "card",
-              "name": "menu.material.layout.card",
+              "name": "card",
               "type": "link"
             },
             {
               "route": "divider",
-              "name": "menu.material.layout.divider",
+              "name": "divider",
               "type": "link"
             },
             {
               "route": "expansion",
-              "name": "menu.material.layout.expansion-panel",
+              "name": "expansion-panel",
               "type": "link"
             },
             {
               "route": "grid-list",
-              "name": "menu.material.layout.grid-list",
+              "name": "grid-list",
               "type": "link"
             },
             {
               "route": "list",
-              "name": "menu.material.layout.list",
+              "name": "list",
               "type": "link"
             },
             {
               "route": "stepper",
-              "name": "menu.material.layout.stepper",
+              "name": "stepper",
               "type": "link"
             },
             {
               "route": "tab",
-              "name": "menu.material.layout.tab",
+              "name": "tab",
               "type": "link"
             },
             {
               "route": "tree",
-              "name": "menu.material.layout.tree",
+              "name": "tree",
               "type": "link"
             }
           ]
         },
         {
           "route": "",
-          "name": "menu.material.buttons-indicators",
+          "name": "buttons-indicators",
           "type": "sub",
           "children": [
             {
               "route": "button",
-              "name": "menu.material.buttons-indicators.button",
+              "name": "button",
               "type": "link"
             },
             {
               "route": "button-toggle",
-              "name": "menu.material.buttons-indicators.button-toggle",
+              "name": "button-toggle",
               "type": "link"
             },
             {
               "route": "badge",
-              "name": "menu.material.buttons-indicators.badge",
+              "name": "badge",
               "type": "link"
             },
             {
               "route": "chips",
-              "name": "menu.material.buttons-indicators.chips",
+              "name": "chips",
               "type": "link"
             },
             {
               "route": "icon",
-              "name": "menu.material.buttons-indicators.icon",
+              "name": "icon",
               "type": "link"
             },
             {
               "route": "progress-spinner",
-              "name": "menu.material.buttons-indicators.progress-spinner",
+              "name": "progress-spinner",
               "type": "link"
             },
             {
               "route": "progress-bar",
-              "name": "menu.material.buttons-indicators.progress-bar",
+              "name": "progress-bar",
               "type": "link"
             },
             {
               "route": "ripple",
-              "name": "menu.material.buttons-indicators.ripple",
+              "name": "ripple",
               "type": "link"
             }
           ]
         },
         {
           "route": "",
-          "name": "menu.material.popups-modals",
+          "name": "popups-modals",
           "type": "sub",
           "children": [
             {
               "route": "bottom-sheet",
-              "name": "menu.material.popups-modals.bottom-sheet",
+              "name": "bottom-sheet",
               "type": "link"
             },
             {
               "route": "dialog",
-              "name": "menu.material.popups-modals.dialog",
+              "name": "dialog",
               "type": "link"
             },
             {
               "route": "snack-bar",
-              "name": "menu.material.popups-modals.snackbar",
+              "name": "snackbar",
               "type": "link"
             },
             {
               "route": "tooltip",
-              "name": "menu.material.popups-modals.tooltip",
+              "name": "tooltip",
               "type": "link"
             }
           ]
         },
         {
           "route": "data-table",
-          "name": "menu.material.data-table",
+          "name": "data-table",
           "type": "sub",
           "children": [
             {
               "route": "paginator",
-              "name": "menu.material.data-table.paginator",
+              "name": "paginator",
               "type": "link"
             },
             {
               "route": "sort",
-              "name": "menu.material.data-table.sort",
+              "name": "sort",
               "type": "link"
             },
             {
               "route": "table",
-              "name": "menu.material.data-table.table",
+              "name": "table",
               "type": "link"
             }
           ]
@@ -255,43 +255,43 @@
     },
     {
       "route": "media",
-      "name": "menu.media",
+      "name": "media",
       "type": "sub",
       "icon": "image",
       "children": [
         {
           "route": "gallery",
-          "name": "Gallery",
+          "name": "gallery",
           "type": "link"
         }
       ]
     },
     {
       "route": "forms",
-      "name": "menu.forms",
+      "name": "forms",
       "type": "sub",
       "icon": "description",
       "children": [
         {
           "route": "elements",
-          "name": "menu.forms.form-elements",
+          "name": "form-elements",
           "type": "link"
         },
         {
           "route": "ng-select",
-          "name": "menu.forms.ng-select",
+          "name": "ng-select",
           "type": "link"
         },
         {
           "route": "dynamic",
-          "name": "menu.forms.dynamic-form",
+          "name": "dynamic-form",
           "type": "link"
         }
       ]
     },
     {
       "route": "tables",
-      "name": "menu.tables",
+      "name": "tables",
       "type": "sub",
       "icon": "format_line_spacing",
       "label": {
@@ -301,76 +301,76 @@
       "children": [
         {
           "route": "kitchen-sink",
-          "name": "menu.tables.kitchen-sink",
+          "name": "kitchen-sink",
           "type": "link"
         },
         {
           "route": "remote-data",
-          "name": "menu.tables.remote-data",
+          "name": "remote-data",
           "type": "link"
         }
       ]
     },
     {
       "route": "profile",
-      "name": "menu.profile",
+      "name": "profile",
       "type": "sub",
       "icon": "person",
       "children": [
         {
           "route": "overview",
-          "name": "menu.profile.overview",
+          "name": "overview",
           "type": "link"
         },
         {
           "route": "settings",
-          "name": "menu.profile.settings",
+          "name": "settings",
           "type": "link"
         }
       ]
     },
     {
       "route": "https://ng-matero.github.io/extensions/",
-      "name": "menu.extensions",
+      "name": "extensions",
       "type": "extTabLink",
       "icon": "extension",
       "label": {
         "color": "indigo-500",
-        "value": "new"
+        "value": "v9"
       }
     },
     {
       "route": "sessions",
-      "name": "menu.sessions",
+      "name": "sessions",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
           "route": "403",
-          "name": "menu.sessions.403",
+          "name": "403",
           "type": "link"
         },
         {
           "route": "404",
-          "name": "menu.sessions.404",
+          "name": "404",
           "type": "link"
         },
         {
           "route": "500",
-          "name": "menu.sessions.500",
+          "name": "500",
           "type": "link"
         }
       ]
     },
     {
       "route": "helpers",
-      "name": "menu.helpers",
+      "name": "helpers",
       "type": "sub",
       "icon": "all_inbox",
       "children": [
         {
           "route": "css-class",
-          "name": "menu.helpers.css-class",
+          "name": "css-class",
           "type": "link"
         }
       ]

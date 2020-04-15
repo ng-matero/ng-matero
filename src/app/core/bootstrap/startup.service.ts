@@ -20,6 +20,7 @@ export class StartupService {
         )
         .subscribe(
           (res: any) => {
+            this.menuService.recursMenuForTranslation(res.menu, 'menu');
             this.menuService.set(res.menu);
           },
           () => {},
