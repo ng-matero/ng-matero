@@ -1,8 +1,8 @@
 {
   "menu": [
     {
-      "state": "dashboard",
-      "name": "Dashboard",
+      "route": "dashboard",
+      "name": "dashboard",
       "type": "link",
       "icon": "dashboard",
       "badge": {
@@ -11,242 +11,242 @@
       }
     },
     {
-      "state": "design",
-      "name": "Design",
+      "route": "design",
+      "name": "design",
       "type": "sub",
       "icon": "color_lens",
       "children": [
         {
-          "state": "colors",
-          "name": "Color System",
+          "route": "colors",
+          "name": "colors",
           "type": "link"
         },
         {
-          "state": "icons",
-          "name": "Icons",
+          "route": "icons",
+          "name": "icons",
           "type": "link"
         }
       ]
     },
     {
-      "state": "material",
-      "name": "Material",
+      "route": "material",
+      "name": "material",
       "type": "sub",
       "icon": "favorite",
       "children": [
         {
-          "state": "",
-          "name": "Form Controls",
+          "route": "",
+          "name": "form-controls",
           "type": "sub",
           "children": [
             {
-              "state": "autocomplete",
-              "name": "Autocomplete",
+              "route": "autocomplete",
+              "name": "autocomplete",
               "type": "link"
             },
             {
-              "state": "checkbox",
-              "name": "Checkbox",
+              "route": "checkbox",
+              "name": "checkbox",
               "type": "link"
             },
             {
-              "state": "datepicker",
-              "name": "Datepicker",
+              "route": "datepicker",
+              "name": "datepicker",
               "type": "link"
             },
             {
-              "state": "form-field",
-              "name": "Form Field",
+              "route": "form-field",
+              "name": "form-field",
               "type": "link"
             },
             {
-              "state": "input",
-              "name": "Input",
+              "route": "input",
+              "name": "input",
               "type": "link"
             },
             {
-              "state": "radio",
-              "name": "Radio",
+              "route": "radio",
+              "name": "radio",
               "type": "link"
             },
             {
-              "state": "select",
-              "name": "Select",
+              "route": "select",
+              "name": "select",
               "type": "link"
             },
             {
-              "state": "slider",
-              "name": "Slider",
+              "route": "slider",
+              "name": "slider",
               "type": "link"
             },
             {
-              "state": "slide-toggle",
-              "name": "Slide Toggle",
+              "route": "slide-toggle",
+              "name": "slide-toggle",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Navigation",
+          "route": "",
+          "name": "navigation",
           "type": "sub",
           "children": [
             {
-              "state": "menu",
-              "name": "Menu",
+              "route": "menu",
+              "name": "menu",
               "type": "link"
             },
             {
-              "state": "sidenav",
-              "name": "Sidenav",
+              "route": "sidenav",
+              "name": "sidenav",
               "type": "link"
             },
             {
-              "state": "toolbar",
-              "name": "Toolbar",
+              "route": "toolbar",
+              "name": "toolbar",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Layout",
+          "route": "",
+          "name": "layout",
           "type": "sub",
           "children": [
             {
-              "state": "card",
-              "name": "Card",
+              "route": "card",
+              "name": "card",
               "type": "link"
             },
             {
-              "state": "divider",
-              "name": "Divider",
+              "route": "divider",
+              "name": "divider",
               "type": "link"
             },
             {
-              "state": "expansion",
-              "name": "Expansion Panel",
+              "route": "expansion",
+              "name": "expansion-panel",
               "type": "link"
             },
             {
-              "state": "grid-list",
-              "name": "Grid List",
+              "route": "grid-list",
+              "name": "grid-list",
               "type": "link"
             },
             {
-              "state": "list",
-              "name": "List",
+              "route": "list",
+              "name": "list",
               "type": "link"
             },
             {
-              "state": "stepper",
-              "name": "Stepper",
+              "route": "stepper",
+              "name": "stepper",
               "type": "link"
             },
             {
-              "state": "tab",
-              "name": "Tab",
+              "route": "tab",
+              "name": "tab",
               "type": "link"
             },
             {
-              "state": "tree",
-              "name": "Tree",
+              "route": "tree",
+              "name": "tree",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Buttons & Indicators",
+          "route": "",
+          "name": "buttons-indicators",
           "type": "sub",
           "children": [
             {
-              "state": "button",
-              "name": "Button",
+              "route": "button",
+              "name": "button",
               "type": "link"
             },
             {
-              "state": "button-toggle",
-              "name": "Button Toggle",
+              "route": "button-toggle",
+              "name": "button-toggle",
               "type": "link"
             },
             {
-              "state": "badge",
-              "name": "Badge",
+              "route": "badge",
+              "name": "badge",
               "type": "link"
             },
             {
-              "state": "chips",
-              "name": "Chips",
+              "route": "chips",
+              "name": "chips",
               "type": "link"
             },
             {
-              "state": "icon",
-              "name": "Icon",
+              "route": "icon",
+              "name": "icon",
               "type": "link"
             },
             {
-              "state": "progress-spinner",
-              "name": "Progress Spinner",
+              "route": "progress-spinner",
+              "name": "progress-spinner",
               "type": "link"
             },
             {
-              "state": "progress-bar",
-              "name": "Progress Bar",
+              "route": "progress-bar",
+              "name": "progress-bar",
               "type": "link"
             },
             {
-              "state": "ripple",
-              "name": "Ripple",
+              "route": "ripple",
+              "name": "ripple",
               "type": "link"
             }
           ]
         },
         {
-          "state": "",
-          "name": "Popups & Modals",
+          "route": "",
+          "name": "popups-modals",
           "type": "sub",
           "children": [
             {
-              "state": "bottom-sheet",
-              "name": "Bottom Sheet",
+              "route": "bottom-sheet",
+              "name": "bottom-sheet",
               "type": "link"
             },
             {
-              "state": "dialog",
-              "name": "Dialog",
+              "route": "dialog",
+              "name": "dialog",
               "type": "link"
             },
             {
-              "state": "snack-bar",
-              "name": "Snackbar",
+              "route": "snack-bar",
+              "name": "snackbar",
               "type": "link"
             },
             {
-              "state": "tooltip",
+              "route": "tooltip",
               "name": "tooltip",
               "type": "link"
             }
           ]
         },
         {
-          "state": "data-table",
-          "name": "Data Table",
+          "route": "data-table",
+          "name": "data-table",
           "type": "sub",
           "children": [
             {
-              "state": "paginator",
-              "name": "Paginator",
+              "route": "paginator",
+              "name": "paginator",
               "type": "link"
             },
             {
-              "state": "sort",
-              "name": "Sort",
+              "route": "sort",
+              "name": "sort",
               "type": "link"
             },
             {
-              "state": "table",
-              "name": "Table",
+              "route": "table",
+              "name": "table",
               "type": "link"
             }
           ]
@@ -254,44 +254,44 @@
       ]
     },
     {
-      "state": "media",
-      "name": "Media",
+      "route": "media",
+      "name": "media",
       "type": "sub",
       "icon": "image",
       "children": [
         {
-          "state": "gallery",
-          "name": "Gallery",
+          "route": "gallery",
+          "name": "gallery",
           "type": "link"
         }
       ]
     },
     {
-      "state": "forms",
-      "name": "Forms",
+      "route": "forms",
+      "name": "forms",
       "type": "sub",
       "icon": "description",
       "children": [
         {
-          "state": "elements",
-          "name": "Form Elements",
+          "route": "elements",
+          "name": "form-elements",
           "type": "link"
         },
         {
-          "state": "ng-select",
-          "name": "Ng Select",
+          "route": "ng-select",
+          "name": "ng-select",
           "type": "link"
         },
         {
-          "state": "dynamic",
-          "name": "Dynamic Form",
+          "route": "dynamic",
+          "name": "dynamic-form",
           "type": "link"
         }
       ]
     },
     {
-      "state": "tables",
-      "name": "Tables",
+      "route": "tables",
+      "name": "tables",
       "type": "sub",
       "icon": "format_line_spacing",
       "label": {
@@ -300,77 +300,77 @@
       },
       "children": [
         {
-          "state": "kitchen-sink",
-          "name": "Kitchen Sink",
+          "route": "kitchen-sink",
+          "name": "kitchen-sink",
           "type": "link"
         },
         {
-          "state": "remote-data",
-          "name": "Remote Data",
+          "route": "remote-data",
+          "name": "remote-data",
           "type": "link"
         }
       ]
     },
     {
-      "state": "profile",
-      "name": "Profile",
+      "route": "profile",
+      "name": "profile",
       "type": "sub",
       "icon": "person",
       "children": [
         {
-          "state": "overview",
-          "name": "Overview",
+          "route": "overview",
+          "name": "overview",
           "type": "link"
         },
         {
-          "state": "settings",
-          "name": "Settings",
+          "route": "settings",
+          "name": "settings",
           "type": "link"
         }
       ]
     },
     {
-      "state": "https://ng-matero.github.io/extensions/",
-      "name": "Extensions",
+      "route": "https://ng-matero.github.io/extensions/",
+      "name": "extensions",
       "type": "extTabLink",
       "icon": "extension",
       "label": {
         "color": "indigo-500",
-        "value": "new"
+        "value": "v9"
       }
     },
     {
-      "state": "sessions",
-      "name": "Sessions",
+      "route": "sessions",
+      "name": "sessions",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
-          "state": "403",
+          "route": "403",
           "name": "403",
           "type": "link"
         },
         {
-          "state": "404",
+          "route": "404",
           "name": "404",
           "type": "link"
         },
         {
-          "state": "500",
+          "route": "500",
           "name": "500",
           "type": "link"
         }
       ]
     },
     {
-      "state": "helpers",
-      "name": "Helpers",
+      "route": "helpers",
+      "name": "helpers",
       "type": "sub",
       "icon": "all_inbox",
       "children": [
         {
-          "state": "css-class",
-          "name": "CSS Class",
+          "route": "css-class",
+          "name": "css-class",
           "type": "link"
         }
       ]
