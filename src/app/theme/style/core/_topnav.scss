@@ -9,6 +9,12 @@
   .matero-topmenu {
     background: mat-color($background, app-bar);
     color: mat-color($foreground, text);
+
+    .mat-button {
+      &.active {
+        background-color: mat-color($background, focused-button);
+      }
+    }
   }
 }
 

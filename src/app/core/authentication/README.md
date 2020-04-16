@@ -1,3 +1,3 @@
 # Authentication
 
-The authentication codes will not be open sourced for some time.
+The authentication codes will be open sourced in the near future.
