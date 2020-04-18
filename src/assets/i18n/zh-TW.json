@@ -36,7 +36,7 @@
         "material.buttons-indicators.icon": "圖標",
         "material.buttons-indicators.progress-spinner": "進度圈",
         "material.buttons-indicators.progress-bar": "進度條",
-        "material.buttons-indicators.pripple": "水波",
+        "material.buttons-indicators.ripple": "水波",
         "material.popups-modals": "彈框與模態框",
         "material.popups-modals.bottom-sheet": "底部操作表",
         "material.popups-modals.dialog": "對話框",
@@ -65,5 +65,10 @@
         "sessions.500": "500",
         "helpers": "輔助工具",
         "helpers.css-class": "CSS 類"
+    },
+    "user": {
+        "profile": "個人信息",
+        "settings": "偏好設置",
+        "logout": "退出"
     }
 }

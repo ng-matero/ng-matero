@@ -16,15 +16,15 @@ import { Component } from '@angular/core';
     <mat-menu #menu="matMenu">
       <a routerLink="/profile/overview" mat-menu-item>
         <mat-icon>account_circle</mat-icon>
-        <span>Profile</span>
+        <span>{{ 'user.profile' | translate }}</span>
       </a>
       <a routerLink="/profile/settings" mat-menu-item>
         <mat-icon>settings</mat-icon>
-        <span>Settings</span>
+        <span>{{ 'user.settings' | translate }}</span>
       </a>
       <a routerLink="/auth/login" mat-menu-item>
         <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
+        <span>{{ 'user.logout' | translate }}</span>
       </a>
     </mat-menu>
   `,
