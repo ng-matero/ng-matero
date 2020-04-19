@@ -64,7 +64,7 @@ export class TablesKitchenSinkComponent implements OnInit {
   showToolbar = true;
   columnHideable = true;
   columnMovable = true;
-  rowHover = true;
+  rowHover = false;
   rowStriped = false;
   showPaginator = true;
   expandable = false;

@@ -28,11 +28,7 @@ export class TablesRemoteDataComponent implements OnInit {
     { header: 'Language', field: 'language' },
     { header: 'License', field: 'license.name' },
     { header: 'Home Page', field: 'homepage', type: 'link' },
-    {
-      header: 'Is forked',
-      field: 'fork',
-      formatter: (data: any) => JSON.stringify(data.fork),
-    },
+    { header: 'Is forked', field: 'fork', type: 'boolean' },
     {
       header: 'Archived',
       field: 'archived',
