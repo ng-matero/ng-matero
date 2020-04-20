@@ -1,0 +1,45 @@
+$row-hover-bg: #f2f2f2;
+$row-selected-bg: #f2f2f2;
+$row-odd-bg: #f7f7f7;
+$row-bg: #fff;
+
+$row-hover-bg-dark: #373737;
+$row-selected-bg-dark: #373737;
+$row-odd-bg-dark: #3b3b3b;
+$row-bg-dark: #424242;
+
+mtx-grid.mtx-grid {
+  .mat-table {
+    &.mat-table-striped {
+      .mat-row-odd {
+        background-color: $row-odd-bg;
+
+        @include dark {
+          background-color: $row-odd-bg-dark;
+        }
+      }
+    }
+
+    &.mat-table-hover {
+      .mat-row {
+        &:hover {
+          background-color: $row-hover-bg;
+
+          @include dark {
+            background-color: $row-hover-bg-dark;
+          }
+        }
+      }
+    }
+
+    .mat-row {
+      &.selected {
+        background-color: $row-selected-bg;
+
+        @include dark {
+          background-color: $row-selected-bg-dark;
+        }
+      }
+    }
+  }
+}
