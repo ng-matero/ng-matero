@@ -36,7 +36,7 @@
         "material.buttons-indicators.icon": "Icon",
         "material.buttons-indicators.progress-spinner": "Progress Spinner",
         "material.buttons-indicators.progress-bar": "Progress Bar",
-        "material.buttons-indicators.pripple": "Ripple",
+        "material.buttons-indicators.ripple": "Ripple",
         "material.popups-modals": "Popups & Modals",
         "material.popups-modals.bottom-sheet": "Bottom Sheet",
         "material.popups-modals.dialog": "Dialog",
@@ -65,5 +65,10 @@
         "sessions.500": "500",
         "helpers": "helpers",
         "helpers.css-class": "CSS Class"
+    },
+    "user": {
+        "profile": "profile",
+        "settings": "settings",
+        "logout": "logout"
     }
 }

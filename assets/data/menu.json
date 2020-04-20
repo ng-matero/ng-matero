@@ -125,7 +125,7 @@
             },
             {
               "route": "expansion",
-              "name": "expansion-panel",
+              "name": "expansion",
               "type": "link"
             },
             {
