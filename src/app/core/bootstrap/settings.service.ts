@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { AppSettings, defaults } from '../settings';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SettingsService {
-  private _notify$ = new Subject<any>();
-
   private _options = defaults;
 
   get notify(): Observable<any> {
     return this._notify$.asObservable();
   }
+  private _notify$ = new BehaviorSubject<any>({});
 
   setLayout(options?: AppSettings): AppSettings {
     this._options = Object.assign(defaults, options);
@@ -27,8 +26,8 @@ export class SettingsService {
     return this._options;
   }
 
-  setLanguage(language: string) {
-    this._options.language = language;
-    this._notify$.next({ language });
+  setLanguage(lang: string) {
+    this._options.language = lang;
+    this._notify$.next({ lang });
   }
 }

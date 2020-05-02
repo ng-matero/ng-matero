@@ -56,7 +56,7 @@ export class MenuService {
   // TODO:
   getMenuLevel(routeArr: string[]): string[] {
     const tmpArr = [];
-    this.menu.value.map(item => {
+    this.menu.value.forEach(item => {
       if (item.route === routeArr[0]) {
         tmpArr.push(item.name);
         // Level1
