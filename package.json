@@ -78,10 +78,10 @@
     "husky": "^4.2.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.3.0",
+    "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
-    "karma-jasmine": "~2.0.1",
+    "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "lint-staged": "^10.0.7",
     "parse5": "~5.1.1",
@@ -94,7 +94,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.14.2",
     "ts-node": "~8.3.0",
-    "tslint": "~5.18.0",
-    "typescript": "~3.7.5"
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3"
   }
 }
