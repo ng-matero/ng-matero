@@ -144,7 +144,7 @@ function addScriptsToPackageJson() {
       'lint:ts',
       `tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'`
     );
-    addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss src/**/*.scss --fix`);
+    addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss 'src/**/*.scss' --fix`);
     addScriptToPackageJson(host, 'hmr', `ng serve --hmr -c hmr --disable-host-check`);
   };
 }
