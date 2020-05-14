@@ -27,6 +27,10 @@
 
   @include mat-elevation(2);
 
+  .mat-icon {
+    margin-top: -2px;
+  }
+
   .menu-icon {
     width: 18px;
     height: 18px;
