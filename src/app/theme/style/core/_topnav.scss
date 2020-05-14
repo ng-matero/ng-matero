@@ -21,9 +21,7 @@
 .matero-topmenu {
   position: sticky;
   z-index: 200;
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  padding: 8px;
 
   @include mat-elevation(2);
 
@@ -67,6 +65,11 @@
       margin-right: auto;
     }
   }
+
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    border-bottom: none;
+  }
 }
 
 .mat-menu-item {
@@ -79,11 +82,6 @@
       margin-right: auto;
     }
   }
-}
-
-.matero-topmenu-inner {
-  padding: 8px;
-  white-space: nowrap;
 }
 
 // Layout control

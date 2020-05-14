@@ -14,18 +14,18 @@ import { Component } from '@angular/core';
     </button>
 
     <mat-menu #menu="matMenu">
-      <a routerLink="/profile/overview" mat-menu-item>
+      <button routerLink="/profile/overview" mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>{{ 'user.profile' | translate }}</span>
-      </a>
-      <a routerLink="/profile/settings" mat-menu-item>
+      </button>
+      <button routerLink="/profile/settings" mat-menu-item>
         <mat-icon>settings</mat-icon>
         <span>{{ 'user.settings' | translate }}</span>
-      </a>
-      <a routerLink="/auth/login" mat-menu-item>
+      </button>
+      <button routerLink="/auth/login" mat-menu-item>
         <mat-icon>exit_to_app</mat-icon>
         <span>{{ 'user.logout' | translate }}</span>
-      </a>
+      </button>
     </mat-menu>
   `,
 })

@@ -35,7 +35,7 @@ $code-color: map-get($mat-red, A400);
 $code-font-size: $small-font-size !default;
 
 // Border
-$boder-color: rgba(0, 0, 0, .12);
+$boder-color: rgba(0, 0, 0, .12) !default;
 
 // Breakpoints
 //
