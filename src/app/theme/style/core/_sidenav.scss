@@ -79,7 +79,7 @@
       text-decoration: none;
     }
 
-    .menu-icon {
+    .mat-icon.menu-icon {
       width: 18px;
       height: 18px;
       margin-right: 16px;
@@ -90,6 +90,12 @@
         margin-left: 16px;
         margin-right: auto;
       }
+    }
+
+    .mat-icon.menu-caret {
+      display: block;
+      text-align: center;
+      transition: fast-out-slow(transform);
     }
 
     .menu-name,
@@ -105,12 +111,6 @@
 
     .menu-badge {
       border-radius: 10px;
-    }
-
-    .menu-caret {
-      display: block;
-      text-align: center;
-      transition: fast-out-slow(transform);
     }
 
     &.level-0 > li > a > .menu-name {

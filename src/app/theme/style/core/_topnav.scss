@@ -29,7 +29,7 @@
     margin-top: -2px;
   }
 
-  .menu-icon {
+  .mat-icon.menu-icon {
     width: 18px;
     height: 18px;
     margin-right: 8px;
@@ -38,6 +38,15 @@
 
     [dir='rtl'] & {
       margin-left: 8px;
+      margin-right: auto;
+    }
+  }
+
+  .mat-icon.menu-caret {
+    margin-right: -8px;
+
+    [dir='rtl'] & {
+      margin-left: -8px;
       margin-right: auto;
     }
   }
@@ -55,15 +64,6 @@
 
   .menu-badge {
     border-radius: 10px;
-  }
-
-  .menu-caret {
-    margin-right: -8px;
-
-    [dir='rtl'] & {
-      margin-left: -8px;
-      margin-right: auto;
-    }
   }
 
   .mat-tab-nav-bar,
