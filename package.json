@@ -36,10 +36,10 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
-    "@ng-matero/extensions": "^9.4.0",
+    "@ng-matero/extensions": "^9.4.2",
     "@ng-select/ng-select": "^4.0.0",
-    "@ngx-formly/core": "^5.5.15",
-    "@ngx-formly/material": "^5.5.15",
+    "@ngx-formly/core": "^5.6.2",
+    "@ngx-formly/material": "^5.6.2",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "~4.0.0",
     "apexcharts": "^3.18.1",
@@ -54,7 +54,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.4",
+    "@angular-devkit/build-angular": "^0.901.7",
     "@angular/cli": "~9.1.4",
     "@angular/compiler-cli": "~9.1.4",
     "@angular/language-service": "~9.1.4",
