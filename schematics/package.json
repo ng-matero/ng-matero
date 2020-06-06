@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/ng-matero/ng-matero/issues"
   },
-  "homepage": "https://github.com/ng-matero/ng-matero#readme",
+  "homepage": "https://ng-matero.github.io/ng-matero/",
   "scripts": {
     "build": "../node_modules/.bin/tsc -p tsconfig.json"
   },
