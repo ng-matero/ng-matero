@@ -54,9 +54,43 @@ export class MenuService {
   }
 
   // TODO:
+  //// -added
+  private  _isLeafItem(item:MenuChildrenItem):boolean {
+    //// if a menuItem is leaf
+    const cond0 = (item.route === undefined);
+    const cond1 = (item.children === undefined);
+    const cond2 = (!cond1 && item.children.length ===0);
+    return(cond0 || cond1 || cond2);
+  }
+
+
   getMenuLevel(routeArr: string[]): string[] {
-    const tmpArr = [];
+    let tmpArr = [];
     this.menu.value.forEach(item => {
+      //// breadth-first-traverse -modified
+      let unhandledLayer = [{item,parentNamePathList:[]}];
+      let depth = 0;
+      while(unhandledLayer.length>0) {
+          let nextUnhandledLayer = [];
+          for(const ele of unhandledLayer) {
+              const eachItem = ele.item;
+              const currentNamePathList = JSON.parse(JSON.stringify(ele.parentNamePathList)).concat(eachItem.name);
+              const isLeafCond = this._isLeafItem(eachItem);
+              if(routeArr[depth] === eachItem.route) {
+                  tmpArr = currentNamePathList;
+              } else {
+              }
+              if(isLeafCond) {
+              } else {
+                  const children = eachItem.children;
+                  const wrappedChildren = children.map(child=>({item:child,parentNamePathList:currentNamePathList}));
+                  nextUnhandledLayer = nextUnhandledLayer.concat(wrappedChildren);
+              }
+          }
+          unhandledLayer = nextUnhandledLayer;
+          depth = depth + 1;
+      }
+      /* -deleted
       if (item.route === routeArr[0]) {
         tmpArr.push(item.name);
         // Level1
@@ -85,6 +119,7 @@ export class MenuService {
           });
         }
       }
+      */
     });
     return tmpArr;
   }
