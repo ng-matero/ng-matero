@@ -4,10 +4,10 @@ import { Person, DataService } from '../data.service';
 
 @Component({
   selector: 'app-forms-selects',
-  templateUrl: './selects.component.html',
+  templateUrl: './select.component.html',
   providers: [DataService],
 })
-export class FormsSelectsComponent implements OnInit {
+export class FormsSelectComponent implements OnInit {
   // Data source
   people$: Observable<Person[]>;
   people: Person[] = [];

@@ -4,7 +4,9 @@ import { catchError } from 'rxjs/operators';
 
 import { MenuService } from './menu.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class StartupService {
   constructor(private menuService: MenuService, private http: HttpClient) {}
 

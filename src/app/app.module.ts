@@ -50,7 +50,6 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
       useClass: DefaultInterceptor,
       multi: true,
     },
-    StartupService,
     {
       provide: APP_INITIALIZER,
       useFactory: StartupServiceFactory,
