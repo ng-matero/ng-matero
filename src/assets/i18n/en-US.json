@@ -66,9 +66,37 @@
     "helpers": "helpers",
     "helpers.css-class": "CSS Class"
   },
+  "validations": {
+    "required": "This field is required",
+    "minlength": "Should have atleast {{number}} characters",
+    "maxlength": "This value should be less than {{number}} characters",
+    "min": "This value should be more than {{number}}",
+    "max": "This value should be less than {{number}}",
+    "exist": "The {{value}} has exists",
+    "inconsistent": "Inconsistent with {{value}}"
+  },
   "user": {
     "profile": "profile",
     "settings": "settings",
     "logout": "logout"
+  },
+  "login": {
+    "title": "Welcome Back",
+    "username": "Username",
+    "password": "Password",
+    "remember-me": "Remember Me",
+    "login": "Login",
+    "have-no-account": "Don't have an account",
+    "create-one": "Click here to create one",
+    "please-enter": "Please enter"
+  },
+  "register": {
+    "welcome": "Welcome",
+    "title": "It only takes a few seconds to create your account",
+    "confirm-password": "Confirm Password",
+    "agree": "I have read and agree to the terms of service",
+    "have-an-account": "Already have an account",
+    "signin": "Sign in",
+    "register": "Create account"
   }
 }

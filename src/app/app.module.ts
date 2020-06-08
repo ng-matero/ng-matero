@@ -24,6 +24,11 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+import { TranslateLangService } from '@core';
+export function TranslateLangServiceFactory(translateLangService: TranslateLangService) {
+  return () => translateLangService.load();
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -48,6 +53,12 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DefaultInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: TranslateLangServiceFactory,
+      deps: [TranslateLangService],
       multi: true,
     },
     {

@@ -1,33 +1,36 @@
 <div class="w-full h-full" fxLayout="row wrap" fxLayoutAlign="center center">
   <mat-card class="mat-elevation-z4 m-b-0" style="max-width: 380px;">
-    <mat-card-title class="text-center m-b-24">Welcome Back!</mat-card-title>
+    <mat-card-title class="text-center m-b-24">{{'login.title' | translate}}!</mat-card-title>
     <mat-card-content>
       <form class="form-field-full" [formGroup]="loginForm">
 
         <mat-form-field appearance="outline">
-          <mat-label>Username: ng-matero</mat-label>
+          <mat-label>{{'login.username' | translate}}: ng-matero</mat-label>
           <input matInput placeholder="ng-matero" formControlName="username" required>
-          <mat-error *ngIf="username.invalid">Please enter <strong>ng-matero</strong></mat-error>
+          <mat-error *ngIf="username.invalid">
+            {{'login.please-enter' | translate}} <strong>ng-matero</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Password: ng-matero</mat-label>
+          <mat-label>{{'login.password' | translate}}: ng-matero</mat-label>
           <input matInput placeholder="ng-matero" type="password"
                  formControlName="password" required>
-          <mat-error *ngIf="password.invalid">Please enter <strong>ng-matero</strong></mat-error>
+          <mat-error *ngIf="password.invalid">
+            {{'login.please-enter' | translate}} <strong>ng-matero</strong>
+          </mat-error>
         </mat-form-field>
 
         <div class="m-y-16" fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-checkbox>Remember Me</mat-checkbox>
-          <!-- <a href="">Forgot Password?</a> -->
+          <mat-checkbox>{{'login.remember-me' | translate}}</mat-checkbox>
         </div>
 
         <button class="w-full" mat-raised-button color="primary"
                 [disabled]="loginForm.invalid"
-                (click)="login()">Login</button>
+                (click)="login()">{{'login.login' | translate}}</button>
 
-        <div class="m-t-16">Don't have an account?
-          <a routerLink="/auth/register">Click here to create one</a>
+        <div class="m-t-16">{{'login.have-no-account' | translate}}?
+          <a routerLink="/auth/register">{{'login.create-one' | translate}}</a>
         </div>
       </form>
     </mat-card-content>
