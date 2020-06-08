@@ -62,33 +62,62 @@ export class MenuService {
     const cond2 = (!cond1 && item.children.length ===0);
     return(cond0 || cond1 || cond2);
   }
+  private _deepcopyJsonObj(jobj:any):any {
+    //// deepcop object-could-be-jsonized
+    return(JSON.parse(JSON.stringify(jobj)));
+  }
+  private _jsonObjEqual(jobj0:any,jobj1:any):boolean {
+    //// if two objects-could-be-jsonized equal
+    const cond = (JSON.stringify(jobj0) === JSON.stringify(jobj1));
+    return(cond);
+  }
 
+  private _routeEqual(routeArr:Array<string>,realRouteArr:Array<string>):boolean {
+    //// if routeArr equals realRouteArr(after remove empty-route-element)
+    realRouteArr = this._deepcopyJsonObj(realRouteArr);
+    realRouteArr = realRouteArr.filter(r=>(r!==''));
+    return(this._jsonObjEqual(routeArr,realRouteArr));
+  }
 
   getMenuLevel(routeArr: string[]): string[] {
     let tmpArr = [];
     this.menu.value.forEach(item => {
       //// breadth-first-traverse -modified
-      let unhandledLayer = [{item,parentNamePathList:[]}];
-      let depth = 0;
+      let unhandledLayer = [
+        {item,parentNamePathList:[],realRouteArr:[]}
+      ];
       while(unhandledLayer.length>0) {
           let nextUnhandledLayer = [];
           for(const ele of unhandledLayer) {
               const eachItem = ele.item;
-              const currentNamePathList = JSON.parse(JSON.stringify(ele.parentNamePathList)).concat(eachItem.name);
-              const isLeafCond = this._isLeafItem(eachItem);
-              if(routeArr[depth] === eachItem.route) {
+              const currentNamePathList = this._deepcopyJsonObj(ele.parentNamePathList).concat(eachItem.name);
+              const currentRealRouteArr =  this._deepcopyJsonObj(ele.realRouteArr).concat(eachItem.route);
+              //// compare the full Array
+              //// for expandable
+              const cond = this._routeEqual(routeArr,currentRealRouteArr);
+              if(cond) {
                   tmpArr = currentNamePathList;
+                  break;
               } else {
               }
+              ////
+              const isLeafCond = this._isLeafItem(eachItem);
               if(isLeafCond) {
               } else {
                   const children = eachItem.children;
-                  const wrappedChildren = children.map(child=>({item:child,parentNamePathList:currentNamePathList}));
+                  const wrappedChildren = children.map(
+                      child=>(
+                        {
+                          item:child,
+                          parentNamePathList:currentNamePathList,
+                          realRouteArr:currentRealRouteArr
+                        }
+                      )
+                  );
                   nextUnhandledLayer = nextUnhandledLayer.concat(wrappedChildren);
               }
           }
           unhandledLayer = nextUnhandledLayer;
-          depth = depth + 1;
       }
       /* -deleted
       if (item.route === routeArr[0]) {
