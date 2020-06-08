@@ -6,9 +6,9 @@ import { MenuService } from '@core';
   templateUrl: './topmenu.component.html',
 })
 export class TopmenuComponent implements OnInit {
-  menus = this.menuService.getAll();
+  menus = this._menu.getAll();
 
-  constructor(public menuService: MenuService) {}
+  constructor(public _menu: MenuService) {}
 
   ngOnInit() {}
 
