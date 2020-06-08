@@ -6,10 +6,10 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  reactiveForm: FormGroup;
+  registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.reactiveForm = this.fb.group({
+  constructor(private _fb: FormBuilder) {
+    this.registerForm = this._fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [this.confirmValidator]],
@@ -18,10 +18,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
-  confirmValidator = (control: FormControl): { [s: string]: boolean } => {
+  confirmValidator = (control: FormControl): { [k: string]: boolean } => {
     if (!control.value) {
       return { error: true, required: true };
-    } else if (control.value !== this.reactiveForm.controls.password.value) {
+    } else if (control.value !== this.registerForm.controls.password.value) {
       return { error: true, confirm: true };
     }
     return {};

@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { AppSettings, defaults } from '../settings';
+import { LocalStorageService } from '@shared/services/storage.service';
+
+export const USER_KEY = 'usr';
+
+export interface User {
+  name: string;
+  id: number;
+  avatar: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +22,8 @@ export class SettingsService {
   }
   private _notify$ = new BehaviorSubject<any>({});
 
+  constructor(private _store: LocalStorageService) {}
+
   setLayout(options?: AppSettings): AppSettings {
     this._options = Object.assign(defaults, options);
     return this._options;
@@ -24,6 +35,14 @@ export class SettingsService {
 
   getOptions(): AppSettings {
     return this._options;
+  }
+
+  setUser(value: User) {
+    this._store.set(USER_KEY, value);
+  }
+
+  removeUser() {
+    this._store.remove(USER_KEY);
   }
 
   setLanguage(lang: string) {

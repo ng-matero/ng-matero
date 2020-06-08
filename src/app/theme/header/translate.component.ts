@@ -15,13 +15,7 @@ import { SettingsService } from '@core';
       </button>
     </mat-menu>
   `,
-  styles: [
-    `
-      .flag-icon {
-        margin-right: 8px;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class TranslateComponent {
   langs = {

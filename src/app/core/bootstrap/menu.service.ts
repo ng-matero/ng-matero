@@ -28,25 +28,25 @@ export interface Menu {
   providedIn: 'root',
 })
 export class MenuService {
-  private menu: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
+  private _menu$: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
 
   getAll(): Observable<Menu[]> {
-    return this.menu.asObservable();
+    return this._menu$.asObservable();
   }
 
   set(menu: Menu[]): Observable<Menu[]> {
-    this.menu.next(menu);
-    return this.menu.asObservable();
+    this._menu$.next(menu);
+    return this._menu$.asObservable();
   }
 
   add(menu: Menu) {
-    const tmpMenu = this.menu.value;
+    const tmpMenu = this._menu$.value;
     tmpMenu.push(menu);
-    this.menu.next(tmpMenu);
+    this._menu$.next(tmpMenu);
   }
 
   reset() {
-    this.menu.next([]);
+    this._menu$.next([]);
   }
 
   getMenuItemName(routeArr: string[]): string {
@@ -56,7 +56,7 @@ export class MenuService {
   // TODO:
   getMenuLevel(routeArr: string[]): string[] {
     const tmpArr = [];
-    this.menu.value.forEach(item => {
+    this._menu$.value.forEach(item => {
       if (item.route === routeArr[0]) {
         tmpArr.push(item.name);
         // Level1
