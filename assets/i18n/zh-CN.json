@@ -66,9 +66,36 @@
     "helpers": "辅助工具",
     "helpers.css-class": "CSS 类"
   },
+  "validations": {
+    "required": "该字段必填",
+    "minlength": "必须大于 {{number}} 个字符",
+    "maxlength": "必须小于 {{number}} 个字符",
+    "min": "值必须大于 {{number}}",
+    "max": "值必须小于 {{number}}",
+    "exist": "{{value}} 已存在",
+    "inconsistent": "与 {{value}} 不一致"
+  },
   "user": {
     "profile": "个人信息",
     "settings": "偏好设置",
     "logout": "退出"
+  },
+  "login": {
+    "title": "欢迎回来",
+    "username": "用户名",
+    "password": "密码",
+    "remember-me": "记住我",
+    "login": "登入",
+    "have-no-account": "没有账号",
+    "create-one": "点此创建一个",
+    "please-enter": "请输入"
+  },
+  "register": {
+    "welcome": "欢迎",
+    "title": "创建您的帐户只需几秒钟",
+    "confirm-password": "确认密码",
+    "agree": "我已阅读并同意服务条款",
+    "have-an-account": "已经有帐号了",
+    "register": "创建账号"
   }
 }
