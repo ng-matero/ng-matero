@@ -7,14 +7,14 @@
  */
 
 import { Rule } from '@angular-devkit/schematics';
-import { createUpgradeRule, TargetVersion } from '@angular/cdk/schematics';
+import { createMigrationSchematicRule, TargetVersion } from '@angular/cdk/schematics';
 import * as chalk from 'chalk';
 
 import { materialUpgradeData } from './upgrade-data';
 
 /** Entry point for the migration schematics with target of Ng-Matero v0 */
 export function updateToV0() {
-  console.log(chalk.green('The \`ng update\` is working!'));
+  console.log(chalk.green('The `ng update` is working!'));
 }
 
 /** Function that will be called when the migration completed. */
