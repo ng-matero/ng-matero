@@ -45,7 +45,7 @@ export class AccordionDirective implements AfterContentChecked {
       if (link.group) {
         const routeUrl = this._router.url;
         const currentUrl = routeUrl.split('/');
-        if (currentUrl.indexOf(link.group) > 0) {
+        if (currentUrl.includes(link.group)) {
           link.open = true;
           this.closeOtherLinks(link);
         }
