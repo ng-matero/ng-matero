@@ -9,7 +9,8 @@ import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { AppComponent } from './app.component';
 
-import { DefaultInterceptor } from '@core';
+import { httpInterceptorProviders } from '@core/interceptors';
+
 import { StartupService } from '@core';
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
@@ -50,11 +51,7 @@ export function TranslateLangServiceFactory(translateLangService: TranslateLangS
     }),
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: DefaultInterceptor,
-      multi: true,
-    },
+    httpInterceptorProviders,
     {
       provide: APP_INITIALIZER,
       useFactory: TranslateLangServiceFactory,

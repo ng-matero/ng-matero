@@ -22,6 +22,14 @@ export class SettingsService {
   }
   private _notify$ = new BehaviorSubject<any>({});
 
+  get user() {
+    return this._store.get(USER_KEY);
+  }
+
+  get language() {
+    return this._options.language;
+  }
+
   constructor(private _store: LocalStorageService) {}
 
   setLayout(options?: AppSettings): AppSettings {
