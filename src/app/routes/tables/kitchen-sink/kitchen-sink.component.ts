@@ -1,17 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { MtxDialog } from '@ng-matero/extensions/dialog';
+import { MtxGridColumn } from '@ng-matero/extensions';
 
-import { TablesKitchenSinkService } from './kitchen-sink.service';
 import { TablesDataService } from '../data.service';
 import { TablesKitchenSinkEditComponent } from './edit/edit.component';
-import { MtxGridColumn } from '@ng-matero/extensions';
 
 @Component({
   selector: 'app-table-kitchen-sink',
   templateUrl: './kitchen-sink.component.html',
   styleUrls: ['./kitchen-sink.component.scss'],
-  providers: [TablesKitchenSinkService, TablesDataService],
+  providers: [TablesDataService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablesKitchenSinkComponent implements OnInit {
@@ -70,9 +69,8 @@ export class TablesKitchenSinkComponent implements OnInit {
   expandable = false;
 
   constructor(
-    private kitchenSrv: TablesKitchenSinkService,
-    private dataSrv: TablesDataService,
     private cdr: ChangeDetectorRef,
+    private dataSrv: TablesDataService,
     public dialog: MtxDialog
   ) {}
 

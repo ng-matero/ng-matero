@@ -31,7 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     // Only intercept API url
     if (!url.includes('/api/')) {
-      return next.handle(req.clone({})).pipe();
+      return next.handle(req);
     }
 
     // All APIs need JWT authorization
