@@ -17,7 +17,7 @@ import { TokenService } from '../authentication/token.service';
 import { SettingsService } from '@core/bootstrap/settings.service';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class DefaultInterceptor implements HttpInterceptor {
   constructor(
     private _router: Router,
     private _toastr: ToastrService,
@@ -36,52 +36,54 @@ export class AuthInterceptor implements HttpInterceptor {
 
     // All APIs need JWT authorization
     const headers = {
-      Accept: 'application/json',
-      // 'Accept-Language': this._settings.language,
-      // 'Authorization': `Bearer ${this._token.get().token}`,
+      'Accept': 'application/json',
+      'Accept-Language': this._settings.language,
+      'Authorization': `Bearer ${this._token.get().token}`,
     };
 
     const newReq = req.clone({ url, setHeaders: headers, withCredentials: true });
 
     return next.handle(newReq).pipe(
-      mergeMap((event: any) => {
-        //  error:   { code: **, msg: 'error' }
-        //  success: { code: 0,  msg: 'success', data: {} }
-        if (event instanceof HttpResponse) {
-          const body: any = event.body;
-          if (body && body.code !== 0) {
-            if (body.msg && body.msg !== '') {
-              this._toastr.error(body.msg);
-            }
-            return throwError({});
-          } else {
-            return of(event);
-          }
-        }
-        // Pass down event if everything is OK
-        return of(event);
-      }),
+      mergeMap((event: HttpEvent<any>) => this._handleOkReq(event)),
       catchError((error: HttpErrorResponse) => this._handleErrorReq(error))
     );
   }
 
-  private _goTo(url: string) {
+  private _goto(url: string) {
     setTimeout(() => this._router.navigateByUrl(url));
+  }
+
+  private _handleOkReq(event: HttpEvent<any>): Observable<any> {
+    if (event instanceof HttpResponse) {
+      const body: any = event.body;
+      // failure: { code: **, msg: 'failure' }
+      // success: { code: 0,  msg: 'success', data: {} }
+      if (body && body.code !== 0) {
+        if (body.msg && body.msg !== '') {
+          this._toastr.error(body.msg);
+        }
+        return throwError([]);
+      } else {
+        return of(event);
+      }
+    }
+    // Pass down event if everything is OK
+    return of(event);
   }
 
   private _handleErrorReq(error: HttpErrorResponse): Observable<never> {
     switch (error.status) {
       case 401:
-        this._goTo(`/auth/login`);
+        this._goto(`/auth/login`);
         break;
       case 403:
       case 404:
       case 500:
-        this._goTo(`/sessions/${error.status}`);
+        this._goto(`/sessions/${error.status}`);
         break;
       default:
         if (error instanceof HttpErrorResponse) {
-          console.warn(error);
+          console.error('ERROR', error);
           this._toastr.error(error.error.msg || `${error.status} ${error.statusText}`);
         }
         break;

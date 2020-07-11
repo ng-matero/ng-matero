@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
 import { MenuService } from './menu.service';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class StartupService {
         .pipe(
           catchError(res => {
             resolve();
-            return res;
+            return throwError(res);
           })
         )
         .subscribe(

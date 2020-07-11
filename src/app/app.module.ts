@@ -1,5 +1,5 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -9,15 +9,11 @@ import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { AppComponent } from './app.component';
 
-import { httpInterceptorProviders } from '@core/interceptors';
-
-import { StartupService } from '@core';
-export function StartupServiceFactory(startupService: StartupService) {
-  return () => startupService.load();
-}
-
 import { FormlyModule } from '@ngx-formly/core';
 import { ToastrModule } from 'ngx-toastr';
+
+import { httpInterceptorProviders } from '@core/interceptors';
+
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // Required for AOT compilation
@@ -28,6 +24,11 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 import { TranslateLangService } from '@core';
 export function TranslateLangServiceFactory(translateLangService: TranslateLangService) {
   return () => translateLangService.load();
+}
+
+import { StartupService } from '@core';
+export function StartupServiceFactory(startupService: StartupService) {
+  return () => startupService.load();
 }
 
 @NgModule({
