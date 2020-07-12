@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { MenuService } from './menu.service';
-import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
