@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'error-code',
@@ -6,12 +6,8 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
   styleUrls: ['./error-code.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ErrorCodeComponent implements OnInit {
+export class ErrorCodeComponent {
   @Input() code = '';
   @Input() title = '';
   @Input() message = '';
-
-  constructor() {}
-
-  ngOnInit() {}
 }

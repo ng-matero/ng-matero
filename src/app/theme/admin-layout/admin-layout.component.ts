@@ -121,7 +121,8 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.resetCollapsedState();
   }
 
-  // Demo purposes only
+  /** Demo purposes only */
+
   receiveOptions(options: AppSettings): void {
     this.options = options;
     this.toggleDarkTheme(options);

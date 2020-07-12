@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-error-500',
@@ -11,8 +11,4 @@ import { Component, OnInit } from '@angular/core';
     </error-code>
   `,
 })
-export class Error500Component implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class Error500Component {}
