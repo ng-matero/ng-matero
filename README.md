@@ -28,12 +28,14 @@ Ng-Matero is an Angular admin template made with Material components.
 - Material Extensions
 - Schematics support
 - Modern design style
-- Various layout
+- Multiple admin layout
 - Powerful color system
 - Rich helpers
-- Common Page Templates
+- Dark mode support
 - RTL support
 - Internationalization
+- Authentication
+- HTTP interceptors
 
 ## 📖 Documents
 
