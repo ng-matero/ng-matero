@@ -4,16 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PreloaderService {
-  private selector = 'globalLoader';
+  private _selector = 'globalLoader';
 
   constructor() {}
 
-  private getElement() {
-    return document.getElementById(this.selector);
+  private _getElement() {
+    return document.getElementById(this._selector);
   }
 
   hide() {
-    const el = this.getElement();
+    const el = this._getElement();
     if (el) {
       el.addEventListener('transitionend', () => {
         el.className = 'global-loader-hidden';

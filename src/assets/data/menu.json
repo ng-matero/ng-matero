@@ -278,13 +278,13 @@
           "type": "link"
         },
         {
-          "route": "ng-select",
-          "name": "ng-select",
+          "route": "dynamic",
+          "name": "dynamic-form",
           "type": "link"
         },
         {
-          "route": "dynamic",
-          "name": "dynamic-form",
+          "route": "select",
+          "name": "select",
           "type": "link"
         }
       ]

@@ -3,10 +3,10 @@ import { SharedModule } from '@shared/shared.module';
 import { FormsRoutingModule } from './forms-routing.module';
 
 import { FormsElementsComponent } from './elements/elements.component';
-import { FormsSelectsComponent } from './selects/selects.component';
+import { FormsSelectComponent } from './select/select.component';
 import { FormsDynamicComponent } from './dynamic/dynamic.component';
 
-const COMPONENTS = [FormsElementsComponent, FormsSelectsComponent, FormsDynamicComponent];
+const COMPONENTS = [FormsElementsComponent, FormsSelectComponent, FormsDynamicComponent];
 const COMPONENTS_DYNAMIC = [];
 
 @NgModule({

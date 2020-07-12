@@ -7,7 +7,7 @@
   "jsxSingleQuote": false,
   "printWidth": 100,
   "proseWrap": "preserve",
-  "quoteProps": "as-needed",
+  "quoteProps": "consistent",
   "requirePragma": false,
   "semi": true,
   "singleQuote": true,

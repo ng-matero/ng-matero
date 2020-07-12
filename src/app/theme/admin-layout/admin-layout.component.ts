@@ -31,13 +31,13 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   @ViewChild('content', { static: true }) content: MatSidenavContent;
 
-  options = this.settings.getOptions();
+  options = this._settings.getOptions();
 
-  private layoutChanges: Subscription;
+  private _layoutChangesSubscription: Subscription;
 
-  private isMobileScreen = false;
+  private _isMobileScreen = false;
   get isOver(): boolean {
-    return this.isMobileScreen;
+    return this._isMobileScreen;
   }
 
   private contentWidthFix = true;
@@ -59,30 +59,30 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private router: Router,
-    private breakpointObserver: BreakpointObserver,
-    private overlay: OverlayContainer,
-    private element: ElementRef,
-    private settings: SettingsService,
+    private _router: Router,
+    private _breakpointObserver: BreakpointObserver,
+    private _overlay: OverlayContainer,
+    private _element: ElementRef,
+    private _settings: SettingsService,
     @Optional() @Inject(DOCUMENT) private _document: Document,
     @Inject(Directionality) public dir: AppDirectionality
   ) {
     this.dir.value = this.options.dir;
     this._document.body.dir = this.dir.value;
 
-    this.layoutChanges = this.breakpointObserver
+    this._layoutChangesSubscription = this._breakpointObserver
       .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
       .subscribe(state => {
         // SidenavOpened must be reset true when layout changes
         this.options.sidenavOpened = true;
 
-        this.isMobileScreen = state.breakpoints[MOBILE_MEDIAQUERY];
+        this._isMobileScreen = state.breakpoints[MOBILE_MEDIAQUERY];
         this.options.sidenavCollapsed = state.breakpoints[TABLET_MEDIAQUERY];
         this.contentWidthFix = state.breakpoints[MONITOR_MEDIAQUERY];
       });
 
     // TODO: Scroll top to container
-    this.router.events.subscribe(evt => {
+    this._router.events.subscribe(evt => {
       if (evt instanceof NavigationEnd) {
         this.content.scrollTo({ top: 0 });
       }
@@ -94,7 +94,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.layoutChanges.unsubscribe();
+    this._layoutChangesSubscription.unsubscribe();
   }
 
   toggleCollapsed() {
@@ -105,7 +105,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   resetCollapsedState(timer = 400) {
     // TODO: Trigger when transition end
     setTimeout(() => {
-      this.settings.setNavState('collapsed', this.options.sidenavCollapsed);
+      this._settings.setNavState('collapsed', this.options.sidenavCollapsed);
     }, timer);
   }
 
@@ -115,7 +115,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   sidenavOpenedChange(isOpened: boolean) {
     this.options.sidenavOpened = isOpened;
-    this.settings.setNavState('opened', isOpened);
+    this._settings.setNavState('opened', isOpened);
 
     this.collapsedWidthFix = !this.isOver;
     this.resetCollapsedState();
@@ -130,11 +130,11 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   toggleDarkTheme(options: AppSettings) {
     if (options.theme === 'dark') {
-      this.element.nativeElement.classList.add('theme-dark');
-      this.overlay.getContainerElement().classList.add('theme-dark');
+      this._element.nativeElement.classList.add('theme-dark');
+      this._overlay.getContainerElement().classList.add('theme-dark');
     } else {
-      this.element.nativeElement.classList.remove('theme-dark');
-      this.overlay.getContainerElement().classList.remove('theme-dark');
+      this._element.nativeElement.classList.remove('theme-dark');
+      this._overlay.getContainerElement().classList.remove('theme-dark');
     }
   }
 

@@ -1,5 +1,5 @@
 export const MAT_COLORS = {
-  red: {
+  'red': {
     50: '#FFEBEE',
     100: '#FFCDD2',
     200: '#EF9A9A',
@@ -31,7 +31,7 @@ export const MAT_COLORS = {
       A700: 'light',
     },
   },
-  pink: {
+  'pink': {
     50: '#FCE4EC',
     100: '#F8BBD0',
     200: '#F48FB1',
@@ -63,7 +63,7 @@ export const MAT_COLORS = {
       A700: 'light',
     },
   },
-  purple: {
+  'purple': {
     50: '#F3E5F5',
     100: '#E1BEE7',
     200: '#CE93D8',
@@ -127,7 +127,7 @@ export const MAT_COLORS = {
       A700: 'light',
     },
   },
-  indigo: {
+  'indigo': {
     50: '#E8EAF6',
     100: '#C5CAE9',
     200: '#9FA8DA',
@@ -159,7 +159,7 @@ export const MAT_COLORS = {
       A700: 'light',
     },
   },
-  blue: {
+  'blue': {
     50: '#E3F2FD',
     100: '#BBDEFB',
     200: '#90CAF9',
@@ -223,7 +223,7 @@ export const MAT_COLORS = {
       A700: 'light',
     },
   },
-  cyan: {
+  'cyan': {
     50: '#E0F7FA',
     100: '#B2EBF2',
     200: '#80DEEA',
@@ -255,7 +255,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  teal: {
+  'teal': {
     50: '#E0F2F1',
     100: '#B2DFDB',
     200: '#80CBC4',
@@ -287,7 +287,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  green: {
+  'green': {
     50: '#E8F5E9',
     100: '#C8E6C9',
     200: '#A5D6A7',
@@ -351,7 +351,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  lime: {
+  'lime': {
     50: '#F9FBE7',
     100: '#F0F4C3',
     200: '#E6EE9C',
@@ -383,7 +383,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  yellow: {
+  'yellow': {
     50: '#FFFDE7',
     100: '#FFF9C4',
     200: '#FFF59D',
@@ -415,7 +415,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  amber: {
+  'amber': {
     50: '#FFF8E1',
     100: '#FFECB3',
     200: '#FFE082',
@@ -447,7 +447,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  orange: {
+  'orange': {
     50: '#FFF3E0',
     100: '#FFE0B2',
     200: '#FFCC80',
@@ -511,7 +511,7 @@ export const MAT_COLORS = {
       A700: 'dark',
     },
   },
-  brown: {
+  'brown': {
     50: '#EFEBE9',
     100: '#D7CCC8',
     200: '#BCAAA4',
@@ -543,7 +543,7 @@ export const MAT_COLORS = {
       A700: 'light',
     },
   },
-  gray: {
+  'gray': {
     50: '#FAFAFA',
     100: '#F5F5F5',
     200: '#EEEEEE',

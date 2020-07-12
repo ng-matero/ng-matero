@@ -7,7 +7,7 @@ import { serialize } from '@shared';
 export class TablesRemoteDataService {
   constructor(private http: HttpClient) {}
 
-  getData(query = {}) {
-    return this.http.get('https://api.github.com/search/repositories?' + serialize(query));
+  getData(params = {}) {
+    return this.http.get('https://api.github.com/search/repositories', { params });
   }
 }

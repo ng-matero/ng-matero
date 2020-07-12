@@ -17,7 +17,7 @@ Ng-Matero is an Angular admin template made with Material components.
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/ng-matero/ng-matero/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/ng-matero/ng-matero.svg)](https://gitter.im/matero-io/ng-matero)
-[![docs](https://img.shields.io/badge/docs-gitbook-blue)](https://nzbin.gitbook.io/ng-matero/)
+[![docs](https://img.shields.io/badge/docs-gitbook-red)](https://nzbin.gitbook.io/ng-matero/)
 [![Material Extensions](https://img.shields.io/badge/material-extensions-blue)](https://github.com/ng-matero/extensions#readme)
 [![Financial Contributors on Open Collective](https://opencollective.com/ng-matero/all/badge.svg?label=financial+contributors)](https://opencollective.com/ng-matero)
 
@@ -118,7 +118,7 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ## 🗺 Roadmap
 
-Check [this issue](https://github.com/ng-matero/ng-matero/issues/18) to know the develop plans.
+Check [this issue](https://github.com/ng-matero/ng-matero/issues/46) to know the develop plans.
 
 ## Contributors
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { SettingsService, TokenService, MenuService } from '@core';
 
 @Component({
   selector: 'app-user',
@@ -22,11 +24,25 @@ import { Component } from '@angular/core';
         <mat-icon>settings</mat-icon>
         <span>{{ 'user.settings' | translate }}</span>
       </button>
-      <button routerLink="/auth/login" mat-menu-item>
+      <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>{{ 'user.logout' | translate }}</span>
       </button>
     </mat-menu>
   `,
 })
-export class UserComponent {}
+export class UserComponent {
+  constructor(
+    private _router: Router,
+    private _settings: SettingsService,
+    private _token: TokenService,
+    private _menu: MenuService
+  ) {}
+
+  logout() {
+    this._token.clear();
+    this._settings.removeUser();
+    this._menu.reset();
+    this._router.navigateByUrl('/auth/login');
+  }
+}

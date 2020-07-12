@@ -9,9 +9,9 @@ export class SidemenuComponent {
   // NOTE: Ripple effect make page flashing on mobile
   @Input() ripple = false;
 
-  menus = this.menuService.getAll();
+  menus = this._menu.getAll();
 
-  constructor(private menuService: MenuService) {}
+  constructor(private _menu: MenuService) {}
 
   // Delete empty values and rebuild route
   buildRoute(routes: string[]) {

@@ -1,6 +1,6 @@
 {
   "name": "ng-matero",
-  "version": "9.3.1",
+  "version": "9.4.0",
   "description": "Angular Material Admin Dashboard",
   "author": "nzbin<nzb329@163.com>",
   "repository": {
@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/ng-matero/ng-matero/issues"
   },
-  "homepage": "https://github.com/ng-matero/ng-matero#readme",
+  "homepage": "https://ng-matero.github.io/ng-matero/",
   "scripts": {
     "build": "../node_modules/.bin/tsc -p tsconfig.json"
   },

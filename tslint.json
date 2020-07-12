@@ -26,7 +26,7 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
-    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-key-quotes": [true, "consistent-as-needed"],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "quotemark": [true, "single"],

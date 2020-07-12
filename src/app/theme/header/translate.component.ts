@@ -15,13 +15,7 @@ import { SettingsService } from '@core';
       </button>
     </mat-menu>
   `,
-  styles: [
-    `
-      .flag-icon {
-        margin-right: 8px;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class TranslateComponent {
   langs = {
@@ -30,16 +24,16 @@ export class TranslateComponent {
     'zh-TW': '中文繁体',
   };
 
-  constructor(public translate: TranslateService, private settings: SettingsService) {
-    translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
-    translate.setDefaultLang('en-US');
+  constructor(private _translate: TranslateService, private _settings: SettingsService) {
+    _translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
+    _translate.setDefaultLang('en-US');
 
     const browserLang = navigator.language;
-    translate.use(browserLang.match(/en-US|zh-CN|zh-TW/) ? browserLang : 'en-US');
+    _translate.use(browserLang.match(/en-US|zh-CN|zh-TW/) ? browserLang : 'en-US');
   }
 
   useLanguage(language: string) {
-    this.translate.use(language);
-    this.settings.setLanguage(language);
+    this._translate.use(language);
+    this._settings.setLanguage(language);
   }
 }
