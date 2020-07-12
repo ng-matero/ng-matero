@@ -1,5 +1,5 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { CoreModule } from './core/core.module';
@@ -7,12 +7,6 @@ import { SharedModule } from './shared/shared.module';
 import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { AppComponent } from './app.component';
-
-import { DefaultInterceptor } from '@core';
-import { StartupService } from '@core';
-export function StartupServiceFactory(startupService: StartupService) {
-  return () => startupService.load();
-}
 
 import { FormlyModule } from '@ngx-formly/core';
 import { ToastrModule } from 'ngx-toastr';
@@ -23,10 +17,8 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-import { TranslateLangService } from '@core';
-export function TranslateLangServiceFactory(translateLangService: TranslateLangService) {
-  return () => translateLangService.load();
-}
+import { httpInterceptorProviders } from '@core/interceptors';
+import { appInitializerProviders } from '@core/initializers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,25 +39,7 @@ export function TranslateLangServiceFactory(translateLangService: TranslateLangS
       },
     }),
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: DefaultInterceptor,
-      multi: true,
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: TranslateLangServiceFactory,
-      deps: [TranslateLangService],
-      multi: true,
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: StartupServiceFactory,
-      deps: [StartupService],
-      multi: true,
-    },
-  ],
+  providers: [httpInterceptorProviders, appInitializerProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
