@@ -57,7 +57,8 @@ samp {
 }
 
 code {
+  padding: 3px;
   font-size: $code-font-size;
-  color: $code-color;
+  background-color: $code-color;
   word-break: break-word;
 }

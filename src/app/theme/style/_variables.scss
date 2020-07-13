@@ -27,12 +27,12 @@ $font-family-monospace: 'Roboto Mono', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 
 // Links
-$link-color: map-get($mat-blue, A400) !default;
+$link-color: map-get($mat-indigo, 500) !default;
 $link-decoration: none !default;
 
 // Code
-$code-color: map-get($mat-red, A400);
-$code-font-size: $small-font-size !default;
+$code-color: rgba(0, 0, 0, .03);
+$code-font-size: 90% !default;
 
 // Border
 $boder-color: rgba(0, 0, 0, .12) !default;

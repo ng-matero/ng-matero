@@ -65,10 +65,10 @@
         <mat-form-field class="w-full">
           <mat-label>Select car</mat-label>
           <mtx-select [(ngModel)]="selectedCarId">
-            <ng-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">
+            <mtx-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">
               {{car.name}}
-            </ng-option>
-            <ng-option [value]="'custom'">Custom</ng-option>
+            </mtx-option>
+            <mtx-option [value]="'custom'">Custom</mtx-option>
           </mtx-select>
         </mat-form-field>
 
