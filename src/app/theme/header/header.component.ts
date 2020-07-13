@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
 
   // TODO:
   toggleFullscreen() {
-    if (this.screenfull.enabled) {
+    if (this.screenfull.isEnabled) {
       this.screenfull.toggle();
     }
   }
