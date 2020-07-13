@@ -92,7 +92,6 @@ function updateVersions(cb) {
           '@angularclass/hmr',
           'parse5',
           'prettier',
-          'prettier-stylelint',
           'stylelint',
           'stylelint-config-recommended-scss',
           'stylelint-config-standard',

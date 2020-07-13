@@ -1,6 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
 import { addPackage } from './package-config';
-import { Schema } from './schema';
 
 const VERSION = require('../package.json').version;
 
@@ -31,7 +30,6 @@ export function add3rdPkgsToPackageJson(host: Tree) {
   // Dev
   addPackage(host, '@angularclass/hmr@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
-  addPackage(host, 'prettier-stylelint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint-config-recommended-scss@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint-config-standard@0.0.0-PLACEHOLDER', 'dev');
