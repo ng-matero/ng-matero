@@ -1,14 +1,16 @@
 const { src, dest, series } = require('gulp');
 const each = require('gulp-each');
-const rename = require('gulp-rename');
-const replace = require('gulp-replace');
-const del = require('del');
 
 const pkg = require('./package.json');
 
 const DEST = 'dist/schematics';
 const NG_ADD = DEST + '/ng-add';
 const FILES = NG_ADD + '/files';
+
+// .vscode
+function copyDotVscode(cb) {
+  return src(['.vscode/*']).pipe(dest(`${FILES}/.vscode`));
+}
 
 // root
 function copyRoot(cb) {
@@ -74,7 +76,7 @@ function copySrcAppRoutes(cb) {
 function updateVersions(cb) {
   return src([`${NG_ADD}/packages.js`, `${NG_ADD}/packages.ts`])
     .pipe(
-      each(function(content, file, callback) {
+      each(function (content, file, callback) {
         [
           '@angular/cdk',
           '@angular/material',
@@ -112,6 +114,7 @@ function updateVersions(cb) {
 }
 
 exports.default = series(
+  copyDotVscode,
   copyRoot,
   copySrcRoot,
   copyAssets,
