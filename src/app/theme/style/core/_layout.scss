@@ -52,8 +52,9 @@
 //
 .matero-auth-container {
   position: relative;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
   padding: 16px;
   background-color: #212121;
   background-image:
