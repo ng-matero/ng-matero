@@ -19,10 +19,10 @@ import { SettingsService } from '@core/bootstrap/settings.service';
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
   constructor(
-    private _router: Router,
-    private _toastr: ToastrService,
-    private _token: TokenService,
-    private _settings: SettingsService
+    private router: Router,
+    private toastr: ToastrService,
+    private token: TokenService,
+    private settings: SettingsService
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -37,30 +37,30 @@ export class DefaultInterceptor implements HttpInterceptor {
     // All APIs need JWT authorization
     const headers = {
       'Accept': 'application/json',
-      'Accept-Language': this._settings.language,
-      'Authorization': `Bearer ${this._token.get().token}`,
+      'Accept-Language': this.settings.language,
+      'Authorization': `Bearer ${this.token.get().token}`,
     };
 
     const newReq = req.clone({ url, setHeaders: headers, withCredentials: true });
 
     return next.handle(newReq).pipe(
-      mergeMap((event: HttpEvent<any>) => this._handleOkReq(event)),
-      catchError((error: HttpErrorResponse) => this._handleErrorReq(error))
+      mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)),
+      catchError((error: HttpErrorResponse) => this.handleErrorReq(error))
     );
   }
 
-  private _goto(url: string) {
-    setTimeout(() => this._router.navigateByUrl(url));
+  private goto(url: string) {
+    setTimeout(() => this.router.navigateByUrl(url));
   }
 
-  private _handleOkReq(event: HttpEvent<any>): Observable<any> {
+  private handleOkReq(event: HttpEvent<any>): Observable<any> {
     if (event instanceof HttpResponse) {
       const body: any = event.body;
       // failure: { code: **, msg: 'failure' }
       // success: { code: 0,  msg: 'success', data: {} }
       if (body && body.code !== 0) {
         if (body.msg && body.msg !== '') {
-          this._toastr.error(body.msg);
+          this.toastr.error(body.msg);
         }
         return throwError([]);
       } else {
@@ -71,20 +71,20 @@ export class DefaultInterceptor implements HttpInterceptor {
     return of(event);
   }
 
-  private _handleErrorReq(error: HttpErrorResponse): Observable<never> {
+  private handleErrorReq(error: HttpErrorResponse): Observable<never> {
     switch (error.status) {
       case 401:
-        this._goto(`/auth/login`);
+        this.goto(`/auth/login`);
         break;
       case 403:
       case 404:
       case 500:
-        this._goto(`/sessions/${error.status}`);
+        this.goto(`/sessions/${error.status}`);
         break;
       default:
         if (error instanceof HttpErrorResponse) {
           console.error('ERROR', error);
-          this._toastr.error(error.error.msg || `${error.status} ${error.statusText}`);
+          this.toastr.error(error.error.msg || `${error.status} ${error.statusText}`);
         }
         break;
     }

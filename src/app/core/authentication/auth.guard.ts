@@ -18,44 +18,44 @@ const LOGIN_URL = '/auth/login';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  private _gotoLogin(url?: string) {
+  private gotoLogin(url?: string) {
     setTimeout(() => {
       if (/^https?:\/\//g.test(url!)) {
-        this._document.location.href = url as string;
+        this.document.location.href = url as string;
       } else {
-        this._router.navigateByUrl(url);
+        this.router.navigateByUrl(url);
       }
     });
   }
 
-  private _checkJWT(model: any, offset?: number): boolean {
+  private checkJWT(model: any, offset?: number): boolean {
     return !!model?.token;
   }
 
-  private _process(): boolean {
-    const res = this._checkJWT(this._token.get<any>(), 1000);
+  private process(): boolean {
+    const res = this.checkJWT(this.token.get<any>(), 1000);
     if (!res) {
-      this._gotoLogin(LOGIN_URL);
+      this.gotoLogin(LOGIN_URL);
     }
     return res;
   }
 
   constructor(
-    private _router: Router,
-    private _token: TokenService,
-    @Optional() @Inject(DOCUMENT) private _document: any
+    private router: Router,
+    private token: TokenService,
+    @Optional() @Inject(DOCUMENT) private document: any
   ) {}
 
   // lazy loading
   canLoad(route: Route, segments: UrlSegment[]): boolean {
-    return this._process();
+    return this.process();
   }
   // route
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this._process();
+    return this.process();
   }
   // all children route
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this._process();
+    return this.process();
   }
 }

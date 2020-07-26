@@ -28,25 +28,25 @@ export interface Menu {
   providedIn: 'root',
 })
 export class MenuService {
-  private _menu$: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
+  private menu$: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
 
   getAll(): Observable<Menu[]> {
-    return this._menu$.asObservable();
+    return this.menu$.asObservable();
   }
 
   set(menu: Menu[]): Observable<Menu[]> {
-    this._menu$.next(menu);
-    return this._menu$.asObservable();
+    this.menu$.next(menu);
+    return this.menu$.asObservable();
   }
 
   add(menu: Menu) {
-    const tmpMenu = this._menu$.value;
+    const tmpMenu = this.menu$.value;
     tmpMenu.push(menu);
-    this._menu$.next(tmpMenu);
+    this.menu$.next(tmpMenu);
   }
 
   reset() {
-    this._menu$.next([]);
+    this.menu$.next([]);
   }
 
   getMenuItemName(routeArr: string[]): string {
@@ -55,7 +55,7 @@ export class MenuService {
 
   /** Menu level */
 
-  private _isLeafItem(item: MenuChildrenItem): boolean {
+  private isLeafItem(item: MenuChildrenItem): boolean {
     //// if a menuItem is leaf
     const cond0 = item.route === undefined;
     const cond1 = item.children === undefined;
@@ -63,48 +63,48 @@ export class MenuService {
     return cond0 || cond1 || cond2;
   }
 
-  private _deepcopyJsonObj(jobj: any): any {
+  private deepcopyJsonObj(jobj: any): any {
     //// deepcop object-could-be-jsonized
     return JSON.parse(JSON.stringify(jobj));
   }
 
-  private _jsonObjEqual(jobj0: any, jobj1: any): boolean {
+  private jsonObjEqual(jobj0: any, jobj1: any): boolean {
     //// if two objects-could-be-jsonized equal
     const cond = JSON.stringify(jobj0) === JSON.stringify(jobj1);
     return cond;
   }
 
-  private _routeEqual(routeArr: Array<string>, realRouteArr: Array<string>): boolean {
+  private routeEqual(routeArr: Array<string>, realRouteArr: Array<string>): boolean {
     //// if routeArr equals realRouteArr(after remove empty-route-element)
-    realRouteArr = this._deepcopyJsonObj(realRouteArr);
+    realRouteArr = this.deepcopyJsonObj(realRouteArr);
     realRouteArr = realRouteArr.filter(r => r !== '');
-    return this._jsonObjEqual(routeArr, realRouteArr);
+    return this.jsonObjEqual(routeArr, realRouteArr);
   }
 
   getMenuLevel(routeArr: string[]): string[] {
     let tmpArr = [];
-    this._menu$.value.forEach(item => {
+    this.menu$.value.forEach(item => {
       //// breadth-first-traverse -modified
       let unhandledLayer = [{ item, parentNamePathList: [], realRouteArr: [] }];
       while (unhandledLayer.length > 0) {
         let nextUnhandledLayer = [];
         for (const ele of unhandledLayer) {
           const eachItem = ele.item;
-          const currentNamePathList = this._deepcopyJsonObj(ele.parentNamePathList).concat(
+          const currentNamePathList = this.deepcopyJsonObj(ele.parentNamePathList).concat(
             eachItem.name
           );
-          const currentRealRouteArr = this._deepcopyJsonObj(ele.realRouteArr).concat(
+          const currentRealRouteArr = this.deepcopyJsonObj(ele.realRouteArr).concat(
             eachItem.route
           );
           //// compare the full Array
           //// for expandable
-          const cond = this._routeEqual(routeArr, currentRealRouteArr);
+          const cond = this.routeEqual(routeArr, currentRealRouteArr);
           if (cond) {
             tmpArr = currentNamePathList;
             break;
           }
           ////
-          const isLeafCond = this._isLeafItem(eachItem);
+          const isLeafCond = this.isLeafItem(eachItem);
           if (!isLeafCond) {
             const children = eachItem.children;
             const wrappedChildren = children.map(child => ({

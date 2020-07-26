@@ -33,16 +33,16 @@ import { SettingsService, TokenService, MenuService } from '@core';
 })
 export class UserComponent {
   constructor(
-    private _router: Router,
-    private _settings: SettingsService,
-    private _token: TokenService,
-    private _menu: MenuService
+    private router: Router,
+    private settings: SettingsService,
+    private token: TokenService,
+    private menu: MenuService
   ) {}
 
   logout() {
-    this._token.clear();
-    this._settings.removeUser();
-    this._menu.reset();
-    this._router.navigateByUrl('/auth/login');
+    this.token.clear();
+    this.settings.removeUser();
+    this.menu.reset();
+    this.router.navigateByUrl('/auth/login');
   }
 }

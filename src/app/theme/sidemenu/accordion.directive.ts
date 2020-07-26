@@ -9,14 +9,14 @@ import { AccordionLinkDirective } from './accordionlink.directive';
 export class AccordionDirective implements AfterContentChecked {
   protected navlinks: Array<AccordionLinkDirective> = [];
 
-  constructor(private _router: Router) {
+  constructor(private router: Router) {
     // Fix: `ERROR Error: ExpressionChangedAfterItHasBeenCheckedError:
     // Expression has changed after it was checked`.
     setTimeout(() => this.checkOpenLinks());
   }
 
   ngAfterContentChecked(): void {
-    this._router.events
+    this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(e => this.checkOpenLinks());
   }
@@ -43,7 +43,7 @@ export class AccordionDirective implements AfterContentChecked {
   checkOpenLinks() {
     this.navlinks.forEach((link: AccordionLinkDirective) => {
       if (link.group) {
-        const routeUrl = this._router.url;
+        const routeUrl = this.router.url;
         const currentUrl = routeUrl.split('/');
         if (currentUrl.includes(link.group)) {
           link.open = true;

@@ -8,8 +8,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private _fb: FormBuilder) {
-    this.registerForm = this._fb.group({
+  constructor(private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [this.confirmValidator]],

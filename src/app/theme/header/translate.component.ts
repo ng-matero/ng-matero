@@ -24,16 +24,16 @@ export class TranslateComponent {
     'zh-TW': '中文繁体',
   };
 
-  constructor(private _translate: TranslateService, private _settings: SettingsService) {
-    _translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
-    _translate.setDefaultLang('en-US');
+  constructor(private translate: TranslateService, private settings: SettingsService) {
+    translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
+    translate.setDefaultLang('en-US');
 
     const browserLang = navigator.language;
-    _translate.use(browserLang.match(/en-US|zh-CN|zh-TW/) ? browserLang : 'en-US');
+    translate.use(browserLang.match(/en-US|zh-CN|zh-TW/) ? browserLang : 'en-US');
   }
 
   useLanguage(language: string) {
-    this._translate.use(language);
-    this._settings.setLanguage(language);
+    this.translate.use(language);
+    this.settings.setLanguage(language);
   }
 }

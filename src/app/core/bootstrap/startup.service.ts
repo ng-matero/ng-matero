@@ -9,11 +9,11 @@ import { MenuService } from './menu.service';
   providedIn: 'root',
 })
 export class StartupService {
-  constructor(private _menu: MenuService, private _http: HttpClient) {}
+  constructor(private menu: MenuService, private http: HttpClient) {}
 
   load(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this._http
+      this.http
         .get('assets/data/menu.json?_t=' + Date.now())
         .pipe(
           catchError(res => {
@@ -23,8 +23,8 @@ export class StartupService {
         )
         .subscribe(
           (res: any) => {
-            this._menu.recursMenuForTranslation(res.menu, 'menu');
-            this._menu.set(res.menu);
+            this.menu.recursMenuForTranslation(res.menu, 'menu');
+            this.menu.set(res.menu);
           },
           () => {
             reject();

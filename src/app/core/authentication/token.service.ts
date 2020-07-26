@@ -11,11 +11,7 @@ const TOKEN_KEY = 'jwt';
   providedIn: 'root',
 })
 export class TokenService {
-  private _change$ = new BehaviorSubject(null);
-
-  private _referrer: AuthReferrer = {};
-
-  constructor(private _store: LocalStorageService) {}
+  private change$ = new BehaviorSubject(null);
 
   /**
    * The referrer of current page
@@ -24,21 +20,25 @@ export class TokenService {
     return this._referrer;
   }
 
+  private _referrer: AuthReferrer = {};
+
+  constructor(private store: LocalStorageService) {}
+
   set(data: TokenModel): boolean {
-    this._change$.next(data);
-    return this._store.set(TOKEN_KEY, data);
+    this.change$.next(data);
+    return this.store.set(TOKEN_KEY, data);
   }
 
   get<T extends TokenModel>(type?: new () => T): T {
-    const data = this._store.get(TOKEN_KEY);
+    const data = this.store.get(TOKEN_KEY);
     return type ? (Object.assign(new type(), data) as T) : (data as T);
   }
 
   clear() {
-    this._store.remove(TOKEN_KEY);
+    this.store.remove(TOKEN_KEY);
   }
 
   change(): Observable<TokenModel | null> {
-    return this._change$.pipe(share());
+    return this.change$.pipe(share());
   }
 }

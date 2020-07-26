@@ -17,7 +17,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() nav: string[] = [];
   @Input() showBreadCrumb = true;
 
-  constructor(private _router: Router, private _menu: MenuService) {}
+  constructor(private router: Router, private menu: MenuService) {}
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];
@@ -30,8 +30,8 @@ export class PageHeaderComponent implements OnInit {
   }
 
   genBreadcrumb() {
-    const states = this._router.url.slice(1).split('/');
-    this.nav = this._menu.getMenuLevel(states);
+    const states = this.router.url.slice(1).split('/');
+    this.nav = this.menu.getMenuLevel(states);
     this.nav.unshift('home');
   }
 }

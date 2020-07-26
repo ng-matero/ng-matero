@@ -15,46 +15,46 @@ export interface User {
   providedIn: 'root',
 })
 export class SettingsService {
-  private _options = defaults;
+  private options = defaults;
 
   get notify(): Observable<any> {
-    return this._notify$.asObservable();
+    return this.notify$.asObservable();
   }
-  private _notify$ = new BehaviorSubject<any>({});
+  private notify$ = new BehaviorSubject<any>({});
 
   get user() {
-    return this._store.get(USER_KEY);
+    return this.store.get(USER_KEY);
   }
 
   get language() {
-    return this._options.language;
+    return this.options.language;
   }
 
-  constructor(private _store: LocalStorageService) {}
+  constructor(private store: LocalStorageService) {}
 
   setLayout(options?: AppSettings): AppSettings {
-    this._options = Object.assign(defaults, options);
-    return this._options;
+    this.options = Object.assign(defaults, options);
+    return this.options;
   }
 
   setNavState(type: string, value: boolean) {
-    this._notify$.next({ type, value } as any);
+    this.notify$.next({ type, value } as any);
   }
 
   getOptions(): AppSettings {
-    return this._options;
+    return this.options;
   }
 
   setUser(value: User) {
-    this._store.set(USER_KEY, value);
+    this.store.set(USER_KEY, value);
   }
 
   removeUser() {
-    this._store.remove(USER_KEY);
+    this.store.remove(USER_KEY);
   }
 
   setLanguage(lang: string) {
-    this._options.language = lang;
-    this._notify$.next({ lang });
+    this.options.language = lang;
+    this.notify$.next({ lang });
   }
 }
