@@ -5,8 +5,14 @@ import { FormsRoutingModule } from './forms-routing.module';
 import { FormsElementsComponent } from './elements/elements.component';
 import { FormsSelectComponent } from './select/select.component';
 import { FormsDynamicComponent } from './dynamic/dynamic.component';
+import { FormsDatetimeComponent } from './datetime/datetime.component';
 
-const COMPONENTS = [FormsElementsComponent, FormsSelectComponent, FormsDynamicComponent];
+const COMPONENTS = [
+  FormsElementsComponent,
+  FormsSelectComponent,
+  FormsDynamicComponent,
+  FormsDatetimeComponent,
+];
 const COMPONENTS_DYNAMIC = [];
 
 @NgModule({

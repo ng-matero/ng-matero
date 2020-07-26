@@ -286,6 +286,11 @@
           "route": "select",
           "name": "select",
           "type": "link"
+        },
+        {
+          "route": "datetime",
+          "name": "datetime",
+          "type": "link"
         }
       ]
     },

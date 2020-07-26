@@ -52,6 +52,7 @@
     "forms.form-elements": "Form Elements",
     "forms.dynamic-form": "Dynamic Form",
     "forms.select": "Select",
+    "forms.datetime": "Date Time",
     "tables": "tables",
     "tables.kitchen-sink": "Kitchen Sink",
     "tables.remote-data": "Remote Data",
