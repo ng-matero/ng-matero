@@ -13,26 +13,8 @@ export class StartupService {
 
   load(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http
-        .get('assets/data/menu.json?_t=' + Date.now())
-        .pipe(
-          catchError(res => {
-            resolve();
-            return throwError(res);
-          })
-        )
-        .subscribe(
-          (res: any) => {
-            this.menu.recursMenuForTranslation(res.menu, 'menu');
-            this.menu.set(res.menu);
-          },
-          () => {
-            reject();
-          },
-          () => {
-            resolve();
-          }
-        );
+      // add function or http calls toload that at the starting of the application
+      resolve();
     });
   }
 }
