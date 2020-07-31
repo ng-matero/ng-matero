@@ -39,7 +39,7 @@
     "@angular/router": "~9.1.12",
     "@mat-datetimepicker/core": "^4.1.0",
     "@mat-datetimepicker/moment": "^4.1.0",
-    "@ng-matero/extensions": "^9.7.2",
+    "@ng-matero/extensions": "^9.9.0",
     "@ng-select/ng-select": "^4.0.4",
     "@ngx-formly/core": "^5.8.0",
     "@ngx-formly/material": "^5.8.0",
@@ -57,8 +57,8 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.11",
-    "@angular/cli": "~9.1.11",
+    "@angular-devkit/build-angular": "~0.901.12",
+    "@angular/cli": "~9.1.12",
     "@angular/compiler-cli": "~9.1.12",
     "@angular/language-service": "~9.1.12",
     "@angularclass/hmr": "^2.1.3",
