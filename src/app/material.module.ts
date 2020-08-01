@@ -15,19 +15,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import {
-  MatNativeDateModule,
-  MatRippleModule,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-  DateAdapter,
-} from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {
-  MatDialogModule,
-  MatDialogConfig,
-  MAT_DIALOG_DEFAULT_OPTIONS,
-} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -51,19 +41,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import {
-  MatMomentDateModule,
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 // 3rd library
-import {
-  MatDatetimepickerModule,
-  DatetimeAdapter,
-  MAT_DATETIME_FORMATS,
-} from '@mat-datetimepicker/core';
-import { MatMomentDatetimeModule, MomentDatetimeAdapter } from '@mat-datetimepicker/moment';
+import { MatDatetimepickerModule } from '@mat-datetimepicker/core';
+import { MatMomentDatetimeModule } from '@mat-datetimepicker/moment';
+
+import { materialProviders } from './material-config';
 
 @NgModule({
   exports: [
@@ -113,60 +97,6 @@ import { MatMomentDatetimeModule, MomentDatetimeAdapter } from '@mat-datetimepic
     MatMomentDatetimeModule,
     MatDatetimepickerModule,
   ],
-  providers: [
-    {
-      provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: {
-        ...new MatDialogConfig(),
-      },
-    },
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    // This will be overrided by runtime setting
-    { provide: MAT_DATE_LOCALE, useValue: 'en-US' },
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: 'YYYY-MM-DD',
-        },
-        display: {
-          dateInput: 'YYYY-MM-DD',
-          monthYearLabel: 'YYYY MMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'YYYY MMM',
-        },
-      },
-    },
-    MomentDatetimeAdapter,
-    {
-      provide: DatetimeAdapter,
-      useClass: MomentDatetimeAdapter,
-    },
-    {
-      provide: MAT_DATETIME_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: 'YYYY-MM-DD HH:mm',
-          monthInput: 'MMMM',
-          timeInput: 'HH:mm',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
-        },
-        display: {
-          dateInput: 'YYYY-MM-DD HH:mm',
-          monthInput: 'MMMM',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
-          timeInput: 'HH:mm',
-          monthYearLabel: 'YYYY MMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'MMMM YYYY',
-          popupHeaderDateLabel: 'MMMM DD, ddd',
-        },
-      },
-    },
-  ],
+  providers: [materialProviders],
 })
 export class MaterialModule {}
