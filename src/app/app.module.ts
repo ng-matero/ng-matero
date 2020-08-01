@@ -4,12 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 
-import { FormlyModule } from '@ngx-formly/core';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -20,6 +19,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 
 import { httpInterceptorProviders } from '@core/interceptors';
 import { appInitializerProviders } from '@core/initializers';
+import { FormlyConfigModule } from './formly-config.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,10 +28,10 @@ import { appInitializerProviders } from '@core/initializers';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    SharedModule,
     ThemeModule,
     RoutesModule,
-    FormlyModule.forRoot(),
+    SharedModule,
+    FormlyConfigModule.forRoot(),
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

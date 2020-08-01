@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
+import { TranslateService } from '@ngx-translate/core';
+
+@Injectable()
+export class FormlyValidation {
+  constructor(private translate: TranslateService, private formlyConfig: FormlyConfig) {}
+
+  init(): void {
+    // message without params
+    this.formlyConfig.addValidatorMessage('required', (_err, _field) =>
+      this.translate.instant('validations.required')
+    );
+
+    // message with params
+    this.formlyConfig.addValidatorMessage('minlength', (err, field) =>
+      this.minlengthValidationMessage(err, field, this.translate)
+    );
+    this.formlyConfig.addValidatorMessage('maxlength', (err, field) =>
+      this.maxlengthValidationMessage(err, field, this.translate)
+    );
+    this.formlyConfig.addValidatorMessage('min', (err, field) =>
+      this.minValidationMessage(err, field, this.translate)
+    );
+    this.formlyConfig.addValidatorMessage('max', (err, field) =>
+      this.maxValidationMessage(err, field, this.translate)
+    );
+  }
+
+  private minlengthValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
+    return translate.instant('validations.minLength', { number: field.templateOptions.minLength });
+  }
+
+  private maxlengthValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
+    return translate.instant('validations.maxLength', { number: field.templateOptions.maxLength });
+  }
+
+  private minValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
+    return translate.instant('validations.min', { number: field.templateOptions.min });
+  }
+
+  private maxValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
+    return translate.instant('validations.max', { number: field.templateOptions.max });
+  }
+}

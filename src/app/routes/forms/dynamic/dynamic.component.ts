@@ -18,6 +18,7 @@ export class FormsDynamicComponent implements OnInit {
       templateOptions: {
         label: 'Text',
         placeholder: 'Type here to see the other field become enabled...',
+        required: true,
       },
     },
     {
@@ -57,6 +58,7 @@ export class FormsDynamicComponent implements OnInit {
           key: 'firstName',
           templateOptions: {
             label: 'First Name',
+            required: true,
           },
         },
         {
@@ -65,6 +67,7 @@ export class FormsDynamicComponent implements OnInit {
           key: 'lastName',
           templateOptions: {
             label: 'Last Name',
+            required: true,
           },
           expressionProperties: {
             'templateOptions.disabled': '!model.firstName',
@@ -126,11 +129,15 @@ export class FormsDynamicComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    this.showToast(this.model);
+    if (this.form.valid) {
+      this.showToast(this.model);
+    }
   }
 
   submit2() {
-    this.showToast(this.model2);
+    if (this.form2.valid) {
+      this.showToast(this.model2);
+    }
   }
 
   showToast(obj: any) {

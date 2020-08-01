@@ -271,6 +271,10 @@
       "name": "forms",
       "type": "sub",
       "icon": "description",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      },
       "children": [
         {
           "route": "elements",
@@ -299,10 +303,6 @@
       "name": "tables",
       "type": "sub",
       "icon": "format_line_spacing",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "route": "kitchen-sink",
