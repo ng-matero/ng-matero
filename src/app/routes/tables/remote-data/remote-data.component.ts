@@ -3,7 +3,6 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { MtxGridColumn } from '@ng-matero/extensions';
 import { TablesRemoteDataService } from './remote-data.service';
 import { PageEvent } from '@angular/material/paginator';
-import { delEmptyKey } from '@shared';
 
 @Component({
   selector: 'app-tables-remote-data',
@@ -56,7 +55,7 @@ export class TablesRemoteDataComponent implements OnInit {
   get params() {
     const p = Object.assign({}, this.query);
     p.page += 1;
-    return delEmptyKey(p);
+    return p;
   }
 
   constructor(private remoteSrv: TablesRemoteDataService, private cdr: ChangeDetectorRef) {}
