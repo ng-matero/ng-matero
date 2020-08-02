@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Person, DataService } from '../data.service';
+import { FormsSelectEditComponent } from './edit/edit.component';
 
 @Component({
   selector: 'app-forms-selects',
@@ -34,7 +36,7 @@ export class FormsSelectComponent implements OnInit {
   selectedCompanyCustom = '';
   selectedCompanyCustomPromise = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.people$ = this.dataService.getPeople();
@@ -62,6 +64,12 @@ export class FormsSelectComponent implements OnInit {
         resolve({ id: 5, name, valid: true });
         this.loading = false;
       }, 1000);
+    });
+  }
+
+  openDialog() {
+    this.dialog.open(FormsSelectEditComponent, {
+      autoFocus: false,
     });
   }
 }

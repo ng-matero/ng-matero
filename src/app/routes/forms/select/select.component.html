@@ -14,9 +14,8 @@
       <mat-card-title>Data Source</mat-card-title>
       <div>
         <p>
-          Most common case is showing data from backend
-          API and with mtx-select this is extremely simple since you can bind directly to
-          observable when using angular <b> | async</b> pipe
+          Most common case is showing data from backend API and with mtx-select this is extremely
+          simple since you can bind directly to observable when using angular <b> | async</b> pipe.
         </p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
@@ -28,7 +27,7 @@
         <mat-divider class="m-y-16" inset></mat-divider>
 
         <p>
-          You can also set array of objects as items input
+          You can also set array of objects as items input.
         </p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
@@ -41,8 +40,7 @@
 
         <p>
           While array of objects is the most common items source, you may want to set simple array
-          of strings,
-          numbers, booleans
+          of strings, numbers, booleans.
         </p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
@@ -54,8 +52,7 @@
 
         <p>
           If you have simple use case, you can omit items array and bind options directly in html
-          using
-          <b>ng-option</b> component.
+          using <b>ng-option</b> component.
         </p>
         <button type="button" mat-raised-button color="primary" (click)="toggleDisabled()"
                 class="m-b-8">
@@ -130,6 +127,15 @@
         </mat-form-field>
 
       </div>
+    </mat-card>
+  </div>
+
+  <div fxFlex="100" fxFlex.gt-sm="50" class="matero-col">
+    <mat-card>
+      <mat-card-title>Select in dialog</mat-card-title>
+
+      <p>Test ng-select in a dialog.</p>
+      <button mat-raised-button color="primary" (click)="openDialog()">Open Dialog</button>
     </mat-card>
   </div>
 </div>

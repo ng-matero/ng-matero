@@ -6,6 +6,7 @@ import { FormsElementsComponent } from './elements/elements.component';
 import { FormsSelectComponent } from './select/select.component';
 import { FormsDynamicComponent } from './dynamic/dynamic.component';
 import { FormsDatetimeComponent } from './datetime/datetime.component';
+import { FormsSelectEditComponent } from './select/edit/edit.component';
 
 const COMPONENTS = [
   FormsElementsComponent,
@@ -13,7 +14,7 @@ const COMPONENTS = [
   FormsDynamicComponent,
   FormsDatetimeComponent,
 ];
-const COMPONENTS_DYNAMIC = [];
+const COMPONENTS_DYNAMIC = [FormsSelectEditComponent];
 
 @NgModule({
   imports: [SharedModule, FormsRoutingModule],
