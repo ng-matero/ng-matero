@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import 'app-theme';
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -22,27 +23,15 @@ $theme: mat-light-theme($primary, $accent, $warn);
 //
 // $primary: mat-palette($mat-blue);
 // $accent: mat-palette($mat-amber, A200, A100, A400);
-// $theme: mat-dark-theme($primary, $accent);
+// $warn: mat-palette($mat-deep-orange);
+// $theme: mat-dark-theme($primary, $accent, $warn);
 
 $config: mat-typography-config();
 
 @include mat-core();
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($theme);
-
-//
-// Matero theme
-//
-@import 'app/theme/style/theming';
-
 @include matero-admin-theme($theme);
-
-@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
-
-@include mat-datetimepicker-theme($theme);
 
 //
 // Demo purpose only
@@ -55,5 +44,4 @@ $config: mat-typography-config();
 
   @include angular-material-theme($theme);
   @include matero-admin-theme($theme);
-  @include mat-datetimepicker-theme($theme);
 }

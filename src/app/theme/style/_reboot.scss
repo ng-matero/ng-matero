@@ -1,23 +1,20 @@
-// ==================================================
-// REBOOT
-// ==================================================
+// Reboot
+
+body {
+  margin: 0;
+  line-height: normal;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
 
 html,
 body {
-  height: 100%;
-  min-height: 100%;
-  line-height: normal;
-  font-family: $font-family-base;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  overflow: auto;
-}
-
-body {
   position: relative;
-  margin: 0;
+  height: 100%;
+  overflow: auto;
 }
 
 *,

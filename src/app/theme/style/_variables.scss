@@ -1,6 +1,4 @@
-//
-// Matero Variables
-//
+@import '~@angular/material/theming';
 
 // Layout
 $gutter: 16px !default;
@@ -48,9 +46,3 @@ $breakpoints: (
   large:  1280px,
   xlarge: 1920px
 ) !default;
-
-// Scrollbar
-//
-// If you need a customized thin scrollbar, you can add the element class
-// to the following variable (for example `$scrollbar-selectors: '.a', '.b', '.c';`)
-$scrollbar-selectors: '.mtx-data-grid-content';

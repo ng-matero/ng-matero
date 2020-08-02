@@ -25,5 +25,6 @@ import { Component } from '@angular/core';
       </div>
     </div>
   `,
+  styleUrls: ['./user-panel.component.scss'],
 })
 export class UserPanelComponent {}

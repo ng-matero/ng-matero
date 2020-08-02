@@ -1,12 +1,5 @@
-@import '~@angular/material/theming';
-
-// Dark style
-$primary: mat-palette($mat-pink, 700, 500, 900);
-$accent: mat-palette($mat-blue-grey, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-dark-theme($primary, $accent, $warn);
-$background: mat-color($theme, 'background');
-$foreground: mat-color($theme, 'foreground');
+@import '../style/variables';
+@import '../style/transitions';
 
 .customizer-handle {
   position: fixed;
@@ -29,9 +22,8 @@ $foreground: mat-color($theme, 'foreground');
   width: 320px;
   padding: 0 16px;
   box-sizing: border-box;
-  background-color: #fff;
   transform: translateX(0);
-  transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+  transition: swift-ease-out(transform);
   overflow: auto;
 
   &.opened {
@@ -45,11 +37,6 @@ $foreground: mat-color($theme, 'foreground');
     &.opened {
       transform: translateX(100%);
     }
-  }
-
-  .theme-dark & {
-    color: mat-color($foreground, text);
-    background-color: mat-color($background, background);
   }
 }
 

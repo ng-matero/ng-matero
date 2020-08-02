@@ -1,22 +1,4 @@
-// ==================================================
-// TOPNAV
-// ==================================================
-
-@mixin matero-topnav-theme($theme) {
-  $background: mat-color($theme, 'background');
-  $foreground: mat-color($theme, 'foreground');
-
-  .matero-topmenu {
-    background: mat-color($background, app-bar);
-    color: mat-color($foreground, text);
-
-    .mat-button {
-      &.active {
-        background-color: mat-color($background, focused-button);
-      }
-    }
-  }
-}
+@import '../style/variables';
 
 .matero-topmenu {
   position: sticky;
@@ -80,35 +62,6 @@
     [dir='rtl'] & {
       margin-left: 8px;
       margin-right: auto;
-    }
-  }
-}
-
-// Layout control
-.matero-navbar-top {
-  .matero-topmenu {
-    top: 0;
-  }
-
-  .matero-branding {
-    margin-left: 16px;
-
-    [dir='rtl'] & {
-      margin-left: auto;
-      margin-right: 16px;
-    }
-  }
-}
-
-// Layout control
-.matero-header-fixed {
-  .matero-topmenu {
-    top: $topmenu-sticky-position-desktop;
-
-    @include bp-lt(small) {
-      & {
-        top: $topmenu-sticky-position-mobile;
-      }
     }
   }
 }

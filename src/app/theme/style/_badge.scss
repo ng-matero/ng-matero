@@ -12,3 +12,7 @@
   background-color: #757575;
   border-radius: 2px;
 }
+
+.badge {
+  @include badge();
+}

@@ -7,6 +7,7 @@ import {
   ElementRef,
   Inject,
   Optional,
+  ViewEncapsulation,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
@@ -26,6 +27,8 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
+  styleUrls: ['./admin-layout.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;

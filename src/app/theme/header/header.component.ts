@@ -5,12 +5,15 @@ import {
   EventEmitter,
   Input,
   ChangeDetectionStrategy,
+  ViewEncapsulation,
 } from '@angular/core';
 import * as screenfull from 'screenfull';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
@@ -28,7 +31,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
-  // TODO:
   toggleFullscreen() {
     if (this.screenfull.isEnabled) {
       this.screenfull.toggle();

@@ -1,0 +1,35 @@
+@mixin matero-grid-theme($theme) {
+  $row-hover-bg: #f2f2f2;
+  $row-odd-bg: #f7f7f7;
+
+  $row-hover-bg-dark: #373737;
+  $row-odd-bg-dark: #3b3b3b;
+
+  $background: mat-color($theme, 'background');
+  $foreground: mat-color($theme, 'foreground');
+  $is-dark-theme: map-get($theme, is-dark);
+
+  mtx-grid.mtx-grid {
+    .mat-table {
+      &.mat-table-striped {
+        .mat-row-odd {
+          background-color: if($is-dark-theme, $row-odd-bg-dark, $row-odd-bg);
+        }
+      }
+
+      &.mat-table-hover {
+        .mat-row {
+          &:hover {
+            background-color: if($is-dark-theme, $row-hover-bg-dark, $row-hover-bg);
+          }
+        }
+      }
+
+      .mat-row {
+        &.selected {
+          background-color: if($is-dark-theme, $row-hover-bg-dark, $row-hover-bg);
+        }
+      }
+    }
+  }
+}

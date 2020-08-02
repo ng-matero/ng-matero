@@ -1,0 +1,11 @@
+@mixin matero-toolbar-button-theme($theme) {
+  $background: mat-color($theme, 'background');
+
+  .matero-toolbar-button {
+    &.mat-icon-button {
+      &:hover {
+        background-color: mat-color($background, hover);
+      }
+    }
+  }
+}

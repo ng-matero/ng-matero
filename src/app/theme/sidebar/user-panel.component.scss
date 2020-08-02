@@ -1,0 +1,47 @@
+@import '../style/variables';
+@import '../style/transitions';
+
+.matero-user-panel {
+  padding: 16px 0;
+  border-bottom: 1px solid $boder-color;
+}
+
+.matero-user-panel-avatar {
+  margin-bottom: 8px;
+  // Set default width and height can avoid flashing before avatar image loaded.
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  transition: swift-ease-out(transform);
+}
+
+.matero-user-panel-name,
+.matero-user-panel-email {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-weight: normal;
+}
+
+.matero-user-panel-name,
+.matero-user-panel-email,
+.matero-user-panel-icons {
+  opacity: 1;
+  transition: swift-ease-out(opacity);
+}
+
+.matero-user-panel-icons {
+  white-space: nowrap;
+
+  .mat-icon-button {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+
+    .mat-icon {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+}

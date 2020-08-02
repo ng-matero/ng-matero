@@ -1,0 +1,9 @@
+@mixin matero-customizer-theme($theme) {
+  $background: mat-color($theme, 'background');
+  $foreground: mat-color($theme, 'foreground');
+
+  .customizer-panel {
+    color: mat-color($foreground, text);
+    background-color: mat-color($background, dialog);
+  }
+}
