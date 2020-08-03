@@ -12,14 +12,19 @@
   padding: $gutter;
 }
 
-// Layout control
-.matero-header-above {
-  .matero-container {
-    height: calc(100% - #{$toolbar-height-desktop}) !important;
+.matero-header {
+  position: relative;
+  z-index: 201;
+  display: block;
+
+  .matero-toolbar {
+    padding: 0 8px;
   }
 
-  .matero-sidebar-main {
-    height: 100% !important;
+  // Layout control
+  .matero-header-fixed & {
+    position: sticky;
+    top: 0;
   }
 }
 
@@ -32,6 +37,17 @@
 
   &.mat-drawer-side {
     border-width: 0;
+  }
+}
+
+// Layout control
+.matero-header-above {
+  .matero-container {
+    height: calc(100% - #{$toolbar-height-desktop}) !important;
+  }
+
+  .matero-sidebar-main {
+    height: 100% !important;
   }
 }
 
