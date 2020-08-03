@@ -43,7 +43,9 @@ function copyAssets(cb) {
 
 // src/styles
 function copyStyles(cb) {
-  return src(['src/styles/**/*', '!src/styles/themes.scss']).pipe(dest(`${FILES}/src/styles`));
+  return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/themes.scss']).pipe(
+    dest(`${FILES}/src/styles`)
+  );
 }
 
 // src/environments
@@ -79,14 +81,18 @@ function updateVersions(cb) {
       each(function (content, file, callback) {
         [
           '@angular/cdk',
-          '@angular/material',
           '@angular/flex-layout',
+          '@angular/material',
+          '@angular/material-moment-adapter',
+          '@mat-datetimepicker/core',
+          '@mat-datetimepicker/moment',
           '@ng-matero/extensions',
           '@ng-select/ng-select',
           '@ngx-formly/core',
           '@ngx-formly/material',
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
+          'moment',
           'ngx-progressbar',
           'ngx-toastr',
           'photoviewer',

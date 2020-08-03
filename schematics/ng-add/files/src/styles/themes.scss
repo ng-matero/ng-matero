@@ -1,6 +1,5 @@
 @import '~@angular/material/theming';
-
-@include mat-core();
+@import 'app-theme';
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -24,14 +23,7 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 <% } %>
 $config: mat-typography-config();
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+@include mat-core();
+
 @include angular-material-theme($theme);
-
-//
-// Matero theme
-//
-@import 'app/theme/style/theming';
-
 @include matero-admin-theme($theme);

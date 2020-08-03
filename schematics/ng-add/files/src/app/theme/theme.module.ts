@@ -15,10 +15,10 @@ import { SidebarNoticeComponent } from './sidebar-notice/sidebar-notice.componen
 import { TopmenuComponent } from './topmenu/topmenu.component';
 
 import { HeaderComponent } from './header/header.component';
-import { BrandingComponent } from './header/branding.component';
-import { NotificationComponent } from './header/notification.component';
-import { TranslateComponent } from './header/translate.component';
-import { UserComponent } from './header/user.component';
+import { BrandingComponent } from './header/widgets/branding.component';
+import { NotificationComponent } from './header/widgets/notification.component';
+import { TranslateComponent } from './header/widgets/translate.component';
+import { UserComponent } from './header/widgets/user.component';
 
 
 @NgModule({

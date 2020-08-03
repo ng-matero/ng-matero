@@ -1,0 +1,14 @@
+@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
+@import '../app/theme/header/header-theme';
+@import '../app/theme/sidemenu/sidemenu-theme';
+@import '../app/theme/topmenu/topmenu-theme';
+@import './custom/table-theme';
+
+// Styles for the app that are based on the current theme.
+@mixin matero-admin-theme($theme) {
+  @include mat-datetimepicker-theme($theme);
+  @include matero-toolbar-button-theme($theme);
+  @include matero-sidenav-theme($theme);
+  @include matero-topnav-theme($theme);
+  @include matero-grid-theme($theme);
+}
