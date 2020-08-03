@@ -43,7 +43,7 @@ function copyAssets(cb) {
 
 // src/styles
 function copyStyles(cb) {
-  return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/themes.scss']).pipe(
+  return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/theming.scss']).pipe(
     dest(`${FILES}/src/styles`)
   );
 }

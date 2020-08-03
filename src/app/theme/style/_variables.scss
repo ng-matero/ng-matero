@@ -46,3 +46,30 @@ $breakpoints: (
   large:  1280px,
   xlarge: 1920px
 ) !default;
+
+// Material colors
+$mat-colors: (
+  red: $mat-red,
+  pink: $mat-pink,
+  purple: $mat-purple,
+  deep-purple: $mat-deep-purple,
+  indigo: $mat-indigo,
+  blue: $mat-blue,
+  light-blue: $mat-light-blue,
+  cyan: $mat-cyan,
+  teal: $mat-teal,
+  green: $mat-green,
+  light-green: $mat-light-green,
+  lime: $mat-lime,
+  yellow: $mat-yellow,
+  amber: $mat-amber,
+  orange: $mat-orange,
+  deep-orange: $mat-deep-orange,
+  brown: $mat-brown,
+  gray: $mat-gray,
+  blue-gray: $mat-blue-gray,
+  white: white,
+  black: black,
+  light: $light-primary-text,
+  dark: $dark-primary-text,
+);
