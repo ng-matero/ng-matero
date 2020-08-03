@@ -52,6 +52,7 @@
     "forms.form-elements": "表单元素",
     "forms.dynamic-form": "动态表单",
     "forms.select": "选择框",
+    "forms.datetime": "日期时间",
     "tables": "表格",
     "tables.kitchen-sink": "基础演示",
     "tables.remote-data": "远程数据",
