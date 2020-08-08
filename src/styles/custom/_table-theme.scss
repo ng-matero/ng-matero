@@ -1,13 +1,13 @@
-@mixin matero-grid-theme($theme) {
+@mixin custom-table-theme($theme) {
+  $background: map-get($theme, 'background');
+  $foreground: map-get($theme, 'foreground');
+  $is-dark-theme: map-get($theme, is-dark);
+
   $row-hover-bg: #f2f2f2;
   $row-odd-bg: #f7f7f7;
 
   $row-hover-bg-dark: #373737;
   $row-odd-bg-dark: #3b3b3b;
-
-  $background: mat-color($theme, 'background');
-  $foreground: mat-color($theme, 'foreground');
-  $is-dark-theme: map-get($theme, is-dark);
 
   mtx-grid.mtx-grid {
     .mat-table {
