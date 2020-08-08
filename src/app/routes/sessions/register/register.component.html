@@ -24,7 +24,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>{{'register.confirm-password' | translate}}</mat-label>
+        <mat-label>{{'register.confirm_password' | translate}}</mat-label>
         <input matInput type="password" formControlName="confirmPassword" required>
         <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required')">
           {{'validations.required' | translate}}
@@ -43,7 +43,7 @@
         {{'register.register' | translate}}
       </button>
 
-      <div class="m-t-16">{{'register.have-an-account' | translate}}?
+      <div class="m-t-16">{{'register.have_an_account' | translate}}?
         <a routerLink="/auth/login">{{'login.login' | translate}}</a></div>
     </form>
 

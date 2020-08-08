@@ -44,14 +44,6 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="Simple placeholder" formControlName="email" required>
-          <mat-error *ngIf="reactiveForm1.get('email').invalid">
-            {{getErrorMessage(reactiveForm1)}}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
           <mat-label>Gender</mat-label>
           <mat-select required formControlName="gender" required>
             <mat-option>-- None --</mat-option>
@@ -59,30 +51,6 @@
             <mat-option value="2">female</mat-option>
           </mat-select>
           <mat-error *ngIf="reactiveForm1.get('gender').invalid">
-            {{'validations.required' | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>City</mat-label>
-          <input matInput placeholder="Simple placeholder" formControlName="city" required>
-          <mat-error *ngIf="reactiveForm1.get('city').invalid">
-            {{'validations.required' | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Simple placeholder" formControlName="address" required>
-          <mat-error *ngIf="reactiveForm1.get('address').invalid">
-            {{'validations.required' | translate}}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Company</mat-label>
-          <input matInput placeholder="Simple placeholder" formControlName="company" required>
-          <mat-error *ngIf="reactiveForm1.get('company').invalid">
             {{'validations.required' | translate}}
           </mat-error>
         </mat-form-field>
@@ -98,21 +66,37 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Tele</mat-label>
-          <input matInput placeholder="Simple placeholder" type="number" formControlName="tele"
-                 required>
-          <mat-icon matSuffix>phone</mat-icon>
-          <mat-error *ngIf="reactiveForm1.get('tele').invalid">
-            {{'validations.required' | translate}}
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Simple placeholder" formControlName="email" required>
+          <mat-error *ngIf="reactiveForm1.get('email').invalid">
+            {{getErrorMessage(reactiveForm1) | translate}}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Simple placeholder" formControlName="city">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Simple placeholder" formControlName="address">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Company</mat-label>
+          <input matInput placeholder="Simple placeholder" formControlName="company">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Tele</mat-label>
+          <input matInput placeholder="Simple placeholder" type="number" formControlName="tele">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
           <mat-label>Website</mat-label>
-          <input matInput placeholder="Simple placeholder" formControlName="website" required>
-          <mat-error *ngIf="reactiveForm1.get('website').invalid">
-            {{'validations.required' | translate}}
-          </mat-error>
+          <input matInput placeholder="Simple placeholder" formControlName="website">
         </mat-form-field>
 
         <mat-form-field>
@@ -120,9 +104,6 @@
                  formControlName="date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="reactiveForm1.get('date').invalid">
-            {{'validations.required' | translate}}
-          </mat-error>
         </mat-form-field>
 
         <button mat-raised-button color="primary" class="m-t-8">Save</button>
@@ -153,16 +134,6 @@
 
           <div fxFlex="50" fxFlex.lt-sm="100">
             <mat-form-field>
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="Simple placeholder" formControlName="email" required>
-              <mat-error *ngIf="reactiveForm2.get('email').invalid">
-                {{getErrorMessage(reactiveForm2)}}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" fxFlex.lt-sm="100">
-            <mat-form-field>
               <mat-label>Gender</mat-label>
               <mat-select required formControlName="gender" required>
                 <mat-option>-- None --</mat-option>
@@ -170,36 +141,6 @@
                 <mat-option value="2">female</mat-option>
               </mat-select>
               <mat-error *ngIf="reactiveForm2.get('gender').invalid">
-                {{'validations.required' | translate}}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" fxFlex.lt-sm="100">
-            <mat-form-field>
-              <mat-label>City</mat-label>
-              <input matInput placeholder="Simple placeholder" formControlName="city" required>
-              <mat-error *ngIf="reactiveForm2.get('city').invalid">
-                {{'validations.required' | translate}}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" fxFlex.lt-sm="100">
-            <mat-form-field>
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Simple placeholder" formControlName="address" required>
-              <mat-error *ngIf="reactiveForm2.get('address').invalid">
-                {{'validations.required' | translate}}
-              </mat-error>
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" fxFlex.lt-sm="100">
-            <mat-form-field>
-              <mat-label>Company</mat-label>
-              <input matInput placeholder="Simple placeholder" formControlName="company" required>
-              <mat-error *ngIf="reactiveForm2.get('company').invalid">
                 {{'validations.required' | translate}}
               </mat-error>
             </mat-form-field>
@@ -219,23 +160,47 @@
 
           <div fxFlex="50" fxFlex.lt-sm="100">
             <mat-form-field>
-              <mat-label>Tele</mat-label>
-              <input matInput placeholder="Simple placeholder" type="number"
-                     formControlName="tele" required>
-              <mat-icon matSuffix>phone</mat-icon>
-              <mat-error *ngIf="reactiveForm2.get('tele').invalid">
-                {{'validations.required' | translate}}
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Simple placeholder" formControlName="email" required>
+              <mat-error *ngIf="reactiveForm2.get('email').invalid">
+                {{getErrorMessage(reactiveForm2) | translate}}
               </mat-error>
             </mat-form-field>
           </div>
 
           <div fxFlex="50" fxFlex.lt-sm="100">
             <mat-form-field>
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Simple placeholder" formControlName="city">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Simple placeholder" formControlName="address">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Company</mat-label>
+              <input matInput placeholder="Simple placeholder" formControlName="company">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Tele</mat-label>
+              <input matInput placeholder="Simple placeholder" type="number" formControlName="tele">
+              <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
               <mat-label>Website</mat-label>
-              <input matInput placeholder="Simple placeholder" formControlName="website" required>
-              <mat-error *ngIf="reactiveForm2.get('website').invalid">
-                {{'validations.required' | translate}}
-              </mat-error>
+              <input matInput placeholder="Simple placeholder" formControlName="website">
             </mat-form-field>
           </div>
 
@@ -245,9 +210,6 @@
                      formControlName="date">
               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
               <mat-datepicker #picker2></mat-datepicker>
-              <mat-error *ngIf="reactiveForm2.get('date').invalid">
-                {{'validations.required' | translate}}
-              </mat-error>
             </mat-form-field>
           </div>
 

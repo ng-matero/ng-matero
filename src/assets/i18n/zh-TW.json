@@ -74,7 +74,8 @@
     "min": "值必须大于 {{number}}",
     "max": "值必須小于 {{number}}",
     "exist": "{{value}} 已存在",
-    "inconsistent": "與 {{value}} 不壹致"
+    "inconsistent": "與 {{value}} 不壹致",
+    "invalid_email": "郵箱格式不正確"
   },
   "user": {
     "profile": "個人信息",
@@ -85,18 +86,18 @@
     "title": "歡迎回來",
     "username": "用戶名",
     "password": "密碼",
-    "remember-me": "記住我",
+    "remember_me": "記住我",
     "login": "登入",
-    "have-no-account": "沒有賬號",
-    "create-one": "點此創建壹個",
-    "please-enter": "請輸入"
+    "have_no_account": "沒有賬號",
+    "create_one": "點此創建壹個",
+    "please_enter": "請輸入"
   },
   "register": {
     "welcome": "歡迎",
     "title": "創建您的帳戶只需幾秒鐘",
-    "confirm-password": "確認密碼",
+    "confirm_password": "確認密碼",
     "agree": "我已閱讀並同意服務條款",
-    "have-an-account": "已經有帳號了",
+    "have_an_account": "已經有帳號了",
     "register": "創建賬號"
   }
 }

@@ -27,28 +27,28 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
   ) {
     this.reactiveForm1 = this.fb.group({
       username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       gender: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      company: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
-      tele: ['', [Validators.required]],
-      website: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      city: [''],
+      address: [''],
+      company: [''],
+      tele: [''],
+      website: [''],
+      date: [''],
     });
 
     this.reactiveForm2 = this.fb.group({
       username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       gender: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      company: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
-      tele: ['', [Validators.required]],
-      website: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      city: [''],
+      address: [''],
+      company: [''],
+      tele: [''],
+      website: [''],
+      date: [''],
     });
   }
 
@@ -64,9 +64,9 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
 
   getErrorMessage(form: FormGroup) {
     return form.get('email').hasError('required')
-      ? 'You must enter a value'
+      ? 'validations.required'
       : form.get('email').hasError('email')
-      ? 'Not a valid email'
+      ? 'validations.invalid_email'
       : '';
   }
 }
