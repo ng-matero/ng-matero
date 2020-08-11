@@ -1,5 +1,6 @@
 @mixin matero-header-theme($theme) {
   $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
   .matero-toolbar-button {
     &.mat-icon-button {
@@ -7,5 +8,9 @@
         background-color: mat-color($background, hover);
       }
     }
+  }
+
+  .matero-branding-name {
+    color: mat-color($foreground, text);
   }
 }

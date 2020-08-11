@@ -12,9 +12,9 @@ body {
 
 html,
 body {
-  position: relative;
+  position: relative; // 1
   height: 100%;
-  overflow: auto;
+  overflow: auto; // 2
 }
 
 *,

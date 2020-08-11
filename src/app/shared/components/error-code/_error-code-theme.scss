@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+@mixin matero-error-code-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .matero-error-code {
+    color: mat-color($foreground, text);
+  }
+}

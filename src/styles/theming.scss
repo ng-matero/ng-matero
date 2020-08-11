@@ -20,10 +20,9 @@ $theme: mat-light-theme($primary, $accent);
 //
 // Dark style
 //
-// $primary: mat-palette($mat-blue);
-// $accent: mat-palette($mat-amber, A200, A100, A400);
-// $warn: mat-palette($mat-deep-orange);
-// $theme: mat-dark-theme($primary, $accent, $warn);
+// $primary: mat-palette($mat-blue, 700, 300, 900);
+// $accent:  mat-palette($mat-amber, A200, A100, A400);
+// $theme: mat-dark-theme($primary, $accent);
 
 $config: mat-typography-config();
 
@@ -36,7 +35,7 @@ $config: mat-typography-config();
 // Demo purpose only
 //
 .theme-dark {
-  $primary: mat-palette($mat-blue, 700, 500, 900);
+  $primary: mat-palette($mat-blue, 700, 300, 900);
   $accent:  mat-palette($mat-amber, A200, A100, A400);
   $theme: mat-dark-theme($primary, $accent);
 
