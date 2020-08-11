@@ -1,13 +1,15 @@
+// Example for custom theming
+
 @mixin custom-table-theme($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
   $background: map-get($theme, 'background');
   $foreground: map-get($theme, 'foreground');
-  $is-dark-theme: map-get($theme, is-dark);
 
-  $row-hover-bg: #f2f2f2;
-  $row-odd-bg: #f7f7f7;
+  $row-hover-bg: mat-color($mat-indigo, 50);
+  $row-odd-bg: mat-color($mat-gray, 100);
 
-  $row-hover-bg-dark: #373737;
-  $row-odd-bg-dark: #3b3b3b;
+  $row-hover-bg-dark: mat-color($mat-blue-gray, 900);
+  $row-odd-bg-dark: lighten(mat-color($mat-gray, 900), 10%);
 
   mtx-grid.mtx-grid {
     .mat-table {

@@ -1,0 +1,16 @@
+@mixin matero-reboot-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+
+  a {
+    color: mat-color($primary);
+
+    &:hover {
+      color: lighten(mat-color($primary), 10%);
+    }
+  }
+
+  code {
+    background-color: rgba(mat-color($foreground, secondary-text), .03);
+  }
+}

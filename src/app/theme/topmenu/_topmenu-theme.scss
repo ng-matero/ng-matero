@@ -1,6 +1,6 @@
-@mixin matero-topnav-theme($theme) {
-  $background: mat-color($theme, 'background');
-  $foreground: mat-color($theme, 'foreground');
+@mixin matero-topmenu-theme($theme) {
+  $background: mat-color($theme, background);
+  $foreground: mat-color($theme, foreground);
 
   .matero-topmenu {
     background: mat-color($background, app-bar);

@@ -1,34 +1,46 @@
 @import '../style/variables';
 
-@mixin matero-sidenav-theme($theme) {
-  $background: mat-color($theme, 'background');
-  $foreground: mat-color($theme, 'foreground');
+@mixin matero-sidemenu-theme($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
   .matero-sidemenu {
     a {
       color: mat-color($foreground, text);
     }
 
-    .matero-sidemenu-item {
+    > .matero-sidemenu-item {
       &:hover {
         background: mat-color($background, hover);
       }
 
       &.open {
-        background: rgba(0, 0, 0, .02);
+        background: mat-color($background, hover);
       }
 
       &.active {
         > a {
-          color: mat-color(map-get($theme, accent));
+          background-color: if($is-dark-theme, rgba(mat-color($primary), .15), transparent);
+          color: if($is-dark-theme, lighten(mat-color($primary), 25%), mat-color($accent));
         }
       }
     }
-  }
 
-  .matero-sidebar-header {
-    color: mat-color($foreground, text);
-    background: mat-color($background, app-bar);
-    border-bottom: 1px solid $boder-color;
+    &.submenu {
+      > .matero-sidemenu-item {
+        &.open {
+          background-color: transparent;
+        }
+
+        &.active {
+          > a {
+            background-color: transparent;
+          }
+        }
+      }
+    }
   }
 }

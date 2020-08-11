@@ -1,0 +1,16 @@
+@import '../style/variables';
+
+@mixin matero-sidebar-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .matero-sidebar-header {
+    color: mat-color($foreground, text);
+    background: mat-color($background, dialog);
+    border-bottom: 1px solid mat-color($foreground, divider);
+  }
+
+  .matero-user-panel {
+    border-bottom: 1px solid mat-color($foreground, divider);
+  }
+}

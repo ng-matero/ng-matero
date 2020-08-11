@@ -24,17 +24,6 @@ $font-family-sans-serif: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Hel
 $font-family-monospace: 'Roboto Mono', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 
-// Links
-$link-color: map-get($mat-indigo, 500) !default;
-$link-decoration: none !default;
-
-// Code
-$code-color: rgba(0, 0, 0, .03);
-$code-font-size: 90% !default;
-
-// Border
-$boder-color: rgba(0, 0, 0, .12) !default;
-
 // Breakpoints
 //
 // Define the minimum dimensions at which your layout will change,

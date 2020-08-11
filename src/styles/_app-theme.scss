@@ -1,6 +1,9 @@
+@import '~@ng-matero/extensions/theming';
 @import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme.scss';
 
+@import '../app/theme/style/reboot-theme';
 @import '../app/theme/header/header-theme';
+@import '../app/theme/sidebar/sidebar-theme';
 @import '../app/theme/sidemenu/sidemenu-theme';
 @import '../app/theme/topmenu/topmenu-theme';
 @import '../app/theme/customizer/customizer-theme';
@@ -9,11 +12,14 @@
 
 // Styles for the app that are based on the current theme.
 @mixin matero-admin-theme($theme) {
+  @include material-extensions-theme($theme);
   @include mat-datetimepicker-theme($theme);
 
-  @include matero-toolbar-button-theme($theme);
-  @include matero-sidenav-theme($theme);
-  @include matero-topnav-theme($theme);
+  @include matero-reboot-theme($theme);
+  @include matero-header-theme($theme);
+  @include matero-sidebar-theme($theme);
+  @include matero-sidemenu-theme($theme);
+  @include matero-topmenu-theme($theme);
   @include matero-customizer-theme($theme);
 
   @include custom-table-theme($theme);

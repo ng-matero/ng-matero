@@ -1,5 +1,5 @@
-@mixin matero-toolbar-button-theme($theme) {
-  $background: mat-color($theme, 'background');
+@mixin matero-header-theme($theme) {
+  $background: map-get($theme, background);
 
   .matero-toolbar-button {
     &.mat-icon-button {

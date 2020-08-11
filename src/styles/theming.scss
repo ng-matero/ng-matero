@@ -10,8 +10,7 @@
 //
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
-$warn: mat-palette($mat-red);
-$theme: mat-light-theme($primary, $accent, $warn);
+$theme: mat-light-theme($primary, $accent);
 
 //////////////////////////////////////////////////////////////////////////////////////
 // When we use the Schematics (`ng add`) to start, the following variables will be  //
@@ -37,10 +36,9 @@ $config: mat-typography-config();
 // Demo purpose only
 //
 .theme-dark {
-  $primary: mat-palette($mat-blue);
-  $accent: mat-palette($mat-amber, A200, A100, A400);
-  $warn: mat-palette($mat-deep-orange);
-  $theme: mat-dark-theme($primary, $accent, $warn);
+  $primary: mat-palette($mat-blue, 700, 500, 900);
+  $accent:  mat-palette($mat-amber, A200, A100, A400);
+  $theme: mat-dark-theme($primary, $accent);
 
   @include angular-material-theme($theme);
   @include matero-admin-theme($theme);

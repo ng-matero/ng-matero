@@ -30,11 +30,6 @@ ul {
   margin-bottom: 1rem;
 }
 
-a {
-  color: $link-color;
-  text-decoration: $link-decoration;
-}
-
 input,
 button,
 select,
@@ -55,7 +50,10 @@ samp {
 
 code {
   padding: 3px;
-  font-size: $code-font-size;
-  background-color: $code-color;
+  font-size: 90%;
   word-break: break-word;
+}
+
+a {
+  text-decoration: none;
 }
