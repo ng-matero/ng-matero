@@ -39,7 +39,7 @@
     "@angular/router": "~9.1.12",
     "@mat-datetimepicker/core": "^4.1.0",
     "@mat-datetimepicker/moment": "^4.1.0",
-    "@ng-matero/extensions": "^9.9.0",
+    "@ng-matero/extensions": "^9.11.2",
     "@ng-select/ng-select": "^4.0.4",
     "@ngx-formly/core": "^5.8.0",
     "@ngx-formly/material": "^5.8.0",
