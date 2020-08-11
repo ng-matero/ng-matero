@@ -7,7 +7,6 @@
 @import '../app/theme/sidemenu/sidemenu-theme';
 @import '../app/theme/topmenu/topmenu-theme';
 @import '../app/theme/customizer/customizer-theme';
-
 @import '../app/shared/components/error-code/error-code-theme';
 
 @import './custom/table-theme';
@@ -23,7 +22,6 @@
   @include matero-sidemenu-theme($theme);
   @include matero-topmenu-theme($theme);
   @include matero-customizer-theme($theme);
-
   @include matero-error-code-theme($theme);
 
   @include custom-table-theme($theme);
