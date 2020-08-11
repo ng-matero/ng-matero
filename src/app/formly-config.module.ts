@@ -20,7 +20,7 @@ export class FormlyConfigModule {
     formlyValidation.init();
   }
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FormlyConfigModule> {
     return {
       ngModule: FormlyConfigModule,
       providers: [formlyModuleProviders],
