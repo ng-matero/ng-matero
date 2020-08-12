@@ -74,7 +74,8 @@
     "min": "值必须大于 {{number}}",
     "max": "值必须小于 {{number}}",
     "exist": "{{value}} 已存在",
-    "inconsistent": "与 {{value}} 不一致"
+    "inconsistent": "与 {{value}} 不一致",
+    "invalid_email": "邮箱格式不正确"
   },
   "user": {
     "profile": "个人信息",
@@ -85,18 +86,18 @@
     "title": "欢迎回来",
     "username": "用户名",
     "password": "密码",
-    "remember-me": "记住我",
+    "remember_me": "记住我",
     "login": "登入",
-    "have-no-account": "没有账号",
-    "create-one": "点此创建一个",
-    "please-enter": "请输入"
+    "have_no_account": "没有账号",
+    "create_one": "点此创建一个",
+    "please_enter": "请输入"
   },
   "register": {
     "welcome": "欢迎",
     "title": "创建您的帐户只需几秒钟",
-    "confirm-password": "确认密码",
+    "confirm_password": "确认密码",
     "agree": "我已阅读并同意服务条款",
-    "have-an-account": "已经有帐号了",
+    "have_an_account": "已经有帐号了",
     "register": "创建账号"
   }
 }
