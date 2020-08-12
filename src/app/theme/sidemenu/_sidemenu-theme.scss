@@ -19,7 +19,7 @@
 
       &.active {
         > a {
-          background-color: if($is-dark-theme, rgba(mat-color($primary), .15), mat-color($background, hover));
+          background-color: if($is-dark-theme, rgba(mat-color($primary), .15), transparent);
           color: if($is-dark-theme, lighten(mat-color($primary), 25%), mat-color($accent));
 
           &:hover {

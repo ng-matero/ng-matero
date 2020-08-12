@@ -3,22 +3,23 @@ import { Directive, HostBinding, Inject, Input, OnInit, OnDestroy } from '@angul
 import { AccordionDirective } from './accordion.directive';
 
 @Directive({
-  selector: '[navAccordionLink]',
+  selector: '[navAccordionItem]',
 })
-export class AccordionLinkDirective implements OnInit, OnDestroy {
+export class AccordionItemDirective implements OnInit, OnDestroy {
   protected OPEN = false;
   protected nav: AccordionDirective;
 
-  @Input() public group: any;
+  @Input() group: any;
+  @Input() type: 'link' | 'sub' | 'extLink' | 'extTabLink';
 
   @HostBinding('class.open')
   @Input()
   get open(): boolean {
     return this.OPEN;
   }
-
   set open(value: boolean) {
-    this.OPEN = value;
+    // Only sub menu can be open
+    this.OPEN = this.type === 'sub' && value;
     if (value) {
       this.nav.closeOtherLinks(this);
     }

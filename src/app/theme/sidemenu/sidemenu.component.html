@@ -1,7 +1,7 @@
 <ul navAccordion class="matero-sidemenu level-0">
-  <li navAccordionLink class="matero-sidemenu-item" routerLinkActive="active"
+  <li navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
       *ngFor="let menuItem of menus | async"
-      [group]="menuItem.route">
+      [group]="menuItem.route" [type]="menuItem.type">
     <a class="matero-sidemenu-link" [routerLink]="buildRoute([menuItem.route])"
        *ngIf="menuItem.type === 'link'"
        matRipple [matRippleDisabled]="!ripple">
@@ -58,9 +58,9 @@
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
     <ul navAccordion class="matero-sidemenu submenu level-1" *ngIf="menuItem.type === 'sub'">
-      <li navAccordionLink class="matero-sidemenu-item" routerLinkActive="active"
+      <li navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
           *ngFor="let childLvl1 of menuItem.children"
-          [group]="childLvl1.route">
+          [group]="childLvl1.route" [type]="childLvl1.type">
         <a class="matero-sidemenu-link"
            [routerLink]="buildRoute([menuItem.route, childLvl1.route])"
            *ngIf="childLvl1.type === 'link'"

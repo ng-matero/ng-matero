@@ -1,13 +1,13 @@
 import { AfterContentChecked, Directive } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AccordionLinkDirective } from './accordionlink.directive';
+import { AccordionItemDirective } from './accordionItem.directive';
 
 @Directive({
   selector: '[navAccordion]',
 })
 export class AccordionDirective implements AfterContentChecked {
-  protected navlinks: Array<AccordionLinkDirective> = [];
+  protected navlinks: Array<AccordionItemDirective> = [];
 
   constructor(private router: Router) {
     // Fix: `ERROR Error: ExpressionChangedAfterItHasBeenCheckedError:
@@ -21,19 +21,19 @@ export class AccordionDirective implements AfterContentChecked {
       .subscribe(e => this.checkOpenLinks());
   }
 
-  addLink(link: AccordionLinkDirective): void {
+  addLink(link: AccordionItemDirective): void {
     this.navlinks.push(link);
   }
 
-  closeOtherLinks(openLink: AccordionLinkDirective): void {
-    this.navlinks.forEach((link: AccordionLinkDirective) => {
+  closeOtherLinks(openLink: AccordionItemDirective): void {
+    this.navlinks.forEach((link: AccordionItemDirective) => {
       if (link !== openLink) {
         link.open = false;
       }
     });
   }
 
-  removeGroup(link: AccordionLinkDirective): void {
+  removeGroup(link: AccordionItemDirective): void {
     const index = this.navlinks.indexOf(link);
     if (index !== -1) {
       this.navlinks.splice(index, 1);
@@ -41,7 +41,7 @@ export class AccordionDirective implements AfterContentChecked {
   }
 
   checkOpenLinks() {
-    this.navlinks.forEach((link: AccordionLinkDirective) => {
+    this.navlinks.forEach((link: AccordionItemDirective) => {
       if (link.group) {
         const routeUrl = this.router.url;
         const currentUrl = routeUrl.split('/');
