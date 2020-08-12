@@ -20,8 +20,9 @@ function copyRoot(cb) {
     '.stylelintrc',
     'LICENSE',
     'proxy.config.js',
-    'tsconfig.app.json',
     'tsconfig.json',
+    'tsconfig.app.json',
+    'tsconfig.base.json',
     'tslint.json',
   ]).pipe(dest(`${FILES}/`));
 }
