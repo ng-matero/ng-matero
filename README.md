@@ -47,7 +47,8 @@ Which version to use?
 
 | Angular | Material | Ng-Matero | Extensions |
 | ------- | -------- | --------- | ---------- |
-| v9      | v9       | 9.x.x     | 9.x.x      |
+| v10     | v10      | 10.x.x    | 10.x.x     |
+| v9      | v9       | 9.7.2     | 9.11.2     |
 | v8      | v8       | 0.16.0    | 0.9.3      |
 
 ## 🔧 Installation
