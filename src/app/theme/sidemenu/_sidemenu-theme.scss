@@ -8,37 +8,45 @@
   $foreground: map-get($theme, foreground);
 
   .matero-sidemenu {
-    a {
-      color: mat-color($foreground, text);
-    }
-
     > .matero-sidemenu-item {
-      &:hover {
-        background: mat-color($background, hover);
-      }
+      > a {
+        color: mat-color($foreground, text);
 
-      &.open {
-        background: mat-color($background, hover);
+        &:hover {
+          background: mat-color($background, hover);
+        }
       }
 
       &.active {
         > a {
           background-color: if($is-dark-theme, rgba(mat-color($primary), .15), transparent);
           color: if($is-dark-theme, lighten(mat-color($primary), 25%), mat-color($accent));
+
+          &:hover {
+            background: mat-color($background, hover);
+          }
         }
+      }
+
+      &.open {
+        background: mat-color($background, hover);
       }
     }
 
     &.submenu {
       > .matero-sidemenu-item {
-        &.open {
-          background-color: transparent;
-        }
-
         &.active {
           > a {
             background-color: transparent;
+
+            &:hover {
+              background: mat-color($background, hover);
+            }
           }
+        }
+
+        &.open {
+          background: transparent;
         }
       }
     }
