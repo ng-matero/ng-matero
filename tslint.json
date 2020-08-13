@@ -1,6 +1,8 @@
 {
   "extends": "tslint:recommended",
-  "rulesDirectory": ["codelyzer"],
+  "rulesDirectory": [
+    "codelyzer"
+  ],
   "rules": {
     "align": {
       "options": [
@@ -16,7 +18,10 @@
       "severity": "warn"
     },
     "eofline": true,
-    "import-blacklist": [true, "rxjs/Rx"],
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
     "import-spacing": true,
     "indent": {
       "options": [
@@ -25,27 +30,55 @@
     },
     "interface-name": false,
     "max-classes-per-file": false,
-    "max-line-length": [false, 100],
+    "max-line-length": [
+      false,
+      100
+    ],
     "member-access": false,
     "member-ordering": [
       true,
       {
-        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
       }
     ],
     "no-consecutive-blank-lines": false,
-    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
     "no-empty": false,
-    "no-inferrable-types": [true, "ignore-params"],
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
     "no-non-null-assertion": false,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
-    "object-literal-key-quotes": [true, "consistent-as-needed"],
+    "object-literal-key-quotes": [
+      true,
+      "consistent-as-needed"
+    ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "quotemark": [true, "single"],
-    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ],
     "space-before-function-paren": {
       "options": {
         "anonymous": "never",
@@ -85,8 +118,13 @@
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "no-empty-interface": false,
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
-  ,    "whitespace": {
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "whitespace": {
       "options": [
         "check-branch",
         "check-decl",
@@ -96,5 +134,5 @@
         "check-typecast"
       ]
     }
-}
+  }
 }
