@@ -121,7 +121,7 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ## 🗺 Roadmap
 
-Check [this issue](https://github.com/ng-matero/ng-matero/issues/46) to know the develop plans.
+Check [projects](https://github.com/ng-matero/ng-matero/projects) to know the develop plans.
 
 ## Contributors
 
