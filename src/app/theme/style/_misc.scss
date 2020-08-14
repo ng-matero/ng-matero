@@ -9,3 +9,15 @@
   padding-right: $gutter/2;
   padding-left: $gutter/2;
 }
+
+.badge {
+  @include badge();
+}
+
+.scrollbar-thin {
+  @include scrollbar-thin();
+}
+
+.scrollbar-none {
+  @include scrollbar-none();
+}

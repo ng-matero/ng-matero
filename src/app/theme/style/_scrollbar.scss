@@ -42,11 +42,3 @@
     scrollbar-width: none;
   }
 }
-
-.scrollbar-thin {
-  @include scrollbar-thin();
-}
-
-.scrollbar-none {
-  @include scrollbar-none();
-}

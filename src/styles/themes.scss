@@ -32,7 +32,7 @@ $config: mat-typography-config();
 @include matero-admin-theme($theme);
 
 //
-// Demo purpose only
+// Demo purposes only
 //
 .theme-dark {
   $primary: mat-palette($mat-blue, 700, 300, 900);
