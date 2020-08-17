@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
+import { SettingsService, User } from '@core';
 
 @Component({
   selector: 'app-user-panel',
   template: `
     <div class="matero-user-panel" fxLayout="column" fxLayoutAlign="center center">
-      <img
-        class="matero-user-panel-avatar"
-        src="assets/images/avatar.jpg"
-        alt="avatar"
-        width="64"
-      />
-      <h4 class="matero-user-panel-name">Zongbin</h4>
-      <h5 class="matero-user-panel-email">nzb329@163.com</h5>
+      <img class="matero-user-panel-avatar" [src]="user.avatar" alt="avatar" width="64" />
+      <h4 class="matero-user-panel-name">{{ user.name }}</h4>
+      <h5 class="matero-user-panel-email">{{ user.email }}</h5>
       <div class="matero-user-panel-icons">
         <a routerLink="/profile/overview" mat-icon-button>
           <mat-icon>account_circle</mat-icon>
@@ -27,4 +23,10 @@ import { Component } from '@angular/core';
   `,
   styleUrls: ['./user-panel.component.scss'],
 })
-export class UserPanelComponent {}
+export class UserPanelComponent {
+  user: User;
+
+  constructor(settings: SettingsService) {
+    this.user = settings.user;
+  }
+}
