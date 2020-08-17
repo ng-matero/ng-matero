@@ -9,7 +9,7 @@ export class FormlyValidation {
   init(): void {
     // message without params
     this.formlyConfig.addValidatorMessage('required', (_err, _field) =>
-      this.translate.instant('validations.required')
+      this.translate.stream('validations.required')
     );
 
     // message with params
@@ -28,18 +28,18 @@ export class FormlyValidation {
   }
 
   private minlengthValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.instant('validations.minLength', { number: field.templateOptions.minLength });
+    return translate.stream('validations.minLength', { number: field.templateOptions.minLength });
   }
 
   private maxlengthValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.instant('validations.maxLength', { number: field.templateOptions.maxLength });
+    return translate.stream('validations.maxLength', { number: field.templateOptions.maxLength });
   }
 
   private minValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.instant('validations.min', { number: field.templateOptions.min });
+    return translate.stream('validations.min', { number: field.templateOptions.min });
   }
 
   private maxValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.instant('validations.max', { number: field.templateOptions.max });
+    return translate.stream('validations.max', { number: field.templateOptions.max });
   }
 }
