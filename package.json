@@ -17,7 +17,7 @@
     "lint:ts": "tslint -p tsconfig.app.json -c tslint.json 'src/**/*.ts'",
     "lint:scss": "stylelint --syntax scss 'src/**/*.scss' --fix",
     "hmr": "ng serve --hmr -c hmr --disable-host-check",
-    "deploy": "angular-cli-ghpages --no-silent --dir=dist/ng-matero",
+    "deploy": "ng deploy",
     "release": "npm run build:release && npm run deploy",
     "publish": "npm run build:schematics && cd dist/schematics && npm publish",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
