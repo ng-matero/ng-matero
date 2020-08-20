@@ -7,9 +7,9 @@ export const USER_KEY = 'usr';
 
 export interface User {
   id: number;
-  name: string;
-  email: string;
-  avatar: string;
+  name?: string;
+  email?: string;
+  avatar?: string;
 }
 
 @Injectable({

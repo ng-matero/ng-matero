@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const { token, username, uid } = { token: 'ng-matero-token', uid: 1, username: 'ng-matero' };
+    const { token, uid, username } = { token: 'ng-matero-token', uid: 1, username: 'ng-matero' };
     // Set user info
     this.settings.setUser({
       id: uid,
       name: 'Zongbin',
       email: 'nzb329@163.com',
-      avatar: 'assets/images/avatar.jpg',
+      avatar: '/assets/images/avatar.jpg',
     });
     // Set token info
     this.token.set({ token, uid, username });
