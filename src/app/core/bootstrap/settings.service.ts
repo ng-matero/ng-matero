@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { AppSettings, defaults } from '../settings';
 import { LocalStorageService } from '@shared/services/storage.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AppSettings, defaults } from '../settings';
 
 export const USER_KEY = 'usr';
 
 export interface User {
-  name: string;
   id: number;
+  name: string;
+  email: string;
   avatar: string;
 }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SettingsService, TokenService, MenuService } from '@core';
+import { MenuService, SettingsService, TokenService, User } from '@core';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +11,8 @@ import { SettingsService, TokenService, MenuService } from '@core';
       href="javascript:void(0)"
       [matMenuTriggerFor]="menu"
     >
-      <img class="matero-avatar" src="assets/images/avatar.jpg" width="32" alt="avatar" />
-      <span class="matero-username" fxHide.lt-sm>Zongbin</span>
+      <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
+      <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -32,12 +32,16 @@ import { SettingsService, TokenService, MenuService } from '@core';
   `,
 })
 export class UserComponent {
+  user: User;
+
   constructor(
     private router: Router,
     private settings: SettingsService,
     private token: TokenService,
     private menu: MenuService
-  ) {}
+  ) {
+    this.user = settings.user;
+  }
 
   logout() {
     this.token.clear();
