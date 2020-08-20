@@ -5,9 +5,9 @@ name: NG Matero Build Workflow
 
 on:
   push:
-    branches: [master, workflows]
+    branches: [master]
   pull_request:
-    branches: [master, workflows]
+    branches: [master]
 
 jobs:
   build:
