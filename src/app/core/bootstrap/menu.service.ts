@@ -92,9 +92,7 @@ export class MenuService {
           const currentNamePathList = this.deepcopyJsonObj(ele.parentNamePathList).concat(
             eachItem.name
           );
-          const currentRealRouteArr = this.deepcopyJsonObj(ele.realRouteArr).concat(
-            eachItem.route
-          );
+          const currentRealRouteArr = this.deepcopyJsonObj(ele.realRouteArr).concat(eachItem.route);
           //// compare the full Array
           //// for expandable
           const cond = this.routeEqual(routeArr, currentRealRouteArr);
@@ -102,7 +100,7 @@ export class MenuService {
             tmpArr = currentNamePathList;
             break;
           }
-          ////
+
           const isLeafCond = this.isLeafItem(eachItem);
           if (!isLeafCond) {
             const children = eachItem.children;
