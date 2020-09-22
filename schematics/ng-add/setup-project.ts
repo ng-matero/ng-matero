@@ -114,6 +114,7 @@ function deleteExsitingFiles() {
       `${project.root}/tsconfig.json`,
       `${project.root}/tsconfig.app.json`,
       `${project.root}/tsconfig.base.json`,
+      `${project.root}/tsconfig.spec.json`,
       `${project.root}/tslint.json`,
       `${project.sourceRoot}/app/app-routing.module.ts`,
       `${project.sourceRoot}/app/app.module.ts`,

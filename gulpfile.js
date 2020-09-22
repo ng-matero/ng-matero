@@ -23,6 +23,7 @@ function copyRoot(cb) {
     'tsconfig.json',
     'tsconfig.app.json',
     'tslint.json',
+    'tsconfig.spec.json',
   ]).pipe(dest(`${FILES}/`));
 }
 
