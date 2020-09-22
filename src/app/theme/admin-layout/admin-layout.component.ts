@@ -90,6 +90,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
         this.content.scrollTo({ top: 0 });
       }
     });
+
+    // Initialize project theme with options
+    this.receiveOptions(this.options);
   }
 
   ngOnInit() {
