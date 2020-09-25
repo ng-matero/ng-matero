@@ -1,59 +1,56 @@
 <ul navAccordion class="matero-sidemenu level-0">
   <li *ngFor="let menuItem of menus | async"
-      navAccordionItem class="matero-sidemenu-item"
-      routerLinkActive="active"
+      navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
       [group]="menuItem.route" [type]="menuItem.type">
     <a *ngIf="menuItem.type === 'link'" class="matero-sidemenu-link"
-       [routerLink]="buildRoute([menuItem.route])"
-       matRipple [matRippleDisabled]="!ripple">
-      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
-      <span class="menu-name">{{ menuItem.name | translate }}</span>
-      <span class="menu-label bg-{{ menuItem.label.color }}" *ngIf="menuItem.label">
-        {{ menuItem.label.value }}
+       [routerLink]="buildRoute([menuItem.route])" matRipple [matRippleDisabled]="!ripple">
+      <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+      <span class="menu-name">{{menuItem.name | translate}}</span>
+      <span class="menu-label bg-{{menuItem.label.color}}" *ngIf="menuItem.label">
+        {{menuItem.label.value}}
       </span>
       <span fxFlex></span>
-      <span class="menu-badge bg-{{ menuItem.badge.color }}" *ngIf="menuItem.badge">
-        {{ menuItem.badge.value }}
+      <span class="menu-badge bg-{{menuItem.badge.color}}" *ngIf="menuItem.badge">
+        {{menuItem.badge.value}}
       </span>
     </a>
     <a *ngIf="menuItem.type === 'extLink'" class="matero-sidemenu-link"
        [href]="menuItem.route" matRipple [matRippleDisabled]="!ripple">
-      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
-      <span class="menu-name">{{ menuItem.name | translate }}</span>
-      <span class="menu-label bg-{{ menuItem.label.color }}" *ngIf="menuItem.label">
-        {{ menuItem.label.value }}
+      <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+      <span class="menu-name">{{menuItem.name | translate}}</span>
+      <span class="menu-label bg-{{menuItem.label.color}}" *ngIf="menuItem.label">
+        {{menuItem.label.value}}
       </span>
       <span fxFlex></span>
-      <span class="menu-badge bg-{{ menuItem.badge.color }}" *ngIf="menuItem.badge">
-        {{ menuItem.badge.value }}
+      <span class="menu-badge bg-{{menuItem.badge.color}}" *ngIf="menuItem.badge">
+        {{menuItem.badge.value}}
       </span>
       <mat-icon class="menu-caret">launch</mat-icon>
     </a>
     <a *ngIf="menuItem.type === 'extTabLink'" class="matero-sidemenu-link"
        [href]="menuItem.route" target="_blank" matRipple [matRippleDisabled]="!ripple">
-      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
-      <span class="menu-name">{{ menuItem.name | translate }}</span>
-      <span class="menu-label bg-{{ menuItem.label.color }}" *ngIf="menuItem.label">
-        {{ menuItem.label.value }}
+      <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+      <span class="menu-name">{{menuItem.name | translate}}</span>
+      <span class="menu-label bg-{{menuItem.label.color}}" *ngIf="menuItem.label">
+        {{menuItem.label.value}}
       </span>
       <span fxFlex></span>
-      <span class="menu-badge bg-{{ menuItem.badge.color }}" *ngIf="menuItem.badge">
-        {{ menuItem.badge.value }}
+      <span class="menu-badge bg-{{menuItem.badge.color}}" *ngIf="menuItem.badge">
+        {{menuItem.badge.value}}
       </span>
       <mat-icon class="menu-caret">launch</mat-icon>
     </a>
     <!-- level 1 -->
-    <a *ngIf="menuItem.type === 'sub'"
-       navAccordionToggle class="matero-sidemenu-toggle"
+    <a *ngIf="menuItem.type === 'sub'" navAccordionToggle class="matero-sidemenu-toggle"
        matRipple [matRippleDisabled]="!ripple">
-      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
-      <span class="menu-name">{{ menuItem.name | translate }}</span>
-      <span class="menu-label bg-{{ menuItem.label.color }}" *ngIf="menuItem.label">
-        {{ menuItem.label.value }}
+      <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
+      <span class="menu-name">{{menuItem.name | translate}}</span>
+      <span class="menu-label bg-{{menuItem.label.color}}" *ngIf="menuItem.label">
+        {{menuItem.label.value}}
       </span>
       <span fxFlex></span>
-      <span class="menu-badge bg-{{ menuItem.badge.color }}" *ngIf="menuItem.badge">
-        {{ menuItem.badge.value }}
+      <span class="menu-badge bg-{{menuItem.badge.color}}" *ngIf="menuItem.badge">
+        {{menuItem.badge.value}}
       </span>
       <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
     </a>
@@ -65,26 +62,24 @@
         <a *ngIf="childLvl1.type === 'link'" class="matero-sidemenu-link"
            [routerLink]="buildRoute([menuItem.route, childLvl1.route])"
            matRipple [matRippleDisabled]="!ripple">
-          <span class="menu-name">{{ childLvl1.name | translate }}</span>
+          <span class="menu-name">{{childLvl1.name | translate}}</span>
         </a>
         <a *ngIf="childLvl1.type === 'extLink'" class="matero-sidemenu-link"
-           [href]="childLvl1.route"
-           matRipple [matRippleDisabled]="!ripple">
-          <span class="menu-name">{{ childLvl1.name | translate }}</span>
+           [href]="childLvl1.route" matRipple [matRippleDisabled]="!ripple">
+          <span class="menu-name">{{childLvl1.name | translate}}</span>
           <span fxFlex></span>
           <mat-icon class="menu-caret">launch</mat-icon>
         </a>
         <a *ngIf="childLvl1.type === 'extTabLink'" class="matero-sidemenu-link"
-           [href]="childLvl1.route" target="_blank"
-           matRipple [matRippleDisabled]="!ripple">
-          <span class="menu-name">{{ childLvl1.name | translate }}</span>
+           [href]="childLvl1.route" target="_blank" matRipple [matRippleDisabled]="!ripple">
+          <span class="menu-name">{{childLvl1.name | translate}}</span>
           <span fxFlex></span>
           <mat-icon class="menu-caret">launch</mat-icon>
         </a>
         <!-- level 2 -->
         <a *ngIf="childLvl1.type === 'sub'" navAccordionToggle class="matero-sidemenu-toggle"
            matRipple [matRippleDisabled]="!ripple">
-          <span class="menu-name">{{ childLvl1.name | translate }}</span>
+          <span class="menu-name">{{childLvl1.name | translate}}</span>
           <span fxFlex></span>
           <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
         </a>
@@ -94,19 +89,17 @@
             <a *ngIf="childLvl2.type === 'link'" class="matero-sidemenu-link"
                [routerLink]="buildRoute([menuItem.route, childLvl1.route, childLvl2.route])"
                matRipple [matRippleDisabled]="!ripple">
-              <span class="menu-name">{{ childLvl2.name | translate }}</span>
+              <span class="menu-name">{{childLvl2.name | translate}}</span>
             </a>
             <a *ngIf="childLvl2.type === 'extLink'" class="matero-sidemenu-link"
-               [href]="childLvl2.route"
-               matRipple [matRippleDisabled]="!ripple">
-              <span class="menu-name">{{ childLvl2.name | translate }}</span>
+               [href]="childLvl2.route" matRipple [matRippleDisabled]="!ripple">
+              <span class="menu-name">{{childLvl2.name | translate}}</span>
               <span fxFlex></span>
               <mat-icon class="menu-caret">launch</mat-icon>
             </a>
             <a *ngIf="childLvl2.type === 'extTabLink'" class="matero-sidemenu-link"
-               [href]="childLvl2.route" target="_blank"
-               matRipple [matRippleDisabled]="!ripple">
-              <span class="menu-name">{{ childLvl2.name | translate }}</span>
+               [href]="childLvl2.route" target="_blank" matRipple [matRippleDisabled]="!ripple">
+              <span class="menu-name">{{childLvl2.name | translate}}</span>
               <span fxFlex></span>
               <mat-icon class="menu-caret">launch</mat-icon>
             </a>
