@@ -12,22 +12,6 @@
   padding: $gutter;
 }
 
-.matero-header {
-  position: relative;
-  z-index: 201;
-  display: block;
-
-  .matero-toolbar {
-    padding: 0 8px;
-  }
-
-  // Layout control
-  .matero-header-fixed & {
-    position: sticky;
-    top: 0;
-  }
-}
-
 .matero-sidenav {
   position: absolute;
   overflow-x: hidden;
@@ -126,6 +110,11 @@
 
 // Layout control
 .matero-header-fixed {
+  .matero-header {
+    position: sticky;
+    top: 0;
+  }
+
   .matero-topmenu {
     top: $topmenu-sticky-position-desktop;
 
@@ -133,6 +122,14 @@
       & {
         top: $topmenu-sticky-position-mobile;
       }
+    }
+  }
+
+  &.matero-navbar-side {
+    .matero-toolbar {
+      border-bottom: unset;
+
+      @include mat-elevation(2);
     }
   }
 }

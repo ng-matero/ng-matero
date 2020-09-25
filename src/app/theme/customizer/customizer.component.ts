@@ -12,7 +12,7 @@ export class CustomizerComponent implements OnInit {
   options = this.settings.getOptions();
   opened = false;
   dragging = false;
-  @Output() optionsEvent = new EventEmitter<object>();
+  @Output() optionsChange = new EventEmitter<object>();
 
   constructor(private settings: SettingsService) {}
 
@@ -39,6 +39,6 @@ export class CustomizerComponent implements OnInit {
   }
 
   sendOptions() {
-    this.optionsEvent.emit(this.options);
+    this.optionsChange.emit(this.options);
   }
 }

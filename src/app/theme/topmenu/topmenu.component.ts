@@ -3,6 +3,9 @@ import { MenuService } from '@core';
 
 @Component({
   selector: 'app-topmenu',
+  host: {
+    class: 'matero-topmenu',
+  },
   templateUrl: './topmenu.component.html',
   styleUrls: ['./topmenu.component.scss'],
   encapsulation: ViewEncapsulation.None,

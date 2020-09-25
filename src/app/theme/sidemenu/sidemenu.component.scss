@@ -24,6 +24,18 @@
     }
   }
 
+  &.matero-sidemenu-sub {
+    max-height: 0;
+    padding-top: 0;
+    overflow: hidden;
+    transform: translateZ(0) !important;
+    transition: fast-out-slow(max-height);
+
+    .matero-sidemenu-item {
+      border-left-width: 0;
+    }
+  }
+
   a {
     display: flex;
     flex-direction: row;
@@ -31,6 +43,7 @@
     height: 48px;
     padding: 0 16px;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .mat-icon.menu-icon {
@@ -91,18 +104,6 @@
     [dir='rtl'] & {
       padding-left: 16px;
       padding-right: 64px;
-    }
-  }
-
-  &.submenu {
-    max-height: 0;
-    padding-top: 0;
-    overflow: hidden;
-    transform: translateZ(0) !important;
-    transition: fast-out-slow(max-height);
-
-    .matero-sidemenu-item {
-      border-left-width: 0;
     }
   }
 }

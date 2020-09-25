@@ -6,9 +6,8 @@ import { MenuService, SettingsService, TokenService, User } from '@core';
   selector: 'app-user',
   template: `
     <button
-      mat-button
       class="matero-toolbar-button matero-avatar-button"
-      href="javascript:void(0)"
+      mat-button
       [matMenuTriggerFor]="menu"
     >
       <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />

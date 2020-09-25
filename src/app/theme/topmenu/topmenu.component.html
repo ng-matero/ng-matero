@@ -1,101 +1,121 @@
-<div class="matero-topmenu">
-  <nav mat-tab-nav-bar>
-    <ng-container *ngFor="let menuItem of menus | async">
+<nav mat-tab-nav-bar>
+  <ng-container *ngFor="let menuItem of menus | async">
+    <button
+      *ngIf="menuItem.type === 'link'"
+      mat-button
+      [routerLink]="buildRoute([menuItem.route])"
+      routerLinkActive="active"
+    >
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name | translate }}</span>
+      <span *ngIf="menuItem.label" class="badge menu-label bg-{{ menuItem.label.color }}">
+        {{ menuItem.label.value }}
+      </span>
+      <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{ menuItem.badge.color }}">
+        {{ menuItem.badge.value }}
+      </span>
+    </button>
+    <a *ngIf="menuItem.type === 'extLink'" mat-button [href]="menuItem.route">
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name | translate }}</span>
+      <span *ngIf="menuItem.label" class="badge menu-label bg-{{ menuItem.label.color }}">
+        {{ menuItem.label.value }}
+      </span>
+      <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{ menuItem.badge.color }}">
+        {{ menuItem.badge.value }}
+      </span>
+      <mat-icon>launch</mat-icon>
+    </a>
+    <a *ngIf="menuItem.type === 'extTabLink'" mat-button [href]="menuItem.route" target="_blank">
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name | translate }}</span>
+      <span *ngIf="menuItem.label" class="badge menu-label bg-{{ menuItem.label.color }}">
+        {{ menuItem.label.value }}
+      </span>
+      <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{ menuItem.badge.color }}">
+        {{ menuItem.badge.value }}
+      </span>
+      <mat-icon>launch</mat-icon>
+    </a>
 
-      <button *ngIf="menuItem.type === 'link'" mat-button [routerLink]="buildRoute([menuItem.route])"
-         routerLinkActive="active">
-        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
-        <span class="menu-name">{{menuItem.name | translate}}</span>
-        <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
-          {{menuItem.label.value}}
-        </span>
-        <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{menuItem.badge.color}}">
-          {{menuItem.badge.value}}
-        </span>
-      </button>
-      <a *ngIf="menuItem.type === 'extLink'" mat-button [href]="menuItem.route">
-        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
-        <span class="menu-name">{{menuItem.name | translate}}</span>
-        <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
-          {{menuItem.label.value}}
-        </span>
-        <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{menuItem.badge.color}}">
-          {{menuItem.badge.value}}
-        </span>
-        <mat-icon>launch</mat-icon>
-      </a>
-      <a *ngIf="menuItem.type === 'extTabLink'" mat-button [href]="menuItem.route" target="_blank">
-        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
-        <span class="menu-name">{{menuItem.name | translate}}</span>
-        <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
-          {{menuItem.label.value}}
-        </span>
-        <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{menuItem.badge.color}}">
-          {{menuItem.badge.value}}
-        </span>
-        <mat-icon>launch</mat-icon>
-      </a>
+    <button
+      mat-button
+      *ngIf="menuItem.type === 'sub'"
+      [matMenuTriggerFor]="menulevel1"
+      routerLinkActive="active"
+    >
+      <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
+      <span class="menu-name">{{ menuItem.name | translate }}</span>
+      <span *ngIf="menuItem.label" class="badge menu-label bg-{{ menuItem.label.color }}">
+        {{ menuItem.label.value }}
+      </span>
+      <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{ menuItem.badge.color }}">
+        {{ menuItem.badge.value }}
+      </span>
+      <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
 
-      <button mat-button *ngIf="menuItem.type === 'sub'" [matMenuTriggerFor]="menulevel1"
-              routerLinkActive="active">
-        <mat-icon class="menu-icon">{{menuItem.icon}}</mat-icon>
-        <span class="menu-name">{{menuItem.name | translate}}</span>
-        <span *ngIf="menuItem.label" class="badge menu-label bg-{{menuItem.label.color}}">
-          {{menuItem.label.value}}
-        </span>
-        <span *ngIf="menuItem.badge" class="badge menu-badge bg-{{menuItem.badge.color}}">
-          {{menuItem.badge.value}}
-        </span>
-        <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
+      <!-- level 1 -->
+      <mat-menu #menulevel1="matMenu">
+        <ng-container *ngFor="let childLvl1 of menuItem.children">
+          <button
+            *ngIf="childLvl1.type === 'link'"
+            mat-menu-item
+            [routerLink]="buildRoute([menuItem.route, childLvl1.route])"
+            routerLinkActive="active"
+          >
+            {{ childLvl1.name | translate }}
+          </button>
+          <a *ngIf="childLvl1.type === 'extLink'" mat-menu-item [href]="childLvl1.route">
+            <span class="menu-name">{{ childLvl1.name | translate }}</span>
+            <mat-icon>launch</mat-icon>
+          </a>
+          <a
+            *ngIf="childLvl1.type === 'extTabLink'"
+            mat-menu-item
+            [href]="childLvl1.route"
+            target="_blank"
+          >
+            <span class="menu-name">{{ childLvl1.name | translate }}</span>
+            <mat-icon>launch</mat-icon>
+          </a>
 
-        <!-- level 1 -->
-        <mat-menu #menulevel1="matMenu">
-          <ng-container *ngFor="let childLvl1 of menuItem.children">
+          <button
+            *ngIf="childLvl1.type === 'sub'"
+            mat-menu-item
+            [matMenuTriggerFor]="menulevel2"
+            routerLinkActive="active"
+          >
+            {{ childLvl1.name | translate }}
 
-            <button *ngIf="childLvl1.type === 'link'" mat-menu-item
-               [routerLink]="buildRoute([menuItem.route, childLvl1.route])"
-               routerLinkActive="active">
-              {{childLvl1.name | translate}}
-            </button>
-            <a *ngIf="childLvl1.type === 'extLink'" mat-menu-item [href]="childLvl1.route">
-              <span class="menu-name">{{childLvl1.name | translate}}</span>
-              <mat-icon>launch</mat-icon>
-            </a>
-            <a *ngIf="childLvl1.type === 'extTabLink'" mat-menu-item [href]="childLvl1.route"
-               target="_blank">
-              <span class="menu-name">{{childLvl1.name | translate}}</span>
-              <mat-icon>launch</mat-icon>
-            </a>
-
-            <button *ngIf="childLvl1.type === 'sub'" mat-menu-item [matMenuTriggerFor]="menulevel2"
-                    routerLinkActive="active">
-              {{childLvl1.name | translate}}
-
-              <!-- level 2 -->
-              <mat-menu #menulevel2="matMenu">
-                <ng-container *ngFor="let childLvl2 of childLvl1.children">
-                  <button *ngIf="childLvl2.type === 'link'" mat-menu-item
-                     [routerLink]="buildRoute([menuItem.route, childLvl1.route, childLvl2.route])"
-                     routerLinkActive="active">
-                    {{childLvl2.name | translate}}
-                  </button>
-                  <a *ngIf="childLvl2.type === 'extLink'" mat-menu-item [href]="childLvl2.route">
-                    <span class="menu-name">{{childLvl2.name | translate}}</span>
-                    <mat-icon>launch</mat-icon>
-                  </a>
-                  <a *ngIf="childLvl2.type === 'extTabLink'" mat-menu-item [href]="childLvl2.route"
-                     target="_blank">
-                    <span class="menu-name">{{childLvl2.name | translate}}</span>
-                    <mat-icon>launch</mat-icon>
-                  </a>
-                </ng-container>
-              </mat-menu>
-            </button>
-
-          </ng-container>
-        </mat-menu>
-      </button>
-
-    </ng-container>
-  </nav>
-</div>
+            <!-- level 2 -->
+            <mat-menu #menulevel2="matMenu">
+              <ng-container *ngFor="let childLvl2 of childLvl1.children">
+                <button
+                  *ngIf="childLvl2.type === 'link'"
+                  mat-menu-item
+                  [routerLink]="buildRoute([menuItem.route, childLvl1.route, childLvl2.route])"
+                  routerLinkActive="active"
+                >
+                  {{ childLvl2.name | translate }}
+                </button>
+                <a *ngIf="childLvl2.type === 'extLink'" mat-menu-item [href]="childLvl2.route">
+                  <span class="menu-name">{{ childLvl2.name | translate }}</span>
+                  <mat-icon>launch</mat-icon>
+                </a>
+                <a
+                  *ngIf="childLvl2.type === 'extTabLink'"
+                  mat-menu-item
+                  [href]="childLvl2.route"
+                  target="_blank"
+                >
+                  <span class="menu-name">{{ childLvl2.name | translate }}</span>
+                  <mat-icon>launch</mat-icon>
+                </a>
+              </ng-container>
+            </mat-menu>
+          </button>
+        </ng-container>
+      </mat-menu>
+    </button>
+  </ng-container>
+</nav>

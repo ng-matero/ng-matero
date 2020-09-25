@@ -11,6 +11,9 @@ import * as screenfull from 'screenfull';
 
 @Component({
   selector: 'app-header',
+  host: {
+    class: 'matero-header',
+  },
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,

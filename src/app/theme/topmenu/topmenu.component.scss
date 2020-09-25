@@ -3,6 +3,7 @@
 .matero-topmenu {
   position: sticky;
   z-index: 200;
+  display: block;
   padding: 8px;
 
   @include mat-elevation(2);

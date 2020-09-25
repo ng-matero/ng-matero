@@ -1,13 +1,17 @@
 @import '../style/variables';
 
+.matero-header {
+  position: relative;
+  z-index: 201;
+  display: block;
+
+  .matero-toolbar {
+    padding: 0 8px;
+  }
+}
+
 .matero-toolbar {
   border-bottom: 1px solid rgba(0, 0, 0, .12);
-
-  .matero-navbar-side.matero-header-fixed & {
-    border-bottom: unset;
-
-    @include mat-elevation(2);
-  }
 
   .badge {
     position: absolute;
