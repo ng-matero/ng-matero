@@ -61,6 +61,11 @@ const routes: Routes = [
         path: 'helpers',
         loadChildren: () => import('./helpers/helpers.module').then(m => m.HelpersModule),
       },
+      {
+        path: 'permissions',
+        loadChildren: () =>
+          import('./permissions/permissions.module').then(m => m.PermissionsModule),
+      },
     ],
   },
   {
