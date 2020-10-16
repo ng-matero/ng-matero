@@ -1,25 +1,25 @@
 <page-header class="bg-green-600"></page-header>
 
 <div class="data-grid-options">
-    <mat-checkbox [(ngModel)]="rowSelectable">Row Selectable</mat-checkbox>
-    <mat-checkbox [(ngModel)]="hideRowSelectionCheckbox">Hide checkbox</mat-checkbox>
-    <mat-radio-group [(ngModel)]="multiSelectable">
-        <mat-radio-button [value]="false">Single Selectable</mat-radio-button>
-        <mat-radio-button [value]="true">Multiple Selectable</mat-radio-button>
-    </mat-radio-group>
-    <mat-checkbox [(ngModel)]="showToolbar">Show Toolbar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="columnHideable">Column Hiding</mat-checkbox>
-    <mat-checkbox [(ngModel)]="columnMovable">Column Moving</mat-checkbox>
-    <mat-checkbox [(ngModel)]="rowHover">Hover</mat-checkbox>
-    <mat-checkbox [(ngModel)]="rowStriped">Striped</mat-checkbox>
-    <mat-checkbox [(ngModel)]="expandable" (change)="enableRowExpandable()">Row Expandable
-    </mat-checkbox>
-    <mat-checkbox [(ngModel)]="showPaginator">Show Paginator</mat-checkbox>
-    <mat-checkbox [(ngModel)]="isLoading">Loading Status</mat-checkbox>
+  <mat-checkbox [(ngModel)]="rowSelectable">Row Selectable</mat-checkbox>
+  <mat-checkbox [(ngModel)]="hideRowSelectionCheckbox">Hide checkbox</mat-checkbox>
+  <mat-radio-group [(ngModel)]="multiSelectable">
+    <mat-radio-button [value]="false">Single Selectable</mat-radio-button>
+    <mat-radio-button [value]="true">Multiple Selectable</mat-radio-button>
+  </mat-radio-group>
+  <mat-checkbox [(ngModel)]="showToolbar">Show Toolbar</mat-checkbox>
+  <mat-checkbox [(ngModel)]="columnHideable">Column Hiding</mat-checkbox>
+  <mat-checkbox [(ngModel)]="columnMovable">Column Moving</mat-checkbox>
+  <mat-checkbox [(ngModel)]="rowHover">Hover</mat-checkbox>
+  <mat-checkbox [(ngModel)]="rowStriped">Striped</mat-checkbox>
+  <mat-checkbox [(ngModel)]="expandable" (change)="enableRowExpandable()">Row Expandable
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="showPaginator">Show Paginator</mat-checkbox>
+  <mat-checkbox [(ngModel)]="isLoading">Loading Status</mat-checkbox>
 </div>
 <p>
-    <a href="https://ng-matero.github.io/extensions/data-grid" target="_blank">View more
-        examples</a>
+  <a href="https://ng-matero.github.io/extensions/data-grid" target="_blank">
+    View more examples</a>
 </p>
 
 <mtx-grid [data]="list"
@@ -45,5 +45,7 @@
           (selectionChange)="changeSelect($event)">
 </mtx-grid>
 <ng-template #expansionTpl let-row>
-    {{row.name}}
+  {{row.name}}
 </ng-template>
+
+<button (click)="updateCell()">Update Cell</button>

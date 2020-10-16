@@ -105,4 +105,11 @@ export class TablesKitchenSinkComponent implements OnInit {
   enableRowExpandable() {
     this.columns[0].showExpand = this.expandable;
   }
+
+  updateCell() {
+    this.list = this.list.map(item => {
+      item.weight = Math.round(Math.random() * 1000) / 100;
+      return item;
+    });
+  }
 }
