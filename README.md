@@ -48,7 +48,7 @@ Which version to use?
 | Angular | Material | Ng-Matero | Extensions |
 | ------- | -------- | --------- | ---------- |
 | v10     | v10      | 10.x.x    | 10.x.x     |
-| v9      | v9       | 9.7.2     | 9.11.5     |
+| v9      | v9       | 9.7.2     | 9.11.8     |
 | v8      | v8       | 0.16.0    | 0.9.3      |
 
 ## 🔧 Installation
@@ -81,7 +81,7 @@ Generate a lazy loaded module.
 $ ng g ng-matero:module <module-name>
 ```
 
-The new module will be created in `routes` file, it will be added in `routes.module` and its route declaration will be added in `routes-routing.module` automaticly.
+The new module will be created in `routes` folder, it will be added in `routes.module` and its route declaration will be added in `routes-routing.module` automaticly.
 
 ### Page schematic
 
