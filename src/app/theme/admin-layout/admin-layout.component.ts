@@ -38,28 +38,28 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
   private layoutChangesSubscription: Subscription;
 
-  private isMobileScreen = false;
   get isOver(): boolean {
     return this.isMobileScreen;
   }
+  private isMobileScreen = false;
 
-  private contentWidthFix = true;
-  @HostBinding('class.matero-content-width-fix') get isContentWidthFix() {
+  @HostBinding('class.matero-content-width-fix') get contentWidthFix() {
     return (
-      this.contentWidthFix &&
+      this.isContentWidthFixed &&
       this.options.navPos === 'side' &&
       this.options.sidenavOpened &&
       !this.isOver
     );
   }
+  private isContentWidthFixed = true;
 
-  private collapsedWidthFix = true;
-  @HostBinding('class.matero-sidenav-collapsed-fix') get isCollapsedWidthFix() {
+  @HostBinding('class.matero-sidenav-collapsed-fix') get collapsedWidthFix() {
     return (
-      this.collapsedWidthFix &&
+      this.isCollapsedWidthFixed &&
       (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
     );
   }
+  private isCollapsedWidthFixed = true;
 
   constructor(
     private router: Router,
@@ -81,7 +81,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
         this.isMobileScreen = state.breakpoints[MOBILE_MEDIAQUERY];
         this.options.sidenavCollapsed = state.breakpoints[TABLET_MEDIAQUERY];
-        this.contentWidthFix = state.breakpoints[MONITOR_MEDIAQUERY];
+        this.isContentWidthFixed = state.breakpoints[MONITOR_MEDIAQUERY];
       });
 
     // TODO: Scroll top to container
@@ -96,7 +96,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    setTimeout(() => (this.contentWidthFix = this.collapsedWidthFix = false));
+    setTimeout(() => (this.isContentWidthFixed = this.isCollapsedWidthFixed = false));
   }
 
   ngOnDestroy() {
@@ -116,14 +116,14 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   sidenavCloseStart() {
-    this.contentWidthFix = false;
+    this.isContentWidthFixed = false;
   }
 
   sidenavOpenedChange(isOpened: boolean) {
     this.options.sidenavOpened = isOpened;
     this.settings.setNavState('opened', isOpened);
 
-    this.collapsedWidthFix = !this.isOver;
+    this.isCollapsedWidthFixed = !this.isOver;
     this.resetCollapsedState();
   }
 
