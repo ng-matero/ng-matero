@@ -19,7 +19,12 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
 
-const THIRD_MODULES = [
+import { DisableControlDirective } from './directives/disable-control.directive';
+
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { ToObservablePipe } from './pipes/to-observable.pipe';
+
+const MODULES = [
   MaterialModule,
   MaterialExtensionsModule,
   FlexLayoutModule,
@@ -34,18 +39,18 @@ const THIRD_MODULES = [
 ];
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC = [];
-const DIRECTIVES = [];
-const PIPES = [];
+const DIRECTIVES = [DisableControlDirective];
+const PIPES = [SafeUrlPipe, ToObservablePipe];
 
 @NgModule({
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ...THIRD_MODULES],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ...MODULES],
   exports: [
     CommonModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    ...THIRD_MODULES,
+    ...MODULES,
     ...COMPONENTS,
     ...DIRECTIVES,
     ...PIPES,
