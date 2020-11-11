@@ -88,11 +88,20 @@ export class FormsDynamicComponent implements OnInit {
         },
         {
           className: 'col-sm-3',
-          type: 'input',
-          key: 'cityName',
+          type: 'combobox',
+          key: 'cityId',
           templateOptions: {
             label: 'City',
+            options: [
+              { id: 1, name: '北京' },
+              { id: 2, name: '上海' },
+              { id: 3, name: '广州' },
+              { id: 4, name: '深圳' },
+            ],
+            labelProp: 'name',
+            valueProp: 'id',
           },
+          wrappers: ['form-field'],
         },
         {
           className: 'col-sm-3',

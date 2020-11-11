@@ -5,7 +5,7 @@ import { FieldType } from '@ngx-formly/material/form-field';
   selector: 'formly-field-combobox',
   template: ` <mtx-select
     [formControl]="formControl"
-    [items]="to.options | async"
+    [items]="to.options | toObservable | async"
     [bindLabel]="to.labelProp"
     [bindValue]="bindValue"
     [multiple]="to.multiple"
