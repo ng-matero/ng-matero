@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsDynamicComponent implements OnInit {
   form = new FormGroup({});
@@ -100,6 +101,8 @@ export class FormsDynamicComponent implements OnInit {
             ],
             labelProp: 'name',
             valueProp: 'id',
+            required: true,
+            description: 'This is a custom field type.',
           },
           wrappers: ['form-field'],
         },
