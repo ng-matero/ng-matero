@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MenuService } from '@core';
 
 @Component({
@@ -10,21 +10,9 @@ import { MenuService } from '@core';
   styleUrls: ['./topmenu.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TopmenuComponent implements OnInit {
-  menus = this._menu.getAll();
+export class TopmenuComponent {
+  menus = this.menuSrv.getAll();
+  buildRoute = this.menuSrv.buildRoute;
 
-  constructor(public _menu: MenuService) {}
-
-  ngOnInit() {}
-
-  // Delete empty values and rebuild route
-  buildRoute(routes: string[]) {
-    let route = '';
-    routes.forEach(item => {
-      if (item && item.trim()) {
-        route += '/' + item.replace(/^\/+|\/+$/g, '');
-      }
-    });
-    return route;
-  }
+  constructor(public menuSrv: MenuService) {}
 }

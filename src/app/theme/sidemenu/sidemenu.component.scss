@@ -106,4 +106,13 @@
       padding-right: 64px;
     }
   }
+
+  &.level-2 [class^='level-'] > li > a {
+    padding-left: 80px;
+
+    [dir='rtl'] & {
+      padding-left: 16px;
+      padding-right: 80px;
+    }
+  }
 }

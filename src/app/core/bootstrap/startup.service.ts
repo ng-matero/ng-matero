@@ -32,7 +32,7 @@ export class StartupService {
             this.menu.set(res.menu);
 
             // Refresh user info
-            // In a real app, user data will be fetched form API
+            // In a real app, user data will be fetched from API
             this.settings.setUser({
               id: 1,
               name: 'Zongbin',

@@ -48,6 +48,17 @@ export class MenuService {
     this.menu$.next([]);
   }
 
+  // Delete empty values and rebuild route
+  buildRoute(routeArr: string[]): string {
+    let route = '';
+    routeArr.forEach(item => {
+      if (item && item.trim()) {
+        route += '/' + item.replace(/^\/+|\/+$/g, '');
+      }
+    });
+    return route;
+  }
+
   getMenuItemName(routeArr: string[]): string {
     return this.getMenuLevel(routeArr)[routeArr.length - 1];
   }

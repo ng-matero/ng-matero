@@ -13,6 +13,7 @@ import { AccordionAnchorDirective } from './sidemenu/accordionanchor.directive';
 import { SidebarNoticeComponent } from './sidebar-notice/sidebar-notice.component';
 
 import { TopmenuComponent } from './topmenu/topmenu.component';
+import { TopmenuPanelComponent } from './topmenu/topmenu-panel.component';
 
 import { HeaderComponent } from './header/header.component';
 import { BrandingComponent } from './header/widgets/branding.component';
@@ -35,6 +36,7 @@ import { CustomizerComponent } from './customizer/customizer.component';
     AccordionAnchorDirective,
     SidebarNoticeComponent,
     TopmenuComponent,
+    TopmenuPanelComponent,
     HeaderComponent,
     BrandingComponent,
     GithubButtonComponent,
