@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { Router } from '@angular/router';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'page-header',
@@ -15,7 +16,14 @@ export class PageHeaderComponent implements OnInit {
   @Input() title = '';
   @Input() subtitle = '';
   @Input() nav: string[] = [];
-  @Input() showBreadCrumb = true;
+  @Input()
+  get hideBreadcrumb() {
+    return this._hideBreadCrumb;
+  }
+  set hideBreadcrumb(value: boolean) {
+    this._hideBreadCrumb = coerceBooleanProperty(value);
+  }
+  private _hideBreadCrumb = false;
 
   constructor(private router: Router, private menu: MenuService) {}
 
@@ -30,8 +38,8 @@ export class PageHeaderComponent implements OnInit {
   }
 
   genBreadcrumb() {
-    const states = this.router.url.slice(1).split('/');
-    this.nav = this.menu.getMenuLevel(states);
+    const routes = this.router.url.slice(1).split('/');
+    this.nav = this.menu.getMenuLevel(routes);
     this.nav.unshift('home');
   }
 }

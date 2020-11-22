@@ -1,4 +1,4 @@
 <div class="matero-page-header-inner">
   <h1 class="matero-page-title">{{title | translate}} <small>{{subtitle}}</small></h1>
-  <breadcrumb *ngIf="showBreadCrumb" [nav]="nav"></breadcrumb>
+  <breadcrumb *ngIf="!hideBreadcrumb" [nav]="nav"></breadcrumb>
 </div>

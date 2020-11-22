@@ -385,6 +385,10 @@
       "name": "menu-level",
       "type": "sub",
       "icon": "subject",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      },
       "children": [
         {
           "route": "level-1-1",

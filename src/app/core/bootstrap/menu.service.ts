@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface MenuTag {
-  color: string; // Background Color
+  color: string; // background color
   value: string;
 }
 
@@ -66,56 +66,47 @@ export class MenuService {
   /** Menu level */
 
   private isLeafItem(item: MenuChildrenItem): boolean {
-    //// if a menuItem is leaf
     const cond0 = item.route === undefined;
     const cond1 = item.children === undefined;
     const cond2 = !cond1 && item.children.length === 0;
     return cond0 || cond1 || cond2;
   }
 
-  private deepcopyJsonObj(jobj: any): any {
-    //// deepcop object-could-be-jsonized
-    return JSON.parse(JSON.stringify(jobj));
+  // Deep clone object could be jsonized
+  private deepClone(obj: any): any {
+    return JSON.parse(JSON.stringify(obj));
   }
 
-  private jsonObjEqual(jobj0: any, jobj1: any): boolean {
-    //// if two objects-could-be-jsonized equal
-    const cond = JSON.stringify(jobj0) === JSON.stringify(jobj1);
-    return cond;
+  // Whether two objects could be jsonized equal
+  private isJsonObjEqual(obj0: any, obj1: any): boolean {
+    return JSON.stringify(obj0) === JSON.stringify(obj1);
   }
 
-  private routeEqual(routeArr: Array<string>, realRouteArr: Array<string>): boolean {
-    //// if routeArr equals realRouteArr(after remove empty-route-element)
-    realRouteArr = this.deepcopyJsonObj(realRouteArr);
+  // Whether routeArr equals realRouteArr (after remove empty route element)
+  private isRouteEqual(routeArr: Array<string>, realRouteArr: Array<string>): boolean {
+    realRouteArr = this.deepClone(realRouteArr);
     realRouteArr = realRouteArr.filter(r => r !== '');
-    return this.jsonObjEqual(routeArr, realRouteArr);
+    return this.isJsonObjEqual(routeArr, realRouteArr);
   }
 
   getMenuLevel(routeArr: string[]): string[] {
     let tmpArr = [];
     this.menu$.value.forEach(item => {
-      //// breadth-first-traverse -modified
+      // breadth first traverse modified
       let unhandledLayer = [{ item, parentNamePathList: [], realRouteArr: [] }];
       while (unhandledLayer.length > 0) {
         let nextUnhandledLayer = [];
         for (const ele of unhandledLayer) {
           const eachItem = ele.item;
-          const currentNamePathList = this.deepcopyJsonObj(ele.parentNamePathList).concat(
-            eachItem.name
-          );
-          const currentRealRouteArr = this.deepcopyJsonObj(ele.realRouteArr).concat(eachItem.route);
-          //// compare the full Array
-          //// for expandable
-          const cond = this.routeEqual(routeArr, currentRealRouteArr);
-          if (cond) {
+          const currentNamePathList = this.deepClone(ele.parentNamePathList).concat(eachItem.name);
+          const currentRealRouteArr = this.deepClone(ele.realRouteArr).concat(eachItem.route);
+          // compare the full Array for expandable
+          if (this.isRouteEqual(routeArr, currentRealRouteArr)) {
             tmpArr = currentNamePathList;
             break;
           }
-
-          const isLeafCond = this.isLeafItem(eachItem);
-          if (!isLeafCond) {
-            const children = eachItem.children;
-            const wrappedChildren = children.map(child => ({
+          if (!this.isLeafItem(eachItem)) {
+            const wrappedChildren = eachItem.children.map(child => ({
               item: child,
               parentNamePathList: currentNamePathList,
               realRouteArr: currentRealRouteArr,
