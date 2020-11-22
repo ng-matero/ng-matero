@@ -2,7 +2,7 @@
               [ngTemplateOutletContext]="{menuList: menus | async, parentRoute: [], level: 0}">
 </ng-container>
 
-<ng-template #menuListTpl let-menuList="menuList" let-level="level" let-parentRoute="parentRoute">
+<ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">
   <ul navAccordion class="matero-sidemenu {{level>0 ? 'matero-sidemenu-sub' : ''}} level-{{level}}">
     <li navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
         *ngFor="let menuItem of menuList" [group]="menuItem.route" [type]="menuItem.type">
