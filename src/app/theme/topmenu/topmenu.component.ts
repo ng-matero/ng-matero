@@ -22,15 +22,13 @@ export class TopmenuComponent implements OnDestroy {
   menu$ = this.menuSrv.getAll();
   buildRoute = this.menuSrv.buildRoute;
 
-  menusSubscription: Subscription;
+  menuSubscription: Subscription;
 
   menuList: Menu[] = [];
   menuStates: TopmenuState[] = [];
 
   constructor(public menuSrv: MenuService, private router: Router) {
-    this.menuStates = [];
-
-    this.menusSubscription = this.menu$.subscribe(res => {
+    this.menuSubscription = this.menu$.subscribe(res => {
       this.menuList = res;
       this.menuList.forEach(item => {
         this.menuStates.push({
@@ -46,7 +44,7 @@ export class TopmenuComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.menusSubscription.unsubscribe();
+    this.menuSubscription.unsubscribe();
   }
 
   onRouteChange(rla: RouterLinkActive, index: number) {
