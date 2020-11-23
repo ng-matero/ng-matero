@@ -1,5 +1,5 @@
 <ng-container [ngTemplateOutlet]="menuListTpl"
-              [ngTemplateOutletContext]="{menuList: menus | async, parentRoute: [], level: 0}">
+              [ngTemplateOutletContext]="{menuList: menu$ | async, parentRoute: [], level: 0}">
 </ng-container>
 
 <ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">

@@ -1,4 +1,7 @@
 @mixin matero-topmenu-theme($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
   $background: mat-color($theme, background);
   $foreground: mat-color($theme, foreground);
 
@@ -11,5 +14,9 @@
         background-color: mat-color($background, focused-button);
       }
     }
+  }
+
+  .mat-menu-item.active {
+    color: mat-color($accent);
   }
 }

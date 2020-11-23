@@ -1,7 +1,9 @@
 <mat-menu #menu>
-  <ng-container *ngFor="let item of items">
+  <ng-container *ngFor="let item of items; let index=index">
     <button *ngIf="item.type === 'link'" mat-menu-item
-            [routerLink]="buildRoute(parentRoute.concat([item.route]))" routerLinkActive="active">
+            [routerLink]="buildRoute(parentRoute.concat([item.route]))"
+            routerLinkActive #rla="routerLinkActive" [class.active]="rla.isActive"
+            (click)="onRouterLinkClick(rla)">
       {{item.name | translate}}
     </button>
 
@@ -16,13 +18,15 @@
     </a>
 
     <button *ngIf="item.type === 'sub'" mat-menu-item
-            [matMenuTriggerFor]="submenu.menu" routerLinkActive="active">
+            [matMenuTriggerFor]="submenu.menu" routerLinkActive="active"
+            [class.active]="menuStates[index].active">
       {{item.name | translate}}
 
       <app-topmenu-panel #submenu
                          [items]="item.children"
                          [parentRoute]="parentRoute.concat([item.route])"
-                         [level]="level + 1">
+                         [level]="level + 1"
+                         (routeChange)="onRouteChange($event, index)">
       </app-topmenu-panel>
     </button>
   </ng-container>

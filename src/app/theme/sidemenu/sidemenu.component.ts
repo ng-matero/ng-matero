@@ -11,7 +11,7 @@ export class SidemenuComponent {
   // NOTE: Ripple effect make page flashing on mobile
   @Input() ripple = false;
 
-  menus = this.menuSrv.getAll();
+  menu$ = this.menuSrv.getAll();
   buildRoute = this.menuSrv.buildRoute;
 
   constructor(private menuSrv: MenuService) {}
