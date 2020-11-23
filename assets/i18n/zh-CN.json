@@ -65,7 +65,14 @@
     "sessions.404": "404",
     "sessions.500": "500",
     "helpers": "辅助工具",
-    "helpers.css-class": "CSS 类"
+    "helpers.css-class": "CSS 类",
+    "menu-level": "菜单层级",
+    "menu-level.level-1-1": "层级 1.1",
+    "menu-level.level-1-2": "层级 1.2",
+    "menu-level.level-1-1.level-2-1": "层级 2.1",
+    "menu-level.level-1-1.level-2-2": "层级 2.2",
+    "menu-level.level-1-1.level-2-1.level-3-1": "层级 3.1",
+    "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "层级 4.1"
   },
   "validations": {
     "required": "该字段必填",

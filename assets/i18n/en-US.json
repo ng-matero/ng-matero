@@ -65,7 +65,14 @@
     "sessions.404": "404",
     "sessions.500": "500",
     "helpers": "Helpers",
-    "helpers.css-class": "CSS Class"
+    "helpers.css-class": "CSS Class",
+    "menu-level": "Menu Level",
+    "menu-level.level-1-1": "Level 1.1",
+    "menu-level.level-1-2": "Level 1.2",
+    "menu-level.level-1-1.level-2-1": "Level 2.1",
+    "menu-level.level-1-1.level-2-2": "Level 2.2",
+    "menu-level.level-1-1.level-2-1.level-3-1": "Level 3.1",
+    "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "Level 4.1"
   },
   "validations": {
     "required": "This field is required",
