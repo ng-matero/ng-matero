@@ -37,7 +37,7 @@ export class StartupService {
               id: 1,
               name: 'Zongbin',
               email: 'nzb329@163.com',
-              avatar: '/assets/images/avatar.jpg',
+              avatar: './assets/images/avatar.jpg',
             });
           },
           () => {
