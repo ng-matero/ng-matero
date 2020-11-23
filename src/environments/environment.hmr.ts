@@ -5,7 +5,7 @@
 export const environment = {
   SERVER_ORIGIN: '',
   production: false,
-  useHash: true,
+  useHash: false,
   hmr: true,
 };
 
