@@ -14,6 +14,7 @@ import { FieldType } from '@ngx-formly/material/form-field';
       [placeholder]="to.placeholder"
       [required]="to.required"
       [closeOnSelect]="!to.multiple"
+      [compareWith]="to.compareWith"
     >
     </mtx-select>
   </div>`,
