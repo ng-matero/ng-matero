@@ -12,6 +12,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Directionality } from '@angular/cdk/bidi';
@@ -85,10 +86,8 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
       });
 
     // TODO: Scroll top to container
-    this.router.events.subscribe(evt => {
-      if (evt instanceof NavigationEnd) {
-        this.content.scrollTo({ top: 0 });
-      }
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      this.content.scrollTo({ top: 0 });
     });
 
     // Initialize project theme with options

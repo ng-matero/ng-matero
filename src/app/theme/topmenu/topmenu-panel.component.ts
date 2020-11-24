@@ -21,11 +21,7 @@ export class TopmenuPanelComponent implements OnInit {
 
   buildRoute = this.menuSrv.buildRoute;
 
-  constructor(public menuSrv: MenuService, private router: Router) {
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
-      this.menuStates.forEach(item => (item.active = false));
-    });
-  }
+  constructor(public menuSrv: MenuService, private router: Router) {}
 
   ngOnInit() {
     this.items.forEach(item => {
@@ -59,8 +55,9 @@ export class TopmenuPanelComponent implements OnInit {
   onRouteChange(rla: RouterLinkActive, index: number) {
     this.routeChange.emit(rla);
 
-    setTimeout(() => {
-      this.menuStates[index].active = rla.isActive;
-    }, 100);
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      this.menuStates.forEach(item => (item.active = false));
+      setTimeout(() => (this.menuStates[index].active = rla.isActive));
+    });
   }
 }

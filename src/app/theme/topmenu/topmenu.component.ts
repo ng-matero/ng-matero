@@ -37,10 +37,6 @@ export class TopmenuComponent implements OnDestroy {
         });
       });
     });
-
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
-      this.menuStates.forEach(item => (item.active = false));
-    });
   }
 
   ngOnDestroy() {
@@ -48,8 +44,9 @@ export class TopmenuComponent implements OnDestroy {
   }
 
   onRouteChange(rla: RouterLinkActive, index: number) {
-    setTimeout(() => {
-      this.menuStates[index].active = rla.isActive;
-    }, 100);
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      this.menuStates.forEach(item => (item.active = false));
+      setTimeout(() => (this.menuStates[index].active = rla.isActive));
+    });
   }
 }
