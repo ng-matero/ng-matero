@@ -1,7 +1,16 @@
-import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { MatMenu } from '@angular/material/menu';
 import { NavigationEnd, Router, RouterLinkActive } from '@angular/router';
 import { MenuChildrenItem, MenuService } from '@core';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { TopmenuState } from './topmenu.component';
 
@@ -9,7 +18,7 @@ import { TopmenuState } from './topmenu.component';
   selector: 'app-topmenu-panel',
   templateUrl: './topmenu-panel.component.html',
 })
-export class TopmenuPanelComponent implements OnInit {
+export class TopmenuPanelComponent implements OnInit, OnDestroy {
   @ViewChild('menu', { static: true }) menu: MatMenu;
 
   @Input() items: MenuChildrenItem[] = [];
@@ -21,12 +30,18 @@ export class TopmenuPanelComponent implements OnInit {
 
   buildRoute = this.menuSrv.buildRoute;
 
+  private routerSubscription: Subscription;
+
   constructor(public menuSrv: MenuService, private router: Router) {}
 
   ngOnInit() {
     this.items.forEach(item => {
       this.menuStates.push({ active: this.checkRoute(item), route: item.route });
     });
+  }
+
+  ngOnDestroy() {
+    this.routerSubscription?.unsubscribe();
   }
 
   checkRoute(item: MenuChildrenItem) {
@@ -55,9 +70,12 @@ export class TopmenuPanelComponent implements OnInit {
   onRouteChange(rla: RouterLinkActive, index: number) {
     this.routeChange.emit(rla);
 
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
-      this.menuStates.forEach(item => (item.active = false));
-      setTimeout(() => (this.menuStates[index].active = rla.isActive));
-    });
+    this.routerSubscription?.unsubscribe();
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(e => {
+        this.menuStates.forEach(item => (item.active = false));
+        setTimeout(() => (this.menuStates[index].active = rla.isActive));
+      });
   }
 }
