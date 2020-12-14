@@ -22,7 +22,7 @@ export class StartupService {
         .get('assets/data/menu.json?_t=' + Date.now())
         .pipe(
           catchError(res => {
-            resolve();
+            resolve(null);
             return throwError(res);
           })
         )
@@ -40,12 +40,8 @@ export class StartupService {
               avatar: './assets/images/avatar.jpg',
             });
           },
-          () => {
-            reject();
-          },
-          () => {
-            resolve();
-          }
+          () => reject(),
+          () => resolve(null)
         );
     });
   }

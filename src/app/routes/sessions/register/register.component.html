@@ -16,8 +16,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>{{'login.password' | translate}}</mat-label>
-        <input matInput type="password" formControlName="password"
-               required>
+        <input matInput type="password" formControlName="password" required>
         <mat-error *ngIf="registerForm.get('password').invalid">
           {{'validations.required' | translate}}
         </mat-error>
@@ -44,7 +43,8 @@
       </button>
 
       <div class="m-t-16">{{'register.have_an_account' | translate}}?
-        <a routerLink="/auth/login">{{'login.login' | translate}}</a></div>
+        <a routerLink="/auth/login">{{'login.login' | translate}}</a>
+      </div>
     </form>
 
   </mat-card>

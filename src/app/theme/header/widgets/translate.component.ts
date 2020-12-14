@@ -26,10 +26,6 @@ export class TranslateComponent {
 
   constructor(private translate: TranslateService, private settings: SettingsService) {
     translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
-    translate.setDefaultLang('en-US');
-
-    const browserLang = navigator.language;
-    translate.use(browserLang.match(/en-US|zh-CN|zh-TW/) ? browserLang : 'en-US');
   }
 
   useLanguage(language: string) {
