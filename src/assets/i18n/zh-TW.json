@@ -115,5 +115,26 @@
     "last_page_label": "尾頁",
     "range_page_label_1": "無數據",
     "range_page_label_2": "第 {{startIndex}} - {{endIndex}} 行，共 {{length}} 行"
+  },
+  "table_kitchen_sink": {
+    "position": "序號",
+    "name": "姓名",
+    "weight": "體重",
+    "symbol": "代號",
+    "gender": "性别",
+    "mobile": "手機號",
+    "tele": "固話",
+    "birthday": "出生日期",
+    "city": "城市",
+    "address": "家庭地址",
+    "company": "公司",
+    "website": "網址",
+    "email": "郵箱",
+    "operation": "操作",
+    "edit": "編輯",
+    "delete": "删除",
+    "confirm_delete": "確認刪除？",
+    "ok": "確定",
+    "close": "關閉"
   }
 }

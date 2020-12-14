@@ -105,7 +105,6 @@
     "confirm_password": "Confirm Password",
     "agree": "I have read and agree to the terms of service",
     "have_an_account": "Already have an account",
-    "signin": "Sign in",
     "register": "Create account"
   },
   "paginator": {
@@ -116,5 +115,26 @@
     "last_page_label": "Last page",
     "range_page_label_1": "no record",
     "range_page_label_2": "{{startIndex}} - {{endIndex}} of {{length}}"
+  },
+  "table_kitchen_sink": {
+    "position": "Position",
+    "name": "Name",
+    "weight": "Weight",
+    "symbol": "Symbol",
+    "gender": "Gender",
+    "mobile": "Mobile",
+    "tele": "Telephone",
+    "birthday": "Birthday",
+    "city": "City",
+    "address": "Address",
+    "website": "Website",
+    "company": "Company",
+    "email": "Email",
+    "operation": "Operation",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm_delete": "Confirm delete?",
+    "ok": "Ok",
+    "close": "Close"
   }
 }

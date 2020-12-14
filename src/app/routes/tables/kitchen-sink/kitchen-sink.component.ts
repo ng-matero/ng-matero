@@ -5,6 +5,7 @@ import { MtxGridColumn } from '@ng-matero/extensions';
 
 import { TablesDataService } from '../data.service';
 import { TablesKitchenSinkEditComponent } from './edit/edit.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-table-kitchen-sink',
@@ -15,40 +16,55 @@ import { TablesKitchenSinkEditComponent } from './edit/edit.component';
 })
 export class TablesKitchenSinkComponent implements OnInit {
   columns: MtxGridColumn[] = [
-    { header: 'Position', field: 'position', sortable: true },
-    { header: 'Name', field: 'name', sortable: true, disabled: true },
-    { header: 'Weight', field: 'weight' },
-    { header: 'Symbol', field: 'symbol' },
-    { header: 'Gender', field: 'gender' },
-    { header: 'Mobile', field: 'mobile', hide: true },
-    { header: 'Tele', field: 'tele' },
-    { header: 'City', field: 'city' },
-    { header: 'Address', field: 'address', width: '200px' },
-    { header: 'Date', field: 'date' },
-    { header: 'Website', field: 'website' },
-    { header: 'Company', field: 'company' },
-    { header: 'Email', field: 'email' },
     {
-      header: 'Option',
-      field: 'option',
+      header: this.translate.stream('table_kitchen_sink.position'),
+      field: 'position',
+      sortable: true,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.name'),
+      field: 'name',
+      sortable: true,
+      disabled: true,
+    },
+    { header: this.translate.stream('table_kitchen_sink.weight'), field: 'weight' },
+    { header: this.translate.stream('table_kitchen_sink.symbol'), field: 'symbol' },
+    { header: this.translate.stream('table_kitchen_sink.gender'), field: 'gender' },
+    { header: this.translate.stream('table_kitchen_sink.mobile'), field: 'mobile', hide: true },
+    { header: this.translate.stream('table_kitchen_sink.tele'), field: 'tele', width: '120px' },
+    { header: this.translate.stream('table_kitchen_sink.birthday'), field: 'birthday' },
+    { header: this.translate.stream('table_kitchen_sink.city'), field: 'city' },
+    {
+      header: this.translate.stream('table_kitchen_sink.address'),
+      field: 'address',
+      width: '200px',
+    },
+    { header: this.translate.stream('table_kitchen_sink.company'), field: 'company' },
+    { header: this.translate.stream('table_kitchen_sink.website'), field: 'website' },
+    { header: this.translate.stream('table_kitchen_sink.email'), field: 'email' },
+    {
+      header: this.translate.stream('table_kitchen_sink.operation'),
+      field: 'operation',
       width: '120px',
       pinned: 'right',
       right: '0px',
       type: 'button',
       buttons: [
         {
-          icon: 'edit',
-          tooltip: 'Edit',
           type: 'icon',
+          icon: 'edit',
+          tooltip: this.translate.stream('table_kitchen_sink.edit'),
           click: record => this.edit(record),
         },
         {
-          icon: 'delete',
-          tooltip: 'Delete',
           color: 'warn',
-          type: 'icon',
+          icon: 'delete',
+          text: this.translate.stream('table_kitchen_sink.delete'),
+          tooltip: this.translate.stream('table_kitchen_sink.delete'),
           pop: true,
-          popTitle: 'Confirm delete?',
+          popTitle: this.translate.stream('table_kitchen_sink.confirm_delete'),
+          popCloseText: this.translate.stream('table_kitchen_sink.close'),
+          popOkText: this.translate.stream('table_kitchen_sink.ok'),
           click: record => this.delete(record),
         },
       ],
@@ -69,9 +85,10 @@ export class TablesKitchenSinkComponent implements OnInit {
   expandable = false;
 
   constructor(
-    private cdr: ChangeDetectorRef,
+    private translate: TranslateService,
     private dataSrv: TablesDataService,
-    public dialog: MtxDialog
+    public dialog: MtxDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -111,5 +128,9 @@ export class TablesKitchenSinkComponent implements OnInit {
       item.weight = Math.round(Math.random() * 1000) / 100;
       return item;
     });
+  }
+
+  updateList() {
+    this.list = this.list.splice(-1).concat(this.list);
   }
 }

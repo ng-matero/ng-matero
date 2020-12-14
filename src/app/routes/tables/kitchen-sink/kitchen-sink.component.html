@@ -18,7 +18,7 @@
   <mat-checkbox [(ngModel)]="isLoading">Loading Status</mat-checkbox>
 </div>
 <p>
-  <a href="https://ng-matero.github.io/extensions/data-grid" target="_blank">
+  <a href="https://ng-matero.github.io/extensions/components/data-grid" target="_blank">
     View more examples</a>
 </p>
 
@@ -48,4 +48,5 @@
   {{row.name}}
 </ng-template>
 
-<button (click)="updateCell()">Update Cell</button>
+<button mat-stroked-button (click)="updateCell()">Update Cell</button>
+<button mat-stroked-button (click)="updateList()">Update List</button>
