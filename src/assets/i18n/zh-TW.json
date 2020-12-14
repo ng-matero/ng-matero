@@ -106,5 +106,14 @@
     "agree": "我已閱讀並同意服務條款",
     "have_an_account": "已經有帳號了",
     "register": "創建賬號"
+  },
+  "paginator": {
+    "items_per_page_label": "每頁共：",
+    "next_page_label": "下壹頁",
+    "previous_page_label": "前壹頁",
+    "first_page_label": "首頁",
+    "last_page_label": "尾頁",
+    "range_page_label_1": "無數據",
+    "range_page_label_2": "第 {{startIndex}} - {{endIndex}} 行，共 {{length}} 行"
   }
 }

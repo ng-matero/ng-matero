@@ -107,5 +107,14 @@
     "have_an_account": "Already have an account",
     "signin": "Sign in",
     "register": "Create account"
+  },
+  "paginator": {
+    "items_per_page_label": "Items per page:",
+    "next_page_label": "Next page",
+    "previous_page_label": "Previous page",
+    "first_page_label": "First page",
+    "last_page_label": "Last page",
+    "range_page_label_1": "no record",
+    "range_page_label_2": "{{startIndex}} - {{endIndex}} of {{length}}"
   }
 }

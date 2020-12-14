@@ -6,8 +6,15 @@ import {
 } from '@angular/material-moment-adapter';
 import { MomentDatetimeAdapter } from '@mat-datetimepicker/moment';
 import { DatetimeAdapter, MAT_DATETIME_FORMATS } from '@mat-datetimepicker/core';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
 
 export const materialProviders = [
+  {
+    provide: MatPaginatorIntl,
+    deps: [PaginatorI18nService],
+    useFactory: (paginatorI18nSrv: PaginatorI18nService) => paginatorI18nSrv.getPaginatorIntl(),
+  },
   {
     provide: MAT_DIALOG_DEFAULT_OPTIONS,
     useValue: {
