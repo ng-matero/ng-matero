@@ -52,7 +52,7 @@
     "ngx-permissions": "^8.1.1",
     "ngx-progressbar": "^6.0.3",
     "ngx-toastr": "^13.1.0",
-    "photoviewer": "^3.5.3",
+    "photoviewer": "^3.5.4",
     "rxjs": "~6.6.0",
     "screenfull": "^5.0.2",
     "tslib": "^2.0.0",
