@@ -530,6 +530,7 @@ SOFTWARE.
 
 
 ngx-progressbar
+MIT
 
 ngx-toastr
 MIT
