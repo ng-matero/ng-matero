@@ -88,7 +88,6 @@ function updateVersions(cb) {
           '@mat-datetimepicker/core',
           '@mat-datetimepicker/moment',
           '@ng-matero/extensions',
-          '@ng-select/ng-select',
           '@ngx-formly/core',
           '@ngx-formly/material',
           '@ngx-translate/core',

@@ -20,7 +20,6 @@ export function add3rdPkgsToPackageJson(host: Tree) {
   addPackage(host, '@mat-datetimepicker/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@mat-datetimepicker/moment@0.0.0-PLACEHOLDER');
   addPackage(host, '@ng-matero/extensions@0.0.0-PLACEHOLDER');
-  addPackage(host, '@ng-select/ng-select@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
