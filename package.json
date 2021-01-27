@@ -50,7 +50,7 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
     "ngx-permissions": "^8.1.1",
-    "ngx-progressbar": "^6.1.0",
+    "ngx-progressbar": "^6.0.3",
     "ngx-toastr": "^13.1.0",
     "photoviewer": "^3.5.4",
     "rxjs": "~6.6.0",
