@@ -1,4 +1,4 @@
-import { chain, Rule, Tree, noop } from '@angular-devkit/schematics';
+import { chain, Rule } from '@angular-devkit/schematics';
 import { buildComponent } from '../../utils';
 import { Schema } from './schema';
 

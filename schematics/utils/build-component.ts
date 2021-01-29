@@ -1,4 +1,4 @@
-import { strings, template as interpolateTemplate, Path, normalize } from '@angular-devkit/core';
+import { strings, template as interpolateTemplate, Path } from '@angular-devkit/core';
 import {
   apply,
   applyTemplates,
@@ -27,12 +27,13 @@ import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { validateHtmlSelector, validateName } from '@schematics/angular/utility/validation';
-import { ProjectType, WorkspaceProject } from '@schematics/angular/utility/workspace-models';
+import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
 import { getProjectFromWorkspace } from '@angular/cdk/schematics/utils/get-project';
 import { getDefaultComponentOptions } from '@angular/cdk/schematics/utils/schematic-options';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import * as ts from 'typescript';
+import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 export interface ComponentOptions extends Schema {
   pageName: string;
@@ -42,9 +43,9 @@ export interface ComponentOptions extends Schema {
  * Build a default project path for generating.
  * @param project The project to build the path for.
  */
-function buildDefaultPath(project: WorkspaceProject): string {
+function buildDefaultPath(project: ProjectDefinition): string {
   const root = project.sourceRoot ? `/${project.sourceRoot}/` : `/${project.root}/src/`;
-  const projectDirName = project.projectType === ProjectType.Application ? 'app' : 'lib';
+  const projectDirName = project.extensions.projectType === ProjectType.Application ? 'app' : 'lib';
   return `${root}${projectDirName}`;
 }
 
