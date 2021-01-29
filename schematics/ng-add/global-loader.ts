@@ -1,15 +1,15 @@
-import { Tree } from '@angular-devkit/schematics';
-import { getWorkspace } from '@schematics/angular/utility/config';
-import { getProjectFromWorkspace } from '@angular/cdk/schematics';
+import { Rule, Tree } from '@angular-devkit/schematics';
+import { getWorkspace } from '@schematics/angular/utility/workspace';
+import { getProjectFromWorkspace, getProjectIndexFiles } from '@angular/cdk/schematics';
 import { Schema } from './schema';
-import { getIndexHtmlPath, appendHtmlElement } from '../utils';
+import { appendHtmlElement } from '../utils';
 
 /** Adds the Material Design fonts to the index HTML file. */
-export function addLoaderToIndex(options: Schema): (host: Tree) => Tree {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
+export function addLoaderToIndex(options: Schema): Rule {
+  return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
-    const projectIndexHtmlPath = getIndexHtmlPath(project);
+    const projectIndexFiles = getProjectIndexFiles(project);
 
     const loaderStyles = `
     .global-loader {
@@ -67,15 +67,15 @@ export function addLoaderToIndex(options: Schema): (host: Tree) => Tree {
 
     const loaderHtml = `<div id="globalLoader" class="global-loader"><h1>LOADING</h1></div>`;
 
-    appendHtmlElement(
-      host,
-      projectIndexHtmlPath,
-      `<style type="text/css">${loaderStyles}</style>`,
-      'head'
-    );
+    projectIndexFiles.forEach(indexFilePath => {
+      appendHtmlElement(
+        host,
+        indexFilePath,
+        `<style type="text/css">${loaderStyles}</style>`,
+        'head'
+      );
 
-    appendHtmlElement(host, projectIndexHtmlPath, loaderHtml, 'body');
-
-    return host;
+      appendHtmlElement(host, indexFilePath, loaderHtml, 'body');
+    });
   };
 }

@@ -23,7 +23,7 @@ import {
   addExportToModule,
 } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { getWorkspace } from '@schematics/angular/utility/config';
+import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { validateHtmlSelector, validateName } from '@schematics/angular/utility/validation';
@@ -151,7 +151,7 @@ function addExportToNgModule(host: Tree, modulePath: string, fileName: string, f
 /**
  * build selector with page name
  */
-function buildSelector(options: ComponentOptions, projectPrefix: string) {
+function buildSelector(options: ComponentOptions, projectPrefix?: string) {
   let selector = options.pageName;
   if (options.prefix) {
     selector = `${options.prefix}-${selector}`;
@@ -271,8 +271,8 @@ export function buildComponent(
   options: ComponentOptions | any,
   additionalFiles: { [key: string]: string } = {}
 ): Rule {
-  return (host: Tree, context: FileSystemSchematicContext) => {
-    const workspace = getWorkspace(host);
+  return async (host: Tree, context: FileSystemSchematicContext) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     const defaultComponentOptions: any = getDefaultComponentOptions(project);
 
@@ -358,14 +358,15 @@ export function buildComponent(
       move(null as any, parsedPath.path),
     ]);
 
-    return chain([
-      branchAndMerge(
-        chain([
-          addDeclarationToNgModule(options),
-          addRouteDeclarationToNgModule(options, routingModulePath),
-          mergeWith(templateSource),
-        ])
-      ),
-    ])(host, context);
+    return () =>
+      chain([
+        branchAndMerge(
+          chain([
+            addDeclarationToNgModule(options),
+            addRouteDeclarationToNgModule(options, routingModulePath),
+            mergeWith(templateSource),
+          ])
+        ),
+      ])(host, context);
   };
 }

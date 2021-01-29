@@ -13,6 +13,5 @@ export default function(options: any): Rule {
     const installTaskId = context.addTask(new NodePackageInstallTask());
 
     context.addTask(new RunSchematicTask('ng-add-setup-project', options), [installTaskId]);
-    return host;
   };
 }

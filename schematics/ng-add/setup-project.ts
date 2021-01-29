@@ -1,4 +1,4 @@
-import { strings, normalize } from '@angular-devkit/core';
+import { strings } from '@angular-devkit/core';
 import {
   chain,
   Rule,
@@ -13,18 +13,18 @@ import {
   addModuleImportToRootModule,
   getProjectFromWorkspace,
   getProjectMainFile,
+  getProjectTargetOptions,
   hasNgModuleImport,
 } from '@angular/cdk/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { getWorkspace } from '@schematics/angular/utility/config';
+import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
-import * as chalk from 'chalk';
 import { Schema } from './schema';
+import { addThemeStyleToTarget } from './theming';
 import { addFontsToIndex } from './material-fonts';
 import { addLoaderToIndex } from './global-loader';
 import { addScriptToPackageJson } from './package-config';
 import { add3rdPkgsToPackageJson } from './packages';
-import { addThemeStyleToTarget } from '../utils';
 
 /** Name of the Angular module that enables Angular browser animations. */
 const browserAnimationsModuleName = 'BrowserAnimationsModule';
@@ -36,7 +36,7 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Scripts to package.json
- *  - Add Hmr & style & proxy to angular.json
+ *  - Add proxy & Hmr & style to angular.json
  *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to index.html
  *  - Add Preloader to index.html
@@ -47,9 +47,9 @@ export default function(options: Schema): Rule {
     deleteExsitingFiles(),
     addStarterFiles(options),
     addScriptsToPackageJson(),
-    addHmrToAngularJson(),
-    addStyleToAngularJson(),
     addProxyToAngularJson(),
+    addHmrToAngularJson(options),
+    addStyleToAngularJson(options),
     addAnimationsModule(options),
     addFontsToIndex(options),
     addLoaderToIndex(options),
@@ -63,8 +63,8 @@ export default function(options: Schema): Rule {
  * components of Angular Material will throw an exception.
  */
 function addAnimationsModule(options: Schema) {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
+  return async (host: Tree, context: SchematicContext) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     const appModulePath = getAppModulePath(host, getProjectMainFile(project));
 
@@ -74,13 +74,12 @@ function addAnimationsModule(options: Schema) {
       // animations. If we would add the BrowserAnimationsModule while the NoopAnimationsModule
       // is already configured, we would cause unexpected behavior and runtime exceptions.
       if (hasNgModuleImport(host, appModulePath, noopAnimationsModuleName)) {
-        return console.warn(
-          chalk.red(
-            `Could not set up "${chalk.bold(browserAnimationsModuleName)}" ` +
-              `because "${chalk.bold(noopAnimationsModuleName)}" is already imported. Please ` +
-              `manually set up browser animations.`
-          )
+        context.logger.error(
+          `Could not set up "${browserAnimationsModuleName}" ` +
+            `because "${noopAnimationsModuleName}" is already imported.`
         );
+        context.logger.info(`Please manually set up browser animations.`);
+        return;
       }
 
       addModuleImportToRootModule(
@@ -99,15 +98,13 @@ function addAnimationsModule(options: Schema) {
         project
       );
     }
-
-    return host;
   };
 }
 
 /** delete exsiting files to be overwrite */
 function deleteExsitingFiles() {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
+  return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace);
 
     [
@@ -152,14 +149,13 @@ function addScriptsToPackageJson() {
 }
 
 /** Add hmr to angular.json */
-function addHmrToAngularJson() {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
-    const ngJson = Object.assign(workspace);
-    const project = ngJson.projects[ngJson.defaultProject];
+function addHmrToAngularJson(oprions: Schema) {
+  return updateWorkspace(workspace => {
+    const project = getProjectFromWorkspace(workspace);
+    const targetBuildConfig = project.targets?.get('build')?.configurations as any;
+    const targetServeConfig = project.targets?.get('serve')?.configurations as any;
 
-    // build
-    project.architect.build.configurations.hmr = {
+    targetBuildConfig.hmr = {
       fileReplacements: [
         {
           replace: `${project.sourceRoot}/environments/environment.ts`,
@@ -167,40 +163,34 @@ function addHmrToAngularJson() {
         },
       ],
     };
-    // serve
-    project.architect.serve.configurations.hmr = {
+
+    targetServeConfig.hmr = {
       hmr: true,
-      browserTarget: `${workspace.defaultProject}:build:hmr`,
+      browserTarget: `${oprions.project}:build:hmr`,
     };
-
-    host.overwrite('angular.json', JSON.stringify(ngJson, null, 2));
-  };
-}
-
-/** Add style to angular.json */
-function addStyleToAngularJson() {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
-    const ngJson = Object.assign(workspace);
-    const project = ngJson.projects[ngJson.defaultProject];
-
-    const themePath = `src/styles.scss`;
-
-    addThemeStyleToTarget(project, 'build', host, themePath, workspace);
-    addThemeStyleToTarget(project, 'test', host, themePath, workspace);
-  };
+  });
 }
 
 /** Add proxy to angular.json */
 function addProxyToAngularJson() {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
-    const ngJson = Object.assign(workspace);
-    const project = ngJson.projects[ngJson.defaultProject];
+  return updateWorkspace(workspace => {
+    const project = getProjectFromWorkspace(workspace);
+    const targetServeOptions = getProjectTargetOptions(project, 'serve');
 
-    project.architect.serve.options.proxyConfig = 'proxy.config.js';
+    targetServeOptions.proxyConfig = 'proxy.config.js';
+  });
+}
 
-    host.overwrite('angular.json', JSON.stringify(ngJson, null, 2));
+/** Add style to angular.json */
+function addStyleToAngularJson(options: Schema): Rule {
+  return (_host: Tree, context: SchematicContext) => {
+    // Path needs to be always relative to the `package.json` or workspace root.
+    const themePath = `src/styles.scss`;
+
+    return chain([
+      addThemeStyleToTarget(options.project, 'build', themePath, context.logger),
+      addThemeStyleToTarget(options.project, 'test', themePath, context.logger),
+    ]);
   };
 }
 
@@ -225,6 +215,5 @@ function installPackages() {
     add3rdPkgsToPackageJson(host);
 
     context.addTask(new NodePackageInstallTask());
-    return host;
   };
 }
