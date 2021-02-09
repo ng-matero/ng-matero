@@ -15,7 +15,7 @@ $spacers: map-merge(
     48: $spacer * 3
   ),
   $spacers
-);
+) !default;
 $negative-spacers: negativify-map($spacers) !default;
 
 // Fonts
