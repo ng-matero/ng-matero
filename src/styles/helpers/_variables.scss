@@ -3,18 +3,14 @@ $utilities: () !default;
 
 // Spacing
 $spacer: 16px !default;
-$spacers: () !default;
-$spacers: map-merge(
-  (
-    0: 0,
-    4: $spacer * .25,
-    8: $spacer * .5,
-    16: $spacer,
-    24: $spacer * 1.5,
-    32: $spacer * 2,
-    48: $spacer * 3
-  ),
-  $spacers
+$spacers:  (
+  0: 0,
+  4: $spacer * .25,
+  8: $spacer * .5,
+  16: $spacer,
+  24: $spacer * 1.5,
+  32: $spacer * 2,
+  48: $spacer * 3
 ) !default;
 $negative-spacers: negativify-map($spacers) !default;
 
