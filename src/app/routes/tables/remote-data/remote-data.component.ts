@@ -7,6 +7,7 @@ import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-tables-remote-data',
   templateUrl: './remote-data.component.html',
+  styleUrls: ['./remote-data.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TablesRemoteDataService],
 })
