@@ -13,13 +13,10 @@ $toolbar-height-desktop: 64px !default;
 $toolbar-height-mobile: 56px !default;
 
 // Topmenu
-$topmenu-sticky-position-desktop: $toolbar-height-desktop;
-$topmenu-sticky-position-mobile: $toolbar-height-mobile;
+$topmenu-sticky-position-desktop: $toolbar-height-desktop !default;
+$topmenu-sticky-position-mobile: $toolbar-height-mobile !default;
 
 // Typography
-$font-size-base: 1rem !default;
-$small-font-size: .875em !default;
-
 $font-family-sans-serif: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif !default;
 $font-family-monospace: 'Roboto Mono', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
@@ -61,4 +58,4 @@ $mat-colors: (
   black: black,
   light: $light-primary-text,
   dark: $dark-primary-text,
-);
+) !default;
