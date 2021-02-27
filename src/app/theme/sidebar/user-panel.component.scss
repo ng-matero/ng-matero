@@ -5,12 +5,12 @@
   padding: 16px 0;
 }
 
+// Set default width and height can avoid flashing before avatar image loaded.
 .matero-user-panel-avatar {
-  margin-bottom: 8px;
-  // Set default width and height can avoid flashing before avatar image loaded.
   width: 64px;
   height: 64px;
-  border-radius: 999px;
+  margin-bottom: 8px;
+  border-radius: 50rem;
   transition: swift-ease-out(transform);
 }
 

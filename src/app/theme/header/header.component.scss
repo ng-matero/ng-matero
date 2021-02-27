@@ -2,7 +2,7 @@
 
 .matero-header {
   position: relative;
-  z-index: 201;
+  z-index: 200;
   display: block;
 
   .matero-toolbar {
@@ -16,9 +16,8 @@
   .badge {
     position: absolute;
     top: 0;
-    left: 50%;
-    font-size: 12px;
-    border-radius: 10px;
+    right: 0;
+    border-radius: 50rem;
   }
 }
 
@@ -32,7 +31,7 @@
   &.mat-button {
     min-width: unset;
     line-height: 40px;
-    border-radius: 999px;
+    border-radius: 50rem;
   }
 
   &.matero-avatar-button {
@@ -43,7 +42,7 @@
     .matero-avatar {
       width: 32px;
       height: 32px;
-      border-radius: 999px;
+      border-radius: 50rem;
     }
 
     .matero-username {
