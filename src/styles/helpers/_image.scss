@@ -1,11 +1,12 @@
-// ==================================================
-// IMAGE
-// ==================================================
+// Image
 
-.fit-cover {
-  @include image-fit(cover);
-}
-
-.fit-contain {
-  @include image-fit(contain);
-}
+$utilities: map-merge(
+  (
+    'object-fit': (
+      property: object-fit,
+      class: object,
+      values: contain cover fill none scale-down
+    )
+  ),
+  $utilities
+);

@@ -1,0 +1,28 @@
+// Generate Helpers
+
+@each $key, $utility in $utilities {
+  $values: map-get($utility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
+    $values: zip($values, $values);
+  }
+
+  $properties: map-get($utility, property);
+  $property-class-prefix: map-get($utility, class);
+
+  // Utility class maybe empty, (e.g. with position class)
+  $property-class-prefix-hyphen: if(
+    $property-class-prefix == '',
+    $property-class-prefix,
+    $property-class-prefix + '-'
+  );
+
+  @each $class-modifier, $value in $values {
+    .#{$property-class-prefix-hyphen + $class-modifier} {
+      @each $property in $properties {
+        #{$property}: $value !important;
+      }
+    }
+  }
+}

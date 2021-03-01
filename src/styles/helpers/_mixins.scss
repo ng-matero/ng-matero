@@ -4,9 +4,3 @@
   font-size: $size * 1px !important;
   line-height: $size * 1px !important;
 }
-
-@mixin image-fit($value) {
-  width: 100%;
-  height: 100%;
-  object-fit: $value;
-}

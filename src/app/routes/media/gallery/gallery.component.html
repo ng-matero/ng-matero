@@ -8,7 +8,7 @@
       <span matLine>Gallery Image: {{ i }}</span>
     </mat-grid-tile-header>
 
-    <img class="fit-cover cursor-pointer" src="{{image.src}}" alt="Gallery Image"
+    <img class="w-full h-full object-cover cursor-pointer" src="{{image.src}}" alt="Gallery Image"
          (click)="preview(i)" />
 
   </mat-grid-tile>

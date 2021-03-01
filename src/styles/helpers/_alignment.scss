@@ -1,17 +1,12 @@
-// ==================================================
-// ALIGNMENT
-// ==================================================
+// Alignment
 
-$alignment: (
-  'alignment': (
-    property: vertical-align,
-    class: align,
-    values: (
-      top: top,
-      middle: middle,
-      bottom: bottom
+$utilities: map-merge(
+  (
+    'vertical-align': (
+      property: vertical-align,
+      class: align,
+      values: top middle bottom
     )
-  )
+  ),
+  $utilities
 );
-
-$utilities: map-merge($alignment, $utilities);

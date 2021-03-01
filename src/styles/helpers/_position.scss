@@ -1,19 +1,12 @@
-// ==================================================
 // Position
-// ==================================================
 
-$position: (
-  'position': (
-    property: position,
-    class: '',
-    values: (
-      static: static,
-      fixed: fixed,
-      absolute: absolute,
-      relative: relative,
-      sticky: sticky
+$utilities: map-merge(
+  (
+    'position': (
+      property: position,
+      class: '',
+      values: static fixed absolute relative sticky
     )
-  )
+  ),
+  $utilities
 );
-
-$utilities: map-merge($position, $utilities);

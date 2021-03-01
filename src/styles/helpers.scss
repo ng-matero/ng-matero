@@ -5,38 +5,14 @@
 // ------------------------------
 @import 'helpers/display';
 @import 'helpers/position';
-@import 'helpers/size';
+@import 'helpers/sizing';
 @import 'helpers/spacing';
 @import 'helpers/border';
-@import 'helpers/radius';
-@import 'helpers/fonts';
+@import 'helpers/rounded';
 @import 'helpers/text';
 @import 'helpers/alignment';
 @import 'helpers/cursor';
 @import 'helpers/image';
-@import 'helpers/icons';
-
-// Generate Helpers
-@each $key, $utility in $utilities {
-  $values: map-get($utility, values);
-
-  @each $class-modifier, $value in $values {
-    $properties: map-get($utility, property);
-    $property-class-prefix: map-get($utility, class);
-    $property-class-prefix-hyphen: if(
-      $property-class-prefix== '',
-      $property-class-prefix,
-      $property-class-prefix + '-'
-    );
-
-    @if type-of($properties) == 'string' {
-      $properties: append((), $properties);
-    }
-
-    .#{$property-class-prefix-hyphen + $class-modifier} {
-      @each $property in $properties {
-        #{$property}: $value !important;
-      }
-    }
-  }
-}
+@import 'helpers/icon';
+// ------------------------------
+@import 'helpers/api';
