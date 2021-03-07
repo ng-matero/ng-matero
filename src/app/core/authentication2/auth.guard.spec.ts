@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from '@core/authentication2/auth.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthGuard', () => {
   const route: any = {};
@@ -14,6 +15,7 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [{ provide: Router, useValue: router }],
     });
     authGuard = TestBed.inject(AuthGuard);
