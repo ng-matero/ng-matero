@@ -3,11 +3,15 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Token, TokenService } from '@core/authentication2/token.service';
+import { skip } from 'rxjs/operators';
 
 describe('AuthService', () => {
   let authService: AuthService;
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
+  const email = 'foo@bar.com';
+  const tokenResponse = { access_token: 'token', token_type: 'bearer' };
+  const userResponse = { id: 1, email };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -23,19 +27,22 @@ describe('AuthService', () => {
   });
 
   it('should log in failed', () => {
-    authService.login('foo@bar.com', 'password', false).subscribe(
+    authService.login(email, 'password', false).subscribe(
       isLogin => expect(isLogin).toBeFalse(),
     );
     httpMock.expectOne('/auth/login').flush({});
   });
 
-  it('should log in successful', () => {
-    authService.login('foo@bar.com', 'password', false).subscribe(
+  it('should log in successful and get user info', () => {
+    authService.login(email, 'password', false).subscribe(
       isLogin => expect(isLogin).toBeTrue(),
     );
-    httpMock.expectOne('/auth/login').flush({
-      access_token: 'token', token_type: 'bearer',
-    });
+    authService.user().pipe(skip(1)).subscribe(
+      user => expect(user).toEqual(userResponse),
+    );
+
+    httpMock.expectOne('/auth/login').flush(tokenResponse);
+    httpMock.expectOne('/me').flush(userResponse);
   });
 
   it('should log out failed when user is not login', () => {
@@ -46,10 +53,17 @@ describe('AuthService', () => {
   });
 
   it('should log out successful when user is login', () => {
-    tokenService.set(new Token({ access_token: 'token' }));
+    tokenService.set(new Token(tokenResponse));
+
     authService.logout().subscribe(
       isLogout => expect(isLogout).toBeTrue(),
     );
+
+    authService.user().pipe(skip(2)).subscribe(
+      user => expect(user).toEqual(null),
+    );
+
+    httpMock.expectOne('/me').flush(userResponse);
     httpMock.expectOne('/logout').flush({});
   });
 });

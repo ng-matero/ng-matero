@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { share } from 'rxjs/operators';
 
 export class Token {
   constructor(private attributes: any = {}) {}
@@ -31,5 +32,9 @@ export class TokenService {
 
   clear() {
     this.change$.next(new Token());
+  }
+
+  change() {
+    return this.change$.pipe(share());
   }
 }
