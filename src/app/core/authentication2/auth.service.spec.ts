@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TokenService } from '@core/authentication2/token.service';
+import { Token, TokenService } from '@core/authentication2/token.service';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -46,7 +46,7 @@ describe('AuthService', () => {
   });
 
   it('should log out successful when user is login', () => {
-    tokenService.set({ access_token: 'token' });
+    tokenService.set(new Token({ access_token: 'token' }));
     authService.logout().subscribe(
       isLogout => expect(isLogout).toBeTrue(),
     );

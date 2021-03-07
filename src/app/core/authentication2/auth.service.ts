@@ -15,12 +15,12 @@ export class AuthService {
   }
 
   check() {
-    return this.tokenService.valid();
+    return this.tokenService.get().valid();
   }
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
-      tap(token => this.tokenService.set(token)),
+    return this.http.post<any>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
+      tap(response => this.tokenService.set(new Token(response))),
       map(() => this.check()),
     );
   }

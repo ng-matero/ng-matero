@@ -5,7 +5,7 @@ import { AuthService } from '@core/authentication2/auth.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TokenService } from '@core/authentication2/token.service';
+import { Token, TokenService } from '@core/authentication2/token.service';
 
 describe('AuthGuard', () => {
   const route: any = {};
@@ -30,7 +30,7 @@ describe('AuthGuard', () => {
   });
 
   it('should be authenticated', () => {
-    spyOn(tokenService, 'valid').and.returnValue(true);
+    spyOn(tokenService, 'get').and.returnValue(new Token({ access_token: 'token' }));
 
     authGuard.canActivate(route, state).subscribe(
       authenticated => {

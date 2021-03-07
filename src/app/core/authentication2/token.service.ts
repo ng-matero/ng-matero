@@ -1,27 +1,34 @@
 import { Injectable } from '@angular/core';
 
-export interface Token {
-  access_token?: string;
-  token_type?: string;
+export class Token {
+  constructor(private attributes: any = {}) {}
+
+  get accessToken() {
+    return this.attributes.access_token;
+  }
+
+  valid() {
+    return !!this.accessToken;
+  }
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  private token: Token = {};
+  private token = new Token();
 
-  set(token) {
+  set(token: Token) {
     this.token = token;
 
     return this;
   }
 
-  valid() {
-    return 'access_token' in this.token && !!this.token.access_token;
+  get() {
+    return this.token;
   }
 
   clear() {
-    this.token = {};
+    this.token = new Token();
   }
 }
