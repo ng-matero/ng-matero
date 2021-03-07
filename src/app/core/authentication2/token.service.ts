@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export class Token {
   constructor(private attributes: any = {}) {}
@@ -16,19 +17,19 @@ export class Token {
   providedIn: 'root',
 })
 export class TokenService {
-  private token = new Token();
+  private change$ = new BehaviorSubject(new Token());
 
   set(token: Token) {
-    this.token = token;
+    this.change$.next(token);
 
     return this;
   }
 
   get() {
-    return this.token;
+    return this.change$.getValue();
   }
 
   clear() {
-    this.token = new Token();
+    this.change$.next(new Token());
   }
 }
