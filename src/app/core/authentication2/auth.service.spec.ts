@@ -2,9 +2,11 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TokenService } from '@core/authentication2/token.service';
 
 describe('AuthService', () => {
   let authService: AuthService;
+  let tokenService: TokenService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
@@ -12,6 +14,7 @@ describe('AuthService', () => {
       imports: [HttpClientTestingModule],
     });
     authService = TestBed.inject(AuthService);
+    tokenService = TestBed.inject(TokenService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -33,5 +36,20 @@ describe('AuthService', () => {
     httpMock.expectOne('/auth/login').flush({
       access_token: 'token', token_type: 'bearer',
     });
+  });
+
+  it('should log out failed when user is not login', () => {
+    authService.logout().subscribe(
+      isLogout => expect(isLogout).toBeFalse(),
+    );
+    httpMock.expectNone('/logout');
+  });
+
+  it('should log out successful when user is login', () => {
+    tokenService.set({ access_token: 'token' });
+    authService.logout().subscribe(
+      isLogout => expect(isLogout).toBeTrue(),
+    );
+    httpMock.expectOne('/logout').flush({});
   });
 });

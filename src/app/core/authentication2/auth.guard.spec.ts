@@ -5,6 +5,7 @@ import { AuthService } from '@core/authentication2/auth.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TokenService } from '@core/authentication2/token.service';
 
 describe('AuthGuard', () => {
   const route: any = {};
@@ -12,6 +13,7 @@ describe('AuthGuard', () => {
   const router: any = { navigate: () => {} };
   let authGuard: AuthGuard;
   let authService: AuthService;
+  let tokenService: TokenService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -20,6 +22,7 @@ describe('AuthGuard', () => {
     });
     authGuard = TestBed.inject(AuthGuard);
     authService = TestBed.inject(AuthService);
+    tokenService = TestBed.inject(TokenService);
   });
 
   it('should be created', () => {
@@ -27,6 +30,8 @@ describe('AuthGuard', () => {
   });
 
   it('should be authenticated', () => {
+    spyOn(tokenService, 'valid').and.returnValue(true);
+
     authGuard.canActivate(route, state).subscribe(
       authenticated => {
         expect(authenticated).toBeTrue();
