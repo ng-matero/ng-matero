@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FormsDatetimeComponent } from './datetime.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('DatetimeComponent', () => {
   let component: FormsDatetimeComponent;
@@ -8,9 +11,9 @@ describe('DatetimeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormsDatetimeComponent ]
-    })
-    .compileComponents();
+      imports: [FormsModule, ReactiveFormsModule, MatNativeDateModule, TranslateModule.forRoot()],
+      declarations: [FormsDatetimeComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
