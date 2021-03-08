@@ -8,40 +8,18 @@ function capitalize(str: string) {
   return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
 }
 
-export class Token {
-  readonly accessToken?: string;
-  readonly tokenType: string;
-
-  constructor(private tokenModel: TokenModel = {}) {
-    this.accessToken = tokenModel.access_token;
-    this.tokenType = tokenModel.token_type || 'Bearer';
-  }
-
-  valid() {
-    return !!this.accessToken;
-  }
-
-  toJson() {
-    return this.tokenModel;
-  }
-
-  header() {
-    return { Authorization: [capitalize(this.tokenType), this.accessToken].join(' ') };
-  }
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
   private key = 'TOKEN';
-  private change$ = new BehaviorSubject(new Token(this.store.get(this.key)));
+  private change$ = new BehaviorSubject<TokenModel>(this.store.get(this.key) as TokenModel);
 
   constructor(private store: LocalStorageService) {}
 
-  set(token: Token) {
+  set(token: TokenModel) {
     this.change$.next(token);
-    this.store.set(this.key, token.toJson());
+    this.store.set(this.key, token);
 
     return this;
   }
@@ -52,10 +30,25 @@ export class TokenService {
 
   clear() {
     this.store.remove(this.key);
-    this.change$.next(new Token());
+    this.change$.next({});
   }
 
   change() {
     return this.change$.pipe(share());
+  }
+
+  valid() {
+    return !!this.get().access_token;
+  }
+
+  header() {
+    const token = this.get();
+    const data = [capitalize(token.token_type || 'Bearer')];
+
+    if (token.access_token) {
+      data.push(token.access_token);
+    }
+
+    return { Authorization: data.join(' ') };
   }
 }

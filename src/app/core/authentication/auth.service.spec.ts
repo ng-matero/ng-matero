@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService, guest } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Token, TokenService } from '@core/authentication/token.service';
+import { TokenService } from '@core/authentication/token.service';
 import { skip } from 'rxjs/operators';
 import { DummyStorageService, LocalStorageService } from '@shared';
 
@@ -11,8 +11,8 @@ describe('AuthService', () => {
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
   const email = 'foo@bar.com';
-  const tokenResponse = { access_token: 'token', token_type: 'bearer' };
-  const userResponse = { id: 1, email };
+  const token = { access_token: 'token', token_type: 'bearer' };
+  const user = { id: 1, email };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,11 +40,11 @@ describe('AuthService', () => {
       isLogin => expect(isLogin).toBeTrue(),
     );
     authService.user().pipe(skip(1)).subscribe(
-      user => expect(user).toEqual(userResponse),
+      currentUser => expect(currentUser).toEqual(currentUser),
     );
 
-    httpMock.expectOne('/auth/login').flush(tokenResponse);
-    httpMock.expectOne('/me').flush(userResponse);
+    httpMock.expectOne('/auth/login').flush(token);
+    httpMock.expectOne('/me').flush(user);
   });
 
   it('should log out failed when user is not login', () => {
@@ -55,17 +55,17 @@ describe('AuthService', () => {
   });
 
   it('should log out successful when user is login', () => {
-    tokenService.set(new Token(tokenResponse));
+    tokenService.set(token);
 
     authService.logout().subscribe(
       isLogout => expect(isLogout).toBeTrue(),
     );
 
     authService.user().pipe(skip(2)).subscribe(
-      user => expect(user).toEqual(guest),
+      currentUser => expect(currentUser).toEqual(guest),
     );
 
-    httpMock.expectOne('/me').flush(userResponse);
+    httpMock.expectOne('/me').flush(user);
     httpMock.expectOne('/logout').flush({});
   });
 });

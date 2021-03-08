@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
-import { Token, TokenService } from '@core/authentication/token.service';
+import { TokenService } from '@core/authentication/token.service';
 import { TokenModel, User } from '@core/authentication/interface';
 
 export const guest: User = {
@@ -27,12 +27,12 @@ export class AuthService {
   }
 
   check() {
-    return this.token.get().valid();
+    return this.token.valid();
   }
 
   login(email: string, password: string, rememberMe = false) {
     return this.http.post<TokenModel>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
-      tap(response => this.token.set(new Token(response))),
+      tap(response => this.token.set(response)),
       map(() => this.check()),
     );
   }

@@ -30,7 +30,6 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   post(reqInfo: RequestInfo) {
-    console.log(reqInfo.apiBase);
     if (reqInfo.apiBase === 'auth/') {
       return this.authenticate(reqInfo);
     }

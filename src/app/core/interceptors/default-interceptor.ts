@@ -38,7 +38,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     const headers = Object.assign({
       'Accept': 'application/json',
       'Accept-Language': this.settings.language,
-    }, this.token.get().header());
+    }, this.token.header());
 
     const newReq = req.clone({ url, setHeaders: headers, withCredentials: true });
 

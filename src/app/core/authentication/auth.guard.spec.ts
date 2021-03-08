@@ -5,7 +5,7 @@ import { AuthService } from '@core/authentication/auth.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Token, TokenService } from '@core/authentication/token.service';
+import { TokenService } from '@core/authentication/token.service';
 import { DummyStorageService, LocalStorageService } from '@shared';
 
 describe('AuthGuard', () => {
@@ -34,7 +34,7 @@ describe('AuthGuard', () => {
   });
 
   it('should be authenticated', () => {
-    spyOn(tokenService, 'get').and.returnValue(new Token({ access_token: 'token' }));
+    spyOn(tokenService, 'get').and.returnValue({ access_token: 'token' });
 
     authGuard.canActivate(route, state).subscribe(
       authenticated => {

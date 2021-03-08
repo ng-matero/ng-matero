@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Token, TokenService } from './token.service';
+import { TokenService } from './token.service';
+import { DummyStorageService, LocalStorageService } from '@shared';
 
 describe('TokenService', () => {
   let service: TokenService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [{ provide: LocalStorageService, useClass: DummyStorageService }],
+    });
     service = TestBed.inject(TokenService);
   });
 
@@ -15,11 +18,9 @@ describe('TokenService', () => {
   });
 
   it('should get authorization header', () => {
-    const token = new Token({
-      access_token: 'token',
-    });
+    service.set({ access_token: 'token' });
 
-    expect(token.header()).toEqual({
+    expect(service.header()).toEqual({
       Authorization: 'Bearer token',
     });
   });
