@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Token, TokenService } from '@core/authentication2/token.service';
 import { skip } from 'rxjs/operators';
+import { DummyStorageService, LocalStorageService } from '@shared';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -16,6 +17,7 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      providers: [{ provide: LocalStorageService, useClass: DummyStorageService }],
     });
     authService = TestBed.inject(AuthService);
     tokenService = TestBed.inject(TokenService);

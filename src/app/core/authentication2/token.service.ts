@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
+import { LocalStorageService } from '@shared';
 
 export class Token {
   constructor(private attributes: any = {}) {}
@@ -12,15 +13,23 @@ export class Token {
   valid() {
     return !!this.accessToken;
   }
+
+  toJson() {
+    return this.attributes;
+  }
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  private change$ = new BehaviorSubject(new Token());
+  private key = 'TOKEN';
+  private change$ = new BehaviorSubject(new Token(this.localStorageService.get(this.key)));
+
+  constructor(private localStorageService: LocalStorageService) {}
 
   set(token: Token) {
+    this.localStorageService.set(this.key, token.toJson());
     this.change$.next(token);
 
     return this;

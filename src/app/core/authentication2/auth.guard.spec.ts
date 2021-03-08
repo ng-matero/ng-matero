@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Token, TokenService } from '@core/authentication2/token.service';
+import { DummyStorageService, LocalStorageService } from '@shared';
 
 describe('AuthGuard', () => {
   const route: any = {};
@@ -18,7 +19,10 @@ describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{ provide: Router, useValue: router }],
+      providers: [
+        { provide: Router, useValue: router },
+        { provide: LocalStorageService, useClass: DummyStorageService },
+      ],
     });
     authGuard = TestBed.inject(AuthGuard);
     authService = TestBed.inject(AuthService);
