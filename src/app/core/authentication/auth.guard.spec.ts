@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthGuard } from './auth.guard';
-import { AuthService } from '@core/authentication2/auth.service';
+import { AuthService } from '@core/authentication/auth.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Token, TokenService } from '@core/authentication2/token.service';
+import { Token, TokenService } from '@core/authentication/token.service';
 import { DummyStorageService, LocalStorageService } from '@shared';
 
 describe('AuthGuard', () => {

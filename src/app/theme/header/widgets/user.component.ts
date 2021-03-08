@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService, SettingsService, TokenService, User } from '@core';
-import { AuthService } from '@core/authentication2/auth.service';
+import { MenuService } from '@core';
+import { AuthService } from '@core/authentication/auth.service';
 import { debounceTime, tap } from 'rxjs/operators';
+import { User } from '@core/authentication/interface';
 
 @Component({
   selector: 'app-user',

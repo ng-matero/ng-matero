@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService, User } from '@core/authentication2/auth.service';
+import { AuthService} from '@core/authentication/auth.service';
 import { tap } from 'rxjs/operators';
+import { User } from '@core/authentication/interface';
 
 @Component({
   selector: 'app-user-panel',

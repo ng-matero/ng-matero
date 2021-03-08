@@ -14,7 +14,7 @@ import { environment } from '@env/environment';
 
 import { ToastrService } from 'ngx-toastr';
 import { SettingsService } from '@core/bootstrap/settings.service';
-import { TokenService } from '@core/authentication2/token.service';
+import { TokenService } from '@core/authentication/token.service';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {

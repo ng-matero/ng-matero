@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
-import { Token, TokenService } from '@core/authentication2/token.service';
-import { TokenModel, User } from '@core/authentication2/interface';
+import { Token, TokenService } from '@core/authentication/token.service';
+import { TokenModel, User } from '@core/authentication/interface';
 
 export const guest: User = {
   id: 0,

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService, guest } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Token, TokenService } from '@core/authentication2/token.service';
+import { Token, TokenService } from '@core/authentication/token.service';
 import { skip } from 'rxjs/operators';
 import { DummyStorageService, LocalStorageService } from '@shared';
 

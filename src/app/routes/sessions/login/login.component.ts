@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SettingsService, StartupService, TokenService } from '@core';
-import { AuthService } from '@core/authentication2/auth.service';
+import { StartupService } from '@core';
+import { AuthService } from '@core/authentication/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private token: TokenService,
     private startup: StartupService,
-    private settings: SettingsService,
     private auth: AuthService,
   ) {
     this.loginForm = this.fb.group({
@@ -45,11 +43,7 @@ export class LoginComponent implements OnInit {
       if (authenticated) {
         // Regain the initial data
         this.startup.load().then(() => {
-          let url = this.token.referrer!.url || '/';
-          if (url.includes('/auth')) {
-            url = '/';
-          }
-          this.router.navigateByUrl(url);
+          this.router.navigateByUrl('/');
         });
       }
     });

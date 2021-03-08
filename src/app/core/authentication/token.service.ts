@@ -1,44 +1,61 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
+import { LocalStorageService } from '@shared';
+import { TokenModel } from '@core/authentication/interface';
 
-import { LocalStorageService } from '@shared/services/storage.service';
-import { TokenModel, AuthReferrer } from './interface';
+function capitalize(str: string) {
+  return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
+}
 
-const TOKEN_KEY = 'jwt';
+export class Token {
+  readonly accessToken?: string;
+  readonly tokenType: string;
+
+  constructor(private tokenModel: TokenModel = {}) {
+    this.accessToken = tokenModel.access_token;
+    this.tokenType = tokenModel.token_type || 'Bearer';
+  }
+
+  valid() {
+    return !!this.accessToken;
+  }
+
+  toJson() {
+    return this.tokenModel;
+  }
+
+  header() {
+    return { Authorization: [capitalize(this.tokenType), this.accessToken].join(' ') };
+  }
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  private change$ = new BehaviorSubject(null);
-
-  /**
-   * The referrer of current page
-   */
-  get referrer() {
-    return this._referrer;
-  }
-
-  private _referrer: AuthReferrer = {};
+  private key = 'TOKEN';
+  private change$ = new BehaviorSubject(new Token(this.store.get(this.key)));
 
   constructor(private store: LocalStorageService) {}
 
-  set(data: TokenModel): boolean {
-    this.change$.next(data);
-    return this.store.set(TOKEN_KEY, data);
+  set(token: Token) {
+    this.change$.next(token);
+    this.store.set(this.key, token.toJson());
+
+    return this;
   }
 
-  get<T extends TokenModel>(type?: new () => T): T {
-    const data = this.store.get(TOKEN_KEY);
-    return type ? (Object.assign(new type(), data) as T) : (data as T);
+  get() {
+    return this.change$.getValue();
   }
 
   clear() {
-    this.store.remove(TOKEN_KEY);
+    this.store.remove(this.key);
+    this.change$.next(new Token());
   }
 
-  change(): Observable<TokenModel | null> {
+  change() {
     return this.change$.pipe(share());
   }
 }

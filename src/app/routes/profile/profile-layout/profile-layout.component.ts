@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService, User } from '@core';
-import { AuthService } from '@core/authentication2/auth.service';
+import { User } from '@core/authentication/interface';
+import { AuthService } from '@core/authentication/auth.service';
 
 @Component({
   selector: 'app-profile-layout',
