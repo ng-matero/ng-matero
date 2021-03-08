@@ -41,14 +41,21 @@ export class TokenService {
     return !!this.get().access_token;
   }
 
-  header() {
+  get value() {
     const token = this.get();
-    const data = [capitalize(token.token_type || 'Bearer')];
 
-    if (token.access_token) {
-      data.push(token.access_token);
-    }
+    return token.access_token || token.token || '';
+  }
 
-    return { Authorization: data.join(' ') };
+  get type() {
+    const token = this.get();
+
+    return capitalize(token.token_type || 'bearer');
+  }
+
+  header() {
+    const value = this.value;
+
+    return value ? { Authorization: [this.type, value].join(' ') } : {};
   }
 }

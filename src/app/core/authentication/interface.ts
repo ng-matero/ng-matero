@@ -7,5 +7,6 @@ export interface User {
 
 export interface TokenModel {
   access_token?: string;
+  token?: string;
   token_type?: string;
 }
