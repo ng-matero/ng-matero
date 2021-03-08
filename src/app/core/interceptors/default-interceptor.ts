@@ -73,6 +73,7 @@ export class DefaultInterceptor implements HttpInterceptor {
   private handleErrorReq(error: HttpErrorResponse): Observable<never> {
     switch (error.status) {
       case 401:
+        this.token.clear();
         this.goto(`/auth/login`);
         break;
       case 403:
