@@ -37,6 +37,7 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   private authenticate(reqInfo: RequestInfo) {
+    console.log(reqInfo);
     return reqInfo.utils.createResponse$(() => {
       const { headers, url } = reqInfo;
       const req = reqInfo.req as HttpRequest<any>;
