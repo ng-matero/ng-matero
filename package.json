@@ -47,6 +47,7 @@
     "@ngx-formly/material": "^5.10.11",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "angular-in-memory-web-api": "^0.11.0",
     "apexcharts": "^3.23.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
