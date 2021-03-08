@@ -14,7 +14,7 @@ export const guest: User = {
   providedIn: 'root',
 })
 export class AuthService {
-  private user$ = new BehaviorSubject<User | null>(guest);
+  private user$ = new BehaviorSubject<User>(guest);
 
   constructor(private http: HttpClient, private token: TokenService) {
     this.token.change().pipe(
