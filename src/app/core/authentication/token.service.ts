@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { LocalStorageService } from '@shared';
-import { TokenModel } from '@core/authentication/interface';
+import { Token } from '@core/authentication/interface';
 
 function capitalize(str: string) {
   return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
@@ -13,11 +13,11 @@ function capitalize(str: string) {
 })
 export class TokenService {
   private key = 'TOKEN';
-  private change$ = new BehaviorSubject<TokenModel>(this.store.get(this.key) as TokenModel);
+  private change$ = new BehaviorSubject<Token>(this.store.get(this.key) as Token);
 
   constructor(private store: LocalStorageService) {}
 
-  set(token: TokenModel) {
+  set(token: Token) {
     this.change$.next(token);
     this.store.set(this.key, token);
 

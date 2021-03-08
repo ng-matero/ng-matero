@@ -3,7 +3,7 @@ import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from '@core/authentication/token.service';
-import { TokenModel, User } from '@core/authentication/interface';
+import { Token, User } from '@core/authentication/interface';
 
 export const guest: User = {
   id: 0,
@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http.post<TokenModel>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
+    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
       tap(response => this.token.set(response)),
       map(() => this.check()),
     );

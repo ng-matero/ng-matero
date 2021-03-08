@@ -5,7 +5,7 @@ export interface User {
   avatar?: string;
 }
 
-export interface TokenModel {
+export interface Token {
   access_token?: string;
   token?: string;
   token_type?: string;
