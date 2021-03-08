@@ -43,6 +43,7 @@ export class TokenService {
   }
 
   clear() {
+    this.store.remove(this.key);
     this.change$.next(new Token());
   }
 
