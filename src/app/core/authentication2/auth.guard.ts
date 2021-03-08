@@ -15,7 +15,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   private authenticate() {
-    return this.authService.isAuthenticated().pipe(
+    return this.auth.isAuthenticated().pipe(
       tap(authenticated => {
         if (!authenticated) {
           this.router.navigate(['/auth/login']);

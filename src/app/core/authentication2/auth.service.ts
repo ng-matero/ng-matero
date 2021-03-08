@@ -22,8 +22,8 @@ export interface TokenModel {
 export class AuthService {
   private user$ = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {
-    this.tokenService.change().pipe(
+  constructor(private http: HttpClient, private token: TokenService) {
+    this.token.change().pipe(
       switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(null))),
     ).subscribe(response => this.user$.next(response));
   }
@@ -33,12 +33,12 @@ export class AuthService {
   }
 
   check() {
-    return this.tokenService.get().valid();
+    return this.token.get().valid();
   }
 
   login(email: string, password: string, rememberMe = false) {
     return this.http.post<TokenModel>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
-      tap(response => this.tokenService.set(new Token(response))),
+      tap(response => this.token.set(new Token(response))),
       map(() => this.check()),
     );
   }
@@ -49,7 +49,7 @@ export class AuthService {
     }
 
     return this.http.post('/logout', {}).pipe(
-      tap(() => this.tokenService.clear()),
+      tap(() => this.token.clear()),
       map(() => !this.check()),
     );
   }

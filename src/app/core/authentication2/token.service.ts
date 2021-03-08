@@ -27,12 +27,12 @@ export class Token {
 })
 export class TokenService {
   private key = 'TOKEN';
-  private change$ = new BehaviorSubject(new Token(this.localStorageService.get(this.key)));
+  private change$ = new BehaviorSubject(new Token(this.store.get(this.key)));
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(private store: LocalStorageService) {}
 
   set(token: Token) {
-    this.localStorageService.set(this.key, token.toJson());
+    this.store.set(this.key, token.toJson());
     this.change$.next(token);
 
     return this;
