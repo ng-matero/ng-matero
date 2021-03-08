@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthService } from './auth.service';
+import { AuthService, guest } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Token, TokenService } from '@core/authentication2/token.service';
 import { skip } from 'rxjs/operators';
@@ -62,7 +62,7 @@ describe('AuthService', () => {
     );
 
     authService.user().pipe(skip(2)).subscribe(
-      user => expect(user).toEqual(null),
+      user => expect(user).toEqual(guest),
     );
 
     httpMock.expectOne('/me').flush(userResponse);

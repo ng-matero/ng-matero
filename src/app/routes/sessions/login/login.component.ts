@@ -26,12 +26,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.auth.user().subscribe(user => {
-      // Set user info
-      this.settings.setUser(user);
-    });
-  }
+  ngOnInit() {}
 
   get username() {
     return this.loginForm.get('username');

@@ -14,7 +14,6 @@ export class InMemDataService implements InMemoryDbService {
 
   get(reqInfo: RequestInfo) {
     if (reqInfo.apiBase === 'me/') {
-      console.log(reqInfo.apiBase);
       return reqInfo.utils.createResponse$(() => {
         return {
           status: STATUS.OK,
@@ -31,13 +30,20 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   post(reqInfo: RequestInfo) {
+    console.log(reqInfo.apiBase);
     if (reqInfo.apiBase === 'auth/') {
       return this.authenticate(reqInfo);
+    }
+    if (reqInfo.apiBase === 'logout/') {
+      return reqInfo.utils.createResponse$(() => {
+        const { headers, url } = reqInfo;
+
+        return { status: STATUS.OK, headers, url, body: {} };
+      });
     }
   }
 
   private authenticate(reqInfo: RequestInfo) {
-    console.log(reqInfo);
     return reqInfo.utils.createResponse$(() => {
       const { headers, url } = reqInfo;
       const req = reqInfo.req as HttpRequest<any>;

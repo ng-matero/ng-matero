@@ -3,28 +3,22 @@ import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { Token, TokenService } from '@core/authentication2/token.service';
+import { TokenModel, User } from '@core/authentication2/interface';
 
-export interface User {
-  id: number;
-  name?: string;
-  email?: string;
-  avatar?: string;
-}
-
-export interface TokenModel {
-  access_token?: string;
-  token_type?: string;
-}
+export const guest: User = {
+  id: 0,
+  avatar: '',
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private user$ = new BehaviorSubject<User | null>(null);
+  private user$ = new BehaviorSubject<User | null>(guest);
 
   constructor(private http: HttpClient, private token: TokenService) {
     this.token.change().pipe(
-      switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(null))),
+      switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(guest))),
     ).subscribe(response => this.user$.next(response));
   }
 
