@@ -13,8 +13,8 @@ import { mergeMap, catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 
 import { ToastrService } from 'ngx-toastr';
-import { TokenService } from '../authentication/token.service';
 import { SettingsService } from '@core/bootstrap/settings.service';
+import { TokenService } from '@core/authentication2/token.service';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
@@ -22,7 +22,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     private router: Router,
     private toastr: ToastrService,
     private token: TokenService,
-    private settings: SettingsService
+    private settings: SettingsService,
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,17 +35,16 @@ export class DefaultInterceptor implements HttpInterceptor {
     }
 
     // All APIs need JWT authorization
-    const headers = {
+    const headers = Object.assign({
       'Accept': 'application/json',
       'Accept-Language': this.settings.language,
-      'Authorization': `Bearer ${this.token.get().token}`,
-    };
+    }, this.token.get().header());
 
     const newReq = req.clone({ url, setHeaders: headers, withCredentials: true });
 
     return next.handle(newReq).pipe(
       mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)),
-      catchError((error: HttpErrorResponse) => this.handleErrorReq(error))
+      catchError((error: HttpErrorResponse) => this.handleErrorReq(error)),
     );
   }
 

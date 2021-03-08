@@ -48,9 +48,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe(authenticated => {
       if (authenticated) {
-        const { token } = { token: 'ng-matero-token' };
-        // Set token info
-        this.token.set({ token });
         // Regain the initial data
         this.startup.load().then(() => {
           let url = this.token.referrer!.url || '/';
