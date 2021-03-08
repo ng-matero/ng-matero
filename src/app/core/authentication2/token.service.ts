@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { LocalStorageService } from '@shared';
+import { TokenModel } from '@core/authentication2/auth.service';
 
 export class Token {
-  constructor(private attributes: any = {}) {}
+  readonly accessToken?: string;
+  readonly tokenType?: string;
 
-  get accessToken() {
-    return this.attributes.access_token;
+  constructor(private tokenModel: TokenModel = {}) {
+    this.accessToken = tokenModel.access_token;
+    this.tokenType = tokenModel.token_type;
   }
 
   valid() {
@@ -15,7 +18,7 @@ export class Token {
   }
 
   toJson() {
-    return this.attributes;
+    return this.tokenModel;
   }
 }
 
