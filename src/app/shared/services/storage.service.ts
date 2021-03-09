@@ -21,3 +21,24 @@ export class LocalStorageService {
     localStorage.clear();
   }
 }
+
+export class MemoryStorageService {
+  private store = {};
+
+  get(key: string) {
+    return JSON.parse(this.store[key] || '{}') || {};
+  }
+
+  set(key: string, value: any): boolean {
+    this.store[key] = JSON.stringify(value);
+    return true;
+  }
+
+  remove(key: string) {
+    delete this.store[key];
+  }
+
+  clear() {
+    this.store = {};
+  }
+}

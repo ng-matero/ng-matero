@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,6 +21,9 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 import { httpInterceptorProviders } from '@core/interceptors';
 import { appInitializerProviders } from '@core/initializers';
 import { FormlyConfigModule } from './formly-config.module';
+import { environment } from '@env/environment';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemDataService } from '@shared/services/in-mem-data.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +43,10 @@ import { FormlyConfigModule } from './formly-config.module';
         useFactory: TranslateHttpLoaderFactory,
         deps: [HttpClient],
       },
+    }),
+    environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemDataService, {
+      dataEncapsulation: false,
+      passThruUnknownUrl: true,
     }),
   ],
   providers: [httpInterceptorProviders, appInitializerProviders],

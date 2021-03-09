@@ -7,7 +7,7 @@ import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
-import { AuthGuard } from '@core';
+import { AuthGuard } from '@core/authentication/auth.guard';
 
 const routes: Routes = [
   {

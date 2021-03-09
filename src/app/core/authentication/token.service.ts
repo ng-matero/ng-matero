@@ -1,44 +1,61 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
+import { LocalStorageService } from '@shared';
+import { Token } from '@core/authentication/interface';
 
-import { LocalStorageService } from '@shared/services/storage.service';
-import { TokenModel, AuthReferrer } from './interface';
-
-const TOKEN_KEY = 'jwt';
+function capitalize(str: string) {
+  return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  private change$ = new BehaviorSubject(null);
-
-  /**
-   * The referrer of current page
-   */
-  get referrer() {
-    return this._referrer;
-  }
-
-  private _referrer: AuthReferrer = {};
+  private key = 'TOKEN';
+  private change$ = new BehaviorSubject<Token>(this.store.get(this.key) as Token);
 
   constructor(private store: LocalStorageService) {}
 
-  set(data: TokenModel): boolean {
-    this.change$.next(data);
-    return this.store.set(TOKEN_KEY, data);
+  set(token: Token) {
+    this.change$.next(token);
+    this.store.set(this.key, token);
+
+    return this;
   }
 
-  get<T extends TokenModel>(type?: new () => T): T {
-    const data = this.store.get(TOKEN_KEY);
-    return type ? (Object.assign(new type(), data) as T) : (data as T);
+  get() {
+    return this.change$.getValue();
   }
 
   clear() {
-    this.store.remove(TOKEN_KEY);
+    this.store.remove(this.key);
+    this.change$.next({});
   }
 
-  change(): Observable<TokenModel | null> {
+  change() {
     return this.change$.pipe(share());
+  }
+
+  valid() {
+    return !!this.get().access_token;
+  }
+
+  get value() {
+    const token = this.get();
+
+    return token.access_token || token.token || '';
+  }
+
+  get type() {
+    const token = this.get();
+
+    return capitalize(token.token_type || 'bearer');
+  }
+
+  header() {
+    const value = this.value;
+
+    return value ? { Authorization: [this.type, value].join(' ') } : {};
   }
 }

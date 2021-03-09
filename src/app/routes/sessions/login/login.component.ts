@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SettingsService, StartupService, TokenService } from '@core';
+import { StartupService } from '@core';
+import { AuthService } from '@core/authentication/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private token: TokenService,
     private startup: StartupService,
-    private settings: SettingsService
+    private auth: AuthService,
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern('ng-matero')]],
       password: ['', [Validators.required, Validators.pattern('ng-matero')]],
+      remember_me: [''],
     });
   }
 
@@ -33,24 +34,18 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
+  get rememberMe() {
+    return this.loginForm.get('remember_me');
+  }
+
   login() {
-    const { token, uid, username } = { token: 'ng-matero-token', uid: 1, username: 'ng-matero' };
-    // Set user info
-    this.settings.setUser({
-      id: uid,
-      name: 'Zongbin',
-      email: 'nzb329@163.com',
-      avatar: './assets/images/avatar.jpg',
-    });
-    // Set token info
-    this.token.set({ token, uid, username });
-    // Regain the initial data
-    this.startup.load().then(() => {
-      let url = this.token.referrer!.url || '/';
-      if (url.includes('/auth')) {
-        url = '/';
+    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe(authenticated => {
+      if (authenticated) {
+        // Regain the initial data
+        this.startup.load().then(() => {
+          this.router.navigateByUrl('/');
+        });
       }
-      this.router.navigateByUrl(url);
     });
   }
 }
