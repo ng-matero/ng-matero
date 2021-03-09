@@ -21,7 +21,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 import { httpInterceptorProviders } from '@core/interceptors';
 import { appInitializerProviders } from '@core/initializers';
 import { FormlyConfigModule } from './formly-config.module';
-import { environment } from '@env/environment';
+
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemDataService } from '@shared/services/in-mem-data.service';
 
@@ -44,7 +44,8 @@ import { InMemDataService } from '@shared/services/in-mem-data.service';
         deps: [HttpClient],
       },
     }),
-    environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemDataService, {
+    // Demo Purposes Only
+    HttpClientInMemoryWebApiModule.forRoot(InMemDataService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true,
     }),

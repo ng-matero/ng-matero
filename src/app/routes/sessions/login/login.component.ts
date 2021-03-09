@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private startup: StartupService,
-    private auth: AuthService,
+    private auth: AuthService
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern('ng-matero')]],
@@ -39,13 +39,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe(authenticated => {
-      if (authenticated) {
-        // Regain the initial data
-        this.startup.load().then(() => {
-          this.router.navigateByUrl('/');
-        });
-      }
-    });
+    this.auth
+      .login(this.username.value, this.password.value, this.rememberMe.value)
+      .subscribe(authenticated => {
+        if (authenticated) {
+          // Regain the initial data
+          this.startup.load().then(() => {
+            this.router.navigateByUrl('/');
+          });
+        }
+      });
   }
 }

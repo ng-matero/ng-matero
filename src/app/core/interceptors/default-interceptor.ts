@@ -22,7 +22,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     private router: Router,
     private toastr: ToastrService,
     private token: TokenService,
-    private settings: SettingsService,
+    private settings: SettingsService
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,16 +35,19 @@ export class DefaultInterceptor implements HttpInterceptor {
     }
 
     // All APIs need JWT authorization
-    const headers = Object.assign({
-      'Accept': 'application/json',
-      'Accept-Language': this.settings.language,
-    }, this.token.header());
+    const headers = Object.assign(
+      {
+        'Accept': 'application/json',
+        'Accept-Language': this.settings.language,
+      },
+      this.token.header()
+    );
 
     const newReq = req.clone({ url, setHeaders: headers, withCredentials: true });
 
     return next.handle(newReq).pipe(
       mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)),
-      catchError((error: HttpErrorResponse) => this.handleErrorReq(error)),
+      catchError((error: HttpErrorResponse) => this.handleErrorReq(error))
     );
   }
 

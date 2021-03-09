@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
+import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +49,10 @@ export class InMemDataService implements InMemoryDbService {
 
       if (email === 'ng-matero' && password === 'ng-matero') {
         return {
-          status: STATUS.OK, headers, url, body: {
+          status: STATUS.OK,
+          headers,
+          url,
+          body: {
             access_token: 'ng-matero-token',
             token_type: 'bearer',
             expires_in: 3600,

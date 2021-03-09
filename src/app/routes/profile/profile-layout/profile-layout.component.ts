@@ -12,6 +12,6 @@ export class ProfileLayoutComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.auth.user().subscribe(user => this.user = user);
+    this.auth.user().subscribe(user => (this.user = user));
   }
 }

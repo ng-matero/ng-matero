@@ -4,7 +4,6 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { MenuService } from './menu.service';
-import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root',
