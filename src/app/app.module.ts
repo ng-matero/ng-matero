@@ -44,7 +44,7 @@ import { InMemDataService } from '@shared/services/in-mem-data.service';
         deps: [HttpClient],
       },
     }),
-    // Demo Purposes Only
+    // Demo purposes only for GitHub Pages
     HttpClientInMemoryWebApiModule.forRoot(InMemDataService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true,
