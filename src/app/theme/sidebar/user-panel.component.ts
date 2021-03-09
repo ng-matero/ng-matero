@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthService} from '@core/authentication/auth.service';
-import { tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@core/authentication/auth.service';
 import { User } from '@core/authentication/interface';
 
 @Component({
@@ -25,12 +24,12 @@ import { User } from '@core/authentication/interface';
   `,
   styleUrls: ['./user-panel.component.scss'],
 })
-export class UserPanelComponent {
+export class UserPanelComponent implements OnInit {
   user: User;
 
-  constructor(auth: AuthService) {
-    auth.user().pipe(
-      tap(user => console.log(user)),
-    ).subscribe(user => this.user = user);
+  constructor(private auth: AuthService) {}
+
+  ngOnInit(): void {
+    this.auth.user().subscribe(user => this.user = user);
   }
 }
