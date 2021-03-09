@@ -30,18 +30,15 @@ export class InMemDataService implements InMemoryDbService {
 
   post(reqInfo: RequestInfo) {
     if (reqInfo.apiBase === 'auth/') {
-      return this.authenticate(reqInfo);
-    }
-    if (reqInfo.apiBase === 'logout/') {
-      return reqInfo.utils.createResponse$(() => {
-        const { headers, url } = reqInfo;
+      const lookup = { login: this.login, logout: this.logout };
 
-        return { status: STATUS.OK, headers, url, body: {} };
-      });
+      if (reqInfo.collectionName in lookup) {
+        return lookup[reqInfo.collectionName](reqInfo);
+      }
     }
   }
 
-  private authenticate(reqInfo: RequestInfo) {
+  private login(reqInfo: RequestInfo) {
     return reqInfo.utils.createResponse$(() => {
       const { headers, url } = reqInfo;
       const req = reqInfo.req as HttpRequest<any>;
@@ -61,6 +58,14 @@ export class InMemDataService implements InMemoryDbService {
       }
 
       return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
+    });
+  }
+
+  private logout(reqInfo: RequestInfo) {
+    return reqInfo.utils.createResponse$(() => {
+      const { headers, url } = reqInfo;
+
+      return { status: STATUS.OK, headers, url, body: {} };
     });
   }
 }

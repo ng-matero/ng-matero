@@ -41,7 +41,7 @@ export class AuthService {
       return of(false);
     }
 
-    return this.http.post('/logout', {}).pipe(
+    return this.http.post('/auth/logout', {}).pipe(
       tap(() => this.token.clear()),
       map(() => !this.check())
     );
