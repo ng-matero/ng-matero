@@ -22,7 +22,7 @@ export class LocalStorageService {
   }
 }
 
-export class DummyStorageService {
+export class MemoryStorageService {
   private store = {};
 
   get(key: string) {

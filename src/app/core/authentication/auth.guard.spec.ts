@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TokenService } from '@core/authentication/token.service';
-import { DummyStorageService, LocalStorageService } from '@shared';
+import { MemoryStorageService, LocalStorageService } from '@shared';
 
 describe('AuthGuard', () => {
   const route: any = {};
@@ -21,7 +21,7 @@ describe('AuthGuard', () => {
       imports: [HttpClientTestingModule],
       providers: [
         { provide: Router, useValue: router },
-        { provide: LocalStorageService, useClass: DummyStorageService },
+        { provide: LocalStorageService, useClass: MemoryStorageService },
       ],
     });
     authGuard = TestBed.inject(AuthGuard);

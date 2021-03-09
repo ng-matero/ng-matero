@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
 import { TokenService } from './token.service';
-import { DummyStorageService, LocalStorageService } from '@shared';
+import { MemoryStorageService, LocalStorageService } from '@shared';
 
 describe('TokenService', () => {
   let service: TokenService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: LocalStorageService, useClass: DummyStorageService }],
+      providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
     });
     service = TestBed.inject(TokenService);
   });
