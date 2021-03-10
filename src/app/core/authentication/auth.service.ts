@@ -20,11 +20,7 @@ export class AuthService {
     this.token
       .change()
       .pipe(switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(guest))))
-      .subscribe(response => this.user$.next(response));
-  }
-
-  isAuthenticated() {
-    return of(this.check());
+      .subscribe(user => this.user$.next(user));
   }
 
   check() {
@@ -35,7 +31,7 @@ export class AuthService {
     return this.http
       .post<Token>('/auth/login', { email, password, remember_me: rememberMe })
       .pipe(
-        tap(response => this.token.set(response)),
+        tap(token => this.token.set(token)),
         map(() => this.check())
       );
   }
@@ -45,7 +41,7 @@ export class AuthService {
       return of(false);
     }
 
-    return this.http.post('/logout', {}).pipe(
+    return this.http.post('/auth/logout', {}).pipe(
       tap(() => this.token.clear()),
       map(() => !this.check())
     );

@@ -3,27 +3,37 @@ import { TestBed } from '@angular/core/testing';
 import { AuthGuard } from '@core';
 import { AuthService } from '@core/authentication/auth.service';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TokenService } from '@core/authentication/token.service';
-import { MemoryStorageService, LocalStorageService } from '@shared';
+import { LocalStorageService, MemoryStorageService } from '@shared';
+import { Component } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+
+@Component({ template: '' })
+class DummyComponent {}
 
 describe('AuthGuard', () => {
   const route: any = {};
   const state: any = {};
-  const router: any = { navigateByUrl: () => {} };
+  let router: Router;
   let authGuard: AuthGuard;
   let authService: AuthService;
   let tokenService: TokenService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([
+        { path: 'dashboard', component: DummyComponent, canActivate: [AuthGuard] },
+        { path: 'auth/login', component: DummyComponent },
+      ])],
+      declarations: [DummyComponent],
       providers: [
-        { provide: Router, useValue: router },
         { provide: LocalStorageService, useClass: MemoryStorageService },
       ],
     });
+    TestBed.createComponent(DummyComponent);
+
+    router = TestBed.inject(Router);
     authGuard = TestBed.inject(AuthGuard);
     authService = TestBed.inject(AuthService);
     tokenService = TestBed.inject(TokenService);
@@ -36,22 +46,12 @@ describe('AuthGuard', () => {
   it('should be authenticated', () => {
     spyOn(tokenService, 'get').and.returnValue({ access_token: 'token' });
 
-    authGuard.canActivate(route, state).subscribe(
-      authenticated => {
-        expect(authenticated).toBeTrue();
-      },
-    );
+    expect(authGuard.canActivate(route, state)).toBeTrue();
   });
 
   it('should redirect to /auth/login when authenticate failed', () => {
-    spyOn(authService, 'isAuthenticated').and.returnValue(of(false));
-    spyOn(router, 'navigateByUrl');
+    spyOn(authService, 'check').and.returnValue(false);
 
-    authGuard.canActivate(route, state).subscribe(
-      authenticated => {
-        expect(authenticated).toBeFalse();
-      },
-    );
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
+    expect(authGuard.canActivate(route, state)).toEqual(router.parseUrl('/auth/login'));
   });
 });

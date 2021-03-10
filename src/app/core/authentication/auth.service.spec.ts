@@ -66,6 +66,6 @@ describe('AuthService', () => {
     );
 
     httpMock.expectOne('/me').flush(user);
-    httpMock.expectOne('/logout').flush({});
+    httpMock.expectOne('/auth/logout').flush({});
   });
 });
