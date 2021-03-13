@@ -40,7 +40,7 @@
     "@angular/router": "~11.1.0",
     "@mat-datetimepicker/core": "^6.0.0",
     "@mat-datetimepicker/moment": "^6.0.0",
-    "@ng-matero/extensions": "^11.1.0",
+    "@ng-matero/extensions": "^11.1.1",
     "@ng-select/ng-option-highlight": "0.0.6",
     "@ng-select/ng-select": "^6.1.0",
     "@ngx-formly/core": "^5.10.11",
