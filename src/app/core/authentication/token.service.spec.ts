@@ -17,18 +17,16 @@ describe('TokenService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get authorization header', () => {
+  it('should get authorization header value', () => {
     service.set({ token: 'token' });
 
-    expect(service.header()).toEqual({
-      Authorization: 'Bearer token',
-    });
+    expect(service.headerValue()).toEqual('Bearer token');
   });
 
-  it('cannot get authorization header', () => {
+  it('cannot get authorization header value', () => {
     service.set({});
 
-    expect(service.header()).toEqual({});
+    expect(service.headerValue()).toBe('');
   });
 
 });

@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private startup: StartupService,
-    private auth: AuthService
+    private auth: AuthService,
   ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.pattern('ng-matero')]],
-      password: ['', [Validators.required, Validators.pattern('ng-matero')]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       remember_me: [''],
     });
   }
@@ -39,15 +39,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth
-      .login(this.username.value, this.password.value, this.rememberMe.value)
-      .subscribe(authenticated => {
-        if (authenticated) {
-          // Regain the initial data
-          this.startup.load().then(() => {
-            this.router.navigateByUrl('/');
-          });
-        }
-      });
+    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe(authenticated => {
+      if (authenticated) {
+        // Regain the initial data
+        this.startup.load().then(() => {
+          this.router.navigateByUrl('/');
+        });
+      }
+    }, (error) => {
+      if (error.status === 422) {
+        const errors = error.body.errors;
+        const form = this.loginForm;
+        Object.keys(errors).forEach(key => form.get(key)?.setErrors(errors[key][0]));
+      }
+    });
   }
 }
