@@ -5,6 +5,7 @@ import { DefaultInterceptor } from './default-interceptor';
 import { LoggingInterceptor } from './logging-interceptor';
 import { TokenInterceptor } from '@core/interceptors/token.interceptor';
 import { BaseUrlInterceptor } from '@core/interceptors/base-url.interceptor';
+import { ErrorInterceptor } from '@core/interceptors/error-interceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
@@ -12,5 +13,6 @@ export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
 ];
