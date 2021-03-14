@@ -12,7 +12,6 @@ export class DefaultInterceptor implements HttpInterceptor {
   constructor(private router: Router, private toastr: ToastrService, private settings: SettingsService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Only intercept API url
     const headers = req.headers.append('Accept-Language', this.settings.language);
 
     if (!req.url.includes('/api/')) {
@@ -34,13 +33,11 @@ export class DefaultInterceptor implements HttpInterceptor {
       const body: any = event.body;
       // failure: { code: **, msg: 'failure' }
       // success: { code: 0,  msg: 'success', data: {} }
-      if (body && body.code !== 0) {
+      if (body && 'code' in body && body.code !== 0) {
         if (body.msg && body.msg !== '') {
           this.toastr.error(body.msg);
         }
         return throwError([]);
-      } else {
-        return of(event);
       }
     }
     // Pass down event if everything is OK
