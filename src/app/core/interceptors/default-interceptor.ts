@@ -1,33 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  HttpEvent,
-  HttpInterceptor,
-  HttpHandler,
-  HttpRequest,
-  HttpErrorResponse,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { mergeMap, catchError } from 'rxjs/operators';
-import { environment } from '@env/environment';
+import { catchError, mergeMap } from 'rxjs/operators';
 
 import { ToastrService } from 'ngx-toastr';
+import { SettingsService } from '@core/bootstrap/settings.service';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private toastr: ToastrService) {}
+  constructor(private router: Router, private toastr: ToastrService, private settings: SettingsService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Add server host
-    const url = environment.baseUrl + req.url;
-
     // Only intercept API url
-    if (!url.includes('/api/')) {
-      return next.handle(req);
+    const headers = req.headers.append('Accept-Language', this.settings.language);
+
+    if (!req.url.includes('/api/')) {
+      return next.handle(req.clone({ headers }));
     }
 
-    return next.handle(req).pipe(
+    return next.handle(req.clone({ headers })).pipe(
       mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)),
       catchError((error: HttpErrorResponse) => this.handleErrorReq(error)),
     );

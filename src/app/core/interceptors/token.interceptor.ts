@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 
 
 function hasHttpScheme(url: string) {
-  return new RegExp('http(s)?://', 'i').test(url);
+  return new RegExp('^http(s)?://', 'i').test(url);
 }
 
 function includeBaseUrl(url: string) {
