@@ -29,7 +29,7 @@ describe('TokenInterceptor', () => {
   afterEach(() => httpMock.verify());
 
   it('should append token when url does not has http scheme', () => {
-    environment.SERVER_ORIGIN = '';
+    environment.baseUrl = '';
     const url = '/me';
     token.set({ access_token: 'token' });
 
@@ -39,7 +39,7 @@ describe('TokenInterceptor', () => {
   });
 
   it('should append token when url does not has http and environment.SERVER_ORIGIN not empty', () => {
-    environment.SERVER_ORIGIN = 'http://foo.bar';
+    environment.baseUrl = 'http://foo.bar';
     const url = '/me';
     token.set({ access_token: 'token' });
 
@@ -48,9 +48,9 @@ describe('TokenInterceptor', () => {
     expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeTrue();
   });
 
-  it('should append token when url include environment.SERVER_ORIGIN', () => {
-    environment.SERVER_ORIGIN = 'http://foo.bar';
-    const url = `${environment.SERVER_ORIGIN}/me`;
+  it('should append token when url include environment.baseUrl', () => {
+    environment.baseUrl = 'http://foo.bar';
+    const url = `${environment.baseUrl}/me`;
     token.set({ access_token: 'token' });
 
     http.get(url).subscribe();
@@ -58,8 +58,8 @@ describe('TokenInterceptor', () => {
     expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeTrue();
   });
 
-  it('should not append token when url not include environment.SERVER_ORIGIN', () => {
-    environment.SERVER_ORIGIN = 'http://foo.bar';
+  it('should not append token when url not include environment.baseUrl', () => {
+    environment.baseUrl = 'http://foo.bar';
     const url = 'https://api.github.com';
     token.set({ access_token: 'token' });
 
@@ -68,8 +68,8 @@ describe('TokenInterceptor', () => {
     expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeFalse();
   });
 
-  it('should not append token when environment.SERVER_ORIGIN is empty and url is not same site', () => {
-    environment.SERVER_ORIGIN = '';
+  it('should not append token when environment.baseUrl is empty and url is not same site', () => {
+    environment.baseUrl = '';
     const url = 'https://api.github.com';
     token.set({ access_token: 'token' });
 

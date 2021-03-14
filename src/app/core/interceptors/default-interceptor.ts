@@ -20,7 +20,7 @@ export class DefaultInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Add server host
-    const url = environment.SERVER_ORIGIN + req.url;
+    const url = environment.baseUrl + req.url;
 
     // Only intercept API url
     if (!url.includes('/api/')) {

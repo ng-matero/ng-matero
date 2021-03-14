@@ -11,7 +11,7 @@ function hasHttpScheme(url: string) {
 }
 
 function includeBaseUrl(url: string) {
-  const baseUrl = environment.SERVER_ORIGIN.replace(/\/$/, '');
+  const baseUrl = environment.baseUrl.replace(/\/$/, '');
 
   return baseUrl !== '' && new RegExp(`^${baseUrl}`, 'i').test(url);
 }
