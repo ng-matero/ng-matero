@@ -3,12 +3,18 @@ import { HttpRequest } from '@angular/common/http';
 import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
 import { Observable } from 'rxjs';
 import { User } from '@core/authentication/interface';
+import { environment } from '@env/environment';
+
 
 function generateToken(user: User) {
   return btoa([user.id, user.email, user.name].join(''));
 }
 
 function is(reqInfo: RequestInfo, path: string) {
+  if (environment.baseUrl) {
+    return false;
+  }
+
   return new RegExp(`${path}(/)?$`, 'i').test(reqInfo.req.url);
 }
 
@@ -77,7 +83,7 @@ export class InMemDataService implements InMemoryDbService {
           status: STATUS.UNPROCESSABLE_ENTRY,
           headers,
           url,
-          body: {
+          error: {
             errors: {
               password: ['The provided password is incorrect.'],
             },
