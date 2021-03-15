@@ -7,31 +7,34 @@ import { TokenService } from '@core';
 import { environment } from '@env/environment';
 import { LocalStorageService, MemoryStorageService } from '@shared';
 import { STATUS } from 'angular-in-memory-web-api';
+import { BASE_URL } from '@core/interceptors/base-url.interceptor';
 
 describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
   let token: TokenService;
+  const baseUrl = 'http://foo.bar';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
+        { provide: BASE_URL, useValue: baseUrl },
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
       ],
     });
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
-    token = TestBed.inject(TokenService);
   });
 
   afterEach(() => httpMock.verify());
 
   it('should append token when url does not has http scheme', () => {
-    environment.baseUrl = '';
-    const url = '/me';
+    TestBed.overrideProvider(BASE_URL, { useValue: '' });
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    token = TestBed.inject(TokenService);
     token.set({ access_token: 'token' });
+    const url = '/me';
 
     http.get(url).subscribe();
 
@@ -39,9 +42,11 @@ describe('TokenInterceptor', () => {
   });
 
   it('should append token when url does not has http and environment.SERVER_ORIGIN not empty', () => {
-    environment.baseUrl = 'http://foo.bar';
-    const url = '/me';
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    token = TestBed.inject(TokenService);
     token.set({ access_token: 'token' });
+    const url = '/me';
 
     http.get(url).subscribe();
 
@@ -49,19 +54,23 @@ describe('TokenInterceptor', () => {
   });
 
   it('should append token when url include environment.baseUrl', () => {
-    environment.baseUrl = 'http://foo.bar';
-    const url = `${environment.baseUrl}/me`;
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    token = TestBed.inject(TokenService);
     token.set({ access_token: 'token' });
+    const url = `${environment.baseUrl}/me`;
 
     http.get(url).subscribe();
 
     expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeTrue();
   });
 
-  it('should not append token when url not include environment.baseUrl', () => {
-    environment.baseUrl = 'http://foo.bar';
-    const url = 'https://api.github.com';
+  it('should not append token when url not include baseUrl', () => {
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    token = TestBed.inject(TokenService);
     token.set({ access_token: 'token' });
+    const url = 'https://api.github.com';
 
     http.get(url).subscribe();
 
@@ -69,9 +78,12 @@ describe('TokenInterceptor', () => {
   });
 
   it('should not append token when environment.baseUrl is empty and url is not same site', () => {
-    environment.baseUrl = '';
-    const url = 'https://api.github.com';
+    TestBed.overrideProvider(BASE_URL, { useValue: '' });
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    token = TestBed.inject(TokenService);
     token.set({ access_token: 'token' });
+    const url = 'https://api.github.com';
 
     http.get(url).subscribe();
 
@@ -79,8 +91,12 @@ describe('TokenInterceptor', () => {
   });
 
   it('should clear token when response status is unauthorized', () => {
-    const url = '/me';
+    TestBed.overrideProvider(BASE_URL, { useValue: '' });
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    token = TestBed.inject(TokenService);
     token.set({ access_token: 'token' });
+    const url = '/me';
     spyOn(token, 'clear');
 
     http.get(url).subscribe();

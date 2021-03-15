@@ -1,30 +1,31 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BaseUrlInterceptor } from './base-url.interceptor';
+import { BASE_URL, BaseUrlInterceptor } from './base-url.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { environment } from '@env/environment';
 
 describe('BaseUrlInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
+  const baseUrl = 'https://foo.bar';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
+        { provide: BASE_URL, useValue: baseUrl },
         { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
       ],
     });
 
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
   });
 
   afterEach(() => httpMock.verify());
 
   it('should not prepend base url when base url is empty', () => {
-    environment.baseUrl = '';
+    TestBed.overrideProvider(BASE_URL, { useValue: '' });
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
 
     http.get('/me').subscribe();
 
@@ -33,18 +34,20 @@ describe('BaseUrlInterceptor', () => {
 
 
   it('should prepend base url when request url does not has http scheme', () => {
-    environment.baseUrl = 'https://foo.bar/';
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
 
     http.get('./me').subscribe();
 
-    httpMock.expectOne(environment.baseUrl + 'me');
+    httpMock.expectOne(baseUrl + '/me');
   });
 
   it('should prepend base url when request url does not has http scheme', () => {
-    environment.baseUrl = 'https://foo.bar';
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
 
     http.get('').subscribe();
 
-    httpMock.expectOne(environment.baseUrl);
+    httpMock.expectOne(baseUrl);
   });
 });
