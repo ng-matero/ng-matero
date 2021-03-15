@@ -1,11 +1,11 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NoopInterceptor } from './noop-interceptor';
+import { BaseUrlInterceptor } from './base-url.interceptor';
+import { TokenInterceptor } from './token.interceptor';
 import { DefaultInterceptor } from './default-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
 import { LoggingInterceptor } from './logging-interceptor';
-import { TokenInterceptor } from '@core/interceptors/token.interceptor';
-import { BaseUrlInterceptor } from '@core/interceptors/base-url.interceptor';
-import { ErrorInterceptor } from '@core/interceptors/error-interceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [

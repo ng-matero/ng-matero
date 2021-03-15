@@ -9,23 +9,26 @@ describe('BaseUrlInterceptor', () => {
   let http: HttpClient;
   const baseUrl = 'https://foo.bar';
 
+  const setBaseUrl = (url: string) => {
+    TestBed.overrideProvider(BASE_URL, { useValue: url });
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: BASE_URL, useValue: baseUrl },
+        { provide: BASE_URL, useValue: '' },
         { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
       ],
     });
-
   });
 
   afterEach(() => httpMock.verify());
 
   it('should not prepend base url when base url is empty', () => {
-    TestBed.overrideProvider(BASE_URL, { useValue: '' });
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
+    setBaseUrl('');
 
     http.get('/me').subscribe();
 
@@ -34,8 +37,7 @@ describe('BaseUrlInterceptor', () => {
 
 
   it('should prepend base url when request url does not has http scheme', () => {
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
+    setBaseUrl(baseUrl);
 
     http.get('./me').subscribe();
 
@@ -43,8 +45,7 @@ describe('BaseUrlInterceptor', () => {
   });
 
   it('should prepend base url when request url does not has http scheme', () => {
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
+    setBaseUrl(baseUrl);
 
     http.get('').subscribe();
 
