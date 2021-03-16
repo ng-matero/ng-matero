@@ -45,7 +45,7 @@ export class InMemDataService implements InMemoryDbService {
     if (is(reqInfo, 'me/menu')) {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
-        const menu = this.getMenu();
+        const menu = JSON.parse(this.fetch('assets/data/menu.json?_t=' + Date.now())).menu;
 
         return { status: STATUS.OK, headers, url, body: { menu } };
       });
@@ -55,7 +55,7 @@ export class InMemDataService implements InMemoryDbService {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
         const req = reqInfo.req as HttpRequest<any>;
-        const authorization = (req.headers.get('Authorization'));
+        const authorization = req.headers.get('Authorization');
         const [, token] = authorization.split(' ');
         const currentUser = Object.assign({}, this.users.find(user => generateToken(user) === token));
         delete currentUser.password;
@@ -71,16 +71,6 @@ export class InMemDataService implements InMemoryDbService {
         return { status: STATUS.NO_CONTENT, headers, url, body: {} };
       });
     }
-  }
-
-  private getMenu() {
-    let menu = [];
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'assets/data/menu.json?_t=' + Date.now(), false);
-    xhr.onload = () => menu = JSON.parse(xhr.responseText).menu;
-    xhr.send();
-
-    return menu;
   }
 
   post(reqInfo: RequestInfo) {
@@ -138,4 +128,13 @@ export class InMemDataService implements InMemoryDbService {
     });
   }
 
+  private fetch(url: string) {
+    let content: any = null;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.onload = () => content = xhr.responseText;
+    xhr.send();
+
+    return content;
+  }
 }
