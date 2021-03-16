@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe({
       next: (authenticated) => {
         if (authenticated) {
-          // Regain the initial data
-          this.startup.load().then(() => this.router.navigateByUrl('/'));
+          this.router.navigateByUrl('/');
         }
       },
       error: (error: HttpErrorResponse) => {
