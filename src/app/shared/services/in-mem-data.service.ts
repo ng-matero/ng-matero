@@ -49,7 +49,7 @@ export class InMemDataService implements InMemoryDbService {
         const req = reqInfo.req as HttpRequest<any>;
         const authorization = (req.headers.get('Authorization'));
         const [, token] = authorization.split(' ');
-        const currentUser = this.users.find(user => generateToken(user) === token);
+        const currentUser = Object.assign({}, this.users.find(user => generateToken(user) === token));
         delete currentUser.password;
 
         return { status: STATUS.OK, headers, url, body: currentUser };

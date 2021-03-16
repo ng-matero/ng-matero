@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SANCTUM_PREFIX, SanctumInterceptor } from './sanctum.interceptor';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { BASE_URL } from '@core/interceptors/base-url.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { SANCTUM_PREFIX, SanctumInterceptor } from './sanctum.interceptor';
+import { BASE_URL } from './base-url.interceptor';
 import { switchMap } from 'rxjs/operators';
 
 describe('SanctumInterceptor', () => {
