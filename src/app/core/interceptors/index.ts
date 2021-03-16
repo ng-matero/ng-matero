@@ -7,7 +7,7 @@ import { DefaultInterceptor } from './default-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { LoggingInterceptor } from './logging-interceptor';
 import { SettingsInterceptor } from './settings-interceptor';
-// import { SanctumInterceptor } from './sanctum.interceptor';
+import { SanctumInterceptor } from './sanctum.interceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [

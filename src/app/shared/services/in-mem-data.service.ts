@@ -60,7 +60,7 @@ export class InMemDataService implements InMemoryDbService {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
 
-        return { status: STATUS.PARTIAL_CONTENT, headers, url, body: {} };
+        return { status: STATUS.NO_CONTENT, headers, url, body: {} };
       });
     }
   }
