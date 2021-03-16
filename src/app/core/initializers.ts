@@ -10,7 +10,18 @@ export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
 }
 
+// import { SanctumService } from './bootstrap/sanctum.service';
+// export function SanctumServiceFactory(sanctumService: SanctumService) {
+//   return () => sanctumService.load();
+// }
+
 export const appInitializerProviders = [
+  // {
+  //   provide: APP_INITIALIZER,
+  //   useFactory: SanctumServiceFactory,
+  //   deps: [SanctumService],
+  //   multi: true,
+  // },
   {
     provide: APP_INITIALIZER,
     useFactory: TranslateLangServiceFactory,
