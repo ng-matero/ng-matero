@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@core/authentication/auth.service';
 import { User } from '@core/authentication/interface';
-import { MenuService } from '@core';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -30,7 +29,7 @@ import { filter } from 'rxjs/operators';
 export class UserPanelComponent implements OnInit {
   user: User;
 
-  constructor(private router: Router, private menu: MenuService, private auth: AuthService) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.auth.user().subscribe({
@@ -42,10 +41,7 @@ export class UserPanelComponent implements OnInit {
     this.auth.logout().pipe(
       filter(isLogout => isLogout),
     ).subscribe({
-      next: () => {
-        this.menu.reset();
-        this.router.navigateByUrl('/auth/login');
-      },
+      next: () => this.router.navigateByUrl('/auth/login'),
     });
   }
 }
