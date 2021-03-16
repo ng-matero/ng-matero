@@ -7,6 +7,7 @@ import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-tables-remote-data',
   templateUrl: './remote-data.component.html',
+  styleUrls: ['./remote-data.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TablesRemoteDataService],
 })
@@ -49,7 +50,7 @@ export class TablesRemoteDataComponent implements OnInit {
     sort: 'stars',
     order: 'desc',
     page: 0,
-    per_page: 5,
+    per_page: 10,
   };
 
   get params() {
