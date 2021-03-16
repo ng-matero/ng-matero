@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { User } from '@core/authentication/interface';
 import { environment } from '@env/environment';
 
-
 function generateToken(user: User) {
   return btoa([user.id, user.email, user.name].join(''));
 }
@@ -43,6 +42,15 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   get(reqInfo: RequestInfo) {
+    if (is(reqInfo, 'me/menu')) {
+      return reqInfo.utils.createResponse$(() => {
+        const { headers, url } = reqInfo;
+        const menu = this.getMenu();
+
+        return { status: STATUS.OK, headers, url, body: { menu } };
+      });
+    }
+
     if (is(reqInfo, 'me')) {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
@@ -63,6 +71,16 @@ export class InMemDataService implements InMemoryDbService {
         return { status: STATUS.NO_CONTENT, headers, url, body: {} };
       });
     }
+  }
+
+  private getMenu() {
+    let menu = [];
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'assets/data/menu.json?_t=' + Date.now(), false);
+    xhr.onload = () => menu = JSON.parse(xhr.responseText).menu;
+    xhr.send();
+
+    return menu;
   }
 
   post(reqInfo: RequestInfo) {

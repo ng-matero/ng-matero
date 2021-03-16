@@ -13,7 +13,7 @@ export class StartupService {
 
   load(): Promise<any> {
     return new Promise(resolve => {
-      const menu$ = this.http.get('assets/data/menu.json?_t=' + Date.now());
+      const menu$ = this.http.get('/me/menu');
       this.injector.get(AuthService).user().pipe(
         switchMap(user => iif(() => user.id === null, of({ menu: [] }), menu$)),
       ).subscribe({
