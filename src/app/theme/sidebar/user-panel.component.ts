@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@core/authentication/auth.service';
 import { User } from '@core/authentication/interface';
+import { MenuService } from '@core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-panel',
@@ -16,7 +18,7 @@ import { User } from '@core/authentication/interface';
         <a routerLink="/profile/settings" mat-icon-button>
           <mat-icon class="icon-20">settings</mat-icon>
         </a>
-        <a routerLink="/auth/login" mat-icon-button>
+        <a (click)="logout()" mat-icon-button>
           <mat-icon class="icon-20">exit_to_app</mat-icon>
         </a>
       </div>
@@ -27,9 +29,18 @@ import { User } from '@core/authentication/interface';
 export class UserPanelComponent implements OnInit {
   user: User;
 
-  constructor(private auth: AuthService) {}
+  constructor(private router: Router, private menu: MenuService, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.auth.user().subscribe(user => (this.user = user));
+  }
+
+  logout() {
+    this.auth.logout().subscribe(isLogout => {
+      if (isLogout) {
+        this.menu.reset();
+        this.router.navigateByUrl('/auth/login');
+      }
+    });
   }
 }

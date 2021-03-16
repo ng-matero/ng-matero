@@ -1,6 +1,6 @@
 export const environment = {
-  SERVER_ORIGIN: '',
   production: true,
+  baseUrl: '',
   useHash: false,
   hmr: false,
 };

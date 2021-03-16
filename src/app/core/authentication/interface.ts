@@ -1,4 +1,5 @@
 export interface User {
+  [propName: string]: any;
   id: number;
   name?: string;
   email?: string;

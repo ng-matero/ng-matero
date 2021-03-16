@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TokenService } from '@core';
-import { MemoryStorageService, LocalStorageService } from '@shared';
+import { TokenService } from './token.service';
+import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
 
 describe('TokenService', () => {
   let service: TokenService;
@@ -17,18 +17,16 @@ describe('TokenService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get authorization header', () => {
+  it('should get authorization header value', () => {
     service.set({ token: 'token' });
 
-    expect(service.header()).toEqual({
-      Authorization: 'Bearer token',
-    });
+    expect(service.headerValue()).toEqual('Bearer token');
   });
 
-  it('cannot get authorization header', () => {
+  it('cannot get authorization header value', () => {
     service.set({});
 
-    expect(service.header()).toEqual({});
+    expect(service.headerValue()).toBe('');
   });
 
 });
