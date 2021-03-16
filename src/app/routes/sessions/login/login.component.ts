@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StartupService } from '@core';
 import { AuthService } from '@core/authentication/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private startup: StartupService,
-    private auth: AuthService,
-  ) {}
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -40,12 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe({
-      next: (authenticated) => {
-        if (authenticated) {
-          this.router.navigateByUrl('/');
-        }
-      },
+    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).pipe(
+      filter(authenticated => authenticated),
+    ).subscribe({
+      next: () => this.router.navigateByUrl('/'),
       error: (error: HttpErrorResponse) => {
         if (error.status === 422) {
           const form = this.loginForm;

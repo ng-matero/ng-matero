@@ -3,6 +3,7 @@ import { AuthService } from '@core/authentication/auth.service';
 import { User } from '@core/authentication/interface';
 import { MenuService } from '@core';
 import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-panel',
@@ -38,12 +39,12 @@ export class UserPanelComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout().subscribe({
-      next: isLogout => {
-        if (isLogout) {
-          this.menu.reset();
-          this.router.navigateByUrl('/auth/login');
-        }
+    this.auth.logout().pipe(
+      filter(isLogout => isLogout),
+    ).subscribe({
+      next: () => {
+        this.menu.reset();
+        this.router.navigateByUrl('/auth/login');
       },
     });
   }
