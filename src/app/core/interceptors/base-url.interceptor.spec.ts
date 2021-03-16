@@ -32,16 +32,15 @@ describe('BaseUrlInterceptor', () => {
 
     http.get('/me').subscribe();
 
-    httpMock.expectOne('/me');
+    httpMock.expectOne('/me').flush({ success: true });
   });
-
 
   it('should prepend base url when request url does not has http scheme', () => {
     setBaseUrl(baseUrl);
 
     http.get('./me').subscribe();
 
-    httpMock.expectOne(baseUrl + '/me');
+    httpMock.expectOne(baseUrl + '/me').flush({ success: true });
   });
 
   it('should prepend base url when request url does not has http scheme', () => {
@@ -49,6 +48,6 @@ describe('BaseUrlInterceptor', () => {
 
     http.get('').subscribe();
 
-    httpMock.expectOne(baseUrl);
+    httpMock.expectOne(baseUrl).flush({ success: true });
   });
 });

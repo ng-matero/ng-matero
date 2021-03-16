@@ -40,7 +40,9 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeTrue();
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush({ success: true });
+    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
   });
 
   it('should append token when url does not has http and base url not empty', () => {
@@ -49,7 +51,9 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeTrue();
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush({ success: true });
+    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
   });
 
   it('should append token when url include base url', () => {
@@ -58,7 +62,9 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeTrue();
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush({ success: true });
+    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
   });
 
   it('should not append token when url not include baseUrl', () => {
@@ -67,7 +73,9 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeFalse();
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush({ success: true });
+    expect(testRequest.request.headers.has('Authorization')).toBeFalse();
   });
 
   it('should not append token when base url is empty and url is not same site', () => {
@@ -76,7 +84,9 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    expect(httpMock.expectOne(url).request.headers.has('Authorization')).toBeFalse();
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush({ success: true });
+    expect(testRequest.request.headers.has('Authorization')).toBeFalse();
   });
 
   it('should clear token when response status is unauthorized', () => {
@@ -86,13 +96,10 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    httpMock.expectOne(url).flush(
-      {},
-      {
-        status: STATUS.UNAUTHORIZED,
-        statusText: 'Unauthorized',
-      }
-    );
+    httpMock.expectOne(url).flush({ success: true }, {
+      status: STATUS.UNAUTHORIZED,
+      statusText: 'Unauthorized',
+    });
     expect(token.clear).toHaveBeenCalled();
   });
 });

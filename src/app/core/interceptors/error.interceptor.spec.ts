@@ -17,7 +17,7 @@ describe('ErrorInterceptor', () => {
     spyOn(router, 'navigateByUrl');
 
     http.get('/me').subscribe();
-    httpMock.expectOne('/me').flush({}, { status, statusText });
+    httpMock.expectOne('/me').flush({ success: true }, { status, statusText });
 
     expect(router.navigateByUrl).toHaveBeenCalledWith(`/sessions/${status}`);
   }
@@ -46,7 +46,7 @@ describe('ErrorInterceptor', () => {
 
     http.get('/me').subscribe();
 
-    httpMock.expectOne('/me').flush({}, {
+    httpMock.expectOne('/me').flush({ success: true }, {
       status: 401,
       statusText: 'Unauthorized',
     });
@@ -71,7 +71,7 @@ describe('ErrorInterceptor', () => {
     spyOn(toastr, 'error');
     http.get('/me').subscribe();
 
-    httpMock.expectOne('/me').flush({}, {
+    httpMock.expectOne('/me').flush({ success: true }, {
       status: 504,
       statusText: 'Gateway Timeout',
     });
