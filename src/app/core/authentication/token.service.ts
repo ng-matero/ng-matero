@@ -53,9 +53,9 @@ export class TokenService {
     return capitalize(token.token_type || 'bearer');
   }
 
-  header() {
+  headerValue() {
     const value = this.value;
 
-    return value ? { Authorization: [this.type, value].join(' ') } : {};
+    return value ? [this.type, value].join(' ') : '';
   }
 }

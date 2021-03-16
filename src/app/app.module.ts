@@ -24,6 +24,8 @@ import { FormlyConfigModule } from './formly-config.module';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemDataService } from '@shared/services/in-mem-data.service';
+import { BASE_URL } from '@core/interceptors/base-url.interceptor';
+import { environment } from '@env/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -50,7 +52,11 @@ import { InMemDataService } from '@shared/services/in-mem-data.service';
       passThruUnknownUrl: true,
     }),
   ],
-  providers: [httpInterceptorProviders, appInitializerProviders],
+  providers: [
+    { provide: BASE_URL, useValue: environment.baseUrl },
+    httpInterceptorProviders,
+    appInitializerProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

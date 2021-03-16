@@ -7,7 +7,7 @@ import { Token, User } from '@core/authentication/interface';
 
 export const guest: User = {
   id: 0,
-  avatar: '',
+  avatar: './assets/images/avatars/avatar-10.jpg',
 };
 
 @Injectable({
@@ -17,10 +17,10 @@ export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
 
   constructor(private http: HttpClient, private token: TokenService) {
-    this.token
-      .change()
-      .pipe(switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(guest))))
-      .subscribe(user => this.user$.next(user));
+    this.token.change().pipe(
+      switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(guest))),
+      map(user => Object.assign({}, guest, user)),
+    ).subscribe(user => this.user$.next(user));
   }
 
   check() {
@@ -28,12 +28,10 @@ export class AuthService {
   }
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http
-      .post<Token>('/auth/login', { email, password, remember_me: rememberMe })
-      .pipe(
-        tap(token => this.token.set(token)),
-        map(() => this.check())
-      );
+    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe }).pipe(
+      tap(token => this.token.set(token)),
+      map(() => this.check()),
+    );
   }
 
   logout() {
@@ -43,7 +41,7 @@ export class AuthService {
 
     return this.http.post('/auth/logout', {}).pipe(
       tap(() => this.token.clear()),
-      map(() => !this.check())
+      map(() => !this.check()),
     );
   }
 

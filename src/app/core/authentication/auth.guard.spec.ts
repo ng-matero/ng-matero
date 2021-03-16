@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthGuard } from '@core';
-import { AuthService } from '@core/authentication/auth.service';
 import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TokenService } from '@core/authentication/token.service';
-import { LocalStorageService, MemoryStorageService } from '@shared';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
+import { LocalStorageService, MemoryStorageService } from '../../shared/services/storage.service';
 
 @Component({ template: '' })
 class DummyComponent {}

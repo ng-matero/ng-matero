@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthService, guest } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { TokenService } from '@core/authentication/token.service';
 import { skip } from 'rxjs/operators';
-import { MemoryStorageService, LocalStorageService } from '@shared';
+import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
+import { TokenService } from './token.service';
+import { AuthService, guest } from './auth.service';
 
 describe('AuthService', () => {
   let authService: AuthService;
