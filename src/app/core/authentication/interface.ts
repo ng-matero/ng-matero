@@ -1,6 +1,7 @@
 export interface User {
   [propName: string]: any;
-  id: number;
+
+  id: number | string | null;
   name?: string;
   email?: string;
   avatar?: string;
@@ -11,3 +12,9 @@ export interface Token {
   token?: string;
   token_type?: string;
 }
+
+export const guest: User = {
+  id: null,
+  name: 'unknown',
+  avatar: './assets/images/avatar-default.jpg',
+};

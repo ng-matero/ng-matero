@@ -3,13 +3,7 @@ import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from '@core/authentication/token.service';
-import { Token, User } from '@core/authentication/interface';
-
-export const guest: User = {
-  id: 0,
-  name: 'unknown',
-  avatar: './assets/images/avatar-default.jpg',
-};
+import { guest, Token, User } from '@core/authentication/interface';
 
 @Injectable({
   providedIn: 'root',

@@ -4,7 +4,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { skip } from 'rxjs/operators';
 import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
 import { TokenService } from './token.service';
-import { AuthService, guest } from './auth.service';
+import { AuthService } from './auth.service';
+import { guest } from './interface';
 
 describe('AuthService', () => {
   let authService: AuthService;
