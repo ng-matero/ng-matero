@@ -7,7 +7,8 @@ import { Token, User } from '@core/authentication/interface';
 
 export const guest: User = {
   id: 0,
-  avatar: './assets/images/avatars/avatar-10.jpg',
+  name: 'unknown',
+  avatar: './assets/images/avatar-default.jpg',
 };
 
 @Injectable({
