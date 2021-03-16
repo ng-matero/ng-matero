@@ -19,12 +19,14 @@ export class StartupService {
           return throwError(res);
         }),
       ).subscribe(
-        (res: any) => {
-          this.menu.recursMenuForTranslation(res.menu, 'menu');
-          this.menu.set(res.menu);
+        {
+          next: (res: any) => {
+            this.menu.recursMenuForTranslation(res.menu, 'menu');
+            this.menu.set(res.menu);
+          },
+          error: () => reject(),
+          complete: () => resolve(null),
         },
-        () => reject(),
-        () => resolve(null),
       );
     });
   }

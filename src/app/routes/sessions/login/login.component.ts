@@ -40,21 +40,24 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe(authenticated => {
-      if (authenticated) {
-        // Regain the initial data
-        this.startup.load().then(() => this.router.navigateByUrl('/'));
-      }
-    }, (error: HttpErrorResponse) => {
-      if (error.status === 422) {
-        const form = this.loginForm;
-        const errors = error.error.errors;
-        Object.keys(errors).forEach(key => {
-          form.get(key === 'email' ? 'username' : key)?.setErrors({
-            remote: errors[key][0],
+    this.auth.login(this.username.value, this.password.value, this.rememberMe.value).subscribe({
+      next: (authenticated) => {
+        if (authenticated) {
+          // Regain the initial data
+          this.startup.load().then(() => this.router.navigateByUrl('/'));
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 422) {
+          const form = this.loginForm;
+          const errors = error.error.errors;
+          Object.keys(errors).forEach(key => {
+            form.get(key === 'email' ? 'username' : key)?.setErrors({
+              remote: errors[key][0],
+            });
           });
-        });
-      }
+        }
+      },
     });
   }
 }

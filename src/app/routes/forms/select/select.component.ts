@@ -40,7 +40,9 @@ export class FormsSelectComponent implements OnInit {
 
   ngOnInit() {
     this.people$ = this.dataService.getPeople();
-    this.dataService.getPeople().subscribe(items => (this.people = items));
+    this.dataService.getPeople().subscribe({
+      next: items => (this.people = items),
+    });
     this.simpleItems = [true, 'Two', 3];
 
     this.companiesNames.forEach((c, i) => {

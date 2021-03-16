@@ -88,7 +88,7 @@ export class TablesKitchenSinkComponent implements OnInit {
     private translate: TranslateService,
     private dataSrv: TablesDataService,
     public dialog: MtxDialog,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -102,8 +102,8 @@ export class TablesKitchenSinkComponent implements OnInit {
       data: { record: value },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe({
+      next: result => console.log('The dialog was closed'),
     });
   }
 

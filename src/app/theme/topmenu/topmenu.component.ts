@@ -29,14 +29,16 @@ export class TopmenuComponent implements OnDestroy {
   private routerSubscription: Subscription;
 
   constructor(public menuSrv: MenuService, private router: Router) {
-    this.menuSubscription = this.menu$.subscribe(res => {
-      this.menuList = res;
-      this.menuList.forEach(item => {
-        this.menuStates.push({
-          active: this.router.url.split('/').includes(item.route),
-          route: item.route,
+    this.menuSubscription = this.menu$.subscribe({
+      next: res => {
+        this.menuList = res;
+        this.menuList.forEach(item => {
+          this.menuStates.push({
+            active: this.router.url.split('/').includes(item.route),
+            route: item.route,
+          });
         });
-      });
+      },
     });
   }
 
@@ -47,11 +49,9 @@ export class TopmenuComponent implements OnDestroy {
 
   onRouteChange(rla: RouterLinkActive, index: number) {
     this.routerSubscription?.unsubscribe();
-    this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(e => {
-        this.menuStates.forEach(item => (item.active = false));
-        setTimeout(() => (this.menuStates[index].active = rla.isActive));
-      });
+    this.routerSubscription = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      this.menuStates.forEach(item => (item.active = false));
+      setTimeout(() => (this.menuStates[index].active = rla.isActive));
+    });
   }
 }

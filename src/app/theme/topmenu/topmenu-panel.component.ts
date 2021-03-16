@@ -1,12 +1,4 @@
-import {
-  Component,
-  ViewChild,
-  Input,
-  Output,
-  EventEmitter,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { MatMenu } from '@angular/material/menu';
 import { NavigationEnd, Router, RouterLinkActive } from '@angular/router';
 import { MenuChildrenItem, MenuService } from '@core';
@@ -71,11 +63,11 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
     this.routeChange.emit(rla);
 
     this.routerSubscription?.unsubscribe();
-    this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(e => {
+    this.routerSubscription = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe({
+      next: e => {
         this.menuStates.forEach(item => (item.active = false));
         setTimeout(() => (this.menuStates[index].active = rla.isActive));
-      });
+      },
+    });
   }
 }

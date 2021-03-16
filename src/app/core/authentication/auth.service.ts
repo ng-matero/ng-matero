@@ -21,7 +21,9 @@ export class AuthService {
     this.token.change().pipe(
       switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(guest))),
       map(user => Object.assign({}, guest, user)),
-    ).subscribe(user => this.user$.next(user));
+    ).subscribe({
+      next: user => this.user$.next(user),
+    });
   }
 
   check() {
