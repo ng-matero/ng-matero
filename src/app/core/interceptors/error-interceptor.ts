@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === STATUS.UNAUTHORIZED) {
-      this.goto('/auth/login');
+      this.router.navigateByUrl('/auth/login');
     } else if (this.errorPages.includes(error.status)) {
       this.goto(`/sessions/${error.status}`);
     } else if (error instanceof HttpErrorResponse) {
@@ -38,6 +38,8 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private goto(url: string) {
-    this.router.navigateByUrl(url);
+    this.router.navigateByUrl(url, {
+      skipLocationChange: true,
+    });
   }
 }
