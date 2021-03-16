@@ -5,20 +5,17 @@ import { Observable, of, throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
 import { ToastrService } from 'ngx-toastr';
-import { SettingsService } from '@core/bootstrap/settings.service';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private toastr: ToastrService, private settings: SettingsService) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const headers = req.headers.append('Accept-Language', this.settings.language);
-
     if (!req.url.includes('/api/')) {
-      return next.handle(req.clone({ headers }));
+      return next.handle(req);
     }
 
-    return next.handle(req.clone({ headers })).pipe(
+    return next.handle(req).pipe(
       mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)),
     );
   }
