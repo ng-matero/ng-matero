@@ -57,7 +57,11 @@ export class InMemDataService implements InMemoryDbService {
     }
 
     if (is(reqInfo, 'sanctum/csrf-cookie')) {
-      return { status: STATUS.PARTIAL_CONTENT };
+      return reqInfo.utils.createResponse$(() => {
+        const { headers, url } = reqInfo;
+
+        return { status: STATUS.PARTIAL_CONTENT, headers, url, body: {} };
+      });
     }
   }
 

@@ -19,10 +19,12 @@ export class SanctumInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (this.ready === false) {
       this.ready = true;
+
       return this.http.get(this.getUrl()).pipe(
         switchMap(() => next.handle(request)),
       );
     }
+
     return next.handle(request);
   }
 
