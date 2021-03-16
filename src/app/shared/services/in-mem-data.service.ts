@@ -60,6 +60,10 @@ export class InMemDataService implements InMemoryDbService {
         const currentUser = Object.assign({}, this.users.find(user => generateToken(user) === token));
         delete currentUser.password;
 
+        if (!currentUser || !currentUser.id) {
+          return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
+        }
+
         return { status: STATUS.OK, headers, url, body: currentUser };
       });
     }
