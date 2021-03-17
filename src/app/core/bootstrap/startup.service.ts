@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { iif, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { MenuService } from './menu.service';
-import { TokenService } from '@core/authentication/token.service';
+import { TokenService } from '../authentication/token.service';
 
 @Injectable({
   providedIn: 'root',

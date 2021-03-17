@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { StartupService } from './startup.service';
-import { TokenService } from '../authentication/token.service';
 import { LocalStorageService, MemoryStorageService } from '../../shared/services/storage.service';
+import { TokenService } from '../authentication/token.service';
+import { StartupService } from './startup.service';
 import { MenuService } from './menu.service';
 
 describe('StartupService', () => {
@@ -27,6 +27,8 @@ describe('StartupService', () => {
     token = TestBed.inject(TokenService);
     menu = TestBed.inject(MenuService);
   });
+
+  afterEach(() => httpMock.verify());
 
   it('should load menu when token changed and token valid', () => {
     const menuData = { menu: ['menu'] };
