@@ -1,4 +1,14 @@
-import { Component, OnInit, OnDestroy, ViewChild, HostBinding, ElementRef, Inject, Optional, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  HostBinding,
+  ElementRef,
+  Inject,
+  Optional,
+  ViewEncapsulation,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -62,21 +72,21 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private settings: SettingsService,
     @Optional() @Inject(DOCUMENT) private document: Document,
-    @Inject(Directionality) public dir: AppDirectionality,
+    @Inject(Directionality) public dir: AppDirectionality
   ) {
     this.dir.value = this.options.dir;
     this.document.body.dir = this.dir.value;
 
-    this.layoutChangesSubscription = this.breakpointObserver.observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY]).subscribe({
-      next: state => {
+    this.layoutChangesSubscription = this.breakpointObserver
+      .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
+      .subscribe(state => {
         // SidenavOpened must be reset true when layout changes
         this.options.sidenavOpened = true;
 
         this.isMobileScreen = state.breakpoints[MOBILE_MEDIAQUERY];
         this.options.sidenavCollapsed = state.breakpoints[TABLET_MEDIAQUERY];
         this.isContentWidthFixed = state.breakpoints[MONITOR_MEDIAQUERY];
-      },
-    });
+      });
 
     // TODO: Scroll top to container
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {

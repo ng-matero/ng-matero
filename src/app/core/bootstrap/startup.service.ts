@@ -14,14 +14,14 @@ export class StartupService {
   load(): Promise<any> {
     return new Promise(resolve => {
       const menu$ = this.http.get('/me/menu');
-      this.injector.get(AuthService).user().pipe(
-        switchMap(user => iif(() => user.id === null, of({ menu: [] }), menu$)),
-      ).subscribe({
-        next: (response: any) => {
+      this.injector
+        .get(AuthService)
+        .user()
+        .pipe(switchMap(user => iif(() => user.id === null, of({ menu: [] }), menu$)))
+        .subscribe((response: any) => {
           this.menu.recursMenuForTranslation(response.menu, 'menu');
           this.menu.set(response.menu);
-        },
-      });
+        });
       resolve(null);
     });
   }

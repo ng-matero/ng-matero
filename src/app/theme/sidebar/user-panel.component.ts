@@ -32,16 +32,13 @@ export class UserPanelComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.auth.user().subscribe({
-      next: user => (this.user = user),
-    });
+    this.auth.user().subscribe(user => (this.user = user));
   }
 
   logout() {
-    this.auth.logout().pipe(
-      filter(isLogout => isLogout),
-    ).subscribe({
-      next: () => this.router.navigateByUrl('/auth/login'),
-    });
+    this.auth
+      .logout()
+      .pipe(filter(isLogout => isLogout))
+      .subscribe(() => this.router.navigateByUrl('/auth/login'));
   }
 }

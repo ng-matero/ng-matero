@@ -68,13 +68,11 @@ export class TablesRemoteDataComponent implements OnInit {
   getData() {
     this.isLoading = true;
 
-    this.remoteSrv.getData(this.params).subscribe({
-      next: res => {
-        this.list = res.items;
-        this.total = res.total_count;
-        this.isLoading = false;
-        this.cdr.detectChanges();
-      },
+    this.remoteSrv.getData(this.params).subscribe(res => {
+      this.list = res.items;
+      this.total = res.total_count;
+      this.isLoading = false;
+      this.cdr.detectChanges();
     });
   }
 

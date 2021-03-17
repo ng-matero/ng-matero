@@ -31,7 +31,7 @@ import { User } from '@core/authentication/interface';
         <span>{{ 'user.logout' | translate }}</span>
       </button>
     </mat-menu>
-  `
+  `,
 })
 export class UserComponent implements OnInit {
   user: User;
@@ -40,24 +40,26 @@ export class UserComponent implements OnInit {
     private router: Router,
     private menu: MenuService,
     private auth: AuthService,
-    private changeDetectorRef: ChangeDetectorRef,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.auth.user().pipe(
-      tap(user => (this.user = user)),
-      debounceTime(10),
-    ).subscribe({
-      next: () => this.changeDetectorRef.detectChanges(),
-    });
+    this.auth
+      .user()
+      .pipe(
+        tap(user => (this.user = user)),
+        debounceTime(10)
+      )
+      .subscribe(() => this.changeDetectorRef.detectChanges());
   }
 
   logout() {
-    this.auth.logout().pipe(filter(isLogout => isLogout)).subscribe({
-      next: () => {
+    this.auth
+      .logout()
+      .pipe(filter(isLogout => isLogout))
+      .subscribe(() => {
         this.menu.reset();
         this.router.navigateByUrl('/auth/login');
-      },
-    });
+      });
   }
 }

@@ -14,11 +14,9 @@ export class AccordionDirective {
     // Expression has changed after it was checked`.
     setTimeout(() => this.checkOpenLinks());
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe({
-      next: () => this.checkOpenLinks(),
-    });
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.checkOpenLinks());
   }
 
   addLink(link: AccordionItemDirective): void {

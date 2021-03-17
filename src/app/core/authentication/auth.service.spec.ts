@@ -30,41 +30,35 @@ describe('AuthService', () => {
   });
 
   it('should log in failed', () => {
-    authService.login(email, 'password', false).subscribe({
-      next: isLogin => expect(isLogin).toBeFalse(),
-    });
+    authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeFalse());
     httpMock.expectOne('/auth/login').flush({});
   });
 
   it('should log in successful and get user info', () => {
-    authService.login(email, 'password', false).subscribe({
-      next: isLogin => expect(isLogin).toBeTrue(),
-    });
-    authService.user().pipe(skip(1)).subscribe(
-      currentUser => expect(currentUser).toEqual(currentUser),
-    );
+    authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeTrue());
+    authService
+      .user()
+      .pipe(skip(1))
+      .subscribe(currentUser => expect(currentUser).toEqual(currentUser));
 
     httpMock.expectOne('/auth/login').flush(token);
     httpMock.expectOne('/me').flush(user);
   });
 
   it('should log out failed when user is not login', () => {
-    authService.logout().subscribe({
-      next: isLogout => expect(isLogout).toBeFalse(),
-    });
+    authService.logout().subscribe(isLogout => expect(isLogout).toBeFalse());
     httpMock.expectNone('/logout');
   });
 
   it('should log out successful when user is login', () => {
     tokenService.set(token);
 
-    authService.logout().subscribe({
-      next: isLogout => expect(isLogout).toBeTrue(),
-    });
+    authService.logout().subscribe(isLogout => expect(isLogout).toBeTrue());
 
-    authService.user().pipe(skip(2)).subscribe({
-      next: currentUser => expect(currentUser).toEqual(guest),
-    });
+    authService
+      .user()
+      .pipe(skip(2))
+      .subscribe(currentUser => expect(currentUser).toEqual(guest));
 
     httpMock.expectOne('/me').flush(user);
     httpMock.expectOne('/auth/logout').flush({});

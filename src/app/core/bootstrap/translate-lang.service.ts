@@ -10,7 +10,7 @@ export class TranslateLangService {
   constructor(
     private injector: Injector,
     private translate: TranslateService,
-    private settings: SettingsService,
+    private settings: SettingsService
   ) {}
 
   load() {
@@ -22,11 +22,10 @@ export class TranslateLangService {
 
         this.settings.setLanguage(defaultLang);
         this.translate.setDefaultLang(defaultLang);
-        this.translate.use(defaultLang).subscribe({
-            next: () => console.log(`Successfully initialized '${defaultLang}' language.'`),
-            error: () => console.error(`Problem with '${defaultLang}' language initialization.'`),
-            complete: () => resolve(null),
-          },
+        this.translate.use(defaultLang).subscribe(
+          () => console.log(`Successfully initialized '${defaultLang}' language.'`),
+          () => console.error(`Problem with '${defaultLang}' language initialization.'`),
+          () => resolve(null)
         );
       });
     });
