@@ -24,7 +24,7 @@ import { FormlyConfigModule } from './formly-config.module';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemDataService } from './shared/in-mem/in-mem-data.service';
-import { BASE_URL } from '@core/interceptors/base-url.interceptor';
+import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 import { environment } from '@env/environment';
 
 @NgModule({

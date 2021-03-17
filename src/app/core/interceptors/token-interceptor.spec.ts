@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TokenInterceptor } from './token.interceptor';
+import { TokenInterceptor } from './token-interceptor';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { STATUS } from 'angular-in-memory-web-api';
 import { LocalStorageService, MemoryStorageService } from '../../shared/services/storage.service';
 import { TokenService } from '../authentication/token.service';
-import { BASE_URL } from './base-url.interceptor';
+import { BASE_URL } from './base-url-interceptor';
 
 describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;

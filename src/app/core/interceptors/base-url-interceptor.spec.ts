@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BASE_URL, BaseUrlInterceptor } from './base-url.interceptor';
+import { BASE_URL, BaseUrlInterceptor } from './base-url-interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 

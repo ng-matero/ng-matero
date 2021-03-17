@@ -3,7 +3,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, throwError } from 'rxjs';
 import { TokenService } from '../authentication/token.service';
 import { catchError } from 'rxjs/operators';
-import { BASE_URL } from '@core/interceptors/base-url.interceptor';
+import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
