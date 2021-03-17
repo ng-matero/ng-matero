@@ -4,20 +4,20 @@ import { iif, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { MenuService } from './menu.service';
 import { AuthService } from '../authentication/auth.service';
+import { TokenService } from '@core/authentication/token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StartupService {
-  constructor(private injector: Injector, private menu: MenuService, private http: HttpClient) {}
+  constructor(private token: TokenService, private menu: MenuService, private http: HttpClient) {}
 
   load(): Promise<any> {
     return new Promise(resolve => {
       const menu$ = this.http.get('/me/menu');
-      this.injector
-        .get(AuthService)
-        .user()
-        .pipe(switchMap(user => iif(() => user.id === null, of({ menu: [] }), menu$)))
+      this.token
+        .change()
+        .pipe(switchMap(() => iif(() => this.token.valid(), menu$, of({ menu: [] }))))
         .subscribe((response: any) => {
           this.menu.recursMenuForTranslation(response.menu, 'menu');
           this.menu.set(response.menu);
