@@ -23,8 +23,8 @@ describe('SanctumInterceptor', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: BASE_URL, useValue: '' },
-        { provide: SANCTUM_PREFIX, useValue: '' },
+        { provide: BASE_URL, useValue: null },
+        { provide: SANCTUM_PREFIX, useValue: null },
         { provide: HTTP_INTERCEPTORS, useClass: SanctumInterceptor, multi: true },
       ],
     });
@@ -33,7 +33,7 @@ describe('SanctumInterceptor', () => {
   afterEach(() => httpMock.verify());
 
   it('should get csrf cookie once', () => {
-    setBaseUrlAndSanctumPrefix('', '');
+    setBaseUrlAndSanctumPrefix(null, null);
 
     http
       .post('/auth/login', { username: 'foo', password: 'bar' })
@@ -46,7 +46,7 @@ describe('SanctumInterceptor', () => {
   });
 
   it('should get csrf cookie with base url', () => {
-    setBaseUrlAndSanctumPrefix('http://foo.bar/api', '');
+    setBaseUrlAndSanctumPrefix('http://foo.bar/api', null);
 
     http
       .post('/auth/login', { username: 'foo', password: 'bar' })
@@ -59,7 +59,7 @@ describe('SanctumInterceptor', () => {
   });
 
   it('should get csrf cookie with sanctum prefix', () => {
-    setBaseUrlAndSanctumPrefix('', 'foobar');
+    setBaseUrlAndSanctumPrefix(null, 'foobar');
 
     http
       .post('/auth/login', { username: 'foo', password: 'bar' })

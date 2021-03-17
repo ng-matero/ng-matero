@@ -23,7 +23,8 @@ export class SanctumService {
   }
 
   private getUrl() {
-    const path = `/${this.prefix.replace(/^\/|\/$/g, '') || 'sanctum'}/csrf-cookie`;
+    const prefix = this.prefix || 'sanctum';
+    const path = `/${prefix.replace(/^\/|\/$/g, '')}/csrf-cookie`;
 
     if (!this.baseUrl) {
       return path;

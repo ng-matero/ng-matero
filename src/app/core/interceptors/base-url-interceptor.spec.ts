@@ -19,7 +19,7 @@ describe('BaseUrlInterceptor', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: BASE_URL, useValue: '' },
+        { provide: BASE_URL, useValue: null },
         { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
       ],
     });
@@ -28,7 +28,7 @@ describe('BaseUrlInterceptor', () => {
   afterEach(() => httpMock.verify());
 
   it('should not prepend base url when base url is empty', () => {
-    setBaseUrl('');
+    setBaseUrl(null);
 
     http.get('/me').subscribe();
 
