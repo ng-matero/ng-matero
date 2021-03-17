@@ -9,8 +9,5 @@ module.exports = {
     'prettier --write',
   ],
   'src/*.scss': filenames => `stylelint --syntax scss ${filenames.join(' ')}`,
-  '*.{html,md,json,yml,js}': filenames => {
-    const git = `git add ${filenames.join(' ')}`;
-    return [git];
-  },
+  '*.{html,js,json,md,yml}': filenames => `git add ${filenames.join(' ')}`,
 };
