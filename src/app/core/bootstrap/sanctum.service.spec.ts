@@ -19,7 +19,6 @@ describe('SanctumService', () => {
     sanctumService = TestBed.inject(SanctumService);
   };
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -33,7 +32,7 @@ describe('SanctumService', () => {
 
   afterEach(() => httpMock.verify());
 
-  it('should get csrf cookie once', (done) => {
+  it('should get csrf cookie once', done => {
     setBaseUrlAndSanctumPrefix('', '');
 
     sanctumService.load().then(() => done());
@@ -41,7 +40,7 @@ describe('SanctumService', () => {
     httpMock.expectOne('/sanctum/csrf-cookie').flush({ cookie: true });
   });
 
-  it('should get csrf cookie with base url', (done) => {
+  it('should get csrf cookie with base url', done => {
     setBaseUrlAndSanctumPrefix('http://foo.bar/api', '');
 
     sanctumService.load().then(() => done());
@@ -49,16 +48,16 @@ describe('SanctumService', () => {
     httpMock.expectOne('http://foo.bar/sanctum/csrf-cookie').flush({ cookie: true });
   });
 
-  it('should get csrf cookie with sanctum prefix', (done) => {
-    setBaseUrlAndSanctumPrefix('', 'foobar');
+  it('should get csrf cookie with sanctum prefix', done => {
+    setBaseUrlAndSanctumPrefix('', '/foobar/');
 
     sanctumService.load().then(() => done());
 
     httpMock.expectOne('/foobar/csrf-cookie').flush({ cookie: true });
   });
 
-  it('should get csrf cookie with base url and sanctum prefix', (done) => {
-    setBaseUrlAndSanctumPrefix('http://foo.bar/api', 'foobar');
+  it('should get csrf cookie with base url and sanctum prefix', done => {
+    setBaseUrlAndSanctumPrefix('http://foo.bar/api/', '/foobar');
 
     sanctumService.load().then(() => done());
 

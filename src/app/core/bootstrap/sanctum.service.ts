@@ -8,12 +8,11 @@ export const SANCTUM_PREFIX = new InjectionToken<string>('SANCTUM_PREFIX');
   providedIn: 'root',
 })
 export class SanctumService {
-
   constructor(
     private http: HttpClient,
     @Optional() @Inject(BASE_URL) private baseUrl?: string,
-    @Optional() @Inject(SANCTUM_PREFIX) private prefix?: string,
-  ) { }
+    @Optional() @Inject(SANCTUM_PREFIX) private prefix?: string
+  ) {}
 
   load() {
     return this.toObservable().toPromise();
@@ -24,7 +23,7 @@ export class SanctumService {
   }
 
   private getUrl() {
-    const path = `/${(this.prefix || 'sanctum')}/csrf-cookie`;
+    const path = `/${this.prefix.replace(/^\/|\/$/g, '') || 'sanctum'}/csrf-cookie`;
 
     if (!this.baseUrl) {
       return path;
