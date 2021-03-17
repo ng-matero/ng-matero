@@ -60,9 +60,9 @@ export class DialogNeptuneComponent {
   selector: 'dialog-neptune-iframe-dialog',
   styles: [
     `
-        iframe {
-            width: 800px;
-        }
+      iframe {
+        width: 800px;
+      }
     `,
   ],
   templateUrl: './dialog-neptune-iframe.html',
@@ -73,9 +73,9 @@ export class DialogNeptuneIFrameComponent {}
   selector: 'dialog-address-form',
   styles: [
     `
-        .demo-full-width {
-            width: 100%;
-        }
+      .demo-full-width {
+        width: 100%;
+      }
     `,
   ],
   templateUrl: 'dialog-address-form.html',
