@@ -23,11 +23,11 @@ export class DesignColorsComponent implements OnInit {
   constructor(private colorsSrv: DesignColorsService) {}
 
   ngOnInit() {
-    const _colors = MAT_COLORS;
-    for (const key of Object.keys(_colors)) {
+    const colors = MAT_COLORS;
+    for (const key of Object.keys(colors)) {
       this.colors.push({
         key,
-        value: _colors[key],
+        value: colors[key],
       });
     }
   }
