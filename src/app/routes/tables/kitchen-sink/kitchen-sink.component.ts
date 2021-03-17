@@ -102,9 +102,7 @@ export class TablesKitchenSinkComponent implements OnInit {
       data: { record: value },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe(() => console.log('The dialog was closed'));
   }
 
   delete(value: any) {

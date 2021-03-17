@@ -13,9 +13,7 @@ export class DialogComponent {
 
   openFruitDialog() {
     const dialogRef = this.dialog.open(DialogFruitComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      this.fruitSelectedOption = result;
-    });
+    dialogRef.afterClosed().subscribe(result => (this.fruitSelectedOption = result));
   }
 
   openWelcomeDialog() {

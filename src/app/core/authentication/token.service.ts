@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { LocalStorageService } from '@shared';
-import { Token } from '@core/authentication/interface';
+import { Token } from './interface';
 
 function capitalize(str: string) {
   return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();

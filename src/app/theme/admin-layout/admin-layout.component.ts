@@ -42,6 +42,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   get isOver(): boolean {
     return this.isMobileScreen;
   }
+
   private isMobileScreen = false;
 
   @HostBinding('class.matero-content-width-fix') get contentWidthFix() {
@@ -52,6 +53,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
       !this.isOver
     );
   }
+
   private isContentWidthFixed = true;
 
   @HostBinding('class.matero-sidenav-collapsed-fix') get collapsedWidthFix() {
@@ -60,6 +62,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
       (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
     );
   }
+
   private isCollapsedWidthFixed = true;
 
   constructor(

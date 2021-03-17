@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@core/authentication/auth.service';
 import { User } from '@core/authentication/interface';
-import { MenuService } from '@core';
 import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-panel',
@@ -29,18 +29,16 @@ import { Router } from '@angular/router';
 export class UserPanelComponent implements OnInit {
   user: User;
 
-  constructor(private router: Router, private menu: MenuService, private auth: AuthService) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.auth.user().subscribe(user => (this.user = user));
   }
 
   logout() {
-    this.auth.logout().subscribe(isLogout => {
-      if (isLogout) {
-        this.menu.reset();
-        this.router.navigateByUrl('/auth/login');
-      }
-    });
+    this.auth
+      .logout()
+      .pipe(filter(isLogout => isLogout))
+      .subscribe(() => this.router.navigateByUrl('/auth/login'));
   }
 }

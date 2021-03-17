@@ -6,18 +6,18 @@ import { MtxSelectComponent } from '@ng-matero/extensions';
 @Component({
   selector: 'formly-field-combobox',
   template: `<mtx-select
-      #select
-      [formControl]="formControl"
-      [items]="to.options | toObservable | async"
-      [bindLabel]="to.labelProp"
-      [bindValue]="bindValue"
-      [multiple]="to.multiple"
-      [placeholder]="to.placeholder"
-      [required]="to.required"
-      [closeOnSelect]="!to.multiple"
-      [compareWith]="to.compareWith"
-    >
-    </mtx-select>`,
+    #select
+    [formControl]="formControl"
+    [items]="to.options | toObservable | async"
+    [bindLabel]="to.labelProp"
+    [bindValue]="bindValue"
+    [multiple]="to.multiple"
+    [placeholder]="to.placeholder"
+    [required]="to.required"
+    [closeOnSelect]="!to.multiple"
+    [compareWith]="to.compareWith"
+  >
+  </mtx-select>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldComboboxComponent extends FieldType {

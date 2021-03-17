@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { User } from '@core/authentication/interface';
 import { environment } from '@env/environment';
 
-
 function generateToken(user: User) {
   return btoa([user.id, user.email, user.name].join(''));
 }
@@ -43,14 +42,27 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   get(reqInfo: RequestInfo) {
+    if (is(reqInfo, 'me/menu')) {
+      return reqInfo.utils.createResponse$(() => {
+        const { headers, url } = reqInfo;
+        const menu = JSON.parse(this.fetch('assets/data/menu.json?_t=' + Date.now())).menu;
+
+        return { status: STATUS.OK, headers, url, body: { menu } };
+      });
+    }
+
     if (is(reqInfo, 'me')) {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
         const req = reqInfo.req as HttpRequest<any>;
-        const authorization = (req.headers.get('Authorization'));
+        const authorization = req.headers.get('Authorization');
         const [, token] = authorization.split(' ');
         const currentUser = Object.assign({}, this.users.find(user => generateToken(user) === token));
         delete currentUser.password;
+
+        if (!currentUser || !currentUser.id) {
+          return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
+        }
 
         return { status: STATUS.OK, headers, url, body: currentUser };
       });
@@ -120,4 +132,13 @@ export class InMemDataService implements InMemoryDbService {
     });
   }
 
+  private fetch(url: string) {
+    let content: any = null;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.onload = () => content = xhr.responseText;
+    xhr.send();
+
+    return content;
+  }
 }
