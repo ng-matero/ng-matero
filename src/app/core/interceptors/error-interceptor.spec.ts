@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ErrorInterceptor } from './error-interceptor';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ErrorInterceptor } from './error-interceptor';
 
 describe('ErrorInterceptor', () => {
   let httpMock: HttpTestingController;
@@ -24,14 +24,9 @@ describe('ErrorInterceptor', () => {
     });
   }
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        RouterTestingModule,
-        ToastrModule.forRoot(),
-      ],
+      imports: [HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot()],
       providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
     });
 
@@ -48,14 +43,16 @@ describe('ErrorInterceptor', () => {
 
     http.get('/me').subscribe();
 
-    httpMock.expectOne('/me').flush({ success: true }, {
-      status: 401,
-      statusText: 'Unauthorized',
-    });
+    httpMock.expectOne('/me').flush(
+      { success: true },
+      {
+        status: 401,
+        statusText: 'Unauthorized',
+      }
+    );
 
     expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
-
 
   it('should handle status code 403', () => {
     assertStatus(403, 'Forbidden');
@@ -73,10 +70,13 @@ describe('ErrorInterceptor', () => {
     spyOn(toastr, 'error');
     http.get('/me').subscribe();
 
-    httpMock.expectOne('/me').flush({ success: true }, {
-      status: 504,
-      statusText: 'Gateway Timeout',
-    });
+    httpMock.expectOne('/me').flush(
+      { success: true },
+      {
+        status: 504,
+        statusText: 'Gateway Timeout',
+      }
+    );
 
     expect(toastr.error).toHaveBeenCalledWith('504 Gateway Timeout');
   });

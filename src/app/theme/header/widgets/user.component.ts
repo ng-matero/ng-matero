@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from '@core';
 import { AuthService } from '@core/authentication/auth.service';
-import { debounceTime, filter, tap } from 'rxjs/operators';
+import { debounceTime, tap } from 'rxjs/operators';
 import { User } from '@core/authentication/interface';
 
 @Component({
@@ -54,12 +54,6 @@ export class UserComponent implements OnInit {
   }
 
   logout() {
-    this.auth
-      .logout()
-      .pipe(filter(isLogout => isLogout))
-      .subscribe(() => {
-        this.menu.reset();
-        this.router.navigateByUrl('/auth/login');
-      });
+    this.auth.logout().subscribe();
   }
 }

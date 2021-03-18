@@ -4,6 +4,8 @@ import { TokenInterceptor } from './token-interceptor';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { STATUS } from 'angular-in-memory-web-api';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 import { LocalStorageService, MemoryStorageService } from '../../shared/services/storage.service';
 import { TokenService } from '../authentication/token.service';
 import { BASE_URL } from './base-url-interceptor';
@@ -11,19 +13,21 @@ import { BASE_URL } from './base-url-interceptor';
 describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
+  let router: Router;
   const baseUrl = 'http://foo.bar';
 
   const setBaseUrlAndToken = (url: string, accessToken: string) => {
     TestBed.overrideProvider(BASE_URL, { useValue: url });
     httpMock = TestBed.inject(HttpTestingController);
     http = TestBed.inject(HttpClient);
+    router = TestBed.inject(Router);
 
     return TestBed.inject(TokenService).set({ access_token: accessToken });
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
         { provide: BASE_URL, useValue: baseUrl },
@@ -96,10 +100,35 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe();
 
-    httpMock.expectOne(url).flush({ success: true }, {
-      status: STATUS.UNAUTHORIZED,
-      statusText: 'Unauthorized',
-    });
+    httpMock.expectOne(url).flush(
+      { success: true },
+      {
+        status: STATUS.UNAUTHORIZED,
+        statusText: 'Unauthorized',
+      }
+    );
     expect(token.clear).toHaveBeenCalled();
+  });
+
+  it('should navigate /auth/login when api url is /auth/logout and token is valid', () => {
+    setBaseUrlAndToken('', 'token');
+    const url = '/auth/logout';
+    spyOn(router, 'navigateByUrl');
+
+    http.post(url, {}).subscribe();
+
+    httpMock.expectOne(url);
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
+  });
+
+  it('should navigate /auth/login when api url is /auth/logout and token is invalid', () => {
+    setBaseUrlAndToken('', '');
+    const url = '/auth/logout';
+    spyOn(router, 'navigateByUrl');
+
+    http.post(url, {}).subscribe();
+
+    httpMock.expectOne(url);
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 });

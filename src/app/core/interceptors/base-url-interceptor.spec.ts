@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BASE_URL, BaseUrlInterceptor } from './base-url-interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { BASE_URL, BaseUrlInterceptor } from './base-url-interceptor';
 
 describe('BaseUrlInterceptor', () => {
   let httpMock: HttpTestingController;
@@ -19,7 +19,7 @@ describe('BaseUrlInterceptor', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: BASE_URL, useValue: '' },
+        { provide: BASE_URL, useValue: null },
         { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
       ],
     });
@@ -28,7 +28,7 @@ describe('BaseUrlInterceptor', () => {
   afterEach(() => httpMock.verify());
 
   it('should not prepend base url when base url is empty', () => {
-    setBaseUrl('');
+    setBaseUrl(null);
 
     http.get('/me').subscribe();
 

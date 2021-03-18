@@ -23,8 +23,8 @@ describe('SanctumService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: BASE_URL, useValue: '' },
-        { provide: SANCTUM_PREFIX, useValue: '' },
+        { provide: BASE_URL, useValue: null },
+        { provide: SANCTUM_PREFIX, useValue: null },
         SanctumService,
       ],
     });
@@ -33,7 +33,7 @@ describe('SanctumService', () => {
   afterEach(() => httpMock.verify());
 
   it('should get csrf cookie once', done => {
-    setBaseUrlAndSanctumPrefix('', '');
+    setBaseUrlAndSanctumPrefix(null, null);
 
     sanctumService.load().then(() => done());
 
@@ -49,7 +49,7 @@ describe('SanctumService', () => {
   });
 
   it('should get csrf cookie with sanctum prefix', done => {
-    setBaseUrlAndSanctumPrefix('', '/foobar/');
+    setBaseUrlAndSanctumPrefix(null, '/foobar/');
 
     sanctumService.load().then(() => done());
 

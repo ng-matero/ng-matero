@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
-import { TokenService } from '@core/authentication/token.service';
-import { guest, Token, User } from '@core/authentication/interface';
+import { TokenService } from './token.service';
+import { guest, Token, User } from './interface';
 
 @Injectable({
   providedIn: 'root',
@@ -35,10 +35,6 @@ export class AuthService {
   }
 
   logout() {
-    if (!this.check()) {
-      return of(false);
-    }
-
     return this.http.post('/auth/logout', {}).pipe(
       tap(() => this.token.clear()),
       map(() => !this.check())
