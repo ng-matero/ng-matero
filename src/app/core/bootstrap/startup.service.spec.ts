@@ -31,7 +31,7 @@ describe('StartupService', () => {
   afterEach(() => httpMock.verify());
 
   it('should load menu when token changed and token valid', () => {
-    const menuData = { menu: ['menu'] };
+    const menuData = { menu: [] };
     spyOn(menu, 'recursMenuForTranslation');
     spyOn(menu, 'set');
 
