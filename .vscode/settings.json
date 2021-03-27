@@ -2,7 +2,6 @@
   "editor.rulers": [100],
   "html.format.wrapLineLength": 100,
   "html.format.wrapAttributes": "preserve-aligned",
-  "prettier.disableLanguages": ["scss"],
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
