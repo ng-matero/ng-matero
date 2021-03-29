@@ -16,6 +16,7 @@
   </mat-checkbox>
   <mat-checkbox [(ngModel)]="showPaginator">Show Paginator</mat-checkbox>
   <mat-checkbox [(ngModel)]="isLoading">Loading Status</mat-checkbox>
+  <mat-checkbox [(ngModel)]="columnResizable">Column Resizable</mat-checkbox>
 </div>
 <p>
   <a href="https://ng-matero.github.io/extensions/components/data-grid" target="_blank">
@@ -25,6 +26,7 @@
 <mtx-grid [data]="list"
           [columns]="columns"
           [loading]="isLoading"
+          [columnResizable]="columnResizable"
           [multiSelectable]="multiSelectable"
           [rowSelectable]="rowSelectable"
           [hideRowSelectionCheckbox]="hideRowSelectionCheckbox"

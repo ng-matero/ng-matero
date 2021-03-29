@@ -20,34 +20,79 @@ export class TablesKitchenSinkComponent implements OnInit {
       header: this.translate.stream('table_kitchen_sink.position'),
       field: 'position',
       sortable: true,
+      minWidth: 100,
     },
     {
       header: this.translate.stream('table_kitchen_sink.name'),
       field: 'name',
       sortable: true,
       disabled: true,
+      minWidth: 100,
     },
-    { header: this.translate.stream('table_kitchen_sink.weight'), field: 'weight' },
-    { header: this.translate.stream('table_kitchen_sink.symbol'), field: 'symbol' },
-    { header: this.translate.stream('table_kitchen_sink.gender'), field: 'gender' },
-    { header: this.translate.stream('table_kitchen_sink.mobile'), field: 'mobile', hide: true },
-    { header: this.translate.stream('table_kitchen_sink.tele'), field: 'tele', width: '120px' },
-    { header: this.translate.stream('table_kitchen_sink.birthday'), field: 'birthday' },
-    { header: this.translate.stream('table_kitchen_sink.city'), field: 'city' },
+    {
+      header: this.translate.stream('table_kitchen_sink.weight'),
+      field: 'weight',
+      minWidth: 100,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.symbol'),
+      field: 'symbol',
+      minWidth: 100,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.gender'),
+      field: 'gender',
+      minWidth: 100,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.mobile'),
+      field: 'mobile',
+      hide: true,
+      minWidth: 120,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.tele'),
+      field: 'tele',
+      minWidth: 120,
+      width: '120px',
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.birthday'),
+      field: 'birthday',
+      minWidth: 180,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.city'),
+      field: 'city',
+      minWidth: 120,
+    },
     {
       header: this.translate.stream('table_kitchen_sink.address'),
       field: 'address',
+      minWidth: 180,
       width: '200px',
     },
-    { header: this.translate.stream('table_kitchen_sink.company'), field: 'company' },
-    { header: this.translate.stream('table_kitchen_sink.website'), field: 'website' },
-    { header: this.translate.stream('table_kitchen_sink.email'), field: 'email' },
+    {
+      header: this.translate.stream('table_kitchen_sink.company'),
+      field: 'company',
+      minWidth: 120,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.website'),
+      field: 'website',
+      minWidth: 180,
+    },
+    {
+      header: this.translate.stream('table_kitchen_sink.email'),
+      field: 'email',
+      minWidth: 180,
+    },
     {
       header: this.translate.stream('table_kitchen_sink.operation'),
       field: 'operation',
+      minWidth: 120,
       width: '120px',
       pinned: 'right',
-      right: '0px',
       type: 'button',
       buttons: [
         {
@@ -83,6 +128,7 @@ export class TablesKitchenSinkComponent implements OnInit {
   rowStriped = false;
   showPaginator = true;
   expandable = false;
+  columnResizable = false;
 
   constructor(
     private translate: TranslateService,
