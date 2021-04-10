@@ -106,15 +106,14 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   toggleCollapsed() {
+    this.isContentWidthFixed = false;
     this.options.sidenavCollapsed = !this.options.sidenavCollapsed;
     this.resetCollapsedState();
   }
 
+  // TODO: Trigger when transition end
   resetCollapsedState(timer = 400) {
-    // TODO: Trigger when transition end
-    setTimeout(() => {
-      this.settings.setNavState('collapsed', this.options.sidenavCollapsed);
-    }, timer);
+    setTimeout(() => this.settings.setOptions(this.options), timer);
   }
 
   sidenavCloseStart() {
@@ -122,11 +121,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
   }
 
   sidenavOpenedChange(isOpened: boolean) {
-    this.options.sidenavOpened = isOpened;
-    this.settings.setNavState('opened', isOpened);
-
     this.isCollapsedWidthFixed = !this.isOver;
-    this.resetCollapsedState();
+    this.options.sidenavOpened = isOpened;
+    this.settings.setOptions(this.options);
   }
 
   /** Demo purposes only */

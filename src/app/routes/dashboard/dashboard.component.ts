@@ -7,6 +7,7 @@ import {
   ChangeDetectorRef,
   NgZone,
 } from '@angular/core';
+import { SettingsService } from '@core';
 
 import { DashboardService } from './dashboard.srevice';
 
@@ -39,10 +40,15 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private dashboardSrv: DashboardService,
     private ngZone: NgZone,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private settings: SettingsService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.settings.notify.subscribe(res => {
+      console.log(res);
+    });
+  }
 
   ngAfterViewInit() {
     this.ngZone.runOutsideAngular(() => this.initChart());

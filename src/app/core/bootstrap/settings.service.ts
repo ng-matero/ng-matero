@@ -14,13 +14,9 @@ export class SettingsService {
 
   private notify$ = new BehaviorSubject<any>({});
 
-  setLayout(options?: AppSettings): AppSettings {
+  setOptions(options: AppSettings) {
     this.options = Object.assign(defaults, options);
-    return this.options;
-  }
-
-  setNavState(type: string, value: boolean) {
-    this.notify$.next({ type, value } as any);
+    this.notify$.next(this.options);
   }
 
   getOptions(): AppSettings {

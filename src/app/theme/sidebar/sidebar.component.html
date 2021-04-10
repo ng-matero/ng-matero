@@ -1,7 +1,9 @@
 <div class="matero-sidebar-header" *ngIf="showHeader">
   <app-branding></app-branding>
   <span fxFlex></span>
-  <mat-slide-toggle (change)="toggleCollapsed.emit()" [checked]="toggleChecked" *ngIf="showToggle">
+  <mat-slide-toggle *ngIf="showToggle"
+                    [checked]="toggleChecked"
+                    (change)="toggleCollapsed.emit()">
   </mat-slide-toggle>
 </div>
 
