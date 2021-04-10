@@ -11,11 +11,13 @@ import { guest, Token, User } from './interface';
 export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
 
+  private userReq$ = this.http.get<User>('/me');
+
   constructor(private http: HttpClient, private token: TokenService) {
     this.token
       .change()
       .pipe(
-        switchMap(() => iif(() => this.check(), this.http.get<User>('/me'), of(guest))),
+        switchMap(() => iif(() => this.check(), this.userReq$, of(guest))),
         map(user => Object.assign({}, guest, user))
       )
       .subscribe(user => this.user$.next(user));

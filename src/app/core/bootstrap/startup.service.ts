@@ -9,14 +9,14 @@ import { TokenService } from '../authentication/token.service';
   providedIn: 'root',
 })
 export class StartupService {
-  private menu$ = this.http.get('/me/menu');
+  private menuReq$ = this.http.get('/me/menu');
 
   constructor(private token: TokenService, private menu: MenuService, private http: HttpClient) {}
 
   load(): Promise<any> {
     this.token
       .change()
-      .pipe(switchMap(() => iif(() => this.token.valid(), this.menu$, of({ menu: [] }))))
+      .pipe(switchMap(() => iif(() => this.token.valid(), this.menuReq$, of({ menu: [] }))))
       .subscribe((response: any) => {
         this.menu.recursMenuForTranslation(response.menu, 'menu');
         this.menu.set(response.menu);

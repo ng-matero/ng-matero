@@ -11,7 +11,15 @@ export interface Token {
   access_token?: string;
   token?: string;
   token_type?: string;
+  expires_in?: number;
 }
+
+export const admin: User = {
+  id: 1,
+  name: 'Zongbin',
+  email: 'nzb329@163.com',
+  avatar: './assets/images/avatar.jpg',
+};
 
 export const guest: User = {
   id: null,
