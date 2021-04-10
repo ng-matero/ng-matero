@@ -8,6 +8,7 @@ import {
   NgZone,
 } from '@angular/core';
 import { SettingsService } from '@core';
+import { Subscription } from 'rxjs';
 
 import { DashboardService } from './dashboard.srevice';
 
@@ -37,15 +38,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   stats = this.dashboardSrv.getStats();
 
+  notifySubscription: Subscription;
+
   constructor(
-    private dashboardSrv: DashboardService,
     private ngZone: NgZone,
-    private cdr: ChangeDetectorRef,
+    private dashboardSrv: DashboardService,
     private settings: SettingsService
   ) {}
 
   ngOnInit() {
-    this.settings.notify.subscribe(res => {
+    this.notifySubscription = this.settings.notify.subscribe(res => {
       console.log(res);
     });
   }
@@ -61,6 +63,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.chart2) {
       this.chart2.destroy();
     }
+
+    this.notifySubscription.unsubscribe();
   }
 
   initChart() {
