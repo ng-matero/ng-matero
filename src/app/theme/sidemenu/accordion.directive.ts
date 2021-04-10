@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { AfterViewInit, Directive } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AccordionItemDirective } from './accordionItem.directive';
@@ -6,17 +6,17 @@ import { AccordionItemDirective } from './accordionItem.directive';
 @Directive({
   selector: '[navAccordion]',
 })
-export class AccordionDirective {
+export class AccordionDirective implements AfterViewInit {
   protected navlinks: Array<AccordionItemDirective> = [];
 
   constructor(private router: Router) {
-    // Fix: `ERROR Error: ExpressionChangedAfterItHasBeenCheckedError:
-    // Expression has changed after it was checked`.
-    setTimeout(() => this.checkOpenLinks());
-
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.checkOpenLinks());
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.checkOpenLinks(), 400);
   }
 
   addLink(link: AccordionItemDirective): void {

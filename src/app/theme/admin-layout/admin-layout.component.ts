@@ -31,7 +31,7 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   styleUrls: ['./admin-layout.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AdminLayoutComponent implements OnInit, OnDestroy {
+export class AdminLayoutComponent implements OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   @ViewChild('content', { static: true }) content: MatSidenavContent;
 
@@ -63,7 +63,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     );
   }
 
-  private isCollapsedWidthFixed = true;
+  private isCollapsedWidthFixed = false;
 
   constructor(
     private router: Router,
@@ -95,10 +95,6 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
 
     // Initialize project theme with options
     this.receiveOptions(this.options);
-  }
-
-  ngOnInit() {
-    setTimeout(() => (this.isContentWidthFixed = this.isCollapsedWidthFixed = false));
   }
 
   ngOnDestroy() {
