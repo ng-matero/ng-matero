@@ -11,16 +11,8 @@ const routes: Routes = [
     component: ProfileLayoutComponent,
     children: [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
-      {
-        path: 'overview',
-        component: ProfileOverviewComponent,
-        data: { title: 'Profile Overview' },
-      },
-      {
-        path: 'settings',
-        component: ProfileSettingsComponent,
-        data: { title: 'Profile Settings' },
-      },
+      { path: 'overview', component: ProfileOverviewComponent },
+      { path: 'settings', component: ProfileSettingsComponent },
     ],
   },
 ];

@@ -7,9 +7,9 @@ import { FormsDynamicComponent } from './dynamic/dynamic.component';
 import { FormsDatetimeComponent } from './datetime/datetime.component';
 
 const routes: Routes = [
-  { path: 'elements', component: FormsElementsComponent, data: { title: 'Form Elements' } },
-  { path: 'dynamic', component: FormsDynamicComponent, data: { title: 'Dynamic Form' } },
-  { path: 'select', component: FormsSelectComponent, data: { title: 'Select' } },
+  { path: 'elements', component: FormsElementsComponent },
+  { path: 'dynamic', component: FormsDynamicComponent },
+  { path: 'select', component: FormsSelectComponent },
   { path: 'datetime', component: FormsDatetimeComponent },
 ];
 

@@ -5,8 +5,8 @@ import { DesignColorsComponent } from './colors/colors.component';
 import { DesignIconsComponent } from './icons/icons.component';
 
 const routes: Routes = [
-  { path: 'colors', component: DesignColorsComponent, data: { title: 'Material Colors' } },
-  { path: 'icons', component: DesignIconsComponent, data: { title: 'Material Icons' } },
+  { path: 'colors', component: DesignColorsComponent },
+  { path: 'icons', component: DesignIconsComponent },
 ];
 
 @NgModule({

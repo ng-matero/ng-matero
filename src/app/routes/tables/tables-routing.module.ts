@@ -5,7 +5,7 @@ import { TablesKitchenSinkComponent } from './kitchen-sink/kitchen-sink.componen
 import { TablesRemoteDataComponent } from './remote-data/remote-data.component';
 
 const routes: Routes = [
-  { path: 'kitchen-sink', component: TablesKitchenSinkComponent, data: { title: 'Kitchen Sink' } },
+  { path: 'kitchen-sink', component: TablesKitchenSinkComponent },
   { path: 'remote-data', component: TablesRemoteDataComponent },
 ];
 
