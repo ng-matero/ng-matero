@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService } from '@core';
 import { AuthService } from '@core/authentication/auth.service';
 import { debounceTime, tap } from 'rxjs/operators';
 import { User } from '@core/authentication/interface';
@@ -36,12 +35,7 @@ import { User } from '@core/authentication/interface';
 export class UserComponent implements OnInit {
   user: User;
 
-  constructor(
-    private router: Router,
-    private menu: MenuService,
-    private auth: AuthService,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  constructor(private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.auth
@@ -50,10 +44,10 @@ export class UserComponent implements OnInit {
         tap(user => (this.user = user)),
         debounceTime(10)
       )
-      .subscribe(() => this.changeDetectorRef.detectChanges());
+      .subscribe(() => this.cdr.detectChanges());
   }
 
   logout() {
-    this.auth.logout().subscribe();
+    this.auth.logout().subscribe(() => this.router.navigateByUrl('/auth/login'));
   }
 }
