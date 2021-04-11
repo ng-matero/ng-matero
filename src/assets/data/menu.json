@@ -345,6 +345,19 @@
       }
     },
     {
+      "route": "permissions",
+      "name": "permissions",
+      "type": "sub",
+      "icon": "lock",
+      "children": [
+        {
+          "route": "test",
+          "name": "test",
+          "type": "link"
+        }
+      ]
+    },
+    {
       "route": "sessions",
       "name": "sessions",
       "type": "sub",
