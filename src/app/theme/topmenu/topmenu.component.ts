@@ -49,9 +49,11 @@ export class TopmenuComponent implements OnDestroy {
 
   onRouteChange(rla: RouterLinkActive, index: number) {
     this.routerSubscription?.unsubscribe();
-    this.routerSubscription = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
-      this.menuStates.forEach(item => (item.active = false));
-      setTimeout(() => (this.menuStates[index].active = rla.isActive));
-    });
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(e => {
+        this.menuStates.forEach(item => (item.active = false));
+        setTimeout(() => (this.menuStates[index].active = rla.isActive));
+      });
   }
 }

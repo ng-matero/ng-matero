@@ -1,22 +1,24 @@
-import { AfterViewInit, Directive } from '@angular/core';
+import { Directive } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { MenuService } from '@core';
 import { filter } from 'rxjs/operators';
 import { AccordionItemDirective } from './accordionItem.directive';
 
 @Directive({
   selector: '[navAccordion]',
 })
-export class AccordionDirective implements AfterViewInit {
+export class AccordionDirective {
   protected navlinks: Array<AccordionItemDirective> = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private menu: MenuService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.checkOpenLinks());
-  }
 
-  ngAfterViewInit() {
-    setTimeout(() => this.checkOpenLinks(), 400);
+    // Fix opening status for async menu data
+    this.menu.change().subscribe(() => {
+      setTimeout(() => this.checkOpenLinks());
+    });
   }
 
   addLink(link: AccordionItemDirective): void {

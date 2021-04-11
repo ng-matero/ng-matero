@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 
 export interface MenuTag {
   color: string; // background color
@@ -31,6 +32,10 @@ export class MenuService {
 
   getAll(): Observable<Menu[]> {
     return this.menu$.asObservable();
+  }
+
+  change() {
+    return this.menu$.pipe(share());
   }
 
   set(menu: Menu[]): Observable<Menu[]> {
