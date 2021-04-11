@@ -72,7 +72,9 @@
     "menu-level.level-1-1.level-2-1": "Level 2.1",
     "menu-level.level-1-1.level-2-2": "Level 2.2",
     "menu-level.level-1-1.level-2-1.level-3-1": "Level 3.1",
-    "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "Level 4.1"
+    "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "Level 4.1",
+    "permissions": "Permissions",
+    "permissions.test": "Permission Test"
   },
   "validations": {
     "required": "This field is required",

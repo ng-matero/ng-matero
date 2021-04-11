@@ -72,7 +72,9 @@
     "menu-level.level-1-1.level-2-1": "層級 2.1",
     "menu-level.level-1-1.level-2-2": "層級 2.2",
     "menu-level.level-1-1.level-2-1.level-3-1": "層級 3.1",
-    "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "層級 4.1"
+    "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "層級 4.1",
+    "permissions": "權限管理",
+    "permissions.test": "權限測試"
   },
   "validations": {
     "required": "該字段必填",
