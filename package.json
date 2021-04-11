@@ -54,7 +54,7 @@
     "ngx-permissions": "^8.1.1",
     "ngx-progressbar": "^6.1.0",
     "ngx-toastr": "^13.2.1",
-    "photoviewer": "^3.5.7",
+    "photoviewer": "^3.5.8",
     "rxjs": "~6.6.0",
     "screenfull": "^5.1.0",
     "tslib": "^2.0.0",
