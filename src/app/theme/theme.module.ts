@@ -16,11 +16,12 @@ import { TopmenuComponent } from './topmenu/topmenu.component';
 import { TopmenuPanelComponent } from './topmenu/topmenu-panel.component';
 
 import { HeaderComponent } from './header/header.component';
-import { BrandingComponent } from './header/widgets/branding.component';
-import { GithubButtonComponent } from './header/widgets/github.component';
-import { NotificationComponent } from './header/widgets/notification.component';
-import { TranslateComponent } from './header/widgets/translate.component';
-import { UserComponent } from './header/widgets/user.component';
+
+import { BrandingComponent } from './widgets/branding.component';
+import { GithubButtonComponent } from './widgets/github.component';
+import { NotificationComponent } from './widgets/notification.component';
+import { TranslateComponent } from './widgets/translate.component';
+import { UserComponent } from './widgets/user.component';
 
 import { CustomizerComponent } from './customizer/customizer.component';
 
