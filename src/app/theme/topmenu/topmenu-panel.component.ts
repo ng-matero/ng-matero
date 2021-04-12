@@ -19,7 +19,7 @@ import { TopmenuState } from './topmenu.component';
   templateUrl: './topmenu-panel.component.html',
 })
 export class TopmenuPanelComponent implements OnInit, OnDestroy {
-  @ViewChild('menu', { static: true }) menuPanel: MatMenu;
+  @ViewChild(MatMenu, { static: true }) menuPanel: MatMenu;
 
   @Input() items: MenuChildrenItem[] = [];
   @Input() parentRoute = [];

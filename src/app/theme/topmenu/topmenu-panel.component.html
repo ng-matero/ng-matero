@@ -1,4 +1,4 @@
-<mat-menu #menu>
+<mat-menu>
   <ng-container *ngFor="let item of items; let index=index">
     <button *ngIf="item.type === 'link'" mat-menu-item
             [routerLink]="buildRoute(parentRoute.concat([item.route]))"
