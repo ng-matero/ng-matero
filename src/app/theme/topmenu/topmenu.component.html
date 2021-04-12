@@ -17,7 +17,7 @@
     </a>
 
     <button *ngIf="menuItem.type === 'sub'" mat-button
-            [matMenuTriggerFor]="submenu.menu" routerLinkActive="active"
+            [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
             [class.active]="menuStates[index].active">
       <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
       </ng-container>

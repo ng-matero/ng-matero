@@ -30,30 +30,35 @@ export interface Menu {
 export class MenuService {
   private menu$: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
 
+  /** Get all the menu data. */
   getAll(): Observable<Menu[]> {
     return this.menu$.asObservable();
   }
 
+  /** Observe the change of menu data. */
   change() {
     return this.menu$.pipe(share());
   }
 
+  /** Initialize the menu data. */
   set(menu: Menu[]): Observable<Menu[]> {
     this.menu$.next(menu);
     return this.menu$.asObservable();
   }
 
+  /** Add one item to the menu data. */
   add(menu: Menu) {
     const tmpMenu = this.menu$.value;
     tmpMenu.push(menu);
     this.menu$.next(tmpMenu);
   }
 
+  /** Reset the menu data. */
   reset() {
     this.menu$.next([]);
   }
 
-  // Delete empty values and rebuild route
+  /** Delete empty values and rebuild route. */
   buildRoute(routeArr: string[]): string {
     let route = '';
     routeArr.forEach(item => {
@@ -64,6 +69,7 @@ export class MenuService {
     return route;
   }
 
+  /** Get the menu item name based on current route. */
   getItemName(routeArr: string[]): string {
     return this.getLevel(routeArr)[routeArr.length - 1];
   }
@@ -93,7 +99,7 @@ export class MenuService {
     return this.isJsonObjEqual(routeArr, realRouteArr);
   }
 
-  /** Get menu level */
+  /** Get the menu level. */
   getLevel(routeArr: string[]): string[] {
     let tmpArr = [];
     this.menu$.value.forEach(item => {
@@ -125,7 +131,7 @@ export class MenuService {
     return tmpArr;
   }
 
-  /** Add namespace for translation */
+  /** Add namespace for translation. */
   addNamespace(menu: Menu[] | MenuChildrenItem[], namespace: string) {
     menu.forEach(menuItem => {
       menuItem.name = `${namespace}.${menuItem.name}`;
