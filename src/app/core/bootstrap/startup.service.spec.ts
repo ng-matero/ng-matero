@@ -32,7 +32,7 @@ describe('StartupService', () => {
 
   it('should load menu when token changed and token valid', () => {
     const menuData = { menu: [] };
-    spyOn(menu, 'recursMenuForTranslation');
+    spyOn(menu, 'addNamespace');
     spyOn(menu, 'set');
 
     startup.load();
@@ -41,12 +41,12 @@ describe('StartupService', () => {
 
     httpMock.expectOne('/me/menu').flush(menuData);
 
-    expect(menu.recursMenuForTranslation).toHaveBeenCalledWith(menuData.menu, 'menu');
+    expect(menu.addNamespace).toHaveBeenCalledWith(menuData.menu, 'menu');
     expect(menu.set).toHaveBeenCalledWith(menuData.menu);
   });
 
   it('should clear menu when token changed and token invalid', () => {
-    spyOn(menu, 'recursMenuForTranslation');
+    spyOn(menu, 'addNamespace');
     spyOn(menu, 'set');
 
     startup.load();
@@ -55,7 +55,7 @@ describe('StartupService', () => {
 
     httpMock.expectNone('/me/menu');
 
-    expect(menu.recursMenuForTranslation).toHaveBeenCalledWith([], 'menu');
+    expect(menu.addNamespace).toHaveBeenCalledWith([], 'menu');
     expect(menu.set).toHaveBeenCalledWith([]);
   });
 });

@@ -64,12 +64,11 @@ export class MenuService {
     return route;
   }
 
-  getMenuItemName(routeArr: string[]): string {
-    return this.getMenuLevel(routeArr)[routeArr.length - 1];
+  getItemName(routeArr: string[]): string {
+    return this.getLevel(routeArr)[routeArr.length - 1];
   }
 
-  /** Menu level */
-
+  // Whether is a leaf menu
   private isLeafItem(item: MenuChildrenItem): boolean {
     const cond0 = item.route === undefined;
     const cond1 = item.children === undefined;
@@ -94,10 +93,11 @@ export class MenuService {
     return this.isJsonObjEqual(routeArr, realRouteArr);
   }
 
-  getMenuLevel(routeArr: string[]): string[] {
+  /** Get menu level */
+  getLevel(routeArr: string[]): string[] {
     let tmpArr = [];
     this.menu$.value.forEach(item => {
-      // breadth first traverse modified
+      // Breadth first traverse modified
       let unhandledLayer = [{ item, parentNamePathList: [], realRouteArr: [] }];
       while (unhandledLayer.length > 0) {
         let nextUnhandledLayer = [];
@@ -105,7 +105,7 @@ export class MenuService {
           const eachItem = ele.item;
           const currentNamePathList = this.deepClone(ele.parentNamePathList).concat(eachItem.name);
           const currentRealRouteArr = this.deepClone(ele.realRouteArr).concat(eachItem.route);
-          // compare the full Array for expandable
+          // Compare the full Array for expandable
           if (this.isRouteEqual(routeArr, currentRealRouteArr)) {
             tmpArr = currentNamePathList;
             break;
@@ -125,13 +125,12 @@ export class MenuService {
     return tmpArr;
   }
 
-  /** Menu for translation */
-
-  recursMenuForTranslation(menu: Menu[] | MenuChildrenItem[], namespace: string) {
+  /** Add namespace for translation */
+  addNamespace(menu: Menu[] | MenuChildrenItem[], namespace: string) {
     menu.forEach(menuItem => {
       menuItem.name = `${namespace}.${menuItem.name}`;
       if (menuItem.children && menuItem.children.length > 0) {
-        this.recursMenuForTranslation(menuItem.children, menuItem.name);
+        this.addNamespace(menuItem.children, menuItem.name);
       }
     });
   }

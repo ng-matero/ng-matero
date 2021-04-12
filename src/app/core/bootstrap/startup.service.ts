@@ -18,7 +18,7 @@ export class StartupService {
       .change()
       .pipe(switchMap(() => iif(() => this.token.valid(), this.menuReq$, of({ menu: [] }))))
       .subscribe((response: any) => {
-        this.menu.recursMenuForTranslation(response.menu, 'menu');
+        this.menu.addNamespace(response.menu, 'menu');
         this.menu.set(response.menu);
       });
 
