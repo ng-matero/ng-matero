@@ -46,7 +46,7 @@ describe('AuthService', () => {
   });
 
   it('should log out failed when user is not login', () => {
-    authService.logout().subscribe(isLogout => expect(isLogout).toBeFalse());
+    authService.logout().subscribe();
     httpMock.expectNone('/logout');
   });
 

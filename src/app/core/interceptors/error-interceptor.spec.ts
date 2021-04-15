@@ -12,11 +12,13 @@ describe('ErrorInterceptor', () => {
   let http: HttpClient;
   let router: Router;
   let toastr: ToastrService;
+  const emptyFn = () => {};
 
   function assertStatus(status: number, statusText) {
     spyOn(router, 'navigateByUrl');
 
-    http.get('/me').subscribe();
+    http.get('/me').subscribe(emptyFn, emptyFn, emptyFn);
+
     httpMock.expectOne('/me').flush({ success: true }, { status, statusText });
 
     expect(router.navigateByUrl).toHaveBeenCalledWith(`/sessions/${status}`, {
@@ -41,15 +43,9 @@ describe('ErrorInterceptor', () => {
   it('should handle status code 401', () => {
     spyOn(router, 'navigateByUrl');
 
-    http.get('/me').subscribe();
+    http.get('/me').subscribe(emptyFn, emptyFn, emptyFn);
 
-    httpMock.expectOne('/me').flush(
-      { success: true },
-      {
-        status: 401,
-        statusText: 'Unauthorized',
-      }
-    );
+    httpMock.expectOne('/me').flush({ success: true }, { status: 401, statusText: 'Unauthorized' });
 
     expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
@@ -68,15 +64,12 @@ describe('ErrorInterceptor', () => {
 
   it('should handle others status code', () => {
     spyOn(toastr, 'error');
-    http.get('/me').subscribe();
 
-    httpMock.expectOne('/me').flush(
-      { success: true },
-      {
-        status: 504,
-        statusText: 'Gateway Timeout',
-      }
-    );
+    http.get('/me').subscribe(emptyFn, emptyFn, emptyFn);
+
+    httpMock
+      .expectOne('/me')
+      .flush({ success: true }, { status: 504, statusText: 'Gateway Timeout' });
 
     expect(toastr.error).toHaveBeenCalledWith('504 Gateway Timeout');
   });

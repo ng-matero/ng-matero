@@ -14,7 +14,8 @@ describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
   let router: Router;
-  const baseUrl = 'http://foo.bar';
+  const baseUrl = 'https://foo.bar';
+  const emptyFn = () => {};
 
   const setBaseUrlAndToken = (url: string, accessToken: string) => {
     TestBed.overrideProvider(BASE_URL, { useValue: url });
@@ -42,7 +43,7 @@ describe('TokenInterceptor', () => {
     setBaseUrlAndToken('', 'token');
     const url = '/me';
 
-    http.get(url).subscribe();
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
@@ -53,7 +54,7 @@ describe('TokenInterceptor', () => {
     setBaseUrlAndToken(baseUrl, 'token');
     const url = '/me';
 
-    http.get(url).subscribe();
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
@@ -64,7 +65,7 @@ describe('TokenInterceptor', () => {
     setBaseUrlAndToken(baseUrl, 'token');
     const url = `${baseUrl}/me`;
 
-    http.get(url).subscribe();
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
@@ -75,7 +76,7 @@ describe('TokenInterceptor', () => {
     setBaseUrlAndToken(baseUrl, 'token');
     const url = 'https://api.github.com';
 
-    http.get(url).subscribe();
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
@@ -86,7 +87,7 @@ describe('TokenInterceptor', () => {
     setBaseUrlAndToken('', 'token');
     const url = 'https://api.github.com';
 
-    http.get(url).subscribe();
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
@@ -98,7 +99,7 @@ describe('TokenInterceptor', () => {
     const url = '/me';
     spyOn(token, 'clear');
 
-    http.get(url).subscribe();
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
     httpMock.expectOne(url).flush(
       { success: true },
@@ -115,8 +116,7 @@ describe('TokenInterceptor', () => {
     const url = '/auth/logout';
     spyOn(router, 'navigateByUrl');
 
-    http.post(url, {}).subscribe();
-
+    http.post(url, {}).subscribe(emptyFn, emptyFn, emptyFn);
     httpMock.expectOne(url);
     expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
@@ -126,7 +126,7 @@ describe('TokenInterceptor', () => {
     const url = '/auth/logout';
     spyOn(router, 'navigateByUrl');
 
-    http.post(url, {}).subscribe();
+    http.post(url, {}).subscribe(emptyFn, emptyFn, emptyFn);
 
     httpMock.expectOne(url);
     expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');

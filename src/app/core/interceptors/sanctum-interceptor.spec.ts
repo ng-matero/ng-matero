@@ -46,14 +46,14 @@ describe('SanctumInterceptor', () => {
   });
 
   it('should get csrf cookie with base url', () => {
-    setBaseUrlAndSanctumPrefix('http://foo.bar/api', null);
+    setBaseUrlAndSanctumPrefix('https://foo.bar/api', null);
 
     http
       .post('/auth/login', { username: 'foo', password: 'bar' })
       .pipe(switchMap(() => http.get('/me')))
       .subscribe();
 
-    httpMock.expectOne('http://foo.bar/sanctum/csrf-cookie').flush({ cookie: true });
+    httpMock.expectOne('https://foo.bar/sanctum/csrf-cookie').flush({ cookie: true });
     httpMock.expectOne('/auth/login').flush({ login: true });
     httpMock.expectOne('/me').flush({ me: true });
   });
@@ -72,14 +72,14 @@ describe('SanctumInterceptor', () => {
   });
 
   it('should get csrf cookie with base url and sanctum prefix', () => {
-    setBaseUrlAndSanctumPrefix('http://foo.bar/api', 'foobar');
+    setBaseUrlAndSanctumPrefix('https://foo.bar/api', 'foobar');
 
     http
       .post('/auth/login', { username: 'foo', password: 'bar' })
       .pipe(switchMap(() => http.get('/me')))
       .subscribe();
 
-    httpMock.expectOne('http://foo.bar/foobar/csrf-cookie').flush({ cookie: true });
+    httpMock.expectOne('https://foo.bar/foobar/csrf-cookie').flush({ cookie: true });
     httpMock.expectOne('/auth/login').flush({ login: true });
     httpMock.expectOne('/me').flush({ me: true });
   });
