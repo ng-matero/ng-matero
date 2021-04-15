@@ -101,13 +101,10 @@ describe('TokenInterceptor', () => {
 
     http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
 
-    httpMock.expectOne(url).flush(
-      { success: true },
-      {
-        status: STATUS.UNAUTHORIZED,
-        statusText: 'Unauthorized',
-      }
-    );
+    httpMock
+      .expectOne(url)
+      .flush({ success: true }, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
+
     expect(token.clear).toHaveBeenCalled();
   });
 

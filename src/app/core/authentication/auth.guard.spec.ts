@@ -22,14 +22,15 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([
-        { path: 'dashboard', component: DummyComponent, canActivate: [AuthGuard] },
-        { path: 'auth/login', component: DummyComponent },
-      ])],
-      declarations: [DummyComponent],
-      providers: [
-        { provide: LocalStorageService, useClass: MemoryStorageService },
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'dashboard', component: DummyComponent, canActivate: [AuthGuard] },
+          { path: 'auth/login', component: DummyComponent },
+        ]),
       ],
+      declarations: [DummyComponent],
+      providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
     });
     TestBed.createComponent(DummyComponent);
 
@@ -44,7 +45,7 @@ describe('AuthGuard', () => {
   });
 
   it('should be authenticated', () => {
-    spyOn(tokenService, 'get').and.returnValue({ access_token: 'token' });
+    tokenService.set({ access_token: 'token' });
 
     expect(authGuard.canActivate(route, state)).toBeTrue();
   });
