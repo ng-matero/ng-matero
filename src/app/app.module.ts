@@ -9,6 +9,7 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -37,6 +38,7 @@ import { environment } from '@env/environment';
     ThemeModule,
     RoutesModule,
     SharedModule,
+    NgxPermissionsModule.forRoot(),
     FormlyConfigModule.forRoot(),
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
