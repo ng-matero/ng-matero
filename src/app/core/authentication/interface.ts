@@ -14,6 +14,11 @@ export interface Token {
   expires_in?: number;
 }
 
+export interface RefreshToken extends Token {
+  refresh?: boolean;
+  expired_at?: number;
+}
+
 export const admin: User = {
   id: 1,
   name: 'Zongbin',
