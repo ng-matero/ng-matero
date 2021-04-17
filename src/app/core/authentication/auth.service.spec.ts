@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { skip } from 'rxjs/operators';
@@ -45,8 +45,15 @@ describe('AuthService', () => {
     httpMock.expectOne('/me').flush(user);
   });
 
+  it('should refresh token after 5 seconds', fakeAsync(() => {
+    authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeTrue());
+    httpMock.expectOne('/auth/login').flush(Object.assign({ expires_in: 5 }, token));
+    tick(5000);
+    httpMock.expectOne('/auth/refresh').flush(token);
+  }));
+
   it('should log out failed when user is not login', () => {
-    authService.logout().subscribe(isLogout => expect(isLogout).toBeFalse());
+    authService.logout().subscribe();
     httpMock.expectNone('/logout');
   });
 

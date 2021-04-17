@@ -5,8 +5,37 @@ import { Observable } from 'rxjs';
 import { User } from '@core/authentication/interface';
 import { environment } from '@env/environment';
 
+function urlSafeBase64Encode(text: string) {
+  return btoa(text).replace(/[+/=]/g, m => {
+    return { '+': '-', '/': '_', '=': '' }[m];
+  });
+}
+
+function urlSafeBase64Decode(text: string) {
+  return atob(
+    text.replace(/[-_]/g, m => {
+      return { '-': '+', '_': '/' }[m];
+    })
+  );
+}
+
 function generateToken(user: User) {
-  return btoa([user.id, user.email, user.name].join(''));
+  const expiresIn = 3600;
+  const header = JSON.stringify({ typ: 'JWT', alg: 'HS256' });
+  const payload = JSON.stringify({ exp: Math.ceil(new Date().getTime() / 1000) + expiresIn, user });
+  const key = 'ng-matero';
+
+  const accessToken = [
+    urlSafeBase64Encode(header),
+    urlSafeBase64Encode(payload),
+    urlSafeBase64Encode(key),
+  ].join('.');
+
+  return {
+    access_token: accessToken,
+    token_type: 'bearer',
+    expires_in: expiresIn,
+  };
 }
 
 function is(reqInfo: RequestInfo, path: string) {
@@ -15,6 +44,25 @@ function is(reqInfo: RequestInfo, path: string) {
   }
 
   return new RegExp(`${path}(/)?$`, 'i').test(reqInfo.req.url);
+}
+
+function getUserFromJWTToken(req: HttpRequest<any>) {
+  const authorization = req.headers.get('Authorization');
+  const [, token] = authorization.split(' ');
+  try {
+    const [, payload] = token.split('.');
+
+    const data = JSON.parse(urlSafeBase64Decode(payload));
+    const d = new Date();
+    d.setUTCSeconds(data.exp);
+    if (new Date().getTime() > d.getTime()) {
+      return null;
+    }
+
+    return data.user;
+  } catch (e) {
+    return null;
+  }
 }
 
 @Injectable({
@@ -45,6 +93,14 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   get(reqInfo: RequestInfo) {
+    if (is(reqInfo, 'sanctum/csrf-cookie')) {
+      return reqInfo.utils.createResponse$(() => {
+        const { headers, url } = reqInfo;
+
+        return { status: STATUS.NO_CONTENT, headers, url, body: {} };
+      });
+    }
+
     if (is(reqInfo, 'me/menu')) {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
@@ -57,28 +113,13 @@ export class InMemDataService implements InMemoryDbService {
     if (is(reqInfo, 'me')) {
       return reqInfo.utils.createResponse$(() => {
         const { headers, url } = reqInfo;
-        const req = reqInfo.req as HttpRequest<any>;
-        const authorization = req.headers.get('Authorization');
-        const [, token] = authorization.split(' ');
-        const currentUser = Object.assign(
-          {},
-          this.users.find(user => generateToken(user) === token)
-        );
-        delete currentUser.password;
+        const user = getUserFromJWTToken(reqInfo.req as HttpRequest<any>);
 
-        if (!currentUser || !currentUser.id) {
+        if (!user) {
           return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
         }
 
-        return { status: STATUS.OK, headers, url, body: currentUser };
-      });
-    }
-
-    if (is(reqInfo, 'sanctum/csrf-cookie')) {
-      return reqInfo.utils.createResponse$(() => {
-        const { headers, url } = reqInfo;
-
-        return { status: STATUS.NO_CONTENT, headers, url, body: {} };
+        return { status: STATUS.OK, headers, url, body: user };
       });
     }
   }
@@ -86,6 +127,10 @@ export class InMemDataService implements InMemoryDbService {
   post(reqInfo: RequestInfo) {
     if (is(reqInfo, 'auth/login')) {
       return this.login(reqInfo);
+    }
+
+    if (is(reqInfo, 'auth/refresh')) {
+      return this.refresh(reqInfo);
     }
 
     if (is(reqInfo, 'auth/logout')) {
@@ -98,7 +143,10 @@ export class InMemDataService implements InMemoryDbService {
       const { headers, url } = reqInfo;
       const req = reqInfo.req as HttpRequest<any>;
       const { email, password } = req.body;
-      const currentUser = this.users.find(user => user.email === email || user.username === email);
+      const currentUser = Object.assign(
+        {},
+        this.users.find(user => user.email === email || user.username === email)
+      );
 
       if (!currentUser) {
         return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
@@ -117,16 +165,21 @@ export class InMemDataService implements InMemoryDbService {
         };
       }
 
-      return {
-        status: STATUS.OK,
-        headers,
-        url,
-        body: {
-          access_token: generateToken(currentUser),
-          token_type: 'bearer',
-          expires_in: 3600,
-        },
-      };
+      delete currentUser.password;
+
+      return { status: STATUS.OK, headers, url, body: generateToken(currentUser) };
+    });
+  }
+
+  private refresh(reqInfo: RequestInfo) {
+    return reqInfo.utils.createResponse$(() => {
+      const { headers, url } = reqInfo;
+      const user = getUserFromJWTToken(reqInfo.req as HttpRequest<any>);
+      if (!user) {
+        return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
+      }
+
+      return { status: STATUS.OK, headers, url, body: generateToken(user) };
     });
   }
 
