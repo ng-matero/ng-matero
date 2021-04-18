@@ -5,7 +5,7 @@ import { skip } from 'rxjs/operators';
 import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
 import { TokenService } from './token.service';
 import { AuthService } from './auth.service';
-import { guest } from './interface';
+import { guest } from './user';
 
 describe('AuthService', () => {
   let authService: AuthService;
