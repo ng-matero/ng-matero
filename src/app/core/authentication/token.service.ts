@@ -3,7 +3,6 @@ import { BehaviorSubject, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared/services/storage.service';
 import { RefreshToken, Token } from './interface';
-import { timeLeft } from './helpers';
 import { SimpleToken } from './token';
 
 @Injectable({
@@ -11,20 +10,24 @@ import { SimpleToken } from './token';
 })
 export class TokenService {
   private key = 'TOKEN';
-  private token = new SimpleToken(this.store.get(this.key));
-  private change$ = new BehaviorSubject<RefreshToken | null>(this.token);
+  private token: SimpleToken;
+  private change$ = new BehaviorSubject<RefreshToken>(this.get());
 
   constructor(private store: LocalStorageService) {}
 
   set(token: Token, refresh = false) {
     this.token = SimpleToken.create(token);
     this.store.set(this.key, this.token);
-    this.change$.next(Object.assign({ refresh }, this.token));
+    this.change$.next(this.token.clone({ refresh }));
 
     return this;
   }
 
   get() {
+    if (!this.token) {
+      this.token = new SimpleToken(this.store.get(this.key));
+    }
+
     return this.token;
   }
 
@@ -36,23 +39,23 @@ export class TokenService {
 
   change() {
     return this.change$.pipe(
-      filter(token => token === null || !token.refresh),
+      filter(token => !token || !token.refresh),
       share()
     );
   }
 
   refresh() {
     return this.change$.pipe(
-      filter(token => token && token.exp > 0),
-      map(token => timeLeft(token.exp - 5000)),
-      switchMap(delay => timer(delay)),
+      filter(() => !!this.token && this.token.exp > 0),
+      switchMap(() => timer(this.token.refreshTime())),
       filter(() => this.valid()),
+      map(() => this.token),
       share()
     );
   }
 
   valid() {
-    return this.token && !!this.token.valid();
+    return !!this.token && this.token.valid();
   }
 
   headerValue() {

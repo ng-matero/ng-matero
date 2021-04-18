@@ -19,4 +19,7 @@ export interface RefreshToken {
   accessToken: string;
   tokenType: string;
   exp: number;
+
+  refreshTime: () => number;
+  valid: () => boolean;
 }

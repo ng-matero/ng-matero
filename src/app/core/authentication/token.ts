@@ -1,4 +1,4 @@
-import { capitalize, now } from '@core/authentication/helpers';
+import { capitalize, now, timeLeft } from '@core/authentication/helpers';
 import { RefreshToken, Token } from '@core/authentication/interface';
 
 export class SimpleToken implements RefreshToken {
@@ -30,5 +30,13 @@ export class SimpleToken implements RefreshToken {
 
   headerValue() {
     return !!this.accessToken ? [capitalize(this.tokenType), this.accessToken].join(' ') : '';
+  }
+
+  refreshTime() {
+    return timeLeft(this.exp - 5000);
+  }
+
+  clone(attributes: any = {}) {
+    return new SimpleToken(Object.assign({}, this, attributes));
   }
 }
