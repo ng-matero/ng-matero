@@ -42,8 +42,8 @@ export class TokenService {
 
   refresh() {
     return this.change$.pipe(
-      filter(token => token && token.expiredAt > 0),
-      map(token => timeLeft(token.expiredAt - 5000)),
+      filter(token => token && token.exp > 0),
+      map(token => timeLeft(token.exp - 5000)),
       switchMap(delay => timer(delay)),
       filter(() => this.valid()),
       share()

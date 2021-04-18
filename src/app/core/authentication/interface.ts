@@ -17,19 +17,17 @@ export interface Token {
 }
 
 export interface RefreshToken {
+  refresh: boolean;
   accessToken: string;
   tokenType: string;
-  expiresIn?: number;
-  expiredAt?: number;
-  refresh?: boolean;
+  exp: number;
 }
 
 export class SimpleToken implements RefreshToken {
+  refresh = false;
   accessToken = '';
   tokenType = '';
-  expiresIn = 0;
-  expiredAt = 0;
-  refresh = false;
+  exp = 0;
 
   constructor(attributes: any) {
     Object.assign(this, attributes || {});
@@ -39,9 +37,9 @@ export class SimpleToken implements RefreshToken {
     const accessToken = token.access_token || token.token || '';
     const tokenType = token.token_type || 'bearer';
     const expiresIn = token.expires_in || 0;
-    const expiredAt = expiresIn <= 0 ? 0 : now() + expiresIn * 1000;
+    const exp = expiresIn <= 0 ? 0 : now() + expiresIn * 1000;
 
-    return new SimpleToken({ accessToken, tokenType, expiresIn, expiredAt });
+    return new SimpleToken({ accessToken, tokenType, exp });
   }
 
   valid() {
@@ -49,7 +47,7 @@ export class SimpleToken implements RefreshToken {
   }
 
   isExpired() {
-    return this.expiredAt !== 0 && this.expiredAt - now() < 0;
+    return this.exp !== 0 && this.exp - now() < 0;
   }
 
   headerValue() {
