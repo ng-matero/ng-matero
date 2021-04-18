@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared/services/storage.service';
-import { RefreshToken, SimpleToken, Token } from './interface';
+import { RefreshToken, Token } from './interface';
 import { timeLeft } from './helpers';
+import { SimpleToken } from './token';
 
 @Injectable({
   providedIn: 'root',
