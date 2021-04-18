@@ -36,7 +36,7 @@ export class TokenService {
 
   change() {
     return this.change$.pipe(
-      filter(token => token && !token.refresh),
+      filter(token => token === null || !token.refresh),
       share()
     );
   }
