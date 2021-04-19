@@ -3,85 +3,62 @@ import { BehaviorSubject, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared/services/storage.service';
 import { RefreshToken, Token } from './interface';
+import { SimpleToken } from './token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
   private key = 'TOKEN';
+  private token: SimpleToken;
   private change$ = new BehaviorSubject<RefreshToken>(this.get());
 
   constructor(private store: LocalStorageService) {}
 
   set(token: Token, refresh = false) {
-    const refreshToken = this.toRefreshToken(token);
-    this.store.set(this.key, refreshToken);
-    this.change$.next(Object.assign({ refresh }, token));
+    this.token = SimpleToken.create(token);
+    this.store.set(this.key, this.token);
+    this.change$.next(this.token.clone({ refresh }));
 
     return this;
   }
 
   get() {
-    return this.store.get(this.key);
+    if (!this.token) {
+      this.token = new SimpleToken(this.store.get(this.key));
+    }
+
+    return this.token;
   }
 
   clear() {
     this.store.remove(this.key);
-    this.change$.next({});
+    this.change$.next(null);
+    this.token = null;
   }
 
   change() {
     return this.change$.pipe(
-      filter(token => !token.refresh),
+      filter(token => !token || !token.refresh),
       share()
     );
   }
 
   refresh() {
     return this.change$.pipe(
-      filter(token => token.expired_at > 0),
-      map(token => Math.max(0, token.expired_at - this.now() - 5000)),
-      switchMap(delay => timer(delay)),
+      filter(() => !!this.token && this.token.exp > 0),
+      switchMap(() => timer(this.token.refreshTime())),
       filter(() => this.valid()),
+      map(() => this.token),
       share()
     );
   }
 
   valid() {
-    const token = this.get();
-
-    return !!token.access_token && !this.isExpired();
+    return !!this.token && this.token.valid();
   }
 
   headerValue() {
-    const token = this.get();
-
-    return !!token.access_token ? [token.token_type, token.access_token].join(' ') : '';
-  }
-
-  private isExpired() {
-    const token = this.get();
-
-    return token.expired_at !== 0 && token.expired_at - this.now() < 0;
-  }
-
-  private capitalize(str: string) {
-    return str.substring(0, 1).toUpperCase() + str.substring(1, str.length).toLowerCase();
-  }
-
-  private now() {
-    return new Date().getTime();
-  }
-
-  private toRefreshToken(token: Token): RefreshToken {
-    const accessToken = token.access_token || token.token || '';
-    const tokenType = token.token_type || 'bearer';
-    const expiredIn = token.expires_in;
-
-    return Object.assign(token, {
-      access_token: accessToken,
-      token_type: this.capitalize(tokenType),
-      expired_at: !expiredIn ? 0 : this.now() + expiredIn * 1000,
-    });
+    return this.token.headerValue();
   }
 }

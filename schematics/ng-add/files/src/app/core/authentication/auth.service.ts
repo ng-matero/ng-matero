@@ -3,7 +3,8 @@ import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { admin, guest, Token, User } from './interface';
+import { Token, User } from './interface';
+import { admin, guest } from './user';
 
 @Injectable({
   providedIn: 'root',

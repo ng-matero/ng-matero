@@ -14,21 +14,12 @@ export interface Token {
   expires_in?: number;
 }
 
-export interface RefreshToken extends Token {
-  refresh?: boolean;
-  expired_at?: number;
+export interface RefreshToken {
+  refresh: boolean;
+  accessToken: string;
+  tokenType: string;
+  exp: number;
+
+  refreshTime: () => number;
+  valid: () => boolean;
 }
-
-export const admin: User = {
-  id: 1,
-  name: 'Zongbin',
-  email: 'nzb329@163.com',
-  avatar: './assets/images/avatar.jpg',
-};
-
-export const guest: User = {
-  id: null,
-  name: 'unknown',
-  email: 'unknown',
-  avatar: './assets/images/avatar-default.jpg',
-};

@@ -5,7 +5,7 @@ import { skip } from 'rxjs/operators';
 import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
 import { TokenService } from './token.service';
 import { AuthService } from './auth.service';
-import { guest } from './interface';
+import { guest } from './user';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -58,7 +58,12 @@ describe('AuthService', () => {
   });
 
   it('should log out successful when user is login', () => {
+    let changeTimes = 0;
+    let refreshTimes = 0;
+
     tokenService.set(token);
+    tokenService.change().subscribe(() => changeTimes++);
+    tokenService.refresh().subscribe(() => refreshTimes++);
 
     authService.logout().subscribe(isLogout => expect(isLogout).toBeTrue());
 
@@ -69,5 +74,8 @@ describe('AuthService', () => {
 
     httpMock.expectOne('/me').flush(user);
     httpMock.expectOne('/auth/logout').flush({});
+
+    expect(changeTimes).toEqual(2);
+    expect(refreshTimes).toEqual(0);
   });
 });

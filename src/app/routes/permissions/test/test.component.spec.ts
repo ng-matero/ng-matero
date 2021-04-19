@@ -1,5 +1,6 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { PermissionsTestComponent } from './test.component';
 
 describe('PermissionsTestComponent', () => {
@@ -10,6 +11,7 @@ describe('PermissionsTestComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [PermissionsTestComponent],
+        imports: [NgxPermissionsModule.forRoot()],
       }).compileComponents();
     })
   );
