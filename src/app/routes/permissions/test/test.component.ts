@@ -7,7 +7,7 @@ import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
   styleUrls: ['./test.component.scss'],
 })
 export class PermissionsTestComponent implements OnInit {
-  constructor(private roles: NgxRolesService, private permissionsSrv: NgxPermissionsService) {}
+  constructor(private roles: NgxRolesService, private permissions: NgxPermissionsService) {}
 
   ngOnInit() {}
 }
