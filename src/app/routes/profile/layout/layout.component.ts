@@ -4,7 +4,7 @@ import { AuthService } from '@core/authentication/auth.service';
 
 @Component({
   selector: 'app-profile-layout',
-  templateUrl: './profile-layout.component.html',
+  templateUrl: './layout.component.html',
 })
 export class ProfileLayoutComponent implements OnInit {
   user: User;
