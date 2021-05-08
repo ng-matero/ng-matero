@@ -64,7 +64,7 @@
     "@angular-devkit/build-angular": "~0.1102.10",
     "@angular/cli": "~11.2.10",
     "@angular/compiler-cli": "~11.2.11",
-    "@angular/language-service": "~11.2.11",
+    "@angular/language-service": "~11.2.13",
     "@angularclass/hmr": "^3.0.0",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
