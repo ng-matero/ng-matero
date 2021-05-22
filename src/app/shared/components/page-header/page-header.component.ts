@@ -20,7 +20,7 @@ export class PageHeaderComponent implements OnInit {
   get hideBreadcrumb() {
     return this._hideBreadCrumb;
   }
-  set hideBreadcrumb(value: boolean) {
+  set hideBreadcrumb(value: boolean | string) {
     this._hideBreadCrumb = coerceBooleanProperty(value);
   }
   private _hideBreadCrumb = false;

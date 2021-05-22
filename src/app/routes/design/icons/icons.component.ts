@@ -9,14 +9,15 @@ import { MAT_ICONS } from '@shared';
   providers: [DesignIconsService],
 })
 export class DesignIconsComponent implements OnInit {
-  icons: any;
+  icons: { [key: string]: string[] };
+
   constructor(private iconsSrv: DesignIconsService) {}
 
   ngOnInit() {
     this.icons = MAT_ICONS;
   }
 
-  trackByIcon(index: number, icon: { key: string; value: {} }): string {
+  trackByIcon(index: number, icon: { key: string; value: string[] }): string {
     return icon.key;
   }
 }

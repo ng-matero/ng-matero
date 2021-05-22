@@ -29,7 +29,7 @@ export class GridListComponent {
 
   fixedCols = 4;
   fixedRowHeight = 100;
-  ratioGutter = 1;
+  ratioGutter = '1';
   fitListHeight = '400px';
   ratio = '4:1';
 }

@@ -93,7 +93,7 @@
         <label>Custom tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="companies" [addTag]="addTag" [hideSelected]="true" multiple="true"
+          <mtx-select [items]="companies" [addTag]="addTag" [hideSelected]="true" [multiple]="true"
                       bindLabel="name" [(ngModel)]="selectedCompanyCustom">
           </mtx-select>
         </mat-form-field>
@@ -107,9 +107,9 @@
         <label>Server side tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="companies" [addTag]="addTagPromise" multiple="true" bindLabel="name"
-                      [loading]="loading" [(ngModel)]="selectedCompanyCustomPromise">
-
+          <mtx-select [items]="companies" [addTag]="addTagPromise" [multiple]="true"
+                      bindLabel="name" [loading]="loading"
+                      [(ngModel)]="selectedCompanyCustomPromise">
             <ng-template ng-tag-tmp let-search="searchTerm">
               <b>create new</b>: {{search}}
             </ng-template>

@@ -4,7 +4,7 @@
   <div fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100"
        *ngFor="let color of colors; trackBy: trackByColor">
     <div class="b-1">
-      <ng-container *ngFor="let hue of color.value|keyvalue:keyAscOrder; first as isFirst;">
+      <ng-container *ngFor="let hue of color.value | keyvalue: keyAscOrder; first as isFirst;">
         <div class="bg-{{color.key+'-'+hue.key}} text-{{color.value['contrast'][hue.key]}} p-8"
              *ngIf="hue.key !== 'contrast'">
           <span class="m-r-4 text-capitalize" *ngIf="isFirst">{{color.key}}</span>
