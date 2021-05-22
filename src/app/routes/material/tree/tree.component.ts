@@ -77,9 +77,7 @@ export class DynamicDataSource {
       }
     });
 
-    return merge(collectionViewer.viewChange, this.dataChange).pipe(
-      map(() => this.data)
-    );
+    return merge(collectionViewer.viewChange, this.dataChange).pipe(map(() => this.data));
   }
 
   /** Handle expand/collapse behaviors */
@@ -111,12 +109,7 @@ export class DynamicDataSource {
     setTimeout(() => {
       if (expand) {
         const nodes = children.map(
-          name =>
-            new DynamicFlatNode(
-              name,
-              node.level + 1,
-              this.database.isExpandable(name)
-            )
+          name => new DynamicFlatNode(name, node.level + 1, this.database.isExpandable(name))
         );
         this.data.splice(index + 1, 0, ...nodes);
       } else {
@@ -147,10 +140,7 @@ export class DynamicDataSource {
 })
 export class TreeComponent {
   constructor(database: DynamicDatabase) {
-    this.treeControl = new FlatTreeControl<DynamicFlatNode>(
-      this.getLevel,
-      this.isExpandable
-    );
+    this.treeControl = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
     this.dataSource = new DynamicDataSource(this.treeControl, database);
 
     this.dataSource.data = database.initialData();
@@ -158,7 +148,7 @@ export class TreeComponent {
 
   treeControl: FlatTreeControl<DynamicFlatNode>;
 
-  dataSource: DynamicDataSource;
+  dataSource: DynamicDataSource | any;
 
   getLevel = (node: DynamicFlatNode) => node.level;
 
