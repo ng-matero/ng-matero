@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { Router } from '@angular/router';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'page-header',
@@ -20,7 +20,7 @@ export class PageHeaderComponent implements OnInit {
   get hideBreadcrumb() {
     return this._hideBreadCrumb;
   }
-  set hideBreadcrumb(value: boolean | string) {
+  set hideBreadcrumb(value: boolean) {
     this._hideBreadCrumb = coerceBooleanProperty(value);
   }
   private _hideBreadCrumb = false;
@@ -42,4 +42,7 @@ export class PageHeaderComponent implements OnInit {
     this.nav = this.menu.getLevel(routes);
     this.nav.unshift('home');
   }
+
+  // tslint:disable-next-line: member-ordering variable-name
+  static ngAcceptInputType_hideBreadcrumb: BooleanInput;
 }
