@@ -29,16 +29,14 @@ export class TopmenuComponent implements OnDestroy {
   private routerSubscription: Subscription;
 
   constructor(private menu: MenuService, private router: Router) {
-    this.menuSubscription = this.menu$.subscribe({
-      next: res => {
-        this.menuList = res;
-        this.menuList.forEach(item => {
-          this.menuStates.push({
-            active: this.router.url.split('/').includes(item.route),
-            route: item.route,
-          });
+    this.menuSubscription = this.menu$.subscribe(res => {
+      this.menuList = res;
+      this.menuList.forEach(item => {
+        this.menuStates.push({
+          active: this.router.url.split('/').includes(item.route),
+          route: item.route,
         });
-      },
+      });
     });
   }
 
