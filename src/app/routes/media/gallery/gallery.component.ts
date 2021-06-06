@@ -20,10 +20,7 @@ export class MediaGalleryComponent {
 
   // Preview images
   preview(index: number) {
-    const options: PhotoViewer.Options = {
-      index,
-    };
-
+    const options: PhotoViewer.Options = { index };
     const viewer = new PhotoViewer(this.images, options);
   }
 }

@@ -1,15 +1,18 @@
 <page-header class="bg-pink-A100" title="Media"></page-header>
 
-<p>The media picture is powered by <a href="https://github.com/nzbin/photoviewer"
-     target="_blank">PhotoViewer</a>, you can click the picture to enlarge it.</p>
+<p>
+  The media picture is powered by <a href="https://github.com/nzbin/photoviewer"
+     target="_blank">PhotoViewer</a>, you can click the picture to enlarge it.
+</p>
+
 <mat-grid-list cols="4" rowHeight="1:1">
   <mat-grid-tile *ngFor="let image of images; let i = index;">
     <mat-grid-tile-header>
-      <span matLine>Gallery Image: {{ i }}</span>
+      <span matLine>Gallery Image: {{ i+1 }}</span>
     </mat-grid-tile-header>
 
-    <img class="w-full h-full object-cover cursor-pointer" src="{{image.src}}" alt="Gallery Image"
+    <img class="w-full h-full object-cover cursor-pointer"
+         [src]="image.src" alt="Gallery Image {{ i+1 }}"
          (click)="preview(i)" />
-
   </mat-grid-tile>
 </mat-grid-list>
