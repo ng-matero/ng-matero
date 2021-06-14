@@ -57,7 +57,7 @@
     "photoviewer": "^3.5.8",
     "rxjs": "~6.6.0",
     "screenfull": "^5.1.0",
-    "tslib": "^2.2.0",
+    "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
