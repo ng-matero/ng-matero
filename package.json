@@ -42,7 +42,7 @@
     "@mat-datetimepicker/moment": "^6.0.3",
     "@ng-matero/extensions": "^11.3.4",
     "@ng-select/ng-option-highlight": "0.0.6",
-    "@ng-select/ng-select": "^6.1.0",
+    "@ng-select/ng-select": "^7.0.0",
     "@ngx-formly/core": "^5.10.21",
     "@ngx-formly/material": "^5.10.21",
     "@ngx-translate/core": "^13.0.0",
