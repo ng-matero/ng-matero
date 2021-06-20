@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,7 +9,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./role-switching.component.scss'],
 })
 export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
-  currentRole = 'ADMIN';
+  currentRole: string;
 
   currentPermissions: string[];
 
@@ -25,15 +24,15 @@ export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
   constructor(private rolesSrv: NgxRolesService, private permissionsSrv: NgxPermissionsService) {}
 
   ngOnInit() {
+    this.currentRole = Object.keys(this.rolesSrv.getRoles())[0];
+    this.currentPermissions = Object.keys(this.permissionsSrv.getPermissions());
+
     this.rolesSrv.roles$.pipe(takeUntil(this._destroy$)).subscribe(roles => {
       console.log(roles);
     });
-
     this.permissionsSrv.permissions$.pipe(takeUntil(this._destroy$)).subscribe(permissions => {
       console.log(permissions);
     });
-
-    this.currentPermissions = Object.keys(this.permissionsSrv.getPermissions());
   }
 
   ngOnDestroy() {
@@ -41,7 +40,7 @@ export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
     this._destroy$.complete();
   }
 
-  onPermissionChange(e: MatButtonToggleChange) {
+  onPermissionChange() {
     this.currentPermissions = this.permissionsOfRole[this.currentRole];
     this.rolesSrv.flushRolesAndPermissions();
     this.rolesSrv.addRoleWithPermissions(this.currentRole, this.currentPermissions);
