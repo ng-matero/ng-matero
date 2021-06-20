@@ -26,7 +26,13 @@
           "name": "icons",
           "type": "link"
         }
-      ]
+      ],
+      "permissions": {
+        "only": [
+          "ADMIN",
+          "MANAGER"
+        ]
+      }
     },
     {
       "route": "material",
@@ -251,6 +257,45 @@
             }
           ]
         }
+      ],
+      "permissions": {
+        "except": [
+          "MANAGER",
+          "GUEST"
+        ]
+      }
+    },
+    {
+      "route": "permissions",
+      "name": "permissions",
+      "type": "sub",
+      "icon": "lock",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      },
+      "children": [
+        {
+          "route": "role-switching",
+          "name": "role-switching",
+          "type": "link"
+        },
+        {
+          "route": "route-guard",
+          "name": "route-guard",
+          "type": "link",
+          "permissions": {
+            "except": "GUEST"
+          }
+        },
+        {
+          "route": "test",
+          "name": "test",
+          "type": "link",
+          "permissions": {
+            "only": "ADMIN"
+          }
+        }
       ]
     },
     {
@@ -271,10 +316,6 @@
       "name": "forms",
       "type": "sub",
       "icon": "description",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "route": "elements",
@@ -296,7 +337,10 @@
           "name": "datetime",
           "type": "link"
         }
-      ]
+      ],
+      "permissions": {
+        "except": "GUEST"
+      }
     },
     {
       "route": "tables",
@@ -314,7 +358,10 @@
           "name": "remote-data",
           "type": "link"
         }
-      ]
+      ],
+      "permissions": {
+        "except": "GUEST"
+      }
     },
     {
       "route": "profile",
@@ -339,23 +386,9 @@
       "name": "extensions",
       "type": "extTabLink",
       "icon": "extension",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
+      "permissions": {
+        "only": "ADMIN"
       }
-    },
-    {
-      "route": "permissions",
-      "name": "permissions",
-      "type": "sub",
-      "icon": "lock",
-      "children": [
-        {
-          "route": "test",
-          "name": "test",
-          "type": "link"
-        }
-      ]
     },
     {
       "route": "sessions",
@@ -378,7 +411,10 @@
           "name": "500",
           "type": "link"
         }
-      ]
+      ],
+      "permissions": {
+        "only": "ADMIN"
+      }
     },
     {
       "route": "helpers",
@@ -439,7 +475,10 @@
           "name": "level-1-2",
           "type": "link"
         }
-      ]
+      ],
+      "permissions": {
+        "only": "ADMIN"
+      }
     }
   ]
 }
