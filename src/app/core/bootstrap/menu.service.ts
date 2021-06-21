@@ -6,11 +6,17 @@ export interface MenuTag {
   value: string;
 }
 
+export interface MenuPermissions {
+  only?: string | string[];
+  except?: string | string[];
+}
+
 export interface MenuChildrenItem {
   route: string;
   name: string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   children?: MenuChildrenItem[];
+  permissions?: MenuPermissions;
 }
 
 export interface Menu {
@@ -21,6 +27,7 @@ export interface Menu {
   label?: MenuTag;
   badge?: MenuTag;
   children?: MenuChildrenItem[];
+  permissions?: MenuPermissions;
 }
 
 @Injectable({

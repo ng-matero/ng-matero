@@ -1,34 +1,39 @@
 <nav mat-tab-nav-bar>
   <ng-container *ngFor="let menuItem of menu$ | async; let index=index">
-    <button *ngIf="menuItem.type === 'link'" mat-button
-            [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
-      <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-      </ng-container>
-    </button>
+    <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only"
+                 [ngxPermissionsExcept]="menuItem.permissions?.except">
 
-    <a *ngIf="menuItem.type === 'extLink'" mat-button [href]="menuItem.route">
-      <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-      </ng-container>
-    </a>
+      <button *ngIf="menuItem.type === 'link'" mat-button
+              [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
+        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+        </ng-container>
+      </button>
 
-    <a *ngIf="menuItem.type === 'extTabLink'" mat-button [href]="menuItem.route" target="_blank">
-      <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-      </ng-container>
-    </a>
+      <a *ngIf="menuItem.type === 'extLink'" mat-button [href]="menuItem.route">
+        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+        </ng-container>
+      </a>
 
-    <button *ngIf="menuItem.type === 'sub'" mat-button
-            [matMenuTriggerFor]="submenu.menu" routerLinkActive="active"
-            [class.active]="menuStates[index].active">
-      <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-      </ng-container>
+      <a *ngIf="menuItem.type === 'extTabLink'" mat-button [href]="menuItem.route" target="_blank">
+        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+        </ng-container>
+      </a>
 
-      <app-topmenu-panel #submenu
-                         [items]="menuItem.children"
-                         [parentRoute]="[menuItem.route]"
-                         [level]="1"
-                         (routeChange)="onRouteChange($event, index)">
-      </app-topmenu-panel>
-    </button>
+      <button *ngIf="menuItem.type === 'sub'" mat-button
+              [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
+              [class.active]="menuStates[index].active">
+        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+        </ng-container>
+
+        <app-topmenu-panel #submenu
+                           [items]="menuItem.children"
+                           [parentRoute]="[menuItem.route]"
+                           [level]="1"
+                           (routeChange)="onRouteChange($event, index)">
+        </app-topmenu-panel>
+      </button>
+
+    </ng-template>
   </ng-container>
 </nav>
 

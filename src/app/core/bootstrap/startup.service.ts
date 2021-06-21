@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { MenuService } from './menu.service';
 import { SettingsService } from './settings.service';
+import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,9 @@ export class StartupService {
   constructor(
     private menu: MenuService,
     private http: HttpClient,
-    private settings: SettingsService
+    private settings: SettingsService,
+    private rolesSrv: NgxRolesService,
+    private permissonsSrv: NgxPermissionsService
   ) {}
 
   load(): Promise<any> {
@@ -39,6 +42,14 @@ export class StartupService {
               email: 'nzb329@163.com',
               avatar: './assets/images/avatar.jpg',
             });
+
+            // Load all permissions and add roles
+            const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
+            this.permissonsSrv.loadPermissions(permissions);
+            this.rolesSrv.addRoles({ ADMIN: permissions });
+
+            // Tips: Alternative you can add permissions with role at the same time
+            // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
           },
           () => reject(),
           () => resolve(null)

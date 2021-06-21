@@ -4,46 +4,53 @@
 
 <ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">
   <ul navAccordion class="matero-sidemenu {{level>0 ? 'matero-sidemenu-sub' : ''}} level-{{level}}">
-    <li navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
-        *ngFor="let menuItem of menuList" [group]="menuItem.route" [type]="menuItem.type">
+    <ng-container *ngFor="let menuItem of menuList">
+      <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only"
+                   [ngxPermissionsExcept]="menuItem.permissions?.except">
 
-      <a class="matero-sidemenu-link"
-         [routerLink]="buildRoute(parentRoute.concat([menuItem.route]))"
-         *ngIf="menuItem.type==='link'" matRipple [matRippleDisabled]="!ripple">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl"
-                      [ngTemplateOutletContext]="{item: menuItem, level: level}">
-        </ng-container>
-      </a>
+        <li navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
+            [group]="menuItem.route" [type]="menuItem.type">
 
-      <a class="matero-sidemenu-link" [href]="menuItem.route"
-         *ngIf="menuItem.type==='extLink'" matRipple [matRippleDisabled]="!ripple">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl"
-                      [ngTemplateOutletContext]="{item: menuItem, level: level}">
-        </ng-container>
-      </a>
+          <a class="matero-sidemenu-link"
+             [routerLink]="buildRoute(parentRoute.concat([menuItem.route]))"
+             *ngIf="menuItem.type==='link'" matRipple [matRippleDisabled]="!ripple">
+            <ng-container [ngTemplateOutlet]="linkTypeTpl"
+                          [ngTemplateOutletContext]="{item: menuItem, level: level}">
+            </ng-container>
+          </a>
 
-      <a class="matero-sidemenu-link" [href]="menuItem.route" target="_blank"
-         *ngIf="menuItem.type==='extTabLink'" matRipple [matRippleDisabled]="!ripple">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl"
-                      [ngTemplateOutletContext]="{item: menuItem, level: level}">
-        </ng-container>
-      </a>
+          <a class="matero-sidemenu-link" [href]="menuItem.route"
+             *ngIf="menuItem.type==='extLink'" matRipple [matRippleDisabled]="!ripple">
+            <ng-container [ngTemplateOutlet]="linkTypeTpl"
+                          [ngTemplateOutletContext]="{item: menuItem, level: level}">
+            </ng-container>
+          </a>
 
-      <a navAccordionToggle class="matero-sidemenu-toggle"
-         *ngIf="menuItem.type==='sub'" matRipple [matRippleDisabled]="!ripple">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl"
-                      [ngTemplateOutletContext]="{item: menuItem, level: level}">
-        </ng-container>
-      </a>
+          <a class="matero-sidemenu-link" [href]="menuItem.route" target="_blank"
+             *ngIf="menuItem.type==='extTabLink'" matRipple [matRippleDisabled]="!ripple">
+            <ng-container [ngTemplateOutlet]="linkTypeTpl"
+                          [ngTemplateOutletContext]="{item: menuItem, level: level}">
+            </ng-container>
+          </a>
 
-      <ng-container [ngTemplateOutlet]="menuListTpl"
-                    [ngTemplateOutletContext]="{
-                      menuList: menuItem.children,
-                      parentRoute: parentRoute.concat([menuItem.route]),
-                      level: level + 1
-                    }">
-      </ng-container>
-    </li>
+          <a navAccordionToggle class="matero-sidemenu-toggle"
+             *ngIf="menuItem.type==='sub'" matRipple [matRippleDisabled]="!ripple">
+            <ng-container [ngTemplateOutlet]="linkTypeTpl"
+                          [ngTemplateOutletContext]="{item: menuItem, level: level}">
+            </ng-container>
+          </a>
+
+          <ng-container [ngTemplateOutlet]="menuListTpl"
+                        [ngTemplateOutletContext]="{
+                          menuList: menuItem.children,
+                          parentRoute: parentRoute.concat([menuItem.route]),
+                          level: level + 1
+                        }">
+          </ng-container>
+        </li>
+
+      </ng-template>
+    </ng-container>
   </ul>
 </ng-template>
 

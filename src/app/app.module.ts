@@ -3,23 +3,25 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppComponent } from './app.component';
+
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
-import { AppComponent } from './app.component';
-
+import { FormlyConfigModule } from './formly-config.module';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { httpInterceptorProviders } from '@core/interceptors';
+import { appInitializerProviders } from '@core/initializers';
+
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
-import { httpInterceptorProviders } from '@core/interceptors';
-import { appInitializerProviders } from '@core/initializers';
-import { FormlyConfigModule } from './formly-config.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +34,7 @@ import { FormlyConfigModule } from './formly-config.module';
     RoutesModule,
     SharedModule,
     FormlyConfigModule.forRoot(),
+    NgxPermissionsModule.forRoot(),
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

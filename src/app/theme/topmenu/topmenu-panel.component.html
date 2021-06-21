@@ -1,33 +1,38 @@
-<mat-menu #menu>
+<mat-menu>
   <ng-container *ngFor="let item of items; let index=index">
-    <button *ngIf="item.type === 'link'" mat-menu-item
-            [routerLink]="buildRoute(parentRoute.concat([item.route]))"
-            routerLinkActive #rla="routerLinkActive" [class.active]="rla.isActive"
-            (click)="onRouterLinkClick(rla)">
-      {{item.name | translate}}
-    </button>
+    <ng-template [ngxPermissionsOnly]="item.permissions?.only"
+                 [ngxPermissionsExcept]="item.permissions?.except">
 
-    <a *ngIf="item.type === 'extLink'" mat-menu-item [href]="item.route">
-      <span class="menu-name">{{item.name | translate}}</span>
-      <mat-icon>launch</mat-icon>
-    </a>
+      <button *ngIf="item.type === 'link'" mat-menu-item
+              [routerLink]="buildRoute(parentRoute.concat([item.route]))"
+              routerLinkActive #rla="routerLinkActive" [class.active]="rla.isActive"
+              (click)="onRouterLinkClick(rla)">
+        {{item.name | translate}}
+      </button>
 
-    <a *ngIf="item.type === 'extTabLink'" mat-menu-item [href]="item.route" target="_blank">
-      <span class="menu-name">{{item.name | translate}}</span>
-      <mat-icon>launch</mat-icon>
-    </a>
+      <a *ngIf="item.type === 'extLink'" mat-menu-item [href]="item.route">
+        <span class="menu-name">{{item.name | translate}}</span>
+        <mat-icon>launch</mat-icon>
+      </a>
 
-    <button *ngIf="item.type === 'sub'" mat-menu-item
-            [matMenuTriggerFor]="submenu.menu" routerLinkActive="active"
-            [class.active]="menuStates[index].active">
-      {{item.name | translate}}
+      <a *ngIf="item.type === 'extTabLink'" mat-menu-item [href]="item.route" target="_blank">
+        <span class="menu-name">{{item.name | translate}}</span>
+        <mat-icon>launch</mat-icon>
+      </a>
 
-      <app-topmenu-panel #submenu
-                         [items]="item.children"
-                         [parentRoute]="parentRoute.concat([item.route])"
-                         [level]="level + 1"
-                         (routeChange)="onRouteChange($event, index)">
-      </app-topmenu-panel>
-    </button>
+      <button *ngIf="item.type === 'sub'" mat-menu-item
+              [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
+              [class.active]="menuStates[index].active">
+        {{item.name | translate}}
+
+        <app-topmenu-panel #submenu
+                           [items]="item.children"
+                           [parentRoute]="parentRoute.concat([item.route])"
+                           [level]="level + 1"
+                           (routeChange)="onRouteChange($event, index)">
+        </app-topmenu-panel>
+      </button>
+
+    </ng-template>
   </ng-container>
 </mat-menu>
