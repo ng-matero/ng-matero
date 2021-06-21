@@ -16,8 +16,8 @@ export class StartupService {
     private token: TokenService,
     private menu: MenuService,
     private http: HttpClient,
-    private rolesSrv: NgxRolesService,
-    private permissonsSrv: NgxPermissionsService
+    private permissonsSrv: NgxPermissionsService,
+    private rolesSrv: NgxRolesService
   ) {}
 
   /** Load the application only after get the menu or other essential informations such as roles and permissions. */
@@ -33,12 +33,12 @@ export class StartupService {
           this.menu.addNamespace(response.menu, 'menu');
           this.menu.set(response.menu);
 
-          // Load all permissions and add roles
+          // Demo purposes only. You can add essential permissions and roles with your own cases.
           const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
           this.permissonsSrv.loadPermissions(permissions);
           this.rolesSrv.addRoles({ ADMIN: permissions });
 
-          // Tips: Alternative you can add permissions with role at the same time
+          // Tips: Alternative you can add permissions with role at the same time.
           // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
 
           resolve(null);

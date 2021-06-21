@@ -1,5 +1,9 @@
 <page-header></page-header>
 
+<p>
+  The route will be redirected to dashboard after change permission.
+</p>
+
 <mat-button-toggle-group [(ngModel)]="currentRole" (change)="onPermissionChange()">
   <mat-button-toggle value="ADMIN">ADMIN</mat-button-toggle>
   <mat-button-toggle value="MANAGER">MANAGER</mat-button-toggle>
@@ -12,8 +16,4 @@
 
 <p>
   Your current permissions: <code>{{currentPermissions | json}}</code>
-</p>
-
-<p>
-  The route will be redirected to dashboard after change permission.
 </p>
