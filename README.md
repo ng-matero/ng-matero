@@ -36,6 +36,7 @@ Ng-Matero is an Angular admin template made with Material components.
 - Internationalization
 - Authentication
 - HTTP interceptors
+- Permissions management
 
 ## 📖 Documents
 
