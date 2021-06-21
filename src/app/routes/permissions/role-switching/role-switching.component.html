@@ -1,0 +1,22 @@
+<page-header></page-header>
+
+<p>
+  The permission managements are powered by
+  <a href="https://github.com/AlexKhymenko/ngx-permissions" target="_blank">
+    <code>ngx-permissions</code>
+  </a>.
+</p>
+
+<mat-button-toggle-group [(ngModel)]="currentRole" (change)="onPermissionChange()">
+  <mat-button-toggle value="ADMIN">ADMIN</mat-button-toggle>
+  <mat-button-toggle value="MANAGER">MANAGER</mat-button-toggle>
+  <mat-button-toggle value="GUEST">GUEST</mat-button-toggle>
+</mat-button-toggle-group>
+
+<p>
+  Your current role: <code>{{currentRole | json}}</code>
+</p>
+
+<p>
+  Your current permissions: <code>{{currentPermissions | json}}</code>
+</p>

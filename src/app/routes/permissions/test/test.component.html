@@ -1,0 +1,61 @@
+<page-header></page-header>
+
+<p>
+  <button (click)="addPermission()">Add Permission [ admin ]</button>
+  <button (click)="removePermission()">Remove Permission [ admin ]</button>
+</p>
+
+<ng-template permissions [ngxPermissionsOnly]="['admin']">
+  <mtx-alert type="success">
+    I should see it only admin
+  </mtx-alert>
+</ng-template>
+
+<ng-template [ngxPermissionsOnly]="['admin']" [ngxPermissionsExcept]="'hhhhh'">
+  <mtx-alert type="warning">
+    Usage on both only and except I should see see it only admin
+  </mtx-alert>
+</ng-template>
+
+<ng-template permissions [ngxPermissionsOnly]="['guest']">
+  <p>I will see it only guest</p>
+</ng-template>
+
+<ng-template permissions [ngxPermissionsExcept]="['adminnnnn']"
+             (permissionsAuthorized)="authorized()"
+             (permissionsUnauthorized)="unAuthorized()">
+  <p>I will see it except adminnnnn</p>
+</ng-template>
+
+<ng-template permissions [ngxPermissionsExcept]="['admin']">
+  <p>I should see it except admin</p>
+</ng-template>
+
+<div *ngxPermissionsOnly="['admin']; else a; then b">
+  Testing template
+</div>
+
+<div *ngxPermissionsExcept="['admin']; else a; then b">
+  Testing template
+</div>
+
+<ng-template #a>
+  <p>else block</p>
+</ng-template>
+<ng-template #b>
+  <p>then block</p>
+</ng-template>
+
+<div>
+  <button (click)="changeToAdmin()">Change To Admin Permission</button>
+
+  <button (click)="changeToAnotherPermission()">Change To Awesome Permission</button>
+
+  <button (click)="changeToGuest()">Change To Guest Permission</button>
+</div>
+
+<div>
+  <button *ngxPermissionsOnly="permission">This should be visible to admin or superadmin</button>
+
+  <button *ngxPermissionsOnly="[]">WTF</button>
+</div>
