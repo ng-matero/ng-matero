@@ -9,6 +9,7 @@ import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { FormlyConfigModule } from './formly-config.module';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -33,6 +34,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
     RoutesModule,
     SharedModule,
     FormlyConfigModule.forRoot(),
+    NgxPermissionsModule.forRoot(),
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
