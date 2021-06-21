@@ -74,6 +74,8 @@
     "menu-level.level-1-1.level-2-1.level-3-1": "层级 3.1",
     "menu-level.level-1-1.level-2-1.level-3-1.level-4-1": "层级 4.1",
     "permissions": "权限管理",
+    "permissions.role-switching": "切换角色",
+    "permissions.route-guard": "路由守卫",
     "permissions.test": "权限测试"
   },
   "validations": {
