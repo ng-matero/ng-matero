@@ -93,6 +93,7 @@ function updateVersions(cb) {
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
           'moment',
+          'ngx-permissions',
           'ngx-progressbar',
           'ngx-toastr',
           'photoviewer',

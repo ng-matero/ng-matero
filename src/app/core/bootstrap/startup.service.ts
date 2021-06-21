@@ -34,8 +34,7 @@ export class StartupService {
             this.menu.recursMenuForTranslation(res.menu, 'menu');
             this.menu.set(res.menu);
 
-            // Refresh user info
-            // In a real app, user data will be fetched from API
+            // Refresh user info. In a real app, user data will be fetched from API.
             this.settings.setUser({
               id: 1,
               name: 'Zongbin',
@@ -43,7 +42,7 @@ export class StartupService {
               avatar: './assets/images/avatar.jpg',
             });
 
-            // Load all permissions and add roles
+            // Demo purposes only. You can add essential permissions and roles with your own cases.
             const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
             this.permissonsSrv.loadPermissions(permissions);
             this.rolesSrv.addRoles({ ADMIN: permissions });

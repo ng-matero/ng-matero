@@ -6,12 +6,13 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -28,12 +29,13 @@ const MODULES = [
   MaterialModule,
   MaterialExtensionsModule,
   FlexLayoutModule,
+  FormlyModule,
+  FormlyMaterialModule,
   NgProgressModule,
   NgProgressRouterModule,
   NgProgressHttpModule,
   NgSelectModule,
-  FormlyModule,
-  FormlyMaterialModule,
+  NgxPermissionsModule,
   ToastrModule,
   TranslateModule,
 ];
