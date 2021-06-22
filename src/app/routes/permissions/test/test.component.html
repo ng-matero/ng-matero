@@ -6,15 +6,11 @@
 </p>
 
 <ng-template permissions [ngxPermissionsOnly]="['admin']">
-  <mtx-alert type="success">
-    I should see it only admin
-  </mtx-alert>
+  <p>I should see it only admin</p>
 </ng-template>
 
 <ng-template [ngxPermissionsOnly]="['admin']" [ngxPermissionsExcept]="'hhhhh'">
-  <mtx-alert type="warning">
-    Usage on both only and except I should see see it only admin
-  </mtx-alert>
+  <p>Usage on both only and except I should see it only admin</p>
 </ng-template>
 
 <ng-template permissions [ngxPermissionsOnly]="['guest']">

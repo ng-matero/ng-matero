@@ -70,8 +70,7 @@ export class MenuService {
     return this.getMenuLevel(routeArr)[routeArr.length - 1];
   }
 
-  /** Menu level */
-
+  // Whether is a leaf menu
   private isLeafItem(item: MenuChildrenItem): boolean {
     const cond0 = item.route === undefined;
     const cond1 = item.children === undefined;
@@ -127,8 +126,7 @@ export class MenuService {
     return tmpArr;
   }
 
-  /** Menu for translation */
-
+  /** Add namespace for translation. */
   recursMenuForTranslation(menu: Menu[] | MenuChildrenItem[], namespace: string) {
     menu.forEach(menuItem => {
       menuItem.name = `${namespace}.${menuItem.name}`;

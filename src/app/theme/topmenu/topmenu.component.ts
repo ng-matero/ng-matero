@@ -19,8 +19,8 @@ export interface TopmenuState {
   encapsulation: ViewEncapsulation.None,
 })
 export class TopmenuComponent implements OnDestroy {
-  menu$ = this.menuSrv.getAll();
-  buildRoute = this.menuSrv.buildRoute;
+  menu$ = this.menu.getAll();
+  buildRoute = this.menu.buildRoute;
 
   menuList: Menu[] = [];
   menuStates: TopmenuState[] = [];
@@ -28,7 +28,7 @@ export class TopmenuComponent implements OnDestroy {
   private menuSubscription: Subscription;
   private routerSubscription: Subscription;
 
-  constructor(public menuSrv: MenuService, private router: Router) {
+  constructor(private menu: MenuService, private router: Router) {
     this.menuSubscription = this.menu$.subscribe(res => {
       this.menuList = res;
       this.menuList.forEach(item => {

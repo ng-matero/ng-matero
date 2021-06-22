@@ -19,7 +19,7 @@ import { TopmenuState } from './topmenu.component';
   templateUrl: './topmenu-panel.component.html',
 })
 export class TopmenuPanelComponent implements OnInit, OnDestroy {
-  @ViewChild('menu', { static: true }) menu: MatMenu;
+  @ViewChild(MatMenu, { static: true }) menuPanel: MatMenu;
 
   @Input() items: MenuChildrenItem[] = [];
   @Input() parentRoute = [];
@@ -28,11 +28,11 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
 
   menuStates: TopmenuState[] = [];
 
-  buildRoute = this.menuSrv.buildRoute;
+  buildRoute = this.menu.buildRoute;
 
   private routerSubscription: Subscription;
 
-  constructor(public menuSrv: MenuService, private router: Router) {}
+  constructor(private menu: MenuService, private router: Router) {}
 
   ngOnInit() {
     this.items.forEach(item => {
