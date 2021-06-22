@@ -1,8 +1,6 @@
 <page-header></page-header>
 
-<mtx-alert type="danger">
-  The permissions check will delay 2s.
-</mtx-alert>
+<mtx-alert type="danger">The permissions check will delay 2s.</mtx-alert>
 
 <p>
   <button (click)="addPermission()">Add Permission [ admin ]</button>
@@ -51,7 +49,7 @@
 </ng-template>
 
 <p>
-  Compared permission {{comparedPermission | json}}
+  Compared permission: <code>{{comparedPermission | json}}</code>
 </p>
 
 <div>
@@ -70,4 +68,6 @@
   <button *ngxPermissionsOnly="[]">WTF</button>
 </div>
 
-<p>{{getPermissions() | json}}</p>
+<p>
+  Your current permissions: <code>{{getPermissions() | json}}</code>
+</p>
