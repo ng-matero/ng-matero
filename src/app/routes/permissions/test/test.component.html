@@ -1,34 +1,38 @@
 <page-header></page-header>
 
+<mtx-alert type="danger">
+  The permissions check will delay 2s.
+</mtx-alert>
+
 <p>
   <button (click)="addPermission()">Add Permission [ admin ]</button>
   <button (click)="removePermission()">Remove Permission [ admin ]</button>
 </p>
 
 <ng-template permissions [ngxPermissionsOnly]="['admin']">
-  <mtx-alert type="success">
+  <p class="bg-green-500 text-white">
     I should see it only admin
-  </mtx-alert>
+  </p>
 </ng-template>
 
 <ng-template [ngxPermissionsOnly]="['admin']" [ngxPermissionsExcept]="'hhhhh'">
-  <mtx-alert type="warning">
-    Usage on both only and except I should see see it only admin
-  </mtx-alert>
+  <p class="bg-green-500 text-white">
+    Usage on both only and except I should see it only admin
+  </p>
 </ng-template>
 
 <ng-template permissions [ngxPermissionsOnly]="['guest']">
-  <p>I will see it only guest</p>
+  <p class="bg-purple-500 text-white">I will see it only guest</p>
 </ng-template>
 
 <ng-template permissions [ngxPermissionsExcept]="['adminnnnn']"
              (permissionsAuthorized)="authorized()"
              (permissionsUnauthorized)="unAuthorized()">
-  <p>I will see it except adminnnnn</p>
+  <p class="bg-orange-500 text-white">I will see it except adminnnnn</p>
 </ng-template>
 
 <ng-template permissions [ngxPermissionsExcept]="['admin']">
-  <p>I should see it except admin</p>
+  <p class="bg-indigo-500 text-white">I should see it except admin</p>
 </ng-template>
 
 <div *ngxPermissionsOnly="['admin']; else a; then b">
@@ -40,11 +44,15 @@
 </div>
 
 <ng-template #a>
-  <p>else block</p>
+  <p class="bg-gray-900 text-white">else block</p>
 </ng-template>
 <ng-template #b>
-  <p>then block</p>
+  <p class="bg-gray-300">then block</p>
 </ng-template>
+
+<p>
+  Compared permission {{comparedPermission | json}}
+</p>
 
 <div>
   <button (click)="changeToAdmin()">Change To Admin Permission</button>
@@ -55,7 +63,11 @@
 </div>
 
 <div>
-  <button *ngxPermissionsOnly="permission">This should be visible to admin or superadmin</button>
+  <button *ngxPermissionsOnly="comparedPermission">
+    This should be visible to admin or superadmin
+  </button>
 
   <button *ngxPermissionsOnly="[]">WTF</button>
 </div>
+
+<p>{{getPermissions() | json}}</p>

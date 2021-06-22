@@ -7,11 +7,15 @@ import { NgxPermissionsService } from 'ngx-permissions';
   styleUrls: ['./test.component.scss'],
 })
 export class PermissionsTestComponent implements OnInit {
-  permission: string[] = ['guest'];
+  comparedPermission: string[] = ['guest'];
 
   constructor(private permissionsSrv: NgxPermissionsService) {}
 
   ngOnInit() {}
+
+  getPermissions() {
+    return Object.keys(this.permissionsSrv.getPermissions());
+  }
 
   addPermission() {
     // this.permissionsSrv.loadPermissions(['admin']);
@@ -36,17 +40,17 @@ export class PermissionsTestComponent implements OnInit {
   }
 
   changeToAdmin() {
-    this.permission = ['admin'];
-    console.log(this.permission);
+    this.comparedPermission = ['admin'];
+    console.log(this.comparedPermission);
   }
 
   changeToAnotherPermission() {
-    this.permission = ['AWESOME'];
-    console.log(this.permission);
+    this.comparedPermission = ['awesome'];
+    console.log(this.comparedPermission);
   }
 
   changeToGuest() {
-    this.permission = ['guest'];
-    console.log(this.permission);
+    this.comparedPermission = ['guest'];
+    console.log(this.comparedPermission);
   }
 }
