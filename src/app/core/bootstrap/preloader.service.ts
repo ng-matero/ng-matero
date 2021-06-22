@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -7,15 +7,13 @@ import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 export class PreloaderService {
   private selector = 'globalLoader';
   protected renderer: Renderer2;
-  protected _document: Document;
 
-  constructor(@Inject(DOCUMENT) document: any, rendererFactory: RendererFactory2) {
-    this._document = document;
+  constructor(@Inject(DOCUMENT) private document: Document, rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
   private getElement() {
-    return this._document.querySelector(`#${this.selector}`);
+    return this.document.getElementById(this.selector);
   }
 
   hide() {
