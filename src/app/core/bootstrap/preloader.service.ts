@@ -1,4 +1,4 @@
-import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Injectable({
@@ -6,11 +6,8 @@ import { DOCUMENT } from '@angular/common';
 })
 export class PreloaderService {
   private selector = 'globalLoader';
-  protected renderer: Renderer2;
 
-  constructor(@Inject(DOCUMENT) private document: Document, rendererFactory: RendererFactory2) {
-    this.renderer = rendererFactory.createRenderer(null, null);
-  }
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   private getElement() {
     return this.document.getElementById(this.selector);
@@ -20,11 +17,11 @@ export class PreloaderService {
     const el = this.getElement();
     if (el) {
       el.addEventListener('transitionend', () => {
-        this.renderer.addClass(el, 'global-loader-hidden');
+        el.className = 'global-loader-hidden';
       });
 
       if (!el.classList.contains('global-loader-hidden')) {
-        this.renderer.addClass(el, 'global-loader-fade-in');
+        el.className += ' global-loader-fade-in';
       }
     }
   }
