@@ -50,7 +50,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "angular-in-memory-web-api": "^0.11.0",
-    "apexcharts": "^3.27.1",
+    "apexcharts": "^3.27.2",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "ngx-permissions": "^8.1.1",
