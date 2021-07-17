@@ -1,13 +1,15 @@
+@use '~@angular/material/core/style/variables';
+
 @function swift-ease-out($property) {
   // The Material default animation curves.
-  $transition: $property $swift-ease-out-duration $swift-ease-out-timing-function;
+  $transition: $property variables.$swift-ease-out-duration variables.$swift-ease-out-timing-function;
 
   @return $transition;
 }
 
 @function fast-out-slow($property) {
   // The Material default animation curves.
-  $transition: $property 225ms cubic-bezier(0.4, 0, 0.2, 1);
+  $transition: $property 225ms cubic-bezier(.4, 0, .2, 1);
 
   @return $transition;
 }

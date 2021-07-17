@@ -1,3 +1,4 @@
+@use '~@angular/material/core/style/variables';
 @import '../style/variables';
 @import '../style/transitions';
 
@@ -47,8 +48,8 @@
   bottom: 0;
   left: 0;
   z-index: 2;
-  transition-duration: $swift-ease-out-duration;
-  transition-timing-function: $swift-ease-out-timing-function;
+  transition-duration: variables.$swift-ease-out-duration;
+  transition-timing-function: variables.$swift-ease-out-timing-function;
   transition-property: background-color, visibility;
   visibility: hidden;
 
