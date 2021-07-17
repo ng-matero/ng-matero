@@ -1,4 +1,4 @@
-@use '../style/variables';
+@use 'variables';
 
 @function swift-ease-out($property) {
   // The Material default animation curves.

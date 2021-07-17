@@ -1,7 +1,8 @@
-@use './variables';
+@use 'sass:map';
+@use 'variables';
 
 @function bp($name, $breakpoints: variables.$breakpoints) {
-  $min: map-get($breakpoints, $name);
+  $min: map.get($breakpoints, $name);
 
   @return $min;
 }
