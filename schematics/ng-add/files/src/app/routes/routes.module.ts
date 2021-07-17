@@ -6,8 +6,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
 
-const COMPONENTS = [DashboardComponent, LoginComponent, RegisterComponent];
-const COMPONENTS_DYNAMIC = [];
+const COMPONENTS: any[] = [DashboardComponent, LoginComponent, RegisterComponent];
+const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
   imports: [SharedModule, RoutesRoutingModule],
