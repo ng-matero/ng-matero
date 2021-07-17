@@ -1,5 +1,5 @@
-@import '../style/variables';
-@import '../style/breakpoints';
+@use '../style/variables';
+@use '../style/breakpoints';
 
 .matero-sidebar-header {
   position: relative;
@@ -8,13 +8,13 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  height: $toolbar-height-desktop;
+  height: variables.$toolbar-height-desktop;
   padding: 0 10px;
   overflow: hidden;
 
-  @include bp-lt(small) {
+  @include breakpoints.bp-lt(small) {
     & {
-      height: $toolbar-height-mobile;
+      height: variables.$toolbar-height-mobile;
     }
   }
 
@@ -25,12 +25,12 @@
 }
 
 .matero-sidebar-main {
-  height: calc(100% - #{$toolbar-height-desktop});
+  height: calc(100% - #{variables.$toolbar-height-desktop});
   overflow: auto;
 
-  @include bp-lt(small) {
+  @include breakpoints.bp-lt(small) {
     & {
-      height: calc(100% - #{$toolbar-height-mobile});
+      height: calc(100% - #{variables.$toolbar-height-mobile});
     }
   }
 }

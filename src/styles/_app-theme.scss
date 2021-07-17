@@ -1,28 +1,34 @@
-@import '~@ng-matero/extensions/theming';
-@import '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme';
+@use '~@angular/material' as mat;
+@use '~@ng-matero/extensions' as mtx;
 
-@import '../app/theme/style/reboot-theme';
-@import '../app/theme/header/header-theme';
-@import '../app/theme/sidebar/sidebar-theme';
-@import '../app/theme/sidemenu/sidemenu-theme';
-@import '../app/theme/topmenu/topmenu-theme';
-@import '../app/theme/customizer/customizer-theme';
-@import '../app/shared/components/error-code/error-code-theme';
+@use '../app/theme/style/reboot-theme';
+@use '../app/theme/header/header-theme';
+@use '../app/theme/sidebar/sidebar-theme';
+@use '../app/theme/sidemenu/sidemenu-theme';
+@use '../app/theme/topmenu/topmenu-theme';
+@use '../app/theme/customizer/customizer-theme';
+@use '../app/shared/components/error-code/error-code-theme';
 
-@import './custom/table-theme';
+@use './custom/table-theme';
+
+@use '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme';
+
+@include mat.core();
 
 // Styles for the app that are based on the current theme.
-@mixin matero-admin-theme($theme) {
-  @include material-extensions-theme($theme);
-  @include mat-datetimepicker-theme($theme);
+@mixin theme($theme) {
+  @include mat.all-component-themes($theme);
+  @include mtx.all-component-themes($theme);
 
-  @include matero-reboot-theme($theme);
-  @include matero-header-theme($theme);
-  @include matero-sidebar-theme($theme);
-  @include matero-sidemenu-theme($theme);
-  @include matero-topmenu-theme($theme);
-  @include matero-customizer-theme($theme);
-  @include matero-error-code-theme($theme);
+  @include reboot-theme.theme($theme);
+  @include header-theme.theme($theme);
+  @include sidebar-theme.theme($theme);
+  @include sidemenu-theme.theme($theme);
+  @include topmenu-theme.theme($theme);
+  @include customizer-theme.theme($theme);
+  @include error-code-theme.theme($theme);
 
-  @include custom-table-theme($theme);
+  @include table-theme.theme($theme);
+
+  @include datetimepicker-theme.mat-datetimepicker-theme($theme);
 }

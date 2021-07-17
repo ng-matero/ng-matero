@@ -1,6 +1,5 @@
-@use '~@angular/material/core/style/variables';
-@import '../style/variables';
-@import '../style/transitions';
+@use '../style/variables';
+@use '../style/transitions';
 
 .customizer-handle {
   position: fixed;
@@ -24,7 +23,7 @@
   padding: 0 16px;
   box-sizing: border-box;
   transform: translateX(0);
-  transition: swift-ease-out(transform);
+  transition: transitions.swift-ease-out(transform);
   overflow: auto;
 
   &.opened {

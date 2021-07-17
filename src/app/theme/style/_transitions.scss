@@ -1,4 +1,4 @@
-@use '~@angular/material/core/style/variables';
+@use '../style/variables';
 
 @function swift-ease-out($property) {
   // The Material default animation curves.

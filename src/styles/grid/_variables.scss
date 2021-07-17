@@ -1,6 +1,14 @@
 $grid-columns: 12 !default;
 $grid-gutter: 16px !default;
 
+$breakpoints: (
+  xsmall: 0,
+  small:  600px,
+  medium: 960px,
+  large:  1280px,
+  xlarge: 1920px
+) !default;
+
 $breakpoint-infixs: (
   xsmall: '',
   small: 'sm',

@@ -1,7 +1,9 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-@mixin matero-header-theme($theme) {
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+
+@mixin theme($theme) {
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   .matero-toolbar-button {
     &.mat-icon-button {

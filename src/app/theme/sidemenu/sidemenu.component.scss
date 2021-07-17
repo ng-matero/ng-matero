@@ -1,9 +1,9 @@
-@import '../style/variables';
-@import '../style/transitions';
-@import '../style/badge';
+@use '../style/variables';
+@use '../style/transitions';
+@use '../style/badge' as *;
 
 .matero-sidemenu {
-  width: $sidenav-width;
+  width: variables.$sidenav-width;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -29,7 +29,7 @@
     padding-top: 0;
     overflow: hidden;
     transform: translateZ(0) !important;
-    transition: fast-out-slow(max-height);
+    transition: transitions.fast-out-slow(max-height);
 
     .matero-sidemenu-item {
       border-left-width: 0;
@@ -62,13 +62,13 @@
   .mat-icon.menu-caret {
     display: block;
     text-align: center;
-    transition: fast-out-slow(transform);
+    transition: transitions.fast-out-slow(transform);
   }
 
   .menu-name,
   .menu-label,
   .menu-badge {
-    transition: swift-ease-out(opacity);
+    transition: transitions.swift-ease-out(opacity);
   }
 
   .menu-label,

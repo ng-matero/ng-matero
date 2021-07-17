@@ -1,12 +1,12 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-@import '../style/variables';
 
-@mixin matero-sidemenu-theme($theme) {
-  $is-dark-theme: map-get($theme, is-dark);
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+@mixin theme($theme) {
+  $is-dark-theme: map.get($theme, is-dark);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   .matero-sidemenu {
     > .matero-sidemenu-item {

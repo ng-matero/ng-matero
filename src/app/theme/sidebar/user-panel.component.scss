@@ -1,5 +1,4 @@
-@import '../style/variables';
-@import '../style/transitions';
+@use '../style/transitions';
 
 .matero-user-panel {
   padding: 16px 0;
@@ -11,7 +10,7 @@
   height: 64px;
   margin-bottom: 8px;
   border-radius: 50rem;
-  transition: swift-ease-out(transform);
+  transition: transitions.swift-ease-out(transform);
 }
 
 .matero-user-panel-name,
@@ -25,7 +24,7 @@
 .matero-user-panel-email,
 .matero-user-panel-icons {
   opacity: 1;
-  transition: swift-ease-out(opacity);
+  transition: transitions.swift-ease-out(opacity);
 }
 
 .matero-user-panel-icons {

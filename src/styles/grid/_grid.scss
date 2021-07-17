@@ -5,8 +5,8 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: $grid-gutter / -2;
-  margin-right: $grid-gutter / -2;
+  margin-left: $grid-gutter * -.5;
+  margin-right: $grid-gutter * -.5;
 }
 
 .no-gutters {

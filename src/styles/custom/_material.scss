@@ -1,12 +1,13 @@
 // Material components style fix
+@use '../../app/theme/style/variables';
 
 .mat-card {
-  margin-bottom: $gutter;
+  margin-bottom: variables.$gutter;
 }
 
 .mat-accordion {
   display: block;
-  margin-bottom: $gutter;
+  margin-bottom: variables.$gutter;
 }
 
 .mat-list-base {

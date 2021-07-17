@@ -1,11 +1,11 @@
-@import 'style/variables';
-@import 'style/transitions';
-@import 'style/breakpoints';
-@import 'style/rtl';
-@import 'style/badge';
-@import 'style/scrollbar';
+@use 'style/variables';
+@use 'style/transitions';
+@use 'style/breakpoints';
+@use 'style/rtl';
+@use 'style/badge';
+@use 'style/scrollbar';
 
-@import 'style/reboot';
-@import 'style/misc';
+@use 'style/reboot';
+@use 'style/misc';
 
-@import 'style/colors';
+@use 'style/colors';

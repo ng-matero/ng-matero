@@ -1,10 +1,11 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-// Example for custom theming
 
-@mixin custom-table-theme($theme) {
-  $is-dark-theme: map-get($theme, is-dark);
-  $background: map-get($theme, 'background');
-  $foreground: map-get($theme, 'foreground');
+// Example for custom theming
+@mixin theme($theme) {
+  $is-dark-theme: map.get($theme, is-dark);
+  $background: map.get($theme, 'background');
+  $foreground: map.get($theme, 'foreground');
 
   $row-hover-bg: mat.get-color-from-palette(mat.$indigo-palette, 50);
   $row-odd-bg: mat.get-color-from-palette(mat.$gray-palette, 100);

@@ -1,8 +1,10 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-@mixin matero-topmenu-theme($theme) {
-  $is-dark-theme: map-get($theme, is-dark);
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
+
+@mixin theme($theme) {
+  $is-dark-theme: map.get($theme, is-dark);
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
   $background: mat.get-color-from-palette($theme, background);
   $foreground: mat.get-color-from-palette($theme, foreground);
 

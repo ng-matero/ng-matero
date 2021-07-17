@@ -1,7 +1,9 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-@mixin matero-customizer-theme($theme) {
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+
+@mixin theme($theme) {
+  $background: map.get($theme, background);
+  $foreground: map.get($theme, foreground);
 
   .customizer-panel {
     background-color: mat.get-color-from-palette($background, dialog);

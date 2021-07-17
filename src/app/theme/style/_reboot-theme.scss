@@ -1,7 +1,9 @@
+@use 'sass:map';
 @use '~@angular/material' as mat;
-@mixin matero-reboot-theme($theme) {
-  $primary: map-get($theme, primary);
-  $foreground: map-get($theme, foreground);
+
+@mixin theme($theme) {
+  $primary: map.get($theme, primary);
+  $foreground: map.get($theme, foreground);
 
   a {
     color: mat.get-color-from-palette($primary);
