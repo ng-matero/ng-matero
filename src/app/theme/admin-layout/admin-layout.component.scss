@@ -16,7 +16,7 @@
 .matero-sidenav {
   position: absolute;
   overflow-x: hidden;
-  transition: swift-ease-out(width); // Only set width property
+  transition: transitions.swift-ease-out(width); // Only set width property
 
   @include mat.elevation(2);
 
