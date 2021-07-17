@@ -36,6 +36,7 @@ import * as ts from 'typescript';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 export interface ComponentOptions extends Schema {
+  entryComponent?: any;
   pageName: string;
 }
 
@@ -97,7 +98,7 @@ function addComponent(host: Tree, modulePath: string, fileName: string, symbolNa
   }
 
   const addDeclaration = insertAfterLastOccurrence(
-    (nodeArr.elements as unknown) as ts.Node[],
+    nodeArr.elements as unknown as ts.Node[],
     componentName,
     modulePath,
     nodeArr.elements.pos,
