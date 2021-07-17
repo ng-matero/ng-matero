@@ -1,6 +1,7 @@
-// Display
+@use 'sass:map';
+@use 'variables' as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'display': (
       property: display,

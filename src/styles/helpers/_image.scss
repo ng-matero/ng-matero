@@ -1,6 +1,7 @@
-// Image
+@use 'sass:map';
+@use 'variables' as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'object-fit': (
       property: object-fit,

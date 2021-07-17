@@ -1,12 +1,11 @@
-// ==================================================
-// GRID
-// ==================================================
+@use 'variables';
+@use 'mixins';
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: $grid-gutter * -.5;
-  margin-right: $grid-gutter * -.5;
+  margin-left: variables.$grid-gutter * -.5;
+  margin-right: variables.$grid-gutter * -.5;
 }
 
 .no-gutters {
@@ -20,7 +19,7 @@
   }
 }
 
-@include make-grid-columns();
+@include mixins.make-grid-columns();
 
 // xsmall: 0,
 // small:  600px
@@ -28,14 +27,14 @@
 // large:  1280px
 // xlarge: 1920px
 
-@each $breakpoint, $infix in $breakpoint-infixs {
+@each $breakpoint, $infix in variables.$breakpoint-infixs {
   @if ($breakpoint== 'xsmall') {
-    @include loop-grid-columns($grid-columns, $infix);
+    @include mixins.loop-grid-columns(variables.$grid-columns, $infix);
   }
 
   @else {
-    @include bp-gt($breakpoint) {
-      @include loop-grid-columns($grid-columns, $infix);
+    @include mixins.bp-gt($breakpoint) {
+      @include mixins.loop-grid-columns(variables.$grid-columns, $infix);
     }
   }
 }

@@ -1,6 +1,7 @@
-// Overflow
+@use 'sass:map';
+@use 'variables' as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'overflow': (
       property: overflow,

@@ -1,6 +1,7 @@
-// Position
+@use 'sass:map';
+@use 'variables' as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'position': (
       property: position,

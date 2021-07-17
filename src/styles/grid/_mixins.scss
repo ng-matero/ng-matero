@@ -1,11 +1,15 @@
-@function bp($name, $breakpoints: $breakpoints) {
-  $min: map-get($breakpoints, $name);
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables';
+
+@function bp($name, $breakpoints: variables.$breakpoints) {
+  $min: map.get($breakpoints, $name);
 
   @return $min;
 }
 
 // Media of at least the minimum breakpoint width.
-@mixin bp-gt($name, $breakpoints: $breakpoints) {
+@mixin bp-gt($name, $breakpoints: variables.$breakpoints) {
   $min: bp($name, $breakpoints);
 
   @if $min {
@@ -19,7 +23,7 @@
 }
 
 // Media of at most the maximum breakpoint width.
-@mixin bp-lt($name, $breakpoints: $breakpoints) {
+@mixin bp-lt($name, $breakpoints: variables.$breakpoints) {
   $max: bp($name, $breakpoints) - 1px;
 
   @if $max {
@@ -33,14 +37,14 @@
 }
 
 @mixin make-grid-columns($i: 1, $list: '.col') {
-  @each $breakpoint, $infix in $breakpoint-infixs {
+  @each $breakpoint, $infix in variables.$breakpoint-infixs {
     $infix: if($infix == '', '', '-#{$infix}');
 
     @if ($infix != '') {
       $list: '#{$list}, .col#{$infix}';
     }
 
-    @for $i from 1 through $grid-columns {
+    @for $i from 1 through variables.$grid-columns {
       $list: '#{$list}, .col#{$infix}-#{$i}';
     }
   }
@@ -48,8 +52,8 @@
   #{$list} {
     position: relative;
     width: 100%;
-    padding-left: $grid-gutter / 2;
-    padding-right: $grid-gutter / 2;
+    padding-left: variables.$grid-gutter * .5;
+    padding-right: variables.$grid-gutter * .5;
   }
 }
 
@@ -64,12 +68,12 @@
 
   @for $i from 1 through $columns {
     .col#{$infix}-#{$i} {
-      flex: 0 0 percentage($i / $columns);
-      max-width: percentage($i / $columns);
+      flex: 0 0 math.percentage(math.div($i, $columns));
+      max-width: math.percentage(math.div($i, $columns));
     }
 
     .offset#{$infix}-#{$i} {
-      margin-left: percentage($i / $columns);
+      margin-left: math.percentage(math.div($i, $columns));
     }
   }
 }

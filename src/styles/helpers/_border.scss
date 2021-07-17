@@ -1,6 +1,7 @@
-// Border
+@use 'sass:map';
+@use 'variables' as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'border': (
       property: border,

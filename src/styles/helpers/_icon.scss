@@ -1,4 +1,5 @@
-// Icon
+@use 'variables' as *;
+@use 'mixins' as *;
 
 .icon-20 {
   @include icon(20);

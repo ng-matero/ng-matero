@@ -1,6 +1,7 @@
-// Rounded
+@use 'sass:map';
+@use 'variables' as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   (
     'border-radius': (
       property: border-radius,

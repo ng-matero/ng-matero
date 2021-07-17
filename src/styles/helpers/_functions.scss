@@ -1,10 +1,12 @@
+@use 'sass:map';
+
 // It makes the value negative.
 @function negativify-map($map) {
   $result: ();
 
   @each $key, $value in $map {
     @if $key !=0 {
-      $result: map-merge($result, ('-' + $key: (-$value)));
+      $result: map.merge($result, ('-' + $key: (-$value)));
     }
   }
 
