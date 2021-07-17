@@ -115,7 +115,7 @@ export class TablesKitchenSinkComponent implements OnInit {
       ],
     },
   ];
-  list = [];
+  list: any[] = [];
   isLoading = true;
 
   multiSelectable = true;

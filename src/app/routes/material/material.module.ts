@@ -54,7 +54,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TreeComponent } from './tree/tree.component';
 
-const COMPONENTS = [
+const COMPONENTS: any[] = [
   AutocompleteComponent,
   BadgeComponent,
   BottomSheetComponent,
@@ -97,7 +97,7 @@ const COMPONENTS = [
   TooltipComponent,
   TreeComponent,
 ];
-const COMPONENTS_DYNAMIC = [
+const COMPONENTS_DYNAMIC: any[] = [
   BottomSheetOverviewComponent,
   DialogAddressFormComponent,
   DialogFruitComponent,

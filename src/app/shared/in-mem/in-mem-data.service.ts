@@ -7,14 +7,14 @@ import { environment } from '@env/environment';
 
 function urlSafeBase64Encode(text: string) {
   return btoa(text).replace(/[+/=]/g, m => {
-    return { '+': '-', '/': '_', '=': '' }[m];
+    return { '+': '-', '/': '_', '=': '' }[m] as string;
   });
 }
 
 function urlSafeBase64Decode(text: string) {
   return atob(
     text.replace(/[-_]/g, m => {
-      return { '-': '+', '_': '/' }[m];
+      return { '-': '+', '_': '/' }[m] as string;
     })
   );
 }
@@ -48,7 +48,7 @@ function is(reqInfo: RequestInfo, path: string) {
 
 function getUserFromJWTToken(req: HttpRequest<any>) {
   const authorization = req.headers.get('Authorization');
-  const [, token] = authorization.split(' ');
+  const [, token] = (authorization as string).split(' ');
   try {
     const [, payload] = token.split('.');
 
@@ -122,6 +122,8 @@ export class InMemDataService implements InMemoryDbService {
         return { status: STATUS.OK, headers, url, body: user };
       });
     }
+
+    return;
   }
 
   post(reqInfo: RequestInfo) {
@@ -136,6 +138,8 @@ export class InMemDataService implements InMemoryDbService {
     if (is(reqInfo, 'auth/logout')) {
       return this.logout(reqInfo);
     }
+
+    return;
   }
 
   private login(reqInfo: RequestInfo) {

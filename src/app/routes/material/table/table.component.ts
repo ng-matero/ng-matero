@@ -26,13 +26,13 @@ const exampleData = [
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild(MatPaginator, { static: true }) pager: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: true }) pager!: MatPaginator;
 
   displayedColumns = ['name', 'color', 'age'];
-  basicDataSource: BasicDataSource;
-  sortDataSource: SortDataSource;
-  paginatedDataSource: PaginatedDataSource;
+  basicDataSource!: BasicDataSource;
+  sortDataSource!: SortDataSource;
+  paginatedDataSource!: PaginatedDataSource;
 
   ngOnInit(): void {
     this.basicDataSource = new BasicDataSource();

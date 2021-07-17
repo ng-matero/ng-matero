@@ -10,8 +10,8 @@ import { SimpleToken } from './token';
 })
 export class TokenService {
   private key = 'TOKEN';
-  private token: SimpleToken;
-  private change$ = new BehaviorSubject<RefreshToken>(this.get());
+  private token!: SimpleToken | null;
+  private change$ = new BehaviorSubject<RefreshToken | null>(this.get());
 
   constructor(private store: LocalStorageService) {}
 
@@ -47,7 +47,7 @@ export class TokenService {
   refresh() {
     return this.change$.pipe(
       filter(() => !!this.token && this.token.exp > 0),
-      switchMap(() => timer(this.token.refreshTime())),
+      switchMap(() => timer(this.token?.refreshTime())),
       filter(() => this.valid()),
       map(() => this.token),
       share()
@@ -59,6 +59,6 @@ export class TokenService {
   }
 
   headerValue() {
-    return this.token.headerValue();
+    return this.token?.headerValue();
   }
 }

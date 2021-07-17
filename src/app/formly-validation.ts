@@ -27,19 +27,27 @@ export class FormlyValidation {
     );
   }
 
-  private minlengthValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.stream('validations.minLength', { number: field.templateOptions.minLength });
+  private minlengthValidationMessage(
+    err: any,
+    field: FormlyFieldConfig,
+    translate: TranslateService
+  ) {
+    return translate.stream('validations.minLength', { number: field.templateOptions?.minLength });
   }
 
-  private maxlengthValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.stream('validations.maxLength', { number: field.templateOptions.maxLength });
+  private maxlengthValidationMessage(
+    err: any,
+    field: FormlyFieldConfig,
+    translate: TranslateService
+  ) {
+    return translate.stream('validations.maxLength', { number: field.templateOptions?.maxLength });
   }
 
-  private minValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.stream('validations.min', { number: field.templateOptions.min });
+  private minValidationMessage(err: any, field: FormlyFieldConfig, translate: TranslateService) {
+    return translate.stream('validations.min', { number: field.templateOptions?.min });
   }
 
-  private maxValidationMessage(_err, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.stream('validations.max', { number: field.templateOptions.max });
+  private maxValidationMessage(err: any, field: FormlyFieldConfig, translate: TranslateService) {
+    return translate.stream('validations.max', { number: field.templateOptions?.max });
   }
 }

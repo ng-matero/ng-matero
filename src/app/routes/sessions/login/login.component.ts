@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.auth
-      .login(this.username.value, this.password.value, this.rememberMe.value)
+      .login(this.username?.value, this.password?.value, this.rememberMe?.value)
       .pipe(filter(authenticated => authenticated))
       .subscribe(
         () => this.router.navigateByUrl('/'),

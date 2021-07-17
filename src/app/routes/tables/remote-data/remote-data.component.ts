@@ -41,7 +41,7 @@ export class TablesRemoteDataComponent implements OnInit {
     { header: 'Created Date', field: 'created_at' },
     { header: 'Updated Date', field: 'updated_at' },
   ];
-  list = [];
+  list: any[] = [];
   total = 0;
   isLoading = true;
 

@@ -1,7 +1,7 @@
 <nav mat-tab-nav-bar>
   <ng-container *ngFor="let menuItem of menu$ | async; let index=index">
-    <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only"
-                 [ngxPermissionsExcept]="menuItem.permissions?.except">
+    <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only!"
+                 [ngxPermissionsExcept]="menuItem.permissions?.except!">
 
       <button *ngIf="menuItem.type === 'link'" mat-button
               [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
@@ -26,7 +26,7 @@
         </ng-container>
 
         <app-topmenu-panel #submenu
-                           [items]="menuItem.children"
+                           [items]="menuItem.children!"
                            [parentRoute]="[menuItem.route]"
                            [level]="1"
                            (routeChange)="onRouteChange($event, index)">

@@ -59,7 +59,7 @@ export class AutocompleteComponent {
     { code: 'WY', name: 'Wyoming' },
   ];
 
-  value: string;
+  value!: string;
   filteredStates = this.states;
 
   filter(value: string) {

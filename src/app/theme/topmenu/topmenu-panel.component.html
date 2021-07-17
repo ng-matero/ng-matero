@@ -1,7 +1,7 @@
 <mat-menu>
   <ng-container *ngFor="let item of items; let index=index">
-    <ng-template [ngxPermissionsOnly]="item.permissions?.only"
-                 [ngxPermissionsExcept]="item.permissions?.except">
+    <ng-template [ngxPermissionsOnly]="item.permissions?.only!"
+                 [ngxPermissionsExcept]="item.permissions?.except!">
 
       <button *ngIf="item.type === 'link'" mat-menu-item
               [routerLink]="buildRoute(parentRoute.concat([item.route]))"
@@ -26,7 +26,7 @@
         {{item.name | translate}}
 
         <app-topmenu-panel #submenu
-                           [items]="item.children"
+                           [items]="item.children!"
                            [parentRoute]="parentRoute.concat([item.route])"
                            [level]="level + 1"
                            (routeChange)="onRouteChange($event, index)">

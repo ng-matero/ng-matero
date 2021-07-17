@@ -10,7 +10,7 @@ export class AccordionItemDirective implements OnInit, OnDestroy {
   protected nav: AccordionDirective;
 
   @Input() group: any;
-  @Input() type: 'link' | 'sub' | 'extLink' | 'extTabLink';
+  @Input() type!: 'link' | 'sub' | 'extLink' | 'extTabLink';
 
   @HostBinding('class.open')
   @Input()

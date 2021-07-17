@@ -26,7 +26,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-panel.component.scss'],
 })
 export class UserPanelComponent implements OnInit {
-  user: User;
+  user!: User;
 
   constructor(private router: Router, private auth: AuthService) {}
 

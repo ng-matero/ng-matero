@@ -11,13 +11,13 @@ import { FormsSelectEditComponent } from './edit/edit.component';
 })
 export class FormsSelectComponent implements OnInit {
   // Data source
-  people$: Observable<Person[]>;
+  people$!: Observable<Person[]>;
   people: Person[] = [];
   selectedPersonId = '5a15b13c36e7a7f00cf0d7cb';
   selectedPersonId2 = '5a15b13c36e7a7f00cf0d7cb';
 
   selectedSimpleItem = 'Two';
-  simpleItems = [];
+  simpleItems: any[] = [];
   disable = true;
 
   selectedCarId = 3;

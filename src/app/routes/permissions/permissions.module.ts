@@ -5,12 +5,12 @@ import { PermissionsTestComponent } from './test/test.component';
 import { PermissionsRouteGuardComponent } from './route-guard/route-guard.component';
 import { PermissionsRoleSwitchingComponent } from './role-switching/role-switching.component';
 
-const COMPONENTS = [
+const COMPONENTS: any[] = [
   PermissionsTestComponent,
   PermissionsRouteGuardComponent,
   PermissionsRoleSwitchingComponent,
 ];
-const COMPONENTS_DYNAMIC = [];
+const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
   imports: [SharedModule, PermissionsRoutingModule],

@@ -19,7 +19,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
   }
 
   private prependBaseUrl(url: string) {
-    return [this.baseUrl.replace(/\/$/g, ''), url.replace(/^\.?\//, '')]
+    return [this.baseUrl?.replace(/\/$/g, ''), url.replace(/^\.?\//, '')]
       .filter(val => val)
       .join('/');
   }

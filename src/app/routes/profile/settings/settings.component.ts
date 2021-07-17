@@ -26,9 +26,9 @@ export class ProfileSettingsComponent implements OnInit {
   ngOnInit() {}
 
   getErrorMessage(form: FormGroup) {
-    return form.get('email').hasError('required')
+    return form.get('email')?.hasError('required')
       ? 'You must enter a value'
-      : form.get('email').hasError('email')
+      : form.get('email')?.hasError('email')
       ? 'Not a valid email'
       : '';
   }

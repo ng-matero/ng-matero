@@ -23,7 +23,7 @@ export class LocalStorageService {
 }
 
 export class MemoryStorageService {
-  private store = {};
+  private store: { [k: string]: string } = {};
 
   get(key: string) {
     return JSON.parse(this.store[key] || '{}') || {};

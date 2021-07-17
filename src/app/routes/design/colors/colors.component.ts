@@ -10,7 +10,7 @@ import { MAT_COLORS } from '@shared';
   providers: [DesignColorsService],
 })
 export class DesignColorsComponent implements OnInit {
-  colors = [];
+  colors: { key: string; value: any }[] = [];
 
   valueAscOrder(a: KeyValue<number, string>, b: KeyValue<number, string>): number {
     return a.value.localeCompare(b.value);
@@ -23,7 +23,7 @@ export class DesignColorsComponent implements OnInit {
   constructor(private colorsSrv: DesignColorsService) {}
 
   ngOnInit() {
-    const colors = MAT_COLORS;
+    const colors: { [k: string]: any } = MAT_COLORS;
     for (const key of Object.keys(colors)) {
       this.colors.push({
         key,
@@ -32,7 +32,7 @@ export class DesignColorsComponent implements OnInit {
     }
   }
 
-  trackByColor(index: number, color: { key: string; value: {} }): string {
+  trackByColor(index: number, color: { key: string; value: any }): string {
     return color.key;
   }
 }

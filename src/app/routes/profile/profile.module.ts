@@ -6,8 +6,12 @@ import { ProfileLayoutComponent } from './layout/layout.component';
 import { ProfileOverviewComponent } from './overview/overview.component';
 import { ProfileSettingsComponent } from './settings/settings.component';
 
-const COMPONENTS = [ProfileLayoutComponent, ProfileOverviewComponent, ProfileSettingsComponent];
-const COMPONENTS_DYNAMIC = [];
+const COMPONENTS: any[] = [
+  ProfileLayoutComponent,
+  ProfileOverviewComponent,
+  ProfileSettingsComponent,
+];
+const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
   imports: [SharedModule, ProfileRoutingModule],

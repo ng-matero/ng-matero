@@ -11,10 +11,10 @@ import { FormControl } from '@angular/forms';
     [formControl]="formControl"
     [items]="to.options | toObservable | async"
     [bindLabel]="to.labelProp"
-    [bindValue]="bindValue"
+    [bindValue]="bindValue!"
     [multiple]="to.multiple"
-    [placeholder]="to.placeholder"
-    [required]="to.required"
+    [placeholder]="to.placeholder!"
+    [required]="to.required!"
     [closeOnSelect]="!to.multiple"
     [compareWith]="to.compareWith"
   >
@@ -22,9 +22,9 @@ import { FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldComboboxComponent extends FieldType {
-  @ViewChild('select', { static: true }) select: MtxSelectComponent;
+  @ViewChild('select', { static: true }) select!: MtxSelectComponent;
 
-  public formControl: FormControl;
+  public formControl!: FormControl;
 
   get bindValue() {
     return typeof this.to.valueProp === 'string' ? this.to.valueProp : undefined;

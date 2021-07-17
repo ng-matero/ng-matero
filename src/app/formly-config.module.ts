@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 
 import { FormlyModule } from '@ngx-formly/core';
@@ -13,7 +13,7 @@ const formlyModuleProviders = FormlyModule.forRoot({
   types: [{ name: 'combobox', component: FormlyFieldComboboxComponent }],
   wrappers: [{ name: 'panel', component: FormlyWrapperPanelComponent }],
   validationMessages: [],
-}).providers;
+}).providers as Provider[];
 
 @NgModule({
   imports: [SharedModule],

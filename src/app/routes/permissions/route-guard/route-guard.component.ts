@@ -8,11 +8,11 @@ import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
   styleUrls: ['./route-guard.component.scss'],
 })
 export class PermissionsRouteGuardComponent implements OnInit {
-  currentRole: string;
+  currentRole!: string;
 
-  currentPermissions: string[];
+  currentPermissions!: string[];
 
-  permissionsOfRole = {
+  permissionsOfRole: any = {
     ADMIN: ['canAdd', 'canDelete', 'canEdit', 'canRead'],
     MANAGER: ['canAdd', 'canEdit', 'canRead'],
     GUEST: ['canRead'],

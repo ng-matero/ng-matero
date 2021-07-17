@@ -23,8 +23,8 @@
     <div *ngFor="let task of tasks">
       <mat-checkbox [(ngModel)]="task.completed"
                     [checked]="allComplete(task)"
-                    [indeterminate]="someComplete(task.subtasks)"
-                    (change)="setAllCompleted(task.subtasks, $event.checked)">
+                    [indeterminate]="someComplete(task.subtasks!)"
+                    (change)="setAllCompleted(task.subtasks!, $event.checked)">
         {{task.name}}
       </mat-checkbox>
       <div class="demo-sub-list">

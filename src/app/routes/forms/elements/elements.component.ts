@@ -18,7 +18,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
   reactiveForm1: FormGroup;
   reactiveForm2: FormGroup;
 
-  translateSubscription: Subscription;
+  translateSubscription!: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -63,9 +63,9 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
   }
 
   getErrorMessage(form: FormGroup) {
-    return form.get('email').hasError('required')
+    return form.get('email')?.hasError('required')
       ? 'validations.required'
-      : form.get('email').hasError('email')
+      : form.get('email')?.hasError('email')
       ? 'validations.invalid_email'
       : '';
   }

@@ -85,7 +85,7 @@ export class MenuService {
   private isLeafItem(item: MenuChildrenItem): boolean {
     const cond0 = item.route === undefined;
     const cond1 = item.children === undefined;
-    const cond2 = !cond1 && item.children.length === 0;
+    const cond2 = !cond1 && item.children?.length === 0;
     return cond0 || cond1 || cond2;
   }
 
@@ -108,12 +108,12 @@ export class MenuService {
 
   /** Get the menu level. */
   getLevel(routeArr: string[]): string[] {
-    let tmpArr = [];
+    let tmpArr: any[] = [];
     this.menu$.value.forEach(item => {
       // Breadth-first traverse
       let unhandledLayer = [{ item, parentNamePathList: [], realRouteArr: [] }];
       while (unhandledLayer.length > 0) {
-        let nextUnhandledLayer = [];
+        let nextUnhandledLayer: any[] = [];
         for (const ele of unhandledLayer) {
           const eachItem = ele.item;
           const currentNamePathList = this.deepClone(ele.parentNamePathList).concat(eachItem.name);
@@ -124,7 +124,7 @@ export class MenuService {
             break;
           }
           if (!this.isLeafItem(eachItem)) {
-            const wrappedChildren = eachItem.children.map(child => ({
+            const wrappedChildren = eachItem.children?.map(child => ({
               item: child,
               parentNamePathList: currentNamePathList,
               realRouteArr: currentRealRouteArr,

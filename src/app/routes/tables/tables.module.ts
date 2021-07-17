@@ -6,8 +6,8 @@ import { TablesKitchenSinkComponent } from './kitchen-sink/kitchen-sink.componen
 import { TablesKitchenSinkEditComponent } from './kitchen-sink/edit/edit.component';
 import { TablesRemoteDataComponent } from './remote-data/remote-data.component';
 
-const COMPONENTS = [TablesKitchenSinkComponent, TablesRemoteDataComponent];
-const COMPONENTS_DYNAMIC = [TablesKitchenSinkEditComponent];
+const COMPONENTS: any[] = [TablesKitchenSinkComponent, TablesRemoteDataComponent];
+const COMPONENTS_DYNAMIC: any[] = [TablesKitchenSinkEditComponent];
 
 @NgModule({
   imports: [SharedModule, TableRoutingModule],

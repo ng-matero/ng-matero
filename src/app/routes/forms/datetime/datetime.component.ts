@@ -20,9 +20,9 @@ export class FormsDatetimeComponent implements OnInit, OnDestroy {
   min: moment.Moment;
   max: moment.Moment;
   start: moment.Moment;
-  filter: (date: moment.Moment, type: MatDatetimepickerFilterType) => boolean;
+  filter: (date: moment.Moment | null, type: MatDatetimepickerFilterType) => boolean;
 
-  translateSubscription: Subscription;
+  translateSubscription!: Subscription;
 
   constructor(
     fb: FormBuilder,
@@ -34,7 +34,10 @@ export class FormsDatetimeComponent implements OnInit, OnDestroy {
     this.min = this.today.clone().year(2018).month(10).date(3).hour(11).minute(10);
     this.max = this.min.clone().date(4).minute(45);
     this.start = this.today.clone().year(1930).month(9).date(28);
-    this.filter = (date: moment.Moment, type: MatDatetimepickerFilterType) => {
+    this.filter = (date: moment.Moment | null, type: MatDatetimepickerFilterType) => {
+      if (date === null) {
+        return true;
+      }
       switch (type) {
         case MatDatetimepickerFilterType.DATE:
           return date.year() % 2 === 0 && date.month() % 2 === 0 && date.date() % 2 === 0;

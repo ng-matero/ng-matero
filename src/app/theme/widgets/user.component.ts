@@ -33,7 +33,7 @@ import { User } from '@core/authentication/interface';
   `,
 })
 export class UserComponent implements OnInit {
-  user: User;
+  user!: User;
 
   constructor(private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
 

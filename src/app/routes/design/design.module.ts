@@ -5,8 +5,8 @@ import { DesignRoutingModule } from './design-routing.module';
 import { DesignColorsComponent } from './colors/colors.component';
 import { DesignIconsComponent } from './icons/icons.component';
 
-const COMPONENTS = [DesignColorsComponent, DesignIconsComponent];
-const COMPONENTS_DYNAMIC = [];
+const COMPONENTS: any[] = [DesignColorsComponent, DesignIconsComponent];
+const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
   imports: [SharedModule, DesignRoutingModule],

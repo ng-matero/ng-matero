@@ -8,8 +8,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class StepperComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 

@@ -19,7 +19,7 @@
         </p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
-          <mtx-select [items]="people$ | async" bindLabel="name" bindValue="id" autofocus
+          <mtx-select [items]="(people$ | async)!" bindLabel="name" bindValue="id" autofocus
                       [(ngModel)]="selectedPersonId">
           </mtx-select>
         </mat-form-field>

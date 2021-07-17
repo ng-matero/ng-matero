@@ -8,13 +8,13 @@ const USD_TO_JPY = 110.29;
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  firstName: string;
-  lastName: string;
-  password: string;
+  firstName!: string;
+  lastName!: string;
+  password!: string;
   showPassword = false;
-  email: string;
-  usd: number;
-  comment: string;
+  email!: string;
+  usd!: number;
+  comment!: string;
   commentMax = 200;
 
   get passwordType() {

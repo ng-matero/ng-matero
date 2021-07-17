@@ -11,9 +11,9 @@ export interface Food {
   styleUrls: ['./select.component.scss'],
 })
 export class SelectComponent {
-  selectedColor: string;
-  selectedTopping: string[];
-  selectedPokemon: string;
+  selectedColor!: string;
+  selectedTopping!: string[];
+  selectedPokemon!: string;
 
   colors = [
     { value: 'red', label: 'Red' },
@@ -66,7 +66,10 @@ export class SelectComponent {
     },
     {
       label: 'Psychic',
-      pokemon: [{ value: 'mew', label: 'Mew' }, { value: 'mewtwo', label: 'Mewtwo' }],
+      pokemon: [
+        { value: 'mew', label: 'Mew' },
+        { value: 'mewtwo', label: 'Mewtwo' },
+      ],
     },
   ];
 }

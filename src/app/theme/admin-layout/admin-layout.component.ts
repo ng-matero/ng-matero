@@ -31,8 +31,8 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   encapsulation: ViewEncapsulation.None,
 })
 export class AdminLayoutComponent implements OnDestroy {
-  @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
-  @ViewChild('content', { static: true }) content: MatSidenavContent;
+  @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
+  @ViewChild('content', { static: true }) content!: MatSidenavContent;
 
   options = this.settings.getOptions();
 
@@ -73,7 +73,7 @@ export class AdminLayoutComponent implements OnDestroy {
     @Optional() @Inject(DOCUMENT) private document: Document,
     @Inject(Directionality) public dir: AppDirectionality
   ) {
-    this.dir.value = this.options.dir;
+    this.dir.value = this.options.dir!;
     this.document.body.dir = this.dir.value;
 
     this.layoutChangesSubscription = this.breakpointObserver
@@ -140,7 +140,7 @@ export class AdminLayoutComponent implements OnDestroy {
   }
 
   toggleDirection(options: AppSettings) {
-    this.dir.value = options.dir;
+    this.dir.value = options.dir!;
     this.document.body.dir = this.dir.value;
   }
 }

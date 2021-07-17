@@ -9,11 +9,11 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./role-switching.component.scss'],
 })
 export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
-  currentRole: string;
+  currentRole!: string;
 
-  currentPermissions: string[];
+  currentPermissions!: string[];
 
-  permissionsOfRole = {
+  permissionsOfRole: any = {
     ADMIN: ['canAdd', 'canDelete', 'canEdit', 'canRead'],
     MANAGER: ['canAdd', 'canEdit', 'canRead'],
     GUEST: ['canRead'],

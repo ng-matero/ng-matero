@@ -19,10 +19,10 @@ import { TopmenuState } from './topmenu.component';
   templateUrl: './topmenu-panel.component.html',
 })
 export class TopmenuPanelComponent implements OnInit, OnDestroy {
-  @ViewChild(MatMenu, { static: true }) menuPanel: MatMenu;
+  @ViewChild(MatMenu, { static: true }) menuPanel!: MatMenu;
 
   @Input() items: MenuChildrenItem[] = [];
-  @Input() parentRoute = [];
+  @Input() parentRoute: string[] = [];
   @Input() level = 1;
   @Output() routeChange = new EventEmitter<any>();
 
@@ -30,7 +30,7 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
 
   buildRoute = this.menu.buildRoute;
 
-  private routerSubscription: Subscription;
+  private routerSubscription!: Subscription;
 
   constructor(private menu: MenuService, private router: Router) {}
 
@@ -46,7 +46,7 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
 
   checkRoute(item: MenuChildrenItem) {
     if (!item.route) {
-      return this.checkChildRoute(item.children);
+      return this.checkChildRoute(item.children!);
     } else {
       return this.router.url.split('/').includes(item.route);
     }
@@ -60,6 +60,7 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
       if (!child.route && child.children) {
         this.checkChildRoute(child.children);
       }
+      return false;
     });
   }
 

@@ -7,7 +7,7 @@ import { Directive, Input, SkipSelf, Optional } from '@angular/core';
 export class DisableControlDirective {
   @Input() set disableControl(condition: boolean) {
     const action = condition ? 'disable' : 'enable';
-    this.ngControl.control[action]();
+    this.ngControl.control?.[action]();
   }
 
   constructor(@Optional() @SkipSelf() private ngControl: NgControl) {}

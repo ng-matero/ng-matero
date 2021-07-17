@@ -10,6 +10,6 @@ export class RippleComponent {
   disabled = false;
   unbounded = false;
 
-  radius: number;
-  color: string;
+  radius!: number;
+  color!: string;
 }

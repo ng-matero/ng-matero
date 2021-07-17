@@ -9,7 +9,7 @@ import { MAT_ICONS } from '@shared';
   providers: [DesignIconsService],
 })
 export class DesignIconsComponent implements OnInit {
-  icons: { [key: string]: string[] };
+  icons!: { [key: string]: string[] };
 
   constructor(private iconsSrv: DesignIconsService) {}
 
