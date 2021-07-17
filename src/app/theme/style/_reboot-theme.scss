@@ -1,16 +1,17 @@
+@use '~@angular/material' as mat;
 @mixin matero-reboot-theme($theme) {
   $primary: map-get($theme, primary);
   $foreground: map-get($theme, foreground);
 
   a {
-    color: mat-color($primary);
+    color: mat.get-color-from-palette($primary);
 
     &:hover {
-      color: lighten(mat-color($primary), 10%);
+      color: lighten(mat.get-color-from-palette($primary), 10%);
     }
   }
 
   code {
-    background-color: rgba(mat-color($foreground, secondary-text), .03);
+    background-color: rgba(mat.get-color-from-palette($foreground, secondary-text), .03);
   }
 }

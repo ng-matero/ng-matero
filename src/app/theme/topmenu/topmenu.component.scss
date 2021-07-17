@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '../style/variables';
 
 .matero-topmenu {
@@ -6,7 +7,7 @@
   display: block;
   padding: 8px;
 
-  @include mat-elevation(2);
+  @include mat.elevation(2);
 
   .mat-icon.menu-icon {
     width: 18px;

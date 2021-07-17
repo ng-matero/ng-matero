@@ -7,7 +7,7 @@
 
 @function fast-out-slow($property) {
   // The Material default animation curves.
-  $transition: $property 225ms $mat-fast-out-slow-in-timing-function;
+  $transition: $property 225ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @return $transition;
 }

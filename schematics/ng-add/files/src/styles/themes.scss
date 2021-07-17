@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 @import 'app-theme';
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -8,32 +8,32 @@
 //
 // Light style
 //
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-pink, A200, A100, A400);
-$theme: mat-light-theme($primary, $accent);
+$primary: mat.define-palette(mat.$indigo-palette);
+$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$theme: mat.define-light-theme($primary, $accent);
 <% } %><% else if(theme==='dark') { %>
 //
 // Dark style
 //
-$primary: mat-palette($mat-blue, 700, 300, 900);
-$accent: mat-palette($mat-amber, A200, A100, A400);
-$theme: mat-dark-theme($primary, $accent);
+$primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
+$accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$theme: mat.define-dark-theme($primary, $accent);
 <% } %>
-$config: mat-typography-config();
+$config: mat.define-typography-config();
 
-@include mat-core();
+@include mat.core();
 
-@include angular-material-theme($theme);
+@include mat.all-component-themes($theme);
 @include matero-admin-theme($theme);
 <% if(layout==='dynamic') { %>
 //
 // Demo purposes only
 //
 .theme-dark {
-  $primary: mat-palette($mat-blue, 700, 300, 900);
-  $accent:  mat-palette($mat-amber, A200, A100, A400);
-  $theme: mat-dark-theme($primary, $accent);
+  $primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
+  $accent:  mat.define-palette(mat.$amber-palette, A200, A100, A400);
+  $theme: mat.define-dark-theme($primary, $accent);
 
-  @include angular-material-theme($theme);
+  @include mat.all-component-themes($theme);
   @include matero-admin-theme($theme);
 }<% } %>

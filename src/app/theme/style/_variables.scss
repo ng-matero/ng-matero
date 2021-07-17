@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 
 // Layout
 $gutter: 16px !default;
@@ -35,27 +35,27 @@ $breakpoints: (
 
 // Material colors
 $mat-colors: (
-  red: $mat-red,
-  pink: $mat-pink,
-  purple: $mat-purple,
-  deep-purple: $mat-deep-purple,
-  indigo: $mat-indigo,
-  blue: $mat-blue,
-  light-blue: $mat-light-blue,
-  cyan: $mat-cyan,
-  teal: $mat-teal,
-  green: $mat-green,
-  light-green: $mat-light-green,
-  lime: $mat-lime,
-  yellow: $mat-yellow,
-  amber: $mat-amber,
-  orange: $mat-orange,
-  deep-orange: $mat-deep-orange,
-  brown: $mat-brown,
-  gray: $mat-gray,
-  blue-gray: $mat-blue-gray,
+  red: mat.$red-palette,
+  pink: mat.$pink-palette,
+  purple: mat.$purple-palette,
+  deep-purple: mat.$deep-purple-palette,
+  indigo: mat.$indigo-palette,
+  blue: mat.$blue-palette,
+  light-blue: mat.$light-blue-palette,
+  cyan: mat.$cyan-palette,
+  teal: mat.$teal-palette,
+  green: mat.$green-palette,
+  light-green: mat.$light-green-palette,
+  lime: mat.$lime-palette,
+  yellow: mat.$yellow-palette,
+  amber: mat.$amber-palette,
+  orange: mat.$orange-palette,
+  deep-orange: mat.$deep-orange-palette,
+  brown: mat.$brown-palette,
+  gray: mat.$gray-palette,
+  blue-gray: mat.$blue-gray-palette,
   white: white,
   black: black,
-  light: $light-primary-text,
-  dark: $dark-primary-text,
+  light: white,
+  dark: rgba(black, 0.87),
 ) !default;

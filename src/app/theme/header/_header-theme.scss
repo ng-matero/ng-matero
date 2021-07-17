@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @mixin matero-header-theme($theme) {
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
@@ -5,12 +6,12 @@
   .matero-toolbar-button {
     &.mat-icon-button {
       &:hover {
-        background-color: mat-color($background, hover);
+        background-color: mat.get-color-from-palette($background, hover);
       }
     }
   }
 
   .matero-branding-name {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '../style/variables';
 @import '../style/transitions';
 @import '../style/breakpoints';
@@ -17,7 +18,7 @@
   overflow-x: hidden;
   transition: swift-ease-out(width); // Only set width property
 
-  @include mat-elevation(2);
+  @include mat.elevation(2);
 
   &.mat-drawer-side {
     border-width: 0;
@@ -129,7 +130,7 @@
     .matero-toolbar {
       border-bottom: unset;
 
-      @include mat-elevation(2);
+      @include mat.elevation(2);
     }
   }
 }

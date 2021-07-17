@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~ngx-toastr/toastr';
 
 .toast-container {
@@ -8,10 +9,10 @@
     color: rgba(255, 255, 255, .7);
     background-color: #323232;
 
-    @include mat-elevation(6);
+    @include mat.elevation(6);
 
     &:hover {
-      @include mat-elevation(10);
+      @include mat.elevation(10);
     }
   }
 
@@ -24,19 +25,19 @@
   }
 
   .toast-info {
-    background-color: mat-color($mat-blue, 500);
+    background-color: mat.get-color-from-palette(mat.$blue-palette, 500);
   }
 
   .toast-success {
-    background-color: mat-color($mat-green, 500);
+    background-color: mat.get-color-from-palette(mat.$green-palette, 500);
   }
 
   .toast-warning {
-    background-color: mat-color($mat-orange, 500);
+    background-color: mat.get-color-from-palette(mat.$orange-palette, 500);
   }
 
   .toast-error {
-    background-color: mat-color($mat-red, 500);
+    background-color: mat.get-color-from-palette(mat.$red-palette, 500);
   }
 
   .toast-close-button {
