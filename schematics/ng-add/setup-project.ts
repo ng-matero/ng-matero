@@ -42,7 +42,7 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  *  - Add Preloader to index.html
  *  - Add Packages to package.json
  */
-export default function(options: Schema): Rule {
+export default function (options: Schema): Rule {
   return chain([
     deleteExsitingFiles(),
     addStarterFiles(options),
@@ -175,9 +175,15 @@ function addHmrToAngularJson(oprions: Schema) {
 function addProxyToAngularJson() {
   return updateWorkspace(workspace => {
     const project = getProjectFromWorkspace(workspace);
-    const targetServeOptions = getProjectTargetOptions(project, 'serve');
+    const targetServeConfig = project.targets?.get('serve')?.configurations as any;
 
-    targetServeOptions.proxyConfig = 'proxy.config.js';
+    if (targetServeConfig.options) {
+      targetServeConfig.options.proxyConfig = 'proxy.config.js';
+    } else {
+      targetServeConfig.options = {
+        proxyConfig: 'proxy.config.js',
+      };
+    }
   });
 }
 

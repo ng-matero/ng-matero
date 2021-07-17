@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'sass:math';
 @use 'variables';
+@use '~@angular/material/core/style/private';
 
 @function bp($name, $breakpoints: variables.$breakpoints) {
   $min: map.get($breakpoints, $name);
@@ -68,12 +69,12 @@
 
   @for $i from 1 through $columns {
     .col#{$infix}-#{$i} {
-      flex: 0 0 math.percentage(math.div($i, $columns));
-      max-width: math.percentage(math.div($i, $columns));
+      flex: 0 0 math.percentage(private.private-div($i, $columns));
+      max-width: math.percentage(private.private-div($i, $columns));
     }
 
     .offset#{$infix}-#{$i} {
-      margin-left: math.percentage(math.div($i, $columns));
+      margin-left: math.percentage(private.private-div($i, $columns));
     }
   }
 }
