@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsNgMateroModule",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "SchematicsNgMateroModule",
   "title": "Ng-Matero Module Options Schema",
   "type": "object",
   "properties": {

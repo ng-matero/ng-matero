@@ -1,6 +1,6 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsNgMateroPage",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "SchematicsNgMateroPage",
   "title": "Ng-Matero Page Options Schema",
   "type": "object",
   "properties": {
