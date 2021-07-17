@@ -2,6 +2,11 @@
 //
 // https://codepen.io/c_fitzmaurice/pen/ZYJeRY
 
+@use 'sass:color';
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:math';
+
 @function long-shadow($direction, $length, $color, $fade: false, $shadow-count: 100) {
   $shadows: ();
   $conversion-map: (
@@ -20,25 +25,25 @@
   );
 
   @if map-has-key($conversion-map, $direction) {
-    $direction: map-get($conversion-map, $direction);
+    $direction: map.get($conversion-map, $direction);
   }
 
   @for $i from 1 through $shadow-count {
-    $current-step: ($i * $length / $shadow-count);
+    $current-step: math.div($i * $length, $shadow-count);
     $current-color: if(
       not $fade,
       $color,
       if(
-        type-of($fade) == 'color',
-        mix($fade, $color, ($i / $shadow-count * 100)),
-        rgba($color, 1 - $i / $shadow-count)
+        meta.type-of($fade) == 'color',
+        color.mix($fade, $color, math.div($i, $shadow-count) * 100),
+        color.rgba($color, 1 - math.div($i, $shadow-count))
       )
     );
 
     $shadows: append(
       $shadows,
-      (sin(0deg + $direction) * $current-step)
-      (cos(0deg + $direction) * $current-step)
+      (math.sin(0deg + $direction) * $current-step)
+      (math.cos(0deg + $direction) * $current-step)
       0
       $current-color,
       'comma'

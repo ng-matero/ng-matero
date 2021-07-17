@@ -1,5 +1,4 @@
-@import 'math';
-@import 'long-shadow';
+@use 'long-shadow' as *;
 
 .matero-error-wrap {
   text-align: center;
