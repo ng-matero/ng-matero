@@ -1,14 +1,28 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:list';
+
 @use 'variables' as *;
+
+@use 'display';
+@use 'position';
+@use 'sizing';
+@use 'spacing';
+@use 'border';
+@use 'rounded';
+@use 'text';
+@use 'alignment';
+@use "overflow";
+@use 'cursor';
+@use 'image';
+@use 'icon';
 
 // Generate Helpers
 @each $key, $utility in $utilities {
   $values: map.get($utility, values);
 
   // If the values are a list or string, convert it into a map
-  @if meta.type-of($values) == "string" or meta.type-of(list.nth($values, 1)) != "list" {
+  @if meta.type-of($values) == 'string' or meta.type-of(list.nth($values, 1)) != 'list' {
     $values: zip($values, $values);
   }
 
