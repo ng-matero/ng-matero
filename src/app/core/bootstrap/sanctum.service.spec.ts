@@ -8,9 +8,9 @@ import { BASE_URL } from '../interceptors/base-url-interceptor';
 describe('SanctumService', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
-  let sanctumService;
+  let sanctumService: SanctumService;
 
-  const setBaseUrlAndSanctumPrefix = (baseUrl: string, sanctumPrefix: string) => {
+  const setBaseUrlAndSanctumPrefix = (baseUrl: string | null, sanctumPrefix: string | null) => {
     TestBed.overrideProvider(BASE_URL, { useValue: baseUrl });
     TestBed.overrideProvider(SANCTUM_PREFIX, { useValue: sanctumPrefix });
 

@@ -9,7 +9,7 @@ describe('BaseUrlInterceptor', () => {
   let http: HttpClient;
   const baseUrl = 'https://foo.bar';
 
-  const setBaseUrl = (url: string) => {
+  const setBaseUrl = (url: string | null) => {
     TestBed.overrideProvider(BASE_URL, { useValue: url });
     httpMock = TestBed.inject(HttpTestingController);
     http = TestBed.inject(HttpClient);
