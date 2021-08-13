@@ -3,7 +3,7 @@ import { BehaviorSubject, iif, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { Token, User } from './interface';
+import { TokenResponse, User } from './interface';
 import { admin, guest } from './user';
 
 @Injectable({
@@ -17,12 +17,14 @@ export class AuthService {
 
   constructor(private http: HttpClient, private token: TokenService) {
     this.token
-      .change()
-      .pipe(
-        switchMap(() => iif(() => this.check(), this.userReq$, of(guest))),
-        map(user => Object.assign({}, guest, user))
-      )
-      .subscribe(user => this.user$.next(user));
+      .changed()
+      .pipe(switchMap(() => (this.check() ? this.userReq$ : of(guest))))
+      .subscribe(user => this.user$.next(Object.assign({}, guest, user)));
+
+    this.token
+      .refreshed()
+      .pipe(switchMap(() => this.refresh()))
+      .subscribe();
   }
 
   check() {
@@ -31,7 +33,7 @@ export class AuthService {
 
   login(email: string, password: string, rememberMe = false) {
     // return this.http
-    //   .post<Token>('/auth/login', { email, password, remember_me: rememberMe })
+    //   .post<TokenResponse>('/auth/login', { email, password, remember_me: rememberMe })
     //   .pipe(
     //     tap(token => this.token.set(token)),
     //     map(() => this.check())
@@ -39,6 +41,13 @@ export class AuthService {
     const _token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
     return of(_token).pipe(
       tap(token => this.token.set(token)),
+      map(() => this.check())
+    );
+  }
+
+  refresh() {
+    return this.http.post<TokenResponse>('/auth/refresh', {}).pipe(
+      tap(token => this.token.refresh(token)),
       map(() => this.check())
     );
   }

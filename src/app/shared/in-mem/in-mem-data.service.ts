@@ -4,20 +4,39 @@ import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-ap
 import { Observable } from 'rxjs';
 import { User } from '@core/authentication/interface';
 import { environment } from '@env/environment';
+import { fromByteArray, toByteArray } from 'base64-js';
 
-function urlSafeBase64Encode(text: string) {
-  return btoa(text).replace(/[+/=]/g, m => {
-    return { '+': '-', '/': '_', '=': '' }[m] as string;
-  });
+function pack(str: string) {
+  const bytes: any = [];
+  for (let i = 0; i < str.length; i++) {
+    bytes.push(...[str.charCodeAt(i)]);
+  }
+
+  return bytes;
 }
 
-function urlSafeBase64Decode(text: string) {
-  return atob(
-    text.replace(/[-_]/g, m => {
+function unpack(byteArray: any) {
+  return String.fromCharCode(...byteArray);
+}
+
+const base64 = {
+  encode(plainText: string) {
+    return fromByteArray(pack(plainText)).replace(/[+/=]/g, m => {
+      return { '+': '-', '/': '_', '=': '' }[m] as string;
+    });
+  },
+
+  decode(b64: string) {
+    b64 = b64.replace(/[-_]/g, m => {
       return { '-': '+', '_': '/' }[m] as string;
-    })
-  );
-}
+    });
+    while (b64.length % 4) {
+      b64 += '=';
+    }
+
+    return unpack(toByteArray(b64));
+  },
+};
 
 function generateToken(user: User) {
   const expiresIn = 3600;
@@ -25,17 +44,9 @@ function generateToken(user: User) {
   const payload = JSON.stringify({ exp: Math.ceil(new Date().getTime() / 1000) + expiresIn, user });
   const key = 'ng-matero';
 
-  const accessToken = [
-    urlSafeBase64Encode(header),
-    urlSafeBase64Encode(payload),
-    urlSafeBase64Encode(key),
-  ].join('.');
+  const accessToken = [base64.encode(header), base64.encode(payload), base64.encode(key)].join('.');
 
-  return {
-    access_token: accessToken,
-    token_type: 'bearer',
-    expires_in: expiresIn,
-  };
+  return { access_token: accessToken, token_type: 'bearer', expires_in: expiresIn };
 }
 
 function is(reqInfo: RequestInfo, path: string) {
@@ -52,7 +63,7 @@ function getUserFromJWTToken(req: HttpRequest<any>) {
   try {
     const [, payload] = token.split('.');
 
-    const data = JSON.parse(urlSafeBase64Decode(payload));
+    const data = JSON.parse(base64.decode(payload));
     const d = new Date();
     d.setUTCSeconds(data.exp);
     if (new Date().getTime() > d.getTime()) {

@@ -24,7 +24,7 @@ export class StartupService {
   load(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.token
-        .change()
+        .changed()
         .pipe(
           switchMap(() => iif(() => this.token.valid(), this.menuReq$, of({ menu: [] }))),
           catchError(error => throwError(error))

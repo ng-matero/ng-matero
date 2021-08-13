@@ -3,7 +3,7 @@ import { BehaviorSubject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { Token, User } from './interface';
+import { TokenResponse, User } from './interface';
 import { guest } from './user';
 
 @Injectable({
@@ -16,12 +16,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private token: TokenService) {
     this.token
-      .change()
+      .changed()
       .pipe(switchMap(() => (this.check() ? this.userReq$ : of(guest))))
       .subscribe(user => this.user$.next(Object.assign({}, guest, user)));
 
     this.token
-      .refresh()
+      .refreshed()
       .pipe(switchMap(() => this.refresh()))
       .subscribe();
   }
@@ -32,7 +32,7 @@ export class AuthService {
 
   login(email: string, password: string, rememberMe = false) {
     return this.http
-      .post<Token>('/auth/login', { email, password, remember_me: rememberMe })
+      .post<TokenResponse | any>('/auth/login', { email, password, remember_me: rememberMe })
       .pipe(
         tap(token => this.token.set(token)),
         map(() => this.check())
@@ -40,8 +40,8 @@ export class AuthService {
   }
 
   refresh() {
-    return this.http.post<Token>('/auth/refresh', {}).pipe(
-      tap(token => this.token.set(token, true)),
+    return this.http.post<TokenResponse | any>('/auth/refresh', {}).pipe(
+      tap(token => this.token.refresh(token)),
       map(() => this.check())
     );
   }
