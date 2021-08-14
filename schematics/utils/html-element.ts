@@ -1,6 +1,6 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
 import { getChildElementIndentation } from '@angular/cdk/schematics';
-import { DefaultTreeDocument, DefaultTreeElement, parse as parseHtml } from 'parse5';
+import { Element, parse as parseHtml } from 'parse5';
 
 /** Appends the given element HTML fragment to the `<head>` element of the specified HTML file. */
 export function appendHtmlElement(
@@ -37,12 +37,12 @@ export function appendHtmlElement(
 }
 
 /** Parses the given HTML file and returns the element if available. */
-export function getHtmlTagElement(htmlContent: string, tag: string): DefaultTreeElement | null {
-  const document = parseHtml(htmlContent, { sourceCodeLocationInfo: true }) as DefaultTreeDocument;
+export function getHtmlTagElement(htmlContent: string, tag: string): Element | null {
+  const document = parseHtml(htmlContent, { sourceCodeLocationInfo: true });
   const nodeQueue = [...document.childNodes];
 
   while (nodeQueue.length) {
-    const node = nodeQueue.shift() as DefaultTreeElement;
+    const node = nodeQueue.shift() as Element;
 
     if (node.nodeName.toLowerCase() === tag) {
       return node;
