@@ -69,7 +69,7 @@
     "@angular/language-service": "~12.1.2",
     "@angularclass/hmr": "^3.0.0",
     "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/config-conventional": "^13.1.0",
     "@types/jasmine": "~3.8.2",
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^16.4.10",
