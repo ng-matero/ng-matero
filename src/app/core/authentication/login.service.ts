@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TokenResponse, User } from '@core/authentication/interface';
+import { TokenResponse, User } from './interface';
 
 @Injectable({
   providedIn: 'root',

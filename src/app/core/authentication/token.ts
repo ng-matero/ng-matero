@@ -1,20 +1,6 @@
-import { capitalize, now, timeLeft } from '@core/authentication/helpers';
-import { Token, TokenAttribute } from '@core/authentication/interface';
 import { toByteArray } from 'base64-js';
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class TokenFactory {
-  create(attributes: TokenAttribute) {
-    if (JwtToken.is(attributes.accessToken)) {
-      return new JwtToken(attributes);
-    }
-
-    return new SimpleToken(attributes);
-  }
-}
+import { capitalize, now, timeLeft } from './helpers';
+import { Token, TokenAttribute } from './interface';
 
 export abstract class BaseToken implements Token {
   accessToken(): string {
