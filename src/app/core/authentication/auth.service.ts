@@ -12,12 +12,10 @@ import { guest } from './user';
 export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
 
-  private userReq$ = this.http.get<User>('/me');
-
-  constructor(private http: HttpClient, private token: TokenService) {
+  constructor(protected http: HttpClient, protected token: TokenService) {
     this.token
       .changed()
-      .pipe(switchMap(() => (this.check() ? this.userReq$ : of(guest))))
+      .pipe(switchMap(() => (this.check() ? this.getUser() : of(guest))))
       .subscribe(user => this.user$.next(Object.assign({}, guest, user)));
 
     this.token
@@ -55,5 +53,9 @@ export class AuthService {
 
   user() {
     return this.user$.pipe(share());
+  }
+
+  protected getUser() {
+    return this.http.get<User>('/me');
   }
 }
