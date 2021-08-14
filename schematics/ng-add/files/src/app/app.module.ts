@@ -23,56 +23,45 @@ import { of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { admin } from '@core/authentication/user';
 import { TokenResponse, User } from '@core/authentication/interface';
+import { LoginService } from '@core/authentication/login.service';
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-class FakeAuthService extends AuthService {
-  login(email: string, password: string, rememberMe = false) {
-    // return this.http
-    //   .post<TokenResponse>('/auth/login', { email, password, remember_me: rememberMe })
-    //   .pipe(
-    //     tap(token => this.token.set(token)),
-    //     map(() => this.check())
-    //   );
-    const _token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
+class FakeLoginService extends LoginService {
+  private token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
 
-    return of(_token).pipe(
-      tap(token => this.token.set(token)),
-      map(() => this.check())
-    );
+  login() {
+    // return this.http.post<TokenResponse | any>('/auth/login', {
+    //   email,
+    //   password,
+    //   remember_me: rememberMe,
+    // });
+
+    return of(this.token);
   }
 
   refresh() {
-    // return this.http.post<TokenResponse | any>('/auth/refresh', {}).pipe(
-    //   tap(token => this.token.refresh(token)),
-    //   map(() => this.check())
-    // );
-    const _token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
-
-    return of(_token).pipe(
-      tap(token => this.token.refresh(token)),
-      map(() => this.check())
-    );
+    // return this.http.post<TokenResponse | any>('/auth/refresh', {});
+    return of(this.token);
   }
 
   logout() {
-    // return this.http.post('/auth/logout', {}).pipe(
-    //   tap(() => this.token.clear()),
-    //   map(() => !this.check())
-    // );
-    return of({}).pipe(
-      tap(() => this.token.clear()),
-      map(() => !this.check())
-    );
+    // return this.http.post('/auth/logout', {});
+    return of({});
   }
 
-  protected getUser() {
+  me() {
     // return this.http.get<User>('/me');
-
     return of(admin);
+  }
+
+  menu() {
+    // return this.http.get('/me/menu');
+
+    return this.http.get('assets/data/menu.json?_t=' + Date.now());
   }
 }
 
@@ -98,7 +87,7 @@ class FakeAuthService extends AuthService {
   ],
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },
-    { provide: AuthService, useClass: FakeAuthService },
+    { provide: LoginService, useClass: FakeLoginService },
     httpInterceptorProviders,
     appInitializerProviders,
   ],

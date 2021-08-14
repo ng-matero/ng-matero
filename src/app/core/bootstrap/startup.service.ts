@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { iif, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { MenuService } from './menu.service';
 import { TokenService } from '../authentication/token.service';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { LoginService } from '@core/authentication/login.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StartupService {
-  private menuReq$ = this.http.get('/me/menu');
-
   constructor(
     private token: TokenService,
     private menu: MenuService,
-    private http: HttpClient,
+    private login: LoginService,
     private permissonsSrv: NgxPermissionsService,
     private rolesSrv: NgxRolesService
   ) {}
@@ -26,7 +24,7 @@ export class StartupService {
       this.token
         .changed()
         .pipe(
-          switchMap(() => iif(() => this.token.valid(), this.menuReq$, of({ menu: [] }))),
+          switchMap(() => iif(() => this.token.valid(), this.login.menu(), of({ menu: [] }))),
           catchError(error => throwError(error))
         )
         .subscribe((response: any) => {

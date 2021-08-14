@@ -3,8 +3,8 @@ import { BehaviorSubject, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared/services/storage.service';
 import { Token, TokenResponse } from './interface';
-import { TokenFactory } from './token';
 import { now } from '@core/authentication/helpers';
+import { TokenFactory } from '@core/authentication/token';
 
 @Injectable({
   providedIn: 'root',
