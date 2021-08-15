@@ -15,3 +15,4 @@ export * from './interceptors';
 export * from './authentication/auth.guard';
 export * from './authentication/auth.service';
 export * from './authentication/token.service';
+export * from './authentication/login.service';

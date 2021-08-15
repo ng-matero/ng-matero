@@ -3,8 +3,8 @@ import { iif, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { MenuService } from './menu.service';
 import { TokenService } from '../authentication/token.service';
+import { LoginService } from '../authentication/login.service';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { LoginService } from '@core/authentication/login.service';
 
 @Injectable({
   providedIn: 'root',
