@@ -23,8 +23,6 @@ export class SettingsService {
     return this.options;
   }
 
-  /** System language */
-
   get language() {
     return this.options.language;
   }

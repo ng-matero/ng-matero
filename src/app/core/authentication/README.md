@@ -1,6 +1,6 @@
 # Authentication
 
-You should replace the APIs to your own in `login.service.ts`
+You should replace the APIs with your owns in `login.service.ts`
 
 - `/auth/login` Login
 - `/auth/refresh` Refresh
