@@ -7,19 +7,24 @@ export interface User {
   avatar?: string;
 }
 
-export interface Token {
+export interface TokenResponse {
   access_token?: string;
   token?: string;
   token_type?: string;
   expires_in?: number;
 }
 
-export interface RefreshToken {
-  refresh: boolean;
+export interface TokenAttribute {
   accessToken: string;
   tokenType: string;
   exp: number;
+}
 
-  refreshTime: () => number;
+export interface Token {
+  accessToken: () => string;
+  tokenType: () => string;
+  exp: () => number;
   valid: () => boolean;
+  refreshTime: () => number;
+  headerValue: () => string;
 }

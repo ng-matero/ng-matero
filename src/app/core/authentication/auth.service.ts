@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { Token, User } from './interface';
+import { User } from './interface';
 import { guest } from './user';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,16 +12,14 @@ import { guest } from './user';
 export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
 
-  private userReq$ = this.http.get<User>('/me');
-
-  constructor(private http: HttpClient, private token: TokenService) {
+  constructor(private loginService: LoginService, private token: TokenService) {
     this.token
-      .change()
-      .pipe(switchMap(() => (this.check() ? this.userReq$ : of(guest))))
+      .changed()
+      .pipe(switchMap(() => (this.check() ? this.loginService.me() : of(guest))))
       .subscribe(user => this.user$.next(Object.assign({}, guest, user)));
 
     this.token
-      .refresh()
+      .refreshed()
       .pipe(switchMap(() => this.refresh()))
       .subscribe();
   }
@@ -31,23 +29,21 @@ export class AuthService {
   }
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http
-      .post<Token>('/auth/login', { email, password, remember_me: rememberMe })
-      .pipe(
-        tap(token => this.token.set(token)),
-        map(() => this.check())
-      );
+    return this.loginService.login(email, password, rememberMe).pipe(
+      tap(token => this.token.set(token)),
+      map(() => this.check())
+    );
   }
 
   refresh() {
-    return this.http.post<Token>('/auth/refresh', {}).pipe(
-      tap(token => this.token.set(token, true)),
+    return this.loginService.refresh().pipe(
+      tap(token => this.token.refresh(token)),
       map(() => this.check())
     );
   }
 
   logout() {
-    return this.http.post('/auth/logout', {}).pipe(
+    return this.loginService.logout().pipe(
       tap(() => this.token.clear()),
       map(() => !this.check())
     );

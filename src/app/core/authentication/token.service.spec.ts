@@ -28,5 +28,4 @@ describe('TokenService', () => {
 
     expect(service.headerValue()).toBe('');
   });
-
 });

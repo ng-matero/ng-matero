@@ -62,8 +62,8 @@ describe('AuthService', () => {
     let refreshTimes = 0;
 
     tokenService.set(token);
-    tokenService.change().subscribe(() => changeTimes++);
-    tokenService.refresh().subscribe(() => refreshTimes++);
+    tokenService.changed().subscribe(() => changeTimes++);
+    tokenService.refreshed().subscribe(() => refreshTimes++);
 
     authService.logout().subscribe(isLogout => expect(isLogout).toBeTrue());
 

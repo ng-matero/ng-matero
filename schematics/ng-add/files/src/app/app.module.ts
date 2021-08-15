@@ -18,10 +18,51 @@ import { environment } from '@env/environment';
 import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 import { httpInterceptorProviders } from '@core/interceptors';
 import { appInitializerProviders } from '@core/initializers';
+import { AuthService } from '@core';
+import { of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { admin } from '@core/authentication/user';
+import { TokenResponse, User } from '@core/authentication/interface';
+import { LoginService } from '@core/authentication/login.service';
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+class FakeLoginService extends LoginService {
+  private token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
+
+  login() {
+    // return this.http.post<TokenResponse | any>('/auth/login', {
+    //   email,
+    //   password,
+    //   remember_me: rememberMe,
+    // });
+
+    return of(this.token);
+  }
+
+  refresh() {
+    // return this.http.post<TokenResponse | any>('/auth/refresh', {});
+    return of(this.token);
+  }
+
+  logout() {
+    // return this.http.post('/auth/logout', {});
+    return of({});
+  }
+
+  me() {
+    // return this.http.get<User>('/me');
+    return of(admin);
+  }
+
+  menu() {
+    // return this.http.get('/me/menu');
+
+    return this.http.get('assets/data/menu.json?_t=' + Date.now());
+  }
 }
 
 @NgModule({
@@ -46,6 +87,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },
+    { provide: LoginService, useClass: FakeLoginService },
     httpInterceptorProviders,
     appInitializerProviders,
   ],
