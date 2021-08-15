@@ -13,7 +13,6 @@ import {
   addModuleImportToRootModule,
   getProjectFromWorkspace,
   getProjectMainFile,
-  getProjectTargetOptions,
   hasNgModuleImport,
 } from '@angular/cdk/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
@@ -36,7 +35,8 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Scripts to package.json
- *  - Add proxy & Hmr & style to angular.json
+ *  - Add proxy to angular.json
+ *  - Add style to angular.json
  *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to index.html
  *  - Add Preloader to index.html
@@ -48,7 +48,6 @@ export default function (options: Schema): Rule {
     addStarterFiles(options),
     addScriptsToPackageJson(),
     addProxyToAngularJson(),
-    addHmrToAngularJson(options),
     addStyleToAngularJson(options),
     addAnimationsModule(options),
     addFontsToIndex(options),
@@ -144,31 +143,8 @@ function addScriptsToPackageJson() {
       `tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'`
     );
     addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss 'src/**/*.scss' --fix`);
-    addScriptToPackageJson(host, 'hmr', `ng serve --hmr -c hmr --disable-host-check`);
+    addScriptToPackageJson(host, 'hmr', `ng serve --hmr --disable-host-check`);
   };
-}
-
-/** Add hmr to angular.json */
-function addHmrToAngularJson(oprions: Schema) {
-  return updateWorkspace(workspace => {
-    const project = getProjectFromWorkspace(workspace);
-    const targetBuildConfig = project.targets?.get('build')?.configurations as any;
-    const targetServeConfig = project.targets?.get('serve')?.configurations as any;
-
-    targetBuildConfig.hmr = {
-      fileReplacements: [
-        {
-          replace: `${project.sourceRoot}/environments/environment.ts`,
-          with: `${project.sourceRoot}/environments/environment.hmr.ts`,
-        },
-      ],
-    };
-
-    targetServeConfig.hmr = {
-      hmr: true,
-      browserTarget: `${oprions.project}:build:hmr`,
-    };
-  });
 }
 
 /** Add proxy to angular.json */
