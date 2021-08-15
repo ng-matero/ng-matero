@@ -11,6 +11,7 @@
     "stylelint.vscode-stylelint",
     "syler.sass-indented",
     "editorconfig.editorconfig",
-    "box-of-hats.quick-material-icons"
+    "box-of-hats.quick-material-icons",
+    "mrmlnc.vscode-scss"
   ]
 }
