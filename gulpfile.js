@@ -58,8 +58,6 @@ function copyEnvironments(cb) {
 function copySrcApp(cb) {
   return src([
     'src/app/**/*',
-    '!src/app/core/authentication/auth.service.ts',
-    '!src/app/core/bootstrap/startup.service.ts',
     '!src/app/core/settings.ts',
     '!src/app/routes/**/*',
     '!src/app/shared/shared.module.ts',

@@ -24,6 +24,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
 
 @NgModule({
