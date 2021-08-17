@@ -20,12 +20,7 @@ export enum STATUS {
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  private errorPages = [
-    STATUS.UNAUTHORIZED,
-    STATUS.FORBIDDEN,
-    STATUS.NOT_FOUND,
-    STATUS.INTERNAL_SERVER_ERROR,
-  ];
+  private errorPages = [STATUS.FORBIDDEN, STATUS.NOT_FOUND, STATUS.INTERNAL_SERVER_ERROR];
 
   constructor(private router: Router, private toastr: ToastrService) {}
 
@@ -36,15 +31,16 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error.status === STATUS.UNAUTHORIZED) {
-      this.router.navigateByUrl('/auth/login');
-    } else if (this.errorPages.includes(error.status)) {
+    if (this.errorPages.includes(error.status)) {
       this.router.navigateByUrl(`/sessions/${error.status}`, {
         skipLocationChange: true,
       });
-    } else if (error instanceof HttpErrorResponse) {
+    } else {
       console.error('ERROR', error);
-      this.toastr.error(error.error.msg || `${error.status} ${error.statusText}`);
+      this.toastr.error(error.error?.msg || `${error.status} ${error.statusText}`);
+      if (error.status === STATUS.UNAUTHORIZED) {
+        this.router.navigateByUrl('/auth/login');
+      }
     }
 
     return throwError(error);
