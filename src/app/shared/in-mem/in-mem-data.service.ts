@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
 import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { User } from '@core/authentication/interface';
 import { environment } from '@env/environment';
 import { fromByteArray, toByteArray } from 'base64-js';
+import { find, map, switchMap } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
 
 function pack(str: string) {
   const bytes: any = [];
@@ -38,16 +40,33 @@ const base64 = {
   },
 };
 
-function generateToken(user: User) {
-  const expiresIn = 3600;
-  const header = JSON.stringify({ typ: 'JWT', alg: 'HS256' });
-  const payload = JSON.stringify({ exp: Math.ceil(new Date().getTime() / 1000) + expiresIn, user });
-  const key = 'ng-matero';
+const jwt = {
+  generate(user: User) {
+    const expiresIn = 3600;
+    const exp = Math.ceil(new Date().getTime() / 1000) + expiresIn;
+    const accessToken = [
+      base64.encode(JSON.stringify({ typ: 'JWT', alg: 'HS256' })),
+      base64.encode(JSON.stringify({ exp, user })),
+      base64.encode('ng-matero'),
+    ].join('.');
 
-  const accessToken = [base64.encode(header), base64.encode(payload), base64.encode(key)].join('.');
+    return { access_token: accessToken, token_type: 'bearer', expires_in: expiresIn };
+  },
+  getUser(req: HttpRequest<any>) {
+    const authorization = req.headers.get('Authorization');
+    const [, token] = (authorization as string).split(' ');
+    try {
+      const [, payload] = token.split('.');
+      const data = JSON.parse(base64.decode(payload));
+      const d = new Date();
+      d.setUTCSeconds(data.exp);
 
-  return { access_token: accessToken, token_type: 'bearer', expires_in: expiresIn };
-}
+      return new Date().getTime() > d.getTime() ? null : data.user;
+    } catch (e) {
+      return null;
+    }
+  },
+};
 
 function is(reqInfo: RequestInfo, path: string) {
   if (environment.baseUrl) {
@@ -55,25 +74,6 @@ function is(reqInfo: RequestInfo, path: string) {
   }
 
   return new RegExp(`${path}(/)?$`, 'i').test(reqInfo.req.url);
-}
-
-function getUserFromJWTToken(req: HttpRequest<any>) {
-  const authorization = req.headers.get('Authorization');
-  const [, token] = (authorization as string).split(' ');
-  try {
-    const [, payload] = token.split('.');
-
-    const data = JSON.parse(base64.decode(payload));
-    const d = new Date();
-    d.setUTCSeconds(data.exp);
-    if (new Date().getTime() > d.getTime()) {
-      return null;
-    }
-
-    return data.user;
-  } catch (e) {
-    return null;
-  }
 }
 
 @Injectable({
@@ -104,34 +104,31 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   get(reqInfo: RequestInfo) {
-    if (is(reqInfo, 'sanctum/csrf-cookie')) {
-      return reqInfo.utils.createResponse$(() => {
-        const { headers, url } = reqInfo;
+    const { headers, url } = reqInfo;
 
-        return { status: STATUS.NO_CONTENT, headers, url, body: {} };
-      });
+    if (is(reqInfo, 'sanctum/csrf-cookie')) {
+      const response = { headers, url, status: STATUS.NO_CONTENT, body: {} };
+
+      return reqInfo.utils.createResponse$(() => response);
     }
 
     if (is(reqInfo, 'me/menu')) {
-      return reqInfo.utils.createResponse$(() => {
-        const { headers, url } = reqInfo;
-        const menu = JSON.parse(this.fetch('assets/data/menu.json?_t=' + Date.now())).menu;
-
-        return { status: STATUS.OK, headers, url, body: { menu } };
-      });
+      return ajax('assets/data/menu.json?_t=' + Date.now()).pipe(
+        map(response => {
+          return { headers, url, status: STATUS.OK, body: { menu: response.response.menu } };
+        }),
+        switchMap(response => reqInfo.utils.createResponse$(() => response))
+      );
     }
 
     if (is(reqInfo, 'me')) {
-      return reqInfo.utils.createResponse$(() => {
-        const { headers, url } = reqInfo;
-        const user = getUserFromJWTToken(reqInfo.req as HttpRequest<any>);
+      const user = jwt.getUser(reqInfo.req as HttpRequest<any>);
+      const result = user
+        ? { status: STATUS.OK, body: user }
+        : { status: STATUS.UNAUTHORIZED, body: {} };
+      const response = Object.assign({ headers, url }, result);
 
-        if (!user) {
-          return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
-        }
-
-        return { status: STATUS.OK, headers, url, body: user };
-      });
+      return reqInfo.utils.createResponse$(() => response);
     }
 
     return;
@@ -154,65 +151,52 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   private login(reqInfo: RequestInfo) {
-    return reqInfo.utils.createResponse$(() => {
-      const { headers, url } = reqInfo;
-      const req = reqInfo.req as HttpRequest<any>;
-      const { email, password } = req.body;
-      const currentUser = Object.assign(
-        {},
-        this.users.find(user => user.email === email || user.username === email)
-      );
+    const { headers, url } = reqInfo;
+    const req = reqInfo.req as HttpRequest<any>;
+    const { email, password } = req.body;
 
-      if (!currentUser) {
-        return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
-      }
+    return from(this.users).pipe(
+      find(user => user.email === email || user.username === email),
+      map(user => {
+        if (!user) {
+          return { headers, url, status: STATUS.UNAUTHORIZED, body: {} };
+        }
 
-      if (currentUser.password !== password) {
-        return {
-          status: STATUS.UNPROCESSABLE_ENTRY,
-          headers,
-          url,
-          error: {
-            errors: {
-              password: ['The provided password is incorrect.'],
-            },
-          },
-        };
-      }
+        if (user.password !== password) {
+          const result = {
+            status: STATUS.UNPROCESSABLE_ENTRY,
+            error: { errors: { password: ['The provided password is incorrect.'] } },
+          };
 
-      delete currentUser.password;
+          return Object.assign({ headers, url }, result);
+        }
 
-      return { status: STATUS.OK, headers, url, body: generateToken(currentUser) };
-    });
+        const currentUser = Object.assign({}, user);
+        delete currentUser.password;
+
+        return { headers, url, status: STATUS.OK, body: jwt.generate(currentUser) };
+      }),
+      switchMap(response => {
+        return reqInfo.utils.createResponse$(() => response);
+      })
+    );
   }
 
   private refresh(reqInfo: RequestInfo) {
-    return reqInfo.utils.createResponse$(() => {
-      const { headers, url } = reqInfo;
-      const user = getUserFromJWTToken(reqInfo.req as HttpRequest<any>);
-      if (!user) {
-        return { status: STATUS.UNAUTHORIZED, headers, url, body: {} };
-      }
+    const { headers, url } = reqInfo;
+    const user = jwt.getUser(reqInfo.req as HttpRequest<any>);
+    const result = user
+      ? { status: STATUS.OK, body: jwt.generate(user) }
+      : { status: STATUS.UNAUTHORIZED, body: {} };
+    const response = Object.assign({ headers, url }, result);
 
-      return { status: STATUS.OK, headers, url, body: generateToken(user) };
-    });
+    return reqInfo.utils.createResponse$(() => response);
   }
 
   private logout(reqInfo: RequestInfo) {
-    return reqInfo.utils.createResponse$(() => {
-      const { headers, url } = reqInfo;
+    const { headers, url } = reqInfo;
+    const response = { headers, url, status: STATUS.OK, body: {} };
 
-      return { status: STATUS.OK, headers, url, body: {} };
-    });
-  }
-
-  private fetch(url: string) {
-    let content: any = null;
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false);
-    xhr.onload = () => (content = xhr.responseText);
-    xhr.send();
-
-    return content;
+    return reqInfo.utils.createResponse$(() => response);
   }
 }
