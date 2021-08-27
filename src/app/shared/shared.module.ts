@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { MaterialModule } from '../material.module';
+import { MatDatetimepickerModule } from '@mat-datetimepicker/core';
+import { MatMomentDatetimeModule } from '@mat-datetimepicker/moment';
 import { MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormlyModule } from '@ngx-formly/core';
@@ -19,14 +23,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
-
 import { DisableControlDirective } from './directives/disable-control.directive';
-
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 
 const MODULES: any[] = [
+  DragDropModule,
   MaterialModule,
+  MatMomentDatetimeModule,
+  MatDatetimepickerModule,
   MaterialExtensionsModule,
   FlexLayoutModule,
   FormlyModule,
