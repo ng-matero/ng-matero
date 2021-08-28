@@ -1,4 +1,4 @@
-/** Fix some Material component styles */
+/** Override Material styles */
 
 @use '../../app/theme/style/variables';
 
@@ -13,6 +13,17 @@
 
 .mat-list-base {
   position: relative;
+}
+
+.mat-checkbox,
+.mat-radio-button,
+.mat-slide-toggle {
+  margin-right: variables.$gutter * .5;
+
+  [dir='rtl'] & {
+    margin-right: auto;
+    margin-left: variables.$gutter * .5;
+  }
 }
 
 .form-field-full {
