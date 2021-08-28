@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MaterialModule } from '../material.module';
-import { MatDatetimepickerModule } from '@mat-datetimepicker/core';
-import { MatMomentDatetimeModule } from '@mat-datetimepicker/moment';
 import { MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormlyModule } from '@ngx-formly/core';
@@ -15,7 +13,6 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
@@ -30,8 +27,6 @@ import { ToObservablePipe } from './pipes/to-observable.pipe';
 const MODULES: any[] = [
   DragDropModule,
   MaterialModule,
-  MatMomentDatetimeModule,
-  MatDatetimepickerModule,
   MaterialExtensionsModule,
   FlexLayoutModule,
   FormlyModule,
@@ -39,7 +34,6 @@ const MODULES: any[] = [
   NgProgressModule,
   NgProgressRouterModule,
   NgProgressHttpModule,
-  NgSelectModule,
   NgxPermissionsModule,
   ToastrModule,
   TranslateModule,
