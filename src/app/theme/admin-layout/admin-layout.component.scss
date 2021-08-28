@@ -22,6 +22,10 @@
 
   &.mat-drawer-side {
     border-width: 0;
+
+    [dir='rtl'] & {
+      border-width: 0;
+    }
   }
 }
 
