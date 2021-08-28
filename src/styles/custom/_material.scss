@@ -1,4 +1,4 @@
-// Material components style fix
+/** Override Material styles */
 
 .mat-card {
   margin-bottom: $gutter;
@@ -11,6 +11,17 @@
 
 .mat-list-base {
   position: relative;
+}
+
+.mat-checkbox,
+.mat-radio-button,
+.mat-slide-toggle {
+  margin-right: $gutter * .5;
+
+  [dir='rtl'] & {
+    margin-right: auto;
+    margin-left: $gutter * .5;
+  }
 }
 
 .form-field-full {
