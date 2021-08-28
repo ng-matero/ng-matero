@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { MaterialModule } from '../material.module';
 import { MaterialExtensionsModule } from '@ng-matero/extensions';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -11,7 +13,6 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,6 +27,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 
 const MODULES = [
+  DragDropModule,
   MaterialModule,
   MaterialExtensionsModule,
   FlexLayoutModule,
@@ -34,7 +36,6 @@ const MODULES = [
   NgProgressModule,
   NgProgressRouterModule,
   NgProgressHttpModule,
-  NgSelectModule,
   NgxPermissionsModule,
   ToastrModule,
   TranslateModule,

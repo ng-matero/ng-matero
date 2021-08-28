@@ -11,7 +11,6 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
@@ -19,9 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
-
 import { DisableControlDirective } from './directives/disable-control.directive';
-
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 
@@ -34,7 +31,6 @@ const MODULES = [
   NgProgressModule,
   NgProgressRouterModule,
   NgProgressHttpModule,
-  NgSelectModule,
   NgxPermissionsModule,
   ToastrModule,
   TranslateModule,
