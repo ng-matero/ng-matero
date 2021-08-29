@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -26,9 +26,9 @@ import { ToObservablePipe } from './pipes/to-observable.pipe';
 
 const MODULES: any[] = [
   CommonModule,
-  FormsModule,
   RouterModule,
   ReactiveFormsModule,
+  FormsModule,
   DragDropModule,
   MaterialModule,
   MaterialExtensionsModule,

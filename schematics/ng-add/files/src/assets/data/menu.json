@@ -1,5 +1,6 @@
 {
-  "menu": [{
+  "menu": [
+    {
       "route": "dashboard",
       "name": "dashboard",
       "type": "link",
@@ -10,11 +11,12 @@
       }
     },
     {
-      "route": "sessions",
+      "route": "",
       "name": "sessions",
       "type": "sub",
       "icon": "question_answer",
-      "children": [{
+      "children": [
+        {
           "route": "403",
           "name": "403",
           "type": "link"
