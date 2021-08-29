@@ -391,7 +391,7 @@
       }
     },
     {
-      "route": "sessions",
+      "route": "",
       "name": "sessions",
       "type": "sub",
       "icon": "question_answer",
