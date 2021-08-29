@@ -32,7 +32,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   private handleError(error: HttpErrorResponse) {
     if (this.errorPages.includes(error.status)) {
-      this.router.navigateByUrl(`/sessions/${error.status}`, {
+      this.router.navigateByUrl(`/${error.status}`, {
         skipLocationChange: true,
       });
     } else {

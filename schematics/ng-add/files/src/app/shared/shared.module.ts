@@ -23,6 +23,10 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 
 const MODULES: any[] = [
+  CommonModule,
+  FormsModule,
+  RouterModule,
+  ReactiveFormsModule,
   MaterialModule,
   MaterialExtensionsModule,
   FlexLayoutModule,
@@ -41,18 +45,9 @@ const DIRECTIVES: any[] = [DisableControlDirective];
 const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
 
 @NgModule({
+  imports: [...MODULES],
+  exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ...MODULES],
-  exports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    ...MODULES,
-    ...COMPONENTS,
-    ...DIRECTIVES,
-    ...PIPES,
-  ],
   entryComponents: COMPONENTS_DYNAMIC,
 })
 export class SharedModule {}
