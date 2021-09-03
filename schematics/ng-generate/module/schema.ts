@@ -36,13 +36,11 @@ export interface Schema {
    */
   route?: string;
   /**
-   * When true, creates a routing module.
-   * @deprecated
+   * When true, creates a routing module. Invalid to config.
    */
   routing?: boolean;
   /**
-   * The scope for the new routing module.
-   * @deprecated
+   * The scope for the new routing module. Invalid to config.
    */
   routingScope?: RoutingScope;
 }
