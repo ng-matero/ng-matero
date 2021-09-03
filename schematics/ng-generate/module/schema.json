@@ -33,7 +33,10 @@
       "x-user-analytics": 17
     },
     "routingScope": {
-      "enum": ["Child", "Root"],
+      "enum": [
+        "Child",
+        "Root"
+      ],
       "type": "string",
       "description": "The scope for the new routing module.",
       "default": "Child"
@@ -48,11 +51,15 @@
       "description": "When true, creates the new files at the top level of the current project root. ",
       "default": false
     },
+    "moduleRoot": {
+      "type": "string",
+      "description": "The root of feature modules.",
+      "default": "routes"
+    },
     "module": {
       "type": "string",
       "description": "The declaring NgModule.",
-      "alias": "m",
-      "default": "routes"
+      "alias": "m"
     },
     "lintFix": {
       "type": "boolean",
@@ -61,5 +68,7 @@
       "x-user-analytics": 15
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

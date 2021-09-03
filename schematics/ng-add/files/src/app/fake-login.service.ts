@@ -1,7 +1,9 @@
+import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { admin } from '@core/authentication/user';
 import { LoginService } from '@core/authentication/login.service';
 
+@Injectable()
 export class FakeLoginService extends LoginService {
   private token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
 

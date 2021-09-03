@@ -25,12 +25,10 @@ export class SidenavMobileComponent implements OnDestroy {
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    // tslint:disable-next-line: deprecation
     this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
   ngOnDestroy(): void {
-    // tslint:disable-next-line: deprecation
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 }

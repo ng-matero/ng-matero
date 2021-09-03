@@ -39,7 +39,7 @@
       </div>
 
       <button class="w-full" mat-raised-button color="primary"
-              [disabled]="loginForm?.invalid"
+              [disabled]="!!loginForm?.invalid" [loading]="isSubmitting"
               (click)="login()">{{'login.login' | translate}}</button>
 
       <div class="m-t-16">{{'login.have_no_account' | translate}}?

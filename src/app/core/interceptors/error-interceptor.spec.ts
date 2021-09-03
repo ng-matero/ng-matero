@@ -21,7 +21,7 @@ describe('ErrorInterceptor', () => {
 
     httpMock.expectOne('/me').flush({ success: true }, { status, statusText });
 
-    expect(router.navigateByUrl).toHaveBeenCalledWith(`/sessions/${status}`, {
+    expect(router.navigateByUrl).toHaveBeenCalledWith(`/${status}`, {
       skipLocationChange: true,
     });
   }

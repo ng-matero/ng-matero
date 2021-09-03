@@ -37,6 +37,7 @@ import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 export interface ComponentOptions extends Schema {
   entryComponent?: any;
+  moduleRoot?: string;
   pageName: string;
 }
 
@@ -300,7 +301,7 @@ export function buildComponent(
       // incompatible `WorkspaceProject` classes in @angular-devkit
       options.path = buildDefaultPath(project as any);
       // Fix default path (i.e. `src/app/routes/{{modulePath}}`)
-      options.path += '/routes/' + options.module;
+      options.path += `/${options.moduleRoot}/` + options.module;
     }
 
     options.pageName = buildPageName(options) || '';
