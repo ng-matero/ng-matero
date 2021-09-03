@@ -11,8 +11,11 @@ export interface Schema {
    */
   lintFix?: boolean;
   /**
-   * The declaring NgModule.
-   * 默认添加到 `routes.module`
+   * The root of feature modules. Defaults to `routes` folder.
+   */
+  moduleRoot?: string;
+  /**
+   * The declaring NgModule. Defaults to `routes.module`.
    */
   module?: string;
   /**
@@ -29,20 +32,21 @@ export interface Schema {
   project?: string;
   /**
    * Creates lazy loaded routing module. Requires --module option.
-   * 设置惰性模块路由 `routes-routing.module`
+   * Defaults to `routes-routing.module`.
    */
   route?: string;
   /**
    * When true, creates a routing module.
-   * 无效参数
+   * @deprecated
    */
   routing?: boolean;
   /**
    * The scope for the new routing module.
-   * 无效参数
+   * @deprecated
    */
   routingScope?: RoutingScope;
 }
+
 /**
  * The scope for the new routing module.
  */

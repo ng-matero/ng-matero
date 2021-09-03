@@ -96,16 +96,23 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
   return path;
 }
 
-export default function(options: ModuleOptions): Rule {
+export default function (options: ModuleOptions): Rule {
   return async (host: Tree) => {
     if (options.path === undefined) {
       options.path = await createDefaultPath(host, options.project as string);
     }
 
-    // As following, the modulePath has become 'src/app/...'
-    if (options.module) {
-      options.module = findModuleFromOptions(host, options);
+    // Set default path
+    options.path = options.path + `/${options.moduleRoot}`;
+    const parsedPath = parseName(options.path, options.name);
+    options.name = parsedPath.name;
+    options.path = parsedPath.path;
+
+    if (!options.module) {
+      options.module = options.moduleRoot;
     }
+    // As following, the modulePath has become 'src/app/...'
+    options.module = findModuleFromOptions(host, options);
 
     // Set default route
     options.route = options.route || options.name;
@@ -115,12 +122,6 @@ export default function(options: ModuleOptions): Rule {
       options.routingScope = RoutingScope.Child;
       routingModulePath = getRoutingModulePath(host, options);
     }
-
-    // Set default path
-    options.path = options.path + '/routes';
-    const parsedPath = parseName(options.path, options.name);
-    options.name = parsedPath.name;
-    options.path = parsedPath.path;
 
     const templateSource = apply(url('./files'), [
       // options.routing || (isLazyLoadedModuleGen && !!routingModulePath)

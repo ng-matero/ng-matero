@@ -79,6 +79,11 @@
       "format": "html-selector",
       "description": "The selector to use for the component."
     },
+    "moduleRoot": {
+      "type": "string",
+      "description": "The root of feature modules.",
+      "default": "routes"
+    },
     "module": {
       "type": "string",
       "description": "Allows specification of the declaring module.",
