@@ -17,7 +17,7 @@
     "lint:ts": "tslint -p tsconfig.app.json -c tslint.json 'src/**/*.ts'",
     "lint:scss": "stylelint --syntax scss 'src/**/*.scss' --fix",
     "hmr": "ng serve --hmr --disable-host-check",
-    "predeploy":"npm run build:prod",
+    "predeploy": "npm run build:prod",
     "deploy": "ng deploy",
     "publish": "npm run build:schematics && cd dist/schematics && npm publish",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
