@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
@@ -8,16 +13,14 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private router: Router, private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!req.url.includes('/api/')) {
       return next.handle(req);
     }
 
-    return next.handle(req).pipe(
-      mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)),
-    );
+    return next.handle(req).pipe(mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)));
   }
 
   private handleOkReq(event: HttpEvent<any>): Observable<any> {
