@@ -1,9 +1,11 @@
-import { ViewChild } from '@angular/core';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ViewChild, ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/material/form-field';
 import { MtxSelectComponent } from '@ng-matero/extensions';
-import { FormControl } from '@angular/forms';
 
+/**
+ * This is just an example.
+ */
 @Component({
   selector: 'formly-field-combobox',
   template: `<mtx-select

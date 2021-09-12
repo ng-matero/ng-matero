@@ -3,7 +3,7 @@ import { FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
-export class FormlyValidation {
+export class FormlyValidations {
   constructor(private translate: TranslateService, private formlyConfig: FormlyConfig) {}
 
   init(): void {
