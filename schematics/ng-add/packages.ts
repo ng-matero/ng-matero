@@ -17,9 +17,8 @@ export function add3rdPkgsToPackageJson(host: Tree) {
   addPackage(host, '@angular/flex-layout@0.0.0-PLACEHOLDER');
 
   // 3rd lib
-  addPackage(host, '@mat-datetimepicker/core@0.0.0-PLACEHOLDER');
-  addPackage(host, '@mat-datetimepicker/moment@0.0.0-PLACEHOLDER');
   addPackage(host, '@ng-matero/extensions@0.0.0-PLACEHOLDER');
+  addPackage(host, '@ng-matero/extensions-moment-adapter@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
