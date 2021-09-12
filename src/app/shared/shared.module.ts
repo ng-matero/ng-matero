@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MaterialModule } from '../material.module';
-import { MaterialExtensionsModule } from '@ng-matero/extensions';
+import { MaterialExtensionsModule } from '../material-extensions.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';

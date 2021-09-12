@@ -11,8 +11,6 @@
 
 @use './custom/table-theme';
 
-@use '~@mat-datetimepicker/core/datetimepicker/datetimepicker-theme';
-
 @include mat.core();
 
 // Styles for the app that are based on the current theme.
@@ -29,6 +27,4 @@
   @include error-code-theme.theme($theme);
 
   @include table-theme.theme($theme);
-
-  @include datetimepicker-theme.mat-datetimepicker-theme($theme);
 }

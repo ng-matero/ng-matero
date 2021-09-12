@@ -2,9 +2,9 @@
 
 <p>
   The following examples use
-  <a href="https://github.com/kuhnroyal/mat-datetimepicker" target="_blank">
-    <code>mat-datetimepicker</code>
-  </a> component.
+  <a href="https://ng-matero.github.io/extensions/components/datetimepicker" target="_blank">
+    <code>datetimepicker</code></a> component of
+  <a href="https://github.com/ng-matero/extensions" target="_blank">Material Extensions</a>.
 </p>
 
 <mat-card>
@@ -13,118 +13,101 @@
   <form [formGroup]="group">
     <mat-form-field>
       <mat-placeholder>DateTime</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="datetimePicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #datetimePicker [openOnFocus]="true" startView="month" [timeInterval]="5"
-                          type="datetime"></mat-datetimepicker>
-      <input [matDatetimepicker]="datetimePicker" [max]="tomorrow" [min]="today"
+      <mtx-datetimepicker-toggle [for]="datetimePicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #datetimePicker [openOnFocus]="true" startView="month" [timeInterval]="5"
+                          type="datetime"></mtx-datetimepicker>
+      <input [mtxDatetimepicker]="datetimePicker" [max]="tomorrow" [min]="today"
              autocomplete="false" formControlName="dateTime" matInput required>
-      <mat-error *ngIf="group.get('dateTime')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="group.get('dateTime')?.errors?.matDatepickerMin">min</mat-error>
-      <mat-error *ngIf="group.get('dateTime')?.errors?.matDatepickerMax">max</mat-error>
+      <mat-error *ngIf="group.get('dateTime')?.errors?.required">required</mat-error>
+      <mat-error *ngIf="group.get('dateTime')?.errors?.mtxDatetimepickerMin">min</mat-error>
+      <mat-error *ngIf="group.get('dateTime')?.errors?.mtxDatetimepickerMax">max</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>DateTime Year selector</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="datetimeYearPicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #datetimeYearPicker [multiYearSelector]="true" [openOnFocus]="true"
-                          startView="month" [timeInterval]="5" type="datetime"></mat-datetimepicker>
-      <input [matDatetimepicker]="datetimeYearPicker" [max]="tomorrow" [min]="today"
+      <mtx-datetimepicker-toggle [for]="datetimeYearPicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #datetimeYearPicker [multiYearSelector]="true" [openOnFocus]="true"
+                          startView="month" [timeInterval]="5" type="datetime"></mtx-datetimepicker>
+      <input [mtxDatetimepicker]="datetimeYearPicker" [max]="tomorrow" [min]="today"
              autocomplete="false" formControlName="dateTimeYear" matInput required>
-      <mat-error *ngIf="group.get('dateTimeYear')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="group.get('dateTimeYear')?.errors?.matDatepickerMin">min</mat-error>
-      <mat-error *ngIf="group.get('dateTimeYear')?.errors?.matDatepickerMax">max</mat-error>
+      <mat-error *ngIf="group.get('dateTimeYear')?.errors?.required">required</mat-error>
+      <mat-error *ngIf="group.get('dateTimeYear')?.errors?.mtxDatetimepickerMin">min</mat-error>
+      <mat-error *ngIf="group.get('dateTimeYear')?.errors?.mtxDatetimepickerMax">max</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Time</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="timePicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #timePicker [openOnFocus]="true" [timeInterval]="5" type="time">
-      </mat-datetimepicker>
-      <input [matDatetimepicker]="timePicker" formControlName="time" matInput required>
-      <mat-error *ngIf="group.get('time')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
+      <mtx-datetimepicker-toggle [for]="timePicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #timePicker [openOnFocus]="true" [timeInterval]="5" type="time">
+      </mtx-datetimepicker>
+      <input [mtxDatetimepicker]="timePicker" formControlName="time" matInput required>
+      <mat-error *ngIf="group.get('time')?.errors?.required">required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Time AM/PM</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="timeAMPMPicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #timeAMPMPicker [openOnFocus]="true" [timeInterval]="5"
-                          [twelvehour]="true" type="time"></mat-datetimepicker>
-      <input [matDatetimepicker]="timeAMPMPicker" formControlName="timeAMPM" matInput required>
-      <mat-error *ngIf="group.get('timeAMPM')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
+      <mtx-datetimepicker-toggle [for]="timeAMPMPicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #timeAMPMPicker [openOnFocus]="true" [timeInterval]="5"
+                          [twelvehour]="true" type="time"></mtx-datetimepicker>
+      <input [mtxDatetimepicker]="timeAMPMPicker" formControlName="timeAMPM" matInput required>
+      <mat-error *ngIf="group.get('timeAMPM')?.errors?.required">required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Date</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="datePicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #datePicker [openOnFocus]="true" type="date"></mat-datetimepicker>
-      <input [matDatetimepicker]="datePicker" formControlName="date" matInput required>
-      <mat-error *ngIf="group.get('date')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
+      <mtx-datetimepicker-toggle [for]="datePicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #datePicker [openOnFocus]="true" type="date"></mtx-datetimepicker>
+      <input [mtxDatetimepicker]="datePicker" formControlName="date" matInput required>
+      <mat-error *ngIf="group.get('date')?.errors?.required">required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Month</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="monthPicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #monthPicker mode="portrait" [openOnFocus]="true" type="month">
-      </mat-datetimepicker>
-      <input [matDatetimepicker]="monthPicker" formControlName="month" matInput required>
-      <mat-error *ngIf="group.get('month')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
+      <mtx-datetimepicker-toggle [for]="monthPicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #monthPicker mode="portrait" [openOnFocus]="true" type="month">
+      </mtx-datetimepicker>
+      <input [mtxDatetimepicker]="monthPicker" formControlName="month" matInput required>
+      <mat-error *ngIf="group.get('month')?.errors?.required">required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Year</mat-placeholder>
-      <mat-datetimepicker-toggle [for]="yearPicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #yearPicker [openOnFocus]="true" type="year"></mat-datetimepicker>
-      <input [matDatetimepicker]="yearPicker" formControlName="year" matInput required>
-      <mat-error *ngIf="group.get('year')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
+      <mtx-datetimepicker-toggle [for]="yearPicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #yearPicker [openOnFocus]="true" type="year"></mtx-datetimepicker>
+      <input [mtxDatetimepicker]="yearPicker" formControlName="year" matInput required>
+      <mat-error *ngIf="group.get('year')?.errors?.required">required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Min/Max Test</mat-placeholder>
-      <input [matDatetimepicker]="minTestPicker" [max]="max" [min]="min" formControlName="mintest"
+      <input [mtxDatetimepicker]="minTestPicker" [max]="max" [min]="min" formControlName="mintest"
              matInput required>
-      <mat-datetimepicker-toggle [for]="minTestPicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #minTestPicker mode="landscape" [openOnFocus]="true" [timeInterval]="5"
-                          type="datetime"></mat-datetimepicker>
-      <mat-error *ngIf="group.get('mintest')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="group.get('mintest')?.errors?.matDatepickerMin">min</mat-error>
-      <mat-error *ngIf="group.get('mintest')?.errors?.matDatepickerMax">max</mat-error>
+      <mtx-datetimepicker-toggle [for]="minTestPicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #minTestPicker mode="landscape" [openOnFocus]="true" [timeInterval]="5"
+                          type="datetime"></mtx-datetimepicker>
+      <mat-error *ngIf="group.get('mintest')?.errors?.required">required</mat-error>
+      <mat-error *ngIf="group.get('mintest')?.errors?.mtxDatetimepickerMin">min</mat-error>
+      <mat-error *ngIf="group.get('mintest')?.errors?.mtxDatetimepickerMax">max</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>Filter Test</mat-placeholder>
-      <input [matDatepickerFilter]="filter" [matDatetimepicker]="filterTestPicker"
+      <input [mtxDatetimepickerFilter]="filter" [mtxDatetimepicker]="filterTestPicker"
              formControlName="filtertest" matInput required>
-      <mat-datetimepicker-toggle [for]="filterTestPicker" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #filterTestPicker mode="landscape" [openOnFocus]="true" [timeInterval]="5"
-                          type="datetime"></mat-datetimepicker>
-      <mat-error *ngIf="group.get('filtertest')?.errors?.required">
-        {{'validations.required' | translate}}
-      </mat-error>
-      <mat-error *ngIf="group.get('filtertest')?.errors?.matDatepickerFilter">filter</mat-error>
+      <mtx-datetimepicker-toggle [for]="filterTestPicker" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #filterTestPicker mode="landscape" [openOnFocus]="true" [timeInterval]="5"
+                          type="datetime"></mtx-datetimepicker>
+      <mat-error *ngIf="group.get('filtertest')?.errors?.required">required</mat-error>
+      <mat-error *ngIf="group.get('filtertest')?.errors?.mtxDatetimepickerFilter">filter</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-placeholder>TouchUi</mat-placeholder>
-      <input [matDatetimepicker]="touch" [min]="min" formControlName="touch" matInput required>
-      <mat-datetimepicker-toggle [for]="touch" matSuffix></mat-datetimepicker-toggle>
-      <mat-datetimepicker #touch mode="portrait" [openOnFocus]="true" [timeInterval]="5"
-                          [touchUi]="true" type="datetime"></mat-datetimepicker>
+      <input [mtxDatetimepicker]="touch" [min]="min" formControlName="touch" matInput required>
+      <mtx-datetimepicker-toggle [for]="touch" matSuffix></mtx-datetimepicker-toggle>
+      <mtx-datetimepicker #touch mode="portrait" [openOnFocus]="true" [timeInterval]="5"
+                          [touchUi]="true" type="datetime"></mtx-datetimepicker>
+      <mat-error *ngIf="group.get('touch')?.errors?.required">required</mat-error>
     </mat-form-field>
   </form>
 
