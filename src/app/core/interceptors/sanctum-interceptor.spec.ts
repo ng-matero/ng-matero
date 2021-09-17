@@ -36,9 +36,12 @@ describe('SanctumInterceptor', () => {
     setBaseUrlAndSanctumPrefix(null, null);
 
     http
-      .post('/auth/login', { username: 'foo', password: 'bar' })
+      .post('/auth/login', {
+        username: 'foo',
+        password: 'bar',
+      })
       .pipe(switchMap(() => http.get('/me')))
-      .subscribe();
+      .subscribe(data => expect(data).toEqual({ me: true }));
 
     httpMock.expectOne('/sanctum/csrf-cookie').flush({ cookie: true });
     httpMock.expectOne('/auth/login').flush({ login: true });
@@ -49,9 +52,12 @@ describe('SanctumInterceptor', () => {
     setBaseUrlAndSanctumPrefix('https://foo.bar/api', null);
 
     http
-      .post('/auth/login', { username: 'foo', password: 'bar' })
+      .post('/auth/login', {
+        username: 'foo',
+        password: 'bar',
+      })
       .pipe(switchMap(() => http.get('/me')))
-      .subscribe();
+      .subscribe(data => expect(data).toEqual({ me: true }));
 
     httpMock.expectOne('https://foo.bar/sanctum/csrf-cookie').flush({ cookie: true });
     httpMock.expectOne('/auth/login').flush({ login: true });
@@ -62,9 +68,12 @@ describe('SanctumInterceptor', () => {
     setBaseUrlAndSanctumPrefix(null, 'foobar');
 
     http
-      .post('/auth/login', { username: 'foo', password: 'bar' })
+      .post('/auth/login', {
+        username: 'foo',
+        password: 'bar',
+      })
       .pipe(switchMap(() => http.get('/me')))
-      .subscribe();
+      .subscribe(data => expect(data).toEqual({ me: true }));
 
     httpMock.expectOne('/foobar/csrf-cookie').flush({ cookie: true });
     httpMock.expectOne('/auth/login').flush({ login: true });
@@ -75,9 +84,12 @@ describe('SanctumInterceptor', () => {
     setBaseUrlAndSanctumPrefix('https://foo.bar/api', 'foobar');
 
     http
-      .post('/auth/login', { username: 'foo', password: 'bar' })
+      .post('/auth/login', {
+        username: 'foo',
+        password: 'bar',
+      })
       .pipe(switchMap(() => http.get('/me')))
-      .subscribe();
+      .subscribe(data => expect(data).toEqual({ me: true }));
 
     httpMock.expectOne('https://foo.bar/foobar/csrf-cookie').flush({ cookie: true });
     httpMock.expectOne('/auth/login').flush({ login: true });

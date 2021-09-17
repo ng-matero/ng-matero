@@ -35,7 +35,10 @@ describe('SanctumService', () => {
   it('should get csrf cookie once', done => {
     setBaseUrlAndSanctumPrefix(null, null);
 
-    sanctumService.load().then(() => done());
+    sanctumService.load().then(data => {
+      expect(data).toEqual({ cookie: true });
+      done();
+    });
 
     httpMock.expectOne('/sanctum/csrf-cookie').flush({ cookie: true });
   });
@@ -43,7 +46,10 @@ describe('SanctumService', () => {
   it('should get csrf cookie with base url', done => {
     setBaseUrlAndSanctumPrefix('http://foo.bar/api', '');
 
-    sanctumService.load().then(() => done());
+    sanctumService.load().then((data: any) => {
+      expect(data).toEqual({ cookie: true });
+      done();
+    });
 
     httpMock.expectOne('http://foo.bar/sanctum/csrf-cookie').flush({ cookie: true });
   });
@@ -51,7 +57,10 @@ describe('SanctumService', () => {
   it('should get csrf cookie with sanctum prefix', done => {
     setBaseUrlAndSanctumPrefix(null, '/foobar/');
 
-    sanctumService.load().then(() => done());
+    sanctumService.load().then((data: any) => {
+      expect(data).toEqual({ cookie: true });
+      done();
+    });
 
     httpMock.expectOne('/foobar/csrf-cookie').flush({ cookie: true });
   });
@@ -59,7 +68,10 @@ describe('SanctumService', () => {
   it('should get csrf cookie with base url and sanctum prefix', done => {
     setBaseUrlAndSanctumPrefix('http://foo.bar/api/', '/foobar');
 
-    sanctumService.load().then(() => done());
+    sanctumService.load().then((data: any) => {
+      expect(data).toEqual({ cookie: true });
+      done();
+    });
 
     httpMock.expectOne('http://foo.bar/foobar/csrf-cookie').flush({ cookie: true });
   });
