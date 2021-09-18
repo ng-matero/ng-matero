@@ -6,9 +6,11 @@ import { MemoryStorageService, LocalStorageService } from '../../shared/services
 import { TokenService } from './token.service';
 import { AuthService } from './auth.service';
 import { guest } from './user';
+import { LoginService } from '@core';
 
 describe('AuthService', () => {
   let authService: AuthService;
+  let loginService: LoginService;
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
   const email = 'foo@bar.com';
@@ -20,6 +22,7 @@ describe('AuthService', () => {
       imports: [HttpClientTestingModule],
       providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
     });
+    loginService = TestBed.inject(LoginService);
     authService = TestBed.inject(AuthService);
     tokenService = TestBed.inject(TokenService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -53,8 +56,10 @@ describe('AuthService', () => {
   }));
 
   it('should log out failed when user is not login', () => {
+    spyOn(loginService, 'logout').and.callThrough();
     authService.logout().subscribe();
     httpMock.expectNone('/logout');
+    expect(loginService.logout).toHaveBeenCalled();
   });
 
   it('should log out successful when user is login', () => {
