@@ -87,8 +87,11 @@ export class AdminLayoutComponent implements OnDestroy {
         this.isContentWidthFixed = state.breakpoints[MONITOR_MEDIAQUERY];
       });
 
-    // TODO: Scroll top to container
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      if (this.isOver) {
+        this.sidenav.close();
+      }
+
       this.content.scrollTo({ top: 0 });
     });
 
