@@ -42,16 +42,16 @@ import { MomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
       provide: MTX_DATETIME_FORMATS,
       useValue: {
         parse: {
-          dateInput: 'YYYY-MM-DD HH:mm',
+          dateInput: 'YYYY-MM-DD',
           monthInput: 'MMMM',
           timeInput: 'HH:mm',
           datetimeInput: 'YYYY-MM-DD HH:mm',
         },
         display: {
-          dateInput: 'YYYY-MM-DD HH:mm',
+          dateInput: 'YYYY-MM-DD',
           monthInput: 'MMMM',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
           timeInput: 'HH:mm',
+          datetimeInput: 'YYYY-MM-DD HH:mm',
           monthYearLabel: 'YYYY MMMM',
           dateA11yLabel: 'LL',
           monthYearA11yLabel: 'MMMM YYYY',
