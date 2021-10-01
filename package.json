@@ -68,7 +68,7 @@
     "@commitlint/config-conventional": "^13.1.0",
     "@types/jasmine": "~3.8.2",
     "@types/jasminewd2": "~2.0.10",
-    "@types/node": "^16.7.10",
+    "@types/node": "^16.10.2",
     "@types/parse5": "^6.0.1",
     "angular-cli-ghpages": "^1.0.0-rc.2",
     "chalk": "^4.1.2",
