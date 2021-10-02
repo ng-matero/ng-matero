@@ -136,7 +136,7 @@ export class FormsDynamicComponent implements OnInit {
     },
   ];
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private toast: ToastrService) {}
 
   ngOnInit() {}
 
@@ -153,6 +153,6 @@ export class FormsDynamicComponent implements OnInit {
   }
 
   showToast(obj: any) {
-    this.toastr.success(JSON.stringify(obj));
+    this.toast.success(JSON.stringify(obj));
   }
 }

@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private toastr: ToastrService) {}
+  constructor(private toast: ToastrService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!req.url.includes('/api/')) {
@@ -29,8 +29,8 @@ export class DefaultInterceptor implements HttpInterceptor {
       // failure: { code: **, msg: 'failure' }
       // success: { code: 0,  msg: 'success', data: {} }
       if (body && 'code' in body && body.code !== 0) {
-        if (body.msg && body.msg !== '') {
-          this.toastr.error(body.msg);
+        if (body.msg) {
+          this.toast.error(body.msg);
         }
         return throwError([]);
       }
