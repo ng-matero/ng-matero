@@ -22,7 +22,7 @@ export enum STATUS {
 export class ErrorInterceptor implements HttpInterceptor {
   private errorPages = [STATUS.FORBIDDEN, STATUS.NOT_FOUND, STATUS.INTERNAL_SERVER_ERROR];
 
-  constructor(private router: Router, private toastr: ToastrService) {}
+  constructor(private router: Router, private toast: ToastrService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next
@@ -37,7 +37,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       });
     } else {
       console.error('ERROR', error);
-      this.toastr.error(error.error?.msg || `${error.status} ${error.statusText}`);
+      this.toast.error(error.error?.msg || `${error.status} ${error.statusText}`);
       if (error.status === STATUS.UNAUTHORIZED) {
         this.router.navigateByUrl('/auth/login');
       }
