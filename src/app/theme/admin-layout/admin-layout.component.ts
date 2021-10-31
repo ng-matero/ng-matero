@@ -12,7 +12,7 @@ import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Directionality } from '@angular/cdk/bidi';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
@@ -66,6 +66,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   constructor(
     private router: Router,
+    private mediaMatcher: MediaMatcher,
     private breakpointObserver: BreakpointObserver,
     private overlay: OverlayContainer,
     private element: ElementRef,
@@ -95,13 +96,13 @@ export class AdminLayoutComponent implements OnDestroy {
       this.content.scrollTo({ top: 0 });
     });
 
-    if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
-      // Set colorScheme to Dark if prefers-color-scheme is dark. Otherwise, set it to Light.
-      this.options.theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
+    // Check whether the browser support `prefers-color-scheme`
+    if (this.mediaMatcher.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+      const isSystemDark = this.mediaMatcher.matchMedia('(prefers-color-scheme: dark)').matches;
+      // Set theme to dark if `prefers-color-scheme` is dark. Otherwise, set it to light.
+      this.options.theme = isSystemDark ? 'dark' : 'light';
     } else {
-      // If the browser does not support prefers-color-scheme, set the default to dark.
+      // If the browser does not support `prefers-color-scheme`, set the default to dark.
       this.options.theme = 'light';
     }
 
@@ -134,7 +135,7 @@ export class AdminLayoutComponent implements OnDestroy {
     this.settings.setOptions(this.options);
   }
 
-  /** Demo purposes only */
+  // Demo purposes only
 
   receiveOptions(options: AppSettings): void {
     this.options = options;
