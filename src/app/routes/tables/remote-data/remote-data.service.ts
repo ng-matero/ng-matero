@@ -12,7 +12,7 @@ export interface RepoSearchList {
 export class TablesRemoteDataService {
   constructor(private http: HttpClient) {}
 
-  getData(params = {}): Observable<RepoSearchList> {
+  getList(params = {}): Observable<RepoSearchList> {
     return this.http.get<RepoSearchList>('https://api.github.com/search/repositories', { params });
   }
 }

@@ -62,13 +62,13 @@ export class TablesRemoteDataComponent implements OnInit {
   constructor(private remoteSrv: TablesRemoteDataService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.getData();
+    this.getList();
   }
 
-  getData() {
+  getList() {
     this.isLoading = true;
 
-    this.remoteSrv.getData(this.params).subscribe(
+    this.remoteSrv.getList(this.params).subscribe(
       res => {
         this.list = res.items;
         this.total = res.total_count;
@@ -89,11 +89,17 @@ export class TablesRemoteDataComponent implements OnInit {
   getNextPage(e: PageEvent) {
     this.query.page = e.pageIndex;
     this.query.per_page = e.pageSize;
-    this.getData();
+    this.getList();
   }
 
   search() {
     this.query.page = 0;
-    this.getData();
+    this.getList();
+  }
+
+  reset() {
+    this.query.page = 0;
+    this.query.per_page = 10;
+    this.getList();
   }
 }
