@@ -9,8 +9,8 @@
   $foreground: mat.get-color-from-palette($theme, foreground);
 
   .matero-topmenu {
-    background: mat.get-color-from-palette($background, app-bar);
     color: mat.get-color-from-palette($foreground, text);
+    background: mat.get-color-from-palette($background, app-bar);
 
     .mat-button {
       &.active {

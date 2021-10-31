@@ -2,8 +2,8 @@
 
 body {
   margin: 0;
-  line-height: normal;
   font-family: variables.$font-family-base;
+  line-height: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -36,8 +36,8 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
   font-size: inherit;
+  font-family: inherit;
   line-height: inherit;
 }
 

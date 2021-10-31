@@ -54,8 +54,8 @@
     line-height: 18px;
 
     [dir='rtl'] & {
-      margin-left: 16px;
       margin-right: auto;
+      margin-left: 16px;
     }
   }
 
@@ -84,8 +84,8 @@
     margin-right: 5px;
 
     [dir='rtl'] & {
-      margin-left: 5px;
       margin-right: auto;
+      margin-left: 5px;
     }
   }
 
@@ -93,8 +93,8 @@
     padding-left: 50px;
 
     [dir='rtl'] & {
-      padding-left: 16px;
       padding-right: 50px;
+      padding-left: 16px;
     }
   }
 
@@ -102,8 +102,8 @@
     padding-left: 64px;
 
     [dir='rtl'] & {
-      padding-left: 16px;
       padding-right: 64px;
+      padding-left: 16px;
     }
   }
 
@@ -111,8 +111,8 @@
     padding-left: 80px;
 
     [dir='rtl'] & {
-      padding-left: 16px;
       padding-right: 80px;
+      padding-left: 16px;
     }
   }
 }

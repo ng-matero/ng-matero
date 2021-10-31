@@ -1,13 +1,13 @@
 .example-ripple-container {
-  cursor: pointer;
-  text-align: center;
   width: 300px;
   height: 300px;
   line-height: 300px;
-  user-select: none;
+  text-align: center;
+  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 }

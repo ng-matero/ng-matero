@@ -6,8 +6,8 @@
   $foreground: map.get($theme, foreground);
 
   .customizer-panel {
-    background-color: mat.get-color-from-palette($background, dialog);
     color: mat.get-color-from-palette($foreground, text);
+    background-color: mat.get-color-from-palette($background, dialog);
   }
 
   .customizer-panel-overlay {

@@ -1,10 +1,10 @@
 .matero-breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
   margin-bottom: 1rem;
-  list-style: none;
+  padding: 0;
   font-size: .875rem;
+  list-style: none;
 }
 
 .matero-breadcrumb-item {
@@ -21,8 +21,8 @@
   }
 
   > .chevron {
-    height: 18px;
     width: 18px;
+    height: 18px;
     font-size: 18px;
     vertical-align: middle;
     user-select: none;

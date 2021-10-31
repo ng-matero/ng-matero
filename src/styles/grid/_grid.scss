@@ -4,8 +4,8 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: variables.$grid-gutter * -.5;
   margin-right: variables.$grid-gutter * -.5;
+  margin-left: variables.$grid-gutter * -.5;
 }
 
 .no-gutters {

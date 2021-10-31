@@ -20,8 +20,8 @@
 
       &.active {
         > a {
-          background-color: if($is-dark-theme, rgba(mat.get-color-from-palette($primary), .15), transparent);
           color: if($is-dark-theme, lighten(mat.get-color-from-palette($primary), 25%), mat.get-color-from-palette($accent));
+          background-color: if($is-dark-theme, rgba(mat.get-color-from-palette($primary), .15), transparent);
 
           &:hover {
             background: mat.get-color-from-palette($background, hover);
