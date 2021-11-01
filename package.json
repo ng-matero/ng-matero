@@ -39,7 +39,7 @@
     "@angular/platform-browser": "~12.2.6",
     "@angular/platform-browser-dynamic": "~12.2.6",
     "@angular/router": "~12.2.6",
-    "@ng-matero/extensions": "^12.4.0",
+    "@ng-matero/extensions": "^12.5.1",
     "@ng-matero/extensions-moment-adapter": "^12.0.0",
     "@ngx-formly/core": "^5.10.23",
     "@ngx-formly/material": "^5.10.23",
