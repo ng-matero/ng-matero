@@ -14,7 +14,6 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { MtxSliderModule } from '@ng-matero/extensions';
 import { MtxSplitModule } from '@ng-matero/extensions/split';
 import { MtxTooltipModule } from '@ng-matero/extensions/tooltip';
-
 import { DatetimeAdapter, MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
 import { MomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
 
