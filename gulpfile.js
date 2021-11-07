@@ -29,7 +29,7 @@ function copyRoot(cb) {
 
 // src/
 function copySrcRoot(cb) {
-  return src(['src/hmr.ts', 'src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
+  return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
 }
 
 // src/assets
@@ -97,12 +97,13 @@ function updateVersions(cb) {
           'ngx-toastr',
           'photoviewer',
           'screenfull',
-          '@angularclass/hmr',
           'parse5',
           'prettier',
           'stylelint',
+          'stylelint-config-rational-order',
           'stylelint-config-recommended-scss',
           'stylelint-config-standard',
+          'stylelint-order',
           'stylelint-scss',
         ].forEach(name => {
           if (!pkg.dependencies[name] && !pkg.devDependencies[name]) {

@@ -120,7 +120,6 @@ function deleteExsitingFiles() {
       `${project.sourceRoot}/app/app.component.scss`,
       `${project.sourceRoot}/environments/environment.prod.ts`,
       `${project.sourceRoot}/environments/environment.ts`,
-      `${project.sourceRoot}/main.ts`,
       `${project.sourceRoot}/styles.scss`,
     ]
       .filter(p => host.exists(p))

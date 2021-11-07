@@ -17,9 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "@angularclass/hmr"
-            ],
+            "allowedCommonJsDependencies": [],
             "outputPath": "dist/ng-matero",
             "index": "src/index.html",
             "main": "src/main.ts",
