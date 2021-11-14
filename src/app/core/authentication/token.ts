@@ -24,7 +24,7 @@ export abstract class BaseToken implements Token {
   }
 
   headerValue() {
-    return !!this.accessToken() ? [capitalize(this.tokenType()), this.accessToken()].join(' ') : '';
+    return this.accessToken() ? [capitalize(this.tokenType()), this.accessToken()].join(' ') : '';
   }
 
   refreshTime() {

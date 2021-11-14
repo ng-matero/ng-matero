@@ -43,6 +43,5 @@ export class PageHeaderComponent implements OnInit {
     this.nav.unshift('home');
   }
 
-  // tslint:disable-next-line: member-ordering variable-name
   static ngAcceptInputType_hideBreadcrumb: BooleanInput;
 }

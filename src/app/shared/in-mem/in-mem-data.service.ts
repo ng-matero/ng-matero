@@ -99,7 +99,12 @@ export class InMemDataService implements InMemoryDbService {
     },
   ];
 
-  createDb(reqInfo?: RequestInfo): {} | Observable<{}> | Promise<{}> {
+  createDb(
+    reqInfo?: RequestInfo
+  ):
+    | Record<string, unknown>
+    | Observable<Record<string, unknown>>
+    | Promise<Record<string, unknown>> {
     return { users: this.users };
   }
 

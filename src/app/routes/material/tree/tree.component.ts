@@ -67,7 +67,6 @@ export class DynamicDataSource {
   ) {}
 
   connect(collectionViewer: CollectionViewer): Observable<DynamicFlatNode[]> {
-    // tslint:disable-next-line: deprecation
     this.treeControl.expansionModel.changed.subscribe(change => {
       if (
         (change as SelectionChange<DynamicFlatNode>).added ||
@@ -118,7 +117,9 @@ export class DynamicDataSource {
           let i = index + 1;
           i < this.data.length && this.data[i].level > node.level;
           i++, count++
-        ) {}
+        ) {
+          /** */
+        }
         this.data.splice(index + 1, count);
       }
 

@@ -8,12 +8,12 @@ const NG_ADD = DEST + '/ng-add';
 const FILES = NG_ADD + '/files';
 
 // .vscode
-function copyDotVscode(cb) {
+function copyDotVscode() {
   return src(['.vscode/*']).pipe(dest(`${FILES}/.vscode`));
 }
 
 // root
-function copyRoot(cb) {
+function copyRoot() {
   return src([
     '.prettierignore',
     '.prettierrc',
@@ -28,12 +28,12 @@ function copyRoot(cb) {
 }
 
 // src/
-function copySrcRoot(cb) {
+function copySrcRoot() {
   return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
 }
 
 // src/assets
-function copyAssets(cb) {
+function copyAssets() {
   return src([
     'src/assets/**/*',
     '!src/assets/data/menu.json',
@@ -43,19 +43,19 @@ function copyAssets(cb) {
 }
 
 // src/styles
-function copyStyles(cb) {
+function copyStyles() {
   return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/themes.scss']).pipe(
     dest(`${FILES}/src/styles`)
   );
 }
 
 // src/environments
-function copyEnvironments(cb) {
+function copyEnvironments() {
   return src(['src/environments/*']).pipe(dest(`${FILES}/src/environments`));
 }
 
 // src/app/
-function copySrcApp(cb) {
+function copySrcApp() {
   return src([
     'src/app/**/*',
     '!src/app/core/settings.ts',
@@ -71,7 +71,7 @@ function copySrcApp(cb) {
 }
 
 // src/app/routes
-function copySrcAppRoutes(cb) {
+function copySrcAppRoutes() {
   return src(['src/app/routes/sessions/**/*']).pipe(dest(`${FILES}/src/app/routes/sessions`));
 }
 
