@@ -9,10 +9,8 @@ const PROXY_CONFIG = {
       //   SID: '',
       // };
       // let cookie = '';
-      // for (const key in cookieMap) {
-      //   if (Object.prototype.hasOwnProperty.call(cookieMap, key)) {
-      //     cookie += `${key}=${cookieMap[key]}; `;
-      //   }
+      // for (const key of Object.keys(cookieMap)) {
+      //   cookie += `${key}=${cookieMap[key]}; `;
       // }
       // proxyReq.setHeader('cookie', cookie);
     },
