@@ -15,7 +15,7 @@
     "clean:schematics": "rimraf dist/schematics",
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "ng lint",
-    "lint:scss": "stylelint 'src/**/*.scss' --fix",
+    "lint:scss": "stylelint \"src/**/*.scss\" --fix",
     "hmr": "ng serve --hmr --disable-host-check",
     "predeploy": "npm run build:prod",
     "deploy": "ng deploy",
