@@ -1,5 +1,6 @@
 {
   "root": true,
+  "ignorePatterns": ["dist"],
   "overrides": [
     {
       "files": ["*.ts"],
