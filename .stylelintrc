@@ -10,8 +10,10 @@
   "plugins": [
     "stylelint-order"
   ],
-  "syntax": "scss",
   "rules": {
+    "alpha-value-notation": null,
+    "at-rule-empty-line-before": null,
+    "color-function-notation": "legacy",
     "no-descending-specificity": null,
     "no-empty-source": null,
     "number-leading-zero": "never",
@@ -24,7 +26,10 @@
       }
     ],
     "selector-type-no-unknown": null,
+    "string-quotes": "single",
     "value-keyword-case": null,
-    "at-rule-empty-line-before": null
+    "scss/at-extend-no-missing-placeholder": null,
+    "scss/comment-no-empty": null,
+    "scss/operator-no-unspaced": null
   }
 }
