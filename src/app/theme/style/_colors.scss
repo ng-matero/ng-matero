@@ -11,18 +11,6 @@
             #{$property}: $color !important;
           }
         }
-        // alias
-        @if ($name == 'gray') {
-          .#{$prefix + '-grey-' + $hue} {
-            @extend .#{$prefix + '-gray-' + $hue} !optional;
-          }
-        }
-
-        @if ($name == 'blue-gray') {
-          .#{$prefix + '-blue-grey-' + $hue} {
-            @extend .#{$prefix + '-blue-gray-' + $hue} !optional;
-          }
-        }
       }
     }
 
@@ -30,6 +18,17 @@
       .#{$prefix + '-' + $name} {
         #{$property}: $value !important;
       }
+    }
+  }
+
+  // alias
+  @for $i from 1 through 9 {
+    .#{$prefix + '-grey-' + $i * 100} {
+      @extend .#{$prefix + '-gray-' + $i * 100};
+    }
+
+    .#{$prefix + '-blue-grey-' + $i * 100} {
+      @extend .#{$prefix + '-blue-gray-' + $i * 100};
     }
   }
 }

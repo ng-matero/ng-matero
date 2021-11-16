@@ -12,7 +12,7 @@
 @use 'rounded';
 @use 'text';
 @use 'alignment';
-@use "overflow";
+@use 'overflow';
 @use 'cursor';
 @use 'image';
 @use 'icon';
@@ -23,7 +23,7 @@
 
   // If the values are a list or string, convert it into a map
   @if meta.type-of($values) == 'string' or meta.type-of(list.nth($values, 1)) != 'list' {
-    $values: zip($values, $values);
+    $values: list.zip($values, $values);
   }
 
   $properties: map.get($utility, property);

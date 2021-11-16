@@ -3,6 +3,7 @@
 // https://codepen.io/c_fitzmaurice/pen/ZYJeRY
 
 @use 'sass:color';
+@use 'sass:list';
 @use 'sass:meta';
 @use 'sass:map';
 @use 'sass:math';
@@ -41,7 +42,7 @@
       )
     );
 
-    $shadows: append(
+    $shadows: list.append(
       $shadows,
       (math.sin(0deg + $direction) * $current-step)
       (math.cos(0deg + $direction) * $current-step)

@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:map';
 @use '~@angular/material' as mat;
 
@@ -11,7 +12,7 @@
   $row-odd-bg: mat.get-color-from-palette(mat.$gray-palette, 100);
 
   $row-hover-bg-dark: mat.get-color-from-palette(mat.$blue-gray-palette, 900);
-  $row-odd-bg-dark: lighten(mat.get-color-from-palette(mat.$gray-palette, 900), 10%);
+  $row-odd-bg-dark: color.adjust(mat.get-color-from-palette(mat.$gray-palette, 900), $lightness: 10%);
 
   mtx-grid.mtx-grid {
     .mat-table {

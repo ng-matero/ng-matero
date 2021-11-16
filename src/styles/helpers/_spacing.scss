@@ -6,37 +6,37 @@ $utilities: map.merge(
     'margin': (
       property: margin,
       class: m,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'margin-x': (
       property: margin-left margin-right,
       class: m-x,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'margin-y': (
       property: margin-top margin-bottom,
       class: m-y,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'margin-top': (
       property: margin-top,
       class: m-t,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'margin-right': (
       property: margin-right,
       class: m-r,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'margin-bottom': (
       property: margin-bottom,
       class: m-b,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'margin-left': (
       property: margin-left,
       class: m-l,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     'negative-margin': (
       property: margin,

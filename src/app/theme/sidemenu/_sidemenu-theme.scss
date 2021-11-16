@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:map';
 @use '~@angular/material' as mat;
 
@@ -20,7 +21,12 @@
 
       &.active {
         > a {
-          color: if($is-dark-theme, lighten(mat.get-color-from-palette($primary), 25%), mat.get-color-from-palette($accent));
+          color:
+            if(
+              $is-dark-theme,
+              color.adjust(mat.get-color-from-palette($primary), $lightness: 25%),
+              mat.get-color-from-palette($accent)
+            );
           background-color: if($is-dark-theme, rgba(mat.get-color-from-palette($primary), .15), transparent);
 
           &:hover {
