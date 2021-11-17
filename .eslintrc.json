@@ -25,7 +25,14 @@
             "ignoreTemplateLiterals": true
           }
         ],
-        "quote-props": ["error", "consistent-as-needed"],
+        "object-shorthand": [
+          "warn",
+          "always",
+          {
+            "avoidQuotes": true
+          }
+        ],
+        "quote-props": ["warn", "consistent-as-needed"],
         "quotes": [
           "warn",
           "single",
