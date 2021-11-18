@@ -15,7 +15,6 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "arrow-body-style": ["warn", "as-needed"],
         "dot-notation": ["warn"],
         "max-len": [
           "warn",

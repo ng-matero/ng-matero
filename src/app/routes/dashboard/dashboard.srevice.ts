@@ -168,9 +168,7 @@ export class DashboardService {
       },
       tooltip: {
         y: {
-          formatter: (val: number) => {
-            return val;
-          },
+          formatter: (val: number) => val,
         },
       },
       yaxis: {
