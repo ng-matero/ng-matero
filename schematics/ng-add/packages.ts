@@ -1,6 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
 import { addPackage } from './package-config';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const VERSION = require('../package.json').version;
 
 /** Add dependencies to package.json */
@@ -31,6 +32,15 @@ export function add3rdPkgsToPackageJson(host: Tree) {
   addPackage(host, 'screenfull@0.0.0-PLACEHOLDER');
 
   // Dev
+  addPackage(host, '@angular-eslint/builder@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@angular-eslint/eslint-plugin@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@angular-eslint/eslint-plugin-template@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@angular-eslint/schematics@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@angular-eslint/builder@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@angular-eslint/template-parser@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@typescript-eslint/eslint-plugin@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, '@typescript-eslint/parser@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, 'eslint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint-config-rational-order@0.0.0-PLACEHOLDER', 'dev');

@@ -15,6 +15,7 @@ function copyDotVscode() {
 // root
 function copyRoot() {
   return src([
+    '.eslintrc.json',
     '.prettierignore',
     '.prettierrc',
     '.stylelintrc',
@@ -22,14 +23,13 @@ function copyRoot() {
     'proxy.config.js',
     'tsconfig.json',
     'tsconfig.app.json',
-    'tslint.json',
     'tsconfig.spec.json',
   ]).pipe(dest(`${FILES}/`));
 }
 
 // src/
 function copySrcRoot() {
-  return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
+  return src(['src/.eslintrc.json', 'src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
 }
 
 // src/assets
@@ -97,6 +97,14 @@ function updateVersions(cb) {
           'ngx-toastr',
           'photoviewer',
           'screenfull',
+          '@angular-eslint/builder',
+          '@angular-eslint/eslint-plugin',
+          '@angular-eslint/eslint-plugin-template',
+          '@angular-eslint/schematics',
+          '@angular-eslint/template-parser',
+          '@typescript-eslint/eslint-plugin',
+          '@typescript-eslint/parser',
+          'eslint',
           'parse5',
           'prettier',
           'stylelint',

@@ -91,7 +91,9 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
 
   try {
     path = findModuleFromOptions(host, { module: routingModuleName, ...rest });
-  } catch {}
+  } catch {
+    /** */
+  }
 
   return path;
 }

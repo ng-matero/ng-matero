@@ -34,19 +34,20 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
 /**
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
- *  - Add Scripts to package.json
- *  - Add proxy to angular.json
- *  - Add style to angular.json
+ *  - Add Scripts to `package.json`
+ *  - Add proxy to `angular.json`
+ *  - Add style to `angular.json`
  *  - Add Browser Animation to app.module
- *  - Add Fonts & Icons to index.html
- *  - Add Preloader to index.html
- *  - Add Packages to package.json
+ *  - Add Fonts & Icons to `index.html`
+ *  - Add Preloader to `index.html`
+ *  - Add Packages to `package.json`
  */
 export default function (options: Schema): Rule {
   return chain([
     deleteExsitingFiles(),
     addStarterFiles(options),
     addScriptsToPackageJson(),
+    addESLintToAngularJson(),
     addProxyToAngularJson(),
     addStyleToAngularJson(options),
     addAnimationsModule(options),
@@ -111,7 +112,6 @@ function deleteExsitingFiles() {
       `${project.root}/tsconfig.app.json`,
       `${project.root}/tsconfig.base.json`,
       `${project.root}/tsconfig.spec.json`,
-      `${project.root}/tslint.json`,
       `${project.sourceRoot}/app/app-routing.module.ts`,
       `${project.sourceRoot}/app/app.module.ts`,
       `${project.sourceRoot}/app/app.component.spec.ts`,
@@ -127,26 +127,48 @@ function deleteExsitingFiles() {
   };
 }
 
-/** Add scripts to package.json */
+/** Add scripts to `package.json` */
 function addScriptsToPackageJson() {
   return (host: Tree) => {
+    addScriptToPackageJson(host, 'build:prod', 'ng build --prod');
+    addScriptToPackageJson(host, 'lint', `npm run lint:ts && npm run lint:scss`);
+    addScriptToPackageJson(host, 'lint:ts', `eslint "src/**/*.ts" --fix`);
+    addScriptToPackageJson(host, 'lint:scss', `stylelint "src/**/*.scss" --fix`);
+    addScriptToPackageJson(host, 'hmr', `ng serve --hmr --disable-host-check`);
     addScriptToPackageJson(
       host,
       'postinstall',
       'ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points'
     );
-    addScriptToPackageJson(host, 'build:prod', 'ng build --prod');
-    addScriptToPackageJson(
-      host,
-      'lint:ts',
-      `tslint -p src/tsconfig.app.json -c tslint.json 'src/**/*.ts'`
-    );
-    addScriptToPackageJson(host, 'lint:scss', `stylelint --syntax scss 'src/**/*.scss' --fix`);
-    addScriptToPackageJson(host, 'hmr', `ng serve --hmr --disable-host-check`);
   };
 }
 
-/** Add proxy to angular.json */
+/** Add ESLint to `angular.json` */
+function addESLintToAngularJson(): Rule {
+  return updateWorkspace(workspace => {
+    const project = getProjectFromWorkspace(workspace);
+
+    let lintFilePatternsRoot = '';
+
+    // Default Angular CLI project at the root of the workspace
+    if (project.root === '') {
+      lintFilePatternsRoot = 'src';
+    } else {
+      lintFilePatternsRoot = project.root;
+    }
+
+    const eslintTargetConfig = {
+      builder: '@angular-eslint/builder:lint',
+      options: {
+        lintFilePatterns: [`${lintFilePatternsRoot}/**/*.ts`, `${lintFilePatternsRoot}/**/*.html`],
+      },
+    };
+
+    project.targets.set('lint', eslintTargetConfig);
+  });
+}
+
+/** Add proxy to `angular.json` */
 function addProxyToAngularJson() {
   return updateWorkspace(workspace => {
     const project = getProjectFromWorkspace(workspace);
@@ -162,7 +184,7 @@ function addProxyToAngularJson() {
   });
 }
 
-/** Add style to angular.json */
+/** Add style to `angular.json` */
 function addStyleToAngularJson(options: Schema): Rule {
   return (_host: Tree, context: SchematicContext) => {
     // Path needs to be always relative to the `package.json` or workspace root.
