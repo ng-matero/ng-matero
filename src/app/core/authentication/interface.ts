@@ -12,16 +12,19 @@ export interface TokenResponse {
   token?: string;
   token_type?: string;
   expires_in?: number;
+  refresh_token?: string;
 }
 
 export interface TokenAttribute {
   accessToken: string;
   tokenType: string;
   exp: number;
+  refreshToken?: string;
 }
 
 export interface Token {
   accessToken: () => string;
+  refreshToken: () => string | null;
   tokenType: () => string;
   exp: () => number;
   valid: () => boolean;

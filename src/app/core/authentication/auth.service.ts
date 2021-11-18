@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { User } from './interface';
+import { Token, User } from './interface';
 import { guest } from './user';
 import { LoginService } from './login.service';
 
@@ -20,7 +20,7 @@ export class AuthService {
 
     this.token
       .refreshed()
-      .pipe(switchMap(() => this.refresh()))
+      .pipe(switchMap(token => this.refresh(token)))
       .subscribe();
   }
 
@@ -35,9 +35,12 @@ export class AuthService {
     );
   }
 
-  refresh() {
-    return this.loginService.refresh().pipe(
-      tap(token => this.token.refresh(token)),
+  refresh(token: Token | null) {
+    const refreshToken = token?.refreshToken();
+    const params = refreshToken ? { refresh_token: refreshToken } : {};
+
+    return this.loginService.refresh(params).pipe(
+      tap(_token => this.token.refresh(_token)),
       map(() => this.check())
     );
   }

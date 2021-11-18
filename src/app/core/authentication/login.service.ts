@@ -16,8 +16,8 @@ export class LoginService {
     });
   }
 
-  refresh() {
-    return this.http.post<TokenResponse | any>('/auth/refresh', {});
+  refresh(params: any) {
+    return this.http.post<TokenResponse | any>('/auth/refresh', params);
   }
 
   logout() {

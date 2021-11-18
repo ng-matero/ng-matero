@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
-import { LocalStorageService } from '../../shared/services/storage.service';
+import { LocalStorageService } from '@shared/services/storage.service';
 import { Token, TokenResponse } from './interface';
 import { now } from './helpers';
 import { TokenFactory } from './token-factory.service';
@@ -68,14 +68,18 @@ export class TokenService {
     return this._token;
   }
 
-  private setToken(token: any, changed = false) {
+  private setToken(token: TokenResponse | any, changed = false) {
     this._token = null;
-    const accessToken = token.access_token || token.token || '';
-    const tokenType = token.token_type || 'bearer';
-    const expiresIn = token.expires_in || 0;
+    const accessToken = token.access_token ?? token.token ?? null;
+    const tokenType = token.token_type ?? 'bearer';
+    const expiresIn = token.expires_in ?? 0;
     const exp = expiresIn <= 0 ? 0 : now() + expiresIn * 1000;
+    const refreshToken = token.refresh_token ?? null;
 
-    this.store.set(this.key, Object.assign({}, token, { accessToken, tokenType, exp }));
+    this.store.set(
+      this.key,
+      Object.assign({}, token, { accessToken, tokenType, exp, refreshToken })
+    );
     this.change$.next(changed);
   }
 

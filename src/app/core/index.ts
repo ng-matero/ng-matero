@@ -12,7 +12,4 @@ export * from './bootstrap/sanctum.service';
 export * from './interceptors';
 
 // Authentication
-export * from './authentication/auth.guard';
-export * from './authentication/auth.service';
-export * from './authentication/token.service';
-export * from './authentication/login.service';
+export * from './authentication';

@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-
-import { TokenService } from './token.service';
-import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
+import { MemoryStorageService, LocalStorageService } from '@shared/services/storage.service';
+import { TokenService } from '@core/authentication';
 
 describe('TokenService', () => {
   let service: TokenService;

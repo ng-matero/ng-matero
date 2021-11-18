@@ -7,6 +7,10 @@ export abstract class BaseToken implements Token {
     return '';
   }
 
+  refreshToken(): string | null {
+    return '';
+  }
+
   tokenType() {
     return '';
   }
@@ -41,6 +45,10 @@ export class SimpleToken extends BaseToken {
     return this.attributes.accessToken;
   }
 
+  refreshToken() {
+    return this.attributes.refreshToken ?? null;
+  }
+
   tokenType() {
     return this.attributes.tokenType;
   }
@@ -73,14 +81,6 @@ export class JwtToken extends SimpleToken {
     }
 
     return String.fromCharCode(...toByteArray(b64));
-  }
-
-  accessToken() {
-    return this.attributes.accessToken;
-  }
-
-  tokenType() {
-    return this.attributes.tokenType;
   }
 
   exp() {

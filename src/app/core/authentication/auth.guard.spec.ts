@@ -5,9 +5,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TokenService } from '@core/authentication/token.service';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
-import { LocalStorageService, MemoryStorageService } from '../../shared/services/storage.service';
+import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { AuthGuard, AuthService } from '@core/authentication';
 
 @Component({ template: '' })
 class DummyComponent {}

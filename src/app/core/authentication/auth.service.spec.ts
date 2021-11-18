@@ -1,12 +1,10 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpRequest } from '@angular/common/http';
 import { skip } from 'rxjs/operators';
-import { MemoryStorageService, LocalStorageService } from '../../shared/services/storage.service';
-import { TokenService } from './token.service';
-import { AuthService } from './auth.service';
-import { guest } from './user';
-import { LoginService } from '@core';
+import { MemoryStorageService, LocalStorageService } from '@shared/services/storage.service';
+import { TokenService, AuthService, LoginService, guest } from '@core/authentication';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -51,8 +49,27 @@ describe('AuthService', () => {
   it('should refresh token after 5 seconds', fakeAsync(() => {
     authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeTrue());
     httpMock.expectOne('/auth/login').flush(Object.assign({ expires_in: 5 }, token));
+    httpMock.expectOne('/me').flush(user);
     tick(5000);
-    httpMock.expectOne('/auth/refresh').flush(token);
+    httpMock
+      .match((req: HttpRequest<any>) => {
+        return req.url === '/auth/refresh' && !req.body.refresh_token;
+      })[0]
+      .flush(token);
+  }));
+
+  it('should refresh token with refresh_token', fakeAsync(() => {
+    authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeTrue());
+    httpMock
+      .expectOne('/auth/login')
+      .flush(Object.assign({ expires_in: 5, refresh_token: 'foo' }, token));
+    httpMock.expectOne('/me').flush(user);
+    tick(100000);
+    httpMock
+      .match((req: HttpRequest<any>) => {
+        return req.url === '/auth/refresh' && req.body.refresh_token === 'foo';
+      })[0]
+      .flush(token);
   }));
 
   it('should log out failed when user is not login', () => {

@@ -5,7 +5,7 @@ import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
 import { SanctumInterceptor } from './sanctum-interceptor';
 import { BASE_URL } from './base-url-interceptor';
-import { SANCTUM_PREFIX } from '../bootstrap/sanctum.service';
+import { SANCTUM_PREFIX } from '@core/bootstrap/sanctum.service';
 
 describe('SanctumInterceptor', () => {
   let httpMock: HttpTestingController;
