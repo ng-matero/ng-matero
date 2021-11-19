@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TokenResponse, User } from './interface';
+import { Token, User } from './interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,15 +9,11 @@ export class LoginService {
   constructor(protected http: HttpClient) {}
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http.post<TokenResponse | any>('/auth/login', {
-      email,
-      password,
-      remember_me: rememberMe,
-    });
+    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe });
   }
 
   refresh(params: any) {
-    return this.http.post<TokenResponse | any>('/auth/refresh', params);
+    return this.http.post<Token>('/auth/refresh', params);
   }
 
   logout() {

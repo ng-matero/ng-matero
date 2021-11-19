@@ -2,11 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TokenService } from '@core/authentication/token.service';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { AuthGuard, AuthService } from '@core/authentication';
+import { TokenService, AuthGuard, AuthService } from '@core/authentication';
 
 @Component({ template: '' })
 class DummyComponent {}
@@ -44,7 +43,7 @@ describe('AuthGuard', () => {
   });
 
   it('should be authenticated', () => {
-    tokenService.set({ access_token: 'token' });
+    tokenService.set({ access_token: 'token', token_type: 'bearer' });
 
     expect(authGuard.canActivate(route, state)).toBeTrue();
   });

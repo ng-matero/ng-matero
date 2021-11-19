@@ -2,71 +2,75 @@ import { Injectable } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
 import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
 import { from, Observable } from 'rxjs';
-import { User } from '@core/authentication/interface';
-import { environment } from '@env/environment';
-import { fromByteArray, toByteArray } from 'base64-js';
-import { find, map, switchMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
+import { find, map, switchMap } from 'rxjs/operators';
+import { environment } from '@env/environment';
+import { base64, currentTimestamp, filterObject, User } from '@core/authentication';
 
-function pack(str: string) {
-  const bytes: any = [];
-  for (let i = 0; i < str.length; i++) {
-    bytes.push(...[str.charCodeAt(i)]);
-  }
-
-  return bytes;
-}
-
-function unpack(byteArray: any) {
-  return String.fromCharCode(...byteArray);
-}
-
-const base64 = {
-  encode(plainText: string) {
-    return fromByteArray(pack(plainText)).replace(/[+/=]/g, m => {
-      return { '+': '-', '/': '_', '=': '' }[m] as string;
-    });
-  },
-
-  decode(b64: string) {
-    b64 = b64.replace(/[-_]/g, m => {
-      return { '-': '+', '_': '/' }[m] as string;
-    });
-    while (b64.length % 4) {
-      b64 += '=';
-    }
-
-    return unpack(toByteArray(b64));
-  },
-};
-
-const jwt = {
+class JWT {
   generate(user: User) {
     const expiresIn = 3600;
-    const exp = Math.ceil(new Date().getTime() / 1000) + expiresIn;
-    const accessToken = [
-      base64.encode(JSON.stringify({ typ: 'JWT', alg: 'HS256' })),
-      base64.encode(JSON.stringify({ exp, user })),
-      base64.encode('ng-matero'),
-    ].join('.');
+    const refreshTokenExpiresIn = 86400;
 
-    return { access_token: accessToken, token_type: 'bearer', expires_in: expiresIn };
-  },
+    return filterObject({
+      access_token: this.createToken(user, expiresIn),
+      token_type: 'bearer',
+      expires_in: user.refresh_token ? expiresIn : undefined,
+      refresh_token: user.refresh_token ? this.createToken(user, refreshTokenExpiresIn) : undefined,
+    });
+  }
+
   getUser(req: HttpRequest<any>) {
-    const authorization = req.headers.get('Authorization');
-    const [, token] = (authorization as string).split(' ');
-    try {
-      const [, payload] = token.split('.');
-      const data = JSON.parse(base64.decode(payload));
-      const d = new Date();
-      d.setUTCSeconds(data.exp);
+    let token = '';
 
-      return new Date().getTime() > d.getTime() ? null : data.user;
+    if (req.body?.refresh_token) {
+      token = req.body.refresh_token;
+    } else if (req.headers.has('Authorization')) {
+      const authorization = req.headers.get('Authorization');
+      const result = (authorization as string).split(' ');
+      token = result[1];
+    }
+
+    try {
+      const now = new Date();
+      const data = JWT.parseToken(token);
+
+      return JWT.isExpired(data, now) ? null : data.user;
     } catch (e) {
       return null;
     }
-  },
-};
+  }
+
+  createToken(user: User, expiresIn = 0) {
+    const exp = user.refresh_token ? currentTimestamp() + expiresIn : undefined;
+
+    return [
+      base64.encode(JSON.stringify({ typ: 'JWT', alg: 'HS256' })),
+      base64.encode(JSON.stringify(filterObject(Object.assign({ exp, user })))),
+      base64.encode('ng-matero'),
+    ].join('.');
+  }
+
+  private static parseToken(accessToken: string) {
+    const [, payload] = accessToken.split('.');
+
+    return JSON.parse(base64.decode(payload));
+  }
+
+  private static isExpired(data: any, now: Date) {
+    const expiresIn = new Date();
+    expiresIn.setTime(data.exp * 1000);
+    const diff = this.dateToSeconds(expiresIn) - this.dateToSeconds(now);
+
+    return diff <= 0;
+  }
+
+  private static dateToSeconds(date: Date) {
+    return Math.ceil(date.getTime() / 1000);
+  }
+}
+
+const jwt = new JWT();
 
 function is(reqInfo: RequestInfo, path: string) {
   if (environment.baseUrl) {
@@ -96,6 +100,7 @@ export class InMemDataService implements InMemoryDbService {
       name: 'recca0120',
       email: 'recca0120@gmail.com',
       avatar: './assets/images/avatars/avatar-10.jpg',
+      refresh_token: true,
     },
   ];
 
@@ -119,7 +124,7 @@ export class InMemDataService implements InMemoryDbService {
 
     if (is(reqInfo, 'me/menu')) {
       return ajax('assets/data/menu.json?_t=' + Date.now()).pipe(
-        map(response => {
+        map((response: any) => {
           return { headers, url, status: STATUS.OK, body: { menu: response.response.menu } };
         }),
         switchMap(response => reqInfo.utils.createResponse$(() => response))
@@ -178,12 +183,9 @@ export class InMemDataService implements InMemoryDbService {
 
         const currentUser = Object.assign({}, user);
         delete currentUser.password;
-
         return { headers, url, status: STATUS.OK, body: jwt.generate(currentUser) };
       }),
-      switchMap(response => {
-        return reqInfo.utils.createResponse$(() => response);
-      })
+      switchMap(response => reqInfo.utils.createResponse$(() => response))
     );
   }
 

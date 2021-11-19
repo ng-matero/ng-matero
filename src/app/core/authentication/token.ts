@@ -1,109 +1,90 @@
-import { toByteArray } from 'base64-js';
-import { capitalize, now, timeLeft } from './helpers';
-import { Token, TokenAttribute } from './interface';
+import { base64, capitalize, currentTimestamp, timeLeft } from './helpers';
+import { Token } from './interface';
 
-export abstract class BaseToken implements Token {
-  accessToken(): string {
-    return '';
+export abstract class BaseToken {
+  constructor(protected attributes: Token) {}
+
+  get access_token(): string {
+    return this.attributes.access_token;
   }
 
-  refreshToken(): string | null {
-    return '';
+  get refresh_token() {
+    return this.attributes.refresh_token;
   }
 
-  tokenType() {
-    return '';
+  get token_type() {
+    return this.attributes.token_type;
   }
 
-  exp(): number {
-    return 0;
+  get exp() {
+    return this.attributes.exp;
   }
 
   valid() {
-    return !!this.accessToken() && !this.isExpired();
+    return this.hasAccessToken() && !this.isExpired();
   }
 
-  isExpired() {
-    return this.exp() !== 0 && this.exp() - now() < 0;
+  getBearerBotkn() {
+    return this.access_token
+      ? [capitalize(this.token_type), this.access_token].join(' ').trim()
+      : '';
   }
 
-  headerValue() {
-    return this.accessToken() ? [capitalize(this.tokenType()), this.accessToken()].join(' ') : '';
+  needRefresh() {
+    return this.exp !== undefined && this.exp >= 0;
   }
 
-  refreshTime() {
-    return timeLeft(this.exp() - 60 * 1000);
+  getRefreshTime() {
+    return timeLeft((this.exp ?? 0) - 5);
+  }
+
+  private hasAccessToken() {
+    return !!this.access_token;
+  }
+
+  private isExpired() {
+    return this.exp !== undefined && this.exp - currentTimestamp() <= 0;
   }
 }
 
-export class SimpleToken extends BaseToken {
-  constructor(protected attributes: TokenAttribute) {
-    super();
-  }
-
-  accessToken() {
-    return this.attributes.accessToken;
-  }
-
-  refreshToken() {
-    return this.attributes.refreshToken ?? null;
-  }
-
-  tokenType() {
-    return this.attributes.tokenType;
-  }
-
-  exp() {
-    return this.attributes.exp;
+export class GuestToken extends BaseToken {
+  constructor() {
+    super({ access_token: '', token_type: '' });
   }
 }
+
+export class SimpleToken extends BaseToken {}
 
 export class JwtToken extends SimpleToken {
-  private _payload: { exp: number } | null = null;
+  private _payload?: { exp: number | undefined };
 
   static is(accessToken: string) {
     try {
       const [_header] = accessToken.split('.');
-      const header = JSON.parse(JwtToken.decode(_header));
+      const header = JSON.parse(base64.decode(_header));
 
-      return header.typ === 'JWT';
+      return header.typ.toUpperCase().includes('JWT');
     } catch (e) {
       return false;
     }
   }
 
-  static decode(b64: string) {
-    b64 = b64.replace(/[-_]/g, m => {
-      return { '-': '+', '_': '/' }[m] as string;
-    });
-    while (b64.length % 4) {
-      b64 += '=';
-    }
-
-    return String.fromCharCode(...toByteArray(b64));
-  }
-
-  exp() {
-    if (!this.payload) {
-      return 0;
-    }
-
-    if (!this.payload.exp === undefined) {
-      return this.attributes.exp;
-    }
-
-    return this.payload.exp * 1000;
+  get exp() {
+    return this.payload!.exp;
   }
 
   private get payload() {
-    if (!this.accessToken()) {
-      return { exp: 0 };
+    if (!this.access_token) {
+      return { exp: undefined };
     }
 
     if (!this._payload) {
-      const [, payload] = this.accessToken().split('.');
-
-      this._payload = JSON.parse(JwtToken.decode(payload));
+      const [, payload] = this.access_token.split('.');
+      const data = JSON.parse(base64.decode(payload));
+      if (!data.exp) {
+        data.exp = this.attributes.exp;
+      }
+      this._payload = data;
     }
 
     return this._payload;

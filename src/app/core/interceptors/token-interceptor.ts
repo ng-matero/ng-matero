@@ -15,38 +15,43 @@ import { BASE_URL } from './base-url-interceptor';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(
-    private token: TokenService,
+    private tokenService: TokenService,
     private router: Router,
     @Optional() @Inject(BASE_URL) private baseUrl?: string
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const logoutHandler = () => {
+    const handler = () => {
       if (request.url.includes('/auth/logout')) {
         this.router.navigateByUrl('/auth/login');
+      } else if (this.router.url.includes('/auth/login')) {
+        this.router.navigateByUrl('/dashboard');
       }
     };
 
-    if (this.token.valid() && this.shouldAppendToken(request.url)) {
+    if (this.tokenService.valid() && this.shouldAppendToken(request.url)) {
       return next
         .handle(
           request.clone({
-            headers: request.headers.append('Authorization', this.token.headerValue() as string),
+            headers: request.headers.append(
+              'Authorization',
+              this.tokenService.headerValue() as string
+            ),
             withCredentials: true,
           })
         )
         .pipe(
-          tap(() => logoutHandler()),
           catchError((error: HttpErrorResponse) => {
             if (error.status === 401) {
-              this.token.clear();
+              this.tokenService.clear();
             }
             return throwError(error);
-          })
+          }),
+          tap(() => handler())
         );
     }
 
-    return next.handle(request).pipe(tap(() => logoutHandler()));
+    return next.handle(request).pipe(tap(() => handler()));
   }
 
   private shouldAppendToken(url: string) {
