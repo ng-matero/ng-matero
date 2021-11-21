@@ -62,8 +62,8 @@ export class TokenService {
     return this.token.valid();
   }
 
-  headerValue() {
-    return this.token.getBearerBotkn();
+  getBearerToken() {
+    return this.token.getBearerToken();
   }
 
   getRefreshToken() {
@@ -71,7 +71,7 @@ export class TokenService {
   }
 
   canAssignUserWhenLogin() {
-    return !(!this.token.valid() && this.hasRefreshToken());
+    return this.token.valid() || !this.hasRefreshToken();
   }
 
   canAssignUserWhenRefresh() {
