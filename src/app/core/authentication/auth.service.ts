@@ -5,7 +5,7 @@ import { TokenService } from './token.service';
 import { LoginService } from './login.service';
 import { User } from './interface';
 import { guest } from './user';
-import { filterObject } from '@core/authentication/helpers';
+import { filterObject } from './helpers';
 
 @Injectable({
   providedIn: 'root',
