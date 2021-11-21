@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
-import { map, share, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, merge, of } from 'rxjs';
+import { catchError, filter, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
+import { LoginService } from './login.service';
 import { User } from './interface';
 import { guest } from './user';
-import { LoginService } from './login.service';
+import { filterObject } from '@core/authentication/helpers';
 
 @Injectable({
   providedIn: 'root',
@@ -12,44 +13,67 @@ import { LoginService } from './login.service';
 export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
 
-  constructor(private loginService: LoginService, private token: TokenService) {
-    this.token
-      .changed()
-      .pipe(switchMap(() => (this.check() ? this.loginService.me() : of(guest))))
-      .subscribe(user => this.user$.next(Object.assign({}, guest, user)));
+  constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
-    this.token
-      .refreshed()
-      .pipe(switchMap(() => this.refresh()))
-      .subscribe();
+  onChange() {
+    const token$ = this.tokenService.triggerChange().pipe(
+      filter(() => this.tokenService.canAssignUserWhenLogin()),
+      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest()))
+    );
+
+    const refresh$ = this.tokenService.triggerRefresh().pipe(
+      switchMap(() => this.refresh()),
+      switchMap(() => (this.tokenService.canAssignUserWhenRefresh() ? this.assignUser() : of()))
+    );
+
+    return merge(token$, refresh$).pipe(map(() => this.check()));
   }
 
   check() {
-    return this.token.valid();
+    return this.tokenService.valid();
   }
 
   login(email: string, password: string, rememberMe = false) {
     return this.loginService.login(email, password, rememberMe).pipe(
-      tap(token => this.token.set(token)),
+      tap(token => this.tokenService.set(token)),
       map(() => this.check())
     );
   }
 
   refresh() {
-    return this.loginService.refresh().pipe(
-      tap(token => this.token.refresh(token)),
-      map(() => this.check())
-    );
+    return this.loginService
+      .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
+      .pipe(
+        catchError(() => of(false)),
+        tap(result => (!result ? this.tokenService.clear() : this.tokenService.refresh(result))),
+        map(() => this.check())
+      );
   }
 
   logout() {
     return this.loginService.logout().pipe(
-      tap(() => this.token.clear()),
+      tap(() => this.tokenService.clear()),
       map(() => !this.check())
     );
   }
 
   user() {
     return this.user$.pipe(share());
+  }
+
+  menu() {
+    return this.loginService.menu();
+  }
+
+  private assignUser() {
+    return this.loginService.me().pipe(this.setUser());
+  }
+
+  private assignGuest() {
+    return of(guest).pipe(this.setUser());
+  }
+
+  private setUser() {
+    return tap(user => this.user$.next(Object.assign({}, guest, user)));
   }
 }

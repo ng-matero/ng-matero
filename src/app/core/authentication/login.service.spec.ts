@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-
-import { LoginService } from './login.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LoginService } from '@core/authentication';
 
 describe('LoginService', () => {
   let service: LoginService;
