@@ -50,9 +50,9 @@ describe('TokenInterceptor', () => {
     getTokenService('token');
 
     http.get(url).subscribe();
-
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
+
     expect(testRequest.request.headers.has('Authorization')).toBeTrue();
   });
 
@@ -61,9 +61,9 @@ describe('TokenInterceptor', () => {
     getTokenService('token');
 
     http.get(url).subscribe();
-
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
+
     expect(testRequest.request.headers.has('Authorization')).toBeTrue();
   });
 
@@ -72,9 +72,9 @@ describe('TokenInterceptor', () => {
     getTokenService('token');
 
     http.get(url).subscribe();
-
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
+
     expect(testRequest.request.headers.has('Authorization')).toBeTrue();
   });
 
@@ -83,9 +83,9 @@ describe('TokenInterceptor', () => {
     getTokenService('token');
 
     http.get(url).subscribe();
-
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
+
     expect(testRequest.request.headers.has('Authorization')).toBeFalse();
   });
 
@@ -95,9 +95,9 @@ describe('TokenInterceptor', () => {
     getTokenService('token');
 
     http.get(url).subscribe();
-
     const testRequest = httpMock.expectOne(url);
     testRequest.flush({ success: true });
+
     expect(testRequest.request.headers.has('Authorization')).toBeFalse();
   });
 
@@ -107,7 +107,6 @@ describe('TokenInterceptor', () => {
     spyOn(tokenService, 'clear');
 
     http.get(url).subscribe();
-
     httpMock
       .expectOne(url)
       .flush({ success: true }, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
@@ -122,6 +121,7 @@ describe('TokenInterceptor', () => {
 
     http.post(url, {}).subscribe();
     httpMock.expectOne(url);
+
     expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 
@@ -131,8 +131,8 @@ describe('TokenInterceptor', () => {
     spyOn(router, 'navigateByUrl');
 
     http.post(url, {}).subscribe();
-
     httpMock.expectOne(url);
+
     expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 });

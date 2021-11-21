@@ -17,7 +17,7 @@ export class TokenService {
 
   constructor(private store: LocalStorageService, private factory: TokenFactory) {}
 
-  private get token() {
+  private get token(): BaseToken {
     if (!this._token) {
       this._token = this.factory.create(this.store.get(this.key));
     }
@@ -56,7 +56,7 @@ export class TokenService {
     this.change$.next(true);
   }
 
-  valid(): boolean {
+  valid() {
     return this.token.valid();
   }
 
