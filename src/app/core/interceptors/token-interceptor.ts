@@ -30,12 +30,13 @@ export class TokenInterceptor implements HttpInterceptor {
     };
 
     if (this.tokenService.valid() && this.shouldAppendToken(request.url)) {
+      console.log(this.tokenService);
       return next
         .handle(
           request.clone({
             headers: request.headers.append(
               'Authorization',
-              this.tokenService.headerValue() as string
+              this.tokenService.getBearerToken() as string
             ),
             withCredentials: true,
           })

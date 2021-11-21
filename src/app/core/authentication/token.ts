@@ -24,7 +24,7 @@ export abstract class BaseToken {
     return this.hasAccessToken() && !this.isExpired();
   }
 
-  getBearerBotkn() {
+  getBearerToken() {
     return this.access_token
       ? [capitalize(this.token_type), this.access_token].join(' ').trim()
       : '';

@@ -5,7 +5,7 @@ describe('Token', () => {
     it('test bearer token', () => {
       const token = new GuestToken();
 
-      expect(token.getBearerBotkn()).toBe('');
+      expect(token.getBearerToken()).toBe('');
     });
   });
 
@@ -29,7 +29,7 @@ describe('Token', () => {
     });
 
     it('test bearer token', function () {
-      expect(token.getBearerBotkn()).toBe(`Bearer ${token.access_token}`);
+      expect(token.getBearerToken()).toBe(`Bearer ${token.access_token}`);
     });
 
     it('test payload has exp attribute', () => {
