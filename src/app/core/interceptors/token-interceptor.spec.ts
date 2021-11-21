@@ -7,132 +7,110 @@ import { STATUS } from 'angular-in-memory-web-api';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { TokenService } from '@core/authentication';
+import { TokenService, User } from '@core/authentication';
 import { BASE_URL } from './base-url-interceptor';
 
 describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
   let router: Router;
+  let tokenService: TokenService;
+  const emptyFn = () => {};
   const baseUrl = 'https://foo.bar';
+  const user: User = { id: 1, email: 'foo@bar.com' };
 
-  function overrideBaseUrl(url: string) {
-    TestBed.overrideProvider(BASE_URL, { useValue: url });
-  }
-
-  function getTokenService(accessToken: string) {
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
-    router = TestBed.inject(Router);
-
-    const tokenService = TestBed.inject(TokenService);
-    tokenService.set({ access_token: accessToken });
-
-    return tokenService;
-  }
-
-  beforeEach(() => {
+  function init(url: string, access_token: string) {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
-        { provide: BASE_URL, useValue: baseUrl },
+        { provide: BASE_URL, useValue: url },
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
       ],
     });
-  });
+
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    router = TestBed.inject(Router);
+    tokenService = TestBed.inject(TokenService).set({ access_token });
+  }
+
+  function mockRequest(url: string, body?: any, headers?: any) {
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush(body ?? {}, headers ?? {});
+
+    return testRequest;
+  }
 
   afterEach(() => httpMock.verify());
 
   it('should append token when url does not has http scheme', () => {
-    const url = '/me';
-    overrideBaseUrl(url);
-    getTokenService('token');
+    init('', 'token');
 
-    http.get(url).subscribe();
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
+    const headers = mockRequest('/me', user).request.headers;
 
-    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
+    expect(headers.get('Authorization')).toEqual('Bearer token');
   });
 
   it('should append token when url does not has http and base url not empty', () => {
-    const url = '/me';
-    getTokenService('token');
+    init(baseUrl, 'token');
 
-    http.get(url).subscribe();
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
+    const headers = mockRequest('/me', user).request.headers;
 
-    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
+    expect(headers.get('Authorization')).toEqual('Bearer token');
   });
 
   it('should append token when url include base url', () => {
-    const url = `${baseUrl}/me`;
-    getTokenService('token');
+    init(baseUrl, 'token');
 
-    http.get(url).subscribe();
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
+    const headers = mockRequest(`${baseUrl}/me`, user).request.headers;
 
-    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
+    expect(headers.get('Authorization')).toEqual('Bearer token');
   });
 
   it('should not append token when url not include baseUrl', () => {
-    const url = 'https://api.github.com';
-    getTokenService('token');
+    init(baseUrl, 'token');
 
-    http.get(url).subscribe();
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
+    const headers = mockRequest('https://api.github.com', { success: true }).request.headers;
 
-    expect(testRequest.request.headers.has('Authorization')).toBeFalse();
+    expect(headers.has('Authorization')).toBeFalse();
   });
 
   it('should not append token when base url is empty and url is not same site', () => {
-    const url = 'https://api.github.com';
-    overrideBaseUrl('');
-    getTokenService('token');
+    init('', 'token');
 
-    http.get(url).subscribe();
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
+    const headers = mockRequest('https://api.github.com', { success: true }).request.headers;
 
-    expect(testRequest.request.headers.has('Authorization')).toBeFalse();
+    expect(headers.has('Authorization')).toBeFalse();
   });
 
   it('should clear token when response status is unauthorized', () => {
-    const url = '/me';
-    const tokenService = getTokenService('token');
+    init('', 'token');
     spyOn(tokenService, 'clear');
 
-    http.get(url).subscribe();
-    httpMock
-      .expectOne(url)
-      .flush({ success: true }, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
+    mockRequest('/me', {}, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
 
     expect(tokenService.clear).toHaveBeenCalled();
   });
 
   it('should navigate /auth/login when api url is /auth/logout and token is valid', () => {
-    const url = '/auth/logout';
-    getTokenService('token');
-    spyOn(router, 'navigateByUrl');
+    init('', 'token');
+    const navigateByUrl = spyOn(router, 'navigateByUrl');
+    navigateByUrl.and.returnValue(Promise.resolve(true));
 
-    http.post(url, {}).subscribe();
-    httpMock.expectOne(url);
+    mockRequest('/auth/logout');
 
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
+    expect(navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 
   it('should navigate /auth/login when api url is /auth/logout and token is invalid', () => {
-    const url = '/auth/logout';
-    getTokenService('');
-    spyOn(router, 'navigateByUrl');
+    init('', '');
+    const navigateByUrl = spyOn(router, 'navigateByUrl');
+    navigateByUrl.and.returnValue(Promise.resolve(true));
 
-    http.post(url, {}).subscribe();
-    httpMock.expectOne(url);
+    mockRequest('/auth/logout');
 
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
+    expect(navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 });

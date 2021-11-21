@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, timer } from 'rxjs';
+import { BehaviorSubject, Observable, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
 import { LocalStorageService } from '@shared/services/storage.service';
 import { Token } from './interface';
@@ -25,7 +25,7 @@ export class TokenService {
     return this._token;
   }
 
-  triggerChange() {
+  triggerChange(): Observable<BaseToken> {
     return this.change$.pipe(
       filter(changed => changed),
       map(() => this.token),
@@ -33,7 +33,7 @@ export class TokenService {
     );
   }
 
-  triggerRefresh() {
+  triggerRefresh(): Observable<BaseToken> {
     return this.change$.pipe(
       filter(() => this.token.needRefresh()),
       switchMap(() => timer(this.token.getRefreshTime() * 1000)),
@@ -42,49 +42,49 @@ export class TokenService {
     );
   }
 
-  set(response: Token | any) {
-    this.save(response, true);
+  set(response: Token | any): TokenService {
+    return this.save(response, true);
   }
 
-  refresh(response: Token | any) {
-    this.save(response, false);
+  refresh(response: Token | any): TokenService {
+    return this.save(response, false);
   }
 
-  clear() {
+  clear(): void {
     this._token = undefined;
     this.store.remove(this.key);
     this.change$.next(true);
   }
 
-  valid() {
+  valid(): boolean {
     return this.token.valid();
   }
 
-  getBearerToken() {
+  getBearerToken(): string {
     return this.token.getBearerToken();
   }
 
-  getRefreshToken() {
+  getRefreshToken(): string | undefined {
     return this.token.refresh_token;
   }
 
-  canAssignUserWhenLogin() {
+  canAssignUserWhenLogin(): boolean {
     return this.token.valid() || !this.hasRefreshToken();
   }
 
-  canAssignUserWhenRefresh() {
+  canAssignUserWhenRefresh(): boolean {
     return this.token.valid() && !this.isGuest();
   }
 
-  private isGuest() {
+  private isGuest(): boolean {
     return this.token instanceof GuestToken;
   }
 
-  private hasRefreshToken() {
+  private hasRefreshToken(): boolean {
     return !!this.token.refresh_token;
   }
 
-  private save(response: Token | any, triggerChange = false) {
+  private save(response: Token | any, triggerChange = false): TokenService {
     this._token = undefined;
 
     const exp = response.expires_in ? { exp: currentTimestamp() + response.expires_in } : {};
@@ -92,5 +92,7 @@ export class TokenService {
 
     this.store.set(this.key, token);
     this.change$.next(triggerChange);
+
+    return this;
   }
 }

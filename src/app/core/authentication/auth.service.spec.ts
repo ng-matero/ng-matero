@@ -31,6 +31,8 @@ describe('AuthService', () => {
     user$ = authService.user();
   });
 
+  afterEach(() => httpMock.verify());
+
   it('should be created', () => {
     expect(authService).toBeTruthy();
   });
@@ -43,14 +45,12 @@ describe('AuthService', () => {
   });
 
   it('should log in successful and get user info', () => {
-    const body = token;
-
     user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toEqual(user.id));
     authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeTrue());
-    httpMock.expectOne('/auth/login').flush(body);
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectOne('/auth/login').flush(token);
 
     expect(authService.check()).toBeTrue();
+    httpMock.expectOne('/me').flush(user);
   });
 
   it('should log out failed when user is not login', () => {
@@ -58,7 +58,7 @@ describe('AuthService', () => {
     expect(authService.check()).toBeFalse();
 
     authService.logout().subscribe();
-    httpMock.expectNone('/logout');
+    httpMock.expectOne('/auth/logout');
 
     expect(authService.check()).toBeFalse();
     expect(loginService.logout).toHaveBeenCalled();
@@ -67,8 +67,9 @@ describe('AuthService', () => {
   it('should log out successful when user is login', () => {
     tokenService.set(token);
     expect(authService.check()).toBeTrue();
+    httpMock.expectOne('/me').flush(user);
 
-    user$.subscribe(currentUser => expect(currentUser.id).toEqual(guest.id));
+    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toEqual(guest.id));
     authService.logout().subscribe();
     httpMock.expectOne('/auth/logout').flush({});
 
@@ -78,6 +79,7 @@ describe('AuthService', () => {
   it('should refresh token when access_token is valid', fakeAsync(() => {
     tokenService.set(Object.assign({ expires_in: 5 }, token));
     expect(authService.check()).toBeTrue();
+    httpMock.expectOne('/me').flush(user);
     const match = (req: HttpRequest<any>) => req.url === '/auth/refresh' && !req.body.refresh_token;
 
     tick(4000);
@@ -85,6 +87,7 @@ describe('AuthService', () => {
     httpMock.match(match)[0].flush(token);
 
     expect(authService.check()).toBeTrue();
+    httpMock.expectOne('/me').flush(user);
   }));
 
   it('should refresh token when access_token is invalid and refresh_token is valid', fakeAsync(() => {
@@ -93,11 +96,13 @@ describe('AuthService', () => {
       req.url === '/auth/refresh' && req.body.refresh_token === 'foo';
 
     expect(authService.check()).toBeTrue();
+    httpMock.expectOne('/me').flush(user);
     tick(10000);
     expect(authService.check()).toBeFalse();
     httpMock.match(match)[0].flush(token);
 
     expect(authService.check()).toBeTrue();
+    httpMock.expectOne('/me').flush(user);
   }));
 
   it('it should clear token when access_token is invalid and refresh token response is 401', fakeAsync(() => {
@@ -108,6 +113,7 @@ describe('AuthService', () => {
 
     tick(10000);
     expect(authService.check()).toBeFalse();
+    httpMock.expectOne('/me').flush({});
     httpMock.match(match)[0].flush({}, { status: 401, statusText: 'Unauthorized' });
 
     expect(authService.check()).toBeFalse();

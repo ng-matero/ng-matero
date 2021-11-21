@@ -9,12 +9,12 @@ import { Token, User } from './interface';
 export class LoginService {
   constructor(protected http: HttpClient) {}
 
-  login(email: string, password: string, rememberMe = false): Observable<Token> {
-    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe });
+  login(email: string, password: string, rememberMe = false): Observable<Token | any> {
+    return this.http.post<Token | any>('/auth/login', { email, password, remember_me: rememberMe });
   }
 
-  refresh(params: any): Observable<Token> {
-    return this.http.post<Token>('/auth/refresh', params);
+  refresh(params: any): Observable<Token | any> {
+    return this.http.post<Token | any>('/auth/refresh', params);
   }
 
   logout(): Observable<any> {

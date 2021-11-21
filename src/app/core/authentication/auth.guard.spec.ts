@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { Router } from '@angular/router';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
