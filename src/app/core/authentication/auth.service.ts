@@ -16,17 +16,19 @@ export class AuthService {
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
   onChange() {
-    const token$ = this.tokenService.triggerChange().pipe(
-      filter(() => this.tokenService.canAssignUserWhenLogin()),
-      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest()))
-    );
+    const token$ = this.tokenService
+      .triggerChange()
+      .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
 
     const refresh$ = this.tokenService.triggerRefresh().pipe(
       switchMap(() => this.refresh()),
-      switchMap(() => (this.tokenService.canAssignUserWhenRefresh() ? this.assignUser() : of()))
+      filter(() => this.tokenService.canAssignUserWhenRefresh())
     );
 
-    return merge(token$, refresh$).pipe(map(() => this.check()));
+    return merge(token$, refresh$).pipe(
+      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest())),
+      map(() => this.check())
+    );
   }
 
   check() {

@@ -44,8 +44,6 @@ export class TokenService {
 
   set(response: Token | any) {
     this.save(response, true);
-
-    return this;
   }
 
   refresh(response: Token | any) {
