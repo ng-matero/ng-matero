@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { AppSettings, SettingsService } from '@core';
 import { CdkDragStart } from '@angular/cdk/drag-drop';
 
@@ -8,7 +8,7 @@ import { CdkDragStart } from '@angular/cdk/drag-drop';
   styleUrls: ['./customizer.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CustomizerComponent implements OnInit {
+export class CustomizerComponent {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
   options = this.settings.getOptions();
@@ -17,9 +17,7 @@ export class CustomizerComponent implements OnInit {
 
   constructor(private settings: SettingsService) {}
 
-  ngOnInit() {}
-
-  handleDragStart(event: CdkDragStart): void {
+  handleDragStart(event: CdkDragStart) {
     this.dragging = true;
   }
 

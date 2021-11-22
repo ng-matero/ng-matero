@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from '@core/core.module';
 import { ThemeModule } from '@theme/theme.module';
-import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from '@shared/shared.module';
+import { RoutesModule } from './routes/routes.module';
 import { FormlyConfigModule } from './formly-config.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
