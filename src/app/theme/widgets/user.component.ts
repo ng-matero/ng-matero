@@ -1,8 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@core/authentication/auth.service';
 import { debounceTime, tap } from 'rxjs/operators';
-import { User } from '@core/authentication/interface';
+import { AuthService, User } from '@core/authentication';
 
 @Component({
   selector: 'app-user',

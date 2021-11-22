@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { of, throwError } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { MenuService } from './menu.service';
+import { Menu, MenuService } from './menu.service';
 import { AuthService } from '@core/authentication';
 
 @Injectable({
@@ -23,22 +23,28 @@ export class StartupService {
         .onChange()
         .pipe(
           switchMap(() => (this.authService.check() ? this.authService.menu() : of({ menu: [] }))),
-          catchError(error => throwError(error))
+          tap(response => this.createMenu(response)),
+          tap(() => this.createPermission())
         )
-        .subscribe((response: any) => {
-          this.menuService.addNamespace(response.menu, 'menu');
-          this.menuService.set(response.menu);
-
-          // Demo purposes only. You can add essential permissions and roles with your own cases.
-          const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-          this.permissonsSrv.loadPermissions(permissions);
-          this.rolesSrv.addRoles({ ADMIN: permissions });
-
-          // Tips: Alternative you can add permissions with role at the same time.
-          // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
-
-          resolve(null);
-        });
+        .subscribe(
+          () => resolve(null),
+          () => resolve(null)
+        );
     });
+  }
+
+  private createMenu(response: { menu: Menu[] }) {
+    this.menuService.addNamespace(response.menu, 'menu');
+    this.menuService.set(response.menu);
+  }
+
+  private createPermission() {
+    // Demo purposes only. You can add essential permissions and roles with your own cases.
+    const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
+    this.permissonsSrv.loadPermissions(permissions);
+    this.rolesSrv.addRoles({ ADMIN: permissions });
+
+    // Tips: Alternative you can add permissions with role at the same time.
+    // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
   }
 }

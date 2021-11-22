@@ -39,15 +39,9 @@ describe('BaseUrlInterceptor', () => {
     setBaseUrl(baseUrl);
 
     http.get('./me').subscribe(data => expect(data).toEqual({ success: true }));
-
     httpMock.expectOne(baseUrl + '/me').flush({ success: true });
-  });
-
-  it('should prepend base url when request url does not has http scheme', () => {
-    setBaseUrl(baseUrl);
 
     http.get('').subscribe(data => expect(data).toEqual({ success: true }));
-
     httpMock.expectOne(baseUrl).flush({ success: true });
   });
 });

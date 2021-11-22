@@ -14,6 +14,8 @@ import { BASE_URL } from './base-url-interceptor';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+  private hasHttpScheme = (url: string) => new RegExp('^http(s)?://', 'i').test(url);
+
   constructor(
     private tokenService: TokenService,
     private router: Router,
@@ -24,20 +26,18 @@ export class TokenInterceptor implements HttpInterceptor {
     const handler = () => {
       if (request.url.includes('/auth/logout')) {
         this.router.navigateByUrl('/auth/login');
-      } else if (this.router.url.includes('/auth/login')) {
+      }
+
+      if (this.router.url.includes('/auth/login')) {
         this.router.navigateByUrl('/dashboard');
       }
     };
 
     if (this.tokenService.valid() && this.shouldAppendToken(request.url)) {
-      console.log(this.tokenService);
       return next
         .handle(
           request.clone({
-            headers: request.headers.append(
-              'Authorization',
-              this.tokenService.getBearerToken() as string
-            ),
+            headers: request.headers.append('Authorization', this.tokenService.getBearerToken()),
             withCredentials: true,
           })
         )
@@ -57,10 +57,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private shouldAppendToken(url: string) {
     return !this.hasHttpScheme(url) || this.includeBaseUrl(url);
-  }
-
-  private hasHttpScheme(url: string) {
-    return new RegExp('^http(s)?://', 'i').test(url);
   }
 
   private includeBaseUrl(url: string) {

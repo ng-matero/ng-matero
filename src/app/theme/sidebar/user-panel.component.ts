@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@core/authentication/auth.service';
-import { User } from '@core/authentication/interface';
 import { Router } from '@angular/router';
+import { AuthService, User } from '@core/authentication';
 
 @Component({
   selector: 'app-user-panel',

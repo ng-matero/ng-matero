@@ -1,13 +1,13 @@
 import { fromByteArray, toByteArray } from 'base64-js';
 
 export class Base64 {
-  static encode(plainText: string) {
+  static encode(plainText: string): string {
     return fromByteArray(pack(plainText)).replace(/[+/=]/g, m => {
       return { '+': '-', '/': '_', '=': '' }[m] as string;
     });
   }
 
-  static decode(b64: string) {
+  static decode(b64: string): string {
     b64 = b64.replace(/[-_]/g, m => {
       return { '-': '+', '_': '/' }[m] as string;
     });
@@ -34,15 +34,15 @@ export function unpack(byteArray: any) {
 
 export const base64 = { encode: Base64.encode, decode: Base64.decode };
 
-export function capitalize(text: string) {
+export function capitalize(text: string): string {
   return text.substring(0, 1).toUpperCase() + text.substring(1, text.length).toLowerCase();
 }
 
-export function currentTimestamp() {
+export function currentTimestamp(): number {
   return Math.ceil(new Date().getTime() / 1000);
 }
 
-export function timeLeft(expiredAt: number) {
+export function timeLeft(expiredAt: number): number {
   return Math.max(0, expiredAt - currentTimestamp());
 }
 

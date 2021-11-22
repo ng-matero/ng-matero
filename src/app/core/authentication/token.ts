@@ -8,41 +8,41 @@ export abstract class BaseToken {
     return this.attributes.access_token;
   }
 
-  get refresh_token() {
+  get refresh_token(): string | undefined {
     return this.attributes.refresh_token;
   }
 
-  get token_type() {
+  get token_type(): string {
     return this.attributes.token_type;
   }
 
-  get exp() {
+  get exp(): number | undefined {
     return this.attributes.exp;
   }
 
-  valid() {
+  valid(): boolean {
     return this.hasAccessToken() && !this.isExpired();
   }
 
-  getBearerToken() {
+  getBearerToken(): string {
     return this.access_token
       ? [capitalize(this.token_type), this.access_token].join(' ').trim()
       : '';
   }
 
-  needRefresh() {
+  needRefresh(): boolean {
     return this.exp !== undefined && this.exp >= 0;
   }
 
-  getRefreshTime() {
+  getRefreshTime(): number {
     return timeLeft((this.exp ?? 0) - 5);
   }
 
-  private hasAccessToken() {
+  private hasAccessToken(): boolean {
     return !!this.access_token;
   }
 
-  private isExpired() {
+  private isExpired(): boolean {
     return this.exp !== undefined && this.exp - currentTimestamp() <= 0;
   }
 }
@@ -58,7 +58,7 @@ export class SimpleToken extends BaseToken {}
 export class JwtToken extends SimpleToken {
   private _payload?: { exp: number | undefined };
 
-  static is(accessToken: string) {
+  static is(accessToken: string): boolean {
     try {
       const [_header] = accessToken.split('.');
       const header = JSON.parse(base64.decode(_header));
@@ -69,11 +69,11 @@ export class JwtToken extends SimpleToken {
     }
   }
 
-  get exp() {
+  get exp(): number | undefined {
     return this.payload!.exp;
   }
 
-  private get payload() {
+  private get payload(): any {
     if (!this.access_token) {
       return { exp: undefined };
     }

@@ -7,125 +7,110 @@ import { STATUS } from 'angular-in-memory-web-api';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { TokenService } from '@core/authentication';
+import { TokenService, User } from '@core/authentication';
 import { BASE_URL } from './base-url-interceptor';
 
 describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
   let router: Router;
-  const baseUrl = 'https://foo.bar';
+  let tokenService: TokenService;
   const emptyFn = () => {};
+  const baseUrl = 'https://foo.bar';
+  const user: User = { id: 1, email: 'foo@bar.com' };
 
-  const setBaseUrlAndToken = (url: string, accessToken: string) => {
-    TestBed.overrideProvider(BASE_URL, { useValue: url });
-    httpMock = TestBed.inject(HttpTestingController);
-    http = TestBed.inject(HttpClient);
-    router = TestBed.inject(Router);
-
-    return TestBed.inject(TokenService).set({ access_token: accessToken });
-  };
-
-  beforeEach(() => {
+  function init(url: string, access_token: string) {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
-        { provide: BASE_URL, useValue: baseUrl },
+        { provide: BASE_URL, useValue: url },
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
       ],
     });
-  });
+
+    httpMock = TestBed.inject(HttpTestingController);
+    http = TestBed.inject(HttpClient);
+    router = TestBed.inject(Router);
+    tokenService = TestBed.inject(TokenService).set({ access_token });
+  }
+
+  function mockRequest(url: string, body?: any, headers?: any) {
+    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const testRequest = httpMock.expectOne(url);
+    testRequest.flush(body ?? {}, headers ?? {});
+
+    return testRequest;
+  }
 
   afterEach(() => httpMock.verify());
 
   it('should append token when url does not has http scheme', () => {
-    setBaseUrlAndToken('', 'token');
-    const url = '/me';
+    init('', 'token');
 
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const headers = mockRequest('/me', user).request.headers;
 
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
-    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
+    expect(headers.get('Authorization')).toEqual('Bearer token');
   });
 
   it('should append token when url does not has http and base url not empty', () => {
-    setBaseUrlAndToken(baseUrl, 'token');
-    const url = '/me';
+    init(baseUrl, 'token');
 
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const headers = mockRequest('/me', user).request.headers;
 
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
-    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
+    expect(headers.get('Authorization')).toEqual('Bearer token');
   });
 
   it('should append token when url include base url', () => {
-    setBaseUrlAndToken(baseUrl, 'token');
-    const url = `${baseUrl}/me`;
+    init(baseUrl, 'token');
 
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const headers = mockRequest(`${baseUrl}/me`, user).request.headers;
 
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
-    expect(testRequest.request.headers.has('Authorization')).toBeTrue();
+    expect(headers.get('Authorization')).toEqual('Bearer token');
   });
 
   it('should not append token when url not include baseUrl', () => {
-    setBaseUrlAndToken(baseUrl, 'token');
-    const url = 'https://api.github.com';
+    init(baseUrl, 'token');
 
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const headers = mockRequest('https://api.github.com', { success: true }).request.headers;
 
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
-    expect(testRequest.request.headers.has('Authorization')).toBeFalse();
+    expect(headers.has('Authorization')).toBeFalse();
   });
 
   it('should not append token when base url is empty and url is not same site', () => {
-    setBaseUrlAndToken('', 'token');
-    const url = 'https://api.github.com';
+    init('', 'token');
 
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    const headers = mockRequest('https://api.github.com', { success: true }).request.headers;
 
-    const testRequest = httpMock.expectOne(url);
-    testRequest.flush({ success: true });
-    expect(testRequest.request.headers.has('Authorization')).toBeFalse();
+    expect(headers.has('Authorization')).toBeFalse();
   });
 
   it('should clear token when response status is unauthorized', () => {
-    const token = setBaseUrlAndToken('', 'token');
-    const url = '/me';
-    spyOn(token, 'clear');
+    init('', 'token');
+    spyOn(tokenService, 'clear');
 
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    mockRequest('/me', {}, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
 
-    httpMock
-      .expectOne(url)
-      .flush({ success: true }, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
-
-    expect(token.clear).toHaveBeenCalled();
+    expect(tokenService.clear).toHaveBeenCalled();
   });
 
   it('should navigate /auth/login when api url is /auth/logout and token is valid', () => {
-    setBaseUrlAndToken('', 'token');
-    const url = '/auth/logout';
-    spyOn(router, 'navigateByUrl');
+    init('', 'token');
+    const navigateByUrl = spyOn(router, 'navigateByUrl');
+    navigateByUrl.and.returnValue(Promise.resolve(true));
 
-    http.post(url, {}).subscribe(emptyFn, emptyFn, emptyFn);
-    httpMock.expectOne(url);
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
+    mockRequest('/auth/logout');
+
+    expect(navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 
   it('should navigate /auth/login when api url is /auth/logout and token is invalid', () => {
-    setBaseUrlAndToken('', '');
-    const url = '/auth/logout';
-    spyOn(router, 'navigateByUrl');
+    init('', '');
+    const navigateByUrl = spyOn(router, 'navigateByUrl');
+    navigateByUrl.and.returnValue(Promise.resolve(true));
 
-    http.post(url, {}).subscribe(emptyFn, emptyFn, emptyFn);
+    mockRequest('/auth/logout');
 
-    httpMock.expectOne(url);
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth/login');
+    expect(navigateByUrl).toHaveBeenCalledWith('/auth/login');
   });
 });

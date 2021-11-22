@@ -1,5 +1,5 @@
 export interface User {
-  [propName: string]: any;
+  [prop: string]: any;
 
   id: number | string | null;
   name?: string;
@@ -8,7 +8,7 @@ export interface User {
 }
 
 export interface Token {
-  [propName: string]: any;
+  [prop: string]: any;
 
   access_token: string;
   token_type: string;
