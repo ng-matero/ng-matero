@@ -43,7 +43,7 @@ export class MenuService {
   }
 
   /** Observe the change of menu data. */
-  change() {
+  change(): Observable<Menu[]> {
     return this.menu$.pipe(share());
   }
 

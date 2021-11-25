@@ -6,10 +6,10 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { TokenService } from '@core/authentication';
+import { TokenService } from '@core';
 import { BASE_URL } from './base-url-interceptor';
 
 @Injectable()

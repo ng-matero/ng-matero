@@ -17,7 +17,7 @@ export class StartupService {
   ) {}
 
   /** Load the application only after get the menu or other essential informations such as roles and permissions. */
-  load(): Promise<any> {
+  load() {
     return new Promise((resolve, reject) => {
       this.authService
         .onChange()

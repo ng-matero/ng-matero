@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, timer } from 'rxjs';
 import { filter, map, share, switchMap } from 'rxjs/operators';
-import { LocalStorageService } from '@shared/services/storage.service';
+import { LocalStorageService } from '@shared';
 import { Token } from './interface';
 import { BaseToken, GuestToken } from './token';
 import { TokenFactory } from './token-factory.service';

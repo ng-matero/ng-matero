@@ -6,9 +6,9 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 export enum STATUS {

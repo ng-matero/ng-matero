@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SettingsService } from '@core/bootstrap/settings.service';
+import { SettingsService } from '@core';
 
 @Injectable()
 export class SettingsInterceptor implements HttpInterceptor {
