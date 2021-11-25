@@ -26,8 +26,7 @@ export class AuthService {
     );
 
     return merge(token$, refresh$).pipe(
-      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest())),
-      map(() => this.check())
+      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest()))
     );
   }
 

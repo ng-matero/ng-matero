@@ -11,8 +11,8 @@ describe('StartupService', () => {
   let startup: StartupService;
   let tokenService: TokenService;
   let menuService: MenuService;
-  let mockPermissionsSrv: NgxPermissionsService;
-  let mockRolesSrv: NgxRolesService;
+  let mockPermissionsService: NgxPermissionsService;
+  let mockRolesService: NgxRolesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -31,6 +31,7 @@ describe('StartupService', () => {
         {
           provide: NgxRolesService,
           useValue: {
+            flushRoles: () => void 0,
             addRoles: (params: { ADMIN: string[] }) => void 0,
           },
         },
@@ -41,8 +42,8 @@ describe('StartupService', () => {
     startup = TestBed.inject(StartupService);
     tokenService = TestBed.inject(TokenService);
     menuService = TestBed.inject(MenuService);
-    mockPermissionsSrv = TestBed.inject(NgxPermissionsService);
-    mockRolesSrv = TestBed.inject(NgxRolesService);
+    mockPermissionsService = TestBed.inject(NgxPermissionsService);
+    mockRolesService = TestBed.inject(NgxRolesService);
   });
 
   afterEach(() => httpMock.verify());
@@ -52,8 +53,9 @@ describe('StartupService', () => {
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
     spyOn(menuService, 'addNamespace');
     spyOn(menuService, 'set');
-    spyOn(mockPermissionsSrv, 'loadPermissions');
-    spyOn(mockRolesSrv, 'addRoles');
+    spyOn(mockPermissionsService, 'loadPermissions');
+    spyOn(mockRolesService, 'flushRoles');
+    spyOn(mockRolesService, 'addRoles');
 
     await startup.load();
 
@@ -64,8 +66,9 @@ describe('StartupService', () => {
 
     expect(menuService.addNamespace).toHaveBeenCalledWith(menuData.menu, 'menu');
     expect(menuService.set).toHaveBeenCalledWith(menuData.menu);
-    expect(mockPermissionsSrv.loadPermissions).toHaveBeenCalledWith(permissions);
-    expect(mockRolesSrv.addRoles).toHaveBeenCalledWith({ ADMIN: permissions });
+    expect(mockPermissionsService.loadPermissions).toHaveBeenCalledWith(permissions);
+    expect(mockRolesService.flushRoles).toHaveBeenCalledWith();
+    expect(mockRolesService.addRoles).toHaveBeenCalledWith({ ADMIN: permissions });
   });
 
   it('should clear menu when token changed and token invalid', async () => {

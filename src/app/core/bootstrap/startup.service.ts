@@ -12,19 +12,27 @@ export class StartupService {
   constructor(
     private authService: AuthService,
     private menuService: MenuService,
-    private permissonsSrv: NgxPermissionsService,
-    private rolesSrv: NgxRolesService
+    private permissonsService: NgxPermissionsService,
+    private rolesService: NgxRolesService
   ) {}
 
-  /** Load the application only after get the menu or other essential informations such as roles and permissions. */
+  /**
+   * Load the application only after get the menu or other essential informations
+   * such as permissions and roles.
+   */
   load() {
     return new Promise((resolve, reject) => {
       this.authService
         .onChange()
         .pipe(
+          tap(response => {
+            // In a real app, you should get permissions and roles from the user information.
+            this.setPermissions();
+          }),
           switchMap(() => (this.authService.check() ? this.authService.menu() : of({ menu: [] }))),
-          tap(response => this.createMenu(response)),
-          tap(() => this.createPermission())
+          tap(response => {
+            this.setMenu(response);
+          })
         )
         .subscribe(
           () => resolve(null),
@@ -33,18 +41,19 @@ export class StartupService {
     });
   }
 
-  private createMenu(response: { menu: Menu[] }) {
+  private setMenu(response: { menu: Menu[] }) {
     this.menuService.addNamespace(response.menu, 'menu');
     this.menuService.set(response.menu);
   }
 
-  private createPermission() {
+  private setPermissions() {
     // Demo purposes only. You can add essential permissions and roles with your own cases.
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-    this.permissonsSrv.loadPermissions(permissions);
-    this.rolesSrv.addRoles({ ADMIN: permissions });
+    this.permissonsService.loadPermissions(permissions);
+    this.rolesService.flushRoles();
+    this.rolesService.addRoles({ ADMIN: permissions });
 
     // Tips: Alternative you can add permissions with role at the same time.
-    // this.rolesSrv.addRolesWithPermissions({ ADMIN: permissions });
+    // this.rolesService.addRolesWithPermissions({ ADMIN: permissions });
   }
 }
