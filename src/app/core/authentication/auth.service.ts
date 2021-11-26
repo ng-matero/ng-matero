@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
-  onChange(): Observable<User> {
+  onChange(): Observable<boolean> {
     const token$ = this.tokenService
       .triggerChange()
       .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
@@ -26,7 +26,8 @@ export class AuthService {
     );
 
     return merge(token$, refresh$).pipe(
-      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest()))
+      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest())),
+      map(() => this.check())
     );
   }
 
