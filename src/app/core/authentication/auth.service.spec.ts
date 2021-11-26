@@ -121,4 +121,10 @@ describe('AuthService', () => {
     expect(authService.check()).toBeFalse();
     expect(tokenService.clear).toHaveBeenCalled();
   }));
+
+  it('it only call http request once when on change subscribe twice', () => {
+    authService.onChange().subscribe();
+    tokenService.set(token);
+    httpMock.expectOne('/me').flush({});
+  });
 });

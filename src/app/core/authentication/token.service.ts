@@ -12,8 +12,19 @@ import { currentTimestamp } from './helpers';
 })
 export class TokenService {
   private key = 'ng-matero-token';
+  private tokenChange$ = new BehaviorSubject<boolean>(true);
+  private change$ = this.tokenChange$.pipe(
+    filter(changed => changed),
+    map(() => this.token),
+    share()
+  );
+  private refresh$ = this.tokenChange$.pipe(
+    filter(() => this.token.needRefresh()),
+    switchMap(() => timer(this.token.getRefreshTime() * 1000)),
+    map(() => this.token),
+    share()
+  );
   private _token?: BaseToken;
-  private change$ = new BehaviorSubject<boolean>(true);
 
   constructor(private store: LocalStorageService, private factory: TokenFactory) {}
 
@@ -26,20 +37,11 @@ export class TokenService {
   }
 
   onChange(): Observable<BaseToken> {
-    return this.change$.pipe(
-      filter(changed => changed),
-      map(() => this.token),
-      share()
-    );
+    return this.change$;
   }
 
   onRefresh(): Observable<BaseToken> {
-    return this.change$.pipe(
-      filter(() => this.token.needRefresh()),
-      switchMap(() => timer(this.token.getRefreshTime() * 1000)),
-      map(() => this.token),
-      share()
-    );
+    return this.refresh$;
   }
 
   set(response: Token | any, triggerChange = true): TokenService {
@@ -49,7 +51,7 @@ export class TokenService {
   clear(): void {
     this._token = undefined;
     this.store.remove(this.key);
-    this.change$.next(true);
+    this.tokenChange$.next(true);
   }
 
   valid(): boolean {
@@ -87,7 +89,7 @@ export class TokenService {
     const token: Token = Object.assign({ access_token: '', token_type: 'Bearer' }, response, exp);
 
     this.store.set(this.key, token);
-    this.change$.next(triggerChange);
+    this.tokenChange$.next(triggerChange);
 
     return this;
   }
