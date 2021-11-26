@@ -37,7 +37,7 @@ export class AuthService {
 
   login(email: string, password: string, rememberMe = false) {
     return this.loginService.login(email, password, rememberMe).pipe(
-      tap(token => this.tokenService.set(token)),
+      tap(token => this.tokenService.set(token, true)),
       map(() => this.check())
     );
   }
@@ -47,7 +47,7 @@ export class AuthService {
       .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
       .pipe(
         catchError(() => of(false)),
-        tap(result => (!result ? this.tokenService.clear() : this.tokenService.refresh(result))),
+        tap(result => (!result ? this.tokenService.clear() : this.tokenService.set(result, false))),
         map(() => this.check())
       );
   }

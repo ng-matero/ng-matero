@@ -42,12 +42,8 @@ export class TokenService {
     );
   }
 
-  set(response: Token | any): TokenService {
-    return this.save(response, true);
-  }
-
-  refresh(response: Token | any): TokenService {
-    return this.save(response, false);
+  set(response: Token | any, triggerChange = true): TokenService {
+    return this.save(response, triggerChange);
   }
 
   clear(): void {
