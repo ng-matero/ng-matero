@@ -8,7 +8,7 @@ export abstract class BaseToken {
     return this.attributes.access_token;
   }
 
-  get refresh_token(): string | undefined {
+  get refresh_token(): string | void {
     return this.attributes.refresh_token;
   }
 
@@ -16,7 +16,7 @@ export abstract class BaseToken {
     return this.attributes.token_type;
   }
 
-  get exp(): number | undefined {
+  get exp(): number | void {
     return this.attributes.exp;
   }
 
@@ -56,7 +56,7 @@ export class GuestToken extends BaseToken {
 export class SimpleToken extends BaseToken {}
 
 export class JwtToken extends SimpleToken {
-  private _payload?: { exp: number | undefined };
+  private _payload?: { exp: number | void };
 
   static is(accessToken: string): boolean {
     try {
@@ -69,7 +69,7 @@ export class JwtToken extends SimpleToken {
     }
   }
 
-  get exp(): number | undefined {
+  get exp(): number | void {
     return this.payload!.exp;
   }
 

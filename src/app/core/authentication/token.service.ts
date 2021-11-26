@@ -64,7 +64,7 @@ export class TokenService {
     return this.token.getBearerToken();
   }
 
-  getRefreshToken(): string | undefined {
+  getRefreshToken(): string | void {
     return this.token.refresh_token;
   }
 

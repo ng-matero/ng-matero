@@ -43,7 +43,7 @@ describe('Token', () => {
     it('test does not has exp attribute', () => {
       const token = new JwtToken({ access_token: generateToken({}), token_type: 'Bearer' });
 
-      expect(token.exp).toEqual(undefined);
+      expect(token.exp).toBeUndefined();
     });
   });
 });
