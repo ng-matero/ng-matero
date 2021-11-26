@@ -25,14 +25,10 @@ export class StartupService {
       this.authService
         .onChange()
         .pipe(
-          tap(response => {
-            // In a real app, you should get permissions and roles from the user information.
-            this.setPermissions();
-          }),
-          switchMap(() => (this.authService.check() ? this.authService.menu() : of({ menu: [] }))),
-          tap(response => {
-            this.setMenu(response);
-          })
+          // In a real app, you should get permissions and roles from the user information.
+          tap(response => this.setPermissions()),
+          switchMap(authenticated => (authenticated ? this.authService.menu() : of({ menu: [] }))),
+          tap(response => this.setMenu(response))
         )
         .subscribe(
           () => resolve(null),

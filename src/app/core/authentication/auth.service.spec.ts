@@ -27,8 +27,10 @@ describe('AuthService', () => {
     tokenService = TestBed.inject(TokenService);
     httpMock = TestBed.inject(HttpTestingController);
 
-    authService.onChange().subscribe();
     user$ = authService.user();
+    authService.onChange().subscribe(authenticated => {
+      expect(authenticated).toBeInstanceOf(Boolean);
+    });
   });
 
   afterEach(() => httpMock.verify());
