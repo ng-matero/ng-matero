@@ -25,7 +25,7 @@ export class TokenService {
     return this._token;
   }
 
-  triggerChange(): Observable<BaseToken> {
+  onChange(): Observable<BaseToken> {
     return this.change$.pipe(
       filter(changed => changed),
       map(() => this.token),
@@ -33,7 +33,7 @@ export class TokenService {
     );
   }
 
-  triggerRefresh(): Observable<BaseToken> {
+  onRefresh(): Observable<BaseToken> {
     return this.change$.pipe(
       filter(() => this.token.needRefresh()),
       switchMap(() => timer(this.token.getRefreshTime() * 1000)),

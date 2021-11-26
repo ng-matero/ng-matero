@@ -17,10 +17,10 @@ export class AuthService {
 
   onChange() {
     const token$ = this.tokenService
-      .triggerChange()
+      .onChange()
       .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
 
-    const refresh$ = this.tokenService.triggerRefresh().pipe(
+    const refresh$ = this.tokenService.onRefresh().pipe(
       switchMap(() => this.refresh()),
       filter(() => this.tokenService.canAssignUserWhenRefresh())
     );

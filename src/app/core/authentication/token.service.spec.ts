@@ -35,7 +35,7 @@ describe('TokenService', () => {
     tokenService.set({ access_token: 'token' });
 
     tokenService
-      .triggerChange()
+      .onChange()
       .pipe(tap(token => expect(token!.exp).toBeUndefined()))
       .subscribe();
   });
@@ -45,7 +45,7 @@ describe('TokenService', () => {
     tokenService.set({ access_token: 'token', expires_in: expiresIn });
 
     tokenService
-      .triggerChange()
+      .onChange()
       .pipe(tap(token => expect(token!.exp).toEqual(currentTimestamp() + expiresIn)))
       .subscribe();
   });
