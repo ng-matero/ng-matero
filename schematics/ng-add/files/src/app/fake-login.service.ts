@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { admin } from '@core/authentication/user';
-import { LoginService } from '@core/authentication/login.service';
+import { admin, LoginService, Menu } from '@core';
 
 /**
  * You should delete this file in the real APP.
@@ -27,6 +26,6 @@ export class FakeLoginService extends LoginService {
   }
 
   menu() {
-    return this.http.get('assets/data/menu.json?_t=' + Date.now());
+    return this.http.get<{ menu: Menu[] }>('assets/data/menu.json?_t=' + Date.now());
   }
 }
