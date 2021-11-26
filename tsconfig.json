@@ -17,7 +17,7 @@
     "importHelpers": true,
     "target": "es2017",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"],
+    "lib": ["es2019", "dom"],
     "paths": {
       "@core": ["app/core"],
       "@core/*": ["app/core/*"],
