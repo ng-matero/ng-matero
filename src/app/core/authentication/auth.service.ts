@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, merge, of, OperatorFunction } from 'rxjs';
+import { BehaviorSubject, merge, Observable, of, OperatorFunction } from 'rxjs';
 import { catchError, filter, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
-import { User } from './interface';
+import { Menu, User } from './interface';
 import { guest } from './user';
 import { filterObject } from './helpers';
 
@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
-  onChange() {
+  onChange(): Observable<User> {
     const token$ = this.tokenService
       .triggerChange()
       .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
@@ -30,18 +30,18 @@ export class AuthService {
     );
   }
 
-  check() {
+  check(): boolean {
     return this.tokenService.valid();
   }
 
-  login(email: string, password: string, rememberMe = false) {
+  login(email: string, password: string, rememberMe = false): Observable<boolean> {
     return this.loginService.login(email, password, rememberMe).pipe(
       tap(token => this.tokenService.set(token)),
       map(() => this.check())
     );
   }
 
-  refresh() {
+  refresh(): Observable<boolean> {
     return this.loginService
       .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
       .pipe(
@@ -51,26 +51,26 @@ export class AuthService {
       );
   }
 
-  logout() {
+  logout(): Observable<boolean> {
     return this.loginService.logout().pipe(
       tap(() => this.tokenService.clear()),
       map(() => !this.check())
     );
   }
 
-  user() {
+  user(): Observable<User> {
     return this.user$.pipe(share());
   }
 
-  menu() {
+  menu(): Observable<{ menu: Menu[] }> {
     return this.loginService.menu();
   }
 
-  private assignUser() {
+  private assignUser(): Observable<User> {
     return this.loginService.me().pipe(this.updateUser());
   }
 
-  private assignGuest() {
+  private assignGuest(): Observable<User> {
     return of(guest).pipe(this.updateUser());
   }
 

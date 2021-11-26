@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Token, User } from './interface';
-import { Menu } from '@core';
+import { Menu, Token, User } from './interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class LoginService {
     return this.http.get<User>('/me');
   }
 
-  menu() {
+  menu(): Observable<{ menu: Menu[] }> {
     return this.http.get<{ menu: Menu[] }>('/me/menu');
   }
 }
