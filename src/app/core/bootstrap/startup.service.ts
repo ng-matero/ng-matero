@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { MenuService } from './menu.service';
 import { AuthService, Menu } from '@core/authentication';
+import { MenuService } from './menu.service';
 
 @Injectable({
   providedIn: 'root',
