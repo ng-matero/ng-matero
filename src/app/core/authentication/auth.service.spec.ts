@@ -27,8 +27,10 @@ describe('AuthService', () => {
     tokenService = TestBed.inject(TokenService);
     httpMock = TestBed.inject(HttpTestingController);
 
-    authService.onChange().subscribe();
     user$ = authService.user();
+    authService.onChange().subscribe(authenticated => {
+      expect(authenticated).toBeInstanceOf(Boolean);
+    });
   });
 
   afterEach(() => httpMock.verify());
@@ -119,4 +121,10 @@ describe('AuthService', () => {
     expect(authService.check()).toBeFalse();
     expect(tokenService.clear).toHaveBeenCalled();
   }));
+
+  it('it only call http request once when on change subscribe twice', () => {
+    authService.onChange().subscribe();
+    tokenService.set(token);
+    httpMock.expectOne('/me').flush({});
+  });
 });

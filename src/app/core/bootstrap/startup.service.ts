@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { Menu, MenuService } from './menu.service';
-import { AuthService } from '@core/authentication';
+import { AuthService, Menu } from '@core/authentication';
+import { MenuService } from './menu.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,14 +25,10 @@ export class StartupService {
       this.authService
         .onChange()
         .pipe(
-          tap(response => {
-            // In a real app, you should get permissions and roles from the user information.
-            this.setPermissions();
-          }),
-          switchMap(() => (this.authService.check() ? this.authService.menu() : of({ menu: [] }))),
-          tap(response => {
-            this.setMenu(response);
-          })
+          // In a real app, you should get permissions and roles from the user information.
+          tap(response => this.setPermissions()),
+          switchMap(authenticated => (authenticated ? this.authService.menu() : of({ menu: [] }))),
+          tap(response => this.setMenu(response))
         )
         .subscribe(
           () => resolve(null),

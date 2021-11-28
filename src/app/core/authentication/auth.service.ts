@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, merge, of, OperatorFunction } from 'rxjs';
+import { BehaviorSubject, iif, merge, of } from 'rxjs';
 import { catchError, filter, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
@@ -12,22 +12,16 @@ import { filterObject } from './helpers';
 })
 export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
+  private change$ = merge(this.tokenOnChange(), this.tokenOnRefresh()).pipe(
+    tap(() => this.assignUser()),
+    map(() => this.check()),
+    share()
+  );
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
   onChange() {
-    const token$ = this.tokenService
-      .triggerChange()
-      .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
-
-    const refresh$ = this.tokenService.triggerRefresh().pipe(
-      switchMap(() => this.refresh()),
-      filter(() => this.tokenService.canAssignUserWhenRefresh())
-    );
-
-    return merge(token$, refresh$).pipe(
-      switchMap(() => (this.check() ? this.assignUser() : this.assignGuest()))
-    );
+    return this.change$;
   }
 
   check() {
@@ -36,7 +30,7 @@ export class AuthService {
 
   login(email: string, password: string, rememberMe = false) {
     return this.loginService.login(email, password, rememberMe).pipe(
-      tap(token => this.tokenService.set(token)),
+      tap(token => this.tokenService.set(token, true)),
       map(() => this.check())
     );
   }
@@ -46,7 +40,7 @@ export class AuthService {
       .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
       .pipe(
         catchError(() => of(false)),
-        tap(result => (!result ? this.tokenService.clear() : this.tokenService.refresh(result))),
+        tap(result => (!result ? this.tokenService.clear() : this.tokenService.set(result, false))),
         map(() => this.check())
       );
   }
@@ -67,14 +61,21 @@ export class AuthService {
   }
 
   private assignUser() {
-    return this.loginService.me().pipe(this.updateUser());
+    return iif(() => this.check(), this.loginService.me(), of(guest))
+      .pipe(tap(user => this.user$.next(Object.assign({}, guest, user))))
+      .subscribe();
   }
 
-  private assignGuest() {
-    return of(guest).pipe(this.updateUser());
+  private tokenOnChange() {
+    return this.tokenService
+      .onChange()
+      .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
   }
 
-  private updateUser(): OperatorFunction<User, User> {
-    return tap(user => this.user$.next(Object.assign({}, guest, user)));
+  private tokenOnRefresh() {
+    return this.tokenService.onRefresh().pipe(
+      switchMap(() => this.refresh()),
+      filter(() => this.tokenService.canAssignUserWhenRefresh())
+    );
   }
 }
