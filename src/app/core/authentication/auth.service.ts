@@ -13,8 +13,7 @@ import { filterObject } from './helpers';
 export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
   private change$ = merge(this.tokenOnChange(), this.tokenOnRefresh()).pipe(
-    tap(() => this.assignUser()),
-    map(() => this.check()),
+    switchMap(() => this.assignUser()),
     share()
   );
 
@@ -61,9 +60,9 @@ export class AuthService {
   }
 
   private assignUser() {
-    return iif(() => this.check(), this.loginService.me(), of(guest))
-      .pipe(tap(user => this.user$.next(Object.assign({}, guest, user))))
-      .subscribe();
+    return iif(() => this.check(), this.loginService.me(), of(guest)).pipe(
+      tap(user => this.user$.next(Object.assign({}, guest, user)))
+    );
   }
 
   private tokenOnChange() {

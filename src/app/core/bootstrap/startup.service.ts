@@ -25,8 +25,6 @@ export class StartupService {
       this.authService
         .onChange()
         .pipe(
-          // In a real app, you should get permissions and roles from the user information.
-          switchMap(() => this.authService.user()),
           tap(response => this.setPermissions(response)),
           switchMap(() => (this.authService.check() ? this.authService.menu() : of({ menu: [] }))),
           tap(response => this.setMenu(response))
@@ -44,7 +42,7 @@ export class StartupService {
   }
 
   private setPermissions(response: User) {
-    // Demo purposes only. You should add essential permissions and roles with your own cases.
+    // In a real app, you should get permissions and roles from the user information.
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
     this.permissonsService.loadPermissions(permissions);
     this.rolesService.flushRoles();

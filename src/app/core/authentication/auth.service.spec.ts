@@ -28,8 +28,8 @@ describe('AuthService', () => {
     httpMock = TestBed.inject(HttpTestingController);
 
     user$ = authService.user();
-    authService.onChange().subscribe(authenticated => {
-      expect(authenticated).toBeInstanceOf(Boolean);
+    authService.onChange().subscribe(user => {
+      expect(user).toBeInstanceOf(Object);
     });
   });
 
