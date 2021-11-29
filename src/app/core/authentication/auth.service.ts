@@ -61,7 +61,7 @@ export class AuthService {
   }
 
   menu() {
-    return this.loginService.menu();
+    return iif(() => this.check(), this.loginService.menu(), of({ menu: [] }));
   }
 
   private assignUser() {
