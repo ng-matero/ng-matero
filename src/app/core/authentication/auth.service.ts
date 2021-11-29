@@ -14,7 +14,6 @@ export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
   private change$ = merge(this.tokenOnChange(), this.tokenOnRefresh()).pipe(
     switchMap(() => this.assignUser()),
-    map(() => this.check()),
     share()
   );
 
@@ -22,10 +21,6 @@ export class AuthService {
 
   onInit(): void {
     this.change$.subscribe();
-  }
-
-  onChange() {
-    return this.change$;
   }
 
   check() {

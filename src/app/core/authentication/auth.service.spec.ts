@@ -121,9 +121,7 @@ describe('AuthService', () => {
   }));
 
   it('it only call http request once when on change subscribe twice', () => {
-    authService
-      .onChange()
-      .subscribe(authenticated => expect(authenticated).toBeInstanceOf(Boolean));
+    authService.onInit();
     tokenService.set(token);
     httpMock.expectOne('/me').flush({});
   });
