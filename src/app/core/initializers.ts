@@ -19,7 +19,7 @@ export function StartupServiceFactory(startupService: StartupService) {
 
 import { AuthService } from '@core/authentication';
 
-function AuthServiceFactory(authService: AuthService) {
+export function AuthServiceFactory(authService: AuthService) {
   return () => authService.onInit();
 }
 

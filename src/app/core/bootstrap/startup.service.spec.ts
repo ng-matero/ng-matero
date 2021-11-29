@@ -1,17 +1,18 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { APP_INITIALIZER } from '@angular/core';
 import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { admin, AuthService, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
+import { AuthServiceFactory } from '@core/initializers';
 
 describe('StartupService', () => {
   let httpMock: HttpTestingController;
   let startup: StartupService;
   let tokenService: TokenService;
   let menuService: MenuService;
-  let authService: AuthService;
   let mockPermissionsService: NgxPermissionsService;
   let mockRolesService: NgxRolesService;
 
@@ -22,6 +23,12 @@ describe('StartupService', () => {
         {
           provide: LocalStorageService,
           useClass: MemoryStorageService,
+        },
+        {
+          provide: APP_INITIALIZER,
+          useFactory: AuthServiceFactory,
+          deps: [AuthService],
+          multi: true,
         },
         {
           provide: NgxPermissionsService,
@@ -43,10 +50,8 @@ describe('StartupService', () => {
     startup = TestBed.inject(StartupService);
     tokenService = TestBed.inject(TokenService);
     menuService = TestBed.inject(MenuService);
-    authService = TestBed.inject(AuthService);
     mockPermissionsService = TestBed.inject(NgxPermissionsService);
     mockRolesService = TestBed.inject(NgxRolesService);
-    authService.onInit();
   });
 
   afterEach(() => httpMock.verify());
