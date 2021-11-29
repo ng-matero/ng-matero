@@ -28,9 +28,7 @@ describe('AuthService', () => {
     httpMock = TestBed.inject(HttpTestingController);
 
     user$ = authService.user();
-    authService.onChange().subscribe(user => {
-      expect(user).toBeInstanceOf(Object);
-    });
+    authService.onInit();
   });
 
   afterEach(() => httpMock.verify());
@@ -123,7 +121,9 @@ describe('AuthService', () => {
   }));
 
   it('it only call http request once when on change subscribe twice', () => {
-    authService.onChange().subscribe();
+    authService
+      .onChange()
+      .subscribe(authenticated => expect(authenticated).toBeInstanceOf(Boolean));
     tokenService.set(token);
     httpMock.expectOne('/me').flush({});
   });

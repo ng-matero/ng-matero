@@ -14,10 +14,15 @@ export class AuthService {
   private user$ = new BehaviorSubject<User>(guest);
   private change$ = merge(this.tokenOnChange(), this.tokenOnRefresh()).pipe(
     switchMap(() => this.assignUser()),
+    map(() => this.check()),
     share()
   );
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
+
+  onInit(): void {
+    this.change$.subscribe();
+  }
 
   onChange() {
     return this.change$;
