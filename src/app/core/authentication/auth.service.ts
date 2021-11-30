@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
-  onInit(): void {
+  init(): void {
     this.change$.subscribe();
   }
 

@@ -130,7 +130,7 @@ describe('AuthService', () => {
   }));
 
   it('it only call http request once when on change subscribe twice', () => {
-    authService.onInit();
+    authService.init();
     tokenService.set(token);
     httpMock.expectOne('/me').flush({});
   });
