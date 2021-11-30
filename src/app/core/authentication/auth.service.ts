@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
-  init(): void {
+  init() {
     this.change$.subscribe();
   }
 
@@ -56,7 +56,7 @@ export class AuthService {
   }
 
   menu() {
-    return iif(() => this.check(), this.loginService.menu(), of({ menu: [] }));
+    return iif(() => this.check(), this.loginService.menu(), of([]));
   }
 
   private assignUser() {
