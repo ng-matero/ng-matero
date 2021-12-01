@@ -6,7 +6,7 @@ import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { AuthService, guest, LoginService, TokenService, User } from '@core/authentication';
+import { AuthService, LoginService, TokenService, User } from '@core/authentication';
 import { AuthServiceFactory } from '@core/initializers';
 
 describe('AuthService', () => {
@@ -14,7 +14,7 @@ describe('AuthService', () => {
   let loginService: LoginService;
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
-  let user$: Observable<User>;
+  let user$: Observable<User | undefined>;
   const email = 'foo@bar.com';
   const token = { access_token: 'token', token_type: 'bearer' };
   const user = { id: 1, email };
@@ -54,7 +54,7 @@ describe('AuthService', () => {
   });
 
   it('should log in successful and get user info', () => {
-    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toEqual(user.id));
+    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser!.id).toEqual(user.id));
     authService.login(email, 'password', false).subscribe(isLogin => expect(isLogin).toBeTrue());
     httpMock.expectOne('/auth/login').flush(token);
 
@@ -78,7 +78,7 @@ describe('AuthService', () => {
     expect(authService.check()).toBeTrue();
     httpMock.expectOne('/me').flush(user);
 
-    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toEqual(guest.id));
+    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser).toBeUndefined());
     authService.logout().subscribe();
     httpMock.expectOne('/auth/logout').flush({});
 

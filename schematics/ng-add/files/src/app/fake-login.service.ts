@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { admin, LoginService, Menu } from '@core';
+import { LoginService, Menu } from '@core';
 import { map } from 'rxjs/operators';
 
 /**
@@ -8,6 +8,13 @@ import { map } from 'rxjs/operators';
  */
 @Injectable()
 export class FakeLoginService extends LoginService {
+  private user = {
+    id: 1,
+    name: 'Zongbin',
+    email: 'nzb329@163.com',
+    avatar: './assets/images/avatar.jpg',
+  };
+
   private token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
 
   login() {
@@ -23,7 +30,7 @@ export class FakeLoginService extends LoginService {
   }
 
   me() {
-    return of(admin);
+    return of(this.user);
   }
 
   menu() {

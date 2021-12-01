@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { APP_INITIALIZER } from '@angular/core';
 import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { admin, AuthService, TokenService } from '@core/authentication';
+import { AuthService, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
 import { AuthServiceFactory } from '@core/initializers';
@@ -15,6 +15,13 @@ describe('StartupService', () => {
   let menuService: MenuService;
   let mockPermissionsService: NgxPermissionsService;
   let mockRolesService: NgxRolesService;
+
+  const user = {
+    id: 1,
+    name: 'Zongbin',
+    email: 'nzb329@163.com',
+    avatar: './assets/images/avatar.jpg',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -69,7 +76,7 @@ describe('StartupService', () => {
 
     tokenService.set({ access_token: 'token' });
 
-    httpMock.expectOne('/me').flush(admin);
+    httpMock.expectOne('/me').flush(user);
     httpMock.expectOne('/me/menu').flush(menuData);
 
     expect(menuService.addNamespace).toHaveBeenCalledWith(menuData.menu, 'menu');

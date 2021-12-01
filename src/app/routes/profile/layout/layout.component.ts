@@ -6,7 +6,7 @@ import { AuthService, User } from '@core/authentication';
   templateUrl: './layout.component.html',
 })
 export class ProfileLayoutComponent implements OnInit {
-  user!: User;
+  user?: User;
 
   constructor(private auth: AuthService) {}
 

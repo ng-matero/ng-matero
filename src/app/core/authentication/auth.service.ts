@@ -4,14 +4,13 @@ import { catchError, filter, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
 import { User } from './interface';
-import { guest } from './user';
 import { filterObject } from './helpers';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private user$ = new BehaviorSubject<User>(guest);
+  private user$ = new BehaviorSubject<User | undefined>(undefined);
   private change$ = merge(this.tokenOnChange(), this.tokenOnRefresh()).pipe(
     switchMap(() => this.assignUser()),
     share()
@@ -60,9 +59,17 @@ export class AuthService {
   }
 
   private assignUser() {
-    return iif(() => this.check(), this.loginService.me(), of(guest)).pipe(
-      tap(user => this.user$.next(Object.assign({}, guest, user)))
-    );
+    const userDefault = {
+      name: 'unknown',
+      email: 'unknown',
+      avatar: './assets/images/avatar-default.jpg',
+    };
+
+    return iif(
+      () => this.check(),
+      this.loginService.me().pipe(map(user => Object.assign(userDefault, user))),
+      of(undefined)
+    ).pipe(tap(user => this.user$.next(user)));
   }
 
   private tokenOnChange() {

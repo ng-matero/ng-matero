@@ -11,8 +11,8 @@ import { AuthService, User } from '@core/authentication';
       mat-button
       [matMenuTriggerFor]="menu"
     >
-      <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
-      <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
+      <img class="matero-avatar" [src]="user?.avatar" width="32" alt="avatar" />
+      <span class="matero-username" fxHide.lt-sm>{{ user?.name }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -32,7 +32,7 @@ import { AuthService, User } from '@core/authentication';
   `,
 })
 export class UserComponent implements OnInit {
-  user!: User;
+  user?: User;
 
   constructor(private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
 

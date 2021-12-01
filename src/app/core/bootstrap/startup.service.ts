@@ -40,7 +40,7 @@ export class StartupService {
     this.menuService.set(menu);
   }
 
-  private setPermissions(user: User) {
+  private setPermissions(user?: User) {
     // In a real app, you should get permissions and roles from the user information.
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
     this.permissonsService.loadPermissions(permissions);
