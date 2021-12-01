@@ -73,7 +73,7 @@
     "@types/jasmine": "~3.10.2",
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^16.11.6",
-    "@types/parse5": "^6.0.2",
+    "@types/parse5": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "angular-cli-ghpages": "^1.0.0",
