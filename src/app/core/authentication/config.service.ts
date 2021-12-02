@@ -1,5 +1,6 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { User } from './interface';
+import { mergeDeep } from '@core/authentication/helpers';
 
 export interface Config {
   login_url: string;
@@ -16,6 +17,8 @@ export const AUTH_CONFIG = new InjectionToken<Config>('AUTH_CONFIG');
   providedIn: 'root',
 })
 export class ConfigService {
+  private config: Config;
+
   private defaults: Config = {
     login_url: '/auth/login',
     refresh_url: '/auth/refresh',
@@ -29,10 +32,8 @@ export class ConfigService {
     },
   };
 
-  private config: Config;
-
   constructor(@Optional() @Inject(AUTH_CONFIG) config?: Config) {
-    this.config = Object.assign(this.defaults, config ?? {});
+    this.config = mergeDeep<Config>({}, this.defaults, config ?? {});
   }
 
   getLoginUrl() {
@@ -56,6 +57,6 @@ export class ConfigService {
   }
 
   setUserDefaultValue(user: User) {
-    return Object.assign(this.config.user_defaults, user);
+    return Object.assign({}, this.config.user_defaults, user);
   }
 }

@@ -6,12 +6,11 @@ import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { AuthService, LoginService, TokenService, User } from '@core/authentication';
+import { AuthService, TokenService, User } from '@core/authentication';
 import { AuthServiceFactory } from '@core/initializers';
 
 describe('AuthService', () => {
   let authService: AuthService;
-  let loginService: LoginService;
   let tokenService: TokenService;
   let httpMock: HttpTestingController;
   let user$: Observable<User | undefined>;
@@ -32,7 +31,6 @@ describe('AuthService', () => {
         },
       ],
     });
-    loginService = TestBed.inject(LoginService);
     authService = TestBed.inject(AuthService);
     tokenService = TestBed.inject(TokenService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -63,14 +61,12 @@ describe('AuthService', () => {
   });
 
   it('should log out failed when user is not login', () => {
-    spyOn(loginService, 'logout').and.callThrough();
     expect(authService.check()).toBeFalse();
 
     authService.logout().subscribe();
     httpMock.expectOne('/auth/logout');
 
     expect(authService.check()).toBeFalse();
-    expect(loginService.logout).toHaveBeenCalled();
   });
 
   it('should log out successful when user is login', () => {

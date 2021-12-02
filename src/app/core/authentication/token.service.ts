@@ -1,11 +1,11 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { LocalStorageService } from '@shared';
 import { Token } from './interface';
 import { BaseToken } from './token';
 import { TokenFactory } from './token-factory.service';
 import { currentTimestamp, filterObject } from './helpers';
+import { LocalStorageService } from '@shared/services/storage.service';
 
 @Injectable({
   providedIn: 'root',
