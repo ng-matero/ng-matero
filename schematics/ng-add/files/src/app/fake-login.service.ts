@@ -29,7 +29,7 @@ export class FakeLoginService extends LoginService {
     return of({});
   }
 
-  me() {
+  profile() {
     return of(this.user);
   }
 

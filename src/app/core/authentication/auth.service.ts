@@ -3,6 +3,7 @@ import { BehaviorSubject, iif, merge, of } from 'rxjs';
 import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
+import { ConfigService } from './config.service';
 import { User } from './interface';
 import { filterObject } from './helpers';
 
@@ -19,7 +20,11 @@ export class AuthService {
     share()
   );
 
-  constructor(private loginService: LoginService, private tokenService: TokenService) {}
+  constructor(
+    private configService: ConfigService,
+    private loginService: LoginService,
+    private tokenService: TokenService
+  ) {}
 
   init() {
     this.change$.subscribe();
@@ -68,9 +73,8 @@ export class AuthService {
 
     return this.user$.getValue()
       ? of(this.user$.getValue())
-      : this.loginService.me().pipe(
-          map(user => this.loginService.setDefaults(user)),
-          tap(user => this.user$.next(user))
-        );
+      : this.loginService
+          .profile()
+          .pipe(tap(user => this.user$.next(this.configService.setUserDefaultValue(user))));
   }
 }

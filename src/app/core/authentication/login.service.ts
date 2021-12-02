@@ -3,40 +3,37 @@ import { HttpClient } from '@angular/common/http';
 import { Token, User } from './interface';
 import { Menu } from '@core';
 import { map } from 'rxjs/operators';
+import { ConfigService } from '@core/authentication/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  protected defaults = {
-    name: 'unknown',
-    email: 'unknown',
-    avatar: './assets/images/avatar-default.jpg',
-  };
-
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient, private configService: ConfigService) {}
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe });
+    return this.http.post<Token>(this.configService.getLoginUrl(), {
+      email,
+      password,
+      remember_me: rememberMe,
+    });
   }
 
   refresh(params: { [k: string]: any; refresh_token?: string }) {
-    return this.http.post<Token>('/auth/refresh', params);
+    return this.http.post<Token>(this.configService.getRefreshUrl(), params);
   }
 
   logout() {
-    return this.http.post('/auth/logout', {});
+    return this.http.post(this.configService.getLogoutUrl(), {});
   }
 
-  me() {
-    return this.http.get<User>('/me');
+  profile() {
+    return this.http.get<User>(this.configService.getProfileUrl());
   }
 
   menu() {
-    return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
-  }
-
-  setDefaults(user: User) {
-    return Object.assign(this.defaults, user);
+    return this.http
+      .get<{ menu: Menu[] }>(this.configService.getMenuUrl())
+      .pipe(map(res => res.menu));
   }
 }

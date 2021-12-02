@@ -122,7 +122,7 @@ export class InMemDataService implements InMemoryDbService {
       return reqInfo.utils.createResponse$(() => response);
     }
 
-    if (is(reqInfo, 'me/menu')) {
+    if (is(reqInfo, 'menu') || is(reqInfo, 'me/menu')) {
       return ajax('assets/data/menu.json?_t=' + Date.now()).pipe(
         map((response: any) => {
           return { headers, url, status: STATUS.OK, body: { menu: response.response.menu } };
@@ -131,7 +131,7 @@ export class InMemDataService implements InMemoryDbService {
       );
     }
 
-    if (is(reqInfo, 'me')) {
+    if (is(reqInfo, 'profile') || is(reqInfo, 'me')) {
       const user = jwt.getUser(reqInfo.req as HttpRequest<any>);
       const result = user
         ? { status: STATUS.OK, body: user }

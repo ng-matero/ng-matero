@@ -76,8 +76,8 @@ describe('StartupService', () => {
 
     tokenService.set({ access_token: 'token', token_type: 'bearer' });
 
-    httpMock.expectOne('/me').flush(user);
-    httpMock.expectOne('/me/menu').flush(menuData);
+    httpMock.expectOne('/profile').flush(user);
+    httpMock.expectOne('/menu').flush(menuData);
 
     expect(menuService.addNamespace).toHaveBeenCalledWith(menuData.menu, 'menu');
     expect(menuService.set).toHaveBeenCalledWith(menuData.menu);
@@ -94,7 +94,7 @@ describe('StartupService', () => {
 
     tokenService.set({ access_token: '', token_type: 'bearer' });
 
-    httpMock.expectNone('/me/menu');
+    httpMock.expectNone('/menu');
 
     expect(menuService.addNamespace).toHaveBeenCalledWith([], 'menu');
     expect(menuService.set).toHaveBeenCalledWith([]);
