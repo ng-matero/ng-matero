@@ -20,57 +20,33 @@ describe('TokenService', () => {
   });
 
   it('should get authorization header value', () => {
-    tokenService.set({ access_token: 'token' });
+    tokenService.set({ access_token: 'token', token_type: 'bearer' });
 
     expect(tokenService.getBearerToken()).toEqual('Bearer token');
   });
 
   it('cannot get authorization header value', () => {
-    tokenService.set({});
+    tokenService.set({ access_token: '', token_type: 'bearer' });
 
     expect(tokenService.getBearerToken()).toBe('');
   });
 
   it('should not has exp when token has expires_in', () => {
-    tokenService.set({ access_token: 'token' });
+    tokenService.set({ access_token: 'token', token_type: 'bearer' });
 
     tokenService
-      .onChange()
+      .change()
       .pipe(tap(token => expect(token!.exp).toBeUndefined()))
       .subscribe();
   });
 
   it('should has exp when token has expires_in', () => {
     const expiresIn = 3600;
-    tokenService.set({ access_token: 'token', expires_in: expiresIn });
+    tokenService.set({ access_token: 'token', token_type: 'bearer', expires_in: expiresIn });
 
     tokenService
-      .onChange()
+      .change()
       .pipe(tap(token => expect(token!.exp).toEqual(currentTimestamp() + expiresIn)))
       .subscribe();
-  });
-
-  it('can assign user when login with valid access_token', () => {
-    const token = { access_token: 'foo', token_type: 'bearer' };
-    spyOn(tokenFactory, 'create').and.returnValue(new SimpleToken(token));
-    tokenService.set(token);
-
-    expect(tokenService.canAssignUserWhenLogin()).toBeTrue();
-  });
-
-  it('can not assign user when login with invalid access_token and valid refresh_token ', () => {
-    const token = { access_token: '', token_type: 'bearer', refresh_token: 'refresh' };
-    spyOn(tokenFactory, 'create').and.returnValue(new SimpleToken(token));
-    tokenService.set(token);
-
-    expect(tokenService.canAssignUserWhenLogin()).toBeFalse();
-  });
-
-  it('can assign user when refresh with valid access_token', () => {
-    const token = { access_token: 'token', token_type: 'bearer', refresh_token: 'refresh' };
-    spyOn(tokenFactory, 'create').and.returnValue(new SimpleToken(token));
-    tokenService.set(token);
-
-    expect(tokenService.canAssignUserWhenRefresh()).toBeTrue();
   });
 });

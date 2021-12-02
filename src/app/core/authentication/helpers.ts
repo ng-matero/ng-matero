@@ -46,7 +46,7 @@ export function timeLeft(expiredAt: number): number {
   return Math.max(0, expiredAt - currentTimestamp());
 }
 
-export function filterObject(obj: any) {
+export function filterObject<T>(obj: T) {
   return Object.fromEntries(
     Object.entries(obj).filter(([, value]) => value !== undefined && value !== null)
   );

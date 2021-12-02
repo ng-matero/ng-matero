@@ -13,7 +13,7 @@ export abstract class BaseToken {
   }
 
   get token_type(): string {
-    return this.attributes.token_type;
+    return this.attributes.token_type ?? 'bearer';
   }
 
   get exp(): number | void {
@@ -47,16 +47,10 @@ export abstract class BaseToken {
   }
 }
 
-export class GuestToken extends BaseToken {
-  constructor() {
-    super({ access_token: '', token_type: '' });
-  }
-}
-
 export class SimpleToken extends BaseToken {}
 
 export class JwtToken extends SimpleToken {
-  private _payload?: { exp: number | void };
+  private _payload?: { exp?: number | void };
 
   static is(accessToken: string): boolean {
     try {
@@ -70,23 +64,24 @@ export class JwtToken extends SimpleToken {
   }
 
   get exp(): number | void {
-    return this.payload!.exp;
+    return this.payload?.exp;
   }
 
-  private get payload(): any {
+  private get payload(): { exp?: number | void } {
     if (!this.access_token) {
-      return { exp: undefined };
+      return {};
     }
 
-    if (!this._payload) {
-      const [, payload] = this.access_token.split('.');
-      const data = JSON.parse(base64.decode(payload));
-      if (!data.exp) {
-        data.exp = this.attributes.exp;
-      }
-      this._payload = data;
+    if (this._payload) {
+      return this._payload;
     }
 
-    return this._payload;
+    const [, payload] = this.access_token.split('.');
+    const data = JSON.parse(base64.decode(payload));
+    if (!data.exp) {
+      data.exp = this.attributes.exp;
+    }
+
+    return (this._payload = data);
   }
 }
