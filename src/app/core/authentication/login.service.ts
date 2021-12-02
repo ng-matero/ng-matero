@@ -8,6 +8,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class LoginService {
+  protected defaults = {
+    name: 'unknown',
+    email: 'unknown',
+    avatar: './assets/images/avatar-default.jpg',
+  };
+
   constructor(protected http: HttpClient) {}
 
   login(email: string, password: string, rememberMe = false) {
@@ -28,5 +34,9 @@ export class LoginService {
 
   menu() {
     return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
+  }
+
+  setDefaults(user: User) {
+    return Object.assign(this.defaults, user);
   }
 }

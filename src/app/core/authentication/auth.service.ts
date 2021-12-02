@@ -66,16 +66,11 @@ export class AuthService {
       return of(undefined).pipe(tap(user => this.user$.next(user)));
     }
 
-    if (this.user$.getValue()) {
-      return of(this.user$.getValue());
-    }
-
-    const defaults = {
-      name: 'unknown',
-      email: 'unknown',
-      avatar: './assets/images/avatar-default.jpg',
-    };
-
-    return this.loginService.me().pipe(tap(user => this.user$.next(Object.assign(defaults, user))));
+    return this.user$.getValue()
+      ? of(this.user$.getValue())
+      : this.loginService.me().pipe(
+          map(user => this.loginService.setDefaults(user)),
+          tap(user => this.user$.next(user))
+        );
   }
 }
