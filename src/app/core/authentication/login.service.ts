@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Token, User } from './interface';
-import { Menu } from '@core';
 import { map } from 'rxjs/operators';
-import { ConfigService } from '@core/authentication/config.service';
+import { User, Token, RefreshToken } from './interface';
+import { ConfigService } from './config.service';
+import { Menu } from '@core';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class LoginService {
     });
   }
 
-  refresh(params: { [k: string]: any; refresh_token?: string }) {
+  refresh(params: RefreshToken) {
     return this.http.post<Token>(this.configService.getRefreshUrl(), params);
   }
 

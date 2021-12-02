@@ -18,3 +18,9 @@ export interface Token {
   exp?: number;
   refresh_token?: string;
 }
+
+export interface RefreshToken {
+  [k: string]: any;
+
+  refresh_token?: string;
+}

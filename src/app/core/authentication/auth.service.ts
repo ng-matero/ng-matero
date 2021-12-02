@@ -35,24 +35,22 @@ export class AuthService {
   }
 
   login(email: string, password: string, rememberMe = false) {
-    return this.loginService.login(email, password, rememberMe).pipe(
+    return this.doLogin(email, password, rememberMe).pipe(
       tap(token => this.tokenService.set(token)),
       map(() => this.check())
     );
   }
 
   refresh() {
-    return this.loginService
-      .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
-      .pipe(
-        catchError(() => of(undefined)),
-        tap(token => this.tokenService.set(token)),
-        map(() => this.check())
-      );
+    return this.doRefresh().pipe(
+      catchError(() => of(undefined)),
+      tap(token => this.tokenService.set(token)),
+      map(() => this.check())
+    );
   }
 
   logout() {
-    return this.loginService.logout().pipe(
+    return this.doLogout().pipe(
       tap(() => this.tokenService.clear()),
       map(() => !this.check())
     );
@@ -63,7 +61,7 @@ export class AuthService {
   }
 
   menu() {
-    return iif(() => this.check(), this.loginService.menu(), of([]));
+    return iif(() => this.check(), this.fetchMenu(), of([]));
   }
 
   private assignUser() {
@@ -72,16 +70,39 @@ export class AuthService {
     }
 
     return this.user().pipe(
+      tap(user => console.log(user)),
       take(1),
       switchMap(user =>
         iif(
           () => !!user,
           of(user),
-          this.loginService
-            .profile()
-            .pipe(tap(user => this.user$.next(this.configService.setUserDefaultValue(user))))
+          this.fetchProfile().pipe(
+            tap(user => this.user$.next(this.configService.setUserDefaultValue(user)))
+          )
         )
       )
     );
+  }
+
+  protected doLogin(email: string, password: string, rememberMe: boolean) {
+    return this.loginService.login(email, password, rememberMe);
+  }
+
+  protected doRefresh() {
+    return this.loginService.refresh(
+      filterObject({ refresh_token: this.tokenService.getRefreshToken() })
+    );
+  }
+
+  protected doLogout() {
+    return this.loginService.logout();
+  }
+
+  protected fetchProfile() {
+    return this.loginService.profile();
+  }
+
+  protected fetchMenu() {
+    return this.loginService.menu();
   }
 }
