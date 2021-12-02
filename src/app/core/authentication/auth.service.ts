@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, iif, merge, of } from 'rxjs';
-import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, share, switchMap, take, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
 import { ConfigService } from './config.service';
@@ -71,10 +71,17 @@ export class AuthService {
       return of(undefined).pipe(tap(user => this.user$.next(user)));
     }
 
-    return this.user$.getValue()
-      ? of(this.user$.getValue())
-      : this.loginService
-          .profile()
-          .pipe(tap(user => this.user$.next(this.configService.setUserDefaultValue(user))));
+    return this.user().pipe(
+      take(1),
+      switchMap(user =>
+        iif(
+          () => !!user,
+          of(user),
+          this.loginService
+            .profile()
+            .pipe(tap(user => this.user$.next(this.configService.setUserDefaultValue(user))))
+        )
+      )
+    );
   }
 }
