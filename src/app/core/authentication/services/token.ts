@@ -1,5 +1,5 @@
-import { base64, capitalize, currentTimestamp, timeLeft } from './helpers';
-import { Token } from './interface';
+import { base64, capitalize, currentTimestamp, timeLeft } from '../helpers';
+import { Token } from '../interface';
 
 export abstract class BaseToken {
   constructor(protected attributes: Token) {}

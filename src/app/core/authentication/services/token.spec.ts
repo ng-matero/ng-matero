@@ -1,4 +1,4 @@
-import { base64, currentTimestamp, JwtToken } from '@core/authentication';
+import { base64, currentTimestamp, JwtToken } from '../index';
 
 describe('Token', () => {
   describe('JwtToken', () => {

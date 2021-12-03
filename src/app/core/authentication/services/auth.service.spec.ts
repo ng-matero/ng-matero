@@ -1,12 +1,14 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
+import { AuthModule, AuthService, TokenService, User } from '..';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { AuthService, TokenService, User } from '@core/authentication';
 import { AuthServiceFactory } from '@core/initializers';
 
 describe('AuthService', () => {
@@ -20,8 +22,9 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [AuthModule, RouterModule.forRoot([]), HttpClientTestingModule],
       providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
         { provide: LocalStorageService, useClass: MemoryStorageService },
         {
           provide: APP_INITIALIZER,

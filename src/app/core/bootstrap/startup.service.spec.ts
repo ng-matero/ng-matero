@@ -2,11 +2,14 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { APP_INITIALIZER } from '@angular/core';
 import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { AuthModule } from '@core/authentication/auth.module';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { AuthService, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
 import { AuthServiceFactory } from '@core/initializers';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('StartupService', () => {
   let httpMock: HttpTestingController;
@@ -25,8 +28,14 @@ describe('StartupService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, NgxPermissionsModule.forRoot()],
+      imports: [
+        AuthModule,
+        RouterModule.forRoot([]),
+        HttpClientTestingModule,
+        NgxPermissionsModule.forRoot(),
+      ],
       providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
         {
           provide: LocalStorageService,
           useClass: MemoryStorageService,

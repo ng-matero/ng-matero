@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthModule, TokenService, AuthGuard, AuthService } from '..';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { TokenService, AuthGuard, AuthService } from '@core/authentication';
 
 @Component({ template: '' })
 class DummyComponent {}
@@ -21,6 +21,7 @@ describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
+        AuthModule,
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([
           { path: 'dashboard', component: DummyComponent, canActivate: [AuthGuard] },

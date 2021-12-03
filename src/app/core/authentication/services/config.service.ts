@@ -1,21 +1,12 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { User } from './interface';
-import { mergeDeep } from '@core/authentication/helpers';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Config, mergeDeep, User } from '..';
 
-export interface Config {
-  login_url: string;
-  refresh_url: string;
-  logout_url: string;
-  profile_url: string;
-  menu_url: string;
-  user_defaults: User;
-}
-
-export const AUTH_CONFIG = new InjectionToken<Config>('AUTH_CONFIG');
-
-@Injectable({
+export const AUTH_CONFIG = new InjectionToken<Config | any>('AUTH_CONFIG', {
   providedIn: 'root',
-})
+  factory: () => ({}),
+});
+
+@Injectable()
 export class ConfigService {
   private config: Config;
 
@@ -32,8 +23,8 @@ export class ConfigService {
     },
   };
 
-  constructor(@Optional() @Inject(AUTH_CONFIG) config?: Config) {
-    this.config = mergeDeep<Config>({}, this.defaults, config ?? {});
+  constructor(@Inject(AUTH_CONFIG) config: Config) {
+    this.config = mergeDeep<Config>({}, this.defaults, config);
   }
 
   getLoginUrl() {
@@ -57,6 +48,6 @@ export class ConfigService {
   }
 
   setUserDefaultValue(user: User) {
-    return Object.assign({}, this.config.user_defaults, user);
+    return mergeDeep<User>({}, this.config.user_defaults, user);
   }
 }

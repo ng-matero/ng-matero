@@ -1,14 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TokenInterceptor } from './token-interceptor';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { STATUS } from 'angular-in-memory-web-api';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
+import { AuthModule, TokenInterceptor, TokenService, User } from '..';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { TokenService, User } from '@core/authentication';
-import { BASE_URL } from './base-url-interceptor';
+import { BASE_URL } from '../../interceptors/base-url-interceptor';
 
 describe('TokenInterceptor', () => {
   let httpMock: HttpTestingController;
@@ -21,7 +20,7 @@ describe('TokenInterceptor', () => {
 
   function init(url: string, access_token: string) {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [AuthModule, HttpClientTestingModule, RouterTestingModule],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
         { provide: BASE_URL, useValue: url },

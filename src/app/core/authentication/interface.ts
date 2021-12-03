@@ -24,3 +24,12 @@ export interface RefreshToken {
 
   refresh_token?: string;
 }
+
+export interface Config {
+  login_url: string;
+  refresh_url: string;
+  logout_url: string;
+  profile_url: string;
+  menu_url: string;
+  user_defaults: User;
+}

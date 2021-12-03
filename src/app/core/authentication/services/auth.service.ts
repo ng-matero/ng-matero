@@ -2,15 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, iif, merge, of } from 'rxjs';
 import { catchError, map, share, switchMap, take, tap } from 'rxjs/operators';
-import { TokenService } from './token.service';
-import { ConfigService } from './config.service';
-import { RefreshToken, Token, User } from './interface';
-import { filterObject } from './helpers';
+import { ConfigService, TokenService, RefreshToken, Token, User, filterObject } from '..';
 import { Menu } from '@core/bootstrap/menu.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthService {
   private user$ = new BehaviorSubject<User | undefined>(undefined);
   private change$ = merge(

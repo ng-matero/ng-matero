@@ -1,15 +1,10 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { Token } from './interface';
-import { BaseToken } from './token';
-import { TokenFactory } from './token-factory.service';
-import { currentTimestamp, filterObject } from './helpers';
+import { BaseToken, Token, TokenFactory, currentTimestamp, filterObject } from '..';
 import { LocalStorageService } from '@shared/services/storage.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class TokenService implements OnDestroy {
   private key = 'ng-matero-token';
   private change$ = new BehaviorSubject<BaseToken | undefined>(undefined);

@@ -1,25 +1,29 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BASE_URL } from '../interceptors/base-url-interceptor';
 
-export const SANCTUM_PREFIX = new InjectionToken<string>('SANCTUM_PREFIX');
-
-@Injectable({
+export const SANCTUM_BASE_URL = new InjectionToken<string>('SANCTUM_BASE_URL', {
   providedIn: 'root',
-})
+  factory: () => '',
+});
+export const SANCTUM_PREFIX = new InjectionToken<string>('SANCTUM_PREFIX', {
+  providedIn: 'root',
+  factory: () => '',
+});
+
+@Injectable()
 export class SanctumService {
   constructor(
     private http: HttpClient,
-    @Optional() @Inject(BASE_URL) private baseUrl?: string,
-    @Optional() @Inject(SANCTUM_PREFIX) private prefix?: string
+    @Inject(SANCTUM_BASE_URL) private baseUrl: string,
+    @Inject(SANCTUM_PREFIX) private prefix: string
   ) {}
 
-  load(): Promise<any> {
+  load(): Promise<unknown> {
     return this.toObservable().toPromise();
   }
 
-  toObservable(): Observable<any> {
+  toObservable(): Observable<unknown> {
     return this.http.get(this.getUrl());
   }
 

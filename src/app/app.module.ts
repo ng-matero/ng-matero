@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
+import { AuthModule } from '@core/authentication/auth.module';
 import { CoreModule } from '@core/core.module';
 import { ThemeModule } from '@theme/theme.module';
 import { SharedModule } from '@shared/shared.module';
@@ -34,6 +35,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AuthModule,
     CoreModule,
     ThemeModule,
     RoutesModule,

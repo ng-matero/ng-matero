@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+import { AuthModule } from '@core/authentication/auth.module';
 import { CoreModule } from '@core/core.module';
 import { ThemeModule } from '@theme/theme.module';
 import { SharedModule } from '@shared/shared.module';
@@ -32,6 +33,7 @@ import { FakeAuthService } from './fake-auth.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AuthModule,
     CoreModule,
     ThemeModule,
     RoutesModule,

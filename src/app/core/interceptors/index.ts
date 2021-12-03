@@ -1,10 +1,10 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NoopInterceptor } from './noop-interceptor';
-// import { SanctumInterceptor } from './sanctum-interceptor';
 import { BaseUrlInterceptor } from './base-url-interceptor';
 import { SettingsInterceptor } from './settings-interceptor';
-import { TokenInterceptor } from './token-interceptor';
+import { TokenInterceptor } from '@core/authentication';
+// import { SanctumInterceptor } from '@core/authentication';
 import { DefaultInterceptor } from './default-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { LoggingInterceptor } from './logging-interceptor';
