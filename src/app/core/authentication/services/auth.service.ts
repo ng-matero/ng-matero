@@ -23,7 +23,7 @@ export class AuthService {
   ) {}
 
   init() {
-    this.change$.subscribe();
+    return new Promise<void>(resolve => this.change$.subscribe(() => resolve(undefined)));
   }
 
   check() {

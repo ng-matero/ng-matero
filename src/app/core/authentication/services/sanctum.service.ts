@@ -20,7 +20,7 @@ export class SanctumService {
   ) {}
 
   load(): Promise<unknown> {
-    return this.toObservable().toPromise();
+    return new Promise(resolve => this.toObservable().subscribe(resolve));
   }
 
   toObservable(): Observable<unknown> {
