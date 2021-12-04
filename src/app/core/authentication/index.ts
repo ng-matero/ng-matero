@@ -1,4 +1,4 @@
-export * from './helpers';
+export * from './utils';
 export * from './interface';
 export * from './services/token';
 export * from './services/config.service';

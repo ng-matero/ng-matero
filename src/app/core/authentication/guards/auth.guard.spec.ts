@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthModule, TokenService, AuthGuard, AuthService } from '..';
+import { AuthGuard, AuthModule, AuthService, TokenService } from '..';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 
 @Component({ template: '' })

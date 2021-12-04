@@ -2,12 +2,11 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { APP_INITIALIZER } from '@angular/core';
 import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { AuthModule } from '@core/authentication/auth.module';
+import { AuthModule, AuthServiceFactory } from '@core/authentication/auth.module';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { AuthService, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
-import { AuthServiceFactory } from '@core/initializers';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StartupService', () => {

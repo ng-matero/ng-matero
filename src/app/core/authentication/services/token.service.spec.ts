@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { tap } from 'rxjs/operators';
-import { AuthModule } from '@core/authentication/auth.module';
-import { MemoryStorageService, LocalStorageService } from '@shared/services/storage.service';
-import { TokenService, currentTimestamp, TokenFactoryService } from '..';
+import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { ConfigService, currentTimestamp, TokenFactoryService, TokenService } from '..';
 
 describe('TokenService', () => {
   let tokenService: TokenService;
@@ -10,8 +9,15 @@ describe('TokenService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
-      imports: [AuthModule],
+      providers: [
+        ConfigService,
+        TokenService,
+        TokenFactoryService,
+        {
+          provide: LocalStorageService,
+          useClass: MemoryStorageService,
+        },
+      ],
     });
     tokenService = TestBed.inject(TokenService);
     tokenFactory = TestBed.inject(TokenFactoryService);

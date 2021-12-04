@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
-import { AuthModule, AuthService, TokenService, User } from '..';
+import { AuthModule, AuthService, AuthServiceFactory, TokenService, User } from '..';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { AuthServiceFactory } from '@core/initializers';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthService', () => {

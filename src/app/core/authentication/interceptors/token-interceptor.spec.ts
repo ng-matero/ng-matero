@@ -6,7 +6,14 @@ import { InjectionToken } from '@angular/core';
 import { STATUS } from 'angular-in-memory-web-api';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { AuthModule, TOKEN_BASE_URL, TokenInterceptor, TokenService, User } from '..';
+import {
+  ConfigService,
+  TOKEN_BASE_URL,
+  TokenFactoryService,
+  TokenInterceptor,
+  TokenService,
+  User,
+} from '..';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 
 describe('TokenInterceptor', () => {
@@ -21,8 +28,11 @@ describe('TokenInterceptor', () => {
 
   function init(url: string, access_token: string) {
     TestBed.configureTestingModule({
-      imports: [AuthModule, HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
+        TokenService,
+        TokenFactoryService,
+        ConfigService,
         { provide: LocalStorageService, useClass: MemoryStorageService },
         { provide: BASE_URL, useValue: url },
         { provide: TOKEN_BASE_URL, useExisting: BASE_URL },

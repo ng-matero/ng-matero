@@ -1,4 +1,4 @@
-import { base64, capitalize, currentTimestamp, timeLeft } from '../helpers';
+import { base64, capitalize, currentTimestamp, timeLeft } from '../utils';
 import { Token } from '../interface';
 
 export abstract class BaseToken {
