@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { SANCTUM_PREFIX, SanctumService } from '..';
+import { SANCTUM_BASE_URL, SANCTUM_PREFIX, SanctumService } from '..';
 import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 
 describe('SanctumService', () => {
@@ -24,6 +24,7 @@ describe('SanctumService', () => {
       imports: [HttpClientTestingModule],
       providers: [
         { provide: BASE_URL, useValue: null },
+        { provide: SANCTUM_BASE_URL, useExisting: BASE_URL },
         { provide: SANCTUM_PREFIX, useValue: null },
         SanctumService,
       ],

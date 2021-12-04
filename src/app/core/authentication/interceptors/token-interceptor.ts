@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { TokenService } from '..';
-import { BASE_URL } from '../../interceptors/base-url-interceptor';
+
+export const TOKEN_BASE_URL = new InjectionToken<string>('TOKEN_BASE_URL', {
+  providedIn: 'root',
+  factory: () => '',
+});
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -19,7 +23,7 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(
     private tokenService: TokenService,
     private router: Router,
-    @Optional() @Inject(BASE_URL) private baseUrl?: string
+    @Inject(TOKEN_BASE_URL) private baseUrl?: string
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {

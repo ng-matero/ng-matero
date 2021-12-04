@@ -4,8 +4,10 @@ import {
   AuthService,
   ConfigService,
   LoginService,
+  SANCTUM_BASE_URL,
   SanctumService,
-  TokenFactory,
+  TOKEN_BASE_URL,
+  TokenFactoryService,
   TokenService,
 } from '.';
 
@@ -23,13 +25,14 @@ import {
   providers: [
     ConfigService,
     LoginService,
-    TokenFactory,
+    TokenFactoryService,
     TokenService,
     AuthService,
     AuthGuard,
     SanctumService,
     // ...tokenInterceptorProviders,
     // ...sanctumProviders,
+    { provide: SANCTUM_BASE_URL, useExisting: TOKEN_BASE_URL },
   ],
 })
 export class AuthModule {}

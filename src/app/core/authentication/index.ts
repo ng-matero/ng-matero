@@ -11,4 +11,3 @@ export * from './guards/auth.guard';
 export * from './interceptors/token-interceptor';
 export * from './interceptors/sanctum-interceptor';
 export * from './auth.module';
-export { LoginService } from '@core/authentication/services/login.service';

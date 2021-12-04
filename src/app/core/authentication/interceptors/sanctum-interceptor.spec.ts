@@ -1,13 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 
+import { InjectionToken } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs/operators';
-import { AuthModule, SANCTUM_PREFIX, SanctumInterceptor, SanctumService } from '..';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BASE_URL } from '@core/interceptors/base-url-interceptor';
+import {
+  AuthModule,
+  SANCTUM_BASE_URL,
+  SANCTUM_PREFIX,
+  SanctumInterceptor,
+  SanctumService,
+} from '..';
 
 describe('SanctumInterceptor', () => {
+  const BASE_URL = new InjectionToken<string>('BASE_URL');
   let httpMock: HttpTestingController;
   let http: HttpClient;
 
@@ -24,6 +31,7 @@ describe('SanctumInterceptor', () => {
       imports: [AuthModule, RouterTestingModule, HttpClientTestingModule],
       providers: [
         { provide: BASE_URL, useValue: null },
+        { provide: SANCTUM_BASE_URL, useExisting: BASE_URL },
         { provide: SANCTUM_PREFIX, useValue: null },
         { provide: HTTP_INTERCEPTORS, useClass: SanctumInterceptor, multi: true },
         SanctumService,

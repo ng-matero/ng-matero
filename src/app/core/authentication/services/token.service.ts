@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { BaseToken, Token, TokenFactory, currentTimestamp, filterObject } from '..';
+import { BaseToken, currentTimestamp, filterObject, Token, TokenFactoryService } from '..';
 import { LocalStorageService } from '@shared/services/storage.service';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class TokenService implements OnDestroy {
   private timer$?: Subscription;
   private _token?: BaseToken;
 
-  constructor(private store: LocalStorageService, private factory: TokenFactory) {}
+  constructor(private store: LocalStorageService, private factory: TokenFactoryService) {}
 
   private get token(): BaseToken | undefined {
     if (!this._token) {

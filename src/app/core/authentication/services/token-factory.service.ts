@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Token, SimpleToken, JwtToken, BaseToken } from '..';
 
 @Injectable()
-export class TokenFactory {
+export class TokenFactoryService {
   create(attributes: Token): BaseToken | undefined {
     if (!attributes.access_token) {
       return undefined;
