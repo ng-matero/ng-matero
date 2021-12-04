@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, iif, merge, of } from 'rxjs';
 import { catchError, map, share, switchMap, take, tap } from 'rxjs/operators';
-import { ConfigService, TokenService, RefreshToken, Token, User, filterObject } from '..';
-import { Menu } from '@core/bootstrap/menu.service';
+import { ConfigService, filterObject, LoginService, RefreshToken, TokenService, User } from '..';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +15,7 @@ export class AuthService {
   );
 
   constructor(
-    protected http: HttpClient,
+    private loginService: LoginService,
     private configService: ConfigService,
     private tokenService: TokenService
   ) {}
@@ -38,9 +36,9 @@ export class AuthService {
   }
 
   refresh() {
-    const refreshToken = filterObject({ refresh_token: this.tokenService.getRefreshToken() });
-
-    return this.doRefresh(refreshToken).pipe(
+    return this.doRefresh(
+      filterObject({ refresh_token: this.tokenService.getRefreshToken() })
+    ).pipe(
       catchError(() => of(undefined)),
       tap(token => this.tokenService.set(token)),
       map(() => this.check())
@@ -62,6 +60,32 @@ export class AuthService {
     return iif(() => this.check(), this.fetchMenu(), of([]));
   }
 
+  protected doLogin(email: string, password: string, rememberMe: boolean) {
+    return this.loginService.login(email, password, rememberMe);
+  }
+
+  protected doRefresh(refreshToken: RefreshToken) {
+    return this.loginService.refresh(refreshToken);
+  }
+
+  protected doLogout() {
+    return this.loginService.logout();
+  }
+
+  protected fetchProfile() {
+    return this.loginService.me();
+  }
+
+  protected fetchMenu() {
+    return this.loginService.menu();
+  }
+
+  private updateUser() {
+    return this.fetchProfile().pipe(
+      tap(user => this.user$.next(this.configService.setUserDefaults(user)))
+    );
+  }
+
   private assignUser() {
     if (!this.check()) {
       return of(undefined).pipe(tap(user => this.user$.next(user)));
@@ -71,35 +95,5 @@ export class AuthService {
       take(1),
       switchMap(user => iif(() => !!user, of(user), this.updateUser()))
     );
-  }
-
-  private updateUser() {
-    return this.fetchProfile().pipe(
-      tap(user => this.user$.next(this.configService.setUserDefaultValue(user)))
-    );
-  }
-
-  protected doLogin(email: string, password: string, rememberMe: boolean) {
-    const params = { email, password, remember_me: rememberMe };
-
-    return this.http.post<Token>(this.configService.getLoginUrl(), params);
-  }
-
-  protected doRefresh(refreshToken?: RefreshToken) {
-    return this.http.post<Token>(this.configService.getRefreshUrl(), refreshToken);
-  }
-
-  protected doLogout() {
-    return this.http.post(this.configService.getLogoutUrl(), {});
-  }
-
-  protected fetchProfile() {
-    return this.http.get<User>(this.configService.getProfileUrl());
-  }
-
-  protected fetchMenu() {
-    return this.http
-      .get<{ menu: Menu[] }>(this.configService.getMenuUrl())
-      .pipe(map(res => res.menu));
   }
 }

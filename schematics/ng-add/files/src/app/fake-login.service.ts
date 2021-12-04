@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthService, Menu, RefreshToken } from '@core';
+import { LoginService, Menu, RefreshToken } from '@core';
 
 /**
  * You should delete this file in the real APP.
  */
 @Injectable()
-export class FakeAuthService extends AuthService {
+export class FakeLoginService extends LoginService {
   private token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
 
-  protected doLogin(email: string, password: string, rememberMe: boolean) {
+  login(email: string, password: string, rememberMe: boolean) {
     return of(this.token);
   }
 
-  protected doRefresh(refreshToken?: RefreshToken) {
+  refresh(refreshToken?: RefreshToken) {
     return of(this.token);
   }
 
-  protected doLogout() {
+  logout() {
     return of(true);
   }
 
-  protected fetchProfile() {
+  me() {
     return of({
       id: 1,
       name: 'Zongbin',
@@ -31,7 +31,7 @@ export class FakeAuthService extends AuthService {
     });
   }
 
-  protected fetchMenu() {
+  menu() {
     return this.http
       .get<{ menu: Menu[] }>('assets/data/menu.json?_t=' + Date.now())
       .pipe(map(res => res.menu));

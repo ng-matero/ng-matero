@@ -25,8 +25,8 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-import { AuthService } from '@core';
-import { FakeAuthService } from './fake-auth.service';
+import { LoginService } from '@core';
+import { FakeLoginService } from './fake-login.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,7 +51,7 @@ import { FakeAuthService } from './fake-auth.service';
   ],
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },
-    { provide: AuthService, useClass: FakeAuthService }, // <= Remove it in the real APP
+    { provide: LoginService, useClass: FakeLoginService }, // <= Remove it in the real APP
     httpInterceptorProviders,
     appInitializerProviders,
   ],

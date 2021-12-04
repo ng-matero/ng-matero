@@ -47,7 +47,7 @@ export class ConfigService {
     return this.config.menu_url;
   }
 
-  setUserDefaultValue(user: User) {
+  setUserDefaults(user: User) {
     return mergeDeep<User>({}, this.config.user_defaults, user);
   }
 }

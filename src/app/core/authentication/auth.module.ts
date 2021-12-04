@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
+  AuthGuard,
+  AuthService,
   ConfigService,
+  LoginService,
+  SanctumService,
   TokenFactory,
   TokenService,
-  AuthService,
-  AuthGuard,
-  SanctumService,
-  // TokenInterceptor,
 } from '.';
 
 // export const tokenInterceptorProviders = [
@@ -23,6 +22,7 @@ import {
 @NgModule({
   providers: [
     ConfigService,
+    LoginService,
     TokenFactory,
     TokenService,
     AuthService,
