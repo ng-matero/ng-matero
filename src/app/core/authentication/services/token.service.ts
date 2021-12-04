@@ -1,22 +1,33 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { BaseToken, currentTimestamp, filterObject, Token, TokenFactoryService } from '..';
+import {
+  BaseToken,
+  ConfigService,
+  currentTimestamp,
+  filterObject,
+  Token,
+  TokenFactoryService,
+} from '..';
 import { LocalStorageService } from '@shared/services/storage.service';
 
 @Injectable()
 export class TokenService implements OnDestroy {
-  private key = 'ng-matero-token';
+  private storeKey = this.configService.getStoreKey();
   private change$ = new BehaviorSubject<BaseToken | undefined>(undefined);
   private refresh$ = new Subject<BaseToken>();
   private timer$?: Subscription;
   private _token?: BaseToken;
 
-  constructor(private store: LocalStorageService, private factory: TokenFactoryService) {}
+  constructor(
+    private store: LocalStorageService,
+    private factory: TokenFactoryService,
+    private configService: ConfigService
+  ) {}
 
   private get token(): BaseToken | undefined {
     if (!this._token) {
-      this._token = this.factory.create(this.store.get(this.key));
+      this._token = this.factory.create(this.store.get(this.storeKey));
     }
 
     return this._token;
@@ -62,12 +73,12 @@ export class TokenService implements OnDestroy {
     this._token = undefined;
 
     if (!token) {
-      this.store.remove(this.key);
+      this.store.remove(this.storeKey);
     } else {
       const value = Object.assign({ access_token: '', token_type: 'Bearer' }, token, {
         exp: token.expires_in ? currentTimestamp() + token.expires_in : null,
       });
-      this.store.set(this.key, filterObject(value));
+      this.store.set(this.storeKey, filterObject(value));
     }
 
     this.change$.next(this.token);

@@ -26,6 +26,7 @@ export interface RefreshToken {
 }
 
 export interface Config {
+  store_key: string;
   login_url: string;
   refresh_url: string;
   logout_url: string;

@@ -11,6 +11,7 @@ export class ConfigService {
   private config: Config;
 
   private defaults: Config = {
+    store_key: 'ng-matero-token',
     login_url: '/auth/login',
     refresh_url: '/auth/refresh',
     logout_url: '/auth/logout',
@@ -25,6 +26,10 @@ export class ConfigService {
 
   constructor(@Inject(AUTH_CONFIG) config: Config) {
     this.config = mergeDeep<Config>({}, this.defaults, config);
+  }
+
+  getStoreKey() {
+    return this.config.store_key;
   }
 
   getLoginUrl() {
