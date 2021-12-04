@@ -8,8 +8,7 @@ import { AuthService, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
 import { AuthServiceFactory } from '@core/initializers';
-import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StartupService', () => {
   let httpMock: HttpTestingController;
@@ -30,12 +29,11 @@ describe('StartupService', () => {
     TestBed.configureTestingModule({
       imports: [
         AuthModule,
-        RouterModule.forRoot([]),
+        RouterTestingModule,
         HttpClientTestingModule,
         NgxPermissionsModule.forRoot(),
       ],
       providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
         {
           provide: LocalStorageService,
           useClass: MemoryStorageService,

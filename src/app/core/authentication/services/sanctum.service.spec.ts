@@ -2,7 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { SANCTUM_BASE_URL, SANCTUM_PREFIX, SanctumService } from '..';
+import { SANCTUM_PREFIX, SanctumService } from '..';
+import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 
 describe('SanctumService', () => {
   let httpMock: HttpTestingController;
@@ -10,7 +11,7 @@ describe('SanctumService', () => {
   let sanctumService: SanctumService;
 
   const setBaseUrlAndSanctumPrefix = (baseUrl: string | null, sanctumPrefix: string | null) => {
-    TestBed.overrideProvider(SANCTUM_BASE_URL, { useValue: baseUrl });
+    TestBed.overrideProvider(BASE_URL, { useValue: baseUrl });
     TestBed.overrideProvider(SANCTUM_PREFIX, { useValue: sanctumPrefix });
 
     httpMock = TestBed.inject(HttpTestingController);
@@ -22,7 +23,7 @@ describe('SanctumService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: SANCTUM_BASE_URL, useValue: null },
+        { provide: BASE_URL, useValue: null },
         { provide: SANCTUM_PREFIX, useValue: null },
         SanctumService,
       ],

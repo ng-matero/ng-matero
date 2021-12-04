@@ -2,11 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
 import { AuthModule } from '@core/authentication';
 import { SettingsService } from '@core/bootstrap/settings.service';
 import { SettingsInterceptor } from './settings-interceptor';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SettingsInterceptor', () => {
   let httpMock: HttpTestingController;
@@ -15,9 +14,8 @@ describe('SettingsInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AuthModule, RouterModule.forRoot([]), HttpClientTestingModule],
+      imports: [AuthModule, RouterTestingModule, HttpClientTestingModule],
       providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
         {
           provide: HTTP_INTERCEPTORS,
           useClass: SettingsInterceptor,

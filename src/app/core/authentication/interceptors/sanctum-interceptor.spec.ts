@@ -2,23 +2,17 @@ import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
-import {
-  AuthModule,
-  SanctumInterceptor,
-  SanctumService,
-  SANCTUM_PREFIX,
-  SANCTUM_BASE_URL,
-} from '..';
+import { AuthModule, SANCTUM_PREFIX, SanctumInterceptor, SanctumService } from '..';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BASE_URL } from '@core/interceptors/base-url-interceptor';
 
 describe('SanctumInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
 
   const setBaseUrlAndSanctumPrefix = (baseUrl: string | null, sanctumPrefix: string | null) => {
-    TestBed.overrideProvider(SANCTUM_BASE_URL, { useValue: baseUrl });
+    TestBed.overrideProvider(BASE_URL, { useValue: baseUrl });
     TestBed.overrideProvider(SANCTUM_PREFIX, { useValue: sanctumPrefix });
 
     httpMock = TestBed.inject(HttpTestingController);
@@ -27,10 +21,9 @@ describe('SanctumInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AuthModule, RouterModule.forRoot([]), HttpClientTestingModule],
+      imports: [AuthModule, RouterTestingModule, HttpClientTestingModule],
       providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
-        { provide: SANCTUM_BASE_URL, useValue: null },
+        { provide: BASE_URL, useValue: null },
         { provide: SANCTUM_PREFIX, useValue: null },
         { provide: HTTP_INTERCEPTORS, useClass: SanctumInterceptor, multi: true },
         SanctumService,
