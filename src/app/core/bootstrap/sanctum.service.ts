@@ -15,8 +15,8 @@ export class SanctumService {
     @Optional() @Inject(SANCTUM_PREFIX) private prefix?: string
   ) {}
 
-  load(): Promise<any> {
-    return this.toObservable().toPromise();
+  load(): Promise<unknown> {
+    return new Promise(resolve => this.toObservable().subscribe(resolve));
   }
 
   toObservable(): Observable<any> {

@@ -20,7 +20,7 @@ export class AuthService {
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
   init() {
-    this.change$.subscribe();
+    return new Promise<void>(resolve => this.change$.subscribe(() => resolve()));
   }
 
   check() {
