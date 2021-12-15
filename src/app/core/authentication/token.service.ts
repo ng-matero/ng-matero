@@ -12,6 +12,7 @@ import { currentTimestamp } from './helpers';
 })
 export class TokenService {
   private key = 'ng-matero-token';
+
   private tokenChange$ = new BehaviorSubject<boolean>(true);
   private change$ = this.tokenChange$.pipe(
     filter(changed => changed),
@@ -24,6 +25,7 @@ export class TokenService {
     map(() => this.token),
     share()
   );
+
   private _token?: BaseToken;
 
   constructor(private store: LocalStorageService, private factory: TokenFactory) {}
