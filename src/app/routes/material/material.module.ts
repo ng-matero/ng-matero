@@ -110,6 +110,5 @@ const COMPONENTS_DYNAMIC: any[] = [
 @NgModule({
   imports: [SharedModule, CdkTableModule, MaterialRoutingModule],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
-  entryComponents: COMPONENTS_DYNAMIC,
 })
 export class MaterialModule {}

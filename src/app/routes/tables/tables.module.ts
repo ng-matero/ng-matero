@@ -12,6 +12,5 @@ const COMPONENTS_DYNAMIC: any[] = [TablesKitchenSinkEditComponent];
 @NgModule({
   imports: [SharedModule, TableRoutingModule],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
-  entryComponents: COMPONENTS_DYNAMIC,
 })
 export class TablesModule {}

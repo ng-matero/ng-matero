@@ -51,6 +51,5 @@ const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
   imports: [...MODULES],
   exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],
-  entryComponents: COMPONENTS_DYNAMIC,
 })
 export class SharedModule {}
