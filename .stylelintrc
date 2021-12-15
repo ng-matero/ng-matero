@@ -1,6 +1,7 @@
 {
   "ignoreFiles": [
-    "dist/**"
+    "dist/**",
+    "schematics/**"
   ],
   "extends": [
     "stylelint-config-standard",
