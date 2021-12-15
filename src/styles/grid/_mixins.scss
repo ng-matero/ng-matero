@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:math';
 @use 'variables';
-@use '~@angular/material/core/style/private';
+@use '@angular/material/core/style/private';
 
 @function bp($name, $breakpoints: variables.$breakpoints) {
   $min: map.get($breakpoints, $name);

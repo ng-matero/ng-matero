@@ -7,7 +7,7 @@
 @use 'sass:meta';
 @use 'sass:map';
 @use 'sass:math';
-@use '~@angular/material/core/style/private';
+@use '@angular/material/core/style/private';
 
 @function long-shadow($direction, $length, $color, $fade: false, $shadow-count: 100) {
   $shadows: ();

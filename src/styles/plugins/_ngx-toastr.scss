@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@use '~ngx-toastr/toastr';
+@use '@angular/material' as mat;
+@use 'ngx-toastr/toastr';
 
 .toast-container {
   .ngx-toastr {

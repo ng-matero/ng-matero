@@ -1,6 +1,6 @@
 @use 'sass:color';
 @use 'sass:map';
-@use '~@angular/material' as mat;
+@use '@angular/material' as mat;
 
 @mixin theme($theme) {
   $is-dark-theme: map.get($theme, is-dark);
