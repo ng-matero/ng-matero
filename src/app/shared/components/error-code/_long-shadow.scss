@@ -7,7 +7,6 @@
 @use 'sass:meta';
 @use 'sass:map';
 @use 'sass:math';
-@use '@angular/material/core/style/private';
 
 @function long-shadow($direction, $length, $color, $fade: false, $shadow-count: 100) {
   $shadows: ();
@@ -31,14 +30,14 @@
   }
 
   @for $i from 1 through $shadow-count {
-    $current-step: private.private-div($i * $length, $shadow-count);
+    $current-step: math.div($i * $length, $shadow-count);
     $current-color: if(
       not $fade,
       $color,
       if(
         meta.type-of($fade) == 'color',
-        color.mix($fade, $color, private.private-div($i, $shadow-count) * 100),
-        color.rgba($color, 1 - private.private-div($i, $shadow-count))
+        color.mix($fade, $color, math.div($i, $shadow-count) * 100),
+        color.rgba($color, 1 - math.div($i, $shadow-count))
       )
     );
 

@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '@angular/material/core/style/variables';
 
 // Layout
 $gutter: 16px !default;
@@ -63,5 +62,5 @@ $mat-colors: (
 ) !default;
 
 // The material default animation curves
-$swift-ease-out-duration: variables.$swift-ease-out-duration;
-$swift-ease-out-timing-function: variables.$swift-ease-out-timing-function;
+$swift-ease-out-duration: 400ms !default;
+$swift-ease-out-timing-function: cubic-bezier(.25, .8, .25, 1) !default;
