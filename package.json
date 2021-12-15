@@ -77,7 +77,7 @@
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "angular-cli-ghpages": "^1.0.0",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "cpr": "^3.0.1",
     "eslint": "^7.32.0",
     "gulp": "^4.0.2",
