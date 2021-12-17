@@ -137,11 +137,6 @@ function addScriptsToPackageJson() {
     addScriptToPackageJson(host, 'lint:ts', `eslint "src/**/*.ts" --fix`);
     addScriptToPackageJson(host, 'lint:scss', `stylelint "src/**/*.scss" --fix`);
     addScriptToPackageJson(host, 'hmr', `ng serve --hmr --disable-host-check`);
-    addScriptToPackageJson(
-      host,
-      'postinstall',
-      'ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points'
-    );
   };
 }
 

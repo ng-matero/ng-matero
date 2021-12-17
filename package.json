@@ -20,7 +20,6 @@
     "predeploy": "npm run build:prod",
     "deploy": "ng deploy",
     "publish": "npm run build:schematics && cd dist/schematics && npm publish",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "prepare": "husky install",
     "analyze": "ng build --stats-json && webpack-bundle-analyzer dist/ng-matero/stats.json"
   },
