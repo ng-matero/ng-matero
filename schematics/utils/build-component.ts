@@ -26,14 +26,13 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
-import { validateHtmlSelector, validateName } from '@schematics/angular/utility/validation';
+import { validateHtmlSelector } from '@schematics/angular/utility/validation';
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
-import { getProjectFromWorkspace } from '@angular/cdk/schematics/utils/get-project';
-import { getDefaultComponentOptions } from '@angular/cdk/schematics/utils/schematic-options';
-import * as ts from 'typescript';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
+import { getDefaultComponentOptions, getProjectFromWorkspace } from '@angular/cdk/schematics';
 
 export interface ComponentOptions extends Schema {
   entryComponent?: any;
@@ -134,14 +133,7 @@ function addExportToNgModule(host: Tree, modulePath: string, fileName: string, f
   const source = readIntoSourceFile(host, modulePath);
 
   const exportRecorder = host.beginUpdate(modulePath);
-  const exportChanges = addExportToModule(
-    // TODO: TypeScript version mismatch due to @schematics/angular using a different version
-    // than Material. Cast to any to avoid the type assignment failure.
-    source as any,
-    modulePath,
-    fileName,
-    filePath
-  );
+  const exportChanges = addExportToModule(source, modulePath, fileName, filePath);
 
   for (const change of exportChanges) {
     if (change instanceof InsertChange) {
@@ -316,7 +308,6 @@ export function buildComponent(
     options.path = parsedPath.path;
     options.selector = options.selector || buildSelector(options, project.prefix);
 
-    validateName(options.name);
     validateHtmlSelector(options.selector!);
 
     // In case the specified style extension is not part of the supported CSS supersets,

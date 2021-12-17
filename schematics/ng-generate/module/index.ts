@@ -8,9 +8,7 @@ import {
   mergeWith,
   applyTemplates,
 } from '@angular-devkit/schematics';
-
 import { strings, normalize, Path } from '@angular-devkit/core';
-
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';

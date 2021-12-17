@@ -13,7 +13,6 @@ const COMPONENTS_DYNAMIC: any[] = [];
   declarations: [
     ...COMPONENTS,
     ...COMPONENTS_DYNAMIC
-  ],
-  entryComponents: COMPONENTS_DYNAMIC
+  ]
 })
 export class <%= classify(name) %>Module { }
