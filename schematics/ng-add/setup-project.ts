@@ -108,6 +108,8 @@ function deleteExsitingFiles() {
     const project = getProjectFromWorkspace(workspace);
 
     [
+      `${project.root}/.vscode/extensions.json`,
+      `${project.root}/.vscode/settings.json`,
       `${project.root}/tsconfig.json`,
       `${project.root}/tsconfig.app.json`,
       `${project.root}/tsconfig.base.json`,
