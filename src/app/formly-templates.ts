@@ -1,7 +1,7 @@
 import { ViewChild, ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/material/form-field';
-import { MtxSelectComponent } from '@ng-matero/extensions';
+import { MtxSelectComponent } from '@ng-matero/extensions/select';
 
 /**
  * This is just an example.

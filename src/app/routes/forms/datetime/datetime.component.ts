@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 
-import { MtxDatetimepickerFilterType } from '@ng-matero/extensions';
+import { MtxDatetimepickerFilterType } from '@ng-matero/extensions/datetimepicker';
 import * as moment from 'moment';
 
 import { TranslateService } from '@ngx-translate/core';
