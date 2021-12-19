@@ -30,9 +30,8 @@ import { validateHtmlSelector, validateName } from '@schematics/angular/utility/
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
-import { getProjectFromWorkspace } from '@angular/cdk/schematics/utils/get-project';
-import { getDefaultComponentOptions } from '@angular/cdk/schematics/utils/schematic-options';
-import * as ts from 'typescript';
+import { getProjectFromWorkspace, getDefaultComponentOptions } from '@angular/cdk/schematics';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 export interface ComponentOptions extends Schema {
@@ -134,14 +133,7 @@ function addExportToNgModule(host: Tree, modulePath: string, fileName: string, f
   const source = readIntoSourceFile(host, modulePath);
 
   const exportRecorder = host.beginUpdate(modulePath);
-  const exportChanges = addExportToModule(
-    // TODO: TypeScript version mismatch due to @schematics/angular using a different version
-    // than Material. Cast to any to avoid the type assignment failure.
-    source as any,
-    modulePath,
-    fileName,
-    filePath
-  );
+  const exportChanges = addExportToModule(source, modulePath, fileName, filePath);
 
   for (const change of exportChanges) {
     if (change instanceof InsertChange) {
