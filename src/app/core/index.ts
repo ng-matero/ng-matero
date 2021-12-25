@@ -1,4 +1,5 @@
 export * from './settings';
+export * from './initializers';
 
 // Bootstrap
 export * from './bootstrap/menu.service';
