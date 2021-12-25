@@ -32,7 +32,7 @@ import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
 import { getProjectFromWorkspace } from '@angular/cdk/schematics/utils/get-project';
 import { getDefaultComponentOptions } from '@angular/cdk/schematics/utils/schematic-options';
-import * as ts from 'typescript';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 export interface ComponentOptions extends Schema {
@@ -97,7 +97,7 @@ function addComponent(host: Tree, modulePath: string, fileName: string, symbolNa
   }
 
   const addDeclaration = insertAfterLastOccurrence(
-    (nodeArr.elements as unknown) as ts.Node[],
+    nodeArr.elements as unknown as ts.Node[],
     componentName,
     modulePath,
     nodeArr.elements.pos,
