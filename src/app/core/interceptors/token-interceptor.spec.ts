@@ -32,7 +32,7 @@ describe('TokenInterceptor', () => {
     httpMock = TestBed.inject(HttpTestingController);
     http = TestBed.inject(HttpClient);
     router = TestBed.inject(Router);
-    tokenService = TestBed.inject(TokenService).set({ access_token });
+    tokenService = TestBed.inject(TokenService).set({ access_token, token_type: 'bearer' });
   }
 
   function mockRequest(url: string, body?: any, headers?: any) {
