@@ -11,7 +11,7 @@ export class LoginService {
   constructor(protected http: HttpClient) {}
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { email, password, remember_me: rememberMe });
+    return this.http.post<Token>('/auth/login', { email, password, rememberMe });
   }
 
   refresh(params: Record<string, any>, refresh_token?: string) {

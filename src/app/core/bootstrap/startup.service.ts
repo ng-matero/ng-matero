@@ -20,7 +20,7 @@ export class StartupService {
    * such as permissions and roles.
    */
   load() {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.authService
         .user()
         .pipe(
@@ -29,8 +29,8 @@ export class StartupService {
           tap(menu => this.setMenu(menu))
         )
         .subscribe(
-          () => resolve(null),
-          () => resolve(null)
+          () => resolve(),
+          () => resolve()
         );
     });
   }
