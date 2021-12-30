@@ -14,8 +14,8 @@ export class TranslateLangService {
   ) {}
 
   load() {
-    return new Promise<any>((resolve: any) => {
-      const locationInitialized = this.injector.get(LOCATION_INITIALIZED, Promise.resolve(null));
+    return new Promise<void>(resolve => {
+      const locationInitialized = this.injector.get(LOCATION_INITIALIZED, Promise.resolve());
       locationInitialized.then(() => {
         const browserLang = navigator.language;
         const defaultLang = browserLang.match(/en-US|zh-CN|zh-TW/) ? browserLang : 'en-US';
@@ -25,7 +25,7 @@ export class TranslateLangService {
         this.translate.use(defaultLang).subscribe(
           () => console.log(`Successfully initialized '${defaultLang}' language.'`),
           () => console.error(`Problem with '${defaultLang}' language initialization.'`),
-          () => resolve(null)
+          () => resolve()
         );
       });
     });

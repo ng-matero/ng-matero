@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, iif, merge, of } from 'rxjs';
-import { catchError, filter, map, share, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
 import { User } from './interface';
 import { guest } from './user';
-import { filterObject } from './helpers';
+import { filterObject, isEmptyObject } from './helpers';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private user$ = new BehaviorSubject<User>(guest);
-  private change$ = merge(this.tokenOnChange(), this.tokenOnRefresh()).pipe(
+  private user$ = new BehaviorSubject<User>({});
+  private change$ = merge(
+    this.tokenService.change(),
+    this.tokenService.refresh().pipe(switchMap(() => this.refresh()))
+  ).pipe(
     switchMap(() => this.assignUser()),
     share()
   );
@@ -29,7 +32,7 @@ export class AuthService {
 
   login(email: string, password: string, rememberMe = false) {
     return this.loginService.login(email, password, rememberMe).pipe(
-      tap(token => this.tokenService.set(token, true)),
+      tap(token => this.tokenService.set(token)),
       map(() => this.check())
     );
   }
@@ -38,8 +41,8 @@ export class AuthService {
     return this.loginService
       .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
       .pipe(
-        catchError(() => of(false)),
-        tap(result => (!result ? this.tokenService.clear() : this.tokenService.set(result, false))),
+        catchError(() => of(undefined)),
+        tap(token => this.tokenService.set(token)),
         map(() => this.check())
       );
   }
@@ -60,21 +63,14 @@ export class AuthService {
   }
 
   private assignUser() {
-    return iif(() => this.check(), this.loginService.me(), of(guest)).pipe(
-      tap(user => this.user$.next(Object.assign({}, guest, user)))
-    );
-  }
+    if (!this.check()) {
+      return of({}).pipe(tap(user => this.user$.next(user)));
+    }
 
-  private tokenOnChange() {
-    return this.tokenService
-      .onChange()
-      .pipe(filter(() => this.tokenService.canAssignUserWhenLogin()));
-  }
+    if (!isEmptyObject(this.user$.getValue())) {
+      return of(this.user$.getValue());
+    }
 
-  private tokenOnRefresh() {
-    return this.tokenService.onRefresh().pipe(
-      switchMap(() => this.refresh()),
-      filter(() => this.tokenService.canAssignUserWhenRefresh())
-    );
+    return this.loginService.me().pipe(tap(user => this.user$.next(Object.assign(guest, user))));
   }
 }

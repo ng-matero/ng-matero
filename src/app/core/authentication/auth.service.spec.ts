@@ -6,7 +6,7 @@ import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { AuthService, guest, LoginService, TokenService, User } from '@core/authentication';
+import { AuthService, LoginService, TokenService, User } from '@core/authentication';
 import { AuthServiceFactory } from '@core/initializers';
 
 describe('AuthService', () => {
@@ -78,7 +78,7 @@ describe('AuthService', () => {
     expect(authService.check()).toBeTrue();
     httpMock.expectOne('/me').flush(user);
 
-    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toEqual(guest.id));
+    user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toBeUndefined());
     authService.logout().subscribe();
     httpMock.expectOne('/auth/logout').flush({});
 
@@ -96,7 +96,8 @@ describe('AuthService', () => {
     httpMock.match(match)[0].flush(token);
 
     expect(authService.check()).toBeTrue();
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectNone('/me');
+    tokenService.ngOnDestroy();
   }));
 
   it('should refresh token when access_token is invalid and refresh_token is valid', fakeAsync(() => {
@@ -111,11 +112,12 @@ describe('AuthService', () => {
     httpMock.match(match)[0].flush(token);
 
     expect(authService.check()).toBeTrue();
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectNone('/me');
+    tokenService.ngOnDestroy();
   }));
 
   it('it should clear token when access_token is invalid and refresh token response is 401', fakeAsync(() => {
-    spyOn(tokenService, 'clear').and.callThrough();
+    spyOn(tokenService, 'set').and.callThrough();
     tokenService.set(Object.assign({ expires_in: 5, refresh_token: 'foo' }, token));
     const match = (req: HttpRequest<any>) =>
       req.url === '/auth/refresh' && req.body.refresh_token === 'foo';
@@ -126,7 +128,8 @@ describe('AuthService', () => {
     httpMock.match(match)[0].flush({}, { status: 401, statusText: 'Unauthorized' });
 
     expect(authService.check()).toBeFalse();
-    expect(tokenService.clear).toHaveBeenCalled();
+    expect(tokenService.set).toHaveBeenCalledWith(undefined);
+    tokenService.ngOnDestroy();
   }));
 
   it('it only call http request once when on change subscribe twice', () => {

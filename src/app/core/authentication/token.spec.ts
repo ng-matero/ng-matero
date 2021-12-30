@@ -1,14 +1,6 @@
-import { base64, currentTimestamp, GuestToken, JwtToken } from '@core/authentication';
+import { base64, currentTimestamp, JwtToken } from '@core/authentication';
 
 describe('Token', () => {
-  describe('GuestToken', () => {
-    it('test bearer token', () => {
-      const token = new GuestToken();
-
-      expect(token.getBearerToken()).toBe('');
-    });
-  });
-
   describe('JwtToken', () => {
     function generateToken(params: any, typ = 'JWT') {
       return [

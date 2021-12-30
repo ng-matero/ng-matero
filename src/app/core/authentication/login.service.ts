@@ -11,11 +11,11 @@ export class LoginService {
   constructor(protected http: HttpClient) {}
 
   login(email: string, password: string, rememberMe = false) {
-    return this.http.post<Token | any>('/auth/login', { email, password, remember_me: rememberMe });
+    return this.http.post<Token>('/auth/login', { email, password, rememberMe });
   }
 
-  refresh(params: any) {
-    return this.http.post<Token | any>('/auth/refresh', params);
+  refresh(params: Record<string, any>, refresh_token?: string) {
+    return this.http.post<Token>('/auth/refresh', params);
   }
 
   logout() {

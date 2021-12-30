@@ -16,9 +16,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '@env/environment';
-import { BASE_URL } from '@core/interceptors/base-url-interceptor';
-import { httpInterceptorProviders } from '@core/interceptors';
-import { appInitializerProviders } from '@core/initializers';
+import { BASE_URL, httpInterceptorProviders, appInitializerProviders } from '@core';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemDataService } from '@shared/in-mem/in-mem-data.service';
