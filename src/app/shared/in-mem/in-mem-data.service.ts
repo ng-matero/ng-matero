@@ -163,10 +163,10 @@ export class InMemDataService implements InMemoryDbService {
   private login(reqInfo: RequestInfo) {
     const { headers, url } = reqInfo;
     const req = reqInfo.req as HttpRequest<any>;
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     return from(this.users).pipe(
-      find(user => user.email === email || user.username === email),
+      find(user => user.username === username || user.email === username),
       map(user => {
         if (!user) {
           return { headers, url, status: STATUS.UNAUTHORIZED, body: {} };
