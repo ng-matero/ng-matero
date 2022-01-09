@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
@@ -12,17 +12,15 @@ import { AuthService } from '@core/authentication';
 export class LoginComponent implements OnInit {
   isSubmitting = false;
 
-  loginForm!: FormGroup;
+  loginForm = this.fb.group({
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+    rememberMe: [false],
+  });
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
 
-  ngOnInit() {
-    this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      remember_me: [false],
-    });
-  }
+  ngOnInit() {}
 
   get username() {
     return this.loginForm.get('username');
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   get rememberMe() {
-    return this.loginForm.get('remember_me');
+    return this.loginForm.get('rememberMe');
   }
 
   login() {

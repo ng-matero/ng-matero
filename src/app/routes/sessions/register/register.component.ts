@@ -1,23 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [this.confirmValidator]],
-    });
-  }
-
-  ngOnInit() {}
-
   confirmValidator = (control: FormControl): { [k: string]: boolean } => {
     if (!control.value) {
       return { error: true, required: true };
@@ -26,4 +14,14 @@ export class RegisterComponent implements OnInit {
     }
     return {};
   };
+
+  registerForm = this.fb.group({
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+    confirmPassword: ['', [this.confirmValidator]],
+  });
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {}
 }
