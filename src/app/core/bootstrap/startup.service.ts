@@ -22,7 +22,7 @@ export class StartupService {
   load() {
     return new Promise<void>((resolve, reject) => {
       this.authService
-        .user()
+        .change()
         .pipe(
           tap(user => this.setPermissions(user)),
           switchMap(() => this.authService.menu()),

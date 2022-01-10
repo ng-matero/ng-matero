@@ -15,11 +15,6 @@ export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
 }
 
-import { AuthService } from '@core/authentication';
-export function AuthServiceFactory(authService: AuthService) {
-  return () => authService.init();
-}
-
 export const appInitializerProviders = [
   // {
   //   provide: APP_INITIALIZER,
@@ -37,12 +32,6 @@ export const appInitializerProviders = [
     provide: APP_INITIALIZER,
     useFactory: StartupServiceFactory,
     deps: [StartupService],
-    multi: true,
-  },
-  {
-    provide: APP_INITIALIZER,
-    useFactory: AuthServiceFactory,
-    deps: [AuthService],
     multi: true,
   },
 ];

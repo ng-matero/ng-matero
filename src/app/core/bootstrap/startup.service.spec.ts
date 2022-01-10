@@ -1,12 +1,10 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { APP_INITIALIZER } from '@angular/core';
 import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { admin, AuthService, TokenService } from '@core/authentication';
+import { admin, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
-import { AuthServiceFactory } from '@core/initializers';
 
 describe('StartupService', () => {
   let httpMock: HttpTestingController;
@@ -23,12 +21,6 @@ describe('StartupService', () => {
         {
           provide: LocalStorageService,
           useClass: MemoryStorageService,
-        },
-        {
-          provide: APP_INITIALIZER,
-          useFactory: AuthServiceFactory,
-          deps: [AuthService],
-          multi: true,
         },
         {
           provide: NgxPermissionsService,
