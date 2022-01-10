@@ -6,24 +6,24 @@ import { AppSettings, defaults } from '../settings';
   providedIn: 'root',
 })
 export class SettingsService {
-  private options = defaults;
-
-  get notify(): Observable<any> {
+  get notify(): Observable<Record<string, any>> {
     return this.notify$.asObservable();
   }
 
-  private notify$ = new BehaviorSubject<any>({});
+  private notify$ = new BehaviorSubject<Record<string, any>>({});
+
+  getOptions() {
+    return this.options;
+  }
 
   setOptions(options: AppSettings) {
     this.options = Object.assign(defaults, options);
     this.notify$.next(this.options);
   }
 
-  getOptions(): AppSettings {
-    return this.options;
-  }
+  private options = defaults;
 
-  get language() {
+  getLanguage() {
     return this.options.language;
   }
 
