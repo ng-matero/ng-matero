@@ -3,9 +3,8 @@ import { BehaviorSubject, iif, merge, of } from 'rxjs';
 import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
 import { TokenService } from './token.service';
 import { LoginService } from './login.service';
-import { User } from './interface';
-import { guest } from './user';
 import { filterObject, isEmptyObject } from './helpers';
+import { User } from './interface';
 
 @Injectable({
   providedIn: 'root',
@@ -26,12 +25,16 @@ export class AuthService {
     return new Promise<void>(resolve => this.change$.subscribe(() => resolve()));
   }
 
+  change() {
+    return this.change$;
+  }
+
   check() {
     return this.tokenService.valid();
   }
 
-  login(email: string, password: string, rememberMe = false) {
-    return this.loginService.login(email, password, rememberMe).pipe(
+  login(username: string, password: string, rememberMe = false) {
+    return this.loginService.login(username, password, rememberMe).pipe(
       tap(token => this.tokenService.set(token)),
       map(() => this.check())
     );
@@ -71,6 +74,6 @@ export class AuthService {
       return of(this.user$.getValue());
     }
 
-    return this.loginService.me().pipe(tap(user => this.user$.next(Object.assign(guest, user))));
+    return this.loginService.me().pipe(tap(user => this.user$.next(user)));
   }
 }

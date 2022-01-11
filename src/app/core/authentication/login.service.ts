@@ -10,11 +10,11 @@ import { map } from 'rxjs/operators';
 export class LoginService {
   constructor(protected http: HttpClient) {}
 
-  login(email: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { email, password, rememberMe });
+  login(username: string, password: string, rememberMe = false) {
+    return this.http.post<Token>('/auth/login', { username, password, rememberMe });
   }
 
-  refresh(params: Record<string, any>, refresh_token?: string) {
+  refresh(params: Record<string, any>) {
     return this.http.post<Token>('/auth/refresh', params);
   }
 

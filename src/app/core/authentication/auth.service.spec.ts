@@ -4,10 +4,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
-import { APP_INITIALIZER } from '@angular/core';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { AuthService, LoginService, TokenService, User } from '@core/authentication';
-import { AuthServiceFactory } from '@core/initializers';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -22,15 +20,7 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [
-        { provide: LocalStorageService, useClass: MemoryStorageService },
-        {
-          provide: APP_INITIALIZER,
-          useFactory: AuthServiceFactory,
-          deps: [AuthService],
-          multi: true,
-        },
-      ],
+      providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
     });
     loginService = TestBed.inject(LoginService);
     authService = TestBed.inject(AuthService);
@@ -38,6 +28,9 @@ describe('AuthService', () => {
     httpMock = TestBed.inject(HttpTestingController);
 
     user$ = authService.user();
+    authService.change().subscribe(user => {
+      expect(user).toBeInstanceOf(Object);
+    });
   });
 
   afterEach(() => httpMock.verify());
@@ -133,7 +126,7 @@ describe('AuthService', () => {
   }));
 
   it('it only call http request once when on change subscribe twice', () => {
-    authService.init();
+    authService.change().subscribe();
     tokenService.set(token);
     httpMock.expectOne('/me').flush({});
   });
