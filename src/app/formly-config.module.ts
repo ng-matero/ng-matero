@@ -10,8 +10,19 @@ import { FormlyValidations } from './formly-validations';
  * Formly global configuration
  */
 const formlyModuleProviders = FormlyModule.forRoot({
-  types: [{ name: 'combobox', component: FormlyFieldComboboxComponent }],
-  wrappers: [{ name: 'panel', component: FormlyWrapperPanelComponent }],
+  types: [
+    {
+      name: 'combobox',
+      component: FormlyFieldComboboxComponent,
+      wrappers: ['form-field'],
+    },
+  ],
+  wrappers: [
+    {
+      name: 'panel',
+      component: FormlyWrapperPanelComponent,
+    },
+  ],
   validationMessages: [],
 }).providers as Provider[];
 

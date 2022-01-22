@@ -104,7 +104,6 @@ export class FormsDynamicComponent implements OnInit {
             required: true,
             description: 'This is a custom field type.',
           },
-          wrappers: ['form-field'],
         },
         {
           className: 'col-sm-3',
