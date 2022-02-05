@@ -11,13 +11,13 @@ import { AuthService, User } from '@core/authentication';
       <h5 class="matero-user-panel-email">{{ user.email }}</h5>
       <div class="matero-user-panel-icons">
         <a routerLink="/profile/overview" mat-icon-button>
-          <mat-icon class="icon-20">account_circle</mat-icon>
+          <mat-icon class="icon-18">account_circle</mat-icon>
         </a>
         <a routerLink="/profile/settings" mat-icon-button>
-          <mat-icon class="icon-20">settings</mat-icon>
+          <mat-icon class="icon-18">settings</mat-icon>
         </a>
         <a (click)="logout()" mat-icon-button>
-          <mat-icon class="icon-20">exit_to_app</mat-icon>
+          <mat-icon class="icon-18">exit_to_app</mat-icon>
         </a>
       </div>
     </div>
