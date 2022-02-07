@@ -44,7 +44,7 @@ function copyAssets() {
 
 // src/styles
 function copyStyles() {
-  return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/themes.scss']).pipe(
+  return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/_themes.scss']).pipe(
     dest(`${FILES}/src/styles`)
   );
 }
