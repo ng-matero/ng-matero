@@ -46,7 +46,7 @@
     "@ngx-translate/http-loader": "^7.0.0",
     "angular-in-memory-web-api": "~0.13.0",
     "apexcharts": "^3.35.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.34",
     "ngx-permissions": "^13.0.1",
     "ngx-progressbar": "^8.0.0",
