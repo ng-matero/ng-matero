@@ -89,7 +89,7 @@
     "karma-coverage": "^2.2.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "lint-staged": "^12.3.5",
+    "lint-staged": "^12.3.7",
     "parse5": "^6.0.1",
     "prettier": "^2.6.2",
     "protractor": "~7.0.0",
