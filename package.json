@@ -37,7 +37,7 @@
     "@angular/material-moment-adapter": "~13.3.2",
     "@angular/platform-browser": "~13.3.2",
     "@angular/platform-browser-dynamic": "~13.3.2",
-    "@angular/router": "~13.3.2",
+    "@angular/router": "~13.3.5",
     "@ng-matero/extensions": "^13.1.0",
     "@ng-matero/extensions-moment-adapter": "^13.0.0",
     "@ngx-formly/core": "^5.12.0",
