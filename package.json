@@ -25,7 +25,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~13.3.6",
+    "@angular/animations": "~13.3.11",
     "@angular/cdk": "~13.3.6",
     "@angular/common": "~13.3.6",
     "@angular/compiler": "~13.3.6",
