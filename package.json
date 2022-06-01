@@ -36,7 +36,7 @@
     "@angular/material": "~13.3.6",
     "@angular/material-moment-adapter": "~13.3.6",
     "@angular/platform-browser": "~13.3.6",
-    "@angular/platform-browser-dynamic": "~13.3.6",
+    "@angular/platform-browser-dynamic": "~13.3.11",
     "@angular/router": "~13.3.6",
     "@ng-matero/extensions": "^13.1.0",
     "@ng-matero/extensions-moment-adapter": "^13.0.0",
