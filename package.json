@@ -35,7 +35,7 @@
     "@angular/localize": "~13.3.6",
     "@angular/material": "~13.3.6",
     "@angular/material-moment-adapter": "~13.3.6",
-    "@angular/platform-browser": "~13.3.6",
+    "@angular/platform-browser": "~13.3.11",
     "@angular/platform-browser-dynamic": "~13.3.6",
     "@angular/router": "~13.3.6",
     "@ng-matero/extensions": "^13.1.0",
