@@ -3,7 +3,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFieldComboboxComponent } from './formly-templates';
-import { FormlyWrapperPanelComponent } from './formly-wrappers';
+import { FormlyWrapperCardComponent } from './formly-wrappers';
 import { FormlyValidations } from './formly-validations';
 
 /**
@@ -19,8 +19,8 @@ const formlyModuleProviders = FormlyModule.forRoot({
   ],
   wrappers: [
     {
-      name: 'panel',
-      component: FormlyWrapperPanelComponent,
+      name: 'card',
+      component: FormlyWrapperCardComponent,
     },
   ],
   validationMessages: [],
@@ -28,7 +28,7 @@ const formlyModuleProviders = FormlyModule.forRoot({
 
 @NgModule({
   imports: [SharedModule],
-  declarations: [FormlyFieldComboboxComponent, FormlyWrapperPanelComponent],
+  declarations: [FormlyFieldComboboxComponent, FormlyWrapperCardComponent],
   providers: [FormlyValidations],
 })
 export class FormlyConfigModule {

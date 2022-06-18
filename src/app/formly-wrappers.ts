@@ -5,7 +5,7 @@ import { FieldWrapper } from '@ngx-formly/core';
  * This is just an example.
  */
 @Component({
-  selector: 'formly-wrapper-panel',
+  selector: 'formly-wrapper-card',
   template: `
     <div class="card">
       <h3 class="card-header">Its time to party</h3>
@@ -16,4 +16,4 @@ import { FieldWrapper } from '@ngx-formly/core';
     </div>
   `,
 })
-export class FormlyWrapperPanelComponent extends FieldWrapper {}
+export class FormlyWrapperCardComponent extends FieldWrapper {}
