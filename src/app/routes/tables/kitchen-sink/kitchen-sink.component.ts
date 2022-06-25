@@ -123,7 +123,8 @@ export class TablesKitchenSinkComponent implements OnInit {
   hideRowSelectionCheckbox = false;
   showToolbar = true;
   columnHideable = true;
-  columnMovable = true;
+  columnSortable = true;
+  columnPinnable = true;
   rowHover = false;
   rowStriped = false;
   showPaginator = true;

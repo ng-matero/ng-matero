@@ -9,7 +9,8 @@
   </mat-radio-group>
   <mat-checkbox [(ngModel)]="showToolbar">Show Toolbar</mat-checkbox>
   <mat-checkbox [(ngModel)]="columnHideable">Column Hiding</mat-checkbox>
-  <mat-checkbox [(ngModel)]="columnMovable">Column Moving</mat-checkbox>
+  <mat-checkbox [(ngModel)]="columnSortable">Column Sorting</mat-checkbox>
+  <mat-checkbox [(ngModel)]="columnPinnable">Column Pinning</mat-checkbox>
   <mat-checkbox [(ngModel)]="rowHover">Hover</mat-checkbox>
   <mat-checkbox [(ngModel)]="rowStriped">Striped</mat-checkbox>
   <mat-checkbox [(ngModel)]="expandable" (change)="enableRowExpandable()">Row Expandable
@@ -35,7 +36,8 @@
           [showToolbar]="showToolbar"
           [toolbarTitle]="'Data Grid Toolbar'"
           [columnHideable]="columnHideable"
-          [columnMovable]="columnMovable"
+          [columnSortable]="columnSortable"
+          [columnPinnable]="columnPinnable"
           [expandable]="expandable"
           [expansionTemplate]="expansionTpl"
           [pageOnFront]="showPaginator"
