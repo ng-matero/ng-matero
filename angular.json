@@ -138,9 +138,10 @@
       }
     }
   },
-  "defaultProject": "ng-matero",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

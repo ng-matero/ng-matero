@@ -1,5 +1,5 @@
 import { ViewChild, ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/material/form-field';
 import { MtxSelectComponent } from '@ng-matero/extensions/select';
 
@@ -26,7 +26,7 @@ import { MtxSelectComponent } from '@ng-matero/extensions/select';
 export class FormlyFieldComboboxComponent extends FieldType {
   @ViewChild('select', { static: true }) select!: MtxSelectComponent;
 
-  public formControl!: FormControl;
+  public formControl!: UntypedFormControl;
 
   get bindValue() {
     return typeof this.to.valueProp === 'string' ? this.to.valueProp : undefined;

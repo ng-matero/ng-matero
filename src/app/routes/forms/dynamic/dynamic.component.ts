@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 import { ToastrService } from 'ngx-toastr';
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsDynamicComponent implements OnInit {
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model = { email: 'email@gmail.com' };
   fields: FormlyFieldConfig[] = [
     {
@@ -45,7 +45,7 @@ export class FormsDynamicComponent implements OnInit {
   ];
 
   // Advanced Layout
-  form2 = new FormGroup({});
+  form2 = new UntypedFormGroup({});
   model2: any = {};
   options: FormlyFormOptions = {};
 

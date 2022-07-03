@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,13 +15,13 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     gender: '',
   };
 
-  reactiveForm1: FormGroup;
-  reactiveForm2: FormGroup;
+  reactiveForm1: UntypedFormGroup;
+  reactiveForm2: UntypedFormGroup;
 
   translateSubscription!: Subscription;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dateAdapter: DateAdapter<any>,
     private translate: TranslateService
   ) {
@@ -62,7 +62,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     this.translateSubscription.unsubscribe();
   }
 
-  getErrorMessage(form: FormGroup) {
+  getErrorMessage(form: UntypedFormGroup) {
     return form.get('email')?.hasError('required')
       ? 'validations.required'
       : form.get('email')?.hasError('email')

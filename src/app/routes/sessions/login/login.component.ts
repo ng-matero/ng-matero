@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     rememberMe: [false],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
+  constructor(private fb: UntypedFormBuilder, private router: Router, private auth: AuthService) {}
 
   ngOnInit() {}
 

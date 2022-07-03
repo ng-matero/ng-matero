@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form-field',
@@ -7,9 +7,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./form-field.component.scss'],
 })
 export class FormFieldComponent implements OnInit {
-  options: FormGroup;
+  options: UntypedFormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: UntypedFormBuilder) {
     this.options = fb.group({
       hideRequired: false,
       floatLabel: 'auto',

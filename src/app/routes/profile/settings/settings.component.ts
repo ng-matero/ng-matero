@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './settings.component.html',
 })
 export class ProfileSettingsComponent implements OnInit {
-  reactiveForm: FormGroup;
+  reactiveForm: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
     this.reactiveForm = this.fb.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -25,7 +25,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   ngOnInit() {}
 
-  getErrorMessage(form: FormGroup) {
+  getErrorMessage(form: UntypedFormGroup) {
     return form.get('email')?.hasError('required')
       ? 'You must enter a value'
       : form.get('email')?.hasError('email')

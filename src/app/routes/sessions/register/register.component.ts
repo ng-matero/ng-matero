@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  confirmValidator = (control: FormControl): { [k: string]: boolean } => {
+  confirmValidator = (control: UntypedFormControl): { [k: string]: boolean } => {
     if (!control.value) {
       return { error: true, required: true };
     } else if (control.value !== this.registerForm.controls.password.value) {
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: ['', [this.confirmValidator]],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit() {}
 }
