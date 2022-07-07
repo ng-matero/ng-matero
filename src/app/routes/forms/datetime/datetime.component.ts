@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 
 import { MtxDatetimepickerFilterType } from '@ng-matero/extensions/datetimepicker';
@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 export class FormsDatetimeComponent implements OnInit, OnDestroy {
   type = 'moment';
 
-  group: UntypedFormGroup;
+  group: FormGroup;
   today: moment.Moment;
   tomorrow: moment.Moment;
   min: moment.Moment;
@@ -27,7 +27,7 @@ export class FormsDatetimeComponent implements OnInit, OnDestroy {
   translateSubscription!: Subscription;
 
   constructor(
-    fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private dateAdapter: DateAdapter<any>,
     private translate: TranslateService
   ) {
@@ -50,7 +50,7 @@ export class FormsDatetimeComponent implements OnInit, OnDestroy {
       }
     };
 
-    this.group = fb.group({
+    this.group = this.fb.group({
       dateTime: [new Date('2017-11-09T12:10:00.000Z'), Validators.required],
       dateTimeYear: [new Date('2017-11-09T12:10:00.000Z'), Validators.required],
       date: [null, Validators.required],
@@ -65,7 +65,7 @@ export class FormsDatetimeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.translateSubscription = this.translate.onLangChange.subscribe((res: { lang: any }) => {
+    this.translateSubscription = this.translate.onLangChange.subscribe((res: { lang: string }) => {
       this.dateAdapter.setLocale(res.lang);
     });
   }

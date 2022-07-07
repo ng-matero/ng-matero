@@ -20,8 +20,7 @@
   <mat-card-title>Advanced Layout</mat-card-title>
 
   <form [formGroup]="form2" (ngSubmit)="submit2()">
-    <formly-form [model]="model2" [fields]="fields2" [options]="options" [form]="form2">
-    </formly-form>
+    <formly-form [model]="model2" [fields]="fields2" [form]="form2"></formly-form>
     <button mat-raised-button color="primary" [disabled]="!form2.valid">Submit</button>
   </form>
 </mat-card>

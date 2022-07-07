@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  confirmValidator = (control: UntypedFormControl): { [k: string]: boolean } => {
+  confirmValidator = (control: FormControl<string>): { [k: string]: boolean } => {
     if (!control.value) {
       return { error: true, required: true };
     } else if (control.value !== this.registerForm.controls.password.value) {
@@ -15,13 +15,13 @@ export class RegisterComponent implements OnInit {
     return {};
   };
 
-  registerForm = this.fb.group({
+  registerForm = this.fb.nonNullable.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
     confirmPassword: ['', [this.confirmValidator]],
   });
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {}
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { ControlsOf, IProfile } from 'app/routes/profile/interface';
 
 @Component({
   selector: 'app-forms-elements',
@@ -15,17 +16,17 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     gender: '',
   };
 
-  reactiveForm1: UntypedFormGroup;
-  reactiveForm2: UntypedFormGroup;
+  reactiveForm1: FormGroup<ControlsOf<IProfile>>;
+  reactiveForm2: FormGroup<ControlsOf<IProfile>>;
 
   translateSubscription!: Subscription;
 
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private dateAdapter: DateAdapter<any>,
     private translate: TranslateService
   ) {
-    this.reactiveForm1 = this.fb.group({
+    this.reactiveForm1 = this.fb.nonNullable.group({
       username: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
@@ -38,7 +39,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
       date: [''],
     });
 
-    this.reactiveForm2 = this.fb.group({
+    this.reactiveForm2 = this.fb.nonNullable.group({
       username: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
@@ -62,7 +63,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     this.translateSubscription.unsubscribe();
   }
 
-  getErrorMessage(form: UntypedFormGroup) {
+  getErrorMessage(form: FormGroup) {
     return form.get('email')?.hasError('required')
       ? 'validations.required'
       : form.get('email')?.hasError('email')
