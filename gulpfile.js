@@ -115,7 +115,7 @@ function updateVersions(cb) {
           'stylelint-scss',
         ].forEach(name => {
           if (!pkg.dependencies[name] && !pkg.devDependencies[name]) {
-            cb(`${name} not found！`);
+            cb(`${name} not found!`);
           }
           content = content.replace(
             `${name}@0.0.0-PLACEHOLDER`,
