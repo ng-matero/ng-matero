@@ -64,6 +64,10 @@
           {
             "value": "dark",
             "label": "Dark"
+          },
+          {
+            "value": "auto",
+            "label": "Auto"
           }
         ]
       }

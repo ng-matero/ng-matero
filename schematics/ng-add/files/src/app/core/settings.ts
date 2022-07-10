@@ -1,6 +1,6 @@
 export interface AppSettings {
   navPos: 'side' | 'top';
-  theme: 'light' | 'dark';
+  theme: 'light' | 'dark' | 'auto';
   dir: 'ltr' | 'rtl';
   showHeader: boolean;
   headerPos: 'fixed' | 'static' | 'above';

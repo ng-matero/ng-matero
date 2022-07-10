@@ -92,18 +92,11 @@ export class AdminLayoutComponent implements OnDestroy {
       if (this.isOver) {
         this.sidenav.close();
       }
-
       this.content.scrollTo({ top: 0 });
     });
 
-    // Check whether the browser support `prefers-color-scheme`
-    if (this.mediaMatcher.matchMedia('(prefers-color-scheme)').media !== 'not all') {
-      const isSystemDark = this.mediaMatcher.matchMedia('(prefers-color-scheme: dark)').matches;
-      // Set theme to dark if `prefers-color-scheme` is dark. Otherwise, set it to light.
-      this.options.theme = isSystemDark ? 'dark' : 'light';
-    } else {
-      // If the browser does not support `prefers-color-scheme`, set the default to dark.
-      this.options.theme = 'light';
+    if (this.options.theme === 'auto') {
+      this.setAutoTheme();
     }
 
     // Initialize project theme with options
@@ -133,6 +126,18 @@ export class AdminLayoutComponent implements OnDestroy {
     this.isCollapsedWidthFixed = !this.isOver;
     this.options.sidenavOpened = isOpened;
     this.settings.setOptions(this.options);
+  }
+
+  setAutoTheme() {
+    // Check whether the browser support `prefers-color-scheme`
+    if (this.mediaMatcher.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+      const isSystemDark = this.mediaMatcher.matchMedia('(prefers-color-scheme: dark)').matches;
+      // Set theme to dark if `prefers-color-scheme` is dark. Otherwise, set it to light.
+      this.options.theme = isSystemDark ? 'dark' : 'light';
+    } else {
+      // If the browser does not support `prefers-color-scheme`, set the default to light.
+      this.options.theme = 'light';
+    }
   }
 
   // Demo purposes only
