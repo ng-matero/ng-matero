@@ -44,11 +44,11 @@ const noopAnimationsModuleName = 'NoopAnimationsModule';
  */
 export default function (options: Schema): Rule {
   return chain([
-    deleteExsitingFiles(),
+    deleteExsitingFiles(options),
     addStarterFiles(options),
     addScriptsToPackageJson(),
-    addESLintToAngularJson(),
-    addProxyToAngularJson(),
+    addESLintToAngularJson(options),
+    addProxyToAngularJson(options),
     addStyleToAngularJson(options),
     addAnimationsModule(options),
     addFontsToIndex(options),
@@ -102,10 +102,10 @@ function addAnimationsModule(options: Schema) {
 }
 
 /** delete exsiting files to be overwrite */
-function deleteExsitingFiles() {
+function deleteExsitingFiles(options: Schema) {
   return async (host: Tree) => {
     const workspace = await getWorkspace(host);
-    const project = getProjectFromWorkspace(workspace);
+    const project = getProjectFromWorkspace(workspace, options.project);
 
     [
       `${project.root}/.vscode/extensions.json`,
@@ -141,9 +141,9 @@ function addScriptsToPackageJson() {
 }
 
 /** Add ESLint to `angular.json` */
-function addESLintToAngularJson(): Rule {
+function addESLintToAngularJson(options: Schema): Rule {
   return updateWorkspace(workspace => {
-    const project = getProjectFromWorkspace(workspace);
+    const project = getProjectFromWorkspace(workspace, options.project);
 
     let lintFilePatternsRoot = '';
 
@@ -166,9 +166,9 @@ function addESLintToAngularJson(): Rule {
 }
 
 /** Add proxy to `angular.json` */
-function addProxyToAngularJson() {
+function addProxyToAngularJson(options: Schema) {
   return updateWorkspace(workspace => {
-    const project = getProjectFromWorkspace(workspace);
+    const project = getProjectFromWorkspace(workspace, options.project);
     const targetServeConfig = project.targets?.get('serve')?.configurations as any;
 
     if (targetServeConfig.options) {
