@@ -21,8 +21,8 @@
     <mat-sidenav #sidenav class="matero-sidenav"
                  [mode]="isOver ? 'over' : 'side'"
                  [opened]="options.navPos === 'side' && options.sidenavOpened && !isOver"
-                 (openedChange)="sidenavOpenedChange($event)"
-                 (closedStart)="sidenavCloseStart()">
+                 (openedChange)="onSidenavOpenedChange($event)"
+                 (closedStart)="onSidenavClosedStart()">
       <app-sidebar [showToggle]="!isOver"
                    [showUser]="!!options.showUserPanel"
                    [showHeader]="options.headerPos !== 'above'"

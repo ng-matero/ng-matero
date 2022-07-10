@@ -118,11 +118,11 @@ export class AdminLayoutComponent implements OnDestroy {
     setTimeout(() => this.settings.setOptions(this.options), timer);
   }
 
-  sidenavCloseStart() {
+  onSidenavClosedStart() {
     this.isContentWidthFixed = false;
   }
 
-  sidenavOpenedChange(isOpened: boolean) {
+  onSidenavOpenedChange(isOpened: boolean) {
     this.isCollapsedWidthFixed = !this.isOver;
     this.options.sidenavOpened = isOpened;
     this.settings.setOptions(this.options);
