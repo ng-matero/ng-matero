@@ -4,16 +4,16 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-<% if(layout==='dynamic' || theme==='light') { %>
+<% if(layout==='dynamic' || theme==='light' || theme==='auto') { %>
 //
-// Light style
+// Light theme
 //
 $primary: mat.define-palette(mat.$indigo-palette);
 $accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $theme: mat.define-light-theme($primary, $accent);
 <% } %><% else if(theme==='dark') { %>
 //
-// Dark style
+// Dark theme
 //
 $primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
 $accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
@@ -22,13 +22,13 @@ $theme: mat.define-dark-theme($primary, $accent);
 $config: mat.define-typography-config();
 
 @include app-theme.theme($theme);
-<% if(layout==='dynamic') { %>
+<% if(layout==='dynamic' || theme==='auto') { %>
 //
-// Demo purposes only
+// Dark theme
 //
 .theme-dark {
   $primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
-  $accent:  mat.define-palette(mat.$amber-palette, A200, A100, A400);
+  $accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
   $theme: mat.define-dark-theme($primary, $accent);
 
   @include app-theme.theme($theme);
