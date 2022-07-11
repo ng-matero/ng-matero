@@ -17,7 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [],
+            "allowedCommonJsDependencies": [
+              "base64-js",
+              "moment",
+              "photoviewer"
+            ],
             "outputPath": "dist/ng-matero",
             "index": "src/index.html",
             "main": "src/main.ts",
