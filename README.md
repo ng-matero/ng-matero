@@ -12,6 +12,7 @@ NG-MATERO
 
 Ng-Matero is an Angular admin template made with Material components.
 
+[![CodeFactor](https://www.codefactor.io/repository/github/ng-matero/ng-matero/badge)](https://www.codefactor.io/repository/github/ng-matero/ng-matero)
 [![npm](https://img.shields.io/npm/v/ng-matero.svg)](https://www.npmjs.com/package/ng-matero)
 [![GitHub Release Date](https://img.shields.io/github/release-date/ng-matero/ng-matero)](https://github.com/ng-matero/ng-matero/releases)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
