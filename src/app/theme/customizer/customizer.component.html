@@ -1,11 +1,11 @@
 <div class="customizer-handle" matTooltip="Drag me around"
-     cdkDrag (cdkDragStarted)="handleDragStart($event)">
-  <button mat-fab (click)="openPanel($event)">
+     cdkDrag (cdkDragStarted)="onDragStart($event)">
+  <button mat-fab (click)="openPanel(customizerPanel)">
     <mat-icon aria-label="Example icon-button with a settings icon">settings</mat-icon>
   </button>
 </div>
 
-<div [ngClass]="{ 'customizer-panel': true, 'mat-elevation-z12 opened': opened }">
+<ng-template #customizerPanel>
   <h2 fxLayout="row" fxLayoutAlign="space-between center" class="f-w-400">
     <span>Configuration</span>
     <button mat-icon-button (click)="closePanel()">
@@ -54,6 +54,4 @@
                   (change)="options.dir = options.dir === 'rtl' ? 'ltr' : 'rtl'; sendOptions()">RTL
     </mat-checkbox>
   </div>
-</div>
-<div [ngClass]="{ 'customizer-panel-overlay': true, 'opened': opened }" (click)="closePanel()">
-</div>
+</ng-template>

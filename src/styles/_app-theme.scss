@@ -6,7 +6,6 @@
 @use '../app/theme/sidebar/sidebar-theme';
 @use '../app/theme/sidemenu/sidemenu-theme';
 @use '../app/theme/topmenu/topmenu-theme';
-@use '../app/theme/customizer/customizer-theme';
 @use '../app/shared/components/error-code/error-code-theme';
 
 @use './custom/table-theme';
@@ -23,7 +22,6 @@
   @include sidebar-theme.theme($theme);
   @include sidemenu-theme.theme($theme);
   @include topmenu-theme.theme($theme);
-  @include customizer-theme.theme($theme);
   @include error-code-theme.theme($theme);
 
   @include table-theme.theme($theme);

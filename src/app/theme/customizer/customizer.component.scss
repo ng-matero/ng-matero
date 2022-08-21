@@ -1,6 +1,3 @@
-@use '../style/variables';
-@use '../style/transitions';
-
 .customizer-handle {
   position: fixed;
   right: 30px;
@@ -10,49 +7,5 @@
   [dir='rtl'] & {
     right: auto;
     left: 30px;
-  }
-}
-
-.customizer-panel {
-  position: fixed;
-  top: 0;
-  right: -320px;
-  bottom: 0;
-  z-index: 3;
-  box-sizing: border-box;
-  width: 320px;
-  padding: 0 16px;
-  overflow: auto;
-  transform: translateX(0);
-  transition: transitions.swift-ease-out(transform);
-
-  &.opened {
-    transform: translateX(-100%);
-  }
-
-  [dir='rtl'] & {
-    right: auto;
-    left: -320px;
-
-    &.opened {
-      transform: translateX(100%);
-    }
-  }
-}
-
-.customizer-panel-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  visibility: hidden;
-  transition-timing-function: variables.$swift-ease-out-timing-function;
-  transition-duration: variables.$swift-ease-out-duration;
-  transition-property: background-color, visibility;
-
-  &.opened {
-    visibility: visible;
   }
 }

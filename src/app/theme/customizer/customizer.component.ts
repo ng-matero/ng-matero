@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Output, EventEmitter, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { AppSettings, SettingsService } from '@core';
 import { CdkDragStart } from '@angular/cdk/drag-drop';
+import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
 
 @Component({
   selector: 'app-customizer',
@@ -12,29 +13,31 @@ export class CustomizerComponent {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
   options = this.settings.getOptions();
-  opened = false;
+
   dragging = false;
 
-  constructor(private settings: SettingsService) {}
+  drawerRef?: MtxDrawerRef;
 
-  handleDragStart(event: CdkDragStart) {
+  constructor(private settings: SettingsService, private drawer: MtxDrawer) {}
+
+  onDragStart(event: CdkDragStart) {
     this.dragging = true;
   }
 
-  openPanel(event: MouseEvent) {
+  openPanel(templateRef: TemplateRef<any>) {
     if (this.dragging) {
       this.dragging = false;
       return;
     }
-    this.opened = true;
+
+    this.drawerRef = this.drawer.open(templateRef, {
+      position: this.options.dir === 'rtl' ? 'left' : 'right',
+      width: '320px',
+    });
   }
 
   closePanel() {
-    this.opened = false;
-  }
-
-  togglePanel() {
-    this.opened = !this.opened;
+    this.drawerRef?.dismiss();
   }
 
   sendOptions() {
