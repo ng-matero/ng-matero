@@ -7,13 +7,13 @@
       <mat-form-field appearance="outline">
         <mat-label>{{'login.username' | translate}}: ng-matero</mat-label>
         <input matInput placeholder="ng-matero" formControlName="username" required>
-        <mat-error *ngIf="username?.invalid">
-          <span *ngIf="username?.errors?.required">
+        <mat-error *ngIf="username.invalid">
+          <span *ngIf="username.errors?.required">
             {{'login.please_enter' | translate}} <strong>ng-matero</strong>
           </span>
 
-          <span *ngIf="username?.errors?.remote">
-            {{ username?.errors?.remote }}
+          <span *ngIf="username.errors?.remote">
+            {{ username.errors?.remote }}
           </span>
         </mat-error>
       </mat-form-field>
@@ -22,13 +22,13 @@
         <mat-label>{{'login.password' | translate}}: ng-matero</mat-label>
         <input matInput placeholder="ng-matero" type="password"
                formControlName="password" required>
-        <mat-error *ngIf="password?.invalid">
-          <span *ngIf="password?.errors?.required">
+        <mat-error *ngIf="password.invalid">
+          <span *ngIf="password.errors?.required">
             {{'login.please_enter' | translate}} <strong>ng-matero</strong>
           </span>
 
-          <span *ngIf="password?.errors?.remote">
-            {{ password?.errors?.remote }}
+          <span *ngIf="password.errors?.remote">
+            {{ password.errors?.remote }}
           </span>
         </mat-error>
       </mat-form-field>
@@ -39,7 +39,7 @@
       </div>
 
       <button class="w-full" mat-raised-button color="primary"
-              [disabled]="!!loginForm?.invalid" [loading]="isSubmitting"
+              [disabled]="!!loginForm.invalid" [loading]="isSubmitting"
               (click)="login()">{{'login.login' | translate}}</button>
 
       <div class="m-t-16">{{'login.have_no_account' | translate}}?
