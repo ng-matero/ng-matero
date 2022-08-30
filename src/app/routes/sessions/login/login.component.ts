@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   isSubmitting = false;
 
   loginForm = this.fb.nonNullable.group({
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required]],
+    username: ['ng-matero', [Validators.required]],
+    password: ['ng-matero', [Validators.required]],
     rememberMe: [false],
   });
 
