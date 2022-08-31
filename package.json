@@ -47,7 +47,7 @@
     "angular-in-memory-web-api": "~0.14.0",
     "apexcharts": "^3.35.0",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.34",
+    "moment-timezone": "^0.5.35",
     "ngx-permissions": "^13.0.1",
     "ngx-progressbar": "^9.0.0",
     "ngx-toastr": "^15.0.0",
