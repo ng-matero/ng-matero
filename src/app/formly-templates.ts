@@ -2,6 +2,7 @@ import { ViewChild, ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FieldType } from '@ngx-formly/material/form-field';
 import { MtxSelectComponent } from '@ng-matero/extensions/select';
+import { FieldTypeConfig } from '@ngx-formly/core';
 
 /**
  * This is just an example.
@@ -11,25 +12,27 @@ import { MtxSelectComponent } from '@ng-matero/extensions/select';
   template: `<mtx-select
     #select
     [formControl]="formControl"
-    [items]="to.options | toObservable | async"
-    [bindLabel]="to.labelProp"
+    [items]="props.options | toObservable | async"
+    [bindLabel]="bindLabel"
     [bindValue]="bindValue!"
-    [multiple]="to.multiple"
-    [placeholder]="to.placeholder!"
-    [required]="to.required!"
-    [closeOnSelect]="!to.multiple"
-    [compareWith]="to.compareWith"
+    [multiple]="props.multiple"
+    [placeholder]="props.placeholder!"
+    [required]="props.required!"
+    [closeOnSelect]="!props.multiple"
+    [compareWith]="props.compareWith"
   >
   </mtx-select>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldComboboxComponent extends FieldType {
+export class FormlyFieldComboboxComponent extends FieldType<FieldTypeConfig> {
   @ViewChild('select', { static: true }) select!: MtxSelectComponent;
 
-  public formControl!: FormControl;
+  get bindLabel() {
+    return typeof this.props.labelProp === 'string' ? this.props.labelProp : '';
+  }
 
   get bindValue() {
-    return typeof this.to.valueProp === 'string' ? this.to.valueProp : undefined;
+    return typeof this.props.valueProp === 'string' ? this.props.valueProp : undefined;
   }
 
   // The original `onContainerClick` has been covered up in FieldType, so we should redefine it.
