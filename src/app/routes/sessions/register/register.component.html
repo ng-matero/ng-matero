@@ -28,7 +28,7 @@
         <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
           {{'validations.required' | translate}}
         </mat-error>
-        <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('confirm')"
+        <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch')"
                    translate [translateParams]="{value: 'login.password' | translate}">
           {{'validations.inconsistent'}}
         </mat-error>

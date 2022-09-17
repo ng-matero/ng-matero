@@ -1,27 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
-export class RegisterComponent implements OnInit {
-  confirmValidator = (control: FormControl<string>): { [k: string]: boolean } => {
-    if (!control.value) {
-      return { error: true, required: true };
-    } else if (control.value !== this.registerForm.controls.password.value) {
-      return { error: true, confirm: true };
+export class RegisterComponent {
+  registerForm = this.fb.nonNullable.group(
+    {
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
+    },
+    {
+      validators: [this.matchValidator('password', 'confirmPassword')],
     }
-    return {};
-  };
-
-  registerForm = this.fb.nonNullable.group({
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    confirmPassword: ['', [this.confirmValidator]],
-  });
+  );
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  matchValidator(source: string, target: string) {
+    return (control: AbstractControl) => {
+      const sourceControl = control.get(source)!;
+      const targetControl = control.get(target)!;
+      if (targetControl.errors && !targetControl.errors.mismatch) {
+        return null;
+      }
+      if (sourceControl.value !== targetControl.value) {
+        targetControl.setErrors({ mismatch: true });
+        return { mismatch: true };
+      } else {
+        targetControl.setErrors(null);
+        return null;
+      }
+    };
+  }
 }
