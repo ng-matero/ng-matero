@@ -13,11 +13,11 @@ export class FormlyValidations {
     );
 
     // message with params
-    this.formlyConfig.addValidatorMessage('minlength', (err, field) =>
-      this.minlengthValidationMessage(err, field, this.translate)
+    this.formlyConfig.addValidatorMessage('minLength', (err, field) =>
+      this.minLengthValidationMessage(err, field, this.translate)
     );
-    this.formlyConfig.addValidatorMessage('maxlength', (err, field) =>
-      this.maxlengthValidationMessage(err, field, this.translate)
+    this.formlyConfig.addValidatorMessage('maxLength', (err, field) =>
+      this.maxLengthValidationMessage(err, field, this.translate)
     );
     this.formlyConfig.addValidatorMessage('min', (err, field) =>
       this.minValidationMessage(err, field, this.translate)
@@ -27,27 +27,27 @@ export class FormlyValidations {
     );
   }
 
-  private minlengthValidationMessage(
+  private minLengthValidationMessage(
     err: any,
     field: FormlyFieldConfig,
     translate: TranslateService
   ) {
-    return translate.stream('validations.minLength', { number: field.templateOptions?.minLength });
+    return translate.stream('validations.minlength', { number: field.props?.minLength });
   }
 
-  private maxlengthValidationMessage(
+  private maxLengthValidationMessage(
     err: any,
     field: FormlyFieldConfig,
     translate: TranslateService
   ) {
-    return translate.stream('validations.maxLength', { number: field.templateOptions?.maxLength });
+    return translate.stream('validations.maxlength', { number: field.props?.maxLength });
   }
 
   private minValidationMessage(err: any, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.stream('validations.min', { number: field.templateOptions?.min });
+    return translate.stream('validations.min', { number: field.props?.min });
   }
 
   private maxValidationMessage(err: any, field: FormlyFieldConfig, translate: TranslateService) {
-    return translate.stream('validations.max', { number: field.templateOptions?.max });
+    return translate.stream('validations.max', { number: field.props?.max });
   }
 }
