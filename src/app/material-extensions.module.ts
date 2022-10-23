@@ -15,8 +15,8 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { MtxSliderModule } from '@ng-matero/extensions/slider';
 import { MtxSplitModule } from '@ng-matero/extensions/split';
 import { MtxTooltipModule } from '@ng-matero/extensions/tooltip';
-import { DatetimeAdapter, MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
-import { MomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
+import { MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
+import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
 
 @NgModule({
   exports: [
@@ -35,26 +35,25 @@ import { MomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
     MtxSliderModule,
     MtxSplitModule,
     MtxTooltipModule,
+    MtxMomentDatetimeModule, // <= You can import the other adapter you need (luxon, date-fns)
   ],
   providers: [
-    {
-      provide: DatetimeAdapter,
-      useClass: MomentDatetimeAdapter,
-    },
     {
       provide: MTX_DATETIME_FORMATS,
       useValue: {
         parse: {
           dateInput: 'YYYY-MM-DD',
+          yearInput: 'YYYY',
           monthInput: 'MMMM',
-          timeInput: 'HH:mm',
           datetimeInput: 'YYYY-MM-DD HH:mm',
+          timeInput: 'HH:mm',
         },
         display: {
           dateInput: 'YYYY-MM-DD',
+          yearInput: 'YYYY',
           monthInput: 'MMMM',
-          timeInput: 'HH:mm',
           datetimeInput: 'YYYY-MM-DD HH:mm',
+          timeInput: 'HH:mm',
           monthYearLabel: 'YYYY MMMM',
           dateA11yLabel: 'LL',
           monthYearA11yLabel: 'MMMM YYYY',

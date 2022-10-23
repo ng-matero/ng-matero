@@ -8,13 +8,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import {
-  DateAdapter,
-  MatNativeDateModule,
-  MatRippleModule,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
+import { MatRippleModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
   MatDialogConfig,
@@ -45,7 +39,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
 
@@ -71,7 +65,6 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -101,15 +94,9 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
         ...new MatDialogConfig(),
       },
     },
-    // This will be overrided by runtime setting
     {
       provide: MAT_DATE_LOCALE,
-      useFactory: () => navigator.language,
-    },
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE],
+      useFactory: () => navigator.language, // <= This will be overrided by runtime setting
     },
     {
       provide: MAT_DATE_FORMATS,
