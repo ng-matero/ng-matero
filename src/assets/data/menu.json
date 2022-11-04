@@ -417,14 +417,19 @@
       }
     },
     {
-      "route": "helpers",
-      "name": "helpers",
+      "route": "utilities",
+      "name": "utilities",
       "type": "sub",
       "icon": "all_inbox",
       "children": [
         {
-          "route": "css-class",
-          "name": "css-class",
+          "route": "css-grid",
+          "name": "css-grid",
+          "type": "link"
+        },
+        {
+          "route": "css-helpers",
+          "name": "css-helpers",
           "type": "link"
         }
       ]
