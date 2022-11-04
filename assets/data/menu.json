@@ -270,10 +270,6 @@
       "name": "permissions",
       "type": "sub",
       "icon": "lock",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "route": "role-switching",
@@ -417,14 +413,23 @@
       }
     },
     {
-      "route": "helpers",
-      "name": "helpers",
+      "route": "utilities",
+      "name": "utilities",
       "type": "sub",
       "icon": "all_inbox",
+      "label": {
+        "color": "indigo-500",
+        "value": "new"
+      },
       "children": [
         {
-          "route": "css-class",
-          "name": "css-class",
+          "route": "css-grid",
+          "name": "css-grid",
+          "type": "link"
+        },
+        {
+          "route": "css-helpers",
+          "name": "css-helpers",
           "type": "link"
         }
       ]
