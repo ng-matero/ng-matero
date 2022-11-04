@@ -29,7 +29,7 @@ function copyRoot() {
 
 // src/
 function copySrcRoot() {
-  return src(['src/.eslintrc.json', 'src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
+  return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
 }
 
 // src/assets
