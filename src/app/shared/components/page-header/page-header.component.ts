@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, HostBinding } from '@angular/core';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { Router } from '@angular/router';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'page-header',
-  host: {
-    class: 'matero-page-header',
-  },
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class PageHeaderComponent implements OnInit {
+  @HostBinding('class') class = 'matero-page-header';
+
   @Input() title = '';
   @Input() subtitle = '';
   @Input() nav: string[] = [];

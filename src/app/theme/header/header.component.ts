@@ -5,20 +5,20 @@ import {
   Input,
   ChangeDetectionStrategy,
   ViewEncapsulation,
+  HostBinding,
 } from '@angular/core';
 import screenfull from 'screenfull';
 
 @Component({
   selector: 'app-header',
-  host: {
-    class: 'matero-header',
-  },
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  @HostBinding('class') class = 'matero-header';
+
   @Input() showToggle = true;
   @Input() showBranding = false;
 

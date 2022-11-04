@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
@@ -6,12 +6,10 @@ import { NgxPermissionsService } from 'ngx-permissions';
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
 })
-export class PermissionsTestComponent implements OnInit {
+export class PermissionsTestComponent {
   comparedPermission: string[] = ['guest'];
 
   constructor(private permissionsSrv: NgxPermissionsService) {}
-
-  ngOnInit() {}
 
   getPermissions() {
     return Object.keys(this.permissionsSrv.getPermissions());

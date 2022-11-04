@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router, RouterLinkActive } from '@angular/router';
 import { Menu, MenuService } from '@core';
 import { Subscription } from 'rxjs';
@@ -11,14 +11,13 @@ export interface TopmenuState {
 
 @Component({
   selector: 'app-topmenu',
-  host: {
-    class: 'matero-topmenu',
-  },
   templateUrl: './topmenu.component.html',
   styleUrls: ['./topmenu.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class TopmenuComponent implements OnDestroy {
+  @HostBinding('class') class = 'matero-topmenu';
+
   menu$ = this.menu.getAll();
   buildRoute = this.menu.buildRoute;
 

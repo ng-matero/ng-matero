@@ -74,7 +74,7 @@ export class AdminLayoutComponent implements OnDestroy {
     @Optional() @Inject(DOCUMENT) private document: Document,
     @Inject(Directionality) public dir: AppDirectionality
   ) {
-    this.dir.value = this.options.dir!;
+    this.dir.value = this.options.dir;
     this.document.body.dir = this.dir.value;
 
     this.layoutChangesSubscription = this.breakpointObserver
@@ -159,7 +159,7 @@ export class AdminLayoutComponent implements OnDestroy {
   }
 
   toggleDirection(options: AppSettings) {
-    this.dir.value = options.dir!;
+    this.dir.value = options.dir;
     this.document.body.dir = this.dir.value;
   }
 }

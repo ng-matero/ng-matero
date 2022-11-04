@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './dynamic.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormsDynamicComponent implements OnInit {
+export class FormsDynamicComponent {
   form = new FormGroup({});
   model = { email: 'email@gmail.com' };
   fields: FormlyFieldConfig[] = [
@@ -134,8 +134,6 @@ export class FormsDynamicComponent implements OnInit {
   ];
 
   constructor(private toast: ToastrService) {}
-
-  ngOnInit() {}
 
   submit() {
     if (this.form.valid) {

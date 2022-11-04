@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { AuthService } from '@core/authentication';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   isSubmitting = false;
 
   loginForm = this.fb.nonNullable.group({
@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
-
-  ngOnInit() {}
 
   get username() {
     return this.loginForm.get('username')!;

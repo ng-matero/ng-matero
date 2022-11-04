@@ -46,13 +46,13 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
 
   checkRoute(item: MenuChildrenItem) {
     if (!item.route) {
-      return this.checkChildRoute(item.children!);
+      return this.checkChildRoute(item.children);
     } else {
       return this.router.url.split('/').includes(item.route);
     }
   }
 
-  checkChildRoute(menuItems: MenuChildrenItem[]) {
+  checkChildRoute(menuItems: MenuChildrenItem[] = []) {
     return menuItems.some(child => {
       if (this.router.url.split('/').includes(child.route)) {
         return true;
