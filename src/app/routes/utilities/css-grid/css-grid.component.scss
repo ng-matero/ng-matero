@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+[class^='col'] {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: mat.get-color-from-palette(mat.$red-palette, 100);
+  border: 1px solid mat.get-color-from-palette(mat.$red-palette, 200);
+}
+
+.row + .row {
+  margin-top: 1rem;
+}
