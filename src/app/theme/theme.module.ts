@@ -7,9 +7,9 @@ import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UserPanelComponent } from './sidebar/user-panel.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { AccordionDirective } from './sidemenu/accordion.directive';
-import { AccordionItemDirective } from './sidemenu/accordionItem.directive';
-import { AccordionAnchorDirective } from './sidemenu/accordionanchor.directive';
+import { NavAccordionDirective } from './sidemenu/nav-accordion.directive';
+import { NavAccordionItemDirective } from './sidemenu/nav-accordion-item.directive';
+import { NavAccordionToggleDirective } from './sidemenu/nav-accordion-toggle.directive';
 import { SidebarNoticeComponent } from './sidebar-notice/sidebar-notice.component';
 
 import { TopmenuComponent } from './topmenu/topmenu.component';
@@ -32,9 +32,9 @@ import { CustomizerComponent } from './customizer/customizer.component';
     SidebarComponent,
     UserPanelComponent,
     SidemenuComponent,
-    AccordionDirective,
-    AccordionItemDirective,
-    AccordionAnchorDirective,
+    NavAccordionDirective,
+    NavAccordionItemDirective,
+    NavAccordionToggleDirective,
     SidebarNoticeComponent,
     TopmenuComponent,
     TopmenuPanelComponent,

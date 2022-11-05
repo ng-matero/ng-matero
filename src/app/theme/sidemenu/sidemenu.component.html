@@ -3,15 +3,15 @@
 </ng-container>
 
 <ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">
-  <ul navAccordion class="matero-sidemenu {{level>0 ? 'matero-sidemenu-sub' : ''}} level-{{level}}">
+  <ul navAccordion class="matero-sidemenu level-{{level}}" [class.submenu]="level>0">
     <ng-container *ngFor="let menuItem of menuList">
       <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only"
                    [ngxPermissionsExcept]="menuItem.permissions?.except">
 
-        <li navAccordionItem class="matero-sidemenu-item" routerLinkActive="active"
-            [group]="menuItem.route" [type]="menuItem.type">
+        <li navAccordionItem class="menu-item" routerLinkActive="active"
+            [route]="menuItem.route" [type]="menuItem.type">
 
-          <a class="matero-sidemenu-link"
+          <a class="menu-heading"
              [routerLink]="buildRoute(parentRoute.concat([menuItem.route]))"
              *ngIf="menuItem.type==='link'" matRipple [matRippleDisabled]="!ripple">
             <ng-container [ngTemplateOutlet]="linkTypeTpl"
@@ -19,26 +19,26 @@
             </ng-container>
           </a>
 
-          <a class="matero-sidemenu-link" [href]="menuItem.route"
+          <a class="menu-heading" [href]="menuItem.route"
              *ngIf="menuItem.type==='extLink'" matRipple [matRippleDisabled]="!ripple">
             <ng-container [ngTemplateOutlet]="linkTypeTpl"
                           [ngTemplateOutletContext]="{item: menuItem, level: level}">
             </ng-container>
           </a>
 
-          <a class="matero-sidemenu-link" [href]="menuItem.route" target="_blank"
+          <a class="menu-heading" [href]="menuItem.route" target="_blank"
              *ngIf="menuItem.type==='extTabLink'" matRipple [matRippleDisabled]="!ripple">
             <ng-container [ngTemplateOutlet]="linkTypeTpl"
                           [ngTemplateOutletContext]="{item: menuItem, level: level}">
             </ng-container>
           </a>
 
-          <a navAccordionToggle class="matero-sidemenu-toggle"
-             *ngIf="menuItem.type==='sub'" matRipple [matRippleDisabled]="!ripple">
+          <button navAccordionToggle class="menu-heading menu-toggle"
+                  *ngIf="menuItem.type==='sub'" matRipple [matRippleDisabled]="!ripple">
             <ng-container [ngTemplateOutlet]="linkTypeTpl"
                           [ngTemplateOutletContext]="{item: menuItem, level: level}">
             </ng-container>
-          </a>
+          </button>
 
           <ng-container [ngTemplateOutlet]="menuListTpl"
                         [ngTemplateOutletContext]="{

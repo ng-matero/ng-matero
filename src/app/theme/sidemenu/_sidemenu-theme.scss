@@ -10,17 +10,18 @@
   $foreground: map.get($theme, foreground);
 
   .matero-sidemenu {
-    > .matero-sidemenu-item {
-      > a {
+    > .menu-item {
+      > .menu-heading {
         color: mat.get-color-from-palette($foreground, text);
 
-        &:hover {
+        &:hover,
+        &:focus {
           background: mat.get-color-from-palette($background, hover);
         }
       }
 
       &.active {
-        > a {
+        > .menu-heading {
           color:
             if(
               $is-dark-theme,
@@ -29,30 +30,32 @@
             );
           background-color: if($is-dark-theme, rgba(mat.get-color-from-palette($primary), .15), transparent);
 
-          &:hover {
+          &:hover,
+          &:focus {
             background: mat.get-color-from-palette($background, hover);
           }
         }
       }
 
-      &.open {
+      &.expanded {
         background: mat.get-color-from-palette($background, hover);
       }
     }
 
-    &.matero-sidemenu-sub {
-      > .matero-sidemenu-item {
+    &.submenu {
+      > .menu-item {
         &.active {
-          > a {
+          > .menu-heading {
             background-color: transparent;
 
-            &:hover {
+            &:hover,
+            &:focus {
               background: mat.get-color-from-palette($background, hover);
             }
           }
         }
 
-        &.open {
+        &.expanded {
           background: transparent;
         }
       }
