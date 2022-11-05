@@ -30,7 +30,7 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
 
   buildRoute = this.menu.buildRoute;
 
-  private routerSubscription!: Subscription;
+  private routerSubscription = Subscription.EMPTY;
 
   constructor(private menu: MenuService, private router: Router) {}
 
@@ -41,7 +41,7 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routerSubscription?.unsubscribe();
+    this.routerSubscription.unsubscribe();
   }
 
   checkRoute(item: MenuChildrenItem) {
@@ -71,7 +71,7 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
   onRouteChange(rla: RouterLinkActive, index: number) {
     this.routeChange.emit(rla);
 
-    this.routerSubscription?.unsubscribe();
+    this.routerSubscription.unsubscribe();
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(e => {

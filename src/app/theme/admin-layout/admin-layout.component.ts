@@ -36,7 +36,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   options = this.settings.getOptions();
 
-  private layoutChangesSubscription: Subscription;
+  private layoutChangesSubscription = Subscription.EMPTY;
 
   get isOver(): boolean {
     return this.isMobileScreen;

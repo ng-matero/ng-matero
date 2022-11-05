@@ -19,13 +19,14 @@ export class TopmenuComponent implements OnDestroy {
   @HostBinding('class') class = 'matero-topmenu';
 
   menu$ = this.menu.getAll();
+
   buildRoute = this.menu.buildRoute;
 
   menuList: Menu[] = [];
   menuStates: TopmenuState[] = [];
 
-  private menuSubscription: Subscription;
-  private routerSubscription!: Subscription;
+  private menuSubscription = Subscription.EMPTY;
+  private routerSubscription = Subscription.EMPTY;
 
   constructor(private menu: MenuService, private router: Router) {
     this.menuSubscription = this.menu$.subscribe(res => {
@@ -41,11 +42,11 @@ export class TopmenuComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.menuSubscription.unsubscribe();
-    this.routerSubscription?.unsubscribe();
+    this.routerSubscription.unsubscribe();
   }
 
   onRouteChange(rla: RouterLinkActive, index: number) {
-    this.routerSubscription?.unsubscribe();
+    this.routerSubscription.unsubscribe();
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(e => {

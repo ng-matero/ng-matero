@@ -21,8 +21,8 @@ export class BreadcrumbComponent implements OnInit {
     }
   }
 
-  trackByNavlink(index: number, navlink: string): string {
-    return navlink;
+  trackByNavlink(index: number, navLink: string): string {
+    return navLink;
   }
 
   genBreadcrumb() {
