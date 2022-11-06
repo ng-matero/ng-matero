@@ -9,17 +9,24 @@
   $foreground: mat.get-color-from-palette($theme, foreground);
 
   .matero-topmenu {
-    color: mat.get-color-from-palette($foreground, text);
     background: mat.get-color-from-palette($background, app-bar);
 
     .mat-button {
+      color: mat.get-color-from-palette($foreground, text);
+
       &.active {
         background-color: mat.get-color-from-palette($background, focused-button);
       }
     }
   }
 
-  .mat-menu-item.active {
-    color: mat.get-color-from-palette($accent);
+  .matero-topmenu-panel {
+    .mat-menu-item {
+      color: mat.get-color-from-palette($foreground, text);
+
+      &.active {
+        color: mat.get-color-from-palette($accent);
+      }
+    }
   }
 }

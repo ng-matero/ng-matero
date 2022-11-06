@@ -51,14 +51,16 @@
   }
 }
 
-.mat-menu-item {
-  .menu-name {
-    margin-right: 8px;
-    vertical-align: middle;
+.matero-topmenu-panel {
+  .mat-menu-item {
+    .menu-name {
+      margin-right: 8px;
+      vertical-align: middle;
 
-    [dir='rtl'] & {
-      margin-right: auto;
-      margin-left: 8px;
+      [dir='rtl'] & {
+        margin-right: auto;
+        margin-left: 8px;
+      }
     }
   }
 }

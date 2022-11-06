@@ -3,11 +3,11 @@
     <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only!"
                  [ngxPermissionsExcept]="menuItem.permissions?.except!">
 
-      <button *ngIf="menuItem.type === 'link'" mat-button
+      <a *ngIf="menuItem.type === 'link'" mat-button
               [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
         <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
         </ng-container>
-      </button>
+      </a>
 
       <a *ngIf="menuItem.type === 'extLink'" mat-button [href]="menuItem.route">
         <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
