@@ -8,6 +8,17 @@
 
   @include mat.elevation(2);
 
+  .mat-mdc-button-base {
+    padding: 0 16px;
+    white-space: nowrap;
+  }
+
+  .menu-icon,
+  .menu-caret,
+  .menu-name {
+    vertical-align: middle;
+  }
+
   .mat-icon.menu-icon {
     width: 18px;
     height: 18px;

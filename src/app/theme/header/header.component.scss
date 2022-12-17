@@ -1,77 +1,8 @@
 .matero-header {
   position: relative;
   z-index: 200;
-  display: block;
-
-  .matero-toolbar {
-    padding: 0 8px;
-  }
 }
 
 .matero-toolbar {
   border-bottom: 1px solid rgba(0, 0, 0, .12);
-
-  .badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50rem;
-  }
-}
-
-// Customize toolbar button
-.matero-toolbar-button {
-  &.mat-button,
-  &.mat-icon-button {
-    margin: 0 4px;
-  }
-
-  &.mat-button {
-    min-width: unset;
-    line-height: 40px;
-    border-radius: 50rem;
-  }
-
-  &.matero-avatar-button {
-    display: block;
-    padding: 0 4px;
-    font-size: 0;
-
-    .matero-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50rem;
-    }
-
-    .matero-username {
-      margin: 0 8px;
-      font-size: 14px;
-    }
-  }
-}
-
-.matero-branding {
-  display: inline-block;
-  color: inherit;
-  font-size: 16px;
-  line-height: normal;
-  white-space: nowrap;
-  border-radius: 50rem;
-}
-
-.matero-branding-logo-expanded {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  vertical-align: middle;
-
-  [dir='rtl'] & {
-    margin-right: auto;
-    margin-left: 10px;
-  }
-}
-
-.matero-branding-name {
-  font-weight: normal;
-  vertical-align: middle;
 }

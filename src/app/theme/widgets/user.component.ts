@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, tap } from 'rxjs/operators';
 import { AuthService, User } from '@core/authentication';
@@ -6,13 +6,9 @@ import { AuthService, User } from '@core/authentication';
 @Component({
   selector: 'app-user',
   template: `
-    <button
-      class="matero-toolbar-button matero-avatar-button"
-      mat-button
-      [matMenuTriggerFor]="menu"
-    >
-      <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
-      <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
+    <button class="matero-avatar-button" mat-button [matMenuTriggerFor]="menu">
+      <img matButtonIcon class="matero-avatar" [src]="user.avatar" width="24" alt="avatar" />
+      <span class="matero-username">{{ user.name }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -30,6 +26,24 @@ import { AuthService, User } from '@core/authentication';
       </button>
     </mat-menu>
   `,
+  styles: [
+    `
+      .matero-avatar-button.mat-mdc-button {
+        border-radius: 50rem;
+
+        .matero-avatar {
+          width: 24px;
+          height: 24px;
+          border-radius: 50rem;
+        }
+
+        .matero-username {
+          margin: 0 8px;
+        }
+      }
+    `,
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent implements OnInit {
   user!: User;

@@ -1,6 +1,9 @@
 @use '../style/transitions';
 
 .matero-user-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 12px 0;
 }
 
@@ -30,9 +33,16 @@
 .matero-user-panel-icons {
   white-space: nowrap;
 
-  .mat-icon-button {
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+  .mat-mdc-button-base,
+  .mat-mdc-button-touch-target {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mat-mdc-button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 }

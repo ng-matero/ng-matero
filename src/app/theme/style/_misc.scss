@@ -14,6 +14,10 @@
   padding-left: variables.$gutter * .5;
 }
 
+.flex-spacer {
+  flex-grow: 1;
+}
+
 .badge {
   @include badge();
 }
@@ -24,4 +28,14 @@
 
 .scrollbar-none {
   @include scrollbar-none();
+}
+
+@media (max-width: 720px) {
+  .hide-small {
+    display: none !important;
+  }
+
+  .show-small {
+    display: block !important;
+  }
 }
