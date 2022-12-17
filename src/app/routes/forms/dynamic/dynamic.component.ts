@@ -130,6 +130,7 @@ export class FormsDynamicComponent {
       templateOptions: {
         label: 'Other Checkbox',
       },
+      wrappers: ['div'],
     },
   ];
 

@@ -36,7 +36,7 @@
       $color,
       if(
         meta.type-of($fade) == 'color',
-        color.mix($fade, $color, math.div($i, $shadow-count) * 100),
+        color.mix($fade, $color, math.div($i, $shadow-count) * 100%),
         color.rgba($color, 1 - math.div($i, $shadow-count))
       )
     );

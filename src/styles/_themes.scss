@@ -49,8 +49,8 @@ $config: mat.define-typography-config();
         primary: $primary,
         accent: $accent
       ),
-      typography: mat.define-typography-config(),
-      density: 0
+      typography: null,
+      density: null
     )
   );
 
