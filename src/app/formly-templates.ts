@@ -1,6 +1,6 @@
 import { ViewChild, ChangeDetectionStrategy, Component } from '@angular/core';
 import { FieldType } from '@ngx-formly/material/form-field';
-import { MtxSelectComponent } from '@ng-matero/extensions/select';
+import { MtxSelect } from '@ng-matero/extensions/select';
 import { FieldTypeConfig } from '@ngx-formly/core';
 
 /**
@@ -24,7 +24,7 @@ import { FieldTypeConfig } from '@ngx-formly/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldComboboxComponent extends FieldType<FieldTypeConfig> {
-  @ViewChild('select', { static: true }) select!: MtxSelectComponent;
+  @ViewChild('select', { static: true }) select!: MtxSelect;
 
   get bindLabel() {
     return typeof this.props.labelProp === 'string' ? this.props.labelProp : '';

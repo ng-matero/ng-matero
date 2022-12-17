@@ -1,70 +1,71 @@
 <breadcrumb></breadcrumb>
 
 <mat-card>
-  <div class="demo-list">
-    <section>
-      <h2> Seasoning </h2>
-      <p>Showing a non-interactive list of seasonings.</p>
-      <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let item of items"> {{item}} </mat-list-item>
-      </mat-list>
-    </section>
+  <mat-card-header>
+    <mat-card-title>Seasoning</mat-card-title>
+    <mat-card-subtitle>Showing a non-interactive list of seasonings.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of items"> {{item}} </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
 
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Mailbox navigation</mat-card-title>
+    <mat-card-subtitle>Showing a navigation list with links to google search</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let link of links"
+         href="https://www.google.com/search?q={{link.name}}">
+        {{link.name}}
+      </a>
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>
 
-    <section>
-      <h2>Mailbox navigation</h2>
-      <p>Showing a navigation list with links to google search</p>
-      <mat-nav-list>
-        <a mat-list-item *ngFor="let link of links"
-           href="https://www.google.com/search?q={{link.name}}">
-          {{link.name}}
-        </a>
-      </mat-nav-list>
-    </section>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Messages</mat-card-title>
+    <mat-card-subtitle>
+      Showing a list of messages, where each message item has sender's name, sender's avatar,
+      message subject, and content of the message.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let message of messages">
+        <img matListItemAvatar [src]="message.image" [alt]="message.from">
+        <h3 matListItemTitle> {{message.from}} </h3>
+        <p matListItemLine> {{message.subject}} </p>
+        <p matListItemLine class="demo-secondary-text"> {{message.message}} </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
 
-    <section>
-      <h2>Messages</h2>
-      <p>
-        Showing a list of messages, where each message item has sender's name, sender's avatar,
-        message subject, and content of the message.
-      </p>
-      <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let message of messages">
-          <img mat-list-avatar [src]="message.image" [alt]="message.from">
-          <h3 mat-line> {{message.from}} </h3>
-          <p mat-line> {{message.subject}} </p>
-          <p mat-line class="demo-secondary-text"> {{message.message}} </p>
-        </mat-list-item>
-      </mat-list>
-
-    </section>
-
-    <section>
-      <h2>Seasoning</h2>
-      <p>Showing a non-interactive list of seasonings with dense style.</p>
-      <mat-list role="list" dense>
-        <mat-list-item role="listitem" *ngFor="let item of items"> {{item}} </mat-list-item>
-      </mat-list>
-    </section>
-
-    <section>
-      <h2>Folders and notes for mailbox </h2>
-      <p>Showing a list with two sections, "folders" and "notes".</p>
-      <mat-list role="list">
-        <h3 mat-subheader>Folders</h3>
-        <mat-list-item role="listitem" *ngFor="let folder of folders">
-          <mat-icon mat-list-icon>folder</mat-icon>
-          <h4 mat-line>{{folder.name}}</h4>
-          <p mat-line class="demo-secondary-text"> {{folder.updated}} </p>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <h3 mat-subheader>Notes</h3>
-        <mat-list-item role="listitem" *ngFor="let note of notes">
-          <mat-icon mat-list-icgon>note</mat-icon>
-          <h4 mat-line>{{note.name}}</h4>
-          <p mat-line class="demo-secondary-text"> {{note.updated}} </p>
-        </mat-list-item>
-      </mat-list>
-    </section>
-  </div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Folders and notes for mailbox</mat-card-title>
+    <mat-card-subtitle>Showing a list with two sections, "folders" and "notes".</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <h3 mat-subheader>Folders</h3>
+      <mat-list-item role="listitem" *ngFor="let folder of folders">
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <h4 matListItemTitle>{{folder.name}}</h4>
+        <p matListItemLine class="demo-secondary-text"> {{folder.updated}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Notes</h3>
+      <mat-list-item role="listitem" *ngFor="let note of notes">
+        <mat-icon matListItemIcon>note</mat-icon>
+        <h4 matListItemTitle>{{note.name}}</h4>
+        <p matListItemLine class="demo-secondary-text"> {{note.updated}} </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
 </mat-card>

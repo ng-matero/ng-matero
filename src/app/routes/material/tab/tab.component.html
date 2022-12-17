@@ -1,11 +1,12 @@
 <breadcrumb></breadcrumb>
 
 <mat-card>
-  <section>
-    <h2>Weather</h2>
-    <p>Switch tabs to navigate</p>
-
-    <nav mat-tab-nav-bar aria-label="weather navigation links">
+  <mat-card-header>
+    <mat-card-title>Weather</mat-card-title>
+    <mat-card-subtitle>Switch tabs to navigate</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel" aria-label="weather navigation links">
       <a mat-tab-link
          *ngFor="let tabLink of tabLinks; let i = index"
          [routerLink]="tabLink.link"
@@ -14,13 +15,18 @@
         {{tabLink.label}}
       </a>
     </nav>
-    <router-outlet></router-outlet>
-  </section>
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </mat-card-content>
+</mat-card>
 
-  <section>
-    <h2>Dog breeds</h2>
-    <p>Dynamic height tabs</p>
-
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dog breeds</mat-card-title>
+    <mat-card-subtitle>Dynamic height tabs</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
     <mat-tab-group dynamicHeight>
       <mat-tab *ngFor="let tab of tabs" [disabled]="tab.disabled">
         <ng-template mat-tab-label>{{tab.label}}</ng-template>
@@ -42,7 +48,8 @@
             A few kennels breeding their ancestors, the St. John's water dog, were in England.
             At the same time, a combination of the sheep protection policy in Newfoundland and
             rabies
-            quarantine in the United Kingdom, led to the gradual demise of the St. John's water dog
+            quarantine in the United Kingdom, led to the gradual demise of the St. John's water
+            dog
             in Canada.
             <br>
             <br>
@@ -57,7 +64,8 @@
             Earl
             of Home collaborated to develop and establish the modern Labrador breed. The dogs
             Buccleuch Avon and Buccleuch Ned, given by Malmesbury to Buccleuch, were mated with
-            bitches carrying blood from those originally imported by the 5th Duke and the 10th Earl
+            bitches carrying blood from those originally imported by the 5th Duke and the 10th
+            Earl
             of Home. The offspring are considered to be the ancestors of modern Labradors.
             <br>
             <br>
@@ -65,5 +73,5 @@
         </div>
       </mat-tab>
     </mat-tab-group>
-  </section>
+  </mat-card-content>
 </mat-card>

@@ -21,6 +21,7 @@ export class TablesKitchenSinkComponent implements OnInit {
       field: 'position',
       sortable: true,
       minWidth: 100,
+      width: '100px',
     },
     {
       header: this.translate.stream('table_kitchen_sink.name'),
@@ -28,6 +29,7 @@ export class TablesKitchenSinkComponent implements OnInit {
       sortable: true,
       disabled: true,
       minWidth: 100,
+      width: '100px',
     },
     {
       header: this.translate.stream('table_kitchen_sink.weight'),
@@ -90,8 +92,8 @@ export class TablesKitchenSinkComponent implements OnInit {
     {
       header: this.translate.stream('table_kitchen_sink.operation'),
       field: 'operation',
-      minWidth: 120,
-      width: '120px',
+      minWidth: 160,
+      width: '160px',
       pinned: 'right',
       type: 'button',
       buttons: [

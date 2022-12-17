@@ -32,9 +32,9 @@ export class FormsSelectComponent implements OnInit {
   companies: any[] = [];
   loading = false;
   companiesNames = ['Miškas', 'Žalias', 'Flexigen'];
-  selectedCompany = '';
-  selectedCompanyCustom = '';
-  selectedCompanyCustomPromise = '';
+  selectedCompany = null;
+  selectedCompanyCustom = null;
+  selectedCompanyCustomPromise = null;
 
   constructor(private dataService: DataService, public dialog: MatDialog) {}
 

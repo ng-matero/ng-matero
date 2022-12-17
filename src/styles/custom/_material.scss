@@ -2,32 +2,17 @@
 
 @use '../../app/theme/style/variables';
 
-.mat-card {
+.mat-mdc-card {
   margin-bottom: variables.$gutter;
 }
 
-.mat-accordion {
+.mat-mdc-accordion {
   display: block;
   margin-bottom: variables.$gutter;
 }
 
-.mat-list-base {
-  position: relative;
-}
-
-.mat-checkbox,
-.mat-radio-button,
-.mat-slide-toggle {
-  margin-right: variables.$gutter * .5;
-
-  [dir='rtl'] & {
-    margin-right: auto;
-    margin-left: variables.$gutter * .5;
-  }
-}
-
 .form-field-full {
-  .mat-form-field {
+  .mat-mdc-form-field {
     width: 100%;
   }
 }

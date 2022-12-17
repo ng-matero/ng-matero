@@ -10,7 +10,16 @@
 //
 $primary: mat.define-palette(mat.$indigo-palette);
 $accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$theme: mat.define-light-theme($primary, $accent);
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent
+    ),
+    typography: mat.define-typography-config(),
+    density: 0
+  )
+);
 
 //////////////////////////////////////////////////////////////////////////////////////
 // When we use the Schematics (`ng add`) to start, the following variables will be  //
@@ -34,7 +43,16 @@ $config: mat.define-typography-config();
 .theme-dark {
   $primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
   $accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-  $theme: mat.define-dark-theme($primary, $accent);
+  $theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $primary,
+        accent: $accent
+      ),
+      typography: mat.define-typography-config(),
+      density: 0
+    )
+  );
 
   @include app-theme.theme($theme);
 }

@@ -14,14 +14,7 @@ import { DashboardService } from './dashboard.srevice';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styles: [
-    `
-      .mat-raised-button {
-        margin-right: 8px;
-        margin-top: 8px;
-      }
-    `,
-  ],
+  styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DashboardService],
 })

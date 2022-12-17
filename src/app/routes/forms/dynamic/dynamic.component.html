@@ -8,19 +8,27 @@
 </p>
 
 <mat-card>
-  <mat-card-title>Simple</mat-card-title>
+  <mat-card-header>
+    <mat-card-title>Simple</mat-card-title>
+  </mat-card-header>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-    <button mat-raised-button color="primary">Submit</button>
-  </form>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+      <button mat-raised-button color="primary">Submit</button>
+    </form>
+  </mat-card-content>
 </mat-card>
 
 <mat-card>
-  <mat-card-title>Advanced Layout</mat-card-title>
+  <mat-card-header>
+    <mat-card-title>Advanced Layout</mat-card-title>
+  </mat-card-header>
 
-  <form [formGroup]="form2" (ngSubmit)="submit2()">
-    <formly-form [model]="model2" [fields]="fields2" [form]="form2"></formly-form>
-    <button mat-raised-button color="primary" [disabled]="!form2.valid">Submit</button>
-  </form>
+  <mat-card-content>
+    <form [formGroup]="form2" (ngSubmit)="submit2()">
+      <formly-form [model]="model2" [fields]="fields2" [form]="form2"></formly-form>
+      <button mat-raised-button color="primary" [disabled]="!form2.valid">Submit</button>
+    </form>
+  </mat-card-content>
 </mat-card>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Person {
@@ -64,6 +64,22 @@ export class ChipsComponent {
     if (index >= 0) {
       this.people.splice(index, 1);
       this.snackBar.open(`${person.name} deleted`, '', { duration: 2000 });
+    }
+  }
+
+  edit(person: Person, event: MatChipEditedEvent) {
+    const value = event.value.trim();
+
+    // Remove person if it no longer has a name
+    if (!value) {
+      this.remove(person);
+      return;
+    }
+
+    // Edit existing person
+    const index = this.people.indexOf(person);
+    if (index > 0) {
+      this.people[index].name = value;
     }
   }
 

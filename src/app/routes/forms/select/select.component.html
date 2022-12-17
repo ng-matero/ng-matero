@@ -11,8 +11,11 @@
 <div fxLayout="row wrap" class="matero-row">
   <div fxFlex="100" fxFlex.gt-sm="50" class="matero-col">
     <mat-card>
-      <mat-card-title>Data Source</mat-card-title>
-      <div>
+      <mat-card-header>
+        <mat-card-title>Data Source</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
         <p>
           Most common case is showing data from backend API and with mtx-select this is extremely
           simple since you can bind directly to observable when using angular <b> | async</b> pipe.
@@ -70,14 +73,17 @@
         </mat-form-field>
 
         Selected car ID: {{selectedCarId | json}}
-      </div>
+      </mat-card-content>
     </mat-card>
   </div>
 
   <div fxFlex="100" fxFlex.gt-sm="50" class="matero-col">
     <mat-card>
-      <mat-card-title>Tags</mat-card-title>
-      <div>
+      <mat-card-header>
+        <mat-card-title>Tags</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
         <label>Default tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
@@ -126,16 +132,20 @@
           </mtx-select>
         </mat-form-field>
 
-      </div>
+      </mat-card-content>
     </mat-card>
   </div>
 
   <div fxFlex="100" fxFlex.gt-sm="50" class="matero-col">
     <mat-card>
-      <mat-card-title>Select in dialog</mat-card-title>
+      <mat-card-header>
+        <mat-card-title>Select in dialog</mat-card-title>
+      </mat-card-header>
 
-      <p>Test ng-select in a dialog.</p>
-      <button mat-raised-button color="primary" (click)="openDialog()">Open Dialog</button>
+      <mat-card-content>
+        <p>Test ng-select in a dialog.</p>
+        <button mat-raised-button color="primary" (click)="openDialog()">Open Dialog</button>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>

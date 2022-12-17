@@ -1,59 +1,73 @@
 <breadcrumb></breadcrumb>
 
-<mat-card>
-  <section>
-    <h2>Basic chips</h2>
-    <mat-chip-list>
-      <mat-chip>Carnation</mat-chip>
-      <mat-chip>Irises</mat-chip>
-      <mat-chip>Buttercup</mat-chip>
-    </mat-chip-list>
-  </section>
+<section>
+  <h2>Basic chips</h2>
+  <mat-chip-listbox>
+    <mat-chip-option>Carnation</mat-chip-option>
+    <mat-chip-option>Irises</mat-chip-option>
+    <mat-chip-option>Buttercup</mat-chip-option>
+  </mat-chip-listbox>
+</section>
 
-  <section>
-    <h2>Unstyled chips</h2>
+<section>
+  <h2>Chips avatar</h2>
 
-    <mat-chip-list>
-      <mat-basic-chip>Husky </mat-basic-chip>
-      <mat-basic-chip>Golden Retriever </mat-basic-chip>
-      <mat-basic-chip>Border Collie </mat-basic-chip>
-    </mat-chip-list>
-  </section>
+  <mat-chip-listbox aria-label="Dog selection">
+    <mat-chip>
+      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+           alt="Photo of a Shiba Inu" />
+      Dog one
+    </mat-chip>
+    <mat-chip color="primary">
+      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+           alt="Photo of a Shiba Inu" />
+      Dog two
+    </mat-chip>
+    <mat-chip color="accent">
+      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+           alt="Photo of a Shiba Inu" />
+      Dog three
+    </mat-chip>
+  </mat-chip-listbox>
+</section>
 
-  <section>
-    <h2>Removable chips in a form field</h2>
+<section>
+  <h2>Removable chips in a form field</h2>
 
-    <mat-form-field>
-      <mat-chip-list matPrefix #chipList>
-        <mat-chip *ngFor="let person of people" [color]="color" (removed)="remove(person)">
-          {{person.name}}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
-      <input matInput placeholder="New Contributor..."
-             aria-label="New contributor"
-             [matChipInputFor]="chipList"
-             [matChipInputAddOnBlur]="addOnBlur"
-             (matChipInputTokenEnd)="add($event)" />
-    </mat-form-field>
-  </section>
+  <mat-form-field>
+    <mat-label>Contributors</mat-label>
+    <mat-chip-grid #chipGrid>
+      <mat-chip-row *ngFor="let person of people"
+                    [color]="color" [editable]="true"
+                    (removed)="remove(person)"
+                    (edited)="edit(person, $event)">
+        {{person.name}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip-row>
+    </mat-chip-grid>
+    <input matInput placeholder="New Contributor..."
+           aria-label="New contributor"
+           [matChipInputFor]="chipGrid"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)" />
+  </mat-form-field>
+</section>
 
-  <section>
-    <h2>Colored chips</h2>
-    <p>This example is good for contrast-radio checking.</p>
-    <mat-chip-list>
-      <mat-chip color="primary" selected="true">Primary</mat-chip>
-      <mat-chip color="accent" selected="true">Accent</mat-chip>
-      <mat-chip color="warn" selected="true">Warn</mat-chip>
-    </mat-chip-list>
-  </section>
+<section>
+  <h2>Colored chips</h2>
+  <p>This example is good for contrast-radio checking.</p>
+  <mat-chip-listbox>
+    <mat-chip-option color="primary">Primary</mat-chip-option>
+    <mat-chip-option color="accent">Accent</mat-chip-option>
+    <mat-chip-option color="warn">Warn</mat-chip-option>
+  </mat-chip-listbox>
+</section>
 
-  <section>
-    <h2>Stacked chips</h2>
-    <mat-chip-list class="mat-chip-list-stacked">
-      <mat-chip [selectable]="false">Lemon</mat-chip>
-      <mat-chip [selectable]="false">Lime</mat-chip>
-      <mat-chip [selectable]="false">Grapefruit</mat-chip>
-    </mat-chip-list>
-  </section>
-</mat-card>
+<section>
+  <h2>Stacked chips</h2>
+  <mat-chip-listbox class="mat-mdc-chip-set-stacked">
+    <mat-chip-option selected color="primary">Lemon</mat-chip-option>
+    <mat-chip-option selected color="accent">Lime</mat-chip-option>
+    <mat-chip-option selected color="warn">Grapefruit</mat-chip-option>
+  </mat-chip-listbox>
+</section>

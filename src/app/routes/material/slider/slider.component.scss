@@ -14,8 +14,6 @@
   margin-left: 60px;
 }
 
-.demo-volume-container {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+mat-slider {
+  width: 300px;
 }

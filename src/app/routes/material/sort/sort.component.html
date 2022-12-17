@@ -1,21 +1,23 @@
 <breadcrumb></breadcrumb>
 
 <mat-card>
-  <table matSort (matSortChange)="sortData($event)">
-    <tr>
-      <th mat-sort-header="name">Dessert (100g)</th>
-      <th mat-sort-header="calories">Calories</th>
-      <th mat-sort-header="fat">Fat (g)</th>
-      <th mat-sort-header="carbs">Carbs (g)</th>
-      <th mat-sort-header="protein">Protein (g)</th>
-    </tr>
+  <mat-card-content>
+    <table matSort (matSortChange)="sortData($event)">
+      <tr>
+        <th mat-sort-header="name">Dessert (100g)</th>
+        <th mat-sort-header="calories">Calories</th>
+        <th mat-sort-header="fat">Fat (g)</th>
+        <th mat-sort-header="carbs">Carbs (g)</th>
+        <th mat-sort-header="protein">Protein (g)</th>
+      </tr>
 
-    <tr *ngFor="let dessert of sortedData">
-      <td>{{dessert.name}}</td>
-      <td>{{dessert.calories}}</td>
-      <td>{{dessert.fat}}</td>
-      <td>{{dessert.carbs}}</td>
-      <td>{{dessert.protein}}</td>
-    </tr>
-  </table>
+      <tr *ngFor="let dessert of sortedData">
+        <td>{{dessert.name}}</td>
+        <td>{{dessert.calories}}</td>
+        <td>{{dessert.fat}}</td>
+        <td>{{dessert.carbs}}</td>
+        <td>{{dessert.protein}}</td>
+      </tr>
+    </table>
+  </mat-card-content>
 </mat-card>

@@ -22,7 +22,9 @@
   <h2>Husky</h2>
   <p>Showing a card with title only.</p>
   <mat-card class="demo-card">
-    Siberian Husky
+    <mat-card-content>
+      Siberian Husky
+    </mat-card-content>
   </mat-card>
 </section>
 
@@ -30,8 +32,10 @@
   <h2>Malamute</h2>
   <p>Showing a Card with title and subtitle.</p>
   <mat-card class="demo-card">
-    <mat-card-title>Alaskan Malamute</mat-card-title>
-    <mat-card-subtitle>Dog breed</mat-card-subtitle>
+    <mat-card-header>
+      <mat-card-title>Alaskan Malamute</mat-card-title>
+      <mat-card-subtitle>Dog breed</mat-card-subtitle>
+    </mat-card-header>
   </mat-card>
 </section>
 
@@ -40,16 +44,18 @@
   <h2>German Shepherd</h2>
   <p>Showing a card with title, subtitle, and a footer.</p>
   <mat-card class="demo-card">
-    <mat-card-subtitle>Dog breed</mat-card-subtitle>
-    <mat-card-title>German Shepherd</mat-card-title>
+    <mat-card-header>
+      <mat-card-subtitle>Dog breed</mat-card-subtitle>
+      <mat-card-title>German Shepherd</mat-card-title>
+    </mat-card-header>
     <mat-card-content>
       The German Shepherd is a breed of medium to large-sized working dog that originated in
       Germany. The breed's officially recognized name is German Shepherd Dog in the English
       language. The breed is also known as the Alsatian in Britain and Ireland.
     </mat-card-content>
-    <mat-card-footer>
+    <mat-card-content>
       People also search for Rottweiler, Siberian Husky, Labrador Retriever, Doberman Pinscher
-    </mat-card-footer>
+    </mat-card-content>
   </mat-card>
 </section>
 
@@ -58,15 +64,17 @@
   <p>Showing a card with title, subtitle, and avatar as header and a card image.</p>
   <mat-card class="demo-card">
     <mat-card-header>
-      <img mat-card-avatar src="https://material.angularjs.org/material2_assets/ngconf/Porter.png"
+      <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
            aria-label="Dachshund avatar">
       <mat-card-title>Dachshund</mat-card-title>
       <mat-card-subtitle>Dog breed</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angularjs.org/material2_assets/ngconf/Koby.png"
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
          aria-label="Dachshund">
     <mat-card-content>
-      The dachshund is a short-legged, long-bodied, hound-type dog breed.
+      <p>
+        The dachshund is a short-legged, long-bodied, hound-type dog breed.
+      </p>
     </mat-card-content>
   </mat-card>
 </section>
@@ -76,16 +84,19 @@
   <p>Showing a card with header, content, image, and two action buttons: "share" and "like".</p>
   <mat-card class="demo-card">
     <mat-card-header>
-      <img mat-card-avatar src="https://material.angularjs.org/material2_assets/ngconf/Molly.png"
+      <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
            aria-label="Shiba Inu avatar">
       <mat-card-title>Shiba Inu</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angularjs.org/material2_assets/ngconf/Husi.png" aria-label="Shiba Inu">
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+         aria-label="Shiba Inu">
     <mat-card-content>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
     </mat-card-content>
     <mat-card-actions align="end">
       <button mat-button (click)="openSnackbar('Liked Shiba Inu')">like</button>

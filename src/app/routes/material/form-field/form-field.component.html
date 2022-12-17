@@ -1,7 +1,7 @@
 <breadcrumb></breadcrumb>
 
-<mat-card>
-  <div class="example-container">
+<mat-card class="example-container">
+  <mat-card-content>
     <mat-form-field>
       <input matInput placeholder="Input">
     </mat-form-field>
@@ -15,12 +15,12 @@
         <mat-option value="option">Option</mat-option>
       </mat-select>
     </mat-form-field>
-  </div>
+  </mat-card-content>
 </mat-card>
 
-<mat-card>
-  <div class="example-container">
-    <form class="example-container" [formGroup]="options">
+<mat-card class="example-container">
+  <mat-card-content>
+    <form [formGroup]="options">
       <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
       <div>
         <label>Float label: </label>
@@ -52,40 +52,34 @@
         <mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i>
       </mat-label>
     </mat-form-field>
-  </div>
+  </mat-card-content>
 </mat-card>
 
 <mat-card>
-  <p>
-    <mat-form-field appearance="legacy">
-      <mat-label>Legacy form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="standard">
-      <mat-label>Standard form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="fill">
-      <mat-label>Fill form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder">
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
-    </mat-form-field>
-  </p>
+  <mat-card-content>
+    <p>
+      <mat-form-field>
+        <mat-label>Standard form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Fill form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+  </mat-card-content>
 </mat-card>

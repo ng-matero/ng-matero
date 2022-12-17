@@ -6,9 +6,11 @@
   <div class="matero-col" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100"
        *ngFor="let stat of stats">
     <mat-card [ngClass]="['text-white', stat.color]">
-      <mat-card-title class="f-s-12 f-w-100">{{stat.title}}</mat-card-title>
+      <mat-card-header>
+        <mat-card-subtitle class="text-white">{{stat.title}}</mat-card-subtitle>
+      </mat-card-header>
       <mat-card-content>
-        <h2>{{stat.amount}}</h2>
+        <h2 class="m-y-8">{{stat.amount}}</h2>
         <mtx-progress [value]="stat.progress.value"
                       height="2px"
                       foreground="rgba(255,255,255,1)"
@@ -22,29 +24,39 @@
   <!-- Charts -->
   <div class="matero-col" fxFlex="100" fxFlex.gt-sm="60">
     <mat-card>
-      <mat-card-subtitle>Traffic</mat-card-subtitle>
-      <div id="chart1"></div>
+      <mat-card-header>
+        <mat-card-title>Traffic</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="chart1"></div>
+      </mat-card-content>
     </mat-card>
   </div>
   <div class="matero-col" fxFlex="100" fxFlex.gt-sm="40">
     <mat-card>
-      <mat-card-subtitle>Weekly Revenue</mat-card-subtitle>
-      <div id="chart2"></div>
+      <mat-card-header>
+        <mat-card-title>Weekly Revenue</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div id="chart2"></div>
+      </mat-card-content>
     </mat-card>
   </div>
 
   <!-- Others -->
   <div class="matero-col" fxFlex.gt-sm="50" fxFlex="100">
     <mat-card>
-      <mat-tab-group class="m--16">
+      <mat-tab-group>
         <mat-tab label="First">
           <div class="m-16">
             <img class="d-block w-full" src="assets/images/pixabay/2.jpg" alt="">
-            <h3>Aenean viverra arcu nec pellentesque ultrices. In erat purus, adipiscing nec lacinia
+            <h3>Aenean viverra arcu nec pellentesque ultrices. In erat purus, adipiscing nec
+              lacinia
               at, ornare ac eros.
             </h3>
             <p>
-              Nullam at risus metus. Quisque nisl purus, pulvinar ut mauris vel, elementum suscipit
+              Nullam at risus metus. Quisque nisl purus, pulvinar ut mauris vel, elementum
+              suscipit
               eros. Praesent
               ornare ante massa, egestas pellentesque orci convallis ut. Curabitur consequat
               convallis est, id luctus
@@ -93,7 +105,9 @@
       </mat-tab-group>
     </mat-card>
     <mat-card>
-      <mat-card-subtitle>Album</mat-card-subtitle>
+      <mat-card-header>
+        <mat-card-title>Album</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
         <mat-grid-list cols="2">
           <mat-grid-tile class="bg-red-50">1</mat-grid-tile>
@@ -107,20 +121,26 @@
 
   <div class="matero-col" fxFlex.gt-sm="50" fxFlex="100">
     <mat-card>
-      <mat-card-subtitle>Avatar List</mat-card-subtitle>
-      <mat-list>
-        <mat-list-item *ngFor="let message of messages">
-          <img matListAvatar [src]="message.img" alt="">
-          <h3 matLine> {{message.subject}} </h3>
-          <p matLine>
-            <span>{{message.content}} </span>
-          </p>
-        </mat-list-item>
-      </mat-list>
+      <mat-card-header>
+        <mat-card-title>Avatar List</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let message of messages">
+            <img matListItemAvatar [src]="message.img" alt="Avatar">
+            <h3 matListItemTitle>{{message.subject}}</h3>
+            <p matListItemLine>
+              <span>{{message.content}} </span>
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
     </mat-card>
 
     <mat-card>
-      <mat-card-subtitle>Revenue Table</mat-card-subtitle>
+      <mat-card-header>
+        <mat-card-title>Revenue Table</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
         <table class="w-full" mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="position">
@@ -146,21 +166,23 @@
     </mat-card>
 
     <mat-card>
-      <mat-card-subtitle>Chips & Buttons</mat-card-subtitle>
+      <mat-card-header>
+        <mat-card-title>Chips & Buttons</mat-card-title>
+      </mat-card-header>
       <mat-card-content>
-        <mat-chip-list>
-          <mat-chip>One fish</mat-chip>
-          <mat-chip color="primary" selected>Primary fish</mat-chip>
-          <mat-chip color="accent" selected>Accent fish</mat-chip>
-          <mat-chip color="warn" selected>Two fish</mat-chip>
-          <mat-chip class="bg-orange-500" selected>Orange fish</mat-chip>
-          <mat-chip class="bg-teal-500" selected>Teal fish</mat-chip>
-          <mat-chip class="bg-cyan-500" selected>Cyan fish</mat-chip>
-          <mat-chip class="bg-purple-500" selected>Purple fish</mat-chip>
-          <mat-chip class="bg-green-500" selected>Green fish</mat-chip>
-        </mat-chip-list>
+        <mat-chip-listbox>
+          <mat-chip-option>One fish</mat-chip-option>
+          <mat-chip-option color="primary" selected>Primary fish</mat-chip-option>
+          <mat-chip-option color="accent" selected>Accent fish</mat-chip-option>
+          <mat-chip-option color="warn" selected>Two fish</mat-chip-option>
+          <mat-chip-option class="bg-orange-500" selected>Orange fish</mat-chip-option>
+          <mat-chip-option class="bg-teal-500" selected>Teal fish</mat-chip-option>
+          <mat-chip-option class="bg-cyan-500" selected>Cyan fish</mat-chip-option>
+          <mat-chip-option class="bg-purple-500" selected>Purple fish</mat-chip-option>
+          <mat-chip-option class="bg-green-500" selected>Green fish</mat-chip-option>
+        </mat-chip-listbox>
 
-        <div>
+        <div class="m-t-16 m-x--4">
           <button mat-raised-button>Basic</button>
           <button mat-raised-button color="primary">Primary</button>
           <button mat-raised-button color="accent">Accent</button>

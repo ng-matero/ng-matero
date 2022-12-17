@@ -1,23 +1,24 @@
-<p>
-  By default dropdown panel is rendered as child element of ng-select, but you can append dropdown
-  to any element using <strong>appendTo</strong>.
-</p>
-<p>
-  If you place ng-select inside container with fixed height and hidden overflow then dropdown will
-  not be fully visible.
-</p>
+<div mat-dialog-content>
+  <p>
+    By default dropdown panel is rendered as child element of ng-select, but you can append dropdown
+    to any element using <strong>appendTo</strong>.
+  </p>
+  <p>
+    If you place ng-select inside container with fixed height and hidden overflow then dropdown will
+    not be fully visible.
+  </p>
 
-<mat-form-field>
-  <mat-label>Without appendTo</mat-label>
-  <mtx-select [items]="defaultBindingsList"
-              [(ngModel)]="selectedCity">
-  </mtx-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Without appendTo</mat-label>
+    <mtx-select [items]="defaultBindingsList"
+                [(ngModel)]="selectedCity">
+    </mtx-select>
+  </mat-form-field>
 
-<mat-form-field class="m-x-8">
-  <mat-label>With appendTo</mat-label>
-  <mtx-select [items]="defaultBindingsList"
-              [(ngModel)]="selectedCity"
-              [appendTo]="'app-admin-layout'">
-  </mtx-select>
-</mat-form-field>
+  <mat-form-field class="m-x-8">
+    <mat-label>With appendTo</mat-label>
+    <mtx-select [items]="defaultBindingsList"
+                [(ngModel)]="selectedCity">
+    </mtx-select>
+  </mat-form-field>
+</div>
