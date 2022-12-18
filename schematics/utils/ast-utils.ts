@@ -1,4 +1,4 @@
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import * as ts from 'typescript';
 import {
   findNodes,
   getRouterModuleDeclaration,
@@ -126,7 +126,7 @@ export function addRouteDeclarationToModule(
   ) as ts.ArrayLiteralExpression;
 
   return insertAfterLastOccurrence(
-    (routeNodeChildren.elements as unknown) as ts.Node[],
+    routeNodeChildren.elements as unknown as ts.Node[],
     route,
     fileToAdd,
     routeNodeChildren.elements.pos,

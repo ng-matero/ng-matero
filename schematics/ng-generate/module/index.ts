@@ -9,7 +9,7 @@ import {
   applyTemplates,
 } from '@angular-devkit/schematics';
 import { strings, normalize, Path } from '@angular-devkit/core';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import * as ts from 'typescript';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { parseName } from '@schematics/angular/utility/parse-name';

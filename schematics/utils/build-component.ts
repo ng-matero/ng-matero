@@ -30,7 +30,7 @@ import { validateHtmlSelector } from '@schematics/angular/utility/validation';
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
+import * as ts from 'typescript';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 import { getDefaultComponentOptions, getProjectFromWorkspace } from '@angular/cdk/schematics';
 

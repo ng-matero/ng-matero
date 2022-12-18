@@ -1,6 +1,6 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { getChildElementIndentation } from '@angular/cdk/schematics';
-import { Element, parse as parseHtml } from 'parse5';
+import { Element, getChildElementIndentation } from '@angular/cdk/schematics';
+import { parse as parseHtml } from 'parse5';
 
 /** Appends the given element HTML fragment to the `<head>` element of the specified HTML file. */
 export function appendHtmlElement(
@@ -27,7 +27,7 @@ export function appendHtmlElement(
     throw new Error(`Could not find '<${tag}>' element in HTML file: ${htmlFileBuffer}`);
   }
 
-  const endTagOffset = elemTag.sourceCodeLocation!.endTag.startOffset;
+  const endTagOffset = elemTag.sourceCodeLocation!.endTag!.startOffset;
   const indentationOffset = getChildElementIndentation(elemTag);
   const insertion = `${' '.repeat(indentationOffset)}${elementHtml}`;
 
