@@ -82,7 +82,6 @@ function updateVersions(cb) {
       each(function (content, file, callback) {
         [
           '@angular/cdk',
-          '@angular/flex-layout',
           '@angular/material',
           '@angular/material-moment-adapter',
           '@ng-matero/extensions',

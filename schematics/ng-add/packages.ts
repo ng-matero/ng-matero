@@ -15,7 +15,6 @@ export function addKeyPkgsToPackageJson(host: Tree) {
 export function add3rdPkgsToPackageJson(host: Tree) {
   addPackage(host, '@angular/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@angular/material-moment-adapter@0.0.0-PLACEHOLDER');
-  addPackage(host, '@angular/flex-layout@0.0.0-PLACEHOLDER');
 
   // 3rd lib
   addPackage(host, '@ng-matero/extensions@0.0.0-PLACEHOLDER');
