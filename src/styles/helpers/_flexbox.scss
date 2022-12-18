@@ -1,0 +1,90 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+$utilities: map.merge(
+  (
+    'flex': (
+      property: flex,
+      class: flex,
+      values: (fill: 1 1 auto)
+    ),
+    'flex-direction': (
+      property: flex-direction,
+      class: flex,
+      values: (
+        row: row,
+        row-reverse: row-reverse,
+        col: column,
+        col-reverse: column-reverse
+      )
+    ),
+    'flex-grow': (
+      property: flex-grow,
+      class: flex,
+      values: (
+        grow-0: 0,
+        grow-1: 1,
+      )
+    ),
+    'flex-shrink': (
+      property: flex-shrink,
+      class: flex,
+      values: (
+        shrink-0: 0,
+        shrink-1: 1,
+      )
+    ),
+    'flex-wrap': (
+      property: flex-wrap,
+      class: flex,
+      values: wrap nowrap wrap-reverse
+    ),
+    'justify-content': (
+      property: justify-content,
+      class: justify-content,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+      )
+    ),
+    'align-content': (
+      property: align-content,
+      class: align-content,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+        stretch: stretch,
+      )
+    ),
+    'align-items': (
+      property: align-items,
+      class: align-items,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        baseline: baseline,
+        stretch: stretch,
+      )
+    ),
+    'align-self': (
+      property: align-self,
+      class: align-self,
+      values: (
+        auto: auto,
+        start: flex-start,
+        end: flex-end,
+        center: center,
+        baseline: baseline,
+        stretch: stretch,
+      )
+    ),
+  ),
+  $utilities
+);

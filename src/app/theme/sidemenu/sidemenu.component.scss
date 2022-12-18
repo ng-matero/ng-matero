@@ -83,6 +83,10 @@
     border-radius: 50rem;
   }
 
+  .menu-spacer {
+    flex-grow: 1;
+  }
+
   &.level-0 > li > .menu-heading > .menu-name {
     margin-right: 5px;
 

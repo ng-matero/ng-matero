@@ -14,10 +14,6 @@
   padding-left: variables.$gutter * .5;
 }
 
-.flex-spacer {
-  flex-grow: 1;
-}
-
 .badge {
   @include badge();
 }
