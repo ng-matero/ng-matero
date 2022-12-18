@@ -6,7 +6,7 @@
   $primary: map.get($theme, primary);
   $foreground: map.get($theme, foreground);
 
-  a {
+  a:not(.mat-mdc-button-base) {
     color: mat.get-color-from-palette($primary);
 
     &:hover {
