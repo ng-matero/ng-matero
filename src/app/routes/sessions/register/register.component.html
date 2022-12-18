@@ -37,15 +37,13 @@
           </mat-error>
         </mat-form-field>
 
-        <div class="m-y-16" fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-checkbox>{{'register.agree' | translate}}</mat-checkbox>
-        </div>
+        <mat-checkbox>{{'register.agree' | translate}}</mat-checkbox>
 
-        <button class="w-full" mat-raised-button color="primary">
+        <button class="w-full m-y-16" mat-raised-button color="primary">
           {{'register.register' | translate}}
         </button>
 
-        <div class="m-t-16">{{'register.have_an_account' | translate}}?
+        <div>{{'register.have_an_account' | translate}}?
           <a routerLink="/auth/login">{{'login.login' | translate}}</a>
         </div>
       </form>
