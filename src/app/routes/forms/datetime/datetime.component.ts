@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
-
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { MtxDatetimepickerFilterType } from '@ng-matero/extensions/datetimepicker';
 import * as moment from 'moment';
-
-import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forms-datetime',
@@ -52,10 +50,12 @@ export class FormsDatetimeComponent implements OnInit, OnDestroy {
 
     this.group = this.fb.group({
       dateTime: [new Date('2017-11-09T12:10:00.000Z'), Validators.required],
+      dateTimeManual: [new Date('2017-11-09T12:10:00.000Z'), Validators.required],
       dateTimeYear: [new Date('2017-11-09T12:10:00.000Z'), Validators.required],
       date: [null, Validators.required],
       time: [null, Validators.required],
       timeAMPM: [null, Validators.required],
+      timeAMPMManual: [null, Validators.required],
       month: [null, Validators.required],
       year: [null, Validators.required],
       mintest: [this.today, Validators.required],

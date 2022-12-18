@@ -13,7 +13,7 @@
           <mat-label>{{'login.username' | translate}}</mat-label>
           <input matInput formControlName="username" required>
           <mat-error *ngIf="registerForm.get('username')?.invalid">
-            {{'validations.required' | translate}}
+            <span>{{'validations.required' | translate}}</span>
           </mat-error>
         </mat-form-field>
 
@@ -21,7 +21,7 @@
           <mat-label>{{'login.password' | translate}}</mat-label>
           <input matInput type="password" formControlName="password" required>
           <mat-error *ngIf="registerForm.get('password')?.invalid">
-            {{'validations.required' | translate}}
+            <span>{{'validations.required' | translate}}</span>
           </mat-error>
         </mat-form-field>
 
@@ -29,11 +29,11 @@
           <mat-label>{{'register.confirm_password' | translate}}</mat-label>
           <input matInput type="password" formControlName="confirmPassword" required>
           <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
-            {{'validations.required' | translate}}
+            <span>{{'validations.required' | translate}}</span>
           </mat-error>
           <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch')"
                      translate [translateParams]="{value: 'login.password' | translate}">
-            {{'validations.inconsistent'}}
+            <span>{{'validations.inconsistent'}}</span>
           </mat-error>
         </mat-form-field>
 
