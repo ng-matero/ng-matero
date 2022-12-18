@@ -4,32 +4,27 @@
   <mat-tab-group mat-stretch-tabs="false">
     <mat-tab label="Material">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Typography</h3>
 
-            <mat-list-item><code>.mat-display-4</code></mat-list-item>
-            <mat-list-item><code>.mat-display-3</code></mat-list-item>
-            <mat-list-item><code>.mat-display-2</code></mat-list-item>
-            <mat-list-item><code>.mat-display-1</code></mat-list-item>
-
-            <mat-list-item><code>.mat-h1</code>, <code>.mat-headline</code>
-            </mat-list-item>
-            <mat-list-item><code>.mat-h2</code>, <code>.mat-title</code></mat-list-item>
-            <mat-list-item><code>.mat-h3</code>, <code>.mat-subheading-2</code>
-            </mat-list-item>
-            <mat-list-item><code>.mat-h4</code>, <code>.mat-subheading-1</code>
-            </mat-list-item>
-
-            <mat-list-item><code>.mat-body</code>, <code>.mat-body-1</code>
-            </mat-list-item>
-            <mat-list-item><code>.mat-body-strong</code>, <code>.mat-body-2</code>
-            </mat-list-item>
-            <mat-list-item><code>.mat-small</code>, <code>.mat-caption</code>
-            </mat-list-item>
+            <mat-list-item><code>.mat-headline-1</code></mat-list-item>
+            <mat-list-item><code>.mat-headline-2</code></mat-list-item>
+            <mat-list-item><code>.mat-headline-3</code></mat-list-item>
+            <mat-list-item><code>.mat-headline-4</code></mat-list-item>
+            <mat-list-item><code>.mat-h1</code>, <code>.mat-headline-5</code></mat-list-item>
+            <mat-list-item><code>.mat-h2</code>, <code>.mat-headline-6</code></mat-list-item>
+            <mat-list-item><code>.mat-h3</code>, <code>.mat-subtitle-1</code></mat-list-item>
+            <mat-list-item><code>.mat-h4</code>, <code>.mat-body-1</code></mat-list-item>
+            <mat-list-item><code>.mat-h5</code></mat-list-item>
+            <mat-list-item><code>.mat-h6</code></mat-list-item>
+            <mat-list-item><code>.mat-body</code>, <code>.mat-body-2</code></mat-list-item>
+            <mat-list-item><code>.mat-body-strong</code>,
+              <code>.mat-subtitle-2</code></mat-list-item>
+            <mat-list-item><code>.mat-small</code>, <code>.mat-caption</code></mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Elevation</h3>
             <ng-container *ngFor="let i of [0,1,2,3]">
@@ -69,9 +64,93 @@
       </div>
     </mat-tab>
 
+    <mat-tab label="Layout">
+      <div fxLayout="row wrap">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Position</h3>
+            <mat-list-item *ngFor="let i of ['static','fixed','absolute','relative','sticky']">
+              <code>.{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Display</h3>
+            <mat-list-item *ngFor="let i of ['block','inline-block','inline',
+            'flex','inline-flex','none']">
+              <code>.d-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Direction)</h3>
+            <mat-list-item *ngFor="let i of ['row','row-reverse','col','col-reverse']">
+              <code>.flex-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Fill & Grow & shrink)</h3>
+            <mat-list-item>
+              <code>.flex-fill</code>
+            </mat-list-item>
+            <mat-list-item *ngFor="let i of ['grow-0','grow-1']">
+              <code>.flex-{{i}}</code>
+            </mat-list-item>
+            <mat-list-item *ngFor="let i of ['shrink-0','shrink-1']">
+              <code>.flex-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Wrap)</h3>
+            <mat-list-item *ngFor="let i of ['wrap','nowrap','wrap-reverse']">
+              <code>.flex-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Justify content)</h3>
+            <mat-list-item *ngFor="let i of ['start','end','center','between','around']">
+              <code>.justify-content-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Align content)</h3>
+            <mat-list-item *ngFor="let i of ['start','end','center','between','around','stretch']">
+              <code>.align-content-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Align items)</h3>
+            <mat-list-item *ngFor="let i of ['start','end','center','baseline','stretch']">
+              <code>.align-items-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Flexbox (Align self)</h3>
+            <mat-list-item *ngFor="let i of ['auto','start','end','center','baseline','stretch']">
+              <code>.align-self-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-tab>
+
     <mat-tab label="Spacings">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Margin</h3>
             <mat-list-item *ngFor="let i of [0,4,8,16,24,32,48,'auto']">
@@ -79,7 +158,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Negative Margin</h3>
             <mat-list-item *ngFor="let i of [4,8,16,24,32,48]">
@@ -87,7 +166,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Padding</h3>
             <mat-list-item *ngFor="let i of [0,4,8,16,24,32,48]">
@@ -100,7 +179,7 @@
 
     <mat-tab label="Fonts">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Font Weight</h3>
             <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
@@ -108,7 +187,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Font Size</h3>
             <mat-list-item *ngFor="let i of [0,10,12,14,16,18,20]">
@@ -121,7 +200,7 @@
 
     <mat-tab label="Border">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Border Width</h3>
             <mat-list-item *ngFor="let i of [0,1,2,3,4,5]">
@@ -129,7 +208,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Border Radius</h3>
             <mat-list-item *ngFor="let i of [0,4,8,16,24,32,'full']">
@@ -142,17 +221,17 @@
 
     <mat-tab label="Size">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
-            <h3 matSubheader>Width</h3>
+            <h3 matSubheader>Width (%)</h3>
             <mat-list-item *ngFor="let i of [20,25,40,50,60,75,80,'full','auto']">
               <code>.w-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
-            <h3 matSubheader>Height</h3>
+            <h3 matSubheader>Height (%)</h3>
             <mat-list-item *ngFor="let i of [20,25,40,50,60,75,80,'full','auto']">
               <code>.h-{{i}}</code>
             </mat-list-item>
@@ -161,9 +240,9 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="Typography">
+    <mat-tab label="Text">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Text Transform</h3>
             <mat-list-item *ngFor="let i of ['capitalize','uppercase','lowercase']">
@@ -171,7 +250,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Text Align</h3>
             <mat-list-item *ngFor="let i of ['center','right','left']">
@@ -179,7 +258,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>White Space</h3>
             <mat-list-item *ngFor="let i of ['normal','nowrap']">
@@ -187,7 +266,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Vertical Align</h3>
             <mat-list-item *ngFor="let i of ['top','middle','bottom']">
@@ -195,7 +274,7 @@
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Ellipsis</h3>
             <mat-list-item><code>.text-ellipsis</code>, <code>.text-truncate</code>
@@ -205,19 +284,38 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="Image & Icon">
+    <mat-tab label="Misc">
       <div fxLayout="row wrap">
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
-            <h3 matSubheader>Object Fit</h3>
-            <mat-list-item *ngFor="let i of ['cover','contain']"><code>.fit-{{i}}</code>
+            <h3 matSubheader>Cursor</h3>
+            <mat-list-item *ngFor="let i of ['default','pointer','text',
+            'move','copy','not-allowed']">
+              <code>.cursor-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
-        <div fxFlex="25" fxFlex.lt-sm="50">
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Overflow</h3>
+            <mat-list-item *ngFor="let i of ['auto','hidden','visible','scroll']">
+              <code>.overflow[-[x|y]]-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
           <mat-list>
             <h3 matSubheader>Icon Size</h3>
-            <mat-list-item *ngFor="let i of [18,24,36,48]"><code>.icon-{{i}}</code>
+            <mat-list-item *ngFor="let i of [18,24,36,48]">
+              <code>.icon-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div fxFlex="25" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+          <mat-list>
+            <h3 matSubheader>Object Fit</h3>
+            <mat-list-item *ngFor="let i of ['cover','contain']">
+              <code>.fit-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>

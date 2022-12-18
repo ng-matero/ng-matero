@@ -11,12 +11,12 @@ $utilities: map.merge(
     'overflow-x': (
       property: overflow-x,
       class: overflow-x,
-      values: hidden visible scroll
+      values: auto hidden visible scroll
     ),
     'overflow-y': (
       property: overflow-y,
       class: overflow-y,
-      values: hidden visible scroll
+      values: auto hidden visible scroll
     )
   ),
   $utilities
