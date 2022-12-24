@@ -1,4 +1,4 @@
-@use 'long-shadow' as *;
+@use 'long-shadow';
 
 .matero-error-wrap {
   text-align: center;
@@ -8,7 +8,7 @@
   padding: 20px 0;
   font-size: 150px;
   text-shadow:
-    long-shadow(
+    long-shadow.long-shadow(
       $direction: 45deg,
       $length: 60px,
       $color: rgba(0, 0, 0, .03),

@@ -1,6 +1,6 @@
 @use 'variables';
-@use 'badge' as *;
-@use 'scrollbar' as *;
+@use 'badge';
+@use 'scrollbar';
 
 // TODO: Grid row
 .matero-row {
@@ -15,15 +15,15 @@
 }
 
 .badge {
-  @include badge();
+  @include badge.badge();
 }
 
 .scrollbar-thin {
-  @include scrollbar-thin();
+  @include scrollbar.thin();
 }
 
 .scrollbar-none {
-  @include scrollbar-none();
+  @include scrollbar.none();
 }
 
 @media (max-width: 720px) {

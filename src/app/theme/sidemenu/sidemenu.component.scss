@@ -1,6 +1,6 @@
 @use '../style/variables';
 @use '../style/transitions';
-@use '../style/badge' as *;
+@use '../style/badge';
 
 .matero-sidemenu {
   width: variables.$sidenav-width;
@@ -76,7 +76,7 @@
 
   .menu-label,
   .menu-badge {
-    @include badge();
+    @include badge.badge();
   }
 
   .menu-badge {

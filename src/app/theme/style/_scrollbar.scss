@@ -1,4 +1,4 @@
-@mixin scrollbar-thin() {
+@mixin thin() {
   &::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -31,7 +31,7 @@
   }
 }
 
-@mixin scrollbar-none {
+@mixin none {
   &::-webkit-scrollbar {
     width: 0;
     height: 0;

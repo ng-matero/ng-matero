@@ -24,7 +24,7 @@ $theme: mat.define-light-theme(
 //
 // Dark theme
 //
-$primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
+$primary: mat.define-palette(mat.$blue-palette);
 $accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 $theme: mat.define-dark-theme(
   (
@@ -46,7 +46,7 @@ $theme: mat.define-dark-theme(
 .theme-dark {
   color-scheme: dark;
 
-  $primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
+  $primary: mat.define-palette(mat.$blue-palette);
   $accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
   $theme: mat.define-dark-theme(
     (
