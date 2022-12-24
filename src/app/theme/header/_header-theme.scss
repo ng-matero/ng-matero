@@ -5,7 +5,7 @@
   $background: map.get($theme, background);
   $foreground: map.get($theme, foreground);
 
-  .matero-branding-name {
-    color: mat.get-color-from-palette($foreground, text);
+  .matero-toolbar {
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
   }
 }
