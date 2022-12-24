@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-notification',
   template: `
     <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>notifications</mat-icon>
-      <span class="badge bg-red-500">5</span>
+      <mat-icon matBadge="5" matBadgeColor="warn">notifications</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -17,17 +16,7 @@ import { Component } from '@angular/core';
       </mat-nav-list>
     </mat-menu>
   `,
-  styles: [
-    `
-      .badge {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 12px;
-        border-radius: 50rem;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class NotificationComponent {
   messages = ['Server Error Reports', 'Server Error Reports', 'Server Error Reports'];

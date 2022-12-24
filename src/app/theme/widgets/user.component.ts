@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, tap } from 'rxjs/operators';
 import { AuthService, User } from '@core/authentication';
@@ -28,22 +28,21 @@ import { AuthService, User } from '@core/authentication';
   `,
   styles: [
     `
-      .matero-avatar-button.mat-mdc-button {
+      .matero-avatar-button {
         border-radius: 50rem;
+      }
 
-        .matero-avatar {
-          width: 24px;
-          height: 24px;
-          border-radius: 50rem;
-        }
+      .matero-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50rem;
+      }
 
-        .matero-username {
-          margin: 0 8px;
-        }
+      .matero-username {
+        margin: 0 8px;
       }
     `,
   ],
-  encapsulation: ViewEncapsulation.None,
 })
 export class UserComponent implements OnInit {
   user!: User;

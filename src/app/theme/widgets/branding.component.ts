@@ -1,10 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-branding',
   template: `
     <a class="matero-branding" href="/">
-      <img src="./assets/images/matero.png" class="matero-branding-logo-expanded" alt="logo" />
+      <img src="./assets/images/matero.png" class="matero-branding-logo" alt="logo" />
       <span class="matero-branding-name">MATERO</span>
     </a>
   `,
@@ -12,29 +12,24 @@ import { Component, ViewEncapsulation } from '@angular/core';
     `
       .matero-branding {
         display: inline-block;
-        font-size: 16px;
-        white-space: nowrap;
         border-radius: 50rem;
+        white-space: nowrap;
+        color: inherit !important;
       }
 
-      .matero-branding-logo-expanded {
+      .matero-branding-logo {
         width: 30px;
         height: 30px;
-        margin-right: 10px;
         vertical-align: middle;
-
-        [dir='rtl'] & {
-          margin-right: auto;
-          margin-left: 10px;
-        }
       }
 
       .matero-branding-name {
-        font-weight: normal;
+        margin: 0 10px;
+        font-size: 16px;
+        font-weight: 500;
         vertical-align: middle;
       }
     `,
   ],
-  encapsulation: ViewEncapsulation.None,
 })
 export class BrandingComponent {}
