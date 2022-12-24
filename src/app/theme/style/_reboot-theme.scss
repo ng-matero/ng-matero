@@ -5,6 +5,13 @@
 @mixin theme($theme) {
   $primary: map.get($theme, primary);
   $foreground: map.get($theme, foreground);
+  $is-dark-theme: map.get($theme, is-dark);
+
+  @if $is-dark-theme {
+    :root {
+      color-scheme: dark;
+    }
+  }
 
   a:not(.mat-mdc-button-base) {
     color: mat.get-color-from-palette($primary);

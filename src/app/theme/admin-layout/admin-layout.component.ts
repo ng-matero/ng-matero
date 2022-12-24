@@ -3,7 +3,6 @@ import {
   OnDestroy,
   ViewChild,
   HostBinding,
-  ElementRef,
   Inject,
   Optional,
   ViewEncapsulation,
@@ -13,7 +12,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { Directionality } from '@angular/cdk/bidi';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 
@@ -64,18 +62,20 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private isCollapsedWidthFixed = false;
 
+  private htmlElement!: HTMLHtmlElement;
+
   constructor(
     private router: Router,
     private mediaMatcher: MediaMatcher,
     private breakpointObserver: BreakpointObserver,
-    private overlay: OverlayContainer,
-    private element: ElementRef,
     private settings: SettingsService,
     @Optional() @Inject(DOCUMENT) private document: Document,
     @Inject(Directionality) public dir: AppDirectionality
   ) {
     this.dir.value = this.options.dir;
     this.document.body.dir = this.dir.value;
+
+    this.htmlElement = this.document.querySelector('html')!;
 
     this.layoutChangesSubscription = this.breakpointObserver
       .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
@@ -150,11 +150,9 @@ export class AdminLayoutComponent implements OnDestroy {
 
   toggleDarkTheme(options: AppSettings) {
     if (options.theme === 'dark') {
-      this.element.nativeElement.classList.add('theme-dark');
-      this.overlay.getContainerElement().classList.add('theme-dark');
+      this.htmlElement.classList.add('theme-dark');
     } else {
-      this.element.nativeElement.classList.remove('theme-dark');
-      this.overlay.getContainerElement().classList.remove('theme-dark');
+      this.htmlElement.classList.remove('theme-dark');
     }
   }
 

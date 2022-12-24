@@ -37,7 +37,6 @@ $theme: mat.define-dark-theme(
   )
 );
 <% } %>
-$config: mat.define-typography-config();
 
 @include app-theme.theme($theme);
 <% if(layout==='dynamic' || theme==='auto') { %>
@@ -45,6 +44,8 @@ $config: mat.define-typography-config();
 // Dark theme
 //
 .theme-dark {
+  color-scheme: dark;
+
   $primary: mat.define-palette(mat.$blue-palette, 700, 300, 900);
   $accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
   $theme: mat.define-dark-theme(
