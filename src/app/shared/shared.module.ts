@@ -7,7 +7,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { MaterialModule } from '../material.module';
 import { MaterialExtensionsModule } from '../material-extensions.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressModule } from 'ngx-progressbar';
@@ -32,7 +32,6 @@ const MODULES: any[] = [
   DragDropModule,
   MaterialModule,
   MaterialExtensionsModule,
-  FlexLayoutModule,
   FormlyModule,
   FormlyMaterialModule,
   NgProgressModule,

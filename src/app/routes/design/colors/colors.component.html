@@ -1,14 +1,15 @@
 <breadcrumb></breadcrumb>
 
-<div fxLayout="row wrap" fxLayoutGap="16px grid">
-  <div fxFlex.gt-md="20" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100"
-       *ngFor="let color of colors; trackBy: trackByColor">
-    <div class="b-1">
+<div class="row">
+  <div class="col-sm-6 col-md-3 col-xl-2" *ngFor="let color of colors; trackBy: trackByColor">
+    <div class="b-1 m-b-16">
       <ng-container *ngFor="let hue of color.value | keyvalue: keyAscOrder; first as isFirst;">
-        <div class="bg-{{color.key + '-' + hue.key}} text-{{color.value['contrast'][hue.key]}} p-8"
+        <div class="d-flex p-8 bg-{{color.key + '-' + hue.key}} text-{{color.value['contrast'][hue.key]}}"
              *ngIf="hue.key.toString() !== 'contrast'">
-          <span class="m-r-4 text-capitalize" *ngIf="isFirst">{{color.key}}</span>
-          <span>{{hue.key}}</span><span fxFlex></span><span>{{hue.value}}</span>
+          <span class="text-capitalize" *ngIf="isFirst">{{color.key}}</span>
+          <span [class]="{'m-x-8': isFirst}">{{hue.key}}</span>
+          <span class="flex-fill"></span>
+          <span>{{hue.value}}</span>
         </div>
       </ng-container>
     </div>

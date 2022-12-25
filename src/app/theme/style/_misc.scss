@@ -2,18 +2,6 @@
 @use 'badge';
 @use 'scrollbar';
 
-// TODO: Grid row
-.matero-row {
-  margin-right: variables.$gutter * -.5;
-  margin-left: variables.$gutter * -.5;
-}
-
-// TODO: Grid col
-.matero-col {
-  padding-right: variables.$gutter * .5;
-  padding-left: variables.$gutter * .5;
-}
-
 .badge {
   @include badge.badge();
 }

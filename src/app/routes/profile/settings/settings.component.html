@@ -1,13 +1,12 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header class="m-b-16">
     <mat-card-title>Edit Profile</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <form [formGroup]="reactiveForm" class="form-field-full">
-      <div fxLayout="row wrap" fxLayoutGap="8px grid">
-
-        <div fxFlex="50" fxFlex.lt-md="100">
+      <div class="row">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="username" required>
@@ -16,7 +15,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Email</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="email" required>
@@ -25,7 +24,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Gender</mat-label>
             <mat-select formControlName="gender" required>
@@ -37,7 +36,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>City</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="city" required>
@@ -45,7 +44,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Address</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="address" required>
@@ -53,7 +52,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Company</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="company" required>
@@ -61,7 +60,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Mobile</mat-label>
             <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile"
@@ -71,7 +70,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Tele</mat-label>
             <input matInput placeholder="Simple placeholder" type="number" formControlName="tele"
@@ -81,7 +80,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <mat-label>Website</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="website" required>
@@ -89,7 +88,7 @@
           </mat-form-field>
         </div>
 
-        <div fxFlex="50" fxFlex.lt-md="100">
+        <div class="col-sm-6 col-xl-4">
           <mat-form-field>
             <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
                    formControlName="date">
@@ -98,11 +97,10 @@
             <mat-error *ngIf="reactiveForm.get('date')?.invalid">Please enter website</mat-error>
           </mat-form-field>
         </div>
-
       </div>
 
-      <div fxLayout="row" fxLayoutAlign="end center">
-        <button mat-raised-button color="primary" class="m-t-8">Save</button>
+      <div class="d-flex justify-content-end">
+        <button mat-raised-button color="primary">Save</button>
       </div>
     </form>
   </mat-card-content>

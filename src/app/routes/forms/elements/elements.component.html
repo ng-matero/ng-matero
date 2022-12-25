@@ -1,7 +1,7 @@
 <page-header></page-header>
 
-<div fxLayout="row wrap" class="matero-row">
-  <div fxFlex="100" class="matero-col">
+<div class="row">
+  <div class="col-sm-12">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Form Inline</mat-card-title>
@@ -33,7 +33,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div fxFlex="33.33" fxFlex.lt-sm="100" class="matero-col">
+  <div class="col-sm-4">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Form Horizontal</mat-card-title>
@@ -117,8 +117,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-
-  <div fxFlex="66.67" fxFlex.lt-sm="100" class="matero-col">
+  <div class="col-sm-8">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Form Horizontal</mat-card-title>
@@ -126,9 +125,9 @@
 
       <mat-card-content>
         <form [formGroup]="reactiveForm2" class="form-field-full">
-          <div fxLayout="row wrap" fxLayoutGap="8px grid">
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+          <div class="row">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Username</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="username"
@@ -139,7 +138,7 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Gender</mat-label>
                 <mat-select required formControlName="gender" required>
@@ -153,7 +152,7 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Mobile</mat-label>
                 <input matInput placeholder="Simple placeholder" type="number"
@@ -165,7 +164,7 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="email" required>
@@ -175,28 +174,28 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>City</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="city">
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Address</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="address">
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Company</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="company">
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Tele</mat-label>
                 <input matInput placeholder="Simple placeholder" type="number"
@@ -205,14 +204,14 @@
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Website</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="website">
               </mat-form-field>
             </div>
 
-            <div fxFlex="50" fxFlex.lt-sm="100">
+            <div class="col-sm-6">
               <mat-form-field>
                 <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
                        formControlName="date">
@@ -220,7 +219,6 @@
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
             </div>
-
           </div>
 
           <button mat-raised-button color="primary" class="m-t-8">Save</button>
@@ -228,5 +226,4 @@
       </mat-card-content>
     </mat-card>
   </div>
-
 </div>
