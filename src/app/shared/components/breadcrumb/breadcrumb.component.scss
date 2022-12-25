@@ -11,9 +11,12 @@
   line-height: 18px;
   text-transform: capitalize;
 
+  > * {
+    vertical-align: middle;
+  }
+
   > a.link {
     color: currentColor;
-    vertical-align: middle;
 
     &:hover {
       color: currentColor;
@@ -25,7 +28,6 @@
     width: 18px;
     height: 18px;
     font-size: 18px;
-    vertical-align: middle;
     user-select: none;
   }
 }
