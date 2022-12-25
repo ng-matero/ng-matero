@@ -37,7 +37,6 @@ $theme: mat.define-dark-theme(
   )
 );
 <% } %>
-
 @include app-theme.theme($theme);
 <% if(layout==='dynamic' || theme==='auto') { %>
 //

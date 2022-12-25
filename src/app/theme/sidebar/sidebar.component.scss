@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   height: variables.$toolbar-height-desktop;
-  padding: 0 10px;
+  padding: 0 8px;
   overflow: hidden;
 
   @include breakpoints.bp-lt(small) {

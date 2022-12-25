@@ -1,4 +1,8 @@
 .matero-header {
   position: relative;
   z-index: 200;
+
+  .matero-toolbar {
+    padding: 0 8px;
+  }
 }

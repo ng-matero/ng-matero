@@ -9,6 +9,7 @@ $utilities: () !default;
 $spacer: 16px !default;
 $spacers: (
   0: 0,
+  2: $spacer * .125,
   4: $spacer * .25,
   8: $spacer * .5,
   12: $spacer * .75,
