@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { KeyValue } from '@angular/common';
 
-import { DesignColorsService } from './colors.service';
 import { MAT_COLORS } from '@shared';
 
 @Component({
   selector: 'app-design-colors',
   templateUrl: './colors.component.html',
-  providers: [DesignColorsService],
+  styleUrls: ['./colors.component.scss'],
 })
 export class DesignColorsComponent implements OnInit {
   colors: { key: string; value: any }[] = [];
@@ -20,7 +19,7 @@ export class DesignColorsComponent implements OnInit {
     return a.key - b.key;
   }
 
-  constructor(private colorsSrv: DesignColorsService) {}
+  constructor() {}
 
   ngOnInit() {
     const colors: { [k: string]: any } = MAT_COLORS;

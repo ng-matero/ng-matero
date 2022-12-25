@@ -7,6 +7,7 @@ import { FormsSelectEditComponent } from './edit/edit.component';
 @Component({
   selector: 'app-forms-selects',
   templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
   providers: [DataService],
 })
 export class FormsSelectComponent implements OnInit {

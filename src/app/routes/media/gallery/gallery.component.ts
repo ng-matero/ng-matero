@@ -4,6 +4,7 @@ import PhotoViewer from 'photoviewer';
 @Component({
   selector: 'app-media-gallery',
   templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.scss'],
 })
 export class MediaGalleryComponent {
   dir = 'assets/images/pixabay/';

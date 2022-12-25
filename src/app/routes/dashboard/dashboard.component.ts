@@ -9,7 +9,7 @@ import {
 import { SettingsService } from '@core';
 import { Subscription } from 'rxjs';
 
-import { DashboardService } from './dashboard.srevice';
+import { DashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',

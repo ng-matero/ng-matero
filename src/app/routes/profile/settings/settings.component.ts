@@ -5,6 +5,7 @@ import { ControlsOf, IProfile } from '../interface';
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
 })
 export class ProfileSettingsComponent {
   reactiveForm: FormGroup<ControlsOf<IProfile>>;

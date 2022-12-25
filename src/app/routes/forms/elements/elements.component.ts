@@ -8,6 +8,7 @@ import { ControlsOf, IProfile } from 'app/routes/profile/interface';
 @Component({
   selector: 'app-forms-elements',
   templateUrl: './elements.component.html',
+  styleUrls: ['./elements.component.scss'],
 })
 export class FormsElementsComponent implements OnInit, OnDestroy {
   q = {

@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-table-kitchen-sink-edit',
   templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
 })
 export class TablesKitchenSinkEditComponent {
   constructor(

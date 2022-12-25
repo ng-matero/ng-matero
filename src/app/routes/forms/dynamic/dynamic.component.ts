@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
+  styleUrls: ['./dynamic.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsDynamicComponent {
