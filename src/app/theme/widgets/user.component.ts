@@ -6,9 +6,9 @@ import { AuthService, User } from '@core/authentication';
 @Component({
   selector: 'app-user',
   template: `
-    <button class="matero-avatar-button" mat-button [matMenuTriggerFor]="menu">
-      <img matButtonIcon class="matero-avatar" [src]="user.avatar" width="24" alt="avatar" />
-      <span class="matero-username">{{ user.name }}</span>
+    <button class="matero-avatar-button r-full" mat-button [matMenuTriggerFor]="menu">
+      <img matButtonIcon class="matero-avatar r-full" [src]="user.avatar" width="24" alt="avatar" />
+      <span class="matero-username m-x-8">{{ user.name }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -28,18 +28,9 @@ import { AuthService, User } from '@core/authentication';
   `,
   styles: [
     `
-      .matero-avatar-button {
-        border-radius: 50rem;
-      }
-
       .matero-avatar {
         width: 24px;
         height: 24px;
-        border-radius: 50rem;
-      }
-
-      .matero-username {
-        margin: 0 8px;
       }
     `,
   ],

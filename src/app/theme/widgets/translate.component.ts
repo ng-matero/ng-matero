@@ -15,7 +15,6 @@ import { SettingsService } from '@core';
       </button>
     </mat-menu>
   `,
-  styles: [],
 })
 export class TranslateComponent {
   langs = {

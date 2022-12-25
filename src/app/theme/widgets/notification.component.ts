@@ -16,7 +16,6 @@ import { Component } from '@angular/core';
       </mat-nav-list>
     </mat-menu>
   `,
-  styles: [],
 })
 export class NotificationComponent {
   messages = ['Server Error Reports', 'Server Error Reports', 'Server Error Reports'];

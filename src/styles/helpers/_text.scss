@@ -35,6 +35,14 @@ $utilities: map.merge(
       property: text-overflow,
       class: text,
       values: ellipsis
+    ),
+    'color': (
+      property: color,
+      class: text,
+      values: (
+        reset: inherit,
+        current: currentColor
+      )
     )
   ),
   $utilities
