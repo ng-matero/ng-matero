@@ -11,7 +11,7 @@
   .matero-topmenu {
     background: mat.get-color-from-palette($background, app-bar);
 
-    .mat-button {
+    .mat-mdc-button {
       color: mat.get-color-from-palette($foreground, text);
 
       &.active {
@@ -21,10 +21,10 @@
   }
 
   .matero-topmenu-panel {
-    .mat-menu-item {
+    .mat-mdc-menu-item {
       color: mat.get-color-from-palette($foreground, text);
 
-      &.active {
+      &.active > .mdc-list-item__primary-text {
         color: mat.get-color-from-palette($accent);
       }
     }
