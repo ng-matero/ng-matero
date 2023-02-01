@@ -34,7 +34,7 @@
     "@angular/localize": "~15.1.1",
     "@angular/material": "~15.1.1",
     "@angular/material-moment-adapter": "~15.1.1",
-    "@angular/platform-browser": "~15.1.1",
+    "@angular/platform-browser": "~15.1.2",
     "@angular/platform-browser-dynamic": "~15.1.1",
     "@angular/router": "~15.1.1",
     "@ng-matero/extensions": "^15.0.2",
