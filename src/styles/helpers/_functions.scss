@@ -12,3 +12,14 @@
 
   @return $result;
 }
+
+// It allows to combine multiple maps together.
+@function map-collect($maps...) {
+  $collection: ();
+
+  @each $map in $maps {
+    $collection: map.merge($collection, $map);
+  }
+
+  @return $collection;
+}

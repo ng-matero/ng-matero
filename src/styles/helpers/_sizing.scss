@@ -1,18 +1,14 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'width': (
-      property: width,
-      class: w,
-      values: $sizes
-    ),
-    'height': (
-      property: height,
-      class: h,
-      values: $sizes
-    )
+$utilities: (
+  'width': (
+    property: width,
+    class: w,
+    values: variables.$sizes
   ),
-  $utilities
+  'height': (
+    property: height,
+    class: h,
+    values: variables.$sizes
+  )
 );

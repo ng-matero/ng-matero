@@ -1,23 +1,19 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'overflow': (
-      property: overflow,
-      class: overflow,
-      values: auto hidden visible scroll
-    ),
-    'overflow-x': (
-      property: overflow-x,
-      class: overflow-x,
-      values: auto hidden visible scroll
-    ),
-    'overflow-y': (
-      property: overflow-y,
-      class: overflow-y,
-      values: auto hidden visible scroll
-    )
+$utilities: (
+  'overflow': (
+    property: overflow,
+    class: overflow,
+    values: auto hidden visible scroll
   ),
-  $utilities
+  'overflow-x': (
+    property: overflow-x,
+    class: overflow-x,
+    values: auto hidden visible scroll
+  ),
+  'overflow-y': (
+    property: overflow-y,
+    class: overflow-y,
+    values: auto hidden visible scroll
+  )
 );

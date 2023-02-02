@@ -1,49 +1,46 @@
 @use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'font-size': (
-      property: font-size,
-      class: f-s,
-      values: $font-sizes
-    ),
-    'font-weight': (
-      property: font-weight,
-      class: f-w,
-      values: $font-wieghts
-    ),
-    'text-transform': (
-      property: text-transform,
-      class: text,
-      values: capitalize uppercase lowercase
-    ),
-    'text-align': (
-      property: text-align,
-      class: text,
-      values: center right left
-    ),
-    'white-space': (
-      property: white-space,
-      class: text,
-      values: (
-        wrap: normal,
-        nowrap: nowrap
-      )
-    ),
-    'text-overflow': (
-      property: text-overflow,
-      class: text,
-      values: ellipsis
-    ),
-    'color': (
-      property: color,
-      class: text,
-      values: (
-        reset: inherit,
-        current: currentColor
-      )
+$utilities: (
+  'font-size': (
+    property: font-size,
+    class: f-s,
+    values: variables.$font-sizes
+  ),
+  'font-weight': (
+    property: font-weight,
+    class: f-w,
+    values: variables.$font-wieghts
+  ),
+  'text-transform': (
+    property: text-transform,
+    class: text,
+    values: capitalize uppercase lowercase
+  ),
+  'text-align': (
+    property: text-align,
+    class: text,
+    values: center right left
+  ),
+  'white-space': (
+    property: white-space,
+    class: text,
+    values: (
+      wrap: normal,
+      nowrap: nowrap
     )
   ),
-  $utilities
+  'text-overflow': (
+    property: text-overflow,
+    class: text,
+    values: ellipsis
+  ),
+  'color': (
+    property: color,
+    class: text,
+    values: (
+      reset: inherit,
+      current: currentColor
+    )
+  )
 );

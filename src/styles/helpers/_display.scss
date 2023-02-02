@@ -1,13 +1,9 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'display': (
-      property: display,
-      class: d,
-      values: block inline-block inline flex inline-flex none
-    )
-  ),
-  $utilities
+$utilities: (
+  'display': (
+    property: display,
+    class: d,
+    values: block inline-block inline flex inline-flex none
+  )
 );

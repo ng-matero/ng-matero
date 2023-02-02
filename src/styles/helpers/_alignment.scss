@@ -1,13 +1,9 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'vertical-align': (
-      property: vertical-align,
-      class: align,
-      values: top middle bottom
-    )
-  ),
-  $utilities
+$utilities: (
+  'vertical-align': (
+    property: vertical-align,
+    class: align,
+    values: top middle bottom
+  )
 );

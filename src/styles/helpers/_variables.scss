@@ -1,4 +1,4 @@
-@use 'functions' as *;
+@use 'functions';
 
 // Utility Map
 
@@ -18,7 +18,7 @@ $spacers: (
   32: $spacer * 2,
   48: $spacer * 3
 ) !default;
-$negative-spacers: negativify-map($spacers) !default;
+$negative-spacers: functions.negativify-map($spacers) !default;
 
 // Border
 

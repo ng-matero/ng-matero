@@ -1,13 +1,9 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'object-fit': (
-      property: object-fit,
-      class: object,
-      values: contain cover fill none scale-down
-    )
-  ),
-  $utilities
+$utilities: (
+  'object-fit': (
+    property: object-fit,
+    class: object,
+    values: contain cover fill none scale-down
+  )
 );

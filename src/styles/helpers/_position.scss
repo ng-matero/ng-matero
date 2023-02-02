@@ -1,13 +1,9 @@
-@use 'sass:map';
-@use 'variables' as *;
+@use 'variables';
 
-$utilities: map.merge(
-  (
-    'position': (
-      property: position,
-      class: '',
-      values: static fixed absolute relative sticky
-    )
-  ),
-  $utilities
+$utilities: (
+  'position': (
+    property: position,
+    class: '',
+    values: static fixed absolute relative sticky
+  )
 );
