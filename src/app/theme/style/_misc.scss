@@ -1,10 +1,6 @@
-@use 'variables';
-@use 'badge';
 @use 'scrollbar';
-
-.badge {
-  @include badge.badge();
-}
+@use 'badge';
+@use 'icon';
 
 .scrollbar-thin {
   @include scrollbar.thin();
@@ -12,6 +8,16 @@
 
 .scrollbar-none {
   @include scrollbar.none();
+}
+
+.badge {
+  @include badge.badge();
+}
+
+@each $size in [18, 24, 36, 48] {
+  .icon-#{$size} {
+    @include icon.icon($size);
+  }
 }
 
 @media (max-width: 720px) {

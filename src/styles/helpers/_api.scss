@@ -16,7 +16,6 @@
 @use 'overflow';
 @use 'cursor';
 @use 'image';
-@use 'icon';
 
 // Generate Helpers
 @each $key, $utility in $utilities {
