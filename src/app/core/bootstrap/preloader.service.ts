@@ -21,7 +21,7 @@ export class PreloaderService {
       });
 
       if (!el.classList.contains('global-loader-hidden')) {
-        el.className += ' global-loader-fade-in';
+        el.className += ' global-loader-fade-out';
       }
     }
   }
