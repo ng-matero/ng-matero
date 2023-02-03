@@ -98,7 +98,7 @@
     "stylelint-order": "^6.0.0",
     "stylelint-scss": "^4.3.0",
     "ts-node": "~10.9.0",
-    "typescript": "~4.8.4",
+    "typescript": "~4.9.5",
     "webpack-bundle-analyzer": "^4.7.0"
   }
 }
