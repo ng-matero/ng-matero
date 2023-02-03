@@ -1,9 +1,0 @@
-@use 'variables';
-
-$utilities: (
-  'cursor': (
-    property: cursor,
-    class: cursor,
-    values: default pointer text move copy not-allowed
-  )
-);

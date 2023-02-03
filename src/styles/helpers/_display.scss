@@ -4,6 +4,6 @@ $utilities: (
   'display': (
     property: display,
     class: d,
-    values: block inline-block inline flex inline-flex none
+    values: inline inline-block block grid table table-row table-cell flex inline-flex none
   )
 );

@@ -1,0 +1,24 @@
+@use 'variables';
+
+$utilities: (
+  'object-fit': (
+    property: object-fit,
+    class: object,
+    values: contain cover fill none scale-down
+  ),
+  'object-position': (
+    property: object-position,
+    class: object,
+    values: (
+      top: top,
+      bottom: bottom,
+      center: center,
+      left: left,
+      left-top: left top,
+      left-bottom: left bottom,
+      right: right,
+      right-top: right top,
+      right-bottom: right bottom,
+    )
+  )
+);

@@ -25,5 +25,15 @@ $utilities: (
     property: border-left,
     class: b-l,
     values: variables.$borders
+  ),
+  'border-top-bottom': (
+    property: border-top border-bottom,
+    class: b-y,
+    values: variables.$borders
+  ),
+  'border-left-right': (
+    property: border-left border-right,
+    class: b-x,
+    values: variables.$borders
   )
 );

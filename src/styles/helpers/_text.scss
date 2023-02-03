@@ -12,15 +12,25 @@ $utilities: (
     class: f-w,
     values: variables.$font-wieghts
   ),
-  'text-transform': (
-    property: text-transform,
-    class: text,
-    values: capitalize uppercase lowercase
+  'font-style': (
+    property: font-style,
+    class: font,
+    values: italic normal
   ),
   'text-align': (
     property: text-align,
     class: text,
     values: center right left
+  ),
+  'text-decoration': (
+    property: text-decoration,
+    class: text,
+    values: none underline line-through
+  ),
+  'text-transform': (
+    property: text-transform,
+    class: text,
+    values: capitalize uppercase lowercase
   ),
   'white-space': (
     property: white-space,
@@ -30,12 +40,17 @@ $utilities: (
       nowrap: nowrap
     )
   ),
+  'word-wrap': (
+    property: word-wrap word-break,
+    class: text,
+    values: (break: break-word)
+  ),
   'text-overflow': (
     property: text-overflow,
     class: text,
     values: ellipsis
   ),
-  'color': (
+  'text-color': (
     property: color,
     class: text,
     values: (

@@ -4,9 +4,9 @@
 
 @use 'functions';
 @use 'variables';
+@use 'position';
 @use 'display';
 @use 'flexbox';
-@use 'position';
 @use 'sizing';
 @use 'spacing';
 @use 'border';
@@ -14,14 +14,14 @@
 @use 'text';
 @use 'alignment';
 @use 'overflow';
-@use 'cursor';
-@use 'image';
+@use 'interaction';
+@use 'object';
 
 $utilities: functions.map-collect(
   variables.$utilities,
+  position.$utilities,
   display.$utilities,
   flexbox.$utilities,
-  position.$utilities,
   sizing.$utilities,
   spacing.$utilities,
   border.$utilities,
@@ -29,8 +29,8 @@ $utilities: functions.map-collect(
   text.$utilities,
   alignment.$utilities,
   overflow.$utilities,
-  cursor.$utilities,
-  image.$utilities,
+  interaction.$utilities,
+  object.$utilities,
 );
 
 @each $key, $utility in $utilities {

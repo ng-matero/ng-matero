@@ -25,5 +25,25 @@ $utilities: (
     property: border-bottom-left-radius,
     class: r-b-l,
     values: variables.$radius
+  ),
+  'border-top-radius': (
+    property: border-top-left-radius border-top-right-radius,
+    class: r-t,
+    values: variables.$radius
+  ),
+  'border-bottom-radius': (
+    property: border-bottom-left-radius border-bottom-right-radius,
+    class: r-b,
+    values: variables.$radius
+  ),
+  'border-left-radius': (
+    property: border-top-left-radius border-bottom-left-radius,
+    class: r-l,
+    values: variables.$radius
+  ),
+  'border-right-radius': (
+    property: border-top-right-radius border-bottom-right-radius,
+    class: r-r,
+    values: variables.$radius
   )
 );
