@@ -1,22 +1,20 @@
+import { normalize, Path, strings } from '@angular-devkit/core';
 import {
-  Rule,
-  Tree,
   apply,
-  url,
-  move,
+  applyTemplates,
   chain,
   mergeWith,
-  applyTemplates,
+  move,
+  Rule,
+  Tree,
+  url,
 } from '@angular-devkit/schematics';
-import { strings, normalize, Path } from '@angular-devkit/core';
-import * as ts from 'typescript';
-import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
-import { createDefaultPath } from '@schematics/angular/utility/workspace';
-import { parseName } from '@schematics/angular/utility/parse-name';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
-
-import { Schema as ModuleOptions, RoutingScope } from './schema';
-
+import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
+import { parseName } from '@schematics/angular/utility/parse-name';
+import { createDefaultPath } from '@schematics/angular/utility/workspace';
+import { RoutingScope, Schema as ModuleOptions } from './schema';
 import { addRouteDeclarationToModule } from '../../utils';
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {

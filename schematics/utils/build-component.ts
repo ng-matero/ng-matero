@@ -1,4 +1,5 @@
-import { strings, template as interpolateTemplate, Path } from '@angular-devkit/core';
+import { Path, strings, template as interpolateTemplate } from '@angular-devkit/core';
+import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 import {
   apply,
   applyTemplates,
@@ -14,25 +15,24 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
+import { getDefaultComponentOptions, getProjectFromWorkspace } from '@angular/cdk/schematics';
 import { Schema, Style } from '@schematics/angular/component/schema';
+import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
+  addExportToModule,
+  addRouteDeclarationToModule,
+  findNode,
   insertAfterLastOccurrence,
   insertImport,
-  findNode,
-  addRouteDeclarationToModule,
-  addExportToModule,
 } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { validateHtmlSelector } from '@schematics/angular/utility/validation';
+import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
-import * as ts from 'typescript';
-import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
-import { getDefaultComponentOptions, getProjectFromWorkspace } from '@angular/cdk/schematics';
 
 export interface ComponentOptions extends Schema {
   entryComponent?: any;
