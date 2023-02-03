@@ -33,8 +33,9 @@
   }
 }
 
-// Generate text color helpers
+// Generate text-color helpers
 @include generate-colors('text', 'color');
-
-// Generate background color helpers
+// Generate background-color helpers
 @include generate-colors('bg', 'background-color');
+// Generate border-color helpers
+@include generate-colors('border', 'border-color');

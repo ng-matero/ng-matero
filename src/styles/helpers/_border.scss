@@ -16,14 +16,14 @@ $utilities: (
     class: b-b,
     values: variables.$borders
   ),
-  'border-right': (
-    property: border-right,
-    class: b-r,
-    values: variables.$borders
-  ),
   'border-left': (
     property: border-left,
     class: b-l,
+    values: variables.$borders
+  ),
+  'border-right': (
+    property: border-right,
+    class: b-r,
     values: variables.$borders
   ),
   'border-top-bottom': (
@@ -35,5 +35,77 @@ $utilities: (
     property: border-left border-right,
     class: b-x,
     values: variables.$borders
+  ),
+  // only border-width
+  'border-width': (
+    property: border-width,
+    class: border,
+    values: variables.$border-widths
+  ),
+  'border-top-width': (
+    property: border-top-width,
+    class: border-t,
+    values: variables.$border-widths
+  ),
+  'border-bottom-width': (
+    property: border-bottom-width,
+    class: border-b,
+    values: variables.$border-widths
+  ),
+  'border-left-width': (
+    property: border-left-width,
+    class: border-l,
+    values: variables.$border-widths
+  ),
+  'border-right-width': (
+    property: border-right-width,
+    class: border-r,
+    values: variables.$border-widths
+  ),
+  'border-top-bottom-width': (
+    property: border-top-width border-bottom-width,
+    class: border-y,
+    values: variables.$border-widths
+  ),
+  'border-left-right-width': (
+    property: border-left-width border-right-width,
+    class: border-x,
+    values: variables.$border-widths
+  ),
+  // only border-style
+  'border-style': (
+    property: border-style,
+    class: border,
+    values: variables.$border-styles
+  ),
+  'border-top-style': (
+    property: border-top-style,
+    class: border-t,
+    values: variables.$border-styles
+  ),
+  'border-bottom-style': (
+    property: border-bottom-style,
+    class: border-b,
+    values: variables.$border-styles
+  ),
+  'border-left-style': (
+    property: border-left-style,
+    class: border-l,
+    values: variables.$border-styles
+  ),
+  'border-right-style': (
+    property: border-right-style,
+    class: border-r,
+    values: variables.$border-styles
+  ),
+  'border-top-bottom-style': (
+    property: border-top-style border-bottom-style,
+    class: border-y,
+    values: variables.$border-styles
+  ),
+  'border-left-right-style': (
+    property: border-left-style border-right-style,
+    class: border-x,
+    values: variables.$border-styles
   )
 );

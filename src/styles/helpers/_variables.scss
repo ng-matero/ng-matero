@@ -31,6 +31,16 @@ $borders: (
   8: 8px solid $border-color
 ) !default;
 
+$border-widths: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  4: 4px,
+  8: 8px
+) !default;
+
+$border-styles: solid dashed dotted double hidden none !default;
+
 // Border radius
 
 $radius-base: 4px !default;
