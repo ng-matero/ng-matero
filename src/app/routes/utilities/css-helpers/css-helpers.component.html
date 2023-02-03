@@ -39,26 +39,15 @@
 
     <mat-tab label="Colors">
       <div class="row no-gutters">
-        <div class="col-sm-6">
+        <div>
           <mat-list>
-            <h3 matSubheader>Background Color</h3>
+            <h3 matSubheader>Background/Border/Text Color</h3>
             <mat-list-item *ngFor="let i of colorNames">
-              <code>.bg-{{i}}-[50|100|200|300|400|500|600|700|800|900|A100|A200|A400|A700]</code>
+              <code>.[bg|border|text]-{{i}}-[{{colorHues}}]</code>
             </mat-list-item>
-            <mat-list-item><code>.bg-white</code></mat-list-item>
-            <mat-list-item><code>.bg-black</code></mat-list-item>
-          </mat-list>
-        </div>
-        <div class="col-sm-6">
-          <mat-list>
-            <h3 matSubheader>Text Color</h3>
-            <mat-list-item *ngFor="let i of colorNames">
-              <code>.text-{{i}}-[50|100|200|300|400|500|600|700|800|900|A100|A200|A400|A700]</code>
+            <mat-list-item *ngFor="let c of ['white','black','light','dark']">
+              <code>.[bg|border|text]-{{c}}</code>
             </mat-list-item>
-            <mat-list-item><code>.text-white</code></mat-list-item>
-            <mat-list-item><code>.text-black</code></mat-list-item>
-            <mat-list-item><code>.text-light</code></mat-list-item>
-            <mat-list-item><code>.text-dark</code></mat-list-item>
           </mat-list>
         </div>
       </div>
@@ -177,42 +166,37 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="Fonts">
-      <div class="row no-gutters">
-        <div class="col-sm-6 col-md-3">
-          <mat-list>
-            <h3 matSubheader>Font Weight</h3>
-            <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
-              <code>.f-w-{{i*100}}</code>
-            </mat-list-item>
-          </mat-list>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <mat-list>
-            <h3 matSubheader>Font Size</h3>
-            <mat-list-item *ngFor="let i of [0,10,12,14,16,18,20]">
-              <code>.f-s-{{i}}</code>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </div>
-    </mat-tab>
-
     <mat-tab label="Border">
       <div class="row no-gutters">
         <div class="col-sm-6 col-md-3">
           <mat-list>
-            <h3 matSubheader>Border Width</h3>
+            <h3 matSubheader>Border</h3>
             <mat-list-item *ngFor="let i of [0,1,2,3,4,5]">
-              <code>.b[-[t|b|r|l]]-{{i}}</code>
+              <code>.b[-[t|b|r|l|x|y]]-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
+            <h3 matSubheader>Border Width</h3>
+            <mat-list-item *ngFor="let i of [0,1,2,3,4,5]">
+              <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-list>
+            <h3 matSubheader>Border Style</h3>
+            <mat-list-item *ngFor="let i of ['solid','dashed','dotted','double','hidden','none']">
+              <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <mat-list>
             <h3 matSubheader>Border Radius</h3>
             <mat-list-item *ngFor="let i of [0,4,8,16,24,32,'full']">
-              <code>.r[-[t|b]-[|r|l]]-{{i}}</code>
+              <code>.r[-[t|b]-[r|l]]-{{i}}, r[-[t|b|l|r]]-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
@@ -244,41 +228,68 @@
       <div class="row no-gutters">
         <div class="col-sm-6 col-md-3">
           <mat-list>
-            <h3 matSubheader>Text Transform</h3>
-            <mat-list-item *ngFor="let i of ['capitalize','uppercase','lowercase']">
-              <code>.text-{{i}}</code>
+            <h3 matSubheader>Font Weight</h3>
+            <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
+              <code>.f-w-{{i*100}}</code>
             </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Font Size</h3>
+            <mat-list-item *ngFor="let i of [0,10,12,14,16,18,20]">
+              <code>.f-s-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Font Style</h3>
+            <mat-list-item><code>.font-italic</code></mat-list-item>
+            <mat-list-item><code>.font-normal</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Text Align</h3>
-            <mat-list-item *ngFor="let i of ['center','right','left']">
-              <code>.text-{{i}}</code>
-            </mat-list-item>
+            <mat-list-item><code>.text-center</code></mat-list-item>
+            <mat-list-item><code>.text-right</code></mat-list-item>
+            <mat-list-item><code>.text-left</code></mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Text Decoration</h3>
+            <mat-list-item><code>.text-none</code></mat-list-item>
+            <mat-list-item><code>.text-underline</code></mat-list-item>
+            <mat-list-item><code>.text-line-through</code></mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Text Transform</h3>
+            <mat-list-item><code>.text-capitalize</code></mat-list-item>
+            <mat-list-item><code>.text-uppercase</code></mat-list-item>
+            <mat-list-item><code>.text-lowercase</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>White Space</h3>
-            <mat-list-item *ngFor="let i of ['normal','nowrap']">
-              <code>.text-{{i}}</code>
-            </mat-list-item>
+            <mat-list-item><code>.text-normal</code></mat-list-item>
+            <mat-list-item><code>.text-nowrap</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
-            <h3 matSubheader>Vertical Align</h3>
-            <mat-list-item *ngFor="let i of ['top','middle','bottom']">
-              <code>.align-{{i}}</code>
-            </mat-list-item>
+            <h3 matSubheader>Word Wrap</h3>
+            <mat-list-item><code>.text-break</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
-            <h3 matSubheader>Ellipsis</h3>
+            <h3 matSubheader>Text Overflow</h3>
             <mat-list-item><code>.text-ellipsis</code></mat-list-item>
-            <mat-list-item><code>.text-truncate</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
@@ -295,11 +306,34 @@
       <div class="row no-gutters">
         <div class="col-sm-6 col-md-3">
           <mat-list>
+            <h3 matSubheader>Vertical Align</h3>
+            <mat-list-item *ngFor="let i of ['top','middle','bottom']">
+              <code>.align-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
             <h3 matSubheader>Cursor</h3>
             <mat-list-item *ngFor="let i of ['default','pointer','text',
             'move','copy','not-allowed']">
               <code>.cursor-{{i}}</code>
             </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>User Select</h3>
+            <mat-list-item *ngFor="let i of ['all','auto','none']">
+              <code>.select-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Pointer Events</h3>
+            <mat-list-item><code>.pointer-events-none</code></mat-list-item>
+            <mat-list-item><code>.pointer-events-auto</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
@@ -312,17 +346,26 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
-            <h3 matSubheader>Icon Size</h3>
-            <mat-list-item *ngFor="let i of [18,24,36,48]">
-              <code>.icon-{{i}}</code>
+            <h3 matSubheader>Object Fit</h3>
+            <mat-list-item *ngFor="let i of ['cover','contain','fill','none','scale-down']">
+              <code>.object-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
-            <h3 matSubheader>Object Fit</h3>
-            <mat-list-item *ngFor="let i of ['cover','contain']">
-              <code>.fit-{{i}}</code>
+            <h3 matSubheader>Object Position</h3>
+            <mat-list-item *ngFor="let i of ['top','bottom','center','left','left-top',
+            'left-right','right','right-top','right-bottom']">
+              <code>.object-{{i}}</code>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Icon Size</h3>
+            <mat-list-item *ngFor="let i of [18,24,36,48]">
+              <code>.icon-{{i}}</code>
             </mat-list-item>
           </mat-list>
         </div>
