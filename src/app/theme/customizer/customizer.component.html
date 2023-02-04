@@ -7,51 +7,50 @@
 
 <ng-template #customizerPanel>
   <h2 class="d-flex align-items-center justify-content-between m-t-0 f-w-400">
-    <span>Configuration</span>
+    <span>Settings</span>
     <button mat-icon-button (click)="closePanel()">
       <mat-icon>close</mat-icon>
     </button>
   </h2>
   <h3 class="f-w-400">Theme</h3>
-  <div class="m-l-8">
-    <mat-radio-group [(ngModel)]="options.theme" (change)="sendOptions()">
-      <mat-radio-button class="m-r-8" [value]="'light'">Light</mat-radio-button>
-      <mat-radio-button class="m-r-8" [value]="'dark'">Dark</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <h3 class="f-w-400">Header</h3>
-  <div class="m-l-8">
-    <mat-slide-toggle [(ngModel)]="options.showHeader"
-                      (change)="sendOptions()"
-                      [disabled]="options.headerPos === 'above' || options.navPos === 'top'">Visible
-    </mat-slide-toggle>
-    <h4 class="f-w-400">Position</h4>
-    <mat-radio-group [(ngModel)]="options.headerPos" (change)="sendOptions()">
-      <mat-radio-button class="m-r-8" [value]="'above'"
-                        [disabled]="!options.showHeader || options.navPos === 'top'">Above
-      </mat-radio-button>
-      <mat-radio-button class="m-r-8" [value]="'fixed'">Fixed</mat-radio-button>
-      <mat-radio-button class="m-r-8" [value]="'static'">Static</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
-  <h3 class="f-w-400">Navigation</h3>
-  <div class="m-l-8">
-    <mat-slide-toggle [(ngModel)]="options.showUserPanel" (change)="sendOptions()">Show User Panel
-    </mat-slide-toggle>
-    <h4 class="f-w-400">Position</h4>
-    <mat-radio-group [(ngModel)]="options.navPos"
-                     (change)="options.sidenavOpened = options.navPos === 'side' ? true : false; sendOptions()">
-      <mat-radio-button class="m-r-8" [value]="'side'">Side</mat-radio-button>
-      <mat-radio-button class="m-r-8" [value]="'top'"
-                        [disabled]="options.headerPos === 'above' || !options.showHeader">Top
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
-  <div class="m-l-8">
-    <mat-checkbox [checked]="options.dir === 'rtl'"
-                  (change)="options.dir = options.dir === 'rtl' ? 'ltr' : 'rtl'; sendOptions()">RTL
-    </mat-checkbox>
-  </div>
+  <form [formGroup]="form">
+    <div class="m-l-8">
+      <mat-radio-group formControlName="theme">
+        <mat-radio-button class="m-x-4" value="light">Light</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="dark">Dark</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="auto">Auto</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <h3 class="f-w-400">Header</h3>
+    <div class="m-l-8">
+      <mat-slide-toggle formControlName="showHeader"
+                        [disabled]="isHeaderPosAbove || isNavPosTop">Visible</mat-slide-toggle>
+      <h4 class="f-w-400">Position</h4>
+      <mat-radio-group formControlName="headerPos">
+        <mat-radio-button class="m-x-4" value="above"
+                          [disabled]="!isShowHeader || isNavPosTop">Above</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="fixed">Fixed</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="static">Static</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
+    <h3 class="f-w-400">Navigation</h3>
+    <div class="m-l-8">
+      <mat-slide-toggle formControlName="showUserPanel">Show User Panel</mat-slide-toggle>
+      <h4 class="f-w-400">Position</h4>
+      <mat-radio-group formControlName="navPos">
+        <mat-radio-button class="m-x-4" value="side">Side</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="top"
+                          [disabled]="isHeaderPosAbove || !isShowHeader">Top</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-divider inset class="m-x-0 m-y-24"></mat-divider>
+    <h3 class="f-w-400">Direction</h3>
+    <div class="m-l-8">
+      <mat-radio-group formControlName="dir">
+        <mat-radio-button class="m-x-4" value="ltr">LTR</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="rtl">RTL</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </form>
 </ng-template>

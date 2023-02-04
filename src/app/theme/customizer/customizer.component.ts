@@ -1,7 +1,17 @@
-import { Component, Output, EventEmitter, ViewEncapsulation, TemplateRef } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+  TemplateRef,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { AppSettings, SettingsService } from '@core';
 import { CdkDragStart } from '@angular/cdk/drag-drop';
 import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
+import { FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customizer',
@@ -9,7 +19,7 @@ import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
   styleUrls: ['./customizer.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CustomizerComponent {
+export class CustomizerComponent implements OnInit, OnDestroy {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
   options = this.settings.getOptions();
@@ -18,7 +28,50 @@ export class CustomizerComponent {
 
   drawerRef?: MtxDrawerRef;
 
-  constructor(private settings: SettingsService, private drawer: MtxDrawer) {}
+  form = this.fb.nonNullable.group({
+    theme: 'auto',
+    showHeader: true,
+    headerPos: 'fixed',
+    showUserPanel: true,
+    navPos: 'side',
+    dir: 'ltr',
+    sidenavOpened: true,
+    sidenavCollapsed: false,
+  });
+
+  formSubscription = Subscription.EMPTY;
+
+  get isHeaderPosAbove() {
+    return this.form.get('headerPos')?.value === 'above';
+  }
+
+  get isNavPosTop() {
+    return this.form.get('navPos')?.value === 'top';
+  }
+
+  get isShowHeader() {
+    return this.form.get('showHeader')?.value === true;
+  }
+
+  private readonly key = 'ng-matero-settings';
+
+  constructor(
+    private settings: SettingsService,
+    private drawer: MtxDrawer,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.form.patchValue(this.options);
+
+    this.formSubscription = this.form.valueChanges.subscribe(value => {
+      this.sendOptions(value as AppSettings);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.formSubscription.unsubscribe();
+  }
 
   onDragStart(event: CdkDragStart) {
     this.dragging = true;
@@ -31,7 +84,7 @@ export class CustomizerComponent {
     }
 
     this.drawerRef = this.drawer.open(templateRef, {
-      position: this.options.dir === 'rtl' ? 'left' : 'right',
+      position: this.form.get('dir')?.value === 'rtl' ? 'left' : 'right',
       width: '320px',
     });
   }
@@ -40,7 +93,7 @@ export class CustomizerComponent {
     this.drawerRef?.dismiss();
   }
 
-  sendOptions() {
-    this.optionsChange.emit(this.options);
+  sendOptions(options: AppSettings) {
+    this.optionsChange.emit(options);
   }
 }

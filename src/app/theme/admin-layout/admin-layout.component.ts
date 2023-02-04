@@ -144,6 +144,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   receiveOptions(options: AppSettings): void {
     this.options = options;
+    this.settings.setOptions(options);
     this.toggleDarkTheme(options);
     this.toggleDirection(options);
   }
