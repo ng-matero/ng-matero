@@ -14,18 +14,18 @@
     "layout": {
       "description": "The layout template to apply",
       "type": "string",
-      "default": "static",
+      "default": "dynamic",
       "x-prompt": {
         "message": "Choose a prebuilt layout template:",
         "type": "list",
         "items": [
           {
-            "value": "static",
-            "label": "Static"
-          },
-          {
             "value": "dynamic",
             "label": "Dynamic"
+          },
+          {
+            "value": "static",
+            "label": "Static"
           }
         ]
       }
@@ -52,11 +52,15 @@
     "theme": {
       "description": "The theme style to apply",
       "type": "string",
-      "default": "light",
+      "default": "auto",
       "x-prompt": {
         "message": "Choose a prebuilt theme style:",
         "type": "list",
         "items": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
           {
             "value": "light",
             "label": "Light"
@@ -64,10 +68,6 @@
           {
             "value": "dark",
             "label": "Dark"
-          },
-          {
-            "value": "auto",
-            "label": "Auto"
           }
         ]
       }
