@@ -89,29 +89,6 @@
     "inconsistent": "与 {{value}} 不一致",
     "invalid_email": "邮箱格式不正确"
   },
-  "user": {
-    "profile": "个人信息",
-    "settings": "偏好设置",
-    "logout": "退出"
-  },
-  "login": {
-    "title": "欢迎回来",
-    "username": "用户名",
-    "password": "密码",
-    "remember_me": "记住我",
-    "login": "登入",
-    "have_no_account": "没有账号",
-    "create_one": "点此创建一个",
-    "please_enter": "请输入"
-  },
-  "register": {
-    "welcome": "欢迎",
-    "title": "创建您的帐户只需几秒钟",
-    "confirm_password": "确认密码",
-    "agree": "我已阅读并同意服务条款",
-    "have_an_account": "已经有帐号了",
-    "register": "创建账号"
-  },
   "paginator": {
     "items_per_page_label": "每页共：",
     "next_page_label": "下一页",
@@ -141,5 +118,23 @@
     "confirm_delete": "确认删除？",
     "ok": "确定",
     "close": "关闭"
-  }
+  },
+  "profile": "个人信息",
+  "edit_profile": "修改资料",
+  "logout": "退出",
+  "login": "登入",
+  "login_title": "欢迎回来",
+  "have_no_account": "没有账号",
+  "create_one_account": "点此创建一个",
+  "please_enter": "请输入",
+  "username": "用户名",
+  "password": "密码",
+  "confirm_password": "确认密码",
+  "remember_me": "记住我",
+  "register": "创建账号",
+  "register_welcome": "欢迎",
+  "register_title": "创建您的帐户只需几秒钟",
+  "read_and_agree": "我已阅读并同意服务条款",
+  "have_an_account": "已经有帐号了",
+  "restore_defaults": "还原配置"
 }

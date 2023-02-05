@@ -41,4 +41,8 @@ export class SettingsService {
     this.store.set(this.key, this.options);
     this.notify$.next(this.options);
   }
+
+  reset() {
+    this.store.remove(this.key);
+  }
 }

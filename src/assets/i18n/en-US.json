@@ -89,29 +89,6 @@
     "inconsistent": "Inconsistent with {{value}}",
     "invalid_email": "Invalid email"
   },
-  "user": {
-    "profile": "profile",
-    "settings": "settings",
-    "logout": "logout"
-  },
-  "login": {
-    "title": "Welcome Back",
-    "username": "Username",
-    "password": "Password",
-    "remember_me": "Remember Me",
-    "login": "Login",
-    "have_no_account": "Don't have an account",
-    "create_one": "Click here to create one",
-    "please_enter": "Please enter"
-  },
-  "register": {
-    "welcome": "Welcome",
-    "title": "It only takes a few seconds to create your account",
-    "confirm_password": "Confirm Password",
-    "agree": "I have read and agree to the terms of service",
-    "have_an_account": "Already have an account",
-    "register": "Create account"
-  },
   "paginator": {
     "items_per_page_label": "Items per page:",
     "next_page_label": "Next page",
@@ -141,5 +118,23 @@
     "confirm_delete": "Confirm delete?",
     "ok": "Ok",
     "close": "Close"
-  }
+  },
+  "profile": "Profile",
+  "edit_profile": "Edit profile",
+  "logout": "logout",
+  "login": "Login",
+  "login_title": "Welcome Back",
+  "have_no_account": "Don't have an account",
+  "create_one_account": "Click here to create one",
+  "please_enter": "Please enter",
+  "username": "Username",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "remember_me": "Remember Me",
+  "register": "Create account",
+  "register_welcome": "Welcome",
+  "register_title": "It only takes a few seconds to create your account",
+  "read_and_agree": "I have read and agree to the terms of service",
+  "have_an_account": "Already have an account",
+  "restore_defaults": "Restore defaults"
 }

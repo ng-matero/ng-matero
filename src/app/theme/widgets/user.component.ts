@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { debounceTime, tap } from 'rxjs/operators';
+import { SettingsService } from '@core';
 import { AuthService, User } from '@core/authentication';
+import { debounceTime, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user',
@@ -14,15 +15,19 @@ import { AuthService, User } from '@core/authentication';
     <mat-menu #menu="matMenu">
       <button routerLink="/profile/overview" mat-menu-item>
         <mat-icon>account_circle</mat-icon>
-        <span>{{ 'user.profile' | translate }}</span>
+        <span>{{ 'profile' | translate }}</span>
       </button>
       <button routerLink="/profile/settings" mat-menu-item>
-        <mat-icon>settings</mat-icon>
-        <span>{{ 'user.settings' | translate }}</span>
+        <mat-icon>edit</mat-icon>
+        <span>{{ 'edit_profile' | translate }}</span>
+      </button>
+      <button mat-menu-item (click)="restore()">
+        <mat-icon>restore</mat-icon>
+        <span>{{ 'restore_defaults' | translate }}</span>
       </button>
       <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
-        <span>{{ 'user.logout' | translate }}</span>
+        <span>{{ 'logout' | translate }}</span>
       </button>
     </mat-menu>
   `,
@@ -38,7 +43,12 @@ import { AuthService, User } from '@core/authentication';
 export class UserComponent implements OnInit {
   user!: User;
 
-  constructor(private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private cdr: ChangeDetectorRef,
+    private settings: SettingsService
+  ) {}
 
   ngOnInit(): void {
     this.auth
@@ -52,5 +62,10 @@ export class UserComponent implements OnInit {
 
   logout() {
     this.auth.logout().subscribe(() => this.router.navigateByUrl('/auth/login'));
+  }
+
+  restore() {
+    this.settings.reset();
+    window.location.reload();
   }
 }
