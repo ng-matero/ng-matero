@@ -91,7 +91,7 @@
     "prettier": "^2.8.3",
     "protractor": "~7.0.0",
     "rimraf": "^3.0.2",
-    "stylelint": "^14.16.0",
+    "stylelint": "^14.16.1",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended-scss": "^8.0.0",
     "stylelint-config-standard": "^29.0.0",
