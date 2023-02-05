@@ -89,29 +89,6 @@
     "inconsistent": "與 {{value}} 不壹致",
     "invalid_email": "郵箱格式不正確"
   },
-  "user": {
-    "profile": "個人信息",
-    "settings": "偏好設置",
-    "logout": "退出"
-  },
-  "login": {
-    "title": "歡迎回來",
-    "username": "用戶名",
-    "password": "密碼",
-    "remember_me": "記住我",
-    "login": "登入",
-    "have_no_account": "沒有賬號",
-    "create_one": "點此創建壹個",
-    "please_enter": "請輸入"
-  },
-  "register": {
-    "welcome": "歡迎",
-    "title": "創建您的帳戶只需幾秒鐘",
-    "confirm_password": "確認密碼",
-    "agree": "我已閱讀並同意服務條款",
-    "have_an_account": "已經有帳號了",
-    "register": "創建賬號"
-  },
   "paginator": {
     "items_per_page_label": "每頁共：",
     "next_page_label": "下壹頁",
@@ -141,5 +118,23 @@
     "confirm_delete": "確認刪除？",
     "ok": "確定",
     "close": "關閉"
-  }
+  },
+  "profile": "個人信息",
+  "edit_profile": "修改資料",
+  "logout": "退出",
+  "login": "登入",
+  "login_title": "歡迎回來",
+  "have_no_account": "沒有賬號",
+  "create_one_account": "點此創建壹個",
+  "please_enter": "請輸入",
+  "username": "用戶名",
+  "password": "密碼",
+  "confirm_password": "確認密碼",
+  "remember_me": "記住我",
+  "register": "創建賬號",
+  "register_welcome": "歡迎",
+  "register_title": "創建您的帳戶只需幾秒鐘",
+  "read_and_agree": "我已閱讀並同意服務條款",
+  "have_an_account": "已經有帳號了",
+  "restore_defaults": "還原配置"
 }
