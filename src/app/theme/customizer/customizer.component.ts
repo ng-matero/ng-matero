@@ -28,7 +28,7 @@ export class CustomizerComponent implements OnInit, OnDestroy {
 
   drawerRef?: MtxDrawerRef;
 
-  form = this.fb.nonNullable.group({
+  form = this.fb.nonNullable.group<AppSettings>({
     theme: 'auto',
     showHeader: true,
     headerPos: 'fixed',
@@ -37,6 +37,7 @@ export class CustomizerComponent implements OnInit, OnDestroy {
     dir: 'ltr',
     sidenavOpened: true,
     sidenavCollapsed: false,
+    language: 'en-US',
   });
 
   formSubscription = Subscription.EMPTY;

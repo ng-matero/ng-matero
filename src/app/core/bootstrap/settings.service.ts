@@ -7,7 +7,7 @@ import { AppSettings, defaults } from '../settings';
   providedIn: 'root',
 })
 export class SettingsService {
-  readonly key = 'ng-matero-settings';
+  private key = 'ng-matero-settings';
 
   private options: AppSettings;
 

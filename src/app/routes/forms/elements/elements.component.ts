@@ -3,7 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { ControlsOf, IProfile } from 'app/routes/profile/interface';
+import { ControlsOf, IProfile } from '@shared';
 
 @Component({
   selector: 'app-forms-elements',
@@ -17,8 +17,31 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     gender: '',
   };
 
-  reactiveForm1: FormGroup<ControlsOf<IProfile>>;
-  reactiveForm2: FormGroup<ControlsOf<IProfile>>;
+  reactiveForm1 = this.fb.nonNullable.group({
+    username: ['', [Validators.required]],
+    gender: ['', [Validators.required]],
+    mobile: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    city: [''],
+    address: [''],
+    company: [''],
+    tele: [''],
+    website: [''],
+    date: [''],
+  });
+
+  reactiveForm2 = this.fb.nonNullable.group({
+    username: ['', [Validators.required]],
+    gender: ['', [Validators.required]],
+    mobile: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    city: [''],
+    address: [''],
+    company: [''],
+    tele: [''],
+    website: [''],
+    date: [''],
+  });
 
   translateSubscription!: Subscription;
 
@@ -26,33 +49,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private dateAdapter: DateAdapter<any>,
     private translate: TranslateService
-  ) {
-    this.reactiveForm1 = this.fb.nonNullable.group({
-      username: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      city: [''],
-      address: [''],
-      company: [''],
-      tele: [''],
-      website: [''],
-      date: [''],
-    });
-
-    this.reactiveForm2 = this.fb.nonNullable.group({
-      username: ['', [Validators.required]],
-      gender: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      city: [''],
-      address: [''],
-      company: [''],
-      tele: [''],
-      website: [''],
-      date: [''],
-    });
-  }
+  ) {}
 
   ngOnInit() {
     this.translateSubscription = this.translate.onLangChange.subscribe((res: { lang: any }) => {
@@ -64,7 +61,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     this.translateSubscription.unsubscribe();
   }
 
-  getErrorMessage(form: FormGroup) {
+  getErrorMessage(form: FormGroup<ControlsOf<IProfile>>) {
     return form.get('email')?.hasError('required')
       ? 'validations.required'
       : form.get('email')?.hasError('email')
