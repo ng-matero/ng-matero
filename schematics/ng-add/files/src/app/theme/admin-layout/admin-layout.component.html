@@ -1,5 +1,5 @@
 <% if(layout==='static' && nav==='side') { %>
-<div class="matero-container-wrap matero-navbar-side matero-header-fixed <% if(theme==='light') { %>matero-header-white<% } %>"
+<div class="matero-container-wrap matero-navbar-side matero-header-fixed <% if(theme!=='dark') { %>matero-header-white<% } %>"
      [ngClass]="{'matero-sidenav-collapsed': options.sidenavCollapsed}"
      dir="<%= dir %>">
   <ng-progress></ng-progress>
@@ -32,7 +32,7 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div><% } %><% if(layout==='static' && nav==='top') { %>
-<div class="matero-container-wrap matero-navbar-top matero-header-fixed <% if(theme==='light') { %>matero-header-white<% } %>"
+<div class="matero-container-wrap matero-navbar-top matero-header-fixed <% if(theme!=='dark') { %>matero-header-white<% } %>"
      dir="<%= dir %>">
   <ng-progress></ng-progress>
 
@@ -62,7 +62,7 @@
                  'matero-navbar-top': options.navPos==='top',
                  'matero-header-above': options.headerPos==='above',
                  'matero-header-fixed': options.headerPos==='fixed',
-                 'matero-header-white': options.theme==='light'}"
+                 'matero-header-white': options.theme!=='dark'}"
      [dir]="options.dir">
   <ng-progress></ng-progress>
 
