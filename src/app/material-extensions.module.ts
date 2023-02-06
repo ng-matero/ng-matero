@@ -35,7 +35,7 @@ import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
     MtxSliderModule,
     MtxSplitModule,
     MtxTooltipModule,
-    MtxMomentDatetimeModule, // <= You can import the other adapter you need (luxon, date-fns)
+    MtxMomentDatetimeModule, // <= You can import the other adapter you need (e.g. luxon, date-fns)
   ],
   providers: [
     {

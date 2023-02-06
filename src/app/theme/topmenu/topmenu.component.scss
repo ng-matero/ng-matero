@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use '../style/badge';
 
 .matero-topmenu {
   position: sticky;
@@ -43,6 +44,8 @@
 
   .menu-label,
   .menu-badge {
+    @include badge.badge();
+
     margin-left: 8px;
     font-size: 12px;
 

@@ -41,12 +41,8 @@
 <ng-template #linkTypeTpl let-item="item" let-level="level">
   <mat-icon class="menu-icon">{{item.icon}}</mat-icon>
   <span class="menu-name">{{item.name | translate}}</span>
-  <span class="badge menu-label bg-{{item.label.color}}" *ngIf="item.label">
-    {{item.label.value}}
-  </span>
-  <span class="badge menu-badge bg-{{item.badge.color}}" *ngIf="item.badge">
-    {{item.badge.value}}
-  </span>
+  <span class="menu-label bg-{{item.label.color}}" *ngIf="item.label">{{item.label.value}}</span>
+  <span class="menu-badge bg-{{item.badge.color}}" *ngIf="item.badge">{{item.badge.value}}</span>
   <mat-icon class="menu-caret" *ngIf="item.type!=='link'">
     {{item.type==='sub' ? 'arrow_drop_down' : 'launch'}}
   </mat-icon>
