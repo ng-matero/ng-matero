@@ -169,7 +169,7 @@ function addESLintToAngularJson(options: Schema): Rule {
 function addProxyToAngularJson(options: Schema) {
   return updateWorkspace(workspace => {
     const project = getProjectFromWorkspace(workspace, options.project);
-    const targetServeConfig = project.targets?.get('serve')?.configurations as any;
+    const targetServeConfig = project.targets?.get('serve') as any;
 
     if (targetServeConfig.options) {
       targetServeConfig.options.browserTarget = `${project.name}:build`;
