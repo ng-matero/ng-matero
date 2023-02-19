@@ -172,11 +172,11 @@ function addProxyToAngularJson(options: Schema) {
     const targetServeConfig = project.targets?.get('serve') as any;
 
     if (targetServeConfig.options) {
-      targetServeConfig.options.browserTarget = `${project.name}:build`;
+      targetServeConfig.options.browserTarget = `${options.project}:build`;
       targetServeConfig.options.proxyConfig = 'proxy.config.js';
     } else {
       targetServeConfig.options = {
-        browserTarget: `${project.name}:build`,
+        browserTarget: `${options.project}:build`,
         proxyConfig: 'proxy.config.js',
       };
     }
