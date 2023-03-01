@@ -4,8 +4,8 @@
 
 .matero-sidemenu {
   width: variables.$sidenav-width;
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
 
   .menu-item {
@@ -29,9 +29,9 @@
     max-height: 0;
     padding-top: 0;
     overflow: hidden;
-    transform: translateZ(0) !important;
     visibility: hidden;
     transition: transitions.fast-out-slow(max-height), transitions.fast-out-slow(visibility);
+    transform: translateZ(0) !important;
   }
 
   .menu-heading {
@@ -42,10 +42,10 @@
     padding: 12px 16px;
     font-size: inherit;
     text-decoration: none;
+    cursor: pointer;
     background-color: transparent;
     border: none;
     outline: none;
-    cursor: pointer;
   }
 
   .mat-icon.menu-icon {
