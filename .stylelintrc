@@ -6,10 +6,7 @@
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-recommended-scss",
-    "stylelint-config-rational-order"
-  ],
-  "plugins": [
-    "stylelint-order"
+    "stylelint-config-recess-order"
   ],
   "rules": {
     "alpha-value-notation": null,

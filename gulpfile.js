@@ -107,11 +107,9 @@ function updateVersions(cb) {
           'parse5',
           'prettier',
           'stylelint',
-          'stylelint-config-rational-order',
+          'stylelint-config-recess-order',
           'stylelint-config-recommended-scss',
           'stylelint-config-standard',
-          'stylelint-order',
-          'stylelint-scss',
         ].forEach(name => {
           if (!pkg.dependencies[name] && !pkg.devDependencies[name]) {
             cb(`${name} not found!`);

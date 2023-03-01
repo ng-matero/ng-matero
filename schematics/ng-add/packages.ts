@@ -42,9 +42,7 @@ export function add3rdPkgsToPackageJson(host: Tree) {
   addPackage(host, 'eslint@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'prettier@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint@0.0.0-PLACEHOLDER', 'dev');
-  addPackage(host, 'stylelint-config-rational-order@0.0.0-PLACEHOLDER', 'dev');
+  addPackage(host, 'stylelint-config-recess-order@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint-config-recommended-scss@0.0.0-PLACEHOLDER', 'dev');
   addPackage(host, 'stylelint-config-standard@0.0.0-PLACEHOLDER', 'dev');
-  addPackage(host, 'stylelint-order@0.0.0-PLACEHOLDER', 'dev');
-  addPackage(host, 'stylelint-scss@0.0.0-PLACEHOLDER', 'dev');
 }
