@@ -5,12 +5,12 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { TokenService, AuthService, authenticate } from '@core/authentication';
+import { TokenService, AuthService, authGuard } from '@core/authentication';
 
 @Component({ template: '' })
 class DummyComponent {}
 
-describe('authenticate guard function unit test', () => {
+describe('authGuard function unit test', () => {
   const route: any = {};
   const state: any = {};
   let router: Router;
@@ -22,7 +22,7 @@ describe('authenticate guard function unit test', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes([
-          { path: 'dashboard', component: DummyComponent, canActivate: [authenticate] },
+          { path: 'dashboard', component: DummyComponent, canActivate: [authGuard] },
           { path: 'auth/login', component: DummyComponent },
         ]),
       ],
@@ -36,14 +36,14 @@ describe('authenticate guard function unit test', () => {
   });
 
   it('should be created', () => {
-    expect(authenticate).toBeTruthy();
+    expect(authGuard).toBeTruthy();
   });
 
   it('should be authenticated', () => {
     inject([AuthService, Router], () => {
       tokenService.set({ access_token: 'token', token_type: 'bearer' });
 
-      expect(authenticate(route, state)).toBeTrue();
+      expect(authGuard(route, state)).toBeTrue();
     });
   });
 
@@ -51,7 +51,7 @@ describe('authenticate guard function unit test', () => {
     inject([AuthService, Router], () => {
       spyOn(authService, 'check').and.returnValue(false);
 
-      expect(authenticate(route, state)).toEqual(router.parseUrl('/auth/login'));
+      expect(authGuard(route, state)).toEqual(router.parseUrl('/auth/login'));
     });
   });
 });
