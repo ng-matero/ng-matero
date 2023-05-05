@@ -32,7 +32,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         if (body.msg) {
           this.toast.error(body.msg);
         }
-        return throwError([]);
+        return throwError(() => []);
       }
     }
     // Pass down event if everything is OK
