@@ -118,6 +118,9 @@
   .matero-header {
     position: sticky;
     top: 0;
+    // Fix header's positioning problem on Firefox
+    // https://github.com/ng-matero/ng-matero/issues/522
+    display: block;
   }
 
   .matero-topmenu {
