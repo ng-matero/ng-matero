@@ -14,6 +14,7 @@
     "at-rule-empty-line-before": null,
     "color-function-notation": "legacy",
     "function-no-unknown": null,
+    "media-query-no-invalid": null,
     "no-descending-specificity": null,
     "no-empty-source": null,
     "number-leading-zero": "never",
