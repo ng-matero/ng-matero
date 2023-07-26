@@ -66,7 +66,7 @@ export class CustomizerComponent implements OnInit, OnDestroy {
     this.form.patchValue(this.options);
 
     this.formSubscription = this.form.valueChanges.subscribe(value => {
-      this.sendOptions(value as AppSettings);
+      this.sendOptions(this.form.getRawValue());
     });
   }
 
