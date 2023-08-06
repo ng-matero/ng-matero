@@ -17,16 +17,6 @@
   position: absolute;
   overflow-x: hidden;
   transition: transitions.swift-ease-out(width); // Only set width property
-
-  @include mat.elevation(2);
-
-  &.mat-drawer-side {
-    border-width: 0;
-
-    [dir='rtl'] & {
-      border-width: 0;
-    }
-  }
 }
 
 // Layout control
