@@ -5,7 +5,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatCardModule } from '@angular/material/card';
+import { MAT_CARD_CONFIG, MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -110,6 +110,12 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
           dateA11yLabel: 'LL',
           monthYearA11yLabel: 'YYYY MMM',
         },
+      },
+    },
+    {
+      provide: MAT_CARD_CONFIG,
+      useValue: {
+        appearance: 'outlined',
       },
     },
   ],

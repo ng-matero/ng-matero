@@ -122,14 +122,6 @@
       }
     }
   }
-
-  &.matero-navbar-side {
-    .matero-toolbar {
-      border-bottom: unset;
-
-      @include mat.elevation(2);
-    }
-  }
 }
 
 // Fix the init content width
