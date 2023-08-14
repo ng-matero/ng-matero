@@ -10,7 +10,7 @@ export class SettingsInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(
       request.clone({
-        headers: request.headers.append('Accept-Language', this.settings.getLanguage()),
+        headers: request.headers.append('Accept-Language', this.settings.options.language),
       })
     );
   }

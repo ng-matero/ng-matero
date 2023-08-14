@@ -1,16 +1,16 @@
+import { CdkDragStart } from '@angular/cdk/drag-drop';
 import {
   Component,
-  Output,
   EventEmitter,
-  ViewEncapsulation,
-  TemplateRef,
-  OnInit,
   OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewEncapsulation,
 } from '@angular/core';
-import { AppSettings, SettingsService } from '@core';
-import { CdkDragStart } from '@angular/cdk/drag-drop';
-import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
 import { FormBuilder } from '@angular/forms';
+import { AppSettings, SettingsService } from '@core';
+import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
 export class CustomizerComponent implements OnInit, OnDestroy {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
-  options = this.settings.getOptions();
+  options = this.settings.options;
 
   dragging = false;
 

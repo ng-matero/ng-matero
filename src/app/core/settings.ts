@@ -1,7 +1,9 @@
+export type AppTheme = 'light' | 'dark' | 'auto';
+
 export interface AppSettings {
   navPos: 'side' | 'top';
   dir: 'ltr' | 'rtl';
-  theme: 'light' | 'dark' | 'auto';
+  theme: AppTheme;
   showHeader: boolean;
   headerPos: 'fixed' | 'static' | 'above';
   showUserPanel: boolean;

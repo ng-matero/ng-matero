@@ -1,10 +1,10 @@
-import { Component, OnDestroy, ViewChild, HostBinding, ViewEncapsulation } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, HostBinding, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
+import { AppSettings, SettingsService } from '@core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
-import { SettingsService, AppSettings } from '@core';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
 const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
@@ -20,9 +20,11 @@ export class AdminLayoutComponent implements OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
   @ViewChild('content', { static: true }) content!: MatSidenavContent;
 
-  options = this.settings.getOptions();
+  options = this.settings.options;
 
-  private layoutChangesSubscription = Subscription.EMPTY;
+  get themeColor() {
+    return this.settings.themeColor;
+  }
 
   get isOver(): boolean {
     return this.isMobileScreen;
@@ -49,6 +51,8 @@ export class AdminLayoutComponent implements OnDestroy {
   }
 
   private isCollapsedWidthFixed = false;
+
+  private layoutChangesSubscription = Subscription.EMPTY;
 
   constructor(
     private router: Router,
