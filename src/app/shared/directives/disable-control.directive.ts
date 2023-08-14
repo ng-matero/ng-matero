@@ -11,9 +11,9 @@ export class DisableControlDirective implements OnChanges {
 
   ngOnChanges(): void {
     if (this.disableControl) {
-      this.ngControl?.control?.disable({ emitEvent: false });
+      this.ngControl?.control?.disable();
     } else {
-      this.ngControl?.control?.enable({ emitEvent: false });
+      this.ngControl?.control?.enable();
     }
   }
 }
