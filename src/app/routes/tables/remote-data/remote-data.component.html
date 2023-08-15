@@ -1,11 +1,11 @@
 <page-header class="bg-blue-600"></page-header>
 
-<form>
-  <mat-form-field class="m-r-8">
+<form class="m-x--4">
+  <mat-form-field class="m-x-4" appearance="outline">
     <input matInput [(ngModel)]="query.q" name="q" placeholder="Query String">
   </mat-form-field>
 
-  <mat-form-field class="m-r-8">
+  <mat-form-field class="m-x-4" appearance="outline">
     <mat-select [(ngModel)]="query.sort" name="sort" placeholder="Sort">
       <mat-option>-- None --</mat-option>
       <mat-option value="stars">stars</mat-option>
@@ -14,7 +14,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field class="m-r-8">
+  <mat-form-field class="m-x-4" appearance="outline">
     <mat-select [(ngModel)]="query.order" name="order" placeholder="Order">
       <mat-option>-- None --</mat-option>
       <mat-option value="desc">desc</mat-option>
@@ -22,8 +22,8 @@
     </mat-select>
   </mat-form-field>
 
-  <button class="m-r-8" mat-raised-button color="primary" (click)="search()">Search</button>
-  <button class="m-r-8" mat-raised-button color="warn" (click)="reset()">Reset</button>
+  <button class="m-x-4" mat-raised-button color="primary" (click)="search()">Search</button>
+  <button class="m-x-4" mat-raised-button color="warn" (click)="reset()">Reset</button>
 </form>
 
 <mtx-grid [data]="list"

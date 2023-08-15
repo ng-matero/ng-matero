@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MtxGridColumn } from '@ng-matero/extensions/grid';
+import { finalize } from 'rxjs';
 import { TablesRemoteDataService } from './remote-data.service';
 
 @Component({
   selector: 'app-tables-remote-data',
   templateUrl: './remote-data.component.html',
   styleUrls: ['./remote-data.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TablesRemoteDataService],
 })
 export class TablesRemoteDataComponent implements OnInit {
@@ -58,7 +58,7 @@ export class TablesRemoteDataComponent implements OnInit {
     return p;
   }
 
-  constructor(private remoteSrv: TablesRemoteDataService, private cdr: ChangeDetectorRef) {}
+  constructor(private remoteSrv: TablesRemoteDataService) {}
 
   ngOnInit() {
     this.getList();
@@ -67,22 +67,18 @@ export class TablesRemoteDataComponent implements OnInit {
   getList() {
     this.isLoading = true;
 
-    this.remoteSrv.getList(this.params).subscribe(
-      res => {
+    this.remoteSrv
+      .getList(this.params)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe(res => {
         this.list = res.items;
         this.total = res.total_count;
         this.isLoading = false;
-        this.cdr.detectChanges();
-      },
-      () => {
-        this.isLoading = false;
-        this.cdr.detectChanges();
-      },
-      () => {
-        this.isLoading = false;
-        this.cdr.detectChanges();
-      }
-    );
+      });
   }
 
   getNextPage(e: PageEvent) {

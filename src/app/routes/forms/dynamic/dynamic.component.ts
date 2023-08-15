@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { ToastrService } from 'ngx-toastr';
@@ -7,7 +7,6 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
   styleUrls: ['./dynamic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsDynamicComponent {
   form = new FormGroup({});

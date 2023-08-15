@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MtxDialog } from '@ng-matero/extensions/dialog';
 import { MtxGridColumn } from '@ng-matero/extensions/grid';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,7 +10,6 @@ import { TablesKitchenSinkEditComponent } from './edit/edit.component';
   templateUrl: './kitchen-sink.component.html',
   styleUrls: ['./kitchen-sink.component.scss'],
   providers: [TablesDataService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablesKitchenSinkComponent implements OnInit {
   columns: MtxGridColumn[] = [
@@ -90,8 +89,8 @@ export class TablesKitchenSinkComponent implements OnInit {
     {
       header: this.translate.stream('table_kitchen_sink.operation'),
       field: 'operation',
-      minWidth: 160,
-      width: '160px',
+      minWidth: 140,
+      width: '140px',
       pinned: 'right',
       type: 'button',
       buttons: [
@@ -102,9 +101,9 @@ export class TablesKitchenSinkComponent implements OnInit {
           click: record => this.edit(record),
         },
         {
+          type: 'icon',
           color: 'warn',
           icon: 'delete',
-          text: this.translate.stream('table_kitchen_sink.delete'),
           tooltip: this.translate.stream('table_kitchen_sink.delete'),
           pop: {
             title: this.translate.stream('table_kitchen_sink.confirm_delete'),
@@ -135,8 +134,7 @@ export class TablesKitchenSinkComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private dataSrv: TablesDataService,
-    private dialog: MtxDialog,
-    private cdr: ChangeDetectorRef
+    private dialog: MtxDialog
   ) {}
 
   ngOnInit() {

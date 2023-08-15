@@ -15,7 +15,11 @@
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
       <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-      <button mat-raised-button color="primary">Submit</button>
+
+      <div class="m-t-8">
+        <button mat-raised-button color="primary">Submit</button>
+        <button mat-button class="m-x-8" type="button">Cancel</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>
@@ -28,7 +32,11 @@
   <mat-card-content>
     <form [formGroup]="form2" (ngSubmit)="submit2()">
       <formly-form [model]="model2" [fields]="fields2" [form]="form2"></formly-form>
-      <button mat-raised-button color="primary" [disabled]="!form2.valid">Submit</button>
+
+      <div class="m-t-8">
+        <button mat-raised-button color="primary">Submit</button>
+        <button mat-button class="m-x-8" type="button">Cancel</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

@@ -1,11 +1,10 @@
 import {
   Component,
-  Output,
   EventEmitter,
-  Input,
-  ChangeDetectionStrategy,
-  ViewEncapsulation,
   HostBinding,
+  Input,
+  Output,
+  ViewEncapsulation,
 } from '@angular/core';
 import screenfull from 'screenfull';
 
@@ -14,7 +13,6 @@ import screenfull from 'screenfull';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   @HostBinding('class') class = 'matero-header';

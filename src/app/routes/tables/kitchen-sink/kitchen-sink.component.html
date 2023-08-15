@@ -19,10 +19,14 @@
   <mat-checkbox [(ngModel)]="isLoading">Loading Status</mat-checkbox>
   <mat-checkbox [(ngModel)]="columnResizable">Column Resizable</mat-checkbox>
 </div>
-<p>
-  <a href="https://ng-matero.github.io/extensions/components/data-grid" target="_blank">
-    View more examples</a>
-</p>
+<div class="m-y-8">
+  <button mat-button (click)="updateCell()">Update cell</button>
+  <button mat-button (click)="updateList()">Update list</button>
+
+  <a mat-button class="text-blue-600"
+     href="https://ng-matero.github.io/extensions/components/data-grid"
+     target="_blank">View more examples</a>
+</div>
 
 <mtx-grid [data]="list"
           [columns]="columns"
@@ -51,6 +55,3 @@
 <ng-template #expansionTpl let-row>
   {{row.name}}
 </ng-template>
-
-<button mat-stroked-button (click)="updateCell()">Update Cell</button>
-<button mat-stroked-button (click)="updateList()">Update List</button>

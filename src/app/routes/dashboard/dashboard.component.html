@@ -167,25 +167,29 @@
         <mat-card-title>Chips & Buttons</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-chip-listbox>
-          <mat-chip-option>One fish</mat-chip-option>
-          <mat-chip-option color="primary" selected>Primary fish</mat-chip-option>
-          <mat-chip-option color="accent" selected>Accent fish</mat-chip-option>
-          <mat-chip-option color="warn" selected>Two fish</mat-chip-option>
-          <mat-chip-option class="bg-orange-500" selected>Orange fish</mat-chip-option>
-          <mat-chip-option class="bg-teal-500" selected>Teal fish</mat-chip-option>
-          <mat-chip-option class="bg-cyan-500" selected>Cyan fish</mat-chip-option>
-          <mat-chip-option class="bg-purple-500" selected>Purple fish</mat-chip-option>
-          <mat-chip-option class="bg-green-500" selected>Green fish</mat-chip-option>
+        <mat-chip-listbox class="m-t-16">
+          <mat-chip-option selected>One fish</mat-chip-option>
+          <mat-chip-option color="primary">Primary fish</mat-chip-option>
+          <mat-chip-option color="accent">Accent fish</mat-chip-option>
+          <mat-chip-option color="warn">Two fish</mat-chip-option>
+        </mat-chip-listbox>
+        <mat-chip-listbox class="m-t-8">
+          <mat-chip-option class="bg-orange-300">Orange fish</mat-chip-option>
+          <mat-chip-option class="bg-teal-300">Teal fish</mat-chip-option>
+          <mat-chip-option class="bg-cyan-300">Cyan fish</mat-chip-option>
+          <mat-chip-option class="bg-purple-300" selected>Purple fish</mat-chip-option>
+          <mat-chip-option class="bg-green-300">Green fish</mat-chip-option>
         </mat-chip-listbox>
 
-        <div class="m-t-16 m-x--4">
+        <div class="m-t-16">
           <button mat-raised-button>Basic</button>
           <button mat-raised-button color="primary">Primary</button>
           <button mat-raised-button color="accent">Accent</button>
           <button mat-raised-button color="warn">Warn</button>
           <button mat-raised-button disabled>Disabled</button>
           <a mat-raised-button routerLink=".">Link</a>
+        </div>
+        <div class="m-t-8">
           <button mat-raised-button class="bg-orange-500 text-white">Orange</button>
           <button mat-raised-button class="bg-teal-500 text-white">Teal</button>
           <button mat-raised-button class="bg-cyan-500 text-white">Cyan</button>

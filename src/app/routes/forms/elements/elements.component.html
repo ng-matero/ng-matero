@@ -9,17 +9,17 @@
 
       <mat-card-content>
         <form>
-          <mat-form-field class="m-r-8">
+          <mat-form-field class="m-r-8" appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput [(ngModel)]="q.username" name="username">
           </mat-form-field>
 
-          <mat-form-field class="m-r-8">
+          <mat-form-field class="m-r-8" appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput [(ngModel)]="q.email" name="email">
           </mat-form-field>
 
-          <mat-form-field class="m-r-8">
+          <mat-form-field class="m-r-8" appearance="outline">
             <mat-label>Gender</mat-label>
             <mat-select [(ngModel)]="q.gender" name="gender">
               <mat-option>-- None --</mat-option>
@@ -27,8 +27,6 @@
               <mat-option value="2">female</mat-option>
             </mat-select>
           </mat-form-field>
-
-          <button mat-raised-button color="primary">Search</button>
         </form>
       </mat-card-content>
     </mat-card>
@@ -112,7 +110,10 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" class="m-t-8">Save</button>
+          <div class="m-t-8 d-flex justify-content-end">
+            <button mat-button class="m-x-8" type="button">Cancel</button>
+            <button mat-raised-button color="primary">Save</button>
+          </div>
         </form>
       </mat-card-content>
     </mat-card>
@@ -221,7 +222,10 @@
             </div>
           </div>
 
-          <button mat-raised-button color="primary" class="m-t-8">Save</button>
+          <div class="m-t-8">
+            <button mat-raised-button color="primary">Save</button>
+            <button mat-button class="m-x-8" type="button">Cancel</button>
+          </div>
         </form>
       </mat-card-content>
     </mat-card>
