@@ -19,7 +19,11 @@ export class LoginComponent {
     rememberMe: [false],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   get username() {
     return this.loginForm.get('username')!;
@@ -39,9 +43,9 @@ export class LoginComponent {
     this.auth
       .login(this.username.value, this.password.value, this.rememberMe.value)
       .pipe(filter(authenticated => authenticated))
-      .subscribe(
-        () => this.router.navigateByUrl('/'),
-        (errorRes: HttpErrorResponse) => {
+      .subscribe({
+        next: () => this.router.navigateByUrl('/'),
+        error: (errorRes: HttpErrorResponse) => {
           if (errorRes.status === 422) {
             const form = this.loginForm;
             const errors = errorRes.error.errors;
@@ -52,7 +56,7 @@ export class LoginComponent {
             });
           }
           this.isSubmitting = false;
-        }
-      );
+        },
+      });
   }
 }

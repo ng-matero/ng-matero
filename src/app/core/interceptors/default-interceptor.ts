@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()

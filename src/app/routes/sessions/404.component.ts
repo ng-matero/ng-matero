@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <error-code
       code="404"
-      [title]="'Page not found!'"
-      [message]="'This is not the web page you are looking for.'"
+      title="Page not found!"
+      message="This is not the web page you are looking for."
     ></error-code>
   `,
 })

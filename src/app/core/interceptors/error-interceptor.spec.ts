@@ -17,7 +17,7 @@ describe('ErrorInterceptor', () => {
   function assertStatus(status: number, statusText: string) {
     spyOn(router, 'navigateByUrl');
 
-    http.get('/me').subscribe(emptyFn, emptyFn, emptyFn);
+    http.get('/me').subscribe({ next: emptyFn, error: emptyFn, complete: emptyFn });
 
     httpMock.expectOne('/me').flush({}, { status, statusText });
 
@@ -44,7 +44,7 @@ describe('ErrorInterceptor', () => {
     spyOn(router, 'navigateByUrl');
     spyOn(toast, 'error');
 
-    http.get('/me').subscribe(emptyFn, emptyFn, emptyFn);
+    http.get('/me').subscribe({ next: emptyFn, error: emptyFn, complete: emptyFn });
     httpMock.expectOne('/me').flush({}, { status: 401, statusText: 'Unauthorized' });
 
     expect(toast.error).toHaveBeenCalledWith('401 Unauthorized');
@@ -66,7 +66,7 @@ describe('ErrorInterceptor', () => {
   it('should handle others status code', () => {
     spyOn(toast, 'error');
 
-    http.get('/me').subscribe(emptyFn, emptyFn, emptyFn);
+    http.get('/me').subscribe({ next: emptyFn, error: emptyFn, complete: emptyFn });
 
     httpMock.expectOne('/me').flush({}, { status: 504, statusText: 'Gateway Timeout' });
 

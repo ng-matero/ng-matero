@@ -36,7 +36,7 @@ describe('TokenInterceptor', () => {
   }
 
   function mockRequest(url: string, body?: any, headers?: any) {
-    http.get(url).subscribe(emptyFn, emptyFn, emptyFn);
+    http.get(url).subscribe({ next: emptyFn, error: emptyFn, complete: emptyFn });
     const testRequest = httpMock.expectOne(url);
     testRequest.flush(body ?? {}, headers ?? {});
 

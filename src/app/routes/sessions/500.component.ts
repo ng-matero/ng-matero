@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <error-code
       code="500"
-      [title]="'Server went wrong!'"
-      [message]="'Just kidding, looks like we have an internal issue, please try refreshing.'"
+      title="Server went wrong!"
+      message="Just kidding, looks like we have an internal issue, please try refreshing."
     >
     </error-code>
   `,
