@@ -1,8 +1,13 @@
-.demo-sidenav-app {
+:host {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 64px);
+
+  .matero-navbar-top & {
+    height: calc(100vh - 64px - 52px);
+  }
 }
 
 .demo-sidenav-container {
@@ -13,11 +18,11 @@
   flex: none;
 }
 
-h1.demo-sidenav-app-name {
-  margin-left: 8px;
+.demo-sidenav-app-name {
+  margin: 0 8px;
 }
 
-button.demo-sidenav-close {
+.demo-sidenav-close {
   margin: 20px;
 }
 

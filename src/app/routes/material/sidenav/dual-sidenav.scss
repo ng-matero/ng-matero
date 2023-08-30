@@ -2,11 +2,16 @@
   flex: 1;
 }
 
-mat-sidenav.demo-sidenav-playlist {
+.demo-sidenav-playlist {
   display: flex;
   flex-direction: column;
   width: 200px;
+
+  .mat-mdc-button {
+    width: 100%;
+  }
 }
+
 
 .demo-sidenav-playlist-header {
   text-align: center;

@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/no-host-metadata-property */
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 
@@ -6,7 +5,6 @@ import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
   selector: 'mobile-sidenav',
   templateUrl: 'mobile-sidenav.html',
   styleUrls: ['shared.scss', 'mobile-sidenav.scss'],
-  host: { class: 'demo-sidenav-app' },
 })
 export class SidenavMobileComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
