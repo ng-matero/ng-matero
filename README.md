@@ -41,7 +41,7 @@ Ng-Matero is an Angular admin template made with Material components.
 
 ## 📖 Documentation
 
-[English](https://nzbin.gitbook.io/ng-matero/v/en-2/) ｜[简体中文](https://nzbin.gitbook.io/ng-matero/)
+[English](https://nzbin.gitbook.io/ng-matero/v/en-2/) ｜[简体中文](https://nzbin.gitbook.io/ng-matero/v/zh-1/)
 
 ## 📦 Compatibility
 
