@@ -1,52 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import {
+  MatBottomSheet,
+  MatBottomSheetConfig,
+  MatBottomSheetRef,
+} from '@angular/material/bottom-sheet';
 
-@Component({
-  selector: 'bottom-sheet-overview-example-sheet',
-  template: `
-    <mat-nav-list>
-      <a href="https://keep.google.com/" mat-list-item (click)="openLink($event)">
-        <span mat-line>Google Keep</span>
-        <span mat-line>Add to a note</span>
-      </a>
-
-      <a href="https://docs.google.com/" mat-list-item (click)="openLink($event)">
-        <span mat-line>Google Docs</span>
-        <span mat-line>Embed in a document</span>
-      </a>
-
-      <a href="https://plus.google.com/" mat-list-item (click)="openLink($event)">
-        <span mat-line>Google Plus</span>
-        <span mat-line>Share with your friends</span>
-      </a>
-
-      <a href="https://hangouts.google.com/" mat-list-item (click)="openLink($event)">
-        <span mat-line>Google Hangouts</span>
-        <span mat-line>Show to your coworkers</span>
-      </a>
-    </mat-nav-list>
-  `,
-})
-export class BottomSheetOverviewComponent {
-  constructor(private bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewComponent>) {}
-
-  openLink(event: MouseEvent): void {
-    this.bottomSheetRef.dismiss();
-    event.preventDefault();
-  }
-}
+const defaultConfig = new MatBottomSheetConfig();
 
 @Component({
   selector: 'app-bottom-sheet',
   templateUrl: './bottom-sheet.component.html',
   styleUrls: ['./bottom-sheet.component.scss'],
 })
-export class BottomSheetComponent implements OnInit {
-  constructor(private bottomSheet: MatBottomSheet) {}
+export class BottomSheetComponent {
+  config: MatBottomSheetConfig = {
+    hasBackdrop: defaultConfig.hasBackdrop,
+    disableClose: defaultConfig.disableClose,
+    backdropClass: defaultConfig.backdropClass,
+    direction: 'ltr',
+    ariaLabel: 'Example bottom sheet',
+  };
 
-  openBottomSheet(): void {
-    this.bottomSheet.open(BottomSheetOverviewComponent);
+  @ViewChild(TemplateRef) template!: TemplateRef<any>;
+
+  constructor(private _bottomSheet: MatBottomSheet) {}
+
+  openComponent() {
+    this._bottomSheet.open(BottomSheetOverviewComponent, this.config);
   }
 
-  ngOnInit() {}
+  openTemplate() {
+    this._bottomSheet.open(this.template, this.config);
+  }
+}
+
+@Component({
+  selector: 'bottom-sheet-overview-example-sheet',
+  template: `
+    <mat-nav-list>
+      <a href="#" mat-list-item (click)="handleClick($event)" *ngFor="let action of [1, 2, 3]">
+        <span matListItemTitle>Action {{ action }}</span>
+        <span matListItemLine>Description</span>
+      </a>
+    </mat-nav-list>
+  `,
+})
+export class BottomSheetOverviewComponent {
+  constructor(private _bottomSheet: MatBottomSheetRef) {}
+
+  handleClick(event: MouseEvent) {
+    event.preventDefault();
+    this._bottomSheet.dismiss();
+  }
 }

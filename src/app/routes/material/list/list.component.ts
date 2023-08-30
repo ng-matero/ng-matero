@@ -10,16 +10,16 @@ export class ListComponent {
 
   messages = [
     {
-      from: 'Nancy',
+      from: 'John',
       subject: 'Brunch?',
       message: 'Did you want to go on Sunday? I was thinking that might work.',
-      image: 'https://angular.io/generated/images/bios/julie-ralph.jpg',
+      image: 'https://angular.io/generated/images/bios/devversion.jpg',
     },
     {
       from: 'Mary',
       subject: 'Summer BBQ',
       message: 'Wish I could come, but I have some prior obligations.',
-      image: 'https://angular.io/generated/images/bios/juleskremer.jpg',
+      image: 'https://angular.io/generated/images/bios/twerske.jpg',
     },
     {
       from: 'Bobby',

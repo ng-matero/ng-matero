@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
 
-export interface Dog {
-  name: string;
-  human: string;
-}
-
 @Component({
   selector: 'app-grid-list',
   templateUrl: './grid-list.component.html',
   styleUrls: ['./grid-list.component.scss'],
 })
 export class GridListComponent {
-  dogs: Dog[] = [
+  dogs = [
     { name: 'Porter', human: 'Kara' },
     { name: 'Mal', human: 'Jeremy' },
     { name: 'Koby', human: 'Igor' },

@@ -2,6 +2,7 @@
 
 <mat-card>
   <mat-card-content>
+
     <h2>Filtering and selection</h2>
     <p>Select your favorite state</p>
     <mat-form-field>
@@ -18,5 +19,26 @@
     </mat-form-field>
 
     <p>Selected value: {{ value }}</p>
+
+    <h2>Option groups autocomplete</h2>
+    <form [formGroup]="stateForm">
+      <mat-form-field>
+        <mat-label>States Group</mat-label>
+        <input type="text"
+               matInput
+               formControlName="stateGroup"
+               required
+               [matAutocomplete]="autoGroup">
+        <mat-autocomplete #autoGroup="matAutocomplete">
+          <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+            <mat-option *ngFor="let name of group.names" [value]="name">
+              {{name}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <p>Selected value: {{ stateForm.value|json }}</p>
   </mat-card-content>
 </mat-card>
