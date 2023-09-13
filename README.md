@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/ng-matero">
-    <img width="150" src="https://github.com/ng-matero/ng-matero/assets/20625845/fc05b2a7-8aae-4e6d-8cdc-4b438c1ff7b0">
+    <img width="150" src="https://github.com/ng-matero/ng-matero/assets/20625845/65c43b2c-4c6a-49f0-8cb3-77d336815725">
   </a>
 </p>
 
