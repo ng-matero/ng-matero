@@ -36,13 +36,18 @@ import { AuthService, User } from '@core/authentication';
 export class UserPanelComponent implements OnInit {
   user!: User;
 
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.auth.user().subscribe(user => (this.user = user));
   }
 
   logout() {
-    this.auth.logout().subscribe(() => this.router.navigateByUrl('/auth/login'));
+    this.auth.logout().subscribe(() => {
+      this.router.navigateByUrl('/auth/login');
+    });
   }
 }

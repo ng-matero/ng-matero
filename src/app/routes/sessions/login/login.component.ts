@@ -44,7 +44,9 @@ export class LoginComponent {
       .login(this.username.value, this.password.value, this.rememberMe.value)
       .pipe(filter(authenticated => authenticated))
       .subscribe({
-        next: () => this.router.navigateByUrl('/'),
+        next: () => {
+          this.router.navigateByUrl('/');
+        },
         error: (errorRes: HttpErrorResponse) => {
           if (errorRes.status === 422) {
             const form = this.loginForm;
