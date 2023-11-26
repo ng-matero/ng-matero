@@ -2791,14 +2791,14 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^16.1.1":
-  version "16.1.1"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.1.1.tgz#dc21d471a58fcebe835fd43b1f58ab22e54b7e2d"
-  integrity sha512-xopN5S+fXLF7oTdO6T8333DTOVs21zqMxojCKvfes7G6cgPvrAchGaCgz44LKbILVojb2rO/+27iI5x9Y3cing==
+"@ng-matero/extensions@^16.2.0":
+  version "16.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.2.0.tgz#d0cad3f79ef9509f21675df575b6f5f7ed9ec33b"
+  integrity sha512-2qP+t5J5lBHwlYNFHVFaVeOekHK9xKhhThGuUiHP6HNKI1D4/N0v45+xFuKbN27mnoE1/O2wgEdgJxj4L49OMg==
   dependencies:
     "@ng-select/ng-select" "^11.0.0"
     ngx-color "^9.0.0"
-    photoviewer "^3.8.0"
+    photoviewer "^3.9.0"
     tslib "^2.4.0"
 
 "@ng-select/ng-select@^11.0.0":
@@ -5430,10 +5430,10 @@ domhandler@^5.0.2, domhandler@^5.0.3:
   dependencies:
     domelementtype "^2.3.0"
 
-domq.js@^0.6.8:
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/domq.js/-/domq.js-0.6.8.tgz#89e349f366aef2d8eee2099d669af6d0b25dca99"
-  integrity sha512-G9kHE7/dUr9VhtczUEPVQpQQvH9N599a9usD+Q+eHwVbAptVKGSodKdEnVBgW3PPeOAnL0rFaZlasGjFlbaBwA==
+domq.js@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/domq.js/-/domq.js-0.7.1.tgz#4b3c9306a26d4d1a64681a452b15eca0ce00fbc9"
+  integrity sha512-SQjubdV+FsTa8pRPrhygohvraS6NS5XdH2wK0V8nzg3vQW5+h3+LDn5XCE5RYejbtZE4aAUz2UTxE1B9oSl55w==
 
 domutils@^3.0.1:
   version "3.1.0"
@@ -9589,12 +9589,12 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==
 
-photoviewer@^3.8.0, photoviewer@^3.8.1:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/photoviewer/-/photoviewer-3.8.1.tgz#e7bcf028b3064295ca28c11429c84517686a81a8"
-  integrity sha512-JkG1j0n/24y3HZ4v+1JEcHOqPwPV/ltRMw3Z0TAUQzgeorMghbqE0IGQneljkc0qkNCjgiNhwG1ApWvnxoQMWg==
+photoviewer@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/photoviewer/-/photoviewer-3.9.0.tgz#5d7313d9dd1c45fa9c787f325f8ffa4e24387cc3"
+  integrity sha512-Y7u00GeEJMtWkBCBoWXzmTdNsZxRPVjAjt7fySnZnv5xdsVkcaJEfUZ8fIuE9C7k/lBHqV7Z2LQNXHdw9spIxw==
   dependencies:
-    domq.js "^0.6.8"
+    domq.js "^0.7.0"
 
 picocolors@^1.0.0:
   version "1.0.0"

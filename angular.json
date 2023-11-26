@@ -19,8 +19,7 @@
           "options": {
             "allowedCommonJsDependencies": [
               "base64-js",
-              "moment",
-              "photoviewer"
+              "moment"
             ],
             "outputPath": "dist/ng-matero",
             "index": "src/index.html",
