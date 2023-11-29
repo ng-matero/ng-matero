@@ -6,12 +6,17 @@
   z-index: 200;
   display: block;
   padding: 8px;
+  background-color: var(--topmenu-background-color);
 
   @include mat.elevation(2);
 
-  .mat-mdc-button-base {
+  .mat-mdc-button {
     padding: 0 16px;
     white-space: nowrap;
+
+    &.active {
+      background-color: var(--topmenu-item-active-background-color);
+    }
   }
 
   .menu-icon,
@@ -66,15 +71,9 @@
 }
 
 .matero-topmenu-panel {
-  .mat-menu-item {
-    .menu-name {
-      margin-right: 8px;
-      vertical-align: middle;
-
-      [dir='rtl'] & {
-        margin-right: auto;
-        margin-left: 8px;
-      }
+  .mat-mdc-menu-item {
+    &.active {
+      color: var(--topmenu-dropdown-item-active-text-color);
     }
   }
 }

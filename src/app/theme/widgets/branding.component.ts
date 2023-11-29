@@ -14,6 +14,10 @@ import { Component } from '@angular/core';
         width: 30px;
         height: 30px;
       }
+
+      a {
+        text-decoration: none;
+      }
     `,
   ],
 })

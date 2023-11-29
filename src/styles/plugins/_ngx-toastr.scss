@@ -6,7 +6,7 @@
     min-height: 48px;
     padding: 14px 16px;
     color: rgba(255, 255, 255, .7);
-    background-color: #323232;
+    background-color: #333;
     border-radius: 4px;
 
     @include mat.elevation(6);
@@ -21,23 +21,23 @@
   .toast-warning,
   .toast-error {
     padding-left: 50px;
-    color: #fff;
+    color: white;
   }
 
   .toast-info {
-    background-color: mat.get-color-from-palette(mat.$blue-palette, 500);
+    background-color: var(--toast-info-background-color);
   }
 
   .toast-success {
-    background-color: mat.get-color-from-palette(mat.$green-palette, 500);
+    background-color: var(--toast-success-background-color);
   }
 
   .toast-warning {
-    background-color: mat.get-color-from-palette(mat.$orange-palette, 500);
+    background-color: var(--toast-warning-background-color);
   }
 
   .toast-error {
-    background-color: mat.get-color-from-palette(mat.$red-palette, 500);
+    background-color: var(--toast-error-background-color);
   }
 
   .toast-close-button {

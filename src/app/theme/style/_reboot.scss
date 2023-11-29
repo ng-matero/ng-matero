@@ -1,13 +1,9 @@
 @use 'variables';
 
-body {
-  margin: 0;
-  font-family: variables.$font-family-base;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
+*,
+::after,
+::before {
+  box-sizing: border-box;
 }
 
 html,
@@ -17,10 +13,14 @@ body {
   overflow: auto; // 2
 }
 
-*,
-::after,
-::before {
-  box-sizing: border-box;
+body {
+  margin: 0;
+  font-family: variables.$font-family-base;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 dl,
@@ -38,11 +38,18 @@ samp {
 }
 
 code {
-  padding: 3px;
-  font-size: 90%;
+  padding: 2px 4px;
+  font-size: 80%;
   word-break: break-word;
+  background-color: var(--code-background-color);
+  border: 1px solid var(--code-border-color);
+  border-radius: 4px;
 }
 
 a {
-  text-decoration: none;
+  color: var(--link-color);
+
+  &:hover {
+    color: var(--link-hover-color);
+  }
 }

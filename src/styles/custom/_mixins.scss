@@ -1,5 +1,0 @@
-@mixin dark {
-  @at-root .theme-dark #{&} {
-    @content;
-  }
-}

@@ -12,6 +12,7 @@
   height: variables.$toolbar-height-desktop;
   padding: 0 8px;
   overflow: hidden;
+  border-bottom: 1px solid var(--divider-color);
 
   @include breakpoints.bp-lt(small) {
     & {

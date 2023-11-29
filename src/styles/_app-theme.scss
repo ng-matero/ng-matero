@@ -1,14 +1,7 @@
 @use '@angular/material' as mat;
 @use '@ng-matero/extensions' as mtx;
 
-@use '../app/theme/style/reboot-theme';
-@use '../app/theme/header/header-theme';
-@use '../app/theme/sidebar/sidebar-theme';
-@use '../app/theme/sidemenu/sidemenu-theme';
-@use '../app/theme/topmenu/topmenu-theme';
-@use '../app/shared/components/error-code/error-code-theme';
-
-@use './custom/table-theme';
+@use './root-theme';
 
 @include mat.core();
 
@@ -19,12 +12,5 @@
   @include mat.all-component-themes($theme);
   @include mtx.all-component-themes($theme);
 
-  @include reboot-theme.theme($theme);
-  @include header-theme.theme($theme);
-  @include sidebar-theme.theme($theme);
-  @include sidemenu-theme.theme($theme);
-  @include topmenu-theme.theme($theme);
-  @include error-code-theme.theme($theme);
-
-  @include table-theme.theme($theme);
+  @include root-theme.theme($theme);
 }
