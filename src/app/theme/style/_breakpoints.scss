@@ -1,14 +1,25 @@
 @use 'sass:map';
-@use 'variables';
 
-@function bp($name, $breakpoints: variables.$breakpoints) {
+// Breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+$breakpoints: (
+  xsmall: 0,
+  small:  600px,
+  medium: 960px,
+  large:  1280px,
+  xlarge: 1920px
+);
+
+@function bp($name, $breakpoints: $breakpoints) {
   $min: map.get($breakpoints, $name);
 
   @return $min;
 }
 
 // Media of at least the minimum breakpoint width.
-@mixin bp-gt($name, $breakpoints: variables.$breakpoints) {
+@mixin bp-gt($name, $breakpoints: $breakpoints) {
   $min: bp($name, $breakpoints);
 
   @if $min {
@@ -22,7 +33,7 @@
 }
 
 // Media of at most the maximum breakpoint width.
-@mixin bp-lt($name, $breakpoints: variables.$breakpoints) {
+@mixin bp-lt($name, $breakpoints: $breakpoints) {
   $max: bp($name, $breakpoints) - 1px;
 
   @if $max {

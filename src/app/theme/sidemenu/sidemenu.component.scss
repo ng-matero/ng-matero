@@ -1,9 +1,8 @@
-@use '../style/variables';
 @use '../style/transitions';
 @use '../style/badge';
 
 .matero-sidemenu {
-  width: variables.$sidenav-width - 1px; // subtract border width
+  width: calc(var(--sidenav-width) - 1px); // subtract border width
   padding: 0;
   margin: 0;
   list-style: none;

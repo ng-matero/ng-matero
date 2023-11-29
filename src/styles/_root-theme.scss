@@ -10,6 +10,14 @@
   $is-dark-theme: map.get($theme, is-dark);
   $root-name: if($is-dark-theme, '.theme-dark', ':root');
 
+  :root {
+    --body-font-family: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    --code-font-family: 'Roboto Mono', monospace;
+    --gutter: 16px;
+    --sidenav-width: 241px;
+    --sidenav-collapsed-width: 51px;
+  }
+
   @at-root {
     #{$root-name} {
       --divider-color: #{mat.get-color-from-palette($foreground, divider)};

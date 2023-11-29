@@ -34,16 +34,23 @@
 .matero-user-panel-icons {
   white-space: nowrap;
 
-  .mat-mdc-button-base,
+  .mat-mdc-icon-button,
   .mat-mdc-button-touch-target {
     width: 32px;
     height: 32px;
   }
 
-  .mat-mdc-button-base {
+  .mat-mdc-icon-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0;
+
+    mat-icon,
+    svg {
+      width: 18px;
+      height: 18px;
+      font-size: 18px;
+    }
   }
 }

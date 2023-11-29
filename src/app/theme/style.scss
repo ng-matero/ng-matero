@@ -1,3 +1,21 @@
 @use 'style/reboot';
-@use 'style/misc';
 @use 'style/colors';
+@use 'style/scrollbar';
+
+.scrollbar-thin {
+  @include scrollbar.thin();
+}
+
+.scrollbar-none {
+  @include scrollbar.none();
+}
+
+@media (width <= 720px) {
+  .hide-small {
+    display: none !important;
+  }
+
+  .show-small {
+    display: block !important;
+  }
+}

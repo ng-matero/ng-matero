@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '../style/variables';
 @use '../style/transitions';
 @use '../style/breakpoints';
 
@@ -10,7 +9,7 @@
 
 .matero-content {
   position: relative;
-  padding: variables.$gutter;
+  padding: var(--gutter);
 }
 
 .matero-sidenav {
@@ -22,7 +21,13 @@
 // Layout control
 .matero-header-above {
   .matero-container {
-    height: calc(100% - #{variables.$toolbar-height-desktop}) !important;
+    height: calc(100% - var(--mat-toolbar-standard-height)) !important;
+
+    @include breakpoints.bp-lt(small) {
+      & {
+        height: calc(100% - var(--mat-toolbar-mobile-height)) !important;
+      }
+    }
   }
 
   .matero-sidebar-main {
@@ -34,7 +39,7 @@
 .matero-sidenav-collapsed,
 .matero-sidenav-collapsed-fix {
   .matero-sidenav {
-    width: variables.$sidenav-collapsed-width;
+    width: var(--sidenav-collapsed-width);
 
     .menu-name,
     .menu-label,
@@ -51,7 +56,7 @@
     }
 
     &:hover {
-      width: variables.$sidenav-width;
+      width: var(--sidenav-width);
 
       .menu-name,
       .menu-label,
@@ -73,16 +78,16 @@
 // Layout control
 .matero-sidenav-collapsed {
   .matero-content-wrap {
-    margin-left: variables.$sidenav-collapsed-width !important;
+    margin-left: var(--sidenav-collapsed-width) !important;
 
     [dir='rtl'] & {
-      margin-right: variables.$sidenav-collapsed-width !important;
+      margin-right: var(--sidenav-collapsed-width) !important;
       margin-left: auto !important;
     }
   }
 
   &[dir='rtl'] .matero-content-wrap {
-    margin-right: variables.$sidenav-collapsed-width !important;
+    margin-right: var(--sidenav-collapsed-width) !important;
     margin-left: auto !important;
   }
 }
@@ -114,11 +119,11 @@
   }
 
   .matero-topmenu {
-    top: variables.$topmenu-sticky-position-desktop;
+    top: var(--mat-toolbar-standard-height);
 
     @include breakpoints.bp-lt(small) {
       & {
-        top: variables.$topmenu-sticky-position-mobile;
+        top: var(--mat-toolbar-mobile-height);
       }
     }
   }
@@ -127,10 +132,10 @@
 // Fix the init content width
 .matero-content-width-fix {
   .matero-content-wrap {
-    margin-left: variables.$sidenav-width !important;
+    margin-left: var(--sidenav-width) !important;
 
     [dir='rtl'] & {
-      margin-right: variables.$sidenav-width !important;
+      margin-right: var(--sidenav-width) !important;
       margin-left: auto !important;
     }
   }
