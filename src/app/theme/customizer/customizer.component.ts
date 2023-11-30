@@ -2,7 +2,6 @@ import { CdkDragStart } from '@angular/cdk/drag-drop';
 import {
   Component,
   EventEmitter,
-  OnDestroy,
   OnInit,
   Output,
   TemplateRef,
@@ -19,7 +18,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./customizer.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CustomizerComponent implements OnInit, OnDestroy {
+export class CustomizerComponent implements OnInit {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
   options = this.settings.options;
@@ -62,17 +61,7 @@ export class CustomizerComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.form.patchValue(this.options);
-
-    this.formSubscription = this.form.valueChanges.subscribe(value => {
-      this.sendOptions(this.form.getRawValue());
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.formSubscription.unsubscribe();
-  }
+  ngOnInit(): void {}
 
   onDragStart(event: CdkDragStart) {
     this.dragging = true;
@@ -87,6 +76,16 @@ export class CustomizerComponent implements OnInit, OnDestroy {
     this.drawerRef = this.drawer.open(templateRef, {
       position: this.form.get('dir')?.value === 'rtl' ? 'left' : 'right',
       width: '320px',
+    });
+
+    this.drawerRef.afterOpened().subscribe(() => {
+      this.formSubscription = this.form.valueChanges.subscribe(value => {
+        this.sendOptions(this.form.getRawValue());
+      });
+    });
+
+    this.drawerRef.afterDismissed().subscribe(() => {
+      this.formSubscription.unsubscribe();
     });
   }
 

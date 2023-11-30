@@ -1,6 +1,6 @@
 <page-header class="bg-purple-500"></page-header>
 
-<ng-container *ngFor=" let group of icons | keyvalue; trackBy: trackByIcon">
+<ng-container *ngFor="let group of icons | keyvalue; trackBy: trackByIcon">
   <mat-card>
     <mat-card-header>
       <mat-card-title class="text-capitalize m-b-16 text-gray-500">{{group.key}}</mat-card-title>
@@ -8,8 +8,8 @@
     <mat-card-content>
       <div class="row">
         <div class="col-4 col-sm-3 col-md-2 col-xl-1" *ngFor="let icon of group.value">
-          <div class="text-center">
-            <mat-icon class="icon-36">{{icon}}</mat-icon>
+          <div class="text-center m-t-12 m-b-24">
+            <mat-icon>{{icon}}</mat-icon>
             <p class="f-s-12">{{icon}}</p>
           </div>
         </div>
