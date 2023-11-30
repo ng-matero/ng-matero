@@ -37,16 +37,14 @@ function copyAssets() {
   return src([
     'src/assets/**/*',
     '!src/assets/data/menu.json',
-    '!src/assets/images/avatars/**',
+    '!src/assets/images/heros/**',
     '!src/assets/images/pixabay/**',
   ]).pipe(dest(`${FILES}/src/assets`));
 }
 
 // src/styles
 function copyStyles() {
-  return src(['src/styles/**/*', '!src/styles/_app-theme.scss', '!src/styles/_themes.scss']).pipe(
-    dest(`${FILES}/src/styles`)
-  );
+  return src(['src/styles/**/*', '!src/styles/_themes.scss']).pipe(dest(`${FILES}/src/styles`));
 }
 
 // src/environments
