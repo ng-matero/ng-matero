@@ -99,7 +99,7 @@ export class InMemDataService implements InMemoryDbService {
       password: 'password',
       name: 'recca0120',
       email: 'recca0120@gmail.com',
-      avatar: './assets/images/avatars/avatar-10.jpg',
+      avatar: './assets/images/heros/10.jpg',
       refresh_token: true,
     },
   ];
