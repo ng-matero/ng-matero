@@ -2791,10 +2791,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^16.2.0":
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.2.0.tgz#d0cad3f79ef9509f21675df575b6f5f7ed9ec33b"
-  integrity sha512-2qP+t5J5lBHwlYNFHVFaVeOekHK9xKhhThGuUiHP6HNKI1D4/N0v45+xFuKbN27mnoE1/O2wgEdgJxj4L49OMg==
+"@ng-matero/extensions@^16.3.0":
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.3.0.tgz#7cc2ebfea62b540aa56fdfe43cb6db55fc476f60"
+  integrity sha512-Wvgl7OGu3t7f6Qz1KzCQAC/SH9e0Ackuruk7iIP05Im4+iqTk97bjjTinLzKjgyZ+AZ2Gt8XKBkJc7xQuOYvVQ==
   dependencies:
     "@ng-select/ng-select" "^11.0.0"
     ngx-color "^9.0.0"
@@ -9593,6 +9593,13 @@ photoviewer@^3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/photoviewer/-/photoviewer-3.9.0.tgz#5d7313d9dd1c45fa9c787f325f8ffa4e24387cc3"
   integrity sha512-Y7u00GeEJMtWkBCBoWXzmTdNsZxRPVjAjt7fySnZnv5xdsVkcaJEfUZ8fIuE9C7k/lBHqV7Z2LQNXHdw9spIxw==
+  dependencies:
+    domq.js "^0.7.0"
+
+photoviewer@^3.9.2:
+  version "3.9.2"
+  resolved "https://registry.yarnpkg.com/photoviewer/-/photoviewer-3.9.2.tgz#9281b3a97d33e4bcabdcacadcab366242c3eb188"
+  integrity sha512-WprmLuSPyDH69nm5uSbr8HKzzvP1LS4Ks7Zzzwsf51NAGbcYpME3Lae5tFOWxY8fQtj3E17iov4zzMGJnZDLyA==
   dependencies:
     domq.js "^0.7.0"
 

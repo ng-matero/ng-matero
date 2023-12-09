@@ -13,7 +13,9 @@
     </mat-grid-tile-header>
 
     <img class="w-full h-full object-cover cursor-pointer"
-         [src]="image.src" alt="Gallery Image {{ i+1 }}"
-         (click)="preview(i)" />
+         mtxPhotoviewer
+         [mtxPhotoviewerItems]="images"
+         [mtxPhotoviewerOptions]="{ index: i }"
+         [src]="image.src" alt="Gallery Image {{ i+1 }}" />
   </mat-grid-tile>
 </mat-grid-list>
