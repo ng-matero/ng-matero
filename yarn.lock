@@ -2791,10 +2791,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^16.3.0":
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.3.0.tgz#7cc2ebfea62b540aa56fdfe43cb6db55fc476f60"
-  integrity sha512-Wvgl7OGu3t7f6Qz1KzCQAC/SH9e0Ackuruk7iIP05Im4+iqTk97bjjTinLzKjgyZ+AZ2Gt8XKBkJc7xQuOYvVQ==
+"@ng-matero/extensions@^16.3.2":
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.3.2.tgz#f23a601e29378f41c03b94c752eb36949444dd9c"
+  integrity sha512-tL1f6na5Ea9CeRmeojKQG06+AckdA02QeEP+N4wKxF/cnW9VNW+JHNGPjxGnM026JskKNRZQIfhjt6ctpfgakQ==
   dependencies:
     "@ng-select/ng-select" "^11.0.0"
     ngx-color "^9.0.0"
