@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
+import { ngxPermissionsGuard } from 'ngx-permissions';
 import { PermissionsRoleSwitchingComponent } from './role-switching/role-switching.component';
 import { PermissionsRouteGuardComponent } from './route-guard/route-guard.component';
 import { PermissionsTestComponent } from './test/test.component';
-import { NgxPermissionsGuard } from 'ngx-permissions';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'role-switching', component: PermissionsRoleSwitchingComponent },
   {
     path: 'route-guard',
     component: PermissionsRouteGuardComponent,
-    canActivate: [NgxPermissionsGuard],
+    canActivate: [ngxPermissionsGuard],
     data: {
       permissions: {
         except: 'GUEST',
@@ -21,7 +20,7 @@ const routes: Routes = [
   {
     path: 'test',
     component: PermissionsTestComponent,
-    canActivate: [NgxPermissionsGuard],
+    canActivate: [ngxPermissionsGuard],
     data: {
       permissions: {
         only: 'ADMIN',
@@ -30,9 +29,3 @@ const routes: Routes = [
     },
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class PermissionsRoutingModule {}

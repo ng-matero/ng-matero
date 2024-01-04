@@ -23,37 +23,35 @@ export const routes: Routes = [
       { path: '500', component: Error500Component },
       {
         path: 'design',
-        loadChildren: () => import('./routes/design/design.module').then(m => m.DesignModule),
+        loadChildren: () => import('./routes/design/routes').then(m => m.routes),
       },
       {
         path: 'material',
-        loadChildren: () => import('./routes/material/material.module').then(m => m.MaterialModule),
+        loadChildren: () => import('./routes/material/routes').then(m => m.routes),
       },
       {
         path: 'media',
-        loadChildren: () => import('./routes/media/media.module').then(m => m.MediaModule),
+        loadChildren: () => import('./routes/media/routes').then(m => m.routes),
       },
       {
         path: 'forms',
-        loadChildren: () => import('./routes/forms/forms.module').then(m => m.FormsModule),
+        loadChildren: () => import('./routes/forms/routes').then(m => m.routes),
       },
       {
         path: 'tables',
-        loadChildren: () => import('./routes/tables/tables.module').then(m => m.TablesModule),
+        loadChildren: () => import('./routes/tables/routes').then(m => m.routes),
       },
       {
         path: 'profile',
-        loadChildren: () => import('./routes/profile/profile.module').then(m => m.ProfileModule),
+        loadChildren: () => import('./routes/profile/routes').then(m => m.routes),
       },
       {
         path: 'permissions',
-        loadChildren: () =>
-          import('./routes/permissions/permissions.module').then(m => m.PermissionsModule),
+        loadChildren: () => import('./routes/permissions/routes').then(m => m.routes),
       },
       {
         path: 'utilities',
-        loadChildren: () =>
-          import('./routes/utilities/utilities.module').then(m => m.UtilitiesModule),
+        loadChildren: () => import('./routes/utilities/routes').then(m => m.routes),
       },
     ],
   },

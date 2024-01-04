@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { BadgeComponent } from './badge/badge.component';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
-import { ButtonComponent } from './button/button.component';
 import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
+import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { ChipsComponent } from './chips/chips.component';
@@ -25,23 +24,23 @@ import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.co
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { RippleComponent } from './ripple/ripple.component';
 import { SelectComponent } from './select/select.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { SidenavBasicComponent } from './sidenav/basic-sidenav';
 import { SidenavDualComponent } from './sidenav/dual-sidenav';
 import { SidenavMobileComponent } from './sidenav/mobile-sidenav';
+import { SidenavComponent } from './sidenav/sidenav.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { SliderComponent } from './slider/slider.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { SortComponent } from './sort/sort.component';
 import { StepperComponent } from './stepper/stepper.component';
-import { TabComponent } from './tab/tab.component';
 import { TABS_DEMO_ROUTES } from './tab/routes';
+import { TabComponent } from './tab/tab.component';
 import { TableComponent } from './table/table.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TreeComponent } from './tree/tree.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'autocomplete', component: AutocompleteComponent },
   { path: 'checkbox', component: CheckboxComponent },
   { path: 'datepicker', component: DatepickerComponent },
@@ -90,9 +89,3 @@ const routes: Routes = [
   { path: 'data-table/sort', component: SortComponent },
   { path: 'data-table/table', component: TableComponent },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class MaterialRoutingModule {}
