@@ -1,17 +1,25 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from '@core/bootstrap/menu.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [NgFor, NgIf, MatIconModule, TranslateModule],
 })
 export class BreadcrumbComponent implements OnInit {
   @Input() nav: string[] = [];
 
-  constructor(private router: Router, private menu: MenuService) {}
+  constructor(
+    private router: Router,
+    private menu: MenuService
+  ) {}
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];

@@ -1,10 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MtxSelectModule } from '@ng-matero/extensions/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-forms-select-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatFormFieldModule, MtxSelectModule, FormsModule],
 })
 export class FormsSelectEditComponent implements OnInit {
   defaultBindingsList = [

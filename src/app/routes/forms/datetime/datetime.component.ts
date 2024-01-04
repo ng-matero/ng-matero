@@ -1,15 +1,40 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { MtxDatetimepickerFilterType } from '@ng-matero/extensions/datetimepicker';
+import {
+  MtxDatetimepickerFilterType,
+  MtxDatetimepickerModule,
+} from '@ng-matero/extensions/datetimepicker';
 import * as moment from 'moment';
+import { NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-forms-datetime',
   templateUrl: './datetime.component.html',
   styleUrls: ['./datetime.component.scss'],
+  standalone: true,
+  imports: [
+    PageHeaderComponent,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MtxDatetimepickerModule,
+    MatInputModule,
+    NgIf,
+  ],
 })
 export class FormsDatetimeComponent implements OnInit, OnDestroy {
   type = 'moment';

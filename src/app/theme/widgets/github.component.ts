@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-github-button',
@@ -22,5 +23,7 @@ import { Component } from '@angular/core';
       </svg>
     </a>
   `,
+  standalone: true,
+  imports: [MatButtonModule],
 })
 export class GithubButtonComponent {}

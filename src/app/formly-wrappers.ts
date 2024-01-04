@@ -15,6 +15,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       </div>
     </div>
   `,
+  standalone: true,
 })
 export class FormlyWrapperCardComponent extends FieldWrapper {}
 
@@ -25,5 +26,6 @@ export class FormlyWrapperCardComponent extends FieldWrapper {}
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
+  standalone: true,
 })
 export class FormlyWrapperDivComponent extends FieldWrapper {}

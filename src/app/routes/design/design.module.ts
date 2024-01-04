@@ -9,7 +9,6 @@ const COMPONENTS: any[] = [DesignColorsComponent, DesignIconsComponent];
 const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
-  imports: [SharedModule, DesignRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  imports: [SharedModule, DesignRoutingModule, ...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class DesignModule {}

@@ -4,6 +4,18 @@ import {
   MatBottomSheetConfig,
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
+import { MatIconModule } from '@angular/material/icon';
+import { NgFor } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatOptionModule, MatLineModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 const defaultConfig = new MatBottomSheetConfig();
 
@@ -11,6 +23,22 @@ const defaultConfig = new MatBottomSheetConfig();
   selector: 'app-bottom-sheet',
   templateUrl: './bottom-sheet.component.html',
   styleUrls: ['./bottom-sheet.component.scss'],
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatListModule,
+    NgFor,
+    MatIconModule,
+    MatLineModule,
+  ],
 })
 export class BottomSheetComponent {
   config: MatBottomSheetConfig = {
@@ -44,6 +72,8 @@ export class BottomSheetComponent {
       </a>
     </mat-nav-list>
   `,
+  standalone: true,
+  imports: [MatListModule, NgFor],
 })
 export class BottomSheetOverviewComponent {
   constructor(private _bottomSheet: MatBottomSheetRef) {}

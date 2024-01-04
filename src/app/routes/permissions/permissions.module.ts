@@ -13,7 +13,6 @@ const COMPONENTS: any[] = [
 const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
-  imports: [SharedModule, PermissionsRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  imports: [SharedModule, PermissionsRoutingModule, ...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class PermissionsModule {}

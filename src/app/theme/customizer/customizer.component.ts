@@ -1,4 +1,4 @@
-import { CdkDragStart } from '@angular/cdk/drag-drop';
+import { CdkDragStart, CdkDrag } from '@angular/cdk/drag-drop';
 import {
   Component,
   EventEmitter,
@@ -7,16 +7,37 @@ import {
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppSettings, SettingsService } from '@core';
 import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
 import { Subscription } from 'rxjs';
+import { MatDividerModule } from '@angular/material/divider';
+import { DisableControlDirective } from '@shared/directives/disable-control.directive';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-customizer',
   templateUrl: './customizer.component.html',
   styleUrls: ['./customizer.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [
+    MatTooltipModule,
+    CdkDrag,
+    MatButtonModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatSlideToggleModule,
+    DisableControlDirective,
+    MatDividerModule,
+  ],
+  providers: [MtxDrawer],
 })
 export class CustomizerComponent implements OnInit {
   @Output() optionsChange = new EventEmitter<AppSettings>();

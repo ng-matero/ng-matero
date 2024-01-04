@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  standalone: true,
+  imports: [BreadcrumbComponent, MatButtonModule, MatIconModule],
 })
 export class ButtonComponent {
   counter = 0;

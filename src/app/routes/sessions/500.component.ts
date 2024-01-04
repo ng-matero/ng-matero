@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ErrorCodeComponent } from '@shared/components/error-code/error-code.component';
 
 @Component({
   selector: 'app-error-500',
@@ -10,5 +11,7 @@ import { Component } from '@angular/core';
     >
     </error-code>
   `,
+  standalone: true,
+  imports: [ErrorCodeComponent],
 })
 export class Error500Component {}

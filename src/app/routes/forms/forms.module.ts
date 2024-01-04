@@ -17,7 +17,6 @@ const COMPONENTS: any[] = [
 const COMPONENTS_DYNAMIC: any[] = [FormsSelectEditComponent];
 
 @NgModule({
-  imports: [SharedModule, FormsRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  imports: [SharedModule, FormsRoutingModule, ...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class FormsModule {}

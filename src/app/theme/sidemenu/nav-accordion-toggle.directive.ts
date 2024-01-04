@@ -3,6 +3,7 @@ import { NavAccordionItemDirective } from './nav-accordion-item.directive';
 
 @Directive({
   selector: '[navAccordionToggle]',
+  standalone: true,
 })
 export class NavAccordionToggleDirective {
   protected navLink: NavAccordionItemDirective;

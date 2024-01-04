@@ -8,7 +8,6 @@ const COMPONENTS: any[] = [UtilitiesCssHelpersComponent, UtilitiesCssGridCompone
 const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
-  imports: [SharedModule, UtilitiesRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  imports: [SharedModule, UtilitiesRoutingModule, ...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class UtilitiesModule {}

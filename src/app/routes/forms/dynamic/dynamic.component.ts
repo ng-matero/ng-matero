@@ -1,12 +1,24 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { ToastrService } from 'ngx-toastr';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
   styleUrls: ['./dynamic.component.scss'],
+  standalone: true,
+  imports: [
+    PageHeaderComponent,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormlyModule,
+    MatButtonModule,
+  ],
 })
 export class FormsDynamicComponent {
   form = new FormGroup({});

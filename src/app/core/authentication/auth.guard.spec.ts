@@ -7,7 +7,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { TokenService, AuthService, authGuard } from '@core/authentication';
 
-@Component({ template: '' })
+@Component({
+  template: '',
+  standalone: true,
+  imports: [HttpClientTestingModule],
+})
 class DummyComponent {}
 
 describe('authGuard function unit test', () => {
@@ -25,8 +29,8 @@ describe('authGuard function unit test', () => {
           { path: 'dashboard', component: DummyComponent, canActivate: [authGuard] },
           { path: 'auth/login', component: DummyComponent },
         ]),
+        DummyComponent,
       ],
-      declarations: [DummyComponent],
       providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
     });
     TestBed.createComponent(DummyComponent);

@@ -2,12 +2,17 @@ import { Component, OnInit, ViewEncapsulation, Input, HostBinding } from '@angul
 import { MenuService } from '@core/bootstrap/menu.service';
 import { Router } from '@angular/router';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { TranslateModule } from '@ngx-translate/core';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'page-header',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [NgIf, BreadcrumbComponent, TranslateModule],
 })
 export class PageHeaderComponent implements OnInit {
   @HostBinding('class') class = 'matero-page-header';
@@ -24,7 +29,10 @@ export class PageHeaderComponent implements OnInit {
   }
   private _hideBreadCrumb = false;
 
-  constructor(private router: Router, private menu: MenuService) {}
+  constructor(
+    private router: Router,
+    private menu: MenuService
+  ) {}
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];

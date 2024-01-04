@@ -1,6 +1,10 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 /**
  * Food data with nested structure.
@@ -42,6 +46,8 @@ interface ExampleFlatNode {
   selector: 'app-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss'],
+  standalone: true,
+  imports: [BreadcrumbComponent, MatCardModule, MatTreeModule, MatButtonModule, MatIconModule],
 })
 export class TreeComponent {
   private _transformer = (node: FoodNode, level: number) => {

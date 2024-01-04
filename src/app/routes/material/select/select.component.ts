@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 export interface Food {
   value: string;
@@ -9,6 +16,16 @@ export interface Food {
   selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    NgFor,
+    MatOptionModule,
+  ],
 })
 export class SelectComponent {
   selectedColor!: string;

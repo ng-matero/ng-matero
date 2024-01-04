@@ -14,7 +14,6 @@ const COMPONENTS: any[] = [
 const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
-  imports: [SharedModule, ProfileRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  imports: [SharedModule, ProfileRoutingModule, ...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class ProfileModule {}

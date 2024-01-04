@@ -10,6 +10,17 @@ import { SettingsService } from '@core';
 import { Subscription } from 'rxjs';
 
 import { DashboardService } from './dashboard.service';
+import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MtxProgressModule } from '@ng-matero/extensions/progress';
+import { MatCardModule } from '@angular/material/card';
+import { NgFor, NgClass } from '@angular/common';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +28,21 @@ import { DashboardService } from './dashboard.service';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DashboardService],
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    NgFor,
+    MatCardModule,
+    NgClass,
+    MtxProgressModule,
+    MatTabsModule,
+    MatGridListModule,
+    MatListModule,
+    MatTableModule,
+    MatChipsModule,
+    MatButtonModule,
+    RouterLink,
+  ],
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

@@ -3,6 +3,7 @@ import { NavAccordionDirective } from './nav-accordion.directive';
 
 @Directive({
   selector: '[navAccordionItem]',
+  standalone: true,
 })
 export class NavAccordionItemDirective implements OnInit, OnDestroy {
   protected nav: NavAccordionDirective;

@@ -1,9 +1,25 @@
 import { Component } from '@angular/core';
+import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-tab',
   templateUrl: './tab.component.html',
   styleUrls: ['./tab.component.scss'],
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    MatCardModule,
+    MatTabsModule,
+    NgFor,
+    RouterLinkActive,
+    RouterLink,
+    RouterOutlet,
+    NgIf,
+  ],
 })
 export class TabComponent {
   // Nav bar demo
@@ -45,17 +61,20 @@ export class TabComponent {
 @Component({
   selector: 'sunny-routed-content',
   template: 'Having a lot of light from the sun.',
+  standalone: true,
 })
 export class SunnyTabContentComponent {}
 
 @Component({
   selector: 'rainy-routed-content',
   template: 'A rainy period of time is one when it rains a lot',
+  standalone: true,
 })
 export class RainyTabContentComponent {}
 
 @Component({
   selector: 'foggy-routed-content',
   template: 'If the weather is foggy, there is fog',
+  standalone: true,
 })
 export class FoggyTabContentComponent {}

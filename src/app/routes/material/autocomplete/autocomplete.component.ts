@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor, AsyncPipe, JsonPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 export interface StateGroup {
   letter: string;
@@ -11,6 +18,20 @@ export interface StateGroup {
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    FormsModule,
+    NgFor,
+    MatOptionModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    JsonPipe,
+  ],
 })
 export class AutocompleteComponent implements OnInit {
   states = [

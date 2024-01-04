@@ -7,7 +7,6 @@ const COMPONENTS: any[] = [MediaGalleryComponent];
 const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
-  imports: [SharedModule, MediaRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  imports: [SharedModule, MediaRoutingModule, ...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class MediaModule {}

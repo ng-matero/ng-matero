@@ -1,7 +1,10 @@
-import { ViewChild, ChangeDetectionStrategy, Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/material/form-field';
-import { MtxSelect } from '@ng-matero/extensions/select';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MtxPipesModule } from '@ng-matero/extensions/core';
+import { MtxSelect, MtxSelectModule } from '@ng-matero/extensions/select';
 import { FieldTypeConfig } from '@ngx-formly/core';
+import { FieldType } from '@ngx-formly/material/form-field';
 
 /**
  * This is just an example.
@@ -22,6 +25,8 @@ import { FieldTypeConfig } from '@ngx-formly/core';
   >
   </mtx-select>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ReactiveFormsModule, MtxSelectModule, MtxPipesModule, AsyncPipe],
 })
 export class FormlyFieldComboboxComponent extends FieldType<FieldTypeConfig> {
   @ViewChild('select', { static: true }) select!: MtxSelect;

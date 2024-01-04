@@ -1,10 +1,27 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'mobile-sidenav',
   templateUrl: 'mobile-sidenav.html',
   styleUrls: ['shared.scss', 'mobile-sidenav.scss'],
+  standalone: true,
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    RouterLink,
+    NgFor,
+  ],
 })
 export class SidenavMobileComponent implements OnDestroy {
   mobileQuery: MediaQueryList;

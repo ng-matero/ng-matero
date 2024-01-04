@@ -3,6 +3,7 @@ import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[disableControl]',
+  standalone: true,
 })
 export class DisableControlDirective implements OnChanges {
   @Input() disableControl = false;

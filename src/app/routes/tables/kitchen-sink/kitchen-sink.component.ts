@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { MtxDialog } from '@ng-matero/extensions/dialog';
-import { MtxGridColumn } from '@ng-matero/extensions/grid';
+import { MtxGridColumn, MtxGridModule } from '@ng-matero/extensions/grid';
 import { TranslateService } from '@ngx-translate/core';
 import { TablesDataService } from '../data.service';
 import { TablesKitchenSinkEditComponent } from './edit/edit.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-table-kitchen-sink',
   templateUrl: './kitchen-sink.component.html',
   styleUrls: ['./kitchen-sink.component.scss'],
   providers: [TablesDataService],
+  standalone: true,
+  imports: [
+    PageHeaderComponent,
+    MatCheckboxModule,
+    FormsModule,
+    MatRadioModule,
+    MatButtonModule,
+    MtxGridModule,
+  ],
 })
 export class TablesKitchenSinkComponent implements OnInit {
   columns: MtxGridColumn[] = [

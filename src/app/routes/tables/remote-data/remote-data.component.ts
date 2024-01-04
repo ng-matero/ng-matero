@@ -1,14 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { MtxGridColumn } from '@ng-matero/extensions/grid';
+import { MtxGridColumn, MtxGridModule } from '@ng-matero/extensions/grid';
 import { finalize } from 'rxjs';
 import { TablesRemoteDataService } from './remote-data.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-tables-remote-data',
   templateUrl: './remote-data.component.html',
   styleUrls: ['./remote-data.component.scss'],
   providers: [TablesRemoteDataService],
+  standalone: true,
+  imports: [
+    PageHeaderComponent,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MtxGridModule,
+  ],
 })
 export class TablesRemoteDataComponent implements OnInit {
   columns: MtxGridColumn[] = [

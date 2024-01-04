@@ -26,7 +26,8 @@ import { UserComponent } from './widgets/user.component';
 import { CustomizerComponent } from './customizer/customizer.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    SharedModule,
     AdminLayoutComponent,
     AuthLayoutComponent,
     SidebarComponent,
@@ -46,6 +47,5 @@ import { CustomizerComponent } from './customizer/customizer.component';
     UserComponent,
     CustomizerComponent,
   ],
-  imports: [SharedModule],
 })
 export class ThemeModule {}

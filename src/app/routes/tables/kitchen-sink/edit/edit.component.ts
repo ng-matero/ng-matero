@@ -1,10 +1,14 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { JsonPipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-table-kitchen-sink-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule, JsonPipe],
 })
 export class TablesKitchenSinkEditComponent {
   constructor(

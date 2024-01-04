@@ -6,11 +6,32 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-snack-bar',
   templateUrl: './snack-bar.component.html',
   styleUrls: ['./snack-bar.component.scss'],
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatCheckboxModule,
+    NgIf,
+    MatButtonModule,
+  ],
 })
 export class SnackBarComponent {
   @ViewChild('template') template!: TemplateRef<any>;

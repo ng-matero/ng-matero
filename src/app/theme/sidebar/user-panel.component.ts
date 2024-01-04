@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService, User } from '@core/authentication';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-panel',
@@ -32,6 +36,8 @@ import { AuthService, User } from '@core/authentication';
   `,
   styleUrls: ['./user-panel.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [MatButtonModule, RouterLink, MatTooltipModule, MatIconModule, TranslateModule],
 })
 export class UserPanelComponent implements OnInit {
   user!: User;

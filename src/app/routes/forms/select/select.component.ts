@@ -3,12 +3,33 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Person, DataService } from '../data.service';
 import { FormsSelectEditComponent } from './edit/edit.component';
+import { NgFor, AsyncPipe, JsonPipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { FormsModule } from '@angular/forms';
+import { MtxSelectModule } from '@ng-matero/extensions/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-forms-selects',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   providers: [DataService],
+  standalone: true,
+  imports: [
+    PageHeaderComponent,
+    MatCardModule,
+    MatFormFieldModule,
+    MtxSelectModule,
+    FormsModule,
+    MatDividerModule,
+    MatButtonModule,
+    NgFor,
+    AsyncPipe,
+    JsonPipe,
+  ],
 })
 export class FormsSelectComponent implements OnInit {
   // Data source
@@ -37,7 +58,10 @@ export class FormsSelectComponent implements OnInit {
   selectedCompanyCustom = null;
   selectedCompanyCustomPromise = null;
 
-  constructor(private dataService: DataService, public dialog: MatDialog) {}
+  constructor(
+    private dataService: DataService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.people$ = this.dataService.getPeople();
