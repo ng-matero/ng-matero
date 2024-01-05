@@ -1,21 +1,26 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@core';
-import { CoreModule } from '@core/core.module';
-import { environment } from '@env/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MAT_CARD_CONFIG } from '@angular/material/card';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
+import { MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { InMemDataService } from '@shared/in-mem/in-mem-data.service';
-import { SharedModule } from '@shared/shared.module';
-import { ThemeModule } from '@theme/theme.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
-import { FormlyConfigModule } from './formly-config.module';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+
+import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@core';
+import { environment } from '@env/environment';
+import { PaginatorI18nService } from '@shared';
+import { InMemDataService } from '@shared/in-mem/in-mem-data.service';
 import { routes } from './app.routes';
+import { FormlyConfigModule } from './formly-config.module';
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
@@ -29,11 +34,11 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
-      })
+      }),
+      withComponentInputBinding()
     ),
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
-      BrowserModule,
       BrowserAnimationsModule,
       FormlyConfigModule.forRoot(),
       NgxPermissionsModule.forRoot(),
@@ -45,17 +50,69 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
-      // Demo purposes only for GitHub Pages
+      // You can import the other adapter you need (e.g. luxon, date-fns)
+      MatMomentDateModule,
+      MtxMomentDatetimeModule,
+      // Note: This is only used for GitHub Pages demo purpose
       InMemoryWebApiModule.forRoot(InMemDataService, {
         dataEncapsulation: false,
         passThruUnknownUrl: true,
       })
     ),
+    { provide: BASE_URL, useValue: environment.baseUrl },
+    ...httpInterceptorProviders,
+    ...appInitializerProviders,
     {
-      provide: BASE_URL,
-      useValue: environment.baseUrl,
+      provide: MatPaginatorIntl,
+      deps: [PaginatorI18nService],
+      useFactory: (paginatorI18nSrv: PaginatorI18nService) => paginatorI18nSrv.getPaginatorIntl(),
     },
-    httpInterceptorProviders,
-    appInitializerProviders,
+    {
+      provide: MAT_DATE_LOCALE,
+      useFactory: () => navigator.language, // <= This will be overrided by runtime setting
+    },
+    {
+      provide: MAT_CARD_CONFIG,
+      useValue: {
+        appearance: 'outlined',
+      },
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: 'YYYY-MM-DD',
+        },
+        display: {
+          dateInput: 'YYYY-MM-DD',
+          monthYearLabel: 'YYYY MMM',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'YYYY MMM',
+        },
+      },
+    },
+    {
+      provide: MTX_DATETIME_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: 'YYYY-MM-DD',
+          yearInput: 'YYYY',
+          monthInput: 'MMMM',
+          datetimeInput: 'YYYY-MM-DD HH:mm',
+          timeInput: 'HH:mm',
+        },
+        display: {
+          dateInput: 'YYYY-MM-DD',
+          yearInput: 'YYYY',
+          monthInput: 'MMMM',
+          datetimeInput: 'YYYY-MM-DD HH:mm',
+          timeInput: 'HH:mm',
+          monthYearLabel: 'YYYY MMMM',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+          popupHeaderDateLabel: 'MMM DD, ddd',
+        },
+      },
+    },
   ],
 };

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppSettings, SettingsService } from '@core';
-import { MtxDrawer, MtxDrawerRef } from '@ng-matero/extensions/drawer';
+import { MtxDrawer, MtxDrawerModule, MtxDrawerRef } from '@ng-matero/extensions/drawer';
 import { Subscription } from 'rxjs';
 import { MatDividerModule } from '@angular/material/divider';
 import { DisableControlDirective } from '@shared/directives/disable-control.directive';
@@ -36,8 +36,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSlideToggleModule,
     DisableControlDirective,
     MatDividerModule,
+    MtxDrawerModule,
   ],
-  providers: [MtxDrawer],
 })
 export class CustomizerComponent implements OnInit {
   @Output() optionsChange = new EventEmitter<AppSettings>();

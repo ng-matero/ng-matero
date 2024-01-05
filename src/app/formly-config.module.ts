@@ -4,6 +4,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFieldComboboxComponent } from './formly-templates';
 import { FormlyValidations } from './formly-validations';
 import { FormlyWrapperCardComponent, FormlyWrapperDivComponent } from './formly-wrappers';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 /**
  * Formly global configuration
@@ -30,7 +31,12 @@ const formlyModuleProviders = FormlyModule.forRoot({
 }).providers as Provider[];
 
 @NgModule({
-  imports: [FormlyFieldComboboxComponent, FormlyWrapperCardComponent, FormlyWrapperDivComponent],
+  imports: [
+    FormlyMaterialModule,
+    FormlyFieldComboboxComponent,
+    FormlyWrapperCardComponent,
+    FormlyWrapperDivComponent,
+  ],
   providers: [FormlyValidations],
 })
 export class FormlyConfigModule {

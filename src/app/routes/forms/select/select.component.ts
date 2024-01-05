@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Person, DataService } from '../data.service';
 import { FormsSelectEditComponent } from './edit/edit.component';
@@ -26,6 +26,7 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
     FormsModule,
     MatDividerModule,
     MatButtonModule,
+    MatDialogModule,
     NgFor,
     AsyncPipe,
     JsonPipe,
