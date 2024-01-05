@@ -1,10 +1,11 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
+
+import { BreadcrumbComponent } from '@shared';
 
 /**
  * Food data with nested structure.

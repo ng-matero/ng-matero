@@ -1,13 +1,14 @@
+import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable, map, startWith } from 'rxjs';
-import { MatOptionModule } from '@angular/material/core';
-import { NgFor, AsyncPipe, JsonPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Observable, map, startWith } from 'rxjs';
+
+import { BreadcrumbComponent } from '@shared';
 
 export interface StateGroup {
   letter: string;
@@ -20,17 +21,17 @@ export interface StateGroup {
   styleUrls: ['./autocomplete.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
+    AsyncPipe,
+    JsonPipe,
+    NgFor,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule,
-    FormsModule,
-    NgFor,
     MatOptionModule,
-    ReactiveFormsModule,
-    AsyncPipe,
-    JsonPipe,
+    BreadcrumbComponent,
   ],
 })
 export class AutocompleteComponent implements OnInit {

@@ -1,26 +1,26 @@
+import { NgClass, NgFor } from '@angular/common';
 import {
-  Component,
-  OnInit,
   AfterViewInit,
-  OnDestroy,
   ChangeDetectionStrategy,
+  Component,
   NgZone,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
-import { SettingsService } from '@core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterLink } from '@angular/router';
+import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { Subscription } from 'rxjs';
 
+import { SettingsService } from '@core';
+import { BreadcrumbComponent } from '@shared';
 import { DashboardService } from './dashboard.service';
-import { RouterLink } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatTableModule } from '@angular/material/table';
-import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MtxProgressModule } from '@ng-matero/extensions/progress';
-import { MatCardModule } from '@angular/material/card';
-import { NgFor, NgClass } from '@angular/common';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,18 +30,18 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
   providers: [DashboardService],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
-    NgFor,
-    MatCardModule,
     NgClass,
-    MtxProgressModule,
-    MatTabsModule,
-    MatGridListModule,
-    MatListModule,
-    MatTableModule,
-    MatChipsModule,
-    MatButtonModule,
+    NgFor,
     RouterLink,
+    MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
+    MatListModule,
+    MatGridListModule,
+    MatTableModule,
+    MatTabsModule,
+    MtxProgressModule,
+    BreadcrumbComponent,
   ],
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {

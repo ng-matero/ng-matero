@@ -1,21 +1,22 @@
+import { NgFor } from '@angular/common';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   MatBottomSheet,
   MatBottomSheetConfig,
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
-import { MatIconModule } from '@angular/material/icon';
-import { NgFor } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
-import { MatOptionModule, MatLineModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatLineModule, MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+
+import { BreadcrumbComponent } from '@shared';
 
 const defaultConfig = new MatBottomSheetConfig();
 
@@ -25,19 +26,19 @@ const defaultConfig = new MatBottomSheetConfig();
   styleUrls: ['./bottom-sheet.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
+    NgFor,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
-    FormsModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatListModule,
-    NgFor,
     MatIconModule,
+    MatListModule,
+    MatInputModule,
     MatLineModule,
+    MatOptionModule,
+    MatSelectModule,
+    BreadcrumbComponent,
   ],
 })
 export class BottomSheetComponent {

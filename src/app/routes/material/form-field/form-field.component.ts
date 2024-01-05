@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { MatRadioModule } from '@angular/material/radio';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-form-field',
@@ -16,17 +17,17 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
   styleUrls: ['./form-field.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCardModule,
     MatCheckboxModule,
-    MatRadioModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatOptionModule,
+    BreadcrumbComponent,
   ],
 })
 export class FormFieldComponent implements OnInit {

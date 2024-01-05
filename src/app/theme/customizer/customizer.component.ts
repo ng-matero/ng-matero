@@ -1,4 +1,4 @@
-import { CdkDragStart, CdkDrag } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragStart } from '@angular/cdk/drag-drop';
 import {
   Component,
   EventEmitter,
@@ -8,16 +8,17 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppSettings, SettingsService } from '@core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MtxDrawer, MtxDrawerModule, MtxDrawerRef } from '@ng-matero/extensions/drawer';
 import { Subscription } from 'rxjs';
-import { MatDividerModule } from '@angular/material/divider';
-import { DisableControlDirective } from '@shared/directives/disable-control.directive';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { AppSettings, SettingsService } from '@core';
+import { DisableControlDirective } from '@shared';
 
 @Component({
   selector: 'app-customizer',
@@ -26,17 +27,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    MatTooltipModule,
-    CdkDrag,
-    MatButtonModule,
-    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    CdkDrag,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
     MatRadioModule,
     MatSlideToggleModule,
-    DisableControlDirective,
-    MatDividerModule,
+    MatTooltipModule,
     MtxDrawerModule,
+    DisableControlDirective,
   ],
 })
 export class CustomizerComponent implements OnInit {

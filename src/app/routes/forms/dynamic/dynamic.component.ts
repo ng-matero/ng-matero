@@ -4,7 +4,8 @@ import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { ToastrService } from 'ngx-toastr';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+
+import { PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-forms-dynamic',
@@ -12,12 +13,12 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
   styleUrls: ['./dynamic.component.scss'],
   standalone: true,
   imports: [
-    PageHeaderComponent,
-    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    FormlyModule,
     MatButtonModule,
+    MatCardModule,
+    FormlyModule,
+    PageHeaderComponent,
   ],
 })
 export class FormsDynamicComponent {

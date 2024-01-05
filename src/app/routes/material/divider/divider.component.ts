@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-divider',

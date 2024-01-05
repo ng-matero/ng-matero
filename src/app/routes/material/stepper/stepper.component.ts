@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
   FormBuilder,
-  Validators,
+  FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-stepper',
@@ -19,14 +20,14 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
   styleUrls: ['./stepper.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatStepperModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    BreadcrumbComponent,
   ],
 })
 export class StepperComponent implements OnInit {

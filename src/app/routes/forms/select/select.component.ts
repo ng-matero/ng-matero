@@ -1,16 +1,17 @@
+import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { Person, DataService } from '../data.service';
-import { FormsSelectEditComponent } from './edit/edit.component';
-import { NgFor, AsyncPipe, JsonPipe } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
-import { MtxSelectModule } from '@ng-matero/extensions/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MtxSelectModule } from '@ng-matero/extensions/select';
+import { Observable } from 'rxjs';
+
+import { PageHeaderComponent } from '@shared';
+import { DataService, Person } from '../data.service';
+import { FormsSelectEditComponent } from './edit/edit.component';
 
 @Component({
   selector: 'app-forms-selects',
@@ -19,17 +20,17 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
   providers: [DataService],
   standalone: true,
   imports: [
-    PageHeaderComponent,
-    MatCardModule,
-    MatFormFieldModule,
-    MtxSelectModule,
-    FormsModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatDialogModule,
-    NgFor,
     AsyncPipe,
     JsonPipe,
+    NgFor,
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MtxSelectModule,
+    PageHeaderComponent,
   ],
 })
 export class FormsSelectComponent implements OnInit {

@@ -1,10 +1,11 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { NgFor } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-list',
@@ -12,12 +13,12 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
   styleUrls: ['./list.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
-    MatCardModule,
-    MatListModule,
     NgFor,
-    MatIconModule,
+    MatCardModule,
     MatDividerModule,
+    MatIconModule,
+    MatListModule,
+    BreadcrumbComponent,
   ],
 })
 export class ListComponent {

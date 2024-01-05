@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-button',

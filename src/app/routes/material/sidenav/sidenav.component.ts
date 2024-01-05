@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-sidenav',

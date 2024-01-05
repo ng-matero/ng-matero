@@ -1,27 +1,18 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import {
-  MatSlideToggleModule,
-  _MatSlideToggleRequiredValidatorModule,
-} from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-slide-toggle',
   templateUrl: './slide-toggle.component.html',
   styleUrls: ['./slide-toggle.component.scss'],
   standalone: true,
-  imports: [
-    BreadcrumbComponent,
-    MatCardModule,
-    MatSlideToggleModule,
-    FormsModule,
-    _MatSlideToggleRequiredValidatorModule,
-    MatButtonModule,
-  ],
+  imports: [FormsModule, MatCardModule, MatSlideToggleModule, MatButtonModule, BreadcrumbComponent],
 })
 export class SlideToggleComponent {
   emailToggle = true;

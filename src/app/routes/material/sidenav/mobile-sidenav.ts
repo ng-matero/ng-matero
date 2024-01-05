@@ -1,12 +1,12 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'mobile-sidenav',
@@ -14,13 +14,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrls: ['shared.scss', 'mobile-sidenav.scss'],
   standalone: true,
   imports: [
-    MatToolbarModule,
+    NgFor,
+    RouterLink,
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule,
     MatListModule,
-    RouterLink,
-    NgFor,
+    MatSidenavModule,
+    MatToolbarModule,
   ],
 })
 export class SidenavMobileComponent implements OnDestroy {

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
+import { Component } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-notification',
@@ -23,7 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     </mat-menu>
   `,
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatIconModule, MatBadgeModule, MatListModule, NgFor],
+  imports: [NgFor, MatBadgeModule, MatButtonModule, MatIconModule, MatListModule, MatMenuModule],
 })
 export class NotificationComponent {
   messages = ['Server Error Reports', 'Server Error Reports', 'Server Error Reports'];

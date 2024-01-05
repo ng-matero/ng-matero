@@ -1,20 +1,21 @@
 import { Directionality } from '@angular/cdk/bidi';
+import { NgIf } from '@angular/common';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-snack-bar',
@@ -22,15 +23,15 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
   styleUrls: ['./snack-bar.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
+    NgIf,
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatSelectModule,
     MatOptionModule,
-    MatCheckboxModule,
-    NgIf,
-    MatButtonModule,
+    BreadcrumbComponent,
   ],
 })
 export class SnackBarComponent {

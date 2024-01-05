@@ -1,18 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import { PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-permissions-role-switching',
   templateUrl: './role-switching.component.html',
   styleUrls: ['./role-switching.component.scss'],
   standalone: true,
-  imports: [PageHeaderComponent, MatButtonToggleModule, FormsModule, JsonPipe],
+  imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
 })
 export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
   currentRole!: string;

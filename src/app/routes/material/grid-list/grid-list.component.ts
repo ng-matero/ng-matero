@@ -1,8 +1,9 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatLineModule } from '@angular/material/core';
-import { NgFor } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-grid-list',

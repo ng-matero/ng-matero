@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { MatRippleModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-ripple',
@@ -12,12 +13,12 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
   styleUrls: ['./ripple.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
-    MatCheckboxModule,
     FormsModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    BreadcrumbComponent,
   ],
 })
 export class RippleComponent {

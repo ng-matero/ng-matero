@@ -1,35 +1,36 @@
+import { NgFor, NgIf } from '@angular/common';
 import {
   Component,
-  ViewChild,
-  Input,
-  Output,
   EventEmitter,
-  OnInit,
+  Input,
   OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
 } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
-import { NavigationEnd, Router, RouterLinkActive, RouterLink } from '@angular/router';
-import { MenuChildrenItem, MenuService } from '@core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+
+import { MenuChildrenItem, MenuService } from '@core';
 import { TopmenuState } from './topmenu.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatIconModule } from '@angular/material/icon';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-topmenu-panel',
   templateUrl: './topmenu-panel.component.html',
   standalone: true,
   imports: [
-    MatMenuModule,
     NgFor,
-    NgxPermissionsModule,
     NgIf,
-    RouterLinkActive,
     RouterLink,
+    RouterLinkActive,
     MatIconModule,
+    MatMenuModule,
+    NgxPermissionsModule,
     TranslateModule,
   ],
 })

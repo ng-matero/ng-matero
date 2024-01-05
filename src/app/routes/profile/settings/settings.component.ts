@@ -1,21 +1,22 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
-  FormGroup,
-  Validators,
   FormBuilder,
+  FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { ControlsOf, IProfile } from '@shared';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatIconModule } from '@angular/material/icon';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { NgIf } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+import { ControlsOf, IProfile } from '@shared';
 
 @Component({
   selector: 'app-profile-settings',
@@ -23,17 +24,17 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./settings.component.scss'],
   standalone: true,
   imports: [
-    MatCardModule,
+    NgIf,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    NgIf,
-    MatSelectModule,
-    MatOptionModule,
     MatIconModule,
-    MatDatepickerModule,
-    MatButtonModule,
+    MatOptionModule,
+    MatSelectModule,
   ],
 })
 export class ProfileSettingsComponent {

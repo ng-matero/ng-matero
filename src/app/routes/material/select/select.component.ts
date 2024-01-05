@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { MatOptionModule } from '@angular/material/core';
 import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
+import { BreadcrumbComponent } from '@shared';
 
 export interface Food {
   value: string;
@@ -18,13 +19,13 @@ export interface Food {
   styleUrls: ['./select.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
+    NgFor,
+    FormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule,
-    NgFor,
     MatOptionModule,
+    BreadcrumbComponent,
   ],
 })
 export class SelectComponent {

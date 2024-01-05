@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatIconModule } from '@angular/material/icon';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'breadcrumb',

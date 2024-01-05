@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, User } from '@core/authentication';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+import { AuthService, User } from '@core';
+import { PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-profile-layout',
@@ -14,14 +15,14 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
   styleUrls: ['./layout.component.scss'],
   standalone: true,
   imports: [
-    PageHeaderComponent,
-    MatCardModule,
-    MatButtonModule,
-    MatListModule,
-    MatDividerModule,
     RouterLink,
-    MatIconModule,
     RouterOutlet,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule,
+    MatIconModule,
+    PageHeaderComponent,
   ],
 })
 export class ProfileLayoutComponent implements OnInit {

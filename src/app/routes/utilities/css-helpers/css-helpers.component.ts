@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+
+import { PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-utilities-css-helpers',
   templateUrl: './css-helpers.component.html',
   styleUrls: ['./css-helpers.component.scss'],
   standalone: true,
-  imports: [PageHeaderComponent, MatCardModule, MatTabsModule, MatListModule, NgFor],
+  imports: [NgFor, MatCardModule, MatListModule, MatTabsModule, PageHeaderComponent],
 })
 export class UtilitiesCssHelpersComponent {
   colorNames =

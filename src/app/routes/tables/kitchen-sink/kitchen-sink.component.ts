@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 import { MtxDialog } from '@ng-matero/extensions/dialog';
 import { MtxGridColumn, MtxGridModule } from '@ng-matero/extensions/grid';
 import { TranslateService } from '@ngx-translate/core';
+
+import { PageHeaderComponent } from '@shared';
 import { TablesDataService } from '../data.service';
 import { TablesKitchenSinkEditComponent } from './edit/edit.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatRadioModule } from '@angular/material/radio';
-import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
 
 @Component({
   selector: 'app-table-kitchen-sink',
@@ -17,12 +18,12 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
   providers: [TablesDataService],
   standalone: true,
   imports: [
-    PageHeaderComponent,
-    MatCheckboxModule,
     FormsModule,
-    MatRadioModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatRadioModule,
     MtxGridModule,
+    PageHeaderComponent,
   ],
 })
 export class TablesKitchenSinkComponent implements OnInit {

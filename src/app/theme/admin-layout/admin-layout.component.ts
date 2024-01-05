@@ -1,18 +1,19 @@
+import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, HostBinding, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { AppSettings, SettingsService } from '@core';
+import { NgProgressComponent } from 'ngx-progressbar';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+
+import { AppSettings, SettingsService } from '@core';
 import { CustomizerComponent } from '../customizer/customizer.component';
-import { TopmenuComponent } from '../topmenu/topmenu.component';
+import { HeaderComponent } from '../header/header.component';
 import { SidebarNoticeComponent } from '../sidebar-notice/sidebar-notice.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { HeaderComponent } from '../header/header.component';
-import { NgProgressComponent } from 'ngx-progressbar';
-import { BidiModule } from '@angular/cdk/bidi';
-import { NgClass, NgIf } from '@angular/common';
+import { TopmenuComponent } from '../topmenu/topmenu.component';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
 const TABLET_MEDIAQUERY = 'screen and (min-width: 600px) and (max-width: 959px)';
@@ -25,16 +26,16 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    NgClass,
-    BidiModule,
-    NgProgressComponent,
     NgIf,
-    HeaderComponent,
+    NgClass,
+    RouterOutlet,
+    BidiModule,
     MatSidenavModule,
+    NgProgressComponent,
+    HeaderComponent,
+    TopmenuComponent,
     SidebarComponent,
     SidebarNoticeComponent,
-    TopmenuComponent,
-    RouterOutlet,
     CustomizerComponent,
   ],
 })

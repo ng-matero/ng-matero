@@ -1,10 +1,10 @@
+import { KeyValuePipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { SettingsService } from '@core';
-import { NgFor, KeyValuePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { SettingsService } from '@core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-translate',
@@ -20,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     </mat-menu>
   `,
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatIconModule, NgFor, KeyValuePipe],
+  imports: [KeyValuePipe, NgFor, MatButtonModule, MatIconModule, MatMenuModule],
 })
 export class TranslateComponent {
   langs = {

@@ -1,19 +1,19 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
-  FormBuilder,
-  Validators,
   AbstractControl,
+  FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgIf } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -21,16 +21,16 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./register.component.scss'],
   standalone: true,
   imports: [
-    MatCardModule,
+    NgIf,
+    RouterLink,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    NgIf,
     TranslateModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    RouterLink,
   ],
 })
 export class RegisterComponent {

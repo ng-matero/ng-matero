@@ -5,7 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { NgFor } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 export interface Person {
   name: string;
@@ -17,12 +18,12 @@ export interface Person {
   styleUrls: ['./chips.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
+    NgFor,
     MatChipsModule,
     MatFormFieldModule,
-    NgFor,
     MatIconModule,
     MatInputModule,
+    BreadcrumbComponent,
   ],
 })
 export class ChipsComponent {

@@ -1,9 +1,9 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
-import { BASE_URL } from '../interceptors/base-url-interceptor';
 import { SANCTUM_PREFIX, SanctumService } from '@core';
+import { BASE_URL } from '../interceptors/base-url-interceptor';
 
 describe('SanctumService', () => {
   let httpMock: HttpTestingController;

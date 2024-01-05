@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-card',

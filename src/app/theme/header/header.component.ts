@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -6,16 +7,16 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import screenfull from 'screenfull';
-import { UserComponent } from '../widgets/user.component';
-import { TranslateComponent } from '../widgets/translate.component';
-import { NotificationComponent } from '../widgets/notification.component';
-import { GithubButtonComponent } from '../widgets/github.component';
-import { BrandingComponent } from '../widgets/branding.component';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import screenfull from 'screenfull';
+
+import { BrandingComponent } from '../widgets/branding.component';
+import { GithubButtonComponent } from '../widgets/github.component';
+import { NotificationComponent } from '../widgets/notification.component';
+import { TranslateComponent } from '../widgets/translate.component';
+import { UserComponent } from '../widgets/user.component';
 
 @Component({
   selector: 'app-header',

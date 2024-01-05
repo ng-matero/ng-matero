@@ -13,6 +13,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { NgProgressHttpModule } from 'ngx-progressbar/http';
+import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { ToastrModule } from 'ngx-toastr';
 
 import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@core';
@@ -40,7 +42,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
       BrowserAnimationsModule,
-      FormlyConfigModule.forRoot(),
+      NgProgressHttpModule,
+      NgProgressRouterModule,
       NgxPermissionsModule.forRoot(),
       ToastrModule.forRoot(),
       TranslateModule.forRoot({
@@ -50,6 +53,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
+      FormlyConfigModule,
       // You can import the other adapter you need (e.g. luxon, date-fns)
       MatMomentDateModule,
       MtxMomentDatetimeModule,

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-tooltip',

@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgxRolesService, NgxPermissionsService } from 'ngx-permissions';
 import { JsonPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+import { Router } from '@angular/router';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+
+import { PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-permissions-route-guard',
   templateUrl: './route-guard.component.html',
   styleUrls: ['./route-guard.component.scss'],
   standalone: true,
-  imports: [PageHeaderComponent, MatButtonToggleModule, FormsModule, JsonPipe],
+  imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
 })
 export class PermissionsRouteGuardComponent implements OnInit {
   currentRole!: string;

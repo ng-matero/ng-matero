@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { filter } from 'rxjs/operators';
-import { AuthService } from '@core/authentication';
-import { TranslateModule } from '@ngx-translate/core';
-import { MtxButtonModule } from '@ng-matero/extensions/button';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgIf } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
+import { MtxButtonModule } from '@ng-matero/extensions/button';
+import { TranslateModule } from '@ngx-translate/core';
+import { filter } from 'rxjs/operators';
+
+import { AuthService } from '@core/authentication';
 
 @Component({
   selector: 'app-login',
@@ -19,16 +20,16 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./login.component.scss'],
   standalone: true,
   imports: [
-    MatCardModule,
+    NgIf,
     FormsModule,
     ReactiveFormsModule,
+    RouterLink,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    NgIf,
-    MatCheckboxModule,
-    MatButtonModule,
     MtxButtonModule,
-    RouterLink,
     TranslateModule,
   ],
 })

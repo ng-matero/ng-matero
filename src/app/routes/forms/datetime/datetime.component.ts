@@ -1,24 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  FormGroup,
   FormBuilder,
-  Validators,
+  FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { DateAdapter } from '@angular/material/core';
-import { Subscription } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import {
   MtxDatetimepickerFilterType,
   MtxDatetimepickerModule,
 } from '@ng-matero/extensions/datetimepicker';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import * as moment from 'moment';
-import { NgIf } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+
+import { PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-forms-datetime',
@@ -26,14 +27,14 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
   styleUrls: ['./datetime.component.scss'],
   standalone: true,
   imports: [
-    PageHeaderComponent,
-    MatCardModule,
+    NgIf,
     FormsModule,
     ReactiveFormsModule,
+    MatCardModule,
     MatFormFieldModule,
-    MtxDatetimepickerModule,
     MatInputModule,
-    NgIf,
+    MtxDatetimepickerModule,
+    PageHeaderComponent,
   ],
 })
 export class FormsDatetimeComponent implements OnInit, OnDestroy {

@@ -1,24 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  Validators,
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { DateAdapter, MatOptionModule } from '@angular/material/core';
-import { Subscription } from 'rxjs';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { ControlsOf, IProfile } from '@shared';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatIconModule } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+import { DateAdapter, MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
+
+import { ControlsOf, IProfile, PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-forms-elements',
@@ -26,19 +26,19 @@ import { PageHeaderComponent } from '@shared/components/page-header/page-header.
   styleUrls: ['./elements.component.scss'],
   standalone: true,
   imports: [
-    PageHeaderComponent,
-    MatCardModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
-    ReactiveFormsModule,
     NgIf,
-    MatIconModule,
-    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
     TranslateModule,
+    PageHeaderComponent,
   ],
 })
 export class FormsElementsComponent implements OnInit, OnDestroy {

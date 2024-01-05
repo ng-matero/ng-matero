@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatSliderModule } from '@angular/material/slider';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-slider',

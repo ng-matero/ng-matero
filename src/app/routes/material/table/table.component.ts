@@ -1,12 +1,13 @@
+import { CdkTableModule, DataSource } from '@angular/cdk/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { DataSource, CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
 import { BehaviorSubject, Observable, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+
+import { BreadcrumbComponent } from '@shared';
 
 export interface UserData {
   name: string;
@@ -30,9 +31,9 @@ const exampleData = [
   standalone: true,
   imports: [
     BreadcrumbComponent,
+    CdkTableModule,
     MatCardModule,
     MatTableModule,
-    CdkTableModule,
     MatSortModule,
     MatPaginatorModule,
   ],

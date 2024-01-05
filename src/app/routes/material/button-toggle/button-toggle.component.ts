@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatIconModule } from '@angular/material/icon';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-button-toggle',
   templateUrl: './button-toggle.component.html',
   styleUrls: ['./button-toggle.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, MatButtonToggleModule, MatIconModule, FormsModule, NgFor],
+  imports: [NgFor, FormsModule, BreadcrumbComponent, MatButtonToggleModule, MatIconModule],
 })
 export class ButtonToggleComponent {
   favoritePie = 'Apple';

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { Sort, MatSortModule } from '@angular/material/sort';
 import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatSortModule, Sort } from '@angular/material/sort';
+
+import { BreadcrumbComponent } from '@shared';
 
 export interface Dessert {
   calories: number;

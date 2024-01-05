@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+import { BreadcrumbComponent } from '@shared';
 
 @Component({
   selector: 'app-tab',
@@ -15,10 +16,10 @@ import { BreadcrumbComponent } from '@shared/components/breadcrumb/breadcrumb.co
     MatCardModule,
     MatTabsModule,
     NgFor,
+    NgIf,
     RouterLinkActive,
     RouterLink,
     RouterOutlet,
-    NgIf,
   ],
 })
 export class TabComponent {

@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, Input, HostBinding } from '@angular/core';
-import { MenuService } from '@core/bootstrap/menu.service';
-import { Router } from '@angular/router';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { TranslateModule } from '@ngx-translate/core';
-import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { NgIf } from '@angular/common';
+import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { MenuService } from '@core';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'page-header',

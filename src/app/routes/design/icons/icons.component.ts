@@ -1,17 +1,16 @@
+import { KeyValuePipe, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-
-import { MAT_ICONS } from '@shared';
-import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { NgFor, KeyValuePipe } from '@angular/common';
-import { PageHeaderComponent } from '@shared/components/page-header/page-header.component';
+import { MatIconModule } from '@angular/material/icon';
+
+import { MAT_ICONS, PageHeaderComponent } from '@shared';
 
 @Component({
   selector: 'app-design-icons',
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss'],
   standalone: true,
-  imports: [PageHeaderComponent, NgFor, MatCardModule, MatIconModule, KeyValuePipe],
+  imports: [KeyValuePipe, NgFor, MatCardModule, MatIconModule, PageHeaderComponent],
 })
 export class DesignIconsComponent implements OnInit {
   icons!: { [key: string]: string[] };

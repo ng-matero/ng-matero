@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Token, User } from './interface';
-import { Menu } from '@core';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+
+import { Menu } from '@core';
+import { Token, User } from './interface';
 
 @Injectable({
   providedIn: 'root',

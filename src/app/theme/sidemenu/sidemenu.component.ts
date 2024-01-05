@@ -1,14 +1,15 @@
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { MenuService } from '@core';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatIconModule } from '@angular/material/icon';
-import { NavAccordionToggleDirective } from './nav-accordion-toggle.directive';
 import { MatRippleModule } from '@angular/material/core';
-import { RouterLinkActive, RouterLink } from '@angular/router';
-import { NavAccordionItemDirective } from './nav-accordion-item.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
+
+import { MenuService } from '@core';
+import { NavAccordionItemDirective } from './nav-accordion-item.directive';
+import { NavAccordionToggleDirective } from './nav-accordion-toggle.directive';
 import { NavAccordionDirective } from './nav-accordion.directive';
-import { NgTemplateOutlet, NgFor, NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-sidemenu',
@@ -17,19 +18,19 @@ import { NgTemplateOutlet, NgFor, NgIf, AsyncPipe } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    NgTemplateOutlet,
-    NavAccordionDirective,
-    NgFor,
-    NgxPermissionsModule,
-    NavAccordionItemDirective,
-    RouterLinkActive,
-    NgIf,
-    MatRippleModule,
-    RouterLink,
-    NavAccordionToggleDirective,
-    MatIconModule,
     AsyncPipe,
+    NgFor,
+    NgIf,
+    NgTemplateOutlet,
+    RouterLink,
+    RouterLinkActive,
+    NgxPermissionsModule,
+    MatIconModule,
+    MatRippleModule,
     TranslateModule,
+    NavAccordionDirective,
+    NavAccordionItemDirective,
+    NavAccordionToggleDirective,
   ],
 })
 export class SidemenuComponent {

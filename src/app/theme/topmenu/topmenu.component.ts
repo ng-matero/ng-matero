@@ -1,16 +1,17 @@
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component, HostBinding, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { NavigationEnd, Router, RouterLinkActive, RouterLink } from '@angular/router';
-import { Menu, MenuService } from '@core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatIconModule } from '@angular/material/icon';
+
+import { Menu, MenuService } from '@core';
 import { TopmenuPanelComponent } from './topmenu-panel.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import { NgFor, NgIf, NgTemplateOutlet, AsyncPipe } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
 
 export interface TopmenuState {
   active: boolean;
@@ -24,19 +25,19 @@ export interface TopmenuState {
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    MatTabsModule,
-    NgFor,
-    NgxPermissionsModule,
-    NgIf,
-    MatButtonModule,
-    RouterLinkActive,
-    RouterLink,
-    NgTemplateOutlet,
-    MatMenuModule,
-    TopmenuPanelComponent,
-    MatIconModule,
     AsyncPipe,
+    NgFor,
+    NgIf,
+    NgTemplateOutlet,
+    RouterLink,
+    RouterLinkActive,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatTabsModule,
+    NgxPermissionsModule,
     TranslateModule,
+    TopmenuPanelComponent,
   ],
 })
 export class TopmenuComponent implements OnDestroy {
