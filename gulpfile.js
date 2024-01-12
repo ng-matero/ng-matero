@@ -58,13 +58,9 @@ function copySrcApp() {
     'src/app/**/*',
     '!src/app/core/settings.ts',
     '!src/app/routes/**/*',
-    '!src/app/shared/shared.module.ts',
     '!src/app/theme/admin-layout/*.html',
-    '!src/app/theme/header/*.html',
-    '!src/app/theme/header/github.*',
-    '!src/app/theme/customizer/**',
-    '!src/app/theme/theme.module.ts',
-    '!src/app/app.module.ts',
+    '!src/app/app.config.ts',
+    '!src/app/app.routes.ts',
   ]).pipe(dest(`${FILES}/src/app`));
 }
 
