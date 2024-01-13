@@ -1,6 +1,6 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -40,8 +40,8 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding()
     ),
     provideHttpClient(withInterceptorsFromDi()),
+    provideAnimations(),
     importProvidersFrom(
-      BrowserAnimationsModule,
       NgProgressHttpModule,
       NgProgressRouterModule,
       NgxPermissionsModule.forRoot(),
@@ -57,7 +57,7 @@ export const appConfig: ApplicationConfig = {
       // You can import the other adapter you need (e.g. luxon, date-fns)
       MatMomentDateModule,
       MtxMomentDatetimeModule,
-      // Note: This is only used for GitHub Pages demo purpose
+      // ❌ This is only used for demo purpose, remove it in the real APP
       InMemoryWebApiModule.forRoot(InMemDataService, {
         dataEncapsulation: false,
         passThruUnknownUrl: true,
