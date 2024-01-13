@@ -53,7 +53,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
-      FormlyConfigModule,
+      FormlyConfigModule.forRoot(),
       // You can import the other adapter you need (e.g. luxon, date-fns)
       MatMomentDateModule,
       MtxMomentDatetimeModule,

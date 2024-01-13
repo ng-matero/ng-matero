@@ -1,6 +1,5 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -42,7 +41,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
-      BrowserAnimationsModule,
       NgProgressHttpModule,
       NgProgressRouterModule,
       NgxPermissionsModule.forRoot(),
@@ -54,13 +52,13 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
-      FormlyConfigModule,
+      FormlyConfigModule.forRoot(),
       // You can import the other adapter you need (e.g. luxon, date-fns)
       MatMomentDateModule,
       MtxMomentDatetimeModule
     ),
     { provide: BASE_URL, useValue: environment.baseUrl },
-    { provide: LoginService, useClass: FakeLoginService }, // <= Remove it in the real APP
+    { provide: LoginService, useClass: FakeLoginService }, // <= ❌ Remove it in the real APP
     ...httpInterceptorProviders,
     ...appInitializerProviders,
     {

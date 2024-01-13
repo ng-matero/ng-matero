@@ -5,7 +5,7 @@ const pkg = require('./package.json');
 
 const DEST = 'dist/schematics';
 const NG_ADD = DEST + '/ng-add';
-const FILES = NG_ADD + '/files';
+const FILES = NG_ADD + '/files/common-files';
 
 // .vscode
 function copyDotVscode() {
