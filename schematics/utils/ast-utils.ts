@@ -80,7 +80,7 @@ export function addRouteDeclarationToModule(
         .filter((s: ts.Statement) => s.kind === ts.SyntaxKind.VariableStatement)
         .find((v: ts.VariableStatement) => {
           return v.declarationList.declarations[0].name.getText() === routesVarName;
-        }) as ts.VariableStatement | undefined;
+        });
     }
 
     if (!routesVar) {

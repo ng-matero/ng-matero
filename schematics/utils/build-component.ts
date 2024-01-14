@@ -1,6 +1,9 @@
-import { Path, strings, template as interpolateTemplate } from '@angular-devkit/core';
+import { Path, template as interpolateTemplate, strings } from '@angular-devkit/core';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 import {
+  Rule,
+  SchematicsException,
+  Tree,
   apply,
   applyTemplates,
   branchAndMerge,
@@ -9,9 +12,6 @@ import {
   mergeWith,
   move,
   noop,
-  Rule,
-  SchematicsException,
-  Tree,
   url,
 } from '@angular-devkit/schematics';
 import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
@@ -263,7 +263,7 @@ function indentTextContent(text: string, numSpaces: number): string {
  * to manually duplicate the file content.
  */
 export function buildComponent(
-  options: ComponentOptions | any,
+  options: ComponentOptions,
   additionalFiles: { [key: string]: string } = {}
 ): Rule {
   return async (host: Tree, context: FileSystemSchematicContext) => {
@@ -285,8 +285,10 @@ export function buildComponent(
     // Add the default component option values to the options if an option is not explicitly
     // specified but a default component option is available.
     Object.keys(options)
-      .filter(optionName => options[optionName] == null && defaultComponentOptions[optionName])
-      .forEach(optionName => (options[optionName] = defaultComponentOptions[optionName]));
+      .filter(
+        optionName => (options as any)[optionName] == null && defaultComponentOptions[optionName]
+      )
+      .forEach(optionName => ((options as any)[optionName] = defaultComponentOptions[optionName]));
 
     if (options.path === undefined) {
       // TODO(jelbourn): figure out if the need for this `as any` is a bug due to two different
@@ -301,14 +303,14 @@ export function buildComponent(
     options.module = findModuleFromOptions(host, options);
 
     // Route module path
-    const routingModulePath = options.module.replace('.module', '-routing.module');
+    const routingModulePath = options.module?.replace('.module', '-routing.module');
 
-    const parsedPath = parseName(options.path!, options.name);
+    const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
     options.path = parsedPath.path;
     options.selector = options.selector || buildSelector(options, project.prefix);
 
-    validateHtmlSelector(options.selector!);
+    validateHtmlSelector(options.selector);
 
     // In case the specified style extension is not part of the supported CSS supersets,
     // we generate the stylesheets with the "css" extension. This ensures that we don't
@@ -346,7 +348,7 @@ export function buildComponent(
       options.inlineTemplate ? filter(path => !path.endsWith('.html.template')) : noop(),
       // Treat the template options as any, because the type definition for the template options
       // is made unnecessarily explicit. Every type of object can be used in the EJS template.
-      applyTemplates({ indentTextContent, resolvedFiles, ...baseTemplateContext } as any),
+      applyTemplates({ indentTextContent, resolvedFiles, ...baseTemplateContext }),
       // TODO(devversion): figure out why we cannot just remove the first parameter
       // See for example: angular-cli#schematics/angular/component/index.ts#L160
       move(null as any, parsedPath.path),
@@ -357,7 +359,7 @@ export function buildComponent(
         branchAndMerge(
           chain([
             addDeclarationToNgModule(options),
-            addRouteDeclarationToNgModule(options, routingModulePath),
+            addRouteDeclarationToNgModule(options, routingModulePath as any),
             mergeWith(templateSource),
           ])
         ),

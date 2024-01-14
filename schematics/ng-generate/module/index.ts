@@ -14,8 +14,8 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
-import { RoutingScope, Schema as ModuleOptions } from './schema';
 import { addRouteDeclarationToModule } from '../../utils';
+import { Schema as ModuleOptions, RoutingScope } from './schema';
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
   const importModulePath = normalize(
@@ -35,10 +35,7 @@ function buildRoute(options: ModuleOptions, modulePath: string) {
   return `{ path: '${options.route}', loadChildren: ${loadChildren} }`;
 }
 
-function addRouteDeclarationToNgModule(
-  options: ModuleOptions,
-  routingModulePath: Path | undefined
-): Rule {
+function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath?: Path): Rule {
   return (host: Tree) => {
     if (!options.route) {
       return host;

@@ -24,7 +24,7 @@ export function appendHtmlElement(
   const elemTag = getHtmlTagElement(htmlContent, tag);
 
   if (!elemTag) {
-    throw new Error(`Could not find '<${tag}>' element in HTML file: ${htmlFileBuffer}`);
+    throw new Error(`Could not find '<${tag}>' element in HTML file: ${htmlFileBuffer as any}`);
   }
 
   const endTagOffset = elemTag.sourceCodeLocation!.endTag!.startOffset;
