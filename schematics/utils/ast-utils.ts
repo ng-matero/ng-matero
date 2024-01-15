@@ -2,6 +2,7 @@ import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeSc
 import {
   findNodes,
   getRouterModuleDeclaration,
+  getSourceNodes,
   insertAfterLastOccurrence,
 } from '@schematics/angular/utility/ast-utils';
 import { Change } from '@schematics/angular/utility/change';
@@ -46,27 +47,42 @@ export function findRouteNodeByKey(
 }
 
 /**
- * Adds a new route declaration to a router module (i.e. has a RouterModule declaration)
+ * Adds a new route declaration to the main router module (i.e. `routes-routing.module`, `app.routes`)
  */
-export function addRouteDeclarationToModule(
+export function addRouteDeclarationToMainModule(
   source: ts.SourceFile,
   fileToAdd: string,
-  routeLiteral: string
+  routeLiteral: string,
+  standalone?: boolean
 ): Change {
-  const routerModuleExpr = getRouterModuleDeclaration(source);
-  if (!routerModuleExpr) {
-    throw new Error(`Couldn't find a route declaration in ${fileToAdd}.`);
-  }
-  const scopeConfigMethodArgs = (routerModuleExpr as ts.CallExpression).arguments;
-  if (!scopeConfigMethodArgs.length) {
-    const { line } = source.getLineAndCharacterOfPosition(routerModuleExpr.getStart());
-    throw new Error(
-      `The router module method doesn't have arguments ` + `at line ${line} in ${fileToAdd}`
+  let routesArg: ts.Node;
+
+  if (standalone) {
+    const routesVarNode = getSourceNodes(source).find(
+      node => node.kind == ts.SyntaxKind.Identifier && node.getText() == 'routes'
     );
+    if (!routesVarNode) {
+      throw new Error(`Couldn't find a routes variable in ${fileToAdd}.`);
+    }
+
+    routesArg = routesVarNode;
+  } else {
+    const routerModuleExpr = getRouterModuleDeclaration(source);
+    if (!routerModuleExpr) {
+      throw new Error(`Couldn't find a route declaration in ${fileToAdd}.`);
+    }
+    const scopeConfigMethodArgs = (routerModuleExpr as ts.CallExpression).arguments;
+    if (!scopeConfigMethodArgs.length) {
+      const { line } = source.getLineAndCharacterOfPosition(routerModuleExpr.getStart());
+      throw new Error(
+        `The router module method doesn't have arguments ` + `at line ${line} in ${fileToAdd}`
+      );
+    }
+
+    routesArg = scopeConfigMethodArgs[0];
   }
 
   let routesArr: ts.ArrayLiteralExpression | undefined;
-  const routesArg = scopeConfigMethodArgs[0];
 
   // Check if the route declarations array is
   // an inlined argument of RouterModule or a standalone variable
@@ -74,13 +90,14 @@ export function addRouteDeclarationToModule(
     routesArr = routesArg;
   } else {
     const routesVarName = routesArg.getText();
-    let routesVar;
+    let routesVar: ts.Statement | undefined;
     if (routesArg.kind === ts.SyntaxKind.Identifier) {
       routesVar = source.statements
         .filter((s: ts.Statement) => s.kind === ts.SyntaxKind.VariableStatement)
-        .find((v: ts.VariableStatement) => {
-          return v.declarationList.declarations[0].name.getText() === routesVarName;
-        });
+        .find(
+          (v: ts.VariableStatement) =>
+            v.declarationList.declarations[0].name.getText() === routesVarName
+        );
     }
 
     if (!routesVar) {

@@ -3,6 +3,10 @@
  */
 export interface Schema {
   /**
+   * Whether the generated module is standalone.
+   */
+  standalone?: boolean;
+  /**
    * When true, creates the new files at the top level of the current project root.
    */
   flat?: boolean;

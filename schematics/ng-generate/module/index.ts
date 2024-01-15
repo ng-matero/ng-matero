@@ -9,12 +9,17 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
+import {
+  getProjectFromWorkspace,
+  getProjectMainFile,
+  isStandaloneApp,
+} from '@angular/cdk/schematics';
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
-import { createDefaultPath } from '@schematics/angular/utility/workspace';
-import { addRouteDeclarationToModule } from '../../utils';
+import { createDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
+import { addRouteDeclarationToMainModule } from '../../utils';
 import { Schema as ModuleOptions, RoutingScope } from './schema';
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
@@ -22,14 +27,14 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
     `/${options.path}/` +
       (options.flat ? '' : strings.dasherize(options.name) + '/') +
       strings.dasherize(options.name) +
-      '.module'
+      (options.standalone ? '.routes' : '.module')
   );
   return buildRelativePath(modulePath, importModulePath);
 }
 
 function buildRoute(options: ModuleOptions, modulePath: string) {
   const relativeModulePath = buildRelativeModulePath(options, modulePath);
-  const moduleName = `${strings.classify(options.name)}Module`;
+  const moduleName = options.standalone ? `routes` : `${strings.classify(options.name)}Module`;
   const loadChildren = `() => import('${relativeModulePath}').then(m => m.${moduleName})`;
 
   return `{ path: '${options.route}', loadChildren: ${loadChildren} }`;
@@ -44,26 +49,27 @@ function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath
       throw new Error('Module option required when creating a lazy loaded routing module.');
     }
 
-    let path: string;
+    let filePath: string;
     if (routingModulePath) {
-      path = routingModulePath;
+      filePath = routingModulePath;
     } else {
-      path = options.module;
+      filePath = options.module;
     }
 
-    const text = host.read(path);
+    const text = host.read(filePath);
     if (!text) {
       throw new Error(`Couldn't find the module nor its routing module.`);
     }
 
     const sourceText = text.toString();
-    const addDeclaration = addRouteDeclarationToModule(
-      ts.createSourceFile(path, sourceText, ts.ScriptTarget.Latest, true),
-      path,
-      buildRoute(options, options.module)
+    const addDeclaration = addRouteDeclarationToMainModule(
+      ts.createSourceFile(filePath, sourceText, ts.ScriptTarget.Latest, true),
+      filePath,
+      buildRoute(options, options.module),
+      options.standalone
     ) as InsertChange;
 
-    const recorder = host.beginUpdate(path);
+    const recorder = host.beginUpdate(filePath);
     recorder.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
     host.commitUpdate(recorder);
 
@@ -83,7 +89,7 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
   const { module, ...rest } = options;
 
   try {
-    path = findModuleFromOptions(host, { module: routingModuleName, ...rest });
+    path = findModuleFromOptions(host, { module: routingModuleName, ...rest } as any);
   } catch {
     /** */
   }
@@ -93,24 +99,50 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
 
 export default function (options: ModuleOptions): Rule {
   return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
+    const project = getProjectFromWorkspace(workspace, options.project);
+    const mainFilePath = getProjectMainFile(project);
+
+    options.standalone = isStandaloneApp(host, mainFilePath);
+
     if (options.path === undefined) {
       options.path = await createDefaultPath(host, options.project as string);
     }
 
+    const appPath = options.path;
+
     // Set default path
-    options.path = options.path + `/${options.moduleRoot}`;
+    options.path = appPath + `/${options.moduleRoot}`;
     const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
     options.path = parsedPath.path;
 
-    if (!options.module) {
-      options.module = options.moduleRoot;
-    }
-    // As following, the modulePath has become 'src/app/...'
-    options.module = findModuleFromOptions(host, options);
-
-    // Set default route
+    // Set default route and module
     options.route = options.route || options.name;
+    options.module = options.module || options.moduleRoot;
+
+    if (options.standalone) {
+      options.module = appPath + '/app.routes.ts';
+
+      return chain([
+        addRouteDeclarationToNgModule(options),
+        mergeWith(
+          apply(url('./files/standalone-files'), [
+            applyTemplates({
+              ...strings,
+              'if-flat': (s: string) => (options.flat ? '' : s),
+              ...options,
+            }),
+            // i.e. `src/app/routes`
+            move(parsedPath.path),
+          ])
+        ),
+      ]);
+    }
+
+    // As following, the modulePath has become `src/app/...`
+    options.module = findModuleFromOptions(host, options as any);
+
     let routingModulePath: Path | undefined;
     const isLazyLoadedModuleGen = options.route && options.module; // must be true
     if (isLazyLoadedModuleGen) {
@@ -118,7 +150,7 @@ export default function (options: ModuleOptions): Rule {
       routingModulePath = getRoutingModulePath(host, options);
     }
 
-    const templateSource = apply(url('./files'), [
+    const templateSource = apply(url('./files/module-files'), [
       // options.routing || (isLazyLoadedModuleGen && !!routingModulePath)
       //   ? noop()
       //   : filter(path => !path.endsWith('-routing.module.ts.template')),
