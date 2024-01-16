@@ -47,7 +47,10 @@ export function findRouteNodeByKey(
 }
 
 /**
- * Adds a new route declaration to the router module (i.e. `routes-routing.module`, `app.routes`)
+ * Adds a new route declaration to the router module or routes.
+ *
+ * - module: `*-routing.module.ts`
+ * - standalone: `*.routes.ts`
  */
 export function addRouteDeclarationToModule(
   source: ts.SourceFile,
@@ -125,6 +128,8 @@ export function addRouteDeclarationToModule(
     route = `,${identation[0] || ' '}${routeLiteral}`;
   }
 
+  // `module` -> insert to main module
+  // `page` -> insert to sub module
   if (!subModule) {
     // Find a route which `path` equals to `''`
     const routeNodeInsertedTo = findRouteNode(
@@ -144,20 +149,15 @@ export function addRouteDeclarationToModule(
       'children'
     ) as ts.ArrayLiteralExpression;
 
-    return insertAfterLastOccurrence(
-      routeNodeChildren.elements as unknown as ts.Node[],
-      route,
-      fileToAdd,
-      routeNodeChildren.elements.pos,
-      ts.SyntaxKind.ObjectLiteralExpression
-    );
-  } else {
-    return insertAfterLastOccurrence(
-      routesArr.elements as unknown as ts.Node[],
-      route,
-      fileToAdd,
-      routesArr.elements.pos,
-      ts.SyntaxKind.ObjectLiteralExpression
-    );
+    // reset variable with new value
+    routesArr = routeNodeChildren;
   }
+
+  return insertAfterLastOccurrence(
+    routesArr.elements as unknown as ts.Node[],
+    route,
+    fileToAdd,
+    routesArr.elements.pos,
+    ts.SyntaxKind.ObjectLiteralExpression
+  );
 }

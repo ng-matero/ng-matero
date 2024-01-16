@@ -393,9 +393,9 @@ export function buildComponent(
 }
 
 /**
- * Find the module referred by a set of options passed to the schematics.
+ * Rewrite [findModuleFromOptions](https://github.com/angular/angular-cli/blob/main/packages/schematics/angular/utility/find-module.ts#L29) for standalone module
  *
- * Rewrite `findModuleFromOptions` for standalone module
+ * Find the module referred by a set of options passed to the schematics.
  *
  * - module: `*.module.ts`, `*-routing.module.ts`
  * - standalone: `*.routes.ts`

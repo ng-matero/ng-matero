@@ -37,7 +37,7 @@ function buildRoute(options: ModuleOptions, modulePath: string) {
   const moduleName = options.standalone ? `routes` : `${strings.classify(options.name)}Module`;
   const loadChildren = `() => import('${relativeModulePath}').then(m => m.${moduleName})`;
 
-  return `{ path: '${options.route}', loadChildren: ${loadChildren} }`;
+  return `    { path: '${options.route}', loadChildren: ${loadChildren} }`;
 }
 
 function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath?: Path): Rule {
@@ -81,7 +81,7 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
   let path: Path | undefined;
   const modulePath = options.module as string;
   let routingModuleName = modulePath.split('.')[0] + '-routing';
-  // Fix routingModuleName
+  // Fix `routingModuleName`
   // (i.e. `/src/app/module/module-routing.module.ts` -> `/module/module-routing.module.ts`)
   if (options.path) {
     routingModuleName = routingModuleName.replace(options.path, '');
@@ -112,7 +112,7 @@ export default function (options: ModuleOptions): Rule {
     const appPath = options.path;
 
     // Set default path
-    options.path = appPath + `/${options.moduleRoot}`;
+    options.path = `${appPath}/${options.moduleRoot}`;
     const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
     options.path = parsedPath.path;
@@ -133,7 +133,6 @@ export default function (options: ModuleOptions): Rule {
               'if-flat': (s: string) => (options.flat ? '' : s),
               ...options,
             }),
-            // i.e. `src/app/routes`
             move(parsedPath.path),
           ])
         ),
