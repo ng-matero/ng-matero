@@ -38,13 +38,19 @@
     },
     "viewEncapsulation": {
       "description": "Specifies the view encapsulation strategy.",
-      "enum": ["Emulated", "None"],
+      "enum": [
+        "Emulated",
+        "None"
+      ],
       "type": "string",
       "alias": "v"
     },
     "changeDetection": {
       "description": "Specifies the change detection strategy.",
-      "enum": ["Default", "OnPush"],
+      "enum": [
+        "Default",
+        "OnPush"
+      ],
       "type": "string",
       "default": "Default",
       "alias": "c"
@@ -99,7 +105,14 @@
       "default": false,
       "description": "Specifies if the component is an entry component of declaring module.",
       "alias": "e"
+    },
+    "standalone": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the generated module is standalone."
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

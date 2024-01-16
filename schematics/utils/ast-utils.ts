@@ -47,13 +47,14 @@ export function findRouteNodeByKey(
 }
 
 /**
- * Adds a new route declaration to the main router module (i.e. `routes-routing.module`, `app.routes`)
+ * Adds a new route declaration to the router module (i.e. `routes-routing.module`, `app.routes`)
  */
-export function addRouteDeclarationToMainModule(
+export function addRouteDeclarationToModule(
   source: ts.SourceFile,
   fileToAdd: string,
   routeLiteral: string,
-  standalone?: boolean
+  standalone?: boolean,
+  subModule?: boolean
 ): Change {
   let routesArg: ts.Node;
 
@@ -124,29 +125,39 @@ export function addRouteDeclarationToMainModule(
     route = `,${identation[0] || ' '}${routeLiteral}`;
   }
 
-  // Find a route which `path` equals to `''`
-  const routeNodeInsertedTo = findRouteNode(
-    routesArr,
-    ts.SyntaxKind.Identifier,
-    'path',
-    ''
-  ) as ts.ObjectLiteralExpression;
+  if (!subModule) {
+    // Find a route which `path` equals to `''`
+    const routeNodeInsertedTo = findRouteNode(
+      routesArr,
+      ts.SyntaxKind.Identifier,
+      'path',
+      ''
+    ) as ts.ObjectLiteralExpression;
 
-  if (!routeNodeInsertedTo) {
-    throw new Error(`Couldn't find a route definition which path is empty string`);
+    if (!routeNodeInsertedTo) {
+      throw new Error(`Couldn't find a route definition which path is empty string`);
+    }
+
+    const routeNodeChildren = findRouteNodeByKey(
+      routeNodeInsertedTo,
+      ts.SyntaxKind.ArrayLiteralExpression,
+      'children'
+    ) as ts.ArrayLiteralExpression;
+
+    return insertAfterLastOccurrence(
+      routeNodeChildren.elements as unknown as ts.Node[],
+      route,
+      fileToAdd,
+      routeNodeChildren.elements.pos,
+      ts.SyntaxKind.ObjectLiteralExpression
+    );
+  } else {
+    return insertAfterLastOccurrence(
+      routesArr.elements as unknown as ts.Node[],
+      route,
+      fileToAdd,
+      routesArr.elements.pos,
+      ts.SyntaxKind.ObjectLiteralExpression
+    );
   }
-
-  const routeNodeChildren = findRouteNodeByKey(
-    routeNodeInsertedTo,
-    ts.SyntaxKind.ArrayLiteralExpression,
-    'children'
-  ) as ts.ArrayLiteralExpression;
-
-  return insertAfterLastOccurrence(
-    routeNodeChildren.elements as unknown as ts.Node[],
-    route,
-    fileToAdd,
-    routeNodeChildren.elements.pos,
-    ts.SyntaxKind.ObjectLiteralExpression
-  );
 }

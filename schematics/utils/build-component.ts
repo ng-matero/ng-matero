@@ -1,4 +1,10 @@
-import { Path, template as interpolateTemplate, strings } from '@angular-devkit/core';
+import {
+  NormalizedRoot,
+  Path,
+  template as interpolateTemplate,
+  normalize,
+  strings,
+} from '@angular-devkit/core';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 import {
   Rule,
@@ -15,29 +21,41 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { FileSystemSchematicContext } from '@angular-devkit/schematics/tools';
-import { getDefaultComponentOptions, getProjectFromWorkspace } from '@angular/cdk/schematics';
+import {
+  getDefaultComponentOptions,
+  getProjectFromWorkspace,
+  getProjectMainFile,
+  isStandaloneApp,
+} from '@angular/cdk/schematics';
 import { Schema, Style } from '@schematics/angular/component/schema';
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
   addExportToModule,
-  addRouteDeclarationToModule,
   findNode,
   insertAfterLastOccurrence,
   insertImport,
 } from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
+import {
+  MODULE_EXT,
+  ROUTING_MODULE_EXT,
+  buildRelativePath,
+  findModule,
+} from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { validateHtmlSelector } from '@schematics/angular/utility/validation';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
+import { addRouteDeclarationToModule } from './ast-utils';
 
 export interface ComponentOptions extends Schema {
-  entryComponent?: any;
-  moduleRoot?: string;
   pageName: string;
+  moduleRoot?: string;
+  entryComponent?: boolean;
+  moduleExt?: string;
+  routingModuleExt?: string;
 }
 
 /**
@@ -201,20 +219,20 @@ function addDeclarationToNgModule(options: ComponentOptions): Rule {
 /**
  * Add a new component route declaration
  */
-function addRouteDeclarationToNgModule(options: ComponentOptions, routingModulePath: Path): Rule {
+function addRouteDeclarationToNgModule(options: ComponentOptions, routingModulePath: string): Rule {
   return (host: Tree) => {
     if (!options.module) {
       throw new Error('Module option required.');
     }
 
-    let path: string;
+    let filePath: string;
     if (routingModulePath) {
-      path = routingModulePath;
+      filePath = routingModulePath;
     } else {
-      path = options.module;
+      filePath = options.module;
     }
 
-    const text = host.read(path);
+    const text = host.read(filePath);
     if (!text) {
       throw new Error(`Couldn't find the module nor its routing module.`);
     }
@@ -230,11 +248,13 @@ function addRouteDeclarationToNgModule(options: ComponentOptions, routingModuleP
       const componentRoute = `{ path: '${options.name}', component: ${classifiedName} }`;
       const addDeclaration = addRouteDeclarationToModule(
         source,
-        path,
-        componentRoute
+        filePath,
+        componentRoute,
+        options.standalone,
+        true
       ) as InsertChange;
 
-      const recorder = host.beginUpdate(path);
+      const recorder = host.beginUpdate(filePath);
       recorder.insertLeft(addDeclaration.pos, addDeclaration.toAdd);
       host.commitUpdate(recorder);
     }
@@ -269,7 +289,10 @@ export function buildComponent(
   return async (host: Tree, context: FileSystemSchematicContext) => {
     const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
-    const defaultComponentOptions: any = getDefaultComponentOptions(project);
+    const mainFilePath = getProjectMainFile(project);
+    const defaultComponentOptions = getDefaultComponentOptions(project) as any;
+
+    options.standalone = isStandaloneApp(host, mainFilePath);
 
     // TODO(devversion): Remove if we drop support for older CLI versions.
     // This handles an unreported breaking change from the @angular-devkit/schematics. Previously
@@ -291,19 +314,23 @@ export function buildComponent(
       .forEach(optionName => ((options as any)[optionName] = defaultComponentOptions[optionName]));
 
     if (options.path === undefined) {
-      // TODO(jelbourn): figure out if the need for this `as any` is a bug due to two different
-      // incompatible `WorkspaceProject` classes in @angular-devkit
-      options.path = buildDefaultPath(project as any);
+      options.path = buildDefaultPath(project);
       // Fix default path (i.e. `src/app/routes/{{modulePath}}`)
-      options.path += `/${options.moduleRoot}/` + options.module;
+      options.path += `/${options.moduleRoot}/${options.module}`;
     }
 
     options.pageName = buildPageName(options) || '';
 
-    options.module = findModuleFromOptions(host, options);
+    if (options.standalone) {
+      options.moduleExt = '.routes.ts';
+    }
+
+    options.module = findModuleFromOptions(host, options) || '';
 
     // Route module path
-    const routingModulePath = options.module?.replace('.module', '-routing.module');
+    const routingModulePath = options.standalone
+      ? options.module
+      : options.module.replace('.module', '-routing.module');
 
     const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
@@ -317,9 +344,7 @@ export function buildComponent(
     // accidentally generate invalid stylesheets (e.g. drag-drop-comp.styl) which will
     // break the Angular CLI project. See: https://github.com/angular/components/issues/15164
     if (!supportedCssExtensions.includes(options.style!)) {
-      // TODO: Cast is necessary as we can't use the Style enum which has been introduced
-      // within CLI v7.3.0-rc.0. This would break the schematic for older CLI versions.
-      options.style = 'css' as Style;
+      options.style = Style.Css;
     }
 
     // Object that will be used as context for the EJS templates.
@@ -358,11 +383,65 @@ export function buildComponent(
       chain([
         branchAndMerge(
           chain([
-            addDeclarationToNgModule(options),
-            addRouteDeclarationToNgModule(options, routingModulePath as any),
+            options.standalone ? noop() : addDeclarationToNgModule(options),
+            addRouteDeclarationToNgModule(options, routingModulePath),
             mergeWith(templateSource),
           ])
         ),
       ])(host, context);
   };
+}
+
+/**
+ * Find the module referred by a set of options passed to the schematics.
+ *
+ * Rewrite `findModuleFromOptions` for standalone module
+ *
+ * - module: `*.module.ts`, `*-routing.module.ts`
+ * - standalone: `*.routes.ts`
+ */
+export function findModuleFromOptions(host: Tree, options: ComponentOptions): Path | undefined {
+  if (options.skipImport) {
+    return undefined;
+  }
+
+  const moduleExt = options.moduleExt || MODULE_EXT;
+  const routingModuleExt = options.routingModuleExt || ROUTING_MODULE_EXT;
+
+  if (!options.module) {
+    const pathToCheck = (options.path || '') + '/' + options.name;
+
+    return normalize(findModule(host, pathToCheck, moduleExt, routingModuleExt));
+  } else {
+    const modulePath = normalize(`/${options.path}/${options.module}`);
+    const componentPath = normalize(`/${options.path}/${options.name}`);
+    const moduleBaseName = normalize(modulePath).split('/').pop();
+
+    const candidateSet = new Set<Path>([normalize(options.path || '/')]);
+
+    for (let dir = modulePath; dir != NormalizedRoot; dir = dirname(dir) as any) {
+      candidateSet.add(dir);
+    }
+    for (let dir = componentPath; dir != NormalizedRoot; dir = dirname(dir) as any) {
+      candidateSet.add(dir);
+    }
+
+    const candidatesDirs = [...candidateSet].sort((a, b) => b.length - a.length);
+    for (const c of candidatesDirs) {
+      const candidateFiles = ['', `${moduleBaseName}.ts`, `${moduleBaseName}${moduleExt}`].map(x =>
+        join(c, x)
+      );
+
+      for (const sc of candidateFiles) {
+        if (host.exists(sc)) {
+          return normalize(sc);
+        }
+      }
+    }
+
+    throw new Error(
+      `Specified module '${options.module}' does not exist.\n` +
+        `Looked in the following directories:\n    ${candidatesDirs.join('\n    ')}`
+    );
+  }
 }

@@ -19,7 +19,7 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { createDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
-import { addRouteDeclarationToMainModule } from '../../utils';
+import { addRouteDeclarationToModule } from '../../utils';
 import { Schema as ModuleOptions, RoutingScope } from './schema';
 
 function buildRelativeModulePath(options: ModuleOptions, modulePath: string): string {
@@ -62,7 +62,7 @@ function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath
     }
 
     const sourceText = text.toString();
-    const addDeclaration = addRouteDeclarationToMainModule(
+    const addDeclaration = addRouteDeclarationToModule(
       ts.createSourceFile(filePath, sourceText, ts.ScriptTarget.Latest, true),
       filePath,
       buildRoute(options, options.module),

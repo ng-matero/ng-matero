@@ -6,7 +6,7 @@ import { Schema } from './schema';
  * Scaffolds a new navigation component.
  * Internally it bootstraps the base component schematic
  */
-export default function(options: Schema): Rule {
+export default function (options: Schema): Rule {
   return chain([
     buildComponent(
       { ...options },
