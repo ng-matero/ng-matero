@@ -55,7 +55,7 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
     MatChipsModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatMomentDateModule, // <= You can import the other adapter you need (e.g. luxon, date-fns)
+    MatMomentDateModule, // <= You can also import the other adapter you need (e.g. luxon, date-fns)
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,

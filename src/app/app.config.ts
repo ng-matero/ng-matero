@@ -54,10 +54,10 @@ export const appConfig: ApplicationConfig = {
         },
       }),
       FormlyConfigModule.forRoot(),
-      // You can import the other adapter you need (e.g. luxon, date-fns)
+      // You can also import the other adapter you need (e.g. luxon, date-fns)
       MatMomentDateModule,
       MtxMomentDatetimeModule,
-      // ❌ This is only used for demo purpose, remove it in the real APP
+      // 👇 ❌ This is only used for demo purpose, remove it in the realworld application
       InMemoryWebApiModule.forRoot(InMemDataService, {
         dataEncapsulation: false,
         passThruUnknownUrl: true,

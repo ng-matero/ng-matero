@@ -37,12 +37,6 @@ import { add3rdPkgsToPackageJson } from './packages';
 import { Schema } from './schema';
 import { addThemeStyleToTarget } from './theming';
 
-/** Name of the Angular module that enables Angular browser animations. */
-const browserAnimationsModuleName = 'BrowserAnimationsModule';
-
-/** Name of the module that switches Angular animations to a noop implementation. */
-const noopAnimationsModuleName = 'NoopAnimationsModule';
-
 /**
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root

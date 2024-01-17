@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
@@ -47,7 +48,12 @@ import { FakeLoginService } from './fake-login.service';
   ],
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },
-    { provide: LoginService, useClass: FakeLoginService }, // <= ❌ Remove it in the real APP
+    // ==================================================
+    // 👇 ❌ Remove it in the realworld application
+    //
+    { provide: LoginService, useClass: FakeLoginService },
+    //
+    // ==================================================
     ...httpInterceptorProviders,
     ...appInitializerProviders,
   ],
