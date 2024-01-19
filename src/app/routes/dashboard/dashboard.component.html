@@ -3,22 +3,24 @@
 <div class="row">
 
   <!-- Statistics -->
-  <div class="col-sm-6 col-md-3" *ngFor="let stat of stats">
-    <mat-card [ngClass]="['text-white', stat.color]">
-      <mat-card-header>
-        <mat-card-subtitle class="text-white">{{stat.title}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <h2 class="m-y-8">{{stat.amount}}</h2>
-        <mtx-progress [value]="stat.progress.value"
-                      height="2px"
-                      foreground="rgba(255,255,255,1)"
-                      background='rgba(0,0,0,.5)'>
-        </mtx-progress>
-        <small class="text-muted">Monthly</small>
-      </mat-card-content>
-    </mat-card>
-  </div>
+  @for (stat of stats; track stat) {
+    <div class="col-sm-6 col-md-3">
+      <mat-card [ngClass]="['text-white', stat.color]">
+        <mat-card-header>
+          <mat-card-subtitle class="text-white">{{stat.title}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <h2 class="m-y-8">{{stat.amount}}</h2>
+          <mtx-progress [value]="stat.progress.value"
+            height="2px"
+            foreground="rgba(255,255,255,1)"
+            background='rgba(0,0,0,.5)'>
+          </mtx-progress>
+          <small class="text-muted">Monthly</small>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
 
   <!-- Charts -->
   <div class="col-md-7">
@@ -63,7 +65,7 @@
               bibendum id. Proin non
               ante tortor. Suspendisse pulvinar ornare tellus nec pulvinar. Nam pellentesque
               accumsan mi, non
-              pellentesque sem convallis sed. Quisque rutrum erat id auctor gravida.</p>
+            pellentesque sem convallis sed. Quisque rutrum erat id auctor gravida.</p>
           </div>
         </mat-tab>
         <mat-tab label="Second">
@@ -79,7 +81,7 @@
               aliquet. Quisque sit
               amet feugiat odio. Cras convallis lorem at libero lobortis, placerat lobortis sapien
               lacinia. Duis sit
-              amet elit bibendum sapien dignissim bibendum.</p>
+            amet elit bibendum sapien dignissim bibendum.</p>
           </div>
         </mat-tab>
         <mat-tab label="Third">
@@ -87,7 +89,7 @@
             <img class="d-block w-full" src="assets/images/pixabay/16.jpg" alt="">
             <h3>Maecenas eget turpis luctus, scelerisque arcu id, iaculis urna. Interdum et
               malesuada fames ac ante
-              ipsum primis in faucibus.</h3>
+            ipsum primis in faucibus.</h3>
             <p>
               Morbi placerat est nec pharetra placerat. Ut laoreet nunc accumsan orci aliquam
               accumsan. Maecenas
@@ -96,7 +98,7 @@
               Aenean in ante eget urna semper imperdiet. Pellentesque sagittis a nulla at
               scelerisque. Nam augue nulla,
               accumsan quis nisi a, facilisis eleifend nulla. Praesent aliquet odio non imperdiet
-              fringilla.</p>
+            fringilla.</p>
           </div>
         </mat-tab>
       </mat-tab-group>
@@ -123,13 +125,15 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          <mat-list-item *ngFor="let message of messages">
-            <img matListItemAvatar [src]="message.img" alt="Avatar">
-            <h3 matListItemTitle>{{message.subject}}</h3>
-            <p matListItemLine>
-              <span>{{message.content}} </span>
-            </p>
-          </mat-list-item>
+          @for (message of messages; track message) {
+            <mat-list-item>
+              <img matListItemAvatar [src]="message.img" alt="Avatar">
+              <h3 matListItemTitle>{{message.subject}}</h3>
+              <p matListItemLine>
+                <span>{{message.content}} </span>
+              </p>
+            </mat-list-item>
+          }
         </mat-list>
       </mat-card-content>
     </mat-card>

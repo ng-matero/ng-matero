@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -24,7 +23,6 @@ import { ControlsOf, IProfile } from '@shared';
   styleUrls: ['./settings.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -57,7 +55,7 @@ export class ProfileSettingsComponent {
     return form.get('email')?.hasError('required')
       ? 'You must enter a value'
       : form.get('email')?.hasError('email')
-      ? 'Not a valid email'
-      : '';
+        ? 'Not a valid email'
+        : '';
   }
 }

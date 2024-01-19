@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -11,7 +10,7 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './css-helpers.component.html',
   styleUrls: ['./css-helpers.component.scss'],
   standalone: true,
-  imports: [NgFor, MatCardModule, MatListModule, MatTabsModule, PageHeaderComponent],
+  imports: [MatCardModule, MatListModule, MatTabsModule, PageHeaderComponent],
 })
 export class UtilitiesCssHelpersComponent {
   colorNames =

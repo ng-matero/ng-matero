@@ -1,17 +1,22 @@
 <breadcrumb></breadcrumb>
 
 <div class="row">
-  <div class="col-sm-6 col-md-3 col-xl-2" *ngFor="let color of colors; trackBy: trackByColor">
-    <div class="b-1 m-b-16">
-      <ng-container *ngFor="let hue of color.value | keyvalue: keyAscOrder; first as isFirst;">
-        <div class="d-flex p-8 bg-{{color.key + '-' + hue.key}} text-{{color.value['contrast'][hue.key]}}"
-             *ngIf="hue.key.toString() !== 'contrast'">
-          <span class="text-capitalize" *ngIf="isFirst">{{color.key}}</span>
-          <span [class]="{'m-x-8': isFirst}">{{hue.key}}</span>
-          <span class="flex-fill"></span>
-          <span>{{hue.value}}</span>
-        </div>
-      </ng-container>
+  @for (color of colors; track trackByColor($index, color)) {
+    <div class="col-sm-6 col-md-3 col-xl-2">
+      <div class="b-1 m-b-16">
+        @for (hue of color.value | keyvalue: keyAscOrder; track hue; let isFirst = $first) {
+          @if (hue.key.toString() !== 'contrast') {
+            <div class="d-flex p-8 bg-{{color.key + '-' + hue.key}} text-{{color.value['contrast'][hue.key]}}">
+              @if (isFirst) {
+                <span class="text-capitalize">{{color.key}}</span>
+              }
+              <span [class]="{'m-x-8': isFirst}">{{hue.key}}</span>
+              <span class="flex-fill"></span>
+              <span>{{hue.value}}</span>
+            </div>
+          }
+        }
+      </div>
     </div>
-  </div>
+  }
 </div>

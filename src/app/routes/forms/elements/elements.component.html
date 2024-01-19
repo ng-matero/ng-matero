@@ -42,9 +42,9 @@
           <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="username" required>
-            <mat-error *ngIf="reactiveForm1.get('username')?.invalid">
-              {{'validations.required' | translate}}
-            </mat-error>
+            @if (reactiveForm1.get('username')?.invalid) {
+              <mat-error>{{'validations.required' | translate}}</mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field>
@@ -54,27 +54,27 @@
               <mat-option value="1">male</mat-option>
               <mat-option value="2">female</mat-option>
             </mat-select>
-            <mat-error *ngIf="reactiveForm1.get('gender')?.invalid">
-              {{'validations.required' | translate}}
-            </mat-error>
+            @if (reactiveForm1.get('gender')?.invalid) {
+              <mat-error>{{'validations.required' | translate}}</mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Mobile</mat-label>
             <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile"
-                   required>
+              required>
             <mat-icon matSuffix>smartphone</mat-icon>
-            <mat-error *ngIf="reactiveForm1.get('mobile')?.invalid">
-              {{'validations.required' | translate}}
-            </mat-error>
+            @if (reactiveForm1.get('mobile')?.invalid) {
+              <mat-error>{{'validations.required' | translate}}</mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Email</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="email" required>
-            <mat-error *ngIf="reactiveForm1.get('email')?.invalid">
-              {{getErrorMessage(reactiveForm1) | translate}}
-            </mat-error>
+            @if (reactiveForm1.get('email')?.invalid) {
+              <mat-error>{{getErrorMessage(reactiveForm1) | translate}}</mat-error>
+            }
           </mat-form-field>
 
           <mat-form-field>
@@ -105,7 +105,7 @@
 
           <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-                   formControlName="date">
+              formControlName="date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -132,10 +132,10 @@
               <mat-form-field>
                 <mat-label>Username</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="username"
-                       required>
-                <mat-error *ngIf="reactiveForm2.get('username')?.invalid">
-                  {{'validations.required' | translate}}
-                </mat-error>
+                  required>
+                @if (reactiveForm2.get('username')?.invalid) {
+                  <mat-error>{{'validations.required' | translate}}</mat-error>
+                }
               </mat-form-field>
             </div>
 
@@ -147,9 +147,9 @@
                   <mat-option value="1">male</mat-option>
                   <mat-option value="2">female</mat-option>
                 </mat-select>
-                <mat-error *ngIf="reactiveForm2.get('gender')?.invalid">
-                  {{'validations.required' | translate}}
-                </mat-error>
+                @if (reactiveForm2.get('gender')?.invalid) {
+                  <mat-error>{{'validations.required' | translate}}</mat-error>
+                }
               </mat-form-field>
             </div>
 
@@ -157,11 +157,11 @@
               <mat-form-field>
                 <mat-label>Mobile</mat-label>
                 <input matInput placeholder="Simple placeholder" type="number"
-                       formControlName="mobile" required>
+                  formControlName="mobile" required>
                 <mat-icon matSuffix>smartphone</mat-icon>
-                <mat-error *ngIf="reactiveForm2.get('mobile')?.invalid">
-                  {{'validations.required' | translate}}
-                </mat-error>
+                @if (reactiveForm2.get('mobile')?.invalid) {
+                  <mat-error>{{'validations.required' | translate}}</mat-error>
+                }
               </mat-form-field>
             </div>
 
@@ -169,9 +169,9 @@
               <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Simple placeholder" formControlName="email" required>
-                <mat-error *ngIf="reactiveForm2.get('email')?.invalid">
-                  {{getErrorMessage(reactiveForm2) | translate}}
-                </mat-error>
+                @if (reactiveForm2.get('email')?.invalid) {
+                  <mat-error>{{getErrorMessage(reactiveForm2) | translate}}</mat-error>
+                }
               </mat-form-field>
             </div>
 
@@ -200,7 +200,7 @@
               <mat-form-field>
                 <mat-label>Tele</mat-label>
                 <input matInput placeholder="Simple placeholder" type="number"
-                       formControlName="tele">
+                  formControlName="tele">
                 <mat-icon matSuffix>phone</mat-icon>
               </mat-form-field>
             </div>
@@ -215,7 +215,7 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
-                       formControlName="date">
+                  formControlName="date">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>

@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -23,7 +23,6 @@ export interface StateGroup {
   imports: [
     AsyncPipe,
     JsonPipe,
-    NgFor,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,

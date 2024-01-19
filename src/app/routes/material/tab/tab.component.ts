@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -15,8 +14,6 @@ import { BreadcrumbComponent } from '@shared';
     BreadcrumbComponent,
     MatCardModule,
     MatTabsModule,
-    NgFor,
-    NgIf,
     RouterLinkActive,
     RouterLink,
     RouterOutlet,

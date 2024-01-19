@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -26,7 +25,6 @@ import { ControlsOf, IProfile, PageHeaderComponent } from '@shared';
   styleUrls: ['./elements.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -96,7 +94,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     return form.get('email')?.hasError('required')
       ? 'validations.required'
       : form.get('email')?.hasError('email')
-      ? 'validations.invalid_email'
-      : '';
+        ? 'validations.invalid_email'
+        : '';
   }
 }

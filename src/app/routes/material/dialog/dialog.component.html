@@ -10,9 +10,11 @@
   <h2>Choose a fruit</h2>
   <p>Active the button to choose apple or peach in a dialog.</p>
   <button mat-button (click)="openFruitDialog()">Fruit</button>
-  <p *ngIf="fruitSelectedOption">
-    You chose: {{fruitSelectedOption}}
-  </p>
+  @if (fruitSelectedOption) {
+    <p>
+      You chose: {{fruitSelectedOption}}
+    </p>
+  }
 </section>
 
 <section>

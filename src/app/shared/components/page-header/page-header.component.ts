@@ -1,5 +1,4 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgIf } from '@angular/common';
 import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +12,7 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
   styleUrls: ['./page-header.component.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [NgIf, BreadcrumbComponent, TranslateModule],
+  imports: [BreadcrumbComponent, TranslateModule],
 })
 export class PageHeaderComponent implements OnInit {
   @HostBinding('class') class = 'matero-page-header';

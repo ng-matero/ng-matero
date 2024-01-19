@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,15 +14,17 @@ import { MatMenuModule } from '@angular/material/menu';
 
     <mat-menu #menu="matMenu">
       <mat-nav-list>
-        <mat-list-item *ngFor="let message of messages">
-          <mat-icon class="m-x-16" matListItemIcon>info</mat-icon>
-          <a matListItemTitle href="#">{{ message }}</a>
-        </mat-list-item>
+        @for (message of messages; track message) {
+          <mat-list-item>
+            <mat-icon class="m-x-16" matListItemIcon>info</mat-icon>
+            <a matListItemTitle href="#">{{ message }}</a>
+          </mat-list-item>
+        }
       </mat-nav-list>
     </mat-menu>
   `,
   standalone: true,
-  imports: [NgFor, MatBadgeModule, MatButtonModule, MatIconModule, MatListModule, MatMenuModule],
+  imports: [MatBadgeModule, MatButtonModule, MatIconModule, MatListModule, MatMenuModule],
 })
 export class NotificationComponent {
   messages = ['Server Error Reports', 'Server Error Reports', 'Server Error Reports'];

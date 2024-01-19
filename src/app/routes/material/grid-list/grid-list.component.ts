@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatLineModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -10,7 +9,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './grid-list.component.html',
   styleUrls: ['./grid-list.component.scss'],
   standalone: true,
-  imports: [BreadcrumbComponent, MatGridListModule, NgFor, MatLineModule],
+  imports: [BreadcrumbComponent, MatGridListModule, MatLineModule],
 })
 export class GridListComponent {
   dogs = [

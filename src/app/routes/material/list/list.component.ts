@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -12,14 +11,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   standalone: true,
-  imports: [
-    NgFor,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    BreadcrumbComponent,
-  ],
+  imports: [MatCardModule, MatDividerModule, MatIconModule, MatListModule, BreadcrumbComponent],
 })
 export class ListComponent {
   items: string[] = ['Pepper', 'Salt', 'Paprika'];

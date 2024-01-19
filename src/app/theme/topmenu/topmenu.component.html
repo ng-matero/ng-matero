@@ -1,49 +1,55 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-  <ng-container *ngFor="let menuItem of menu$ | async; let index=index">
+  @for (menuItem of menu$ | async; track menuItem; let index = $index) {
     <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only!"
-                 [ngxPermissionsExcept]="menuItem.permissions?.except!">
-
-      <a *ngIf="menuItem.type === 'link'" mat-button
-         [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-        </ng-container>
-      </a>
-
-      <a *ngIf="menuItem.type === 'extLink'" mat-button [href]="menuItem.route">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-        </ng-container>
-      </a>
-
-      <a *ngIf="menuItem.type === 'extTabLink'" mat-button [href]="menuItem.route" target="_blank">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-        </ng-container>
-      </a>
-
-      <button *ngIf="menuItem.type === 'sub'" mat-button
-              [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
-              [class.active]="menuStates[index].active">
-        <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
-        </ng-container>
-
-        <app-topmenu-panel #submenu
-                           [items]="menuItem.children!"
-                           [parentRoute]="[menuItem.route]"
-                           [level]="1"
-                           (routeChange)="onRouteChange($event, index)">
-        </app-topmenu-panel>
-      </button>
-
+      [ngxPermissionsExcept]="menuItem.permissions?.except!">
+      @if (menuItem.type === 'link') {
+        <a mat-button
+          [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
+          <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+          </ng-container>
+        </a>
+      }
+      @if (menuItem.type === 'extLink') {
+        <a mat-button [href]="menuItem.route">
+          <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+          </ng-container>
+        </a>
+      }
+      @if (menuItem.type === 'extTabLink') {
+        <a mat-button [href]="menuItem.route" target="_blank">
+          <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+          </ng-container>
+        </a>
+      }
+      @if (menuItem.type === 'sub') {
+        <button mat-button
+          [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
+          [class.active]="menuStates[index].active">
+          <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
+          </ng-container>
+          <app-topmenu-panel #submenu
+            [items]="menuItem.children!"
+            [parentRoute]="[menuItem.route]"
+            [level]="1"
+            (routeChange)="onRouteChange($event, index)">
+          </app-topmenu-panel>
+        </button>
+      }
     </ng-template>
-  </ng-container>
+  }
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
 <ng-template #linkTypeTpl let-item="item" let-level="level">
   <mat-icon class="menu-icon">{{item.icon}}</mat-icon>
   <span class="menu-name">{{item.name | translate}}</span>
-  <span class="menu-label bg-{{item.label.color}}" *ngIf="item.label">{{item.label.value}}</span>
-  <span class="menu-badge bg-{{item.badge.color}}" *ngIf="item.badge">{{item.badge.value}}</span>
-  <mat-icon class="menu-caret" *ngIf="item.type!=='link'">
-    {{item.type==='sub' ? 'arrow_drop_down' : 'launch'}}
-  </mat-icon>
+  @if (item.label) {
+    <span class="menu-label bg-{{item.label.color}}">{{item.label.value}}</span>
+  }
+  @if (item.badge) {
+    <span class="menu-badge bg-{{item.badge.color}}">{{item.badge.value}}</span>
+  }
+  @if (item.type!=='link') {
+    <mat-icon class="menu-caret">{{item.type==='sub' ? 'arrow_drop_down' : 'launch'}}</mat-icon>
+  }
 </ng-template>

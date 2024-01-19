@@ -5,9 +5,9 @@
     <section>
       <h2>Radio buttons in group</h2>
       <mat-radio-group name="seasons" [(ngModel)]="favoriteSeason" aria-label="Seasons">
-        <mat-radio-button *ngFor="let season of seasonOptions" [value]="season">
-          {{season}}
-        </mat-radio-button>
+        @for (season of seasonOptions; track season) {
+          <mat-radio-button [value]="season">{{season}}</mat-radio-button>
+        }
       </mat-radio-group>
     </section>
 

@@ -19,14 +19,15 @@
       <mat-form-field hideRequiredMarker>
         <mat-label>Password</mat-label>
         <input matInput [type]="passwordType" [(ngModel)]="password" required
-               #passwordModel="ngModel">
+          #passwordModel="ngModel">
         <button mat-icon-button matSuffix [attr.aria-label]="passwordToggleLabel"
-                (click)="showPassword = !showPassword">
+          (click)="showPassword = !showPassword">
           <mat-icon>{{passwordToggleIcon}}</mat-icon>
         </button>
         <mat-hint>Hint: favorite color</mat-hint>
-        <mat-error *ngIf="passwordModel.hasError('required')">You must enter your password.
-        </mat-error>
+        @if (passwordModel.hasError('required')) {
+          <mat-error>You must enter your password.</mat-error>
+        }
       </mat-form-field>
     </section>
 
@@ -35,8 +36,12 @@
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput type="email" [(ngModel)]="email" required email #emailModel="ngModel">
-        <mat-error *ngIf="emailModel.hasError('required')">You must enter your email.</mat-error>
-        <mat-error *ngIf="emailModel.hasError('email')">Not a valid email address.</mat-error>
+        @if (emailModel.hasError('required')) {
+          <mat-error>You must enter your email.</mat-error>
+        }
+        @if (emailModel.hasError('email')) {
+          <mat-error>Not a valid email address.</mat-error>
+        }
       </mat-form-field>
     </section>
 
@@ -60,7 +65,7 @@
       <h2>Textarea input (e.g. comment box)</h2>
       <mat-form-field>
         <textarea matInput aria-label="Comment" [(ngModel)]="comment" cdkTextareaAutosize
-                  [maxlength]="commentMax" #commentModel="ngModel"></textarea>
+        [maxlength]="commentMax" #commentModel="ngModel"></textarea>
         <mat-hint>Leave us a comment!</mat-hint>
         <mat-hint align="end">{{commentCount}}/{{commentMax}}</mat-hint>
       </mat-form-field>

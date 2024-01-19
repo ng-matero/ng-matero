@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { Component, HostBinding, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,8 +26,6 @@ export interface TopmenuState {
   standalone: true,
   imports: [
     AsyncPipe,
-    NgFor,
-    NgIf,
     NgTemplateOutlet,
     RouterLink,
     RouterLinkActive,

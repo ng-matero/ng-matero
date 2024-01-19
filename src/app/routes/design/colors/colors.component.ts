@@ -1,4 +1,4 @@
-import { KeyValue, KeyValuePipe, NgFor, NgIf } from '@angular/common';
+import { KeyValue, KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 import { BreadcrumbComponent, MAT_COLORS } from '@shared';
@@ -8,7 +8,7 @@ import { BreadcrumbComponent, MAT_COLORS } from '@shared';
   templateUrl: './colors.component.html',
   styleUrls: ['./colors.component.scss'],
   standalone: true,
-  imports: [NgFor, NgIf, KeyValuePipe, BreadcrumbComponent],
+  imports: [KeyValuePipe, BreadcrumbComponent],
 })
 export class DesignColorsComponent implements OnInit {
   colors: { key: string; value: any }[] = [];

@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatLineModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -11,7 +10,7 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
   standalone: true,
-  imports: [NgFor, MatGridListModule, MatLineModule, MtxPhotoviewerModule, PageHeaderComponent],
+  imports: [MatGridListModule, MatLineModule, MtxPhotoviewerModule, PageHeaderComponent],
 })
 export class MediaGalleryComponent implements OnInit {
   dir = 'assets/images/pixabay/';

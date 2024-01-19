@@ -7,7 +7,9 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item role="listitem" *ngFor="let item of items"> {{item}} </mat-list-item>
+      @for (item of items; track item) {
+        <mat-list-item role="listitem"> {{item}} </mat-list-item>
+      }
     </mat-list>
   </mat-card-content>
 </mat-card>
@@ -19,10 +21,12 @@
   </mat-card-header>
   <mat-card-content>
     <mat-nav-list>
-      <a mat-list-item *ngFor="let link of links"
-         href="https://www.google.com/search?q={{link.name}}">
-        {{link.name}}
-      </a>
+      @for (link of links; track link) {
+        <a mat-list-item
+          href="https://www.google.com/search?q={{link.name}}">
+          {{link.name}}
+        </a>
+      }
     </mat-nav-list>
   </mat-card-content>
 </mat-card>
@@ -32,16 +36,18 @@
     <mat-card-title>Messages</mat-card-title>
     <mat-card-subtitle>
       Showing a list of messages, where each message item has sender's name, sender's avatar,
-      message subject, and content of the message.</mat-card-subtitle>
+    message subject, and content of the message.</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item role="listitem" *ngFor="let message of messages">
-        <img matListItemAvatar [src]="message.image" [alt]="message.from">
-        <h3 matListItemTitle> {{message.from}} </h3>
-        <p matListItemLine> {{message.subject}} </p>
-        <p matListItemLine class="demo-secondary-text"> {{message.message}} </p>
-      </mat-list-item>
+      @for (message of messages; track message) {
+        <mat-list-item role="listitem">
+          <img matListItemAvatar [src]="message.image" [alt]="message.from">
+          <h3 matListItemTitle> {{message.from}} </h3>
+          <p matListItemLine> {{message.subject}} </p>
+          <p matListItemLine class="demo-secondary-text"> {{message.message}} </p>
+        </mat-list-item>
+      }
     </mat-list>
   </mat-card-content>
 </mat-card>
@@ -54,18 +60,22 @@
   <mat-card-content>
     <mat-list role="list">
       <h3 mat-subheader>Folders</h3>
-      <mat-list-item role="listitem" *ngFor="let folder of folders">
-        <mat-icon matListItemIcon>folder</mat-icon>
-        <h4 matListItemTitle>{{folder.name}}</h4>
-        <p matListItemLine class="demo-secondary-text"> {{folder.updated}} </p>
-      </mat-list-item>
+      @for (folder of folders; track folder) {
+        <mat-list-item role="listitem">
+          <mat-icon matListItemIcon>folder</mat-icon>
+          <h4 matListItemTitle>{{folder.name}}</h4>
+          <p matListItemLine class="demo-secondary-text"> {{folder.updated}} </p>
+        </mat-list-item>
+      }
       <mat-divider></mat-divider>
       <h3 mat-subheader>Notes</h3>
-      <mat-list-item role="listitem" *ngFor="let note of notes">
-        <mat-icon matListItemIcon>note</mat-icon>
-        <h4 matListItemTitle>{{note.name}}</h4>
-        <p matListItemLine class="demo-secondary-text"> {{note.updated}} </p>
-      </mat-list-item>
+      @for (note of notes; track note) {
+        <mat-list-item role="listitem">
+          <mat-icon matListItemIcon>note</mat-icon>
+          <h4 matListItemTitle>{{note.name}}</h4>
+          <p matListItemLine class="demo-secondary-text"> {{note.updated}} </p>
+        </mat-list-item>
+      }
     </mat-list>
   </mat-card-content>
 </mat-card>

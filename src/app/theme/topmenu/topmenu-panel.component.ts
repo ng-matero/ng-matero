@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -24,8 +23,6 @@ import { TopmenuState } from './topmenu.component';
   templateUrl: './topmenu-panel.component.html',
   standalone: true,
   imports: [
-    NgFor,
-    NgIf,
     RouterLink,
     RouterLinkActive,
     MatIconModule,

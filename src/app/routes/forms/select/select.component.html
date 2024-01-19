@@ -23,7 +23,7 @@
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
           <mtx-select [items]="(people$ | async)!" bindLabel="name" bindValue="id" autofocus
-                      [(ngModel)]="selectedPersonId">
+            [(ngModel)]="selectedPersonId">
           </mtx-select>
         </mat-form-field>
         Selected: {{selectedPersonId}}
@@ -35,7 +35,7 @@
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
           <mtx-select [items]="people" bindLabel="name" bindValue="id"
-                      [(ngModel)]="selectedPersonId2">
+            [(ngModel)]="selectedPersonId2">
           </mtx-select>
         </mat-form-field>
         Selected: {{selectedPersonId2}}
@@ -58,16 +58,16 @@
           using <b>ng-option</b> component.
         </p>
         <button type="button" mat-raised-button color="primary" (click)="toggleDisabled()"
-                class="m-b-8">
+          class="m-b-8">
           Toggle option[1] disabled
         </button>
 
         <mat-form-field class="w-full">
           <mat-label>Select car</mat-label>
           <mtx-select [(ngModel)]="selectedCarId">
-            <mtx-option *ngFor="let car of cars" [value]="car.id" [disabled]="car.disabled">
-              {{car.name}}
-            </mtx-option>
+            @for (car of cars; track car) {
+              <mtx-option [value]="car.id" [disabled]="car.disabled">{{car.name}}</mtx-option>
+            }
             <mtx-option [value]="'custom'">Custom</mtx-option>
           </mtx-select>
         </mat-form-field>
@@ -100,7 +100,7 @@
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="companies" [addTag]="addTag" [hideSelected]="true" [multiple]="true"
-                      bindLabel="name" [(ngModel)]="selectedCompanyCustom">
+            bindLabel="name" [(ngModel)]="selectedCompanyCustom">
           </mtx-select>
         </mat-form-field>
 
@@ -114,8 +114,8 @@
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="companies" [addTag]="addTagPromise" [multiple]="true"
-                      bindLabel="name" [loading]="loading"
-                      [(ngModel)]="selectedCompanyCustomPromise">
+            bindLabel="name" [loading]="loading"
+            [(ngModel)]="selectedCompanyCustomPromise">
             <ng-template ng-tag-tmp let-search="searchTerm">
               <b>create new</b>: {{search}}
             </ng-template>
@@ -128,7 +128,7 @@
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="[]" [addTag]="true" [multiple]="true" [selectOnTab]="true"
-                      [isOpen]="false">
+            [isOpen]="false">
           </mtx-select>
         </mat-form-field>
 

@@ -1,13 +1,18 @@
-<div class="matero-sidebar-header" *ngIf="showHeader">
-  <app-branding></app-branding>
-
-  <mat-slide-toggle *ngIf="showToggle" hideIcon
-                    [checked]="toggleChecked"
-                    (change)="toggleCollapsed.emit()">
-  </mat-slide-toggle>
-</div>
+@if (showHeader) {
+  <div class="matero-sidebar-header">
+    <app-branding></app-branding>
+    @if (showToggle) {
+      <mat-slide-toggle hideIcon
+        [checked]="toggleChecked"
+        (change)="toggleCollapsed.emit()">
+      </mat-slide-toggle>
+    }
+  </div>
+}
 
 <div class="matero-sidebar-main scrollbar-none">
-  <app-user-panel *ngIf="showUser"></app-user-panel>
+  @if (showUser) {
+    <app-user-panel></app-user-panel>
+  }
   <app-sidemenu [ripple]="showToggle"></app-sidemenu>
 </div>

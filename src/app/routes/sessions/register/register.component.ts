@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -21,7 +20,6 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./register.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     RouterLink,
     FormsModule,
     ReactiveFormsModule,

@@ -1,4 +1,4 @@
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -31,7 +31,6 @@ import { DashboardService } from './dashboard.service';
   standalone: true,
   imports: [
     NgClass,
-    NgFor,
     RouterLink,
     MatButtonModule,
     MatCardModule,

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -27,7 +26,6 @@ import { PageHeaderComponent } from '@shared';
   styleUrls: ['./datetime.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,

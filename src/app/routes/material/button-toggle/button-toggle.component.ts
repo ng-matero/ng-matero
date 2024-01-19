@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -11,7 +10,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './button-toggle.component.html',
   styleUrls: ['./button-toggle.component.scss'],
   standalone: true,
-  imports: [NgFor, FormsModule, BreadcrumbComponent, MatButtonToggleModule, MatIconModule],
+  imports: [FormsModule, BreadcrumbComponent, MatButtonToggleModule, MatIconModule],
 })
 export class ButtonToggleComponent {
   favoritePie = 'Apple';

@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,8 +19,6 @@ import { NavAccordionDirective } from './nav-accordion.directive';
   standalone: true,
   imports: [
     AsyncPipe,
-    NgFor,
-    NgIf,
     NgTemplateOutlet,
     RouterLink,
     RouterLinkActive,

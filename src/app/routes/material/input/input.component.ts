@@ -1,5 +1,4 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +17,6 @@ const USD_TO_JPY = 110.29;
   styleUrls: ['./input.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     TextFieldModule,
     FormsModule,
     MatButtonModule,

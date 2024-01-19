@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -26,7 +25,6 @@ import { UserComponent } from '../widgets/user.component';
   standalone: true,
   imports: [
     MatToolbarModule,
-    NgIf,
     MatButtonModule,
     MatIconModule,
     BrandingComponent,

@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -26,7 +25,6 @@ const defaultConfig = new MatBottomSheetConfig();
   styleUrls: ['./bottom-sheet.component.scss'],
   standalone: true,
   imports: [
-    NgFor,
     FormsModule,
     MatButtonModule,
     MatCardModule,
@@ -67,14 +65,16 @@ export class BottomSheetComponent {
   selector: 'bottom-sheet-overview-example-sheet',
   template: `
     <mat-nav-list>
-      <a href="#" mat-list-item (click)="handleClick($event)" *ngFor="let action of [1, 2, 3]">
-        <span matListItemTitle>Action {{ action }}</span>
-        <span matListItemLine>Description</span>
-      </a>
+      @for (action of [1, 2, 3]; track action) {
+        <a href="#" mat-list-item (click)="handleClick($event)">
+          <span matListItemTitle>Action {{ action }}</span>
+          <span matListItemLine>Description</span>
+        </a>
+      }
     </mat-nav-list>
   `,
   standalone: true,
-  imports: [MatListModule, NgFor],
+  imports: [MatListModule],
 })
 export class BottomSheetOverviewComponent {
   constructor(private _bottomSheet: MatBottomSheetRef) {}

@@ -8,13 +8,15 @@
     <mat-form-field>
       <mat-label>Search for a state</mat-label>
       <input matInput
-             [matAutocomplete]="autocomplete"
-             [(ngModel)]="value"
-             (ngModelChange)="filteredStates = filter(value)">
+        [matAutocomplete]="autocomplete"
+        [(ngModel)]="value"
+        (ngModelChange)="filteredStates = filter(value)">
       <mat-autocomplete #autocomplete="matAutocomplete">
-        <mat-option *ngFor="let state of filteredStates" [value]="state.name">
-          <span>{{ state.name }}</span>
-        </mat-option>
+        @for (state of filteredStates; track state) {
+          <mat-option [value]="state.name">
+            <span>{{ state.name }}</span>
+          </mat-option>
+        }
       </mat-autocomplete>
     </mat-form-field>
 
@@ -25,16 +27,18 @@
       <mat-form-field>
         <mat-label>States Group</mat-label>
         <input type="text"
-               matInput
-               formControlName="stateGroup"
-               required
-               [matAutocomplete]="autoGroup">
+          matInput
+          formControlName="stateGroup"
+          required
+          [matAutocomplete]="autoGroup">
         <mat-autocomplete #autoGroup="matAutocomplete">
-          <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-            <mat-option *ngFor="let name of group.names" [value]="name">
-              {{name}}
-            </mat-option>
-          </mat-optgroup>
+          @for (group of stateGroupOptions | async; track group) {
+            <mat-optgroup [label]="group.letter">
+              @for (name of group.names; track name) {
+                <mat-option [value]="name">{{name}}</mat-option>
+              }
+            </mat-optgroup>
+          }
         </mat-autocomplete>
       </mat-form-field>
     </form>

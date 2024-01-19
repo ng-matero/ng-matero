@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +16,7 @@ export interface Task {
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   standalone: true,
-  imports: [NgFor, FormsModule, MatCardModule, MatCheckboxModule, BreadcrumbComponent],
+  imports: [FormsModule, MatCardModule, MatCheckboxModule, BreadcrumbComponent],
 })
 export class CheckboxComponent {
   tasks: Task[] = [

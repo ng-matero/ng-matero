@@ -7,15 +7,16 @@
 </p>
 
 <mat-grid-list cols="4" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let image of images; let i = index;">
-    <mat-grid-tile-header>
-      <span matLine>Gallery Image: {{ i+1 }}</span>
-    </mat-grid-tile-header>
-
-    <img class="w-full h-full object-cover cursor-pointer"
-         mtxPhotoviewer
-         [mtxPhotoviewerItems]="images"
-         [mtxPhotoviewerOptions]="{ index: i }"
-         [src]="image.src" alt="Gallery Image {{ i+1 }}" />
-  </mat-grid-tile>
+  @for (image of images; track image; let i = $index) {
+    <mat-grid-tile>
+      <mat-grid-tile-header>
+        <span matLine>Gallery Image: {{ i+1 }}</span>
+      </mat-grid-tile-header>
+      <img class="w-full h-full object-cover cursor-pointer"
+        mtxPhotoviewer
+        [mtxPhotoviewerItems]="images"
+        [mtxPhotoviewerOptions]="{ index: i }"
+        [src]="image.src" alt="Gallery Image {{ i+1 }}" />
+    </mat-grid-tile>
+  }
 </mat-grid-list>

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -14,7 +13,6 @@ import { BreadcrumbComponent } from '@shared';
   styleUrls: ['./datepicker.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
     MatCardModule,
     MatDatepickerModule,

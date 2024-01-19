@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +22,6 @@ import { FormsSelectEditComponent } from './edit/edit.component';
   imports: [
     AsyncPipe,
     JsonPipe,
-    NgFor,
     FormsModule,
     MatButtonModule,
     MatCardModule,

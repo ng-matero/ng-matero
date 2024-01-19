@@ -3,7 +3,6 @@ import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { NgFor } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { BreadcrumbComponent } from '@shared';
@@ -17,14 +16,7 @@ export interface Person {
   templateUrl: './chips.component.html',
   styleUrls: ['./chips.component.scss'],
   standalone: true,
-  imports: [
-    NgFor,
-    MatChipsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    BreadcrumbComponent,
-  ],
+  imports: [MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, BreadcrumbComponent],
 })
 export class ChipsComponent {
   visible = true;

@@ -1,5 +1,4 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { NgFor } from '@angular/common';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +13,6 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['shared.scss', 'mobile-sidenav.scss'],
   standalone: true,
   imports: [
-    NgFor,
     RouterLink,
     MatButtonModule,
     MatIconModule,

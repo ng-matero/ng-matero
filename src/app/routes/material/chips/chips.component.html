@@ -15,17 +15,17 @@
   <mat-chip-listbox aria-label="Dog selection">
     <mat-chip>
       <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-           alt="Photo of a Shiba Inu" />
+        alt="Photo of a Shiba Inu" />
       Dog one
     </mat-chip>
     <mat-chip color="primary">
       <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-           alt="Photo of a Shiba Inu" />
+        alt="Photo of a Shiba Inu" />
       Dog two
     </mat-chip>
     <mat-chip color="accent">
       <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-           alt="Photo of a Shiba Inu" />
+        alt="Photo of a Shiba Inu" />
       Dog three
     </mat-chip>
   </mat-chip-listbox>
@@ -37,19 +37,21 @@
   <mat-form-field>
     <mat-label>Contributors</mat-label>
     <mat-chip-grid #chipGrid>
-      <mat-chip-row *ngFor="let person of people"
-                    [color]="color" [editable]="true"
-                    (removed)="remove(person)"
-                    (edited)="edit(person, $event)">
-        {{person.name}}
-        <mat-icon matChipRemove>cancel</mat-icon>
-      </mat-chip-row>
+      @for (person of people; track person) {
+        <mat-chip-row
+          [color]="color" [editable]="true"
+          (removed)="remove(person)"
+          (edited)="edit(person, $event)">
+          {{person.name}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip-row>
+      }
     </mat-chip-grid>
     <input matInput placeholder="New Contributor..."
-           aria-label="New contributor"
-           [matChipInputFor]="chipGrid"
-           [matChipInputAddOnBlur]="addOnBlur"
-           (matChipInputTokenEnd)="add($event)" />
+      aria-label="New contributor"
+      [matChipInputFor]="chipGrid"
+      [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)" />
   </mat-form-field>
 </section>
 

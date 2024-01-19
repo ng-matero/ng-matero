@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -11,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./breadcrumb.component.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [NgFor, NgIf, MatIconModule, TranslateModule],
+  imports: [MatIconModule, TranslateModule],
 })
 export class BreadcrumbComponent implements OnInit {
   @Input() nav: string[] = [];

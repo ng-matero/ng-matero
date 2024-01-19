@@ -20,18 +20,20 @@
             <mat-list-item><code>.mat-h6</code></mat-list-item>
             <mat-list-item><code>.mat-body</code>, <code>.mat-body-2</code></mat-list-item>
             <mat-list-item><code>.mat-body-strong</code>,
-              <code>.mat-subtitle-2</code></mat-list-item>
+            <code>.mat-subtitle-2</code></mat-list-item>
             <mat-list-item><code>.mat-small</code>, <code>.mat-caption</code></mat-list-item>
           </mat-list>
         </div>
         <div class="col-sm-6">
           <mat-list>
             <h3 matSubheader>Elevation</h3>
-            <ng-container *ngFor="let i of [0,1,2,3]">
-              <mat-list-item *ngFor="let j of [1,2,3,4,5,6]">
-                <code>.mat-elevation-z{{j+6*i}}</code>
-              </mat-list-item>
-            </ng-container>
+            @for (i of [0,1,2,3]; track i) {
+              @for (j of [1,2,3,4,5,6]; track j) {
+                <mat-list-item>
+                  <code>.mat-elevation-z{{j+6*i}}</code>
+                </mat-list-item>
+              }
+            }
           </mat-list>
         </div>
       </div>
@@ -42,12 +44,16 @@
         <div>
           <mat-list>
             <h3 matSubheader>Background/Border/Text Color</h3>
-            <mat-list-item *ngFor="let i of colorNames">
-              <code>.[bg|border|text]-{{i}}-[{{colorHues}}]</code>
-            </mat-list-item>
-            <mat-list-item *ngFor="let c of ['white','black','light','dark']">
-              <code>.[bg|border|text]-{{c}}</code>
-            </mat-list-item>
+            @for (i of colorNames; track i) {
+              <mat-list-item>
+                <code>.[bg|border|text]-{{i}}-[{{colorHues}}]</code>
+              </mat-list-item>
+            }
+            @for (c of ['white','black','light','dark']; track c) {
+              <mat-list-item>
+                <code>.[bg|border|text]-{{c}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
       </div>
@@ -58,26 +64,32 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Position</h3>
-            <mat-list-item *ngFor="let i of ['static','fixed','absolute','relative','sticky']">
-              <code>.{{i}}</code>
-            </mat-list-item>
+            @for (i of ['static','fixed','absolute','relative','sticky']; track i) {
+              <mat-list-item>
+                <code>.{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Display</h3>
-            <mat-list-item *ngFor="let i of ['block','inline-block','inline',
-            'flex','inline-flex','none']">
-              <code>.d-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['block','inline-block','inline',
+              'flex','inline-flex','none']; track i) {
+              <mat-list-item>
+                <code>.d-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Direction)</h3>
-            <mat-list-item *ngFor="let i of ['row','row-reverse','col','col-reverse']">
-              <code>.flex-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['row','row-reverse','col','col-reverse']; track i) {
+              <mat-list-item>
+                <code>.flex-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
@@ -86,52 +98,66 @@
             <mat-list-item>
               <code>.flex-fill</code>
             </mat-list-item>
-            <mat-list-item *ngFor="let i of ['grow-0','grow-1']">
-              <code>.flex-{{i}}</code>
-            </mat-list-item>
-            <mat-list-item *ngFor="let i of ['shrink-0','shrink-1']">
-              <code>.flex-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['grow-0','grow-1']; track i) {
+              <mat-list-item>
+                <code>.flex-{{i}}</code>
+              </mat-list-item>
+            }
+            @for (i of ['shrink-0','shrink-1']; track i) {
+              <mat-list-item>
+                <code>.flex-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Wrap)</h3>
-            <mat-list-item *ngFor="let i of ['wrap','nowrap','wrap-reverse']">
-              <code>.flex-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['wrap','nowrap','wrap-reverse']; track i) {
+              <mat-list-item>
+                <code>.flex-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Justify content)</h3>
-            <mat-list-item *ngFor="let i of ['start','end','center','between','around']">
-              <code>.justify-content-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['start','end','center','between','around']; track i) {
+              <mat-list-item>
+                <code>.justify-content-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Align content)</h3>
-            <mat-list-item *ngFor="let i of ['start','end','center','between','around','stretch']">
-              <code>.align-content-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['start','end','center','between','around','stretch']; track i) {
+              <mat-list-item>
+                <code>.align-content-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Align items)</h3>
-            <mat-list-item *ngFor="let i of ['start','end','center','baseline','stretch']">
-              <code>.align-items-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['start','end','center','baseline','stretch']; track i) {
+              <mat-list-item>
+                <code>.align-items-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Align self)</h3>
-            <mat-list-item *ngFor="let i of ['auto','start','end','center','baseline','stretch']">
-              <code>.align-self-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['auto','start','end','center','baseline','stretch']; track i) {
+              <mat-list-item>
+                <code>.align-self-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
       </div>
@@ -142,25 +168,31 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Margin</h3>
-            <mat-list-item *ngFor="let i of [0,4,8,16,24,32,48,'auto']">
-              <code>.m[-[t|b|r|l|x|y]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of [0,4,8,16,24,32,48,'auto']; track i) {
+              <mat-list-item>
+                <code>.m[-[t|b|r|l|x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Negative Margin</h3>
-            <mat-list-item *ngFor="let i of [4,8,16,24,32,48]">
-              <code>.m[-[t|b|r|l|x|y]]--{{i}}</code>
-            </mat-list-item>
+            @for (i of [4,8,16,24,32,48]; track i) {
+              <mat-list-item>
+                <code>.m[-[t|b|r|l|x|y]]--{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Padding</h3>
-            <mat-list-item *ngFor="let i of [0,4,8,16,24,32,48]">
-              <code>.p[-[t|b|r|l|x|y]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of [0,4,8,16,24,32,48]; track i) {
+              <mat-list-item>
+                <code>.p[-[t|b|r|l|x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
       </div>
@@ -171,33 +203,41 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Border</h3>
-            <mat-list-item *ngFor="let i of [0,1,2,3,4,5]">
-              <code>.b[-[t|b|r|l|x|y]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of [0,1,2,3,4,5]; track i) {
+              <mat-list-item>
+                <code>.b[-[t|b|r|l|x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Border Width</h3>
-            <mat-list-item *ngFor="let i of [0,1,2,3,4,5]">
-              <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of [0,1,2,3,4,5]; track i) {
+              <mat-list-item>
+                <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-12 col-md-6">
           <mat-list>
             <h3 matSubheader>Border Style</h3>
-            <mat-list-item *ngFor="let i of ['solid','dashed','dotted','double','hidden','none']">
-              <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['solid','dashed','dotted','double','hidden','none']; track i) {
+              <mat-list-item>
+                <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-12 col-md-6">
           <mat-list>
             <h3 matSubheader>Border Radius</h3>
-            <mat-list-item *ngFor="let i of [0,4,8,16,24,32,'full']">
-              <code>.r[-[t|b]-[r|l]]-{{i}}, r[-[t|b|l|r]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of [0,4,8,16,24,32,'full']; track i) {
+              <mat-list-item>
+                <code>.r[-[t|b]-[r|l]]-{{i}}, r[-[t|b|l|r]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
       </div>
@@ -208,17 +248,21 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Width (%)</h3>
-            <mat-list-item *ngFor="let i of [20,25,40,50,60,75,80,'full','auto']">
-              <code>.w-{{i}}</code>
-            </mat-list-item>
+            @for (i of [20,25,40,50,60,75,80,'full','auto']; track i) {
+              <mat-list-item>
+                <code>.w-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Height (%)</h3>
-            <mat-list-item *ngFor="let i of [20,25,40,50,60,75,80,'full','auto']">
-              <code>.h-{{i}}</code>
-            </mat-list-item>
+            @for (i of [20,25,40,50,60,75,80,'full','auto']; track i) {
+              <mat-list-item>
+                <code>.h-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
       </div>
@@ -229,17 +273,21 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Font Weight</h3>
-            <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
-              <code>.f-w-{{i*100}}</code>
-            </mat-list-item>
+            @for (i of [1,2,3,4,5,6,7,8,9]; track i) {
+              <mat-list-item>
+                <code>.f-w-{{i*100}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Font Size</h3>
-            <mat-list-item *ngFor="let i of [0,10,12,14,16,18,20]">
-              <code>.f-s-{{i}}</code>
-            </mat-list-item>
+            @for (i of [0,10,12,14,16,18,20]; track i) {
+              <mat-list-item>
+                <code>.f-s-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
@@ -307,26 +355,32 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Vertical Align</h3>
-            <mat-list-item *ngFor="let i of ['top','middle','bottom']">
-              <code>.align-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['top','middle','bottom']; track i) {
+              <mat-list-item>
+                <code>.align-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Cursor</h3>
-            <mat-list-item *ngFor="let i of ['default','pointer','text',
-            'move','copy','not-allowed']">
-              <code>.cursor-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['default','pointer','text',
+              'move','copy','not-allowed']; track i) {
+              <mat-list-item>
+                <code>.cursor-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>User Select</h3>
-            <mat-list-item *ngFor="let i of ['all','auto','none']">
-              <code>.select-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['all','auto','none']; track i) {
+              <mat-list-item>
+                <code>.select-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
@@ -339,34 +393,42 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Overflow</h3>
-            <mat-list-item *ngFor="let i of ['auto','hidden','visible','scroll']">
-              <code>.overflow[-[x|y]]-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['auto','hidden','visible','scroll']; track i) {
+              <mat-list-item>
+                <code>.overflow[-[x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Object Fit</h3>
-            <mat-list-item *ngFor="let i of ['cover','contain','fill','none','scale-down']">
-              <code>.object-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['cover','contain','fill','none','scale-down']; track i) {
+              <mat-list-item>
+                <code>.object-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Object Position</h3>
-            <mat-list-item *ngFor="let i of ['top','bottom','center','left','left-top',
-            'left-right','right','right-top','right-bottom']">
-              <code>.object-{{i}}</code>
-            </mat-list-item>
+            @for (i of ['top','bottom','center','left','left-top',
+              'left-right','right','right-top','right-bottom']; track i) {
+              <mat-list-item>
+                <code>.object-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Icon Size</h3>
-            <mat-list-item *ngFor="let i of [18,24,36,48]">
-              <code>.icon-{{i}}</code>
-            </mat-list-item>
+            @for (i of [18,24,36,48]; track i) {
+              <mat-list-item>
+                <code>.icon-{{i}}</code>
+              </mat-list-item>
+            }
           </mat-list>
         </div>
       </div>
