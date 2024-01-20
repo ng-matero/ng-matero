@@ -75,15 +75,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-matero:build",
+            "buildTarget": "ng-matero:build",
             "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-matero:build:production"
+              "buildTarget": "ng-matero:build:production"
             },
             "development": {
-              "browserTarget": "ng-matero:build:development"
+              "buildTarget": "ng-matero:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-matero:build"
+            "buildTarget": "ng-matero:build"
           }
         },
         "test": {

@@ -12,29 +12,37 @@
         <mat-form-field appearance="outline">
           <mat-label>{{'username' | translate}}</mat-label>
           <input matInput formControlName="username" required>
-          <mat-error *ngIf="registerForm.get('username')?.invalid">
-            <span>{{'validations.required' | translate}}</span>
-          </mat-error>
+          @if (registerForm.get('username')?.invalid) {
+            <mat-error>
+              <span>{{'validations.required' | translate}}</span>
+            </mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>{{'password' | translate}}</mat-label>
           <input matInput type="password" formControlName="password" required>
-          <mat-error *ngIf="registerForm.get('password')?.invalid">
-            <span>{{'validations.required' | translate}}</span>
-          </mat-error>
+          @if (registerForm.get('password')?.invalid) {
+            <mat-error>
+              <span>{{'validations.required' | translate}}</span>
+            </mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>{{'confirm_password' | translate}}</mat-label>
           <input matInput type="password" formControlName="confirmPassword" required>
-          <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
-            <span>{{'validations.required' | translate}}</span>
-          </mat-error>
-          <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch')"
-                     translate [translateParams]="{value: 'login.password' | translate}">
-            <span>{{'validations.inconsistent'}}</span>
-          </mat-error>
+          @if (registerForm.get('confirmPassword')?.hasError('required')) {
+            <mat-error>
+              <span>{{'validations.required' | translate}}</span>
+            </mat-error>
+          }
+          @if (registerForm.get('confirmPassword')?.hasError('mismatch')) {
+            <mat-error
+              translate [translateParams]="{value: 'login.password' | translate}">
+              <span>{{'validations.inconsistent'}}</span>
+            </mat-error>
+          }
         </mat-form-field>
 
         <mat-checkbox>{{'read_and_agree' | translate}}</mat-checkbox>
