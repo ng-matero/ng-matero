@@ -17,7 +17,6 @@
     "media-query-no-invalid": null,
     "no-descending-specificity": null,
     "no-empty-source": null,
-    "number-leading-zero": "never",
     "selector-pseudo-element-no-unknown": [
       true,
       {
@@ -28,7 +27,6 @@
     ],
     "selector-class-pattern": null,
     "selector-type-no-unknown": null,
-    "string-quotes": "single",
     "value-keyword-case": null,
     "scss/at-extend-no-missing-placeholder": null,
     "scss/comment-no-empty": null,
