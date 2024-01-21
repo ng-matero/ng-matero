@@ -108,7 +108,7 @@
     },
     "standalone": {
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Whether the generated module is standalone."
     }
   },
