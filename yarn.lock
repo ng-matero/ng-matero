@@ -2736,17 +2736,17 @@
     "@material/theme" "15.0.0-canary.7f224ddd4.0"
     tslib "^2.1.0"
 
-"@ng-matero/extensions-moment-adapter@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions-moment-adapter/-/extensions-moment-adapter-17.0.0.tgz#9a2863ea403c7219270a3ebba438a4e2fabe9d50"
-  integrity sha512-anBcFa+ft+NQTL+TBpdcNKY2MAmGUd2ciJOSJhWObifJS0XnGsVlhOtyLrBb7Y6ysIG8vYJK+3LQ2L+hmPI9Kg==
+"@ng-matero/extensions-moment-adapter@^17.1.0":
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions-moment-adapter/-/extensions-moment-adapter-17.1.0.tgz#88dff26ff7aa60367da0fbb11f4c344e2aaf1ca2"
+  integrity sha512-KqFb/p2mnr+KAqtkeW8XB6rwHI06jaOWMlXNbxqu+IjGA1njWvWDx3uLOXKgXM6JmqUnsFmrxtCeT+Ra75N+3Q==
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-17.0.0.tgz#64eb8e97755fbc8c65c5adff33d37e08824035c2"
-  integrity sha512-/+I0/Na2jjVRc6ro4JJvuopvpwF0i7Gds5jrj6fWmFsFO7E0hwjH5obNivEb0HTSJ3jTnMBLyM7Xg0HJ3+mfPw==
+"@ng-matero/extensions@^17.1.0":
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-17.1.0.tgz#a1ac157aaaa5e503358e15aee71150cb826a97e7"
+  integrity sha512-Xpr3GHjv23eR6IR33mqp31WqxrJahivF2DFDFK4LPNEcxSGwmEWykVnp/33rf2qH/CNObSpx6HYsgt/LXaGBYw==
   dependencies:
     "@ng-select/ng-select" "^12.0.0"
     ngx-color "^9.0.0"
