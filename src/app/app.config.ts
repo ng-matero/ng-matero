@@ -30,16 +30,13 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi()),
     provideRouter(
       routes,
-      withInMemoryScrolling({
-        scrollPositionRestoration: 'enabled',
-        anchorScrolling: 'enabled',
-      }),
+      withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
       withComponentInputBinding()
     ),
-    provideHttpClient(withInterceptorsFromDi()),
-    provideAnimations(),
     importProvidersFrom(
       NgProgressHttpModule,
       NgProgressRouterModule,
