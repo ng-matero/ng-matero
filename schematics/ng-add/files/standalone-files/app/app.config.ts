@@ -3,12 +3,11 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 import { MAT_CARD_CONFIG } from '@angular/material/card';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
-import { MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
+import { provideMomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxPermissionsModule } from 'ngx-permissions';
@@ -32,15 +31,12 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
     provideRouter(
       routes,
-      withInMemoryScrolling({
-        scrollPositionRestoration: 'enabled',
-        anchorScrolling: 'enabled',
-      }),
+      withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
       withComponentInputBinding()
     ),
-    provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
       NgProgressHttpModule,
       NgProgressRouterModule,
@@ -53,10 +49,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
-      FormlyConfigModule.forRoot(),
-      // You can also import the other adapter you need (e.g. luxon, date-fns)
-      MatMomentDateModule,
-      MtxMomentDatetimeModule
+      FormlyConfigModule.forRoot()
     ),
     { provide: BASE_URL, useValue: environment.baseUrl },
     // ==================================================
@@ -65,8 +58,8 @@ export const appConfig: ApplicationConfig = {
     { provide: LoginService, useClass: FakeLoginService },
     //
     // ==================================================
-    ...httpInterceptorProviders,
-    ...appInitializerProviders,
+    httpInterceptorProviders,
+    appInitializerProviders,
     {
       provide: MatPaginatorIntl,
       deps: [PaginatorI18nService],
@@ -82,42 +75,36 @@ export const appConfig: ApplicationConfig = {
         appearance: 'outlined',
       },
     },
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: 'YYYY-MM-DD',
-        },
-        display: {
-          dateInput: 'YYYY-MM-DD',
-          monthYearLabel: 'YYYY MMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'YYYY MMM',
-        },
+    provideMomentDateAdapter({
+      parse: {
+        dateInput: 'YYYY-MM-DD',
       },
-    },
-    {
-      provide: MTX_DATETIME_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: 'YYYY-MM-DD',
-          yearInput: 'YYYY',
-          monthInput: 'MMMM',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
-          timeInput: 'HH:mm',
-        },
-        display: {
-          dateInput: 'YYYY-MM-DD',
-          yearInput: 'YYYY',
-          monthInput: 'MMMM',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
-          timeInput: 'HH:mm',
-          monthYearLabel: 'YYYY MMMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'MMMM YYYY',
-          popupHeaderDateLabel: 'MMM DD, ddd',
-        },
+      display: {
+        dateInput: 'YYYY-MM-DD',
+        monthYearLabel: 'YYYY MMM',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'YYYY MMM',
       },
-    },
+    }),
+    provideMomentDatetimeAdapter({
+      parse: {
+        dateInput: 'YYYY-MM-DD',
+        yearInput: 'YYYY',
+        monthInput: 'MMMM',
+        datetimeInput: 'YYYY-MM-DD HH:mm',
+        timeInput: 'HH:mm',
+      },
+      display: {
+        dateInput: 'YYYY-MM-DD',
+        yearInput: 'YYYY',
+        monthInput: 'MMMM',
+        datetimeInput: 'YYYY-MM-DD HH:mm',
+        timeInput: 'HH:mm',
+        monthYearLabel: 'YYYY MMMM',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY',
+        popupHeaderDateLabel: 'MMM DD, ddd',
+      },
+    }),
   ],
 };
