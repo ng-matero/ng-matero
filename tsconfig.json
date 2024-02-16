@@ -30,7 +30,8 @@
       "@env": ["environments"],
       "@env/*": ["environments/*"]
     },
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
