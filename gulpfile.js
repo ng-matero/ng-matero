@@ -22,8 +22,6 @@ function copyRoot() {
     'LICENSE',
     'proxy.config.js',
     'tsconfig.json',
-    'tsconfig.app.json',
-    'tsconfig.spec.json',
   ]).pipe(dest(`${FILES}/`));
 }
 
