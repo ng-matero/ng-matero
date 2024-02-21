@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["dist"],
+  "ignorePatterns": ["dist", "schematics/ng-add/files"],
   "overrides": [
     {
       "files": ["*.ts"],
