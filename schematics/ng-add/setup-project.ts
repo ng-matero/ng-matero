@@ -8,7 +8,6 @@ import {
   chain,
   mergeWith,
   move,
-  noop,
   template,
   url,
 } from '@angular-devkit/schematics';
@@ -18,7 +17,6 @@ import {
   getProjectMainFile,
   isStandaloneApp,
 } from '@angular/cdk/schematics';
-import { addRootProvider } from '@schematics/angular/utility';
 import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import { addLoaderToIndex } from './global-loader';
 import { addFontsToIndex } from './material-fonts';
@@ -33,7 +31,6 @@ import { addThemeStyleToTarget } from './theming';
  *  - Add Scripts to `package.json`
  *  - Add proxy to `angular.json`
  *  - Add style to `angular.json`
- *  - Add Browser Animation to app.module
  *  - Add Fonts & Icons to `index.html`
  *  - Add Preloader to `index.html`
  *  - Add Packages to `package.json`
@@ -46,27 +43,10 @@ export default function (options: Schema): Rule {
     addESLintToAngularJson(options),
     addProxyToAngularJson(options),
     addStyleToAngularJson(options),
-    addAnimationsModule(options),
     addFontsToIndex(options),
     addLoaderToIndex(options),
     installPackages(),
   ]);
-}
-
-/**
- * Adds an animation module to the root module of the specified project. In case the "animations"
- * option is set to false, we still add the `NoopAnimationsModule` because otherwise various
- * components of Angular Material will throw an exception.
- */
-function addAnimationsModule(options: Schema) {
-  return options.animations === 'excluded'
-    ? noop()
-    : addRootProvider(options.project, ({ code, external }) => {
-        return code`${external(
-          'provideAnimationsAsync',
-          '@angular/platform-browser/animations/async'
-        )}(${options.animations === 'disabled' ? `'noop'` : ''})`;
-      });
 }
 
 /** delete exsiting files to be overwrite */

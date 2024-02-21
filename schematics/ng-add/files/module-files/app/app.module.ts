@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BrowserModule } from '@angular/platform-browser';<% if(animations!='excluded') { %>
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';<% } %>
 
 import { AppComponent } from './app.component';
 
@@ -46,7 +46,8 @@ import { FakeLoginService } from './fake-login.service';
       },
     }),
   ],
-  providers: [
+  providers: [<% if(animations!='excluded') { %>
+    provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
     { provide: BASE_URL, useValue: environment.baseUrl },
     // ==================================================
     // 👇 ❌ Remove it in the realworld application
