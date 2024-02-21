@@ -8,28 +8,18 @@ import {
   chain,
   mergeWith,
   move,
+  noop,
   template,
   url,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import {
-  addModuleImportToRootModule,
   getProjectFromWorkspace,
   getProjectMainFile,
-  hasNgModuleImport,
   isStandaloneApp,
 } from '@angular/cdk/schematics';
-import {
-  addFunctionalProvidersToStandaloneBootstrap,
-  callsProvidersFunction,
-  importsProvidersFrom,
-} from '@schematics/angular/private/components';
-import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
-import {
-  ProjectDefinition,
-  getWorkspace,
-  updateWorkspace,
-} from '@schematics/angular/utility/workspace';
+import { addRootProvider } from '@schematics/angular/utility';
+import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import { addLoaderToIndex } from './global-loader';
 import { addFontsToIndex } from './material-fonts';
 import { addScriptToPackageJson } from './package-config';
@@ -69,110 +59,14 @@ export default function (options: Schema): Rule {
  * components of Angular Material will throw an exception.
  */
 function addAnimationsModule(options: Schema) {
-  return async (host: Tree, context: SchematicContext) => {
-    const workspace = await getWorkspace(host);
-    const project = getProjectFromWorkspace(workspace, options.project);
-    const mainFilePath = getProjectMainFile(project);
-
-    if (isStandaloneApp(host, mainFilePath)) {
-      addAnimationsToStandaloneApp(host, mainFilePath, context, options);
-    } else {
-      addAnimationsToNonStandaloneApp(host, project, mainFilePath, context, options);
-    }
-  };
-}
-
-/** Adds the animations module to an app that is bootstrap using the standalone component APIs. */
-function addAnimationsToStandaloneApp(
-  host: Tree,
-  mainFile: string,
-  context: SchematicContext,
-  options: Schema
-) {
-  const animationsFunction = 'provideAnimations';
-  const noopAnimationsFunction = 'provideNoopAnimations';
-
-  if (options.animations === 'enabled') {
-    // In case the project explicitly uses provideNoopAnimations, we should print a warning
-    // message that makes the user aware of the fact that we won't automatically set up
-    // animations. If we would add provideAnimations while provideNoopAnimations
-    // is already configured, we would cause unexpected behavior and runtime exceptions.
-    if (callsProvidersFunction(host, mainFile, noopAnimationsFunction)) {
-      context.logger.error(
-        `Could not add "${animationsFunction}" ` +
-          `because "${noopAnimationsFunction}" is already provided.`
-      );
-      context.logger.info(`Please manually set up browser animations.`);
-    } else {
-      addFunctionalProvidersToStandaloneBootstrap(
-        host,
-        mainFile,
-        animationsFunction,
-        '@angular/platform-browser/animations'
-      );
-    }
-  } else if (
-    options.animations === 'disabled' &&
-    !importsProvidersFrom(host, mainFile, animationsFunction)
-  ) {
-    // Do not add the provideNoopAnimations if the project already explicitly uses
-    // the provideAnimations.
-    addFunctionalProvidersToStandaloneBootstrap(
-      host,
-      mainFile,
-      noopAnimationsFunction,
-      '@angular/platform-browser/animations'
-    );
-  }
-}
-
-/**
- * Adds the animations module to an app that is bootstrap
- * using the non-standalone component APIs.
- */
-function addAnimationsToNonStandaloneApp(
-  host: Tree,
-  project: ProjectDefinition,
-  mainFile: string,
-  context: SchematicContext,
-  options: Schema
-) {
-  const browserAnimationsModuleName = 'BrowserAnimationsModule';
-  const noopAnimationsModuleName = 'NoopAnimationsModule';
-  const appModulePath = getAppModulePath(host, mainFile);
-
-  if (options.animations === 'enabled') {
-    // In case the project explicitly uses the NoopAnimationsModule, we should print a warning
-    // message that makes the user aware of the fact that we won't automatically set up
-    // animations. If we would add the BrowserAnimationsModule while the NoopAnimationsModule
-    // is already configured, we would cause unexpected behavior and runtime exceptions.
-    if (hasNgModuleImport(host, appModulePath, noopAnimationsModuleName)) {
-      context.logger.error(
-        `Could not set up "${browserAnimationsModuleName}" ` +
-          `because "${noopAnimationsModuleName}" is already imported.`
-      );
-      context.logger.info(`Please manually set up browser animations.`);
-    } else {
-      addModuleImportToRootModule(
-        host,
-        browserAnimationsModuleName,
-        '@angular/platform-browser/animations',
-        project
-      );
-    }
-  } else if (
-    options.animations === 'disabled' &&
-    !hasNgModuleImport(host, appModulePath, browserAnimationsModuleName)
-  ) {
-    // Do not add the NoopAnimationsModule module if the project already explicitly uses
-    // the BrowserAnimationsModule.
-    addModuleImportToRootModule(
-      host,
-      noopAnimationsModuleName,
-      '@angular/platform-browser/animations',
-      project
-    );
-  }
+  return options.animations === 'excluded'
+    ? noop()
+    : addRootProvider(options.project, ({ code, external }) => {
+        return code`${external(
+          'provideAnimationsAsync',
+          '@angular/platform-browser/animations/async'
+        )}(${options.animations === 'disabled' ? `'noop'` : ''})`;
+      });
 }
 
 /** delete exsiting files to be overwrite */
