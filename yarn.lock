@@ -320,6 +320,60 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/material-experimental@^17.3.1":
+  version "17.3.1"
+  resolved "https://registry.yarnpkg.com/@angular/material-experimental/-/material-experimental-17.3.3.tgz#5b6cdba573df31891044a64454f116710cdcc364"
+  integrity sha512-K36GZPqfsfVHNHNFR7p9a7MAvgjmnA7mPXMGBJbtVFksHGcdQG237k+ei8fjMvAxXGoa/jObhEnBtDwZ2FhQfg==
+  dependencies:
+    "@material/animation" "15.0.0-canary.7f224ddd4.0"
+    "@material/auto-init" "15.0.0-canary.7f224ddd4.0"
+    "@material/banner" "15.0.0-canary.7f224ddd4.0"
+    "@material/base" "15.0.0-canary.7f224ddd4.0"
+    "@material/button" "15.0.0-canary.7f224ddd4.0"
+    "@material/card" "15.0.0-canary.7f224ddd4.0"
+    "@material/checkbox" "15.0.0-canary.7f224ddd4.0"
+    "@material/chips" "15.0.0-canary.7f224ddd4.0"
+    "@material/circular-progress" "15.0.0-canary.7f224ddd4.0"
+    "@material/data-table" "15.0.0-canary.7f224ddd4.0"
+    "@material/density" "15.0.0-canary.7f224ddd4.0"
+    "@material/dialog" "15.0.0-canary.7f224ddd4.0"
+    "@material/dom" "15.0.0-canary.7f224ddd4.0"
+    "@material/drawer" "15.0.0-canary.7f224ddd4.0"
+    "@material/elevation" "15.0.0-canary.7f224ddd4.0"
+    "@material/fab" "15.0.0-canary.7f224ddd4.0"
+    "@material/feature-targeting" "15.0.0-canary.7f224ddd4.0"
+    "@material/floating-label" "15.0.0-canary.7f224ddd4.0"
+    "@material/form-field" "15.0.0-canary.7f224ddd4.0"
+    "@material/icon-button" "15.0.0-canary.7f224ddd4.0"
+    "@material/image-list" "15.0.0-canary.7f224ddd4.0"
+    "@material/layout-grid" "15.0.0-canary.7f224ddd4.0"
+    "@material/line-ripple" "15.0.0-canary.7f224ddd4.0"
+    "@material/linear-progress" "15.0.0-canary.7f224ddd4.0"
+    "@material/list" "15.0.0-canary.7f224ddd4.0"
+    "@material/menu" "15.0.0-canary.7f224ddd4.0"
+    "@material/menu-surface" "15.0.0-canary.7f224ddd4.0"
+    "@material/notched-outline" "15.0.0-canary.7f224ddd4.0"
+    "@material/radio" "15.0.0-canary.7f224ddd4.0"
+    "@material/ripple" "15.0.0-canary.7f224ddd4.0"
+    "@material/rtl" "15.0.0-canary.7f224ddd4.0"
+    "@material/segmented-button" "15.0.0-canary.7f224ddd4.0"
+    "@material/select" "15.0.0-canary.7f224ddd4.0"
+    "@material/shape" "15.0.0-canary.7f224ddd4.0"
+    "@material/slider" "15.0.0-canary.7f224ddd4.0"
+    "@material/snackbar" "15.0.0-canary.7f224ddd4.0"
+    "@material/switch" "15.0.0-canary.7f224ddd4.0"
+    "@material/tab" "15.0.0-canary.7f224ddd4.0"
+    "@material/tab-bar" "15.0.0-canary.7f224ddd4.0"
+    "@material/tab-indicator" "15.0.0-canary.7f224ddd4.0"
+    "@material/tab-scroller" "15.0.0-canary.7f224ddd4.0"
+    "@material/textfield" "15.0.0-canary.7f224ddd4.0"
+    "@material/theme" "15.0.0-canary.7f224ddd4.0"
+    "@material/tooltip" "15.0.0-canary.7f224ddd4.0"
+    "@material/top-app-bar" "15.0.0-canary.7f224ddd4.0"
+    "@material/touch-target" "15.0.0-canary.7f224ddd4.0"
+    "@material/typography" "15.0.0-canary.7f224ddd4.0"
+    tslib "^2.3.0"
+
 "@angular/material-moment-adapter@^17.3.1":
   version "17.3.1"
   resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-17.3.1.tgz#da5f14cd092d15c35d111b77c850e98e5c076d3c"
@@ -3012,10 +3066,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^17.1.3":
-  version "17.1.3"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-17.1.3.tgz#b1bba1b8bdea459e31c2094300577c4f0fada078"
-  integrity sha512-MHu+Egp9mUGrkUByvXJEIKgRKFTjxcjjNOx8pqs3XzInZj670nikxw0KCAiJuSYCb69ClCTTsO4z4ds6MhWGuw==
+"@ng-matero/extensions@^17.2.0":
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-17.2.0.tgz#82d78c415fb76878e52d019128df680d588c52ed"
+  integrity sha512-/6us4HDFOrk0OIZDTZ8R/yNj5i8E9bpaY3AouGlq6B+yj2LG0Pfzj2yxzEevaLEdcQN0RGNgSZ8A2KfCYmZ6Iw==
   dependencies:
     "@ng-select/ng-select" "^12.0.0"
     ngx-color "^9.0.0"
