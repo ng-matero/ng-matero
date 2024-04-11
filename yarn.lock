@@ -321,7 +321,7 @@
     tslib "^2.3.0"
 
 "@angular/material-experimental@^17.3.1":
-  version "17.3.1"
+  version "17.3.3"
   resolved "https://registry.yarnpkg.com/@angular/material-experimental/-/material-experimental-17.3.3.tgz#5b6cdba573df31891044a64454f116710cdcc364"
   integrity sha512-K36GZPqfsfVHNHNFR7p9a7MAvgjmnA7mPXMGBJbtVFksHGcdQG237k+ei8fjMvAxXGoa/jObhEnBtDwZ2FhQfg==
   dependencies:
@@ -3066,10 +3066,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^17.2.0":
-  version "17.2.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-17.2.0.tgz#82d78c415fb76878e52d019128df680d588c52ed"
-  integrity sha512-/6us4HDFOrk0OIZDTZ8R/yNj5i8E9bpaY3AouGlq6B+yj2LG0Pfzj2yxzEevaLEdcQN0RGNgSZ8A2KfCYmZ6Iw==
+"@ng-matero/extensions@^17.2.1":
+  version "17.2.1"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-17.2.1.tgz#17a31362b28bc8892a8d2e954dc9fd59dbf78409"
+  integrity sha512-7w/LW8+VPOcon0J/idGRw5YW23Hwy1x+lPKNKYotePiZmWcXVPU22HNXUKZrm9AcHWFyLLqFOj1+/rLs/u0lMw==
   dependencies:
     "@ng-select/ng-select" "^12.0.0"
     ngx-color "^9.0.0"
