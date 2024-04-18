@@ -1,5 +1,6 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, inject } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -30,14 +31,24 @@ import { NavAccordionDirective } from './nav-accordion.directive';
     NavAccordionItemDirective,
     NavAccordionToggleDirective,
   ],
+  animations: [
+    trigger('expansion', [
+      state('collapsed, void', style({ height: '0px', visibility: 'hidden' })),
+      state('expanded', style({ height: '*', visibility: '' })),
+      transition(
+        'expanded <=> collapsed, void => collapsed',
+        animate('225ms cubic-bezier(0.4,0,0.2,1)')
+      ),
+    ]),
+  ],
 })
 export class SidemenuComponent {
-  // Note: Ripple effect make page flashing on mobile
+  // The ripple effect makes page flashing on mobile
   @Input() ripple = false;
+
+  private menu = inject(MenuService);
 
   menu$ = this.menu.getAll();
 
   buildRoute = this.menu.buildRoute;
-
-  constructor(private menu: MenuService) {}
 }

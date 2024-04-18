@@ -34,11 +34,6 @@
     &.expanded {
       background-color: var(--sidemenu-expanded-background-color);
 
-      >.submenu {
-        max-height: 2000px;
-        visibility: visible;
-      }
-
       >.menu-toggle>.menu-caret {
         transform: rotate(-180deg);
       }
@@ -46,12 +41,8 @@
   }
 
   &.submenu {
-    max-height: 0;
     padding-top: 0;
     overflow: hidden;
-    visibility: hidden;
-    transition: transitions.fast-out-slow(max-height), transitions.fast-out-slow(visibility);
-    transform: translateZ(0) !important;
   }
 
   .menu-heading {

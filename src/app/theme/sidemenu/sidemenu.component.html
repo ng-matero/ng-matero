@@ -1,13 +1,15 @@
 <ng-container [ngTemplateOutlet]="menuListTpl"
-  [ngTemplateOutletContext]="{menuList: menu$ | async, parentRoute: [], level: 0}">
+  [ngTemplateOutletContext]="{menuList: menu$ | async, parentRoute: [], level: 0, expanded: true}">
 </ng-container>
 
-<ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">
-  <ul navAccordion class="matero-sidemenu level-{{level}}" [class.submenu]="level>0">
+<ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level"
+  let-expanded="expanded">
+  <ul navAccordion class="matero-sidemenu level-{{level}}" [class.submenu]="level>0"
+    [@expansion]="expanded ? 'expanded' : 'collapsed'">
     @for (menuItem of menuList; track menuItem) {
       <ng-template [ngxPermissionsOnly]="menuItem.permissions?.only"
         [ngxPermissionsExcept]="menuItem.permissions?.except">
-        <li navAccordionItem class="menu-item" routerLinkActive="active"
+        <li #navItem="navAccordionItem" navAccordionItem class="menu-item" routerLinkActive="active"
           [route]="menuItem.route" [type]="menuItem.type">
           @if (menuItem.type==='link') {
             <a class="menu-heading"
@@ -41,14 +43,16 @@
                 [ngTemplateOutletContext]="{item: menuItem, level: level}">
               </ng-container>
             </button>
+
+            <ng-container [ngTemplateOutlet]="menuListTpl"
+                          [ngTemplateOutletContext]="{
+                            menuList: menuItem.children,
+                            parentRoute: parentRoute.concat([menuItem.route]),
+                            level: level + 1,
+                            expanded: navItem.expanded
+                          }">
+            </ng-container>
           }
-          <ng-container [ngTemplateOutlet]="menuListTpl"
-                        [ngTemplateOutletContext]="{
-                          menuList: menuItem.children,
-                          parentRoute: parentRoute.concat([menuItem.route]),
-                          level: level + 1
-                        }">
-          </ng-container>
         </li>
       </ng-template>
     }
