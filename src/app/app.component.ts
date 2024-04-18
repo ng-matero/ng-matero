@@ -9,8 +9,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  private preloader = inject(PreloaderService);
-  private settings = inject(SettingsService);
+  private readonly preloader = inject(PreloaderService);
+  private readonly settings = inject(SettingsService);
 
   ngOnInit() {
     this.settings.setDirection();

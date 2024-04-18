@@ -10,8 +10,8 @@ import { NavAccordionItemDirective } from './nav-accordion-item.directive';
   standalone: true,
 })
 export class NavAccordionDirective {
-  private router = inject(Router);
-  private menu = inject(MenuService);
+  private readonly router = inject(Router);
+  private readonly menu = inject(MenuService);
 
   private navItems: NavAccordionItemDirective[] = [];
 

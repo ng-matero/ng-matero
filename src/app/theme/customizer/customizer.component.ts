@@ -43,9 +43,9 @@ import { DisableControlDirective } from '@shared';
 export class CustomizerComponent {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
-  private settings = inject(SettingsService);
-  private drawer = inject(MtxDrawer);
-  private fb = inject(FormBuilder);
+  private readonly settings = inject(SettingsService);
+  private readonly drawer = inject(MtxDrawer);
+  private readonly fb = inject(FormBuilder);
 
   form = this.fb.nonNullable.group<AppSettings>(this.settings.options);
 

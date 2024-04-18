@@ -40,8 +40,8 @@ export interface TopmenuState {
 export class TopmenuComponent implements OnDestroy {
   @HostBinding('class') class = 'matero-topmenu';
 
-  private menu = inject(MenuService);
-  private router = inject(Router);
+  private readonly menu = inject(MenuService);
+  private readonly router = inject(Router);
 
   menu$ = this.menu.getAll();
 

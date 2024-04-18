@@ -47,10 +47,10 @@ import { AuthService, SettingsService, User } from '@core';
   imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
 })
 export class UserComponent implements OnInit {
-  private cdr = inject(ChangeDetectorRef);
-  private auth = inject(AuthService);
-  private router = inject(Router);
-  private settings = inject(SettingsService);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly settings = inject(SettingsService);
 
   user!: User;
 

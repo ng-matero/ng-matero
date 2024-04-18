@@ -48,9 +48,9 @@ export class AdminLayoutComponent implements OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
   @ViewChild('content', { static: true }) content!: MatSidenavContent;
 
-  private breakpointObserver = inject(BreakpointObserver);
-  private router = inject(Router);
-  private settings = inject(SettingsService);
+  private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly router = inject(Router);
+  private readonly settings = inject(SettingsService);
 
   options = this.settings.options;
 

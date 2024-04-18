@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class FormlyValidations {
-  private translate = inject(TranslateService);
-  private formlyConfig = inject(FormlyConfig);
+  private readonly translate = inject(TranslateService);
+  private readonly formlyConfig = inject(FormlyConfig);
 
   init(): void {
     // message without params

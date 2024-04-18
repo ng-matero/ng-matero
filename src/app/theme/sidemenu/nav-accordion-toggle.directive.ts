@@ -7,7 +7,7 @@ import { NavAccordionItemDirective } from './nav-accordion-item.directive';
   standalone: true,
 })
 export class NavAccordionToggleDirective {
-  private navItem = inject(NavAccordionItemDirective);
+  private readonly navItem = inject(NavAccordionItemDirective);
 
   @HostListener('click', ['$event'])
   onClick() {

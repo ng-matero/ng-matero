@@ -46,7 +46,7 @@ export class SidemenuComponent {
   // The ripple effect makes page flashing on mobile
   @Input() ripple = false;
 
-  private menu = inject(MenuService);
+  private readonly menu = inject(MenuService);
 
   menu$ = this.menu.getAll();
 

@@ -40,8 +40,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [RouterLink, MatButtonModule, MatIconModule, MatTooltipModule, TranslateModule],
 })
 export class UserPanelComponent implements OnInit {
-  private auth = inject(AuthService);
-  private router = inject(Router);
+  private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
 
   user!: User;
 

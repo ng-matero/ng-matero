@@ -7,7 +7,7 @@ import { NavAccordionDirective } from './nav-accordion.directive';
   standalone: true,
 })
 export class NavAccordionItemDirective implements OnInit, OnDestroy {
-  private nav = inject(NavAccordionDirective);
+  private readonly nav = inject(NavAccordionDirective);
 
   @Input() route = '';
   @Input() type: 'link' | 'sub' | 'extLink' | 'extTabLink' = 'link';
