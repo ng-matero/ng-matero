@@ -2,10 +2,10 @@ import { CdkDrag, CdkDragStart } from '@angular/cdk/drag-drop';
 import {
   Component,
   EventEmitter,
-  OnInit,
   Output,
   TemplateRef,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,28 +40,16 @@ import { DisableControlDirective } from '@shared';
     DisableControlDirective,
   ],
 })
-export class CustomizerComponent implements OnInit {
+export class CustomizerComponent {
   @Output() optionsChange = new EventEmitter<AppSettings>();
 
-  options = this.settings.options;
+  private settings = inject(SettingsService);
+  private drawer = inject(MtxDrawer);
+  private fb = inject(FormBuilder);
 
-  dragging = false;
+  form = this.fb.nonNullable.group<AppSettings>(this.settings.options);
 
-  drawerRef?: MtxDrawerRef;
-
-  form = this.fb.nonNullable.group<AppSettings>({
-    theme: 'auto',
-    showHeader: true,
-    headerPos: 'fixed',
-    showUserPanel: true,
-    navPos: 'side',
-    dir: 'ltr',
-    sidenavOpened: true,
-    sidenavCollapsed: false,
-    language: 'en-US',
-  });
-
-  formSubscription = Subscription.EMPTY;
+  private formSubscription = Subscription.EMPTY;
 
   get isHeaderPosAbove() {
     return this.form.get('headerPos')?.value === 'above';
@@ -75,15 +63,9 @@ export class CustomizerComponent implements OnInit {
     return this.form.get('showHeader')?.value === true;
   }
 
-  private readonly key = 'ng-matero-settings';
+  private dragging = false;
 
-  constructor(
-    private settings: SettingsService,
-    private drawer: MtxDrawer,
-    private fb: FormBuilder
-  ) {}
-
-  ngOnInit(): void {}
+  private drawerRef?: MtxDrawerRef;
 
   onDragStart(event: CdkDragStart) {
     this.dragging = true;

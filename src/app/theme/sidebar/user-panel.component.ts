@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -40,12 +40,10 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [RouterLink, MatButtonModule, MatIconModule, MatTooltipModule, TranslateModule],
 })
 export class UserPanelComponent implements OnInit {
-  user!: User;
+  private auth = inject(AuthService);
+  private router = inject(Router);
 
-  constructor(
-    private router: Router,
-    private auth: AuthService
-  ) {}
+  user!: User;
 
   ngOnInit(): void {
     this.auth.user().subscribe(user => (this.user = user));

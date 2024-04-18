@@ -1,5 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, HostBinding, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, OnDestroy, ViewEncapsulation, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -7,8 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Subscription, filter } from 'rxjs';
 
 import { Menu, MenuService } from '@core';
 import { TopmenuPanelComponent } from './topmenu-panel.component';
@@ -41,6 +40,9 @@ export interface TopmenuState {
 export class TopmenuComponent implements OnDestroy {
   @HostBinding('class') class = 'matero-topmenu';
 
+  private menu = inject(MenuService);
+  private router = inject(Router);
+
   menu$ = this.menu.getAll();
 
   buildRoute = this.menu.buildRoute;
@@ -51,10 +53,7 @@ export class TopmenuComponent implements OnDestroy {
   private menuSubscription = Subscription.EMPTY;
   private routerSubscription = Subscription.EMPTY;
 
-  constructor(
-    private menu: MenuService,
-    private router: Router
-  ) {
+  constructor() {
     this.menuSubscription = this.menu$.subscribe(res => {
       this.menuList = res;
       this.menuList.forEach(item => {

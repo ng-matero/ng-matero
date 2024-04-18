@@ -1,7 +1,7 @@
 import { Directive, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '@core';
-import { filter } from 'rxjs/operators';
+import { filter } from 'rxjs';
 import { NavAccordionItemDirective } from './nav-accordion-item.directive';
 
 @Directive({

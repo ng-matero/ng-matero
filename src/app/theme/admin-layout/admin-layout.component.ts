@@ -1,12 +1,18 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NgClass } from '@angular/common';
-import { Component, HostBinding, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  OnDestroy,
+  ViewChild,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NgProgressComponent } from 'ngx-progressbar';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Subscription, filter } from 'rxjs';
 
 import { AppSettings, SettingsService } from '@core';
 import { CustomizerComponent } from '../customizer/customizer.component';
@@ -42,13 +48,17 @@ export class AdminLayoutComponent implements OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
   @ViewChild('content', { static: true }) content!: MatSidenavContent;
 
+  private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
+  private settings = inject(SettingsService);
+
   options = this.settings.options;
 
   get themeColor() {
     return this.settings.themeColor;
   }
 
-  get isOver(): boolean {
+  get isOver() {
     return this.isMobileScreen;
   }
 
@@ -76,11 +86,7 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private layoutChangesSubscription = Subscription.EMPTY;
 
-  constructor(
-    private router: Router,
-    private breakpointObserver: BreakpointObserver,
-    private settings: SettingsService
-  ) {
+  constructor() {
     this.layoutChangesSubscription = this.breakpointObserver
       .observe([MOBILE_MEDIAQUERY, TABLET_MEDIAQUERY, MONITOR_MEDIAQUERY])
       .subscribe(state => {
