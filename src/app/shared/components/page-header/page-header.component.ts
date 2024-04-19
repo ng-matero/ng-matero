@@ -30,7 +30,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() title = '';
   @Input() subtitle = '';
   @Input() nav: string[] = [];
-  @Input({ transform: booleanAttribute }) hideBreadCrumb = false;
+  @Input({ transform: booleanAttribute }) hideBreadcrumb = false;
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];

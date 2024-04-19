@@ -9,7 +9,7 @@ import { Token, User } from './interface';
   providedIn: 'root',
 })
 export class LoginService {
-  private readonly http = inject(HttpClient);
+  protected readonly http = inject(HttpClient);
 
   login(username: string, password: string, rememberMe = false) {
     return this.http.post<Token>('/auth/login', { username, password, rememberMe });

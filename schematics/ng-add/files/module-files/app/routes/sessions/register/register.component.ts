@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
+  private readonly fb = inject(FormBuilder);
+
   registerForm = this.fb.nonNullable.group(
     {
       username: ['', [Validators.required]],
@@ -17,8 +19,6 @@ export class RegisterComponent {
       validators: [this.matchValidator('password', 'confirmPassword')],
     }
   );
-
-  constructor(private fb: FormBuilder) {}
 
   matchValidator(source: string, target: string) {
     return (control: AbstractControl) => {

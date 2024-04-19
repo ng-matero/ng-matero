@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PageHeaderComponent } from '@shared';
 
 @Component({
@@ -10,7 +10,7 @@ import { PageHeaderComponent } from '@shared';
   imports: [PageHeaderComponent],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor() {}
 
   ngOnInit() {}
 }
