@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import {
   HttpEvent,
   HttpHandler,
@@ -6,15 +5,15 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { mergeMap, of, throwError } from 'rxjs';
 
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private toast: ToastrService) {}
+  private readonly toast = inject(ToastrService);
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (!req.url.includes('/api/')) {
       return next.handle(req);
     }
@@ -22,7 +21,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)));
   }
 
-  private handleOkReq(event: HttpEvent<any>): Observable<any> {
+  private handleOkReq(event: HttpEvent<any>) {
     if (event instanceof HttpResponse) {
       const body: any = event.body;
       // failure: { code: **, msg: 'failure' }

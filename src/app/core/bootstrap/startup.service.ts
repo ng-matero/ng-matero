@@ -1,19 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AuthService, User } from '@core/authentication';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs';
 import { Menu, MenuService } from './menu.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StartupService {
-  constructor(
-    private authService: AuthService,
-    private menuService: MenuService,
-    private permissonsService: NgxPermissionsService,
-    private rolesService: NgxRolesService
-  ) {}
+  private readonly authService = inject(AuthService);
+  private readonly menuService = inject(MenuService);
+  private readonly permissonsService = inject(NgxPermissionsService);
+  private readonly rolesService = inject(NgxRolesService);
 
   /**
    * Load the application only after get the menu or other essential informations

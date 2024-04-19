@@ -1,15 +1,8 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { catchError, throwError } from 'rxjs';
 
 export enum STATUS {
   UNAUTHORIZED = 401,
@@ -20,7 +13,10 @@ export enum STATUS {
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  private errorPages = [STATUS.FORBIDDEN, STATUS.NOT_FOUND, STATUS.INTERNAL_SERVER_ERROR];
+  private readonly router = inject(Router);
+  private readonly toast = inject(ToastrService);
+
+  private readonly errorPages = [STATUS.FORBIDDEN, STATUS.NOT_FOUND, STATUS.INTERNAL_SERVER_ERROR];
 
   private getMessage = (error: HttpErrorResponse) => {
     if (error.error?.message) {
@@ -34,9 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return `${error.status} ${error.statusText}`;
   };
 
-  constructor(private router: Router, private toast: ToastrService) {}
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
     return next
       .handle(request)
       .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));

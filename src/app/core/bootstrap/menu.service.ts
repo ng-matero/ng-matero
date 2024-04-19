@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { BehaviorSubject, share } from 'rxjs';
 
 export interface MenuTag {
   color: string; // background color
@@ -35,20 +34,20 @@ export interface Menu {
   providedIn: 'root',
 })
 export class MenuService {
-  private menu$: BehaviorSubject<Menu[]> = new BehaviorSubject<Menu[]>([]);
+  private readonly menu$ = new BehaviorSubject<Menu[]>([]);
 
   /** Get all the menu data. */
-  getAll(): Observable<Menu[]> {
+  getAll() {
     return this.menu$.asObservable();
   }
 
   /** Observe the change of menu data. */
-  change(): Observable<Menu[]> {
+  change() {
     return this.menu$.pipe(share());
   }
 
   /** Initialize the menu data. */
-  set(menu: Menu[]): Observable<Menu[]> {
+  set(menu: Menu[]) {
     this.menu$.next(menu);
     return this.menu$.asObservable();
   }
@@ -66,7 +65,7 @@ export class MenuService {
   }
 
   /** Delete empty values and rebuild route. */
-  buildRoute(routeArr: string[]): string {
+  buildRoute(routeArr: string[]) {
     let route = '';
     routeArr.forEach(item => {
       if (item && item.trim()) {
@@ -77,12 +76,12 @@ export class MenuService {
   }
 
   /** Get the menu item name based on current route. */
-  getItemName(routeArr: string[]): string {
+  getItemName(routeArr: string[]) {
     return this.getLevel(routeArr)[routeArr.length - 1];
   }
 
   // Whether is a leaf menu
-  private isLeafItem(item: MenuChildrenItem): boolean {
+  private isLeafItem(item: MenuChildrenItem) {
     const cond0 = item.route === undefined;
     const cond1 = item.children === undefined;
     const cond2 = !cond1 && item.children?.length === 0;
@@ -90,17 +89,17 @@ export class MenuService {
   }
 
   // Deep clone object could be jsonized
-  private deepClone(obj: any): any {
+  private deepClone(obj: any) {
     return JSON.parse(JSON.stringify(obj));
   }
 
   // Whether two objects could be jsonized equal
-  private isJsonObjEqual(obj0: any, obj1: any): boolean {
+  private isJsonObjEqual(obj0: any, obj1: any) {
     return JSON.stringify(obj0) === JSON.stringify(obj1);
   }
 
   // Whether routeArr equals realRouteArr (after remove empty route element)
-  private isRouteEqual(routeArr: Array<string>, realRouteArr: Array<string>): boolean {
+  private isRouteEqual(routeArr: Array<string>, realRouteArr: Array<string>) {
     realRouteArr = this.deepClone(realRouteArr);
     realRouteArr = realRouteArr.filter(r => r !== '');
     return this.isJsonObjEqual(routeArr, realRouteArr);

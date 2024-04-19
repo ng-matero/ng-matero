@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from './settings.service';
 
@@ -6,10 +6,8 @@ import { SettingsService } from './settings.service';
   providedIn: 'root',
 })
 export class TranslateLangService {
-  constructor(
-    private translate: TranslateService,
-    private settings: SettingsService
-  ) {}
+  private readonly translate = inject(TranslateService);
+  private readonly settings = inject(SettingsService);
 
   load() {
     return new Promise<void>(resolve => {

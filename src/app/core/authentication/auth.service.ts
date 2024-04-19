@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, iif, merge, of } from 'rxjs';
-import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, catchError, iif, map, merge, of, share, switchMap, tap } from 'rxjs';
 import { filterObject, isEmptyObject } from './helpers';
 import { User } from './interface';
 import { LoginService } from './login.service';
@@ -10,6 +9,9 @@ import { TokenService } from './token.service';
   providedIn: 'root',
 })
 export class AuthService {
+  private readonly loginService = inject(LoginService);
+  private readonly tokenService = inject(TokenService);
+
   private user$ = new BehaviorSubject<User>({});
   private change$ = merge(
     this.tokenService.change(),
@@ -18,11 +20,6 @@ export class AuthService {
     switchMap(() => this.assignUser()),
     share()
   );
-
-  constructor(
-    private loginService: LoginService,
-    private tokenService: TokenService
-  ) {}
 
   init() {
     return new Promise<void>(resolve => this.change$.subscribe(() => resolve()));

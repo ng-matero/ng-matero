@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
+import { map } from 'rxjs';
 
 import { Menu } from '@core';
 import { Token, User } from './interface';
@@ -9,7 +9,7 @@ import { Token, User } from './interface';
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(protected http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   login(username: string, password: string, rememberMe = false) {
     return this.http.post<Token>('/auth/login', { username, password, rememberMe });

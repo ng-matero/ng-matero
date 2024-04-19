@@ -1,6 +1,5 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { Injectable, OnDestroy, inject } from '@angular/core';
+import { BehaviorSubject, Subject, Subscription, share, timer } from 'rxjs';
 
 import { LocalStorageService } from '@shared';
 import { currentTimestamp, filterObject } from './helpers';
@@ -12,18 +11,17 @@ import { TokenFactory } from './token-factory.service';
   providedIn: 'root',
 })
 export class TokenService implements OnDestroy {
-  private key = 'ng-matero-token';
+  private readonly key = 'ng-matero-token';
 
-  private change$ = new BehaviorSubject<BaseToken | undefined>(undefined);
-  private refresh$ = new Subject<BaseToken | undefined>();
+  private readonly store = inject(LocalStorageService);
+  private readonly factory = inject(TokenFactory);
+
+  private readonly change$ = new BehaviorSubject<BaseToken | undefined>(undefined);
+  private readonly refresh$ = new Subject<BaseToken | undefined>();
+
   private timer$?: Subscription;
 
   private _token?: BaseToken;
-
-  constructor(
-    private store: LocalStorageService,
-    private factory: TokenFactory
-  ) {}
 
   private get token(): BaseToken | undefined {
     if (!this._token) {
@@ -33,35 +31,35 @@ export class TokenService implements OnDestroy {
     return this._token;
   }
 
-  change(): Observable<BaseToken | undefined> {
+  change() {
     return this.change$.pipe(share());
   }
 
-  refresh(): Observable<BaseToken | undefined> {
+  refresh() {
     this.buildRefresh();
 
     return this.refresh$.pipe(share());
   }
 
-  set(token?: Token): TokenService {
+  set(token?: Token) {
     this.save(token);
 
     return this;
   }
 
-  clear(): void {
+  clear() {
     this.save();
   }
 
-  valid(): boolean {
+  valid() {
     return this.token?.valid() ?? false;
   }
 
-  getBearerToken(): string {
+  getBearerToken() {
     return this.token?.getBearerToken() ?? '';
   }
 
-  getRefreshToken(): string | void {
+  getRefreshToken() {
     return this.token?.refresh_token;
   }
 
@@ -69,7 +67,7 @@ export class TokenService implements OnDestroy {
     this.clearRefresh();
   }
 
-  private save(token?: Token): void {
+  private save(token?: Token) {
     this._token = undefined;
 
     if (!token) {

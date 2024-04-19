@@ -1,11 +1,10 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Observable } from 'rxjs';
-import { skip } from 'rxjs/operators';
 import { HttpRequest } from '@angular/common/http';
-import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthService, LoginService, TokenService, User } from '@core/authentication';
+import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { Observable, skip } from 'rxjs';
 
 describe('AuthService', () => {
   let authService: AuthService;

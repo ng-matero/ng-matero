@@ -1,17 +1,16 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { switchMap } from 'rxjs';
 
 import { SanctumService } from '@core';
 
 @Injectable()
 export class SanctumInterceptor implements HttpInterceptor {
+  private readonly sanctum = inject(SanctumService);
+
   private ready = false;
 
-  constructor(private sanctum: SanctumService) {}
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
     if (!this.ready) {
       this.ready = true;
 
