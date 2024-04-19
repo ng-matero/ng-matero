@@ -1,5 +1,12 @@
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+  OnInit,
+  ViewEncapsulation,
+  booleanAttribute,
+  inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -15,24 +22,15 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
   imports: [BreadcrumbComponent, TranslateModule],
 })
 export class PageHeaderComponent implements OnInit {
+  private readonly router = inject(Router);
+  private readonly menu = inject(MenuService);
+
   @HostBinding('class') class = 'matero-page-header';
 
   @Input() title = '';
   @Input() subtitle = '';
   @Input() nav: string[] = [];
-  @Input()
-  get hideBreadcrumb() {
-    return this._hideBreadCrumb;
-  }
-  set hideBreadcrumb(value: boolean) {
-    this._hideBreadCrumb = coerceBooleanProperty(value);
-  }
-  private _hideBreadCrumb = false;
-
-  constructor(
-    private router: Router,
-    private menu: MenuService
-  ) {}
+  @Input({ transform: booleanAttribute }) hideBreadCrumb = false;
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];
@@ -49,6 +47,4 @@ export class PageHeaderComponent implements OnInit {
     this.nav = this.menu.getLevel(routes);
     this.nav.unshift('home');
   }
-
-  static ngAcceptInputType_hideBreadcrumb: BooleanInput;
 }
