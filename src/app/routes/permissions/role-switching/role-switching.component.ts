@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
@@ -16,22 +16,20 @@ import { PageHeaderComponent } from '@shared';
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
 })
 export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
-  currentRole!: string;
+  private readonly rolesSrv = inject(NgxRolesService);
+  private readonly permissionsSrv = inject(NgxPermissionsService);
 
-  currentPermissions!: string[];
+  currentRole = '';
 
-  permissionsOfRole: any = {
+  currentPermissions: string[] = [];
+
+  permissionsOfRole: Record<string, string[]> = {
     ADMIN: ['canAdd', 'canDelete', 'canEdit', 'canRead'],
     MANAGER: ['canAdd', 'canEdit', 'canRead'],
     GUEST: ['canRead'],
   };
 
   private readonly _destroy$ = new Subject<void>();
-
-  constructor(
-    private rolesSrv: NgxRolesService,
-    private permissionsSrv: NgxPermissionsService
-  ) {}
 
   ngOnInit() {
     this.currentRole = Object.keys(this.rolesSrv.getRoles())[0];

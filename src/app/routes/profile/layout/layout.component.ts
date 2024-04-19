@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -26,9 +26,9 @@ import { PageHeaderComponent } from '@shared';
   ],
 })
 export class ProfileLayoutComponent implements OnInit {
-  user!: User;
+  private readonly auth = inject(AuthService);
 
-  constructor(private auth: AuthService) {}
+  user!: User;
 
   ngOnInit(): void {
     this.auth.user().subscribe(user => (this.user = user));

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -27,6 +27,10 @@ import { TablesKitchenSinkEditComponent } from './edit/edit.component';
   ],
 })
 export class TablesKitchenSinkComponent implements OnInit {
+  private readonly translate = inject(TranslateService);
+  private readonly dataSrv = inject(TablesDataService);
+  private readonly dialog = inject(MtxDialog);
+
   columns: MtxGridColumn[] = [
     {
       header: this.translate.stream('table_kitchen_sink.position'),
@@ -145,12 +149,6 @@ export class TablesKitchenSinkComponent implements OnInit {
   showPaginator = true;
   expandable = false;
   columnResizable = false;
-
-  constructor(
-    private translate: TranslateService,
-    private dataSrv: TablesDataService,
-    private dialog: MtxDialog
-  ) {}
 
   ngOnInit() {
     this.list = this.dataSrv.getData();

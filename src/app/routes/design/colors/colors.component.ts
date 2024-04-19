@@ -21,8 +21,6 @@ export class DesignColorsComponent implements OnInit {
     return a.key - b.key;
   }
 
-  constructor() {}
-
   ngOnInit() {
     const colors: { [k: string]: any } = MAT_COLORS;
     for (const key of Object.keys(colors)) {

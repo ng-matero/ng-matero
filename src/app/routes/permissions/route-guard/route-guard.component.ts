@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Router } from '@angular/router';
@@ -15,21 +15,19 @@ import { PageHeaderComponent } from '@shared';
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
 })
 export class PermissionsRouteGuardComponent implements OnInit {
-  currentRole!: string;
+  private readonly router = inject(Router);
+  private readonly rolesSrv = inject(NgxRolesService);
+  private readonly permissionsSrv = inject(NgxPermissionsService);
 
-  currentPermissions!: string[];
+  currentRole = '';
 
-  permissionsOfRole: any = {
+  currentPermissions: string[] = [];
+
+  permissionsOfRole: Record<string, string[]> = {
     ADMIN: ['canAdd', 'canDelete', 'canEdit', 'canRead'],
     MANAGER: ['canAdd', 'canEdit', 'canRead'],
     GUEST: ['canRead'],
   };
-
-  constructor(
-    private rolesSrv: NgxRolesService,
-    private permissionsSrv: NgxPermissionsService,
-    private router: Router
-  ) {}
 
   ngOnInit() {
     this.currentRole = Object.keys(this.rolesSrv.getRoles())[0];

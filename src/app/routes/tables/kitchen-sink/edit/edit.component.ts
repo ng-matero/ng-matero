@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
@@ -11,12 +11,6 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
   imports: [MatDialogModule, MatButtonModule, JsonPipe],
 })
 export class TablesKitchenSinkEditComponent {
-  constructor(
-    public dialogRef: MatDialogRef<TablesKitchenSinkEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
-
-  onClose(): void {
-    this.dialogRef.close();
-  }
+  readonly dialogRef = inject(MatDialogRef);
+  readonly data = inject(MAT_DIALOG_DATA);
 }

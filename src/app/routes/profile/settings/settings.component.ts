@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -36,6 +36,8 @@ import { ControlsOf, IProfile } from '@shared';
   ],
 })
 export class ProfileSettingsComponent {
+  private readonly fb = inject(FormBuilder);
+
   reactiveForm = this.fb.nonNullable.group({
     username: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
@@ -48,8 +50,6 @@ export class ProfileSettingsComponent {
     website: ['', [Validators.required]],
     date: ['', [Validators.required]],
   });
-
-  constructor(private fb: FormBuilder) {}
 
   getErrorMessage(form: FormGroup<ControlsOf<IProfile>>) {
     return form.get('email')?.hasError('required')

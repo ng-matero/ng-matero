@@ -16,8 +16,6 @@ export class MediaGalleryComponent implements OnInit {
   dir = 'assets/images/pixabay/';
   images: any[] = [];
 
-  constructor() {}
-
   ngOnInit(): void {
     for (let i = 1; i <= 20; i++) {
       this.images.push({

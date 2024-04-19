@@ -1,5 +1,5 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -33,6 +33,9 @@ import { FormsSelectEditComponent } from './edit/edit.component';
   ],
 })
 export class FormsSelectComponent implements OnInit {
+  private readonly dialog = inject(MatDialog);
+  private readonly dataService = inject(DataService);
+
   // Data source
   people$!: Observable<Person[]>;
   people: Person[] = [];
@@ -58,11 +61,6 @@ export class FormsSelectComponent implements OnInit {
   selectedCompany = null;
   selectedCompanyCustom = null;
   selectedCompanyCustomPromise = null;
-
-  constructor(
-    private dataService: DataService,
-    public dialog: MatDialog
-  ) {}
 
   ngOnInit() {
     this.people$ = this.dataService.getPeople();

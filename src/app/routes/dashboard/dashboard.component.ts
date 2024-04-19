@@ -6,6 +6,7 @@ import {
   NgZone,
   OnDestroy,
   OnInit,
+  inject,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -44,6 +45,10 @@ import { DashboardService } from './dashboard.service';
   ],
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
+  private readonly ngZone = inject(NgZone);
+  private readonly settings = inject(SettingsService);
+  private readonly dashboardSrv = inject(DashboardService);
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = this.dashboardSrv.getData();
 
@@ -56,12 +61,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   stats = this.dashboardSrv.getStats();
 
   notifySubscription!: Subscription;
-
-  constructor(
-    private ngZone: NgZone,
-    private dashboardSrv: DashboardService,
-    private settings: SettingsService
-  ) {}
 
   ngOnInit() {
     this.notifySubscription = this.settings.notify.subscribe(res => {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -40,6 +40,10 @@ import { ControlsOf, IProfile, PageHeaderComponent } from '@shared';
   ],
 })
 export class FormsElementsComponent implements OnInit, OnDestroy {
+  private readonly fb = inject(FormBuilder);
+  private readonly dateAdapter = inject(DateAdapter);
+  private readonly translate = inject(TranslateService);
+
   q = {
     username: '',
     email: '',
@@ -72,13 +76,7 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
     date: [''],
   });
 
-  translateSubscription!: Subscription;
-
-  constructor(
-    private fb: FormBuilder,
-    private dateAdapter: DateAdapter<any>,
-    private translate: TranslateService
-  ) {}
+  private translateSubscription = Subscription.EMPTY;
 
   ngOnInit() {
     this.translateSubscription = this.translate.onLangChange.subscribe((res: { lang: any }) => {

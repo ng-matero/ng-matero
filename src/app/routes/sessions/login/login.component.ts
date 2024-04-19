@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -32,6 +32,10 @@ import { AuthService } from '@core/authentication';
   ],
 })
 export class LoginComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly auth = inject(AuthService);
+
   isSubmitting = false;
 
   loginForm = this.fb.nonNullable.group({
@@ -39,12 +43,6 @@ export class LoginComponent {
     password: ['ng-matero', [Validators.required]],
     rememberMe: [false],
   });
-
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private auth: AuthService
-  ) {}
 
   get username() {
     return this.loginForm.get('username')!;

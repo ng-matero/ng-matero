@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MtxAlertModule } from '@ng-matero/extensions/alert';
 import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 
@@ -13,9 +13,9 @@ import { PageHeaderComponent } from '@shared';
   imports: [JsonPipe, MtxAlertModule, NgxPermissionsModule, PageHeaderComponent],
 })
 export class PermissionsTestComponent {
-  comparedPermission: string[] = ['guest'];
+  private readonly permissionsSrv = inject(NgxPermissionsService);
 
-  constructor(private permissionsSrv: NgxPermissionsService) {}
+  comparedPermission: string[] = ['guest'];
 
   getPermissions() {
     return Object.keys(this.permissionsSrv.getPermissions());

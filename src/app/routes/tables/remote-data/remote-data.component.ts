@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
@@ -30,6 +30,8 @@ import { TablesRemoteDataService } from './remote-data.service';
   ],
 })
 export class TablesRemoteDataComponent implements OnInit {
+  private readonly remoteSrv = inject(TablesRemoteDataService);
+
   columns: MtxGridColumn[] = [
     {
       header: 'Name',
@@ -76,8 +78,6 @@ export class TablesRemoteDataComponent implements OnInit {
     p.page += 1;
     return p;
   }
-
-  constructor(private remoteSrv: TablesRemoteDataService) {}
 
   ngOnInit() {
     this.getList();

@@ -15,8 +15,6 @@ import { MAT_ICONS, PageHeaderComponent } from '@shared';
 export class DesignIconsComponent implements OnInit {
   icons!: { [key: string]: string[] };
 
-  constructor() {}
-
   ngOnInit() {
     this.icons = MAT_ICONS;
   }

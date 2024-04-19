@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 import { ToastrService } from 'ngx-toastr';
@@ -22,6 +22,8 @@ import { PageHeaderComponent } from '@shared';
   ],
 })
 export class FormsDynamicComponent {
+  private readonly toast = inject(ToastrService);
+
   form = new FormGroup({});
   model = { email: 'email@gmail.com' };
   fields: FormlyFieldConfig[] = [
@@ -145,8 +147,6 @@ export class FormsDynamicComponent {
       wrappers: ['div'],
     },
   ];
-
-  constructor(private toast: ToastrService) {}
 
   submit() {
     if (this.form.valid) {

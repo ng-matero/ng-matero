@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 
@@ -11,8 +11,4 @@ import { PageHeaderComponent } from '@shared';
   standalone: true,
   imports: [RouterLink, MatCardModule, PageHeaderComponent],
 })
-export class UtilitiesCssGridComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class UtilitiesCssGridComponent {}

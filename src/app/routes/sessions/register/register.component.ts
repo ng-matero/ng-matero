@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -32,6 +32,8 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
 })
 export class RegisterComponent {
+  private readonly fb = inject(FormBuilder);
+
   registerForm = this.fb.nonNullable.group(
     {
       username: ['', [Validators.required]],
@@ -42,8 +44,6 @@ export class RegisterComponent {
       validators: [this.matchValidator('password', 'confirmPassword')],
     }
   );
-
-  constructor(private fb: FormBuilder) {}
 
   matchValidator(source: string, target: string) {
     return (control: AbstractControl) => {
