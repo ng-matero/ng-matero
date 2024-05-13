@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { type ApexOptions } from 'apexcharts';
 
 export interface PeriodicElement {
   name: string;
@@ -91,12 +92,14 @@ export class DashboardService {
     },
   ];
 
-  charts = [
+  charts: ApexOptions[] = [
     {
       chart: {
         height: 350,
         type: 'area',
-        toolbar: false,
+        toolbar: {
+          show: false,
+        },
       },
       dataLabels: {
         enabled: false,
@@ -152,7 +155,7 @@ export class DashboardService {
         radar: {
           size: 140,
           polygons: {
-            strokeColor: '#e9e9e9',
+            strokeColors: '#e9e9e9',
             fill: {
               colors: ['#f8f8f8', '#fff'],
             },
@@ -163,12 +166,12 @@ export class DashboardService {
       markers: {
         size: 4,
         colors: ['#fff'],
-        strokeColor: '#FF4560',
+        strokeColors: '#FF4560',
         strokeWidth: 2,
       },
       tooltip: {
         y: {
-          formatter: (val: number) => val,
+          formatter: (val: number) => val.toString(),
         },
       },
       yaxis: {
@@ -176,7 +179,7 @@ export class DashboardService {
         labels: {
           formatter: (val: number, i: number) => {
             if (i % 2 === 0) {
-              return val;
+              return val.toString();
             } else {
               return '';
             }
