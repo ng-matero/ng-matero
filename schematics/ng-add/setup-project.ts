@@ -31,6 +31,7 @@ import { addThemeStyleToTarget } from './theming';
  *  - Add Scripts to `package.json`
  *  - Add proxy to `angular.json`
  *  - Add style to `angular.json`
+ *  - Add fileReplacements to `angular.json`
  *  - Add Fonts & Icons to `index.html`
  *  - Add Preloader to `index.html`
  *  - Add Packages to `package.json`
@@ -43,6 +44,7 @@ export default function (options: Schema): Rule {
     addESLintToAngularJson(options),
     addProxyToAngularJson(options),
     addStyleToAngularJson(options),
+    addFileReplacementsToAngularJson(options),
     addFontsToIndex(options),
     addLoaderToIndex(options),
     installPackages(),
@@ -141,6 +143,35 @@ function addStyleToAngularJson(options: Schema): Rule {
       addThemeStyleToTarget(options.project, 'test', themePath, context.logger),
     ]);
   };
+}
+
+/** Add fileReplacements to 'angular.json' */
+function addFileReplacementsToAngularJson(options: Schema): Rule {
+  return updateWorkspace(workspace => {
+    const project = getProjectFromWorkspace(workspace, options.project);
+    const targetBuildConfig = project.targets.get('build')!;
+    // The previous environment file has been deleted
+    const replace = {
+      replace: 'src/environments/environment.ts',
+      with: 'src/environments/environment.prod.ts',
+    };
+    const production = targetBuildConfig.configurations!.production!;
+    // Add file replacement option entry for the configuration environment file
+    const replacements = production.fileReplacements as (typeof replace)[] | undefined;
+
+    if (replacements === undefined) {
+      production.fileReplacements = [replace];
+    } else {
+      const existing = replacements.find(value => value.replace === replace.replace);
+      if (existing) {
+        if (existing.with !== replace.with) {
+          existing.with = replace.with;
+        }
+      } else {
+        replacements.push(replace);
+      }
+    }
+  });
 }
 
 /** Add starter files to root */
