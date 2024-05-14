@@ -14,7 +14,7 @@ export interface Person {
 @Component({
   selector: 'app-chips',
   templateUrl: './chips.component.html',
-  styleUrls: ['./chips.component.scss'],
+  styleUrl: './chips.component.scss',
   standalone: true,
   imports: [MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, BreadcrumbComponent],
 })

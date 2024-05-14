@@ -11,7 +11,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-permissions-role-switching',
   templateUrl: './role-switching.component.html',
-  styleUrls: ['./role-switching.component.scss'],
+  styleUrl: './role-switching.component.scss',
   standalone: true,
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
 })

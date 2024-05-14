@@ -8,7 +8,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-utilities-css-helpers',
   templateUrl: './css-helpers.component.html',
-  styleUrls: ['./css-helpers.component.scss'],
+  styleUrl: './css-helpers.component.scss',
   standalone: true,
   imports: [MatCardModule, MatListModule, MatTabsModule, PageHeaderComponent],
 })

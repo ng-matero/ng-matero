@@ -20,7 +20,7 @@ export interface TopmenuState {
 @Component({
   selector: 'app-topmenu',
   templateUrl: './topmenu.component.html',
-  styleUrls: ['./topmenu.component.scss'],
+  styleUrl: './topmenu.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [

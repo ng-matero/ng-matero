@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  styleUrl: './button.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatButtonModule, MatIconModule],
 })

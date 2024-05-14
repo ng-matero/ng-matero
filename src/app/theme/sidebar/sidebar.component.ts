@@ -8,7 +8,7 @@ import { UserPanelComponent } from './user-panel.component';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  styleUrl: './sidebar.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [MatSlideToggleModule, BrandingComponent, SidemenuComponent, UserPanelComponent],

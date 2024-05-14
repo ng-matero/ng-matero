@@ -7,7 +7,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-utilities-css-grid',
   templateUrl: './css-grid.component.html',
-  styleUrls: ['./css-grid.component.scss'],
+  styleUrl: './css-grid.component.scss',
   standalone: true,
   imports: [RouterLink, MatCardModule, PageHeaderComponent],
 })

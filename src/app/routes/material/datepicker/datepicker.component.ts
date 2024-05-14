@@ -10,7 +10,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.scss'],
+  styleUrl: './datepicker.component.scss',
   standalone: true,
   imports: [
     FormsModule,

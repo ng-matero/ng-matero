@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss'],
+  styleUrl: './toolbar.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatToolbarModule, MatButtonModule, MatIconModule],
 })

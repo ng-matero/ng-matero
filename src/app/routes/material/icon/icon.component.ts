@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+  styleUrl: './icon.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatIconModule, MatButtonModule],
 })

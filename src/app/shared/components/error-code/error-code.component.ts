@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'error-code',
   templateUrl: './error-code.component.html',
-  styleUrls: ['./error-code.component.scss'],
+  styleUrl: './error-code.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [RouterLink, MatButtonModule],

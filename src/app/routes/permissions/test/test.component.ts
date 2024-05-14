@@ -8,7 +8,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-permissions-test',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss'],
+  styleUrl: './test.component.scss',
   standalone: true,
   imports: [JsonPipe, MtxAlertModule, NgxPermissionsModule, PageHeaderComponent],
 })

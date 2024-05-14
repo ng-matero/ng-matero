@@ -20,7 +20,7 @@ import { UserComponent } from '../widgets/user.component';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  styleUrl: './header.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [

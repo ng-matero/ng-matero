@@ -10,7 +10,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-slide-toggle',
   templateUrl: './slide-toggle.component.html',
-  styleUrls: ['./slide-toggle.component.scss'],
+  styleUrl: './slide-toggle.component.scss',
   standalone: true,
   imports: [FormsModule, MatCardModule, MatSlideToggleModule, MatButtonModule, BreadcrumbComponent],
 })

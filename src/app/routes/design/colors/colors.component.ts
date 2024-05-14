@@ -6,7 +6,7 @@ import { BreadcrumbComponent, MAT_COLORS } from '@shared';
 @Component({
   selector: 'app-design-colors',
   templateUrl: './colors.component.html',
-  styleUrls: ['./colors.component.scss'],
+  styleUrl: './colors.component.scss',
   standalone: true,
   imports: [KeyValuePipe, BreadcrumbComponent],
 })

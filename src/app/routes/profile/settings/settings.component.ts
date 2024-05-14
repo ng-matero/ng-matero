@@ -20,7 +20,7 @@ import { ControlsOf, IProfile } from '@shared';
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
+  styleUrl: './settings.component.scss',
   standalone: true,
   imports: [
     FormsModule,

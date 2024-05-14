@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-button-toggle',
   templateUrl: './button-toggle.component.html',
-  styleUrls: ['./button-toggle.component.scss'],
+  styleUrl: './button-toggle.component.scss',
   standalone: true,
   imports: [FormsModule, BreadcrumbComponent, MatButtonToggleModule, MatIconModule],
 })

@@ -16,7 +16,7 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 @Component({
   selector: 'page-header',
   templateUrl: './page-header.component.html',
-  styleUrls: ['./page-header.component.scss'],
+  styleUrl: './page-header.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [BreadcrumbComponent, TranslateModule],

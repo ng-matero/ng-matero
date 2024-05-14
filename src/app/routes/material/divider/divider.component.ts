@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-divider',
   templateUrl: './divider.component.html',
-  styleUrls: ['./divider.component.scss'],
+  styleUrl: './divider.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatListModule, MatDividerModule],
 })

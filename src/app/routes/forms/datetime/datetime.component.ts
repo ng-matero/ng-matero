@@ -26,7 +26,7 @@ const moment = _rollupMoment || _moment;
 @Component({
   selector: 'app-forms-datetime',
   templateUrl: './datetime.component.html',
-  styleUrls: ['./datetime.component.scss'],
+  styleUrl: './datetime.component.scss',
   standalone: true,
   imports: [
     FormsModule,

@@ -15,7 +15,7 @@ export interface Food {
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
+  styleUrl: './select.component.scss',
   standalone: true,
   imports: [
     FormsModule,

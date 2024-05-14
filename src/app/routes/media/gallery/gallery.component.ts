@@ -8,7 +8,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-media-gallery',
   templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss'],
+  styleUrl: './gallery.component.scss',
   standalone: true,
   imports: [MatGridListModule, MatLineModule, MtxPhotoviewerModule, PageHeaderComponent],
 })

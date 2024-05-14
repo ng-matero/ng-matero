@@ -10,7 +10,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-ripple',
   templateUrl: './ripple.component.html',
-  styleUrls: ['./ripple.component.scss'],
+  styleUrl: './ripple.component.scss',
   standalone: true,
   imports: [
     FormsModule,

@@ -19,7 +19,7 @@ function compare(a: number | string, b: number | string, isAsc: boolean) {
 @Component({
   selector: 'app-sort',
   templateUrl: './sort.component.html',
-  styleUrls: ['./sort.component.scss'],
+  styleUrl: './sort.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatSortModule],
 })

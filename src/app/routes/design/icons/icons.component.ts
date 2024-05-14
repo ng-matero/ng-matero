@@ -8,7 +8,7 @@ import { MAT_ICONS, PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-design-icons',
   templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.scss'],
+  styleUrl: './icons.component.scss',
   standalone: true,
   imports: [KeyValuePipe, MatCardModule, MatIconModule, PageHeaderComponent],
 })

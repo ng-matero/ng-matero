@@ -19,7 +19,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-snack-bar',
   templateUrl: './snack-bar.component.html',
-  styleUrls: ['./snack-bar.component.scss'],
+  styleUrl: './snack-bar.component.scss',
   standalone: true,
   imports: [
     FormsModule,

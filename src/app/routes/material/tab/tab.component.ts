@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-tab',
   templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss'],
+  styleUrl: './tab.component.scss',
   standalone: true,
   imports: [
     BreadcrumbComponent,

@@ -15,7 +15,7 @@ import { TablesRemoteDataService } from './remote-data.service';
 @Component({
   selector: 'app-tables-remote-data',
   templateUrl: './remote-data.component.html',
-  styleUrls: ['./remote-data.component.scss'],
+  styleUrl: './remote-data.component.scss',
   providers: [TablesRemoteDataService],
   standalone: true,
   imports: [

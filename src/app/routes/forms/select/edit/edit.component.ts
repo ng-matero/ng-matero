@@ -7,7 +7,7 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
 @Component({
   selector: 'app-forms-select-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  styleUrl: './edit.component.scss',
   standalone: true,
   imports: [FormsModule, MatDialogModule, MatFormFieldModule, MtxSelectModule],
 })

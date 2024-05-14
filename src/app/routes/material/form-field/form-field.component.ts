@@ -14,7 +14,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-form-field',
   templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.scss'],
+  styleUrl: './form-field.component.scss',
   standalone: true,
   imports: [
     FormsModule,

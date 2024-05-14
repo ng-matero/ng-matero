@@ -6,7 +6,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-progress-spinner',
   templateUrl: './progress-spinner.component.html',
-  styleUrls: ['./progress-spinner.component.scss'],
+  styleUrl: './progress-spinner.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatProgressSpinnerModule],
 })

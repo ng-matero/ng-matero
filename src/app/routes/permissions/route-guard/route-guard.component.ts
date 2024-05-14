@@ -10,7 +10,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-permissions-route-guard',
   templateUrl: './route-guard.component.html',
-  styleUrls: ['./route-guard.component.scss'],
+  styleUrl: './route-guard.component.scss',
   standalone: true,
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
 })

@@ -7,7 +7,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-expansion-panel',
   templateUrl: './expansion-panel.component.html',
-  styleUrls: ['./expansion-panel.component.scss'],
+  styleUrl: './expansion-panel.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatExpansionModule, MatButtonModule],
 })

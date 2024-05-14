@@ -23,7 +23,7 @@ import { DisableControlDirective } from '@shared';
 @Component({
   selector: 'app-customizer',
   templateUrl: './customizer.component.html',
-  styleUrls: ['./customizer.component.scss'],
+  styleUrl: './customizer.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [

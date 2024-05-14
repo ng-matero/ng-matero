@@ -4,7 +4,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 @Component({
   selector: 'app-sidebar-notice',
   templateUrl: './sidebar-notice.component.html',
-  styleUrls: ['./sidebar-notice.component.scss'],
+  styleUrl: './sidebar-notice.component.scss',
   standalone: true,
   imports: [MatTabsModule],
 })

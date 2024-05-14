@@ -9,7 +9,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  styleUrl: './list.component.scss',
   standalone: true,
   imports: [MatCardModule, MatDividerModule, MatIconModule, MatListModule, BreadcrumbComponent],
 })

@@ -10,7 +10,7 @@ import { PageHeaderComponent } from '@shared';<% } %>
   styles: [`
     <%= indentTextContent(resolvedFiles.stylesheet, 4) %>
   `]<% } else { %>
-  styleUrls: ['./<%= dasherize(name) %>.component.<%= style %>']<% } %><% if(!!viewEncapsulation) { %>,
+  styleUrl: './<%= dasherize(name) %>.component.<%= style %>'<% } %><% if(!!viewEncapsulation) { %>,
   encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
   changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %><% if(standalone) { %>,
   standalone: true,

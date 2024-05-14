@@ -28,7 +28,7 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss'],
+  styleUrl: './admin-layout.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [

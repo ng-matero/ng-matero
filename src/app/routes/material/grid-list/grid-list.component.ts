@@ -7,7 +7,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-grid-list',
   templateUrl: './grid-list.component.html',
-  styleUrls: ['./grid-list.component.scss'],
+  styleUrl: './grid-list.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatGridListModule, MatLineModule],
 })

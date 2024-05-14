@@ -18,7 +18,7 @@ export interface StateGroup {
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
+  styleUrl: './autocomplete.component.scss',
   standalone: true,
   imports: [
     AsyncPipe,

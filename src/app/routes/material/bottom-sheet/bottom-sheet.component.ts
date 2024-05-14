@@ -22,7 +22,7 @@ const defaultConfig = new MatBottomSheetConfig();
 @Component({
   selector: 'app-bottom-sheet',
   templateUrl: './bottom-sheet.component.html',
-  styleUrls: ['./bottom-sheet.component.scss'],
+  styleUrl: './bottom-sheet.component.scss',
   standalone: true,
   imports: [
     FormsModule,

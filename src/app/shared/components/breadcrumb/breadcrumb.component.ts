@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss'],
+  styleUrl: './breadcrumb.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [MatIconModule, TranslateModule],

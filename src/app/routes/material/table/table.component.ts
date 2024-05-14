@@ -27,7 +27,7 @@ const exampleData = [
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  styleUrl: './table.component.scss',
   standalone: true,
   imports: [
     BreadcrumbComponent,

@@ -17,7 +17,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss'],
+  styleUrl: './stepper.component.scss',
   standalone: true,
   imports: [
     FormsModule,

@@ -14,7 +14,7 @@ import { TablesKitchenSinkEditComponent } from './edit/edit.component';
 @Component({
   selector: 'app-table-kitchen-sink',
   templateUrl: './kitchen-sink.component.html',
-  styleUrls: ['./kitchen-sink.component.scss'],
+  styleUrl: './kitchen-sink.component.scss',
   providers: [TablesDataService],
   standalone: true,
   imports: [

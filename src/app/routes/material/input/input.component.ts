@@ -14,7 +14,7 @@ const USD_TO_JPY = 110.29;
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  styleUrl: './input.component.scss',
   standalone: true,
   imports: [
     TextFieldModule,

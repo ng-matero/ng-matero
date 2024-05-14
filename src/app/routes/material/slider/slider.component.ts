@@ -8,7 +8,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
+  styleUrl: './slider.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatSliderModule, FormsModule],
 })

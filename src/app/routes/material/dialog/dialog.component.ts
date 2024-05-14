@@ -10,7 +10,7 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
+  styleUrl: './dialog.component.scss',
   standalone: true,
   imports: [BreadcrumbComponent, MatButtonModule],
 })

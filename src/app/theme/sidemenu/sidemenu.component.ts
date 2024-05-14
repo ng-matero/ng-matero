@@ -15,7 +15,7 @@ import { NavAccordionDirective } from './nav-accordion.directive';
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
-  styleUrls: ['./sidemenu.component.scss'],
+  styleUrl: './sidemenu.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [

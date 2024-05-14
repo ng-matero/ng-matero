@@ -10,7 +10,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
-  styleUrls: ['./dynamic.component.scss'],
+  styleUrl: './dynamic.component.scss',
   standalone: true,
   imports: [
     FormsModule,

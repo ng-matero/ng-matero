@@ -12,7 +12,7 @@ import { PageHeaderComponent } from '@shared';
 @Component({
   selector: 'app-profile-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+  styleUrl: './layout.component.scss',
   standalone: true,
   imports: [
     RouterLink,
