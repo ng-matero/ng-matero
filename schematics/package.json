@@ -25,7 +25,7 @@
   },
   "homepage": "https://ng-matero.github.io/ng-matero/",
   "scripts": {
-    "build": "../node_modules/.bin/tsc -p tsconfig.json"
+    "build": "npx tsc -p tsconfig.json"
   },
   "schematics": "./collection.json",
   "ng-update": {
