@@ -1,1 +1,1 @@
-declare const ApexCharts: any;
+// declare const ApexCharts: any;
