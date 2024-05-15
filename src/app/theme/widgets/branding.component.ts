@@ -8,18 +8,16 @@ import { Component } from '@angular/core';
       <span class="align-middle f-s-16 f-w-500 m-x-8 hide-small">MATERO</span>
     </a>
   `,
-  styles: [
-    `
-      .brand-logo {
-        width: 30px;
-        height: 30px;
-      }
+  styles: `
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+    }
 
-      a {
-        text-decoration: none;
-      }
-    `,
-  ],
+    a {
+      text-decoration: none;
+    }
+  `,
   standalone: true,
 })
 export class BrandingComponent {}

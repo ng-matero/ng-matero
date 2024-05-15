@@ -35,14 +35,12 @@ import { AuthService, SettingsService, User } from '@core';
       </button>
     </mat-menu>
   `,
-  styles: [
-    `
-      .avatar {
-        width: 24px;
-        height: 24px;
-      }
-    `,
-  ],
+  styles: `
+    .avatar {
+      width: 24px;
+      height: 24px;
+    }
+  `,
   standalone: true,
   imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
 })
