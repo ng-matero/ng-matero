@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   height: var(--mat-toolbar-standard-height);
-  padding: 0 8px;
+  padding: 0 0.5rem;
   overflow: hidden;
   border-bottom: 1px solid var(--divider-color);
 
@@ -28,6 +28,7 @@
 .matero-sidebar-main {
   height: calc(100% - var(--mat-toolbar-standard-height));
   overflow: auto;
+  scrollbar-width: none;
 
   @include breakpoints.bp-lt(small) {
     & {

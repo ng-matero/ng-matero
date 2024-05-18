@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
   `,
   styles: `
     .brand-logo {
-      width: 30px;
-      height: 30px;
+      width: 1.875rem;
+      height: 1.875rem;
     }
 
     a {

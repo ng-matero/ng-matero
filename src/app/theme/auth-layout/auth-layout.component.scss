@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   min-height: 100%;
-  padding: 16px;
+  padding: 1rem;
   background-color: #212121;
   background-image:
     linear-gradient(
@@ -22,5 +22,5 @@
       rgba(255, 255, 255, .05) 75%,
       rgba(255, 255, 255, .05)
     );
-  background-size: 60px 60px;
+  background-size: 3.75rem 3.75rem;
 }

@@ -5,13 +5,13 @@
   position: sticky;
   z-index: 200;
   display: block;
-  padding: 8px;
+  padding: 0.5rem;
   background-color: var(--topmenu-background-color);
 
   @include mat.elevation(2);
 
   .mat-mdc-button {
-    padding: 0 16px;
+    padding: 0 1rem;
     white-space: nowrap;
 
     &.active {
@@ -26,24 +26,24 @@
   }
 
   .mat-icon.menu-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    font-size: 18px;
-    line-height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-right: 0.5rem;
+    font-size: 1.125rem;
+    line-height: 1.125rem;
 
     [dir='rtl'] & {
       margin-right: auto;
-      margin-left: 8px;
+      margin-left: 0.5rem;
     }
   }
 
   .mat-icon.menu-caret {
-    margin-right: -8px;
+    margin-right: -0.5rem;
 
     [dir='rtl'] & {
       margin-right: auto;
-      margin-left: -8px;
+      margin-left: -0.5rem;
     }
   }
 
@@ -51,11 +51,11 @@
   .menu-badge {
     @include badge.badge();
 
-    margin-left: 8px;
-    font-size: 12px;
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
 
     [dir='rtl'] & {
-      margin-right: 8px;
+      margin-right: 0.5rem;
       margin-left: auto;
     }
   }

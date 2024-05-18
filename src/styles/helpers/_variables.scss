@@ -6,7 +6,7 @@ $utilities: () !default;
 
 // Spacing
 
-$spacer: 16px !default;
+$spacer: 1rem !default;
 $spacers: (
   0: 0,
   2: $spacer * .125,
@@ -43,7 +43,7 @@ $border-styles: solid dashed dotted double hidden none !default;
 
 // Border radius
 
-$radius-base: 4px !default;
+$radius-base: 0.25rem !default;
 $radius: (
   0: 0,
   4: $radius-base,
@@ -69,12 +69,12 @@ $font-wieghts: (
 
 $font-sizes: (
   0: 0,
-  10: 10px,
-  12: 12px,
-  14: 14px,
-  16: 16px,
-  18: 18px,
-  20: 20px
+  10: 0.625rem,
+  12: 0.75rem,
+  14: 0.875rem,
+  16: 1rem,
+  18: 1.125rem,
+  20: 1.25rem
 ) !default;
 
 // Sizing

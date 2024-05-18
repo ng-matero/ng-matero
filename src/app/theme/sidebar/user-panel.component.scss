@@ -4,15 +4,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--divider-color);
 }
 
 // Set default width and height can avoid flashing before avatar image loaded.
 .matero-user-panel-avatar {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 8px;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 0.5rem;
   border-radius: 50rem;
   transition: transitions.swift-ease-out(transform);
 }
@@ -20,7 +20,7 @@
 .matero-user-panel-name,
 .matero-user-panel-email {
   margin-top: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   font-weight: normal;
 }
 
@@ -36,8 +36,8 @@
 
   .mat-mdc-icon-button,
   .mat-mdc-button-touch-target {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
   }
 
   .mat-mdc-icon-button {
@@ -48,9 +48,9 @@
 
     mat-icon,
     svg {
-      width: 18px;
-      height: 18px;
-      font-size: 18px;
+      width: 1.125rem;
+      height: 1.125rem;
+      font-size: 1.125rem;
     }
   }
 }

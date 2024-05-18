@@ -13,9 +13,9 @@
   :root {
     --body-font-family: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
     --code-font-family: 'Roboto Mono', monospace;
-    --gutter: 16px;
-    --sidenav-width: 241px;
-    --sidenav-collapsed-width: 51px;
+    --gutter: 1rem;
+    --sidenav-width: 15rem;
+    --sidenav-collapsed-width: 3.125rem;
   }
 
   @at-root {

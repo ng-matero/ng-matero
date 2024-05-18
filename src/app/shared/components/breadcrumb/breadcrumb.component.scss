@@ -8,7 +8,7 @@
 }
 
 .matero-breadcrumb-item {
-  line-height: 18px;
+  line-height: 1.125rem;
   text-transform: capitalize;
 
   > * {
@@ -26,9 +26,9 @@
   }
 
   > .chevron {
-    width: 18px;
-    height: 18px;
-    font-size: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
+    font-size: 1.125rem;
     user-select: none;
   }
 }
