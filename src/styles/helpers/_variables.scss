@@ -67,14 +67,15 @@ $font-wieghts: (
   900: 900
 ) !default;
 
+$font-size-base: 1rem !default;
 $font-sizes: (
   0: 0,
-  10: 0.625rem,
-  12: 0.75rem,
-  14: 0.875rem,
-  16: 1rem,
-  18: 1.125rem,
-  20: 1.25rem
+  10: $font-size-base * .625,
+  12: $font-size-base * .75,
+  14: $font-size-base * .875,
+  16: $font-size-base,
+  18: $font-size-base * 1.125,
+  20: $font-size-base * 1.25,
 ) !default;
 
 // Sizing
