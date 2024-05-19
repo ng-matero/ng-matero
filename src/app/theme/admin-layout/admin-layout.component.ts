@@ -1,6 +1,5 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { NgClass } from '@angular/common';
 import {
   Component,
   HostBinding,
@@ -32,7 +31,6 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    NgClass,
     RouterOutlet,
     BidiModule,
     MatSidenavModule,

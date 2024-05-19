@@ -1,12 +1,10 @@
 <div class="matero-container-wrap"
-     [ngClass]="{
-        'matero-sidenav-collapsed': options.sidenavCollapsed && options.navPos !== 'top',
-        'matero-navbar-side': options.navPos === 'side',
-        'matero-navbar-top': options.navPos === 'top',
-        'matero-header-above': options.headerPos === 'above',
-        'matero-header-fixed': options.headerPos === 'fixed',
-        'matero-header-white': themeColor !== 'dark'
-      }"
+  [class.matero-sidenav-collapsed]="options.sidenavCollapsed && options.navPos !== 'top'"
+  [class.matero-navbar-side]="options.navPos === 'side'"
+  [class.matero-navbar-top]="options.navPos === 'top'"
+  [class.matero-header-above]="options.headerPos === 'above'"
+  [class.matero-header-fixed]="options.headerPos === 'fixed'"
+  [class.matero-header-white]="themeColor !== 'dark'"
   [dir]="options.dir">
   <ng-progress></ng-progress>
 

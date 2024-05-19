@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -31,7 +30,6 @@ import { DashboardService } from './dashboard.service';
   providers: [DashboardService],
   standalone: true,
   imports: [
-    NgClass,
     RouterLink,
     MatButtonModule,
     MatCardModule,
