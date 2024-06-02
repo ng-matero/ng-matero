@@ -2,7 +2,6 @@
   "name": "ng-matero",
   "version": "0.0.0-NOT-USED",
   "engines": {
-    "node": ">=16.0.0 <21.0.0",
     "yarn": ">=1.22.0 <2",
     "npm": "Please use Yarn instead of NPM to install dependencies"
   },
