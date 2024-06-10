@@ -3,8 +3,8 @@
 [class^='col'] {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: mat.get-color-from-palette(mat.$red-palette, 100);
-  border: 1px solid mat.get-color-from-palette(mat.$red-palette, 200);
+  background-color: mat.m2-get-color-from-palette(mat.$m2-red-palette, 100);
+  border: 1px solid mat.m2-get-color-from-palette(mat.$m2-red-palette, 200);
 }
 
 .row + .row {

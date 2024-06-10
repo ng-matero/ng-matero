@@ -5,7 +5,7 @@
 
 @include mat.core();
 
-@include mat.typography-hierarchy(mat.define-typography-config());
+@include mat.typography-hierarchy(mat.m2-define-typography-config());
 
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {

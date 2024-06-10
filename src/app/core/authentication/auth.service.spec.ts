@@ -1,7 +1,6 @@
+import { HttpRequest, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-
-import { HttpRequest } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthService, LoginService, TokenService, User } from '@core/authentication';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { Observable, skip } from 'rxjs';
@@ -18,8 +17,12 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [{ provide: LocalStorageService, useClass: MemoryStorageService }],
+      imports: [],
+      providers: [
+        { provide: LocalStorageService, useClass: MemoryStorageService },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     });
     loginService = TestBed.inject(LoginService);
     authService = TestBed.inject(AuthService);
