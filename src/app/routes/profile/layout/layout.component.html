@@ -1,6 +1,4 @@
-<page-header class="p-t-32 p-b-48 m-b--24 bg-gray-900"
-             title="Personal Profile" hideBreadcrumb>
-</page-header>
+<page-header class="bg-gray-900" title="Personal Profile"></page-header>
 
 <div class="row">
   <div class="col-sm-4 col-md-4 col-lg-3">
@@ -12,16 +10,16 @@
           <p class="m-t-0 m-b-8">FE Developer, UE designer</p>
           <p class="m-t-0 text-grey-500">I like reading, writing and drawing.</p>
 
-          <a mat-raised-button color="primary" href="https://github.com/nzbin" target="_blank">
-            Follow Me</a>
-          <button mat-raised-button color="accent" class="m-l-8">Contact Me</button>
+          <a mat-flat-button href="https://github.com/nzbin" target="_blank">Follow Me</a>
+          <button mat-flat-button color="warn" class="m-l-8">Contact Me</button>
         </div>
-        <mat-nav-list class="m-x--16 m-b--16 m-t-16">
-          <mat-divider></mat-divider>
+
+        <mat-divider class="m-t-16 m-b-8"></mat-divider>
+
+        <mat-nav-list>
           <a mat-list-item routerLink="/profile/overview">
             <mat-icon matListItemIcon>account_circle</mat-icon> Overview
           </a>
-          <mat-divider></mat-divider>
           <a mat-list-item routerLink="/profile/settings">
             <mat-icon matListItemIcon>settings</mat-icon> Settings
           </a>

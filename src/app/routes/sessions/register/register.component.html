@@ -47,11 +47,10 @@
 
         <mat-checkbox>{{'read_and_agree' | translate}}</mat-checkbox>
 
-        <button class="w-full m-y-16" mat-raised-button color="primary">
-          {{'register' | translate}}
-        </button>
+        <button class="w-full m-y-16" mat-flat-button>{{'register' | translate}}</button>
 
-        <div>{{'have_an_account' | translate}}?
+        <div>
+          <span>{{'have_an_account' | translate}}?</span>
           <a routerLink="/auth/login">{{'login' | translate}}</a>
         </div>
       </form>

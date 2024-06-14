@@ -16,7 +16,7 @@
       </mat-card-header>
 
       <mat-card-content>
-        <p>
+        <p class="m-t-0">
           Most common case is showing data from backend API and with mtx-select this is extremely
           simple since you can bind directly to observable when using angular <b> | async</b> pipe.
         </p>
@@ -57,8 +57,7 @@
           If you have simple use case, you can omit items array and bind options directly in html
           using <b>ng-option</b> component.
         </p>
-        <button type="button" mat-raised-button color="primary" (click)="toggleDisabled()"
-          class="m-b-8">
+        <button class="m-b-8" type="button" mat-flat-button (click)="toggleDisabled()">
           Toggle option[1] disabled
         </button>
 
@@ -143,7 +142,7 @@
 
       <mat-card-content>
         <p>Test ng-select in a dialog.</p>
-        <button mat-raised-button color="primary" (click)="openDialog()">Open Dialog</button>
+        <button mat-flat-button (click)="openDialog()">Open Dialog</button>
       </mat-card-content>
     </mat-card>
   </div>
