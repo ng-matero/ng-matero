@@ -29,8 +29,6 @@ export class DesignColorsComponent implements OnInit {
         value: colors[key],
       });
     }
-
-    console.log(this.colors);
   }
 
   trackByColor(index: number, color: { key: string; value: any }): string {

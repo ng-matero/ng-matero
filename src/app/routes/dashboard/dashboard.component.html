@@ -107,10 +107,10 @@
       </mat-card-header>
       <mat-card-content>
         <mat-grid-list cols="2">
-          <mat-grid-tile class="bg-red-90">1</mat-grid-tile>
-          <mat-grid-tile class="bg-blue-90">2</mat-grid-tile>
-          <mat-grid-tile class="bg-orange-90">3</mat-grid-tile>
-          <mat-grid-tile class="bg-violet-90">4</mat-grid-tile>
+          <mat-grid-tile class="bg-violet-95">1</mat-grid-tile>
+          <mat-grid-tile class="bg-magenta-95">2</mat-grid-tile>
+          <mat-grid-tile class="bg-orange-95">3</mat-grid-tile>
+          <mat-grid-tile class="bg-azure-95">4</mat-grid-tile>
         </mat-grid-list>
       </mat-card-content>
     </mat-card>
@@ -127,9 +127,7 @@
             <mat-list-item>
               <img matListItemAvatar [src]="message.img" alt="Avatar">
               <h3 matListItemTitle>{{message.subject}}</h3>
-              <p matListItemLine>
-                <span>{{message.content}} </span>
-              </p>
+              <p matListItemLine>{{message.content}}</p>
             </mat-list-item>
           }
         </mat-list>
