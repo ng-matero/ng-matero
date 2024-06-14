@@ -1,16 +1,33 @@
+@use 'sass:color';
+@use 'sass:map';
 @use '@angular/material' as mat;
-@use '@ng-matero/extensions' as mtx;
 
-@use './root-theme';
-
-@include mat.core();
-
-@include mat.typography-hierarchy(mat.m2-define-typography-config());
+html {
+  --body-font-family: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  --code-font-family: 'Roboto Mono', monospace;
+  --gutter: 1rem;
+  --sidenav-width: 15rem;
+  --sidenav-collapsed-width: 3.125rem;
+}
 
 // Styles for the app that are based on the current theme.
 @mixin theme($theme) {
-  @include mat.all-component-themes($theme);
-  @include mtx.all-component-themes($theme);
-
-  @include root-theme.theme($theme);
+  --body-background-color: #{mat.get-theme-color($theme, surface-container)};
+  --link-color: #{mat.get-theme-color($theme, primary)};
+  --link-hover-color: #{color.adjust(mat.get-theme-color($theme, primary), $lightness: -10%)};
+  --code-border-color: #{rgba(mat.get-theme-color($theme, on-secondary-container), .08)};
+  --code-background-color: #{rgba(mat.get-theme-color($theme, on-secondary-container), .04)};
+  --sidemenu-heading-hover-background-color: #{mat.get-theme-color($theme, surface-container-highest)};
+  --sidemenu-active-heading-text-color: #{mat.get-theme-color($theme, on-primary-container)};
+  --sidemenu-active-heading-background-color: #{mat.get-theme-color($theme, primary-container)};
+  --sidemenu-active-heading-hover-background-color: #{mat.get-theme-color($theme, primary-container)};
+  --sidemenu-expanded-background-color: #{mat.get-theme-color($theme, surface-container-low)};
+  --topmenu-text-color: #{mat.get-theme-color($theme, on-primary-container)};
+  --topmenu-background-color: #{mat.get-theme-color($theme, surface-container)};
+  --topmenu-item-active-background-color: #{mat.get-theme-color($theme, primary-container)};
+  --topmenu-dropdown-item-active-text-color: #{mat.get-theme-color($theme, primary)};
+  --toast-info-background-color: #{map.get(mat.$blue-palette, 50)};
+  --toast-success-background-color: #{map.get(mat.$green-palette, 50)};
+  --toast-warning-background-color: #{map.get(mat.$orange-palette, 50)};
+  --toast-error-background-color: #{map.get(mat.$red-palette, 50)};
 }

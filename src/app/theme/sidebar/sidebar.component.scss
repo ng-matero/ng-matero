@@ -11,7 +11,6 @@
   height: var(--mat-toolbar-standard-height);
   padding: 0 0.5rem;
   overflow: hidden;
-  border-bottom: 1px solid var(--divider-color);
 
   @include breakpoints.bp-lt(small) {
     & {

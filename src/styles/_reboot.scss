@@ -9,6 +9,7 @@ body {
   position: relative; // 1
   height: 100%;
   overflow: auto; // 2
+  background-color: var(--body-background-color);
 }
 
 body {
@@ -46,8 +47,10 @@ code {
 
 a {
   color: var(--link-color);
+  text-decoration: none;
 
   &:hover {
     color: var(--link-hover-color);
+    text-decoration: underline;
   }
 }

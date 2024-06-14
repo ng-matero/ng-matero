@@ -1,9 +1,7 @@
 .matero-header {
+  --mat-toolbar-container-background-color: transparent;
+
   position: relative;
   z-index: 200;
-
-  .matero-toolbar {
-    padding: 0 0.5rem;
-    border-bottom: 1px solid var(--divider-color);
-  }
+  backdrop-filter: blur(10px);
 }

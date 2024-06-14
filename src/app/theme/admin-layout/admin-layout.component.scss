@@ -1,21 +1,25 @@
 @use '@angular/material' as mat;
-@use '../style/transitions';
 @use '../style/breakpoints';
 
 .matero-container-wrap,
 .matero-container {
+  --mat-sidenav-content-background-color: transparent;
+
   height: 100%;
 }
 
 .matero-content {
   position: relative;
-  padding: var(--gutter);
+  padding: 0 var(--gutter) var(--gutter);
 }
 
 .matero-sidenav {
+  --mat-sidenav-container-width: var(--sidenav-width);
+
   position: absolute;
   overflow-x: hidden;
-  transition: transitions.swift-ease-out(width); // Only set width property
+  border-width: 0 !important;
+  transition: width mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
 }
 
 // Layout control
@@ -138,13 +142,5 @@
       margin-right: var(--sidenav-width) !important;
       margin-left: auto !important;
     }
-  }
-}
-
-// Colorful
-.matero-header-white {
-  .matero-toolbar,
-  .matero-topmenu {
-    background-color: white;
   }
 }

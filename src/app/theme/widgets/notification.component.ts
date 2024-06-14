@@ -27,5 +27,5 @@ import { MatMenuModule } from '@angular/material/menu';
   imports: [MatBadgeModule, MatButtonModule, MatIconModule, MatListModule, MatMenuModule],
 })
 export class NotificationComponent {
-  messages = ['Server Error Reports', 'Server Error Reports', 'Server Error Reports'];
+  messages = ['Server Error Reports 1', 'Server Error Reports 2', 'Server Error Reports 3'];
 }

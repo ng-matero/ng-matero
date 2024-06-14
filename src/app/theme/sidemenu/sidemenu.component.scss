@@ -1,8 +1,8 @@
-@use '../style/transitions';
+@use '@angular/material' as mat;
 @use '../style/badge';
 
 .matero-sidemenu {
-  width: calc(var(--sidenav-width) - 1px); // subtract border width
+  width: var(--sidenav-width);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -33,6 +33,7 @@
 
     &.expanded {
       background-color: var(--sidemenu-expanded-background-color);
+      border-radius: 1.5rem;
 
       >.menu-toggle>.menu-caret {
         transform: rotate(-180deg);
@@ -57,6 +58,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+    border-radius: 1.5rem;
     outline: none;
   }
 
@@ -76,7 +78,7 @@
   .mat-icon.menu-caret {
     display: block;
     text-align: center;
-    transition: transitions.fast-out-slow(transform);
+    transition: transform mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
   }
 
   .menu-name {
@@ -87,7 +89,7 @@
   .menu-name,
   .menu-label,
   .menu-badge {
-    transition: transitions.swift-ease-out(opacity);
+    transition: opacity mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
   }
 
   .menu-label,
