@@ -2,43 +2,6 @@
 
 <mat-card>
   <mat-tab-group mat-stretch-tabs="false">
-    <mat-tab label="Material">
-      <div class="row no-gutters">
-        <div class="col-sm-6">
-          <mat-list>
-            <h3 matSubheader>Typography</h3>
-
-            <mat-list-item><code>.mat-headline-1</code></mat-list-item>
-            <mat-list-item><code>.mat-headline-2</code></mat-list-item>
-            <mat-list-item><code>.mat-headline-3</code></mat-list-item>
-            <mat-list-item><code>.mat-headline-4</code></mat-list-item>
-            <mat-list-item><code>.mat-h1</code>, <code>.mat-headline-5</code></mat-list-item>
-            <mat-list-item><code>.mat-h2</code>, <code>.mat-headline-6</code></mat-list-item>
-            <mat-list-item><code>.mat-h3</code>, <code>.mat-subtitle-1</code></mat-list-item>
-            <mat-list-item><code>.mat-h4</code>, <code>.mat-body-1</code></mat-list-item>
-            <mat-list-item><code>.mat-h5</code></mat-list-item>
-            <mat-list-item><code>.mat-h6</code></mat-list-item>
-            <mat-list-item><code>.mat-body</code>, <code>.mat-body-2</code></mat-list-item>
-            <mat-list-item><code>.mat-body-strong</code>,
-            <code>.mat-subtitle-2</code></mat-list-item>
-            <mat-list-item><code>.mat-small</code>, <code>.mat-caption</code></mat-list-item>
-          </mat-list>
-        </div>
-        <div class="col-sm-6">
-          <mat-list>
-            <h3 matSubheader>Elevation</h3>
-            @for (i of [0,1,2,3]; track i) {
-              @for (j of [1,2,3,4,5,6]; track j) {
-                <mat-list-item>
-                  <code>.mat-elevation-z{{j+6*i}}</code>
-                </mat-list-item>
-              }
-            }
-          </mat-list>
-        </div>
-      </div>
-    </mat-tab>
-
     <mat-tab label="Colors">
       <div class="row no-gutters">
         <div>

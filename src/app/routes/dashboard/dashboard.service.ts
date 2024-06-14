@@ -64,7 +64,7 @@ export class DashboardService {
       progress: {
         value: 50,
       },
-      color: 'bg-indigo-500',
+      color: 'bg-azure-50',
     },
     {
       title: 'Revenue',
@@ -72,7 +72,7 @@ export class DashboardService {
       progress: {
         value: 70,
       },
-      color: 'bg-blue-500',
+      color: 'bg-blue-50',
     },
     {
       title: 'Traffic',
@@ -80,7 +80,7 @@ export class DashboardService {
       progress: {
         value: 80,
       },
-      color: 'bg-green-500',
+      color: 'bg-green-50',
     },
     {
       title: 'New User',
@@ -88,7 +88,7 @@ export class DashboardService {
       progress: {
         value: 40,
       },
-      color: 'bg-teal-500',
+      color: 'bg-cyan-50',
     },
   ];
 

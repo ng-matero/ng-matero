@@ -1,0 +1,50 @@
+@use 'sass:meta';
+@use '@angular/material' as mat;
+
+$mat-colors: (
+  red: mat.$red-palette,
+  green: mat.$green-palette,
+  blue: mat.$blue-palette,
+  yellow: mat.$yellow-palette,
+  cyan: mat.$cyan-palette,
+  magenta: mat.$magenta-palette,
+  orange: mat.$orange-palette,
+  chartreuse: mat.$chartreuse-palette,
+  spring-green: mat.$spring-green-palette,
+  azure: mat.$azure-palette,
+  violet: mat.$violet-palette,
+  rose: mat.$rose-palette,
+  white: white,
+  black: black,
+  light: rgba(white, .87),
+  dark: rgba(black, .87),
+);
+
+@mixin generate-colors($prefix, $property) {
+  @each $name, $value in $mat-colors {
+
+    // If the value is a map, continue to each
+    @if meta.type-of($value)=='map' {
+      @each $hue, $color in $value {
+        @if (meta.type-of($color)=='color') {
+          .#{$prefix + '-' + $name + '-' + $hue} {
+            #{$property}: $color !important;
+          }
+        }
+      }
+    }
+
+    @if meta.type-of($value)=='color' {
+      .#{$prefix + '-' + $name} {
+        #{$property}: $value !important;
+      }
+    }
+  }
+}
+
+// Generate text-color helpers
+@include generate-colors('text', 'color');
+// Generate background-color helpers
+@include generate-colors('bg', 'background-color');
+// Generate border-color helpers
+@include generate-colors('border', 'border-color');

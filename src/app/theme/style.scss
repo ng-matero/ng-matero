@@ -1,6 +1,4 @@
-@use 'style/colors';
-
-@media (width <= 720px) {
+@media (width <=720px) {
   .hide-small {
     display: none !important;
   }

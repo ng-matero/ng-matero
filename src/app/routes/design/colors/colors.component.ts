@@ -1,14 +1,14 @@
 import { KeyValue, KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { BreadcrumbComponent, MAT_COLORS } from '@shared';
+import { PageHeaderComponent, MAT_COLORS } from '@shared';
 
 @Component({
   selector: 'app-design-colors',
   templateUrl: './colors.component.html',
   styleUrl: './colors.component.scss',
   standalone: true,
-  imports: [KeyValuePipe, BreadcrumbComponent],
+  imports: [KeyValuePipe, PageHeaderComponent],
 })
 export class DesignColorsComponent implements OnInit {
   colors: { key: string; value: any }[] = [];
@@ -29,6 +29,8 @@ export class DesignColorsComponent implements OnInit {
         value: colors[key],
       });
     }
+
+    console.log(this.colors);
   }
 
   trackByColor(index: number, color: { key: string; value: any }): string {

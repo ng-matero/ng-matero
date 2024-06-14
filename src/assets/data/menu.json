@@ -6,7 +6,7 @@
       "type": "link",
       "icon": "dashboard",
       "badge": {
-        "color": "red-500",
+        "color": "red-50",
         "value": "5"
       }
     },
@@ -418,7 +418,7 @@
       "type": "sub",
       "icon": "all_inbox",
       "label": {
-        "color": "indigo-500",
+        "color": "azure-50",
         "value": "new"
       },
       "children": [

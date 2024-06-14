@@ -1,0 +1,68 @@
+@use 'sass:meta';
+@use '@angular/material' as mat;
+
+$mat-colors: (
+  red: mat.$m2-red-palette,
+  pink: mat.$m2-pink-palette,
+  purple: mat.$m2-purple-palette,
+  deep-purple: mat.$m2-deep-purple-palette,
+  indigo: mat.$m2-indigo-palette,
+  blue: mat.$m2-blue-palette,
+  light-blue: mat.$m2-light-blue-palette,
+  cyan: mat.$m2-cyan-palette,
+  teal: mat.$m2-teal-palette,
+  green: mat.$m2-green-palette,
+  light-green: mat.$m2-light-green-palette,
+  lime: mat.$m2-lime-palette,
+  yellow: mat.$m2-yellow-palette,
+  amber: mat.$m2-amber-palette,
+  orange: mat.$m2-orange-palette,
+  deep-orange: mat.$m2-deep-orange-palette,
+  brown: mat.$m2-brown-palette,
+  gray: mat.$m2-gray-palette,
+  blue-gray: mat.$m2-blue-gray-palette,
+  white: white,
+  black: black,
+  light: rgba(white, .87),
+  dark: rgba(black, .87),
+);
+
+@mixin generate-colors($prefix, $property) {
+  @each $name, $value in $mat-colors {
+
+    // If the value is a map, continue to each
+    @if meta.type-of($value)=='map' {
+      @each $hue, $color in $value {
+        @if ($hue !='contrast') {
+          .#{$prefix + '-' + $name + '-' + $hue} {
+            #{$property}: $color !important;
+          }
+        }
+      }
+    }
+
+    @if meta.type-of($value)=='color' {
+      .#{$prefix + '-' + $name} {
+        #{$property}: $value !important;
+      }
+    }
+  }
+
+  // alias
+  @for $i from 1 through 9 {
+    .#{$prefix + '-grey-' + $i * 100} {
+      @extend .#{$prefix + '-gray-' + $i * 100};
+    }
+
+    .#{$prefix + '-blue-grey-' + $i * 100} {
+      @extend .#{$prefix + '-blue-gray-' + $i * 100};
+    }
+  }
+}
+
+// Generate text-color helpers
+@include generate-colors('text', 'color');
+// Generate background-color helpers
+@include generate-colors('bg', 'background-color');
+// Generate border-color helpers
+@include generate-colors('border', 'border-color');

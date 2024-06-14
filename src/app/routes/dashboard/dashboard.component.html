@@ -8,11 +8,11 @@
           <mat-card-subtitle class="text-white">{{stat.title}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <h2 class="m-y-8">{{stat.amount}}</h2>
+          <h2 class="m-t-0 m-b-8">{{stat.amount}}</h2>
           <mtx-progress [value]="stat.progress.value"
             height="2px"
             foreground="rgba(255,255,255,1)"
-            background='rgba(0,0,0,.5)'>
+            background='rgba(0,0,0,.4)'>
           </mtx-progress>
           <small class="text-muted">Monthly</small>
         </mat-card-content>
@@ -107,10 +107,10 @@
       </mat-card-header>
       <mat-card-content>
         <mat-grid-list cols="2">
-          <mat-grid-tile class="bg-red-50">1</mat-grid-tile>
-          <mat-grid-tile class="bg-purple-50">2</mat-grid-tile>
-          <mat-grid-tile class="bg-orange-50">3</mat-grid-tile>
-          <mat-grid-tile class="bg-cyan-50">4</mat-grid-tile>
+          <mat-grid-tile class="bg-red-90">1</mat-grid-tile>
+          <mat-grid-tile class="bg-blue-90">2</mat-grid-tile>
+          <mat-grid-tile class="bg-orange-90">3</mat-grid-tile>
+          <mat-grid-tile class="bg-violet-90">4</mat-grid-tile>
         </mat-grid-list>
       </mat-card-content>
     </mat-card>
@@ -143,19 +143,19 @@
       <mat-card-content>
         <table class="w-full" mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <th mat-header-cell *matHeaderCellDef>No.</th>
             <td mat-cell *matCellDef="let element;"> {{element.position}} </td>
           </ng-container>
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element;"> {{element.name}} </td>
           </ng-container>
           <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
+            <th mat-header-cell *matHeaderCellDef>Weight</th>
             <td mat-cell *matCellDef="let element;"> {{element.weight}} </td>
           </ng-container>
           <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <th mat-header-cell *matHeaderCellDef>Symbol</th>
             <td mat-cell *matCellDef="let element;"> {{element.symbol}} </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -176,11 +176,11 @@
           <mat-chip-option color="warn">Two fish</mat-chip-option>
         </mat-chip-listbox>
         <mat-chip-listbox class="m-t-8">
-          <mat-chip-option class="bg-orange-300">Orange fish</mat-chip-option>
-          <mat-chip-option class="bg-teal-300">Teal fish</mat-chip-option>
-          <mat-chip-option class="bg-cyan-300">Cyan fish</mat-chip-option>
-          <mat-chip-option class="bg-purple-300" selected>Purple fish</mat-chip-option>
-          <mat-chip-option class="bg-green-300">Green fish</mat-chip-option>
+          <mat-chip-option class="bg-orange-90">Orange fish</mat-chip-option>
+          <mat-chip-option class="bg-blue-90">Blue fish</mat-chip-option>
+          <mat-chip-option class="bg-cyan-90">Cyan fish</mat-chip-option>
+          <mat-chip-option class="bg-red-90" selected>Red fish</mat-chip-option>
+          <mat-chip-option class="bg-green-90">Green fish</mat-chip-option>
         </mat-chip-listbox>
 
         <div class="m-t-16">
@@ -192,11 +192,11 @@
           <a mat-raised-button routerLink=".">Link</a>
         </div>
         <div class="m-t-8">
-          <button mat-raised-button class="bg-orange-500 text-white">Orange</button>
-          <button mat-raised-button class="bg-teal-500 text-white">Teal</button>
-          <button mat-raised-button class="bg-cyan-500 text-white">Cyan</button>
-          <button mat-raised-button class="bg-purple-500 text-white">Purple</button>
-          <button mat-raised-button class="bg-green-500 text-white">Green</button>
+          <button mat-flat-button class="bg-orange-90 text-dark">Orange</button>
+          <button mat-flat-button class="bg-blue-90 text-dark">Teal</button>
+          <button mat-flat-button class="bg-cyan-90 text-dark">Cyan</button>
+          <button mat-flat-button class="bg-red-90 text-dark">Purple</button>
+          <button mat-flat-button class="bg-green-90 text-dark">Green</button>
         </div>
       </mat-card-content>
     </mat-card>
