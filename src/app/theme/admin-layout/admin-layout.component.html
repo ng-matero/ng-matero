@@ -34,7 +34,7 @@
       <app-sidebar-notice></app-sidebar-notice>
     </mat-sidenav>
 
-    <mat-sidenav-content #content class="matero-content-wrap">
+    <mat-sidenav-content #content class="matero-content">
       @if (options.showHeader && options.headerPos !== 'above') {
         <app-header
           [showToggle]="!options.sidenavCollapsed && options.navPos !== 'top'"
@@ -48,9 +48,9 @@
         <app-topmenu></app-topmenu>
       }
 
-      <div class="matero-content">
+      <main class="matero-page-content">
         <router-outlet></router-outlet>
-      </div>
+      </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
