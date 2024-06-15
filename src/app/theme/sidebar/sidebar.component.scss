@@ -7,7 +7,7 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: var(--sidenav-width);
   height: var(--mat-toolbar-standard-height);
   padding: 0 0.5rem;
   overflow: hidden;
@@ -17,15 +17,11 @@
       height: var(--mat-toolbar-mobile-height);
     }
   }
-
-  // Colorful
-  .matero-header-white & {
-    background-color: white;
-  }
 }
 
 .matero-sidebar-main {
   height: calc(100% - var(--mat-toolbar-standard-height));
+  padding: 0 0.5rem;
   overflow: auto;
   scrollbar-width: none;
 

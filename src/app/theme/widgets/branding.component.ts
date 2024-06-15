@@ -1,23 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-branding',
   template: `
-    <a class="d-inline-block text-nowrap r-full text-reset" href="/">
-      <img src="./assets/images/matero.png" class="brand-logo align-middle m-2 r-full" alt="logo" />
-      <span class="align-middle f-s-16 f-w-500 m-x-8 hide-small">MATERO</span>
+    <a class="branding" href="/">
+      <img src="./assets/images/matero.png" class="brand-logo" alt="logo" />
+      @if (showBrandText) {
+        <span class="brand-text hide-small">MATERO</span>
+      }
     </a>
   `,
   styles: `
-    .brand-logo {
-      width: 1.875rem;
-      height: 1.875rem;
+    .branding {
+      display: flex;
+      align-items: center;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      white-space: nowrap;
+      color: inherit;
     }
 
-    a {
-      text-decoration: none;
+    .brand-logo {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50rem;
+    }
+
+    .brand-text {
+      margin: 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
     }
   `,
   standalone: true,
 })
-export class BrandingComponent {}
+export class BrandingComponent {
+  @Input() showBrandText = true;
+}

@@ -23,7 +23,7 @@
       (openedChange)="onSidenavOpenedChange($event)"
       (closedStart)="onSidenavClosedStart()">
       <app-sidebar [showToggle]="!isOver"
-        [showUser]="!!options.showUserPanel"
+        [showUser]="options.showUserPanel"
         [showHeader]="options.headerPos !== 'above'"
         (toggleCollapsed)="toggleCollapsed()"
         [toggleChecked]="!!options.sidenavCollapsed">

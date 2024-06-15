@@ -1,6 +1,7 @@
 @if (showHeader) {
   <div class="matero-sidebar-header">
-    <app-branding></app-branding>
+    <app-branding [showBrandText]="!toggleChecked"></app-branding>
+    <span class="flex-fill"></span>
     @if (showToggle) {
       <mat-slide-toggle hideIcon
         [checked]="toggleChecked"

@@ -11,9 +11,8 @@ import { AuthService, SettingsService, User } from '@core';
 @Component({
   selector: 'app-user',
   template: `
-    <button mat-button [matMenuTriggerFor]="menu">
-      <img matButtonIcon class="avatar r-full" [src]="user.avatar" width="24" alt="avatar" />
-      <span class="m-x-8">{{ user.name }}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <img class="avatar" [src]="user.avatar" width="24" alt="avatar" />
     </button>
 
     <mat-menu #menu="matMenu">
@@ -39,6 +38,7 @@ import { AuthService, SettingsService, User } from '@core';
     .avatar {
       width: 1.5rem;
       height: 1.5rem;
+      border-radius: 50rem;
     }
   `,
   standalone: true,

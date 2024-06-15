@@ -15,6 +15,10 @@
       "name": "design",
       "type": "sub",
       "icon": "color_lens",
+      "label": {
+        "color": "azure-50",
+        "value": "New"
+      },
       "children": [
         {
           "route": "colors",
@@ -417,10 +421,6 @@
       "name": "utilities",
       "type": "sub",
       "icon": "all_inbox",
-      "label": {
-        "color": "azure-50",
-        "value": "new"
-      },
       "children": [
         {
           "route": "css-grid",

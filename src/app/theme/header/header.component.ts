@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  HostBinding,
-  Input,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,6 +14,9 @@ import { UserComponent } from '../widgets/user.component';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  host: {
+    class: 'matero-header',
+  },
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
@@ -35,8 +31,6 @@ import { UserComponent } from '../widgets/user.component';
   ],
 })
 export class HeaderComponent {
-  @HostBinding('class') class = 'matero-header';
-
   @Input() showToggle = true;
   @Input() showBranding = false;
 

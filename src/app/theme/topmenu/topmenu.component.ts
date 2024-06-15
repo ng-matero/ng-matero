@@ -1,5 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, HostBinding, OnDestroy, ViewEncapsulation, inject } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -21,6 +21,9 @@ export interface TopmenuState {
   selector: 'app-topmenu',
   templateUrl: './topmenu.component.html',
   styleUrl: './topmenu.component.scss',
+  host: {
+    class: 'matero-topmenu',
+  },
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
@@ -38,8 +41,6 @@ export interface TopmenuState {
   ],
 })
 export class TopmenuComponent implements OnDestroy {
-  @HostBinding('class') class = 'matero-topmenu';
-
   private readonly menu = inject(MenuService);
   private readonly router = inject(Router);
 

@@ -1,6 +1,5 @@
 import {
   Component,
-  HostBinding,
   Input,
   OnInit,
   ViewEncapsulation,
@@ -17,6 +16,9 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
   selector: 'page-header',
   templateUrl: './page-header.component.html',
   styleUrl: './page-header.component.scss',
+  host: {
+    class: 'matero-page-header',
+  },
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [BreadcrumbComponent, TranslateModule],
@@ -24,8 +26,6 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 export class PageHeaderComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly menu = inject(MenuService);
-
-  @HostBinding('class') class = 'matero-page-header';
 
   @Input() title = '';
   @Input() subtitle = '';

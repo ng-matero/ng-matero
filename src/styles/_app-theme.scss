@@ -7,7 +7,7 @@ html {
   --code-font-family: 'Roboto Mono', monospace;
   --gutter: 1rem;
   --sidenav-width: 15rem;
-  --sidenav-collapsed-width: 3.125rem;
+  --sidenav-collapsed-width: 4rem;
 }
 
 // Styles for the app that are based on the current theme.
@@ -18,10 +18,10 @@ html {
   --code-border-color: #{rgba(mat.get-theme-color($theme, on-secondary-container), .08)};
   --code-background-color: #{rgba(mat.get-theme-color($theme, on-secondary-container), .04)};
   --sidemenu-heading-hover-background-color: #{mat.get-theme-color($theme, surface-container-highest)};
-  --sidemenu-active-heading-text-color: #{mat.get-theme-color($theme, on-primary-container)};
+  --sidemenu-active-heading-text-color: #{mat.get-theme-color($theme, primary)};
   --sidemenu-active-heading-background-color: #{mat.get-theme-color($theme, primary-container)};
   --sidemenu-active-heading-hover-background-color: #{mat.get-theme-color($theme, primary-container)};
-  --sidemenu-expanded-background-color: #{mat.get-theme-color($theme, surface-container-low)};
+  --sidemenu-expanded-background-color: #{mat.get-theme-color($theme, surface-container)};
   --topmenu-text-color: #{mat.get-theme-color($theme, on-primary-container)};
   --topmenu-background-color: #{mat.get-theme-color($theme, surface-container)};
   --topmenu-item-active-background-color: #{mat.get-theme-color($theme, primary-container)};
