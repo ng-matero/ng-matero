@@ -10,9 +10,11 @@ html {
   --sidenav-collapsed-width: 4rem;
 }
 
-// Styles for the app that are based on the current theme.
+// Tokens for the app that are based on the current theme.
 @mixin theme($theme) {
-  --body-background-color: #{mat.get-theme-color($theme, surface-container)};
+  $surface-container: if(mat.get-theme-type($theme) == dark, surface-container-high, surface-container);
+
+  --body-background-color: #{mat.get-theme-color($theme, $surface-container)};
   --link-color: #{mat.get-theme-color($theme, primary)};
   --link-hover-color: #{color.adjust(mat.get-theme-color($theme, primary), $lightness: -10%)};
   --code-border-color: #{rgba(mat.get-theme-color($theme, on-secondary-container), .08)};
@@ -21,11 +23,14 @@ html {
   --sidemenu-active-heading-text-color: #{mat.get-theme-color($theme, primary)};
   --sidemenu-active-heading-background-color: #{mat.get-theme-color($theme, primary-container)};
   --sidemenu-active-heading-hover-background-color: #{mat.get-theme-color($theme, primary-container)};
-  --sidemenu-expanded-background-color: #{mat.get-theme-color($theme, surface-container)};
+  --sidemenu-expanded-background-color: #{mat.get-theme-color($theme, $surface-container)};
   --topmenu-text-color: #{mat.get-theme-color($theme, on-primary-container)};
-  --topmenu-background-color: #{mat.get-theme-color($theme, surface-container)};
+  --topmenu-background-color: #{rgba(mat.get-theme-color($theme, $surface-container), .8)};
   --topmenu-item-active-background-color: #{mat.get-theme-color($theme, primary-container)};
   --topmenu-dropdown-item-active-text-color: #{mat.get-theme-color($theme, primary)};
+  --user-panel-background-color: #{mat.get-theme-color($theme, $surface-container)};
+  --user-panel-hover-background-color: #{mat.get-theme-color($theme, surface-variant)};
+  --header-background-color: #{rgba(mat.get-theme-color($theme, $surface-container), .8)};
   --toast-info-background-color: #{map.get(mat.$blue-palette, 50)};
   --toast-success-background-color: #{map.get(mat.$green-palette, 50)};
   --toast-warning-background-color: #{map.get(mat.$orange-palette, 50)};

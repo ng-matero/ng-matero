@@ -10,6 +10,7 @@
   display: block;
   padding: 0.5rem;
   background-color: var(--topmenu-background-color);
+  backdrop-filter: blur(8px);
 
   .mat-mdc-button {
     padding: 0 1rem;

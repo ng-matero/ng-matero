@@ -32,6 +32,10 @@
   .matero-sidebar-main {
     height: 100% !important;
   }
+
+  .matero-user-panel {
+    margin-top: 0.5rem;
+  }
 }
 
 // Layout control
@@ -44,9 +48,7 @@
     .menu-label,
     .menu-badge,
     .menu-caret,
-    .matero-user-panel-name,
-    .matero-user-panel-email,
-    .matero-user-panel-icons {
+    .matero-user-panel-info, {
       opacity: 0;
     }
 
@@ -61,9 +63,7 @@
       .menu-label,
       .menu-badge,
       .menu-caret,
-      .matero-user-panel-name,
-      .matero-user-panel-email,
-      .matero-user-panel-icons {
+      .matero-user-panel-info {
         opacity: 1;
       }
 

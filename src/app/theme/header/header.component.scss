@@ -3,5 +3,6 @@
 
   position: relative;
   z-index: 200;
-  backdrop-filter: blur(10px);
+  background-color: var(--header-background-color);
+  backdrop-filter: blur(8px);
 }

@@ -2,54 +2,48 @@
 
 .matero-user-panel {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 0.75rem 0;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  background-color: var(--user-panel-background-color);
+  border-radius: 0.75rem;
+
+  &:hover {
+    background-color: var(--user-panel-hover-background-color);
+  }
 }
 
 // Set default width and height can avoid flashing before avatar image loaded.
 .matero-user-panel-avatar {
-  width: 4rem;
-  height: 4rem;
-  margin-bottom: 0.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50rem;
   transition: transform mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
+  transform-origin: 0 1.5rem;
+
+  [dir='rtl'] & {
+    transform-origin: 3rem 1.5rem;
+  }
 }
 
-.matero-user-panel-name,
-.matero-user-panel-email {
-  margin-top: 0;
-  margin-bottom: 0.25rem;
-  font-weight: normal;
-}
-
-.matero-user-panel-name,
-.matero-user-panel-email,
-.matero-user-panel-icons {
+.matero-user-panel-info {
+  flex: 1;
+  width: 0;
+  margin-left: 0.5rem;
   opacity: 1;
   transition: opacity mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
-}
 
-.matero-user-panel-icons {
-  white-space: nowrap;
-
-  .mat-mdc-icon-button,
-  .mat-mdc-button-touch-target {
-    width: 2rem;
-    height: 2rem;
+  [dir='rtl'] & {
+    margin-right: 0.5rem;
+    margin-left: 0;
   }
 
-  .mat-mdc-icon-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-
-    mat-icon,
-    svg {
-      width: 1.125rem;
-      height: 1.125rem;
-      font-size: 1.125rem;
-    }
+  h4,
+  h5 {
+    margin: 0;
+    overflow: hidden;
+    font-weight: normal;
+    text-overflow: ellipsis;
   }
 }
