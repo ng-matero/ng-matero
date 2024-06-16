@@ -44,10 +44,10 @@
         <mat-checkbox formControlName="rememberMe">{{'remember_me' | translate}}</mat-checkbox>
 
         <button class="w-full m-y-16" mat-flat-button [disabled]="!!loginForm.invalid"
-        [loading]="isSubmitting" (click)="login()">{{'login' | translate}}</button>
+          [loading]="isSubmitting" (click)="login()">{{'login' | translate}}</button>
 
         <div>
-          <span>{{'have_no_account' | translate}}?</span>
+          <span>{{'have_no_account' | translate}}? </span>
           <a routerLink="/auth/register">{{'create_one_account' | translate}}</a>
         </div>
       </form>

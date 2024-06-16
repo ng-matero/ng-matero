@@ -30,12 +30,12 @@
 .matero-user-panel-info {
   flex: 1;
   width: 0;
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
   opacity: 1;
   transition: opacity mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
 
   [dir='rtl'] & {
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
     margin-left: 0;
   }
 
@@ -43,7 +43,17 @@
   h5 {
     margin: 0;
     overflow: hidden;
-    font-weight: normal;
     text-overflow: ellipsis;
+  }
+
+  h4 {
+    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  h5 {
+    font-size: 0.75rem;
+    font-weight: normal;
   }
 }

@@ -3,16 +3,16 @@
 <mat-card>
   <mat-card-content>
     <mat-form-field>
-      List length:
+      <mat-label>List length</mat-label>
       <input matInput [(ngModel)]="length">
     </mat-form-field>
 
     <mat-form-field>
-      Page size:
+      <mat-label>Page size</mat-label>
       <input matInput [(ngModel)]="pageSize">
     </mat-form-field>
     <mat-form-field>
-      Page size options:
+      <mat-label>Page size options</mat-label>
       <input matInput [ngModel]="pageSizeOptions" (ngModelChange)="setPageSizeOptions($event)">
     </mat-form-field>
 
