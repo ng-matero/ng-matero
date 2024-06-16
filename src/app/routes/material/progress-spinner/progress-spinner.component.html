@@ -1,17 +1,21 @@
 <breadcrumb></breadcrumb>
 
-<section>
-  <h2>Loading indicator (Indeterminate progress spinner)</h2>
-  <mat-spinner color="indeterminate" [strokeWidth]="1" aria-label="Loading"></mat-spinner>
-  <mat-spinner color="accent" aria-label="Loading"></mat-spinner>
-</section>
+<mat-card>
+  <mat-card-content>
+    <section>
+      <h2>Loading indicator (Indeterminate progress spinner)</h2>
+      <mat-spinner color="indeterminate" [strokeWidth]="1" aria-label="Loading"></mat-spinner>
+      <mat-spinner color="accent" aria-label="Loading"></mat-spinner>
+    </section>
 
-<section>
-  <h2>Portion of pizza eaten (Determinate progress spinner) </h2>
-  <mat-progress-spinner [strokeWidth]="1" color="primary"
-                        [value]="portionValue" aria-label="Portion of pizza eaten">
-  </mat-progress-spinner>
-  <mat-progress-spinner color="warn" [value]="portionValue"
-                        aria-label="Portion of pizza eaten">
-  </mat-progress-spinner>
-</section>
+    <section>
+      <h2>Portion of pizza eaten (Determinate progress spinner) </h2>
+      <mat-progress-spinner [strokeWidth]="1" color="primary"
+                            [value]="portionValue" aria-label="Portion of pizza eaten">
+      </mat-progress-spinner>
+      <mat-progress-spinner color="warn" [value]="portionValue"
+                            aria-label="Portion of pizza eaten">
+      </mat-progress-spinner>
+    </section>
+  </mat-card-content>
+</mat-card>

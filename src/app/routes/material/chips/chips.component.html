@@ -1,75 +1,79 @@
 <breadcrumb></breadcrumb>
 
-<section>
-  <h2>Basic chips</h2>
-  <mat-chip-listbox>
-    <mat-chip-option>Carnation</mat-chip-option>
-    <mat-chip-option>Irises</mat-chip-option>
-    <mat-chip-option>Buttercup</mat-chip-option>
-  </mat-chip-listbox>
-</section>
+<mat-card>
+  <mat-card-content>
+    <section>
+      <h2>Basic chips</h2>
+      <mat-chip-listbox>
+        <mat-chip-option>Carnation</mat-chip-option>
+        <mat-chip-option>Irises</mat-chip-option>
+        <mat-chip-option>Buttercup</mat-chip-option>
+      </mat-chip-listbox>
+    </section>
 
-<section>
-  <h2>Chips avatar</h2>
+    <section>
+      <h2>Chips avatar</h2>
 
-  <mat-chip-listbox aria-label="Dog selection">
-    <mat-chip>
-      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-        alt="Photo of a Shiba Inu" />
-      Dog one
-    </mat-chip>
-    <mat-chip color="primary">
-      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-        alt="Photo of a Shiba Inu" />
-      Dog two
-    </mat-chip>
-    <mat-chip color="accent">
-      <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-        alt="Photo of a Shiba Inu" />
-      Dog three
-    </mat-chip>
-  </mat-chip-listbox>
-</section>
+      <mat-chip-listbox aria-label="Dog selection">
+        <mat-chip>
+          <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+               alt="Photo of a Shiba Inu" />
+          Dog one
+        </mat-chip>
+        <mat-chip color="primary">
+          <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+               alt="Photo of a Shiba Inu" />
+          Dog two
+        </mat-chip>
+        <mat-chip color="accent">
+          <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+               alt="Photo of a Shiba Inu" />
+          Dog three
+        </mat-chip>
+      </mat-chip-listbox>
+    </section>
 
-<section>
-  <h2>Removable chips in a form field</h2>
+    <section>
+      <h2>Removable chips in a form field</h2>
 
-  <mat-form-field>
-    <mat-label>Contributors</mat-label>
-    <mat-chip-grid #chipGrid>
-      @for (person of people; track person) {
-        <mat-chip-row
-          [color]="color" [editable]="true"
-          (removed)="remove(person)"
-          (edited)="edit(person, $event)">
-          {{person.name}}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip-row>
-      }
-    </mat-chip-grid>
-    <input matInput placeholder="New Contributor..."
-      aria-label="New contributor"
-      [matChipInputFor]="chipGrid"
-      [matChipInputAddOnBlur]="addOnBlur"
-      (matChipInputTokenEnd)="add($event)" />
-  </mat-form-field>
-</section>
+      <mat-form-field>
+        <mat-label>Contributors</mat-label>
+        <mat-chip-grid #chipGrid>
+          @for (person of people; track person) {
+          <mat-chip-row
+                        [color]="color" [editable]="true"
+                        (removed)="remove(person)"
+                        (edited)="edit(person, $event)">
+            {{person.name}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip-row>
+          }
+        </mat-chip-grid>
+        <input matInput placeholder="New Contributor..."
+               aria-label="New contributor"
+               [matChipInputFor]="chipGrid"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)" />
+      </mat-form-field>
+    </section>
 
-<section>
-  <h2>Colored chips</h2>
-  <p>This example is good for contrast-radio checking.</p>
-  <mat-chip-listbox>
-    <mat-chip-option color="primary">Primary</mat-chip-option>
-    <mat-chip-option color="accent">Accent</mat-chip-option>
-    <mat-chip-option color="warn">Warn</mat-chip-option>
-  </mat-chip-listbox>
-</section>
+    <section>
+      <h2>Colored chips</h2>
+      <p>This example is good for contrast-radio checking.</p>
+      <mat-chip-listbox>
+        <mat-chip-option color="primary">Primary</mat-chip-option>
+        <mat-chip-option color="accent">Accent</mat-chip-option>
+        <mat-chip-option color="warn">Warn</mat-chip-option>
+      </mat-chip-listbox>
+    </section>
 
-<section>
-  <h2>Stacked chips</h2>
-  <mat-chip-listbox class="mat-mdc-chip-set-stacked">
-    <mat-chip-option selected color="primary">Lemon</mat-chip-option>
-    <mat-chip-option selected color="accent">Lime</mat-chip-option>
-    <mat-chip-option selected color="warn">Grapefruit</mat-chip-option>
-  </mat-chip-listbox>
-</section>
+    <section>
+      <h2>Stacked chips</h2>
+      <mat-chip-listbox class="mat-mdc-chip-set-stacked">
+        <mat-chip-option selected color="primary">Lemon</mat-chip-option>
+        <mat-chip-option selected color="accent">Lime</mat-chip-option>
+        <mat-chip-option selected color="warn">Grapefruit</mat-chip-option>
+      </mat-chip-listbox>
+    </section>
+  </mat-card-content>
+</mat-card>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +19,7 @@ import { BreadcrumbComponent } from '@shared';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatCardModule,
     BreadcrumbComponent,
   ],
 })

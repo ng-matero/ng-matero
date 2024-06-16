@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -13,7 +14,7 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './role-switching.component.html',
   styleUrl: './role-switching.component.scss',
   standalone: true,
-  imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
+  imports: [JsonPipe, FormsModule, MatButtonToggleModule, MatCardModule, PageHeaderComponent],
 })
 export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {
   private readonly rolesSrv = inject(NgxRolesService);

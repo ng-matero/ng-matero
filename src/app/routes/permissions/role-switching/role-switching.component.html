@@ -7,16 +7,20 @@
   </a>.
 </p>
 
-<mat-button-toggle-group [(ngModel)]="currentRole" (change)="onPermissionChange()">
-  <mat-button-toggle value="ADMIN">ADMIN</mat-button-toggle>
-  <mat-button-toggle value="MANAGER">MANAGER</mat-button-toggle>
-  <mat-button-toggle value="GUEST">GUEST</mat-button-toggle>
-</mat-button-toggle-group>
+<mat-card>
+  <mat-card-content>
+    <mat-button-toggle-group [(ngModel)]="currentRole" (change)="onPermissionChange()">
+      <mat-button-toggle value="ADMIN">ADMIN</mat-button-toggle>
+      <mat-button-toggle value="MANAGER">MANAGER</mat-button-toggle>
+      <mat-button-toggle value="GUEST">GUEST</mat-button-toggle>
+    </mat-button-toggle-group>
 
-<p>
-  Your current role: <code>{{currentRole | json}}</code>
-</p>
+    <p>
+      Your current role: <code>{{currentRole | json}}</code>
+    </p>
 
-<p>
-  Your current permissions: <code>{{currentPermissions | json}}</code>
-</p>
+    <p>
+      Your current permissions: <code>{{currentPermissions | json}}</code>
+    </p>
+  </mat-card-content>
+</mat-card>

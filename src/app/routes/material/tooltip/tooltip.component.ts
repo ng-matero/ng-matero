@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { BreadcrumbComponent } from '@shared';
@@ -9,6 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './tooltip.component.html',
   styleUrl: './tooltip.component.scss',
   standalone: true,
-  imports: [BreadcrumbComponent, MatButtonModule, MatTooltipModule],
+  imports: [BreadcrumbComponent, MatButtonModule, MatTooltipModule, MatCardModule],
 })
 export class TooltipComponent {}

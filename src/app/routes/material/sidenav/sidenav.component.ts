@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { BreadcrumbComponent } from '@shared';
 
@@ -8,6 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   standalone: true,
-  imports: [BreadcrumbComponent, MatButtonModule, RouterLink],
+  imports: [BreadcrumbComponent, MatButtonModule, MatCardModule, RouterLink],
 })
 export class SidenavComponent {}

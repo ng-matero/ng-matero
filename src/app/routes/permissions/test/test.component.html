@@ -1,73 +1,78 @@
 <page-header></page-header>
 
-<mtx-alert type="danger">The permissions check will delay 2s.</mtx-alert>
+<mat-card>
+  <mat-card-content>
+    <mtx-alert type="danger">⚠️ The permissions check will delay 2s.</mtx-alert>
 
-<p>
-  <button (click)="addPermission()">Add Permission [ admin ]</button>
-  <button (click)="removePermission()">Remove Permission [ admin ]</button>
-</p>
+    <p>
+      <button (click)="addPermission()">Add Permission [ admin ]</button>
+      <button (click)="removePermission()">Remove Permission [ admin ]</button>
+    </p>
 
-<ng-template permissions [ngxPermissionsOnly]="['admin']">
-  <p class="bg-green-500 text-white">
-    I should see it only admin
-  </p>
-</ng-template>
+    <ng-template permissions [ngxPermissionsOnly]="['admin']">
+      <p class="bg-green-50 text-white">
+        I should see it only admin
+      </p>
+    </ng-template>
 
-<ng-template [ngxPermissionsOnly]="['admin']" [ngxPermissionsExcept]="'hhhhh'">
-  <p class="bg-green-500 text-white">
-    Usage on both only and except I should see it only admin
-  </p>
-</ng-template>
+    <ng-template [ngxPermissionsOnly]="['admin']" [ngxPermissionsExcept]="'hhhhh'">
+      <p class="bg-green-50 text-white">
+        Usage on both only and except I should see it only admin
+      </p>
+    </ng-template>
 
-<ng-template permissions [ngxPermissionsOnly]="['guest']">
-  <p class="bg-purple-500 text-white">I will see it only guest</p>
-</ng-template>
+    <ng-template permissions [ngxPermissionsOnly]="['guest']">
+      <p class="bg-purple-50 text-white">I will see it only guest</p>
+    </ng-template>
 
-<ng-template permissions [ngxPermissionsExcept]="['adminnnnn']"
-             (permissionsAuthorized)="authorized()"
-             (permissionsUnauthorized)="unAuthorized()">
-  <p class="bg-orange-500 text-white">I will see it except adminnnnn</p>
-</ng-template>
+    <ng-template permissions [ngxPermissionsExcept]="['adminnnnn']"
+                 (permissionsAuthorized)="authorized()"
+                 (permissionsUnauthorized)="unAuthorized()">
+      <p class="bg-orange-50 text-white">I will see it except adminnnnn</p>
+    </ng-template>
 
-<ng-template permissions [ngxPermissionsExcept]="['admin']">
-  <p class="bg-indigo-500 text-white">I should see it except admin</p>
-</ng-template>
+    <ng-template permissions [ngxPermissionsExcept]="['admin']">
+      <p class="bg-azure-50 text-white">I should see it except admin</p>
+    </ng-template>
 
-<div *ngxPermissionsOnly="['admin']; else a; then b">
-  Testing template
-</div>
+    <div *ngxPermissionsOnly="['admin']; else a; then b">
+      Testing template
+    </div>
 
-<div *ngxPermissionsExcept="['admin']; else a; then b">
-  Testing template
-</div>
+    <div *ngxPermissionsExcept="['admin']; else a; then b">
+      Testing template
+    </div>
 
-<ng-template #a>
-  <p class="bg-gray-900 text-white">else block</p>
-</ng-template>
-<ng-template #b>
-  <p class="bg-gray-300">then block</p>
-</ng-template>
+    <ng-template #a>
+      <p class="bg-azure-30 text-light">else block</p>
+    </ng-template>
+    <ng-template #b>
+      <p class="bg-azure-90 text-dark">then block</p>
+    </ng-template>
 
-<p>
-  Compared permission: <code>{{comparedPermission | json}}</code>
-</p>
+    <p>
+      Compared permission: <code>{{comparedPermission | json}}</code>
+    </p>
 
-<div>
-  <button (click)="changeToAdmin()">Change To Admin Permission</button>
+    <div>
+      <button (click)="changeToAdmin()">Change To Admin Permission</button>
 
-  <button (click)="changeToAnotherPermission()">Change To Awesome Permission</button>
+      <button (click)="changeToAnotherPermission()">Change To Awesome Permission</button>
 
-  <button (click)="changeToGuest()">Change To Guest Permission</button>
-</div>
+      <button (click)="changeToGuest()">Change To Guest Permission</button>
+    </div>
 
-<div>
-  <button *ngxPermissionsOnly="comparedPermission">
-    This should be visible to admin or superadmin
-  </button>
+    <div>
+      <button *ngxPermissionsOnly="comparedPermission">
+        This should be visible to admin or superadmin
+      </button>
 
-  <button *ngxPermissionsOnly="[]">WTF</button>
-</div>
+      <button *ngxPermissionsOnly="[]">WTF</button>
+    </div>
 
-<p>
-  Your current permissions: <code>{{getPermissions() | json}}</code>
-</p>
+    <p>
+      Your current permissions: <code>{{getPermissions() | json}}</code>
+    </p>
+
+  </mat-card-content>
+</mat-card>

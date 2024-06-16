@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { BreadcrumbComponent } from '@shared';
 
@@ -16,7 +17,14 @@ export interface Person {
   templateUrl: './chips.component.html',
   styleUrl: './chips.component.scss',
   standalone: true,
-  imports: [MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, BreadcrumbComponent],
+  imports: [
+    MatChipsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatCardModule,
+    BreadcrumbComponent,
+  ],
 })
 export class ChipsComponent {
   visible = true;

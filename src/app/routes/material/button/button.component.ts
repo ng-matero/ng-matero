@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -10,7 +11,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
   standalone: true,
-  imports: [BreadcrumbComponent, MatButtonModule, MatIconModule],
+  imports: [BreadcrumbComponent, MatButtonModule, MatIconModule, MatCardModule],
 })
 export class ButtonComponent {
   counter = 0;

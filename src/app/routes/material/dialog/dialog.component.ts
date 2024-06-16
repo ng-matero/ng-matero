@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,7 +13,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
   standalone: true,
-  imports: [BreadcrumbComponent, MatButtonModule],
+  imports: [BreadcrumbComponent, MatButtonModule, MatCardModule],
 })
 export class DialogComponent {
   fruitSelectedOption = '';

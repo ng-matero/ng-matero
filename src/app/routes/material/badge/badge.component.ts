@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 import { BreadcrumbComponent } from '@shared';
@@ -10,7 +11,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './badge.component.html',
   styleUrl: './badge.component.scss',
   standalone: true,
-  imports: [BreadcrumbComponent, MatBadgeModule, MatButtonModule, MatIconModule],
+  imports: [BreadcrumbComponent, MatBadgeModule, MatButtonModule, MatIconModule, MatCardModule],
 })
 export class BadgeComponent {
   hidden = false;

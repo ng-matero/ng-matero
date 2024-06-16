@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatLineModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -9,7 +10,7 @@ import { BreadcrumbComponent } from '@shared';
   templateUrl: './grid-list.component.html',
   styleUrl: './grid-list.component.scss',
   standalone: true,
-  imports: [BreadcrumbComponent, MatGridListModule, MatLineModule],
+  imports: [BreadcrumbComponent, MatGridListModule, MatLineModule, MatCardModule],
 })
 export class GridListComponent {
   dogs = [

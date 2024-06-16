@@ -2,6 +2,7 @@ import { Directionality } from '@angular/cdk/bidi';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +30,7 @@ import { BreadcrumbComponent } from '@shared';
     MatCheckboxModule,
     MatSelectModule,
     MatOptionModule,
+    MatCardModule,
     BreadcrumbComponent,
   ],
 })

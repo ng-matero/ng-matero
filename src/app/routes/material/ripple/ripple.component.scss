@@ -7,6 +7,7 @@
   user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
+  border: 1px solid var(--mat-divider-color);
 }
 
 .example-ripple-form-field {

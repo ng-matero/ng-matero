@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
@@ -12,7 +13,7 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './route-guard.component.html',
   styleUrl: './route-guard.component.scss',
   standalone: true,
-  imports: [JsonPipe, FormsModule, MatButtonToggleModule, PageHeaderComponent],
+  imports: [JsonPipe, FormsModule, MatButtonToggleModule, MatCardModule, PageHeaderComponent],
 })
 export class PermissionsRouteGuardComponent implements OnInit {
   private readonly router = inject(Router);
