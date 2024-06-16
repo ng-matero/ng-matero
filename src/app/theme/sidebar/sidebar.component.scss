@@ -17,6 +17,11 @@
       height: var(--mat-toolbar-mobile-height);
     }
   }
+
+  // Remove redundant padding in the slide toggle
+  mat-slide-toggle .mdc-label {
+    display: none;
+  }
 }
 
 .matero-sidebar-main {

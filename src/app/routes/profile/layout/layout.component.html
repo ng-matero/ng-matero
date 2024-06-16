@@ -18,10 +18,13 @@
 
         <mat-nav-list>
           <a mat-list-item routerLink="/profile/overview">
-            <mat-icon matListItemIcon>account_circle</mat-icon> Overview
+            <mat-icon matListItemIcon>account_circle</mat-icon> {{ 'profile' | translate }}
           </a>
           <a mat-list-item routerLink="/profile/settings">
-            <mat-icon matListItemIcon>settings</mat-icon> Settings
+            <mat-icon matListItemIcon>edit</mat-icon> {{ 'edit_profile' | translate }}
+          </a>
+          <a mat-list-item (click)="logout()">
+            <mat-icon matListItemIcon>exit_to_app</mat-icon> {{ 'logout' | translate }}
           </a>
         </mat-nav-list>
       </mat-card-content>
