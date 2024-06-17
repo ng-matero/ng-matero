@@ -5,9 +5,11 @@
   .ngx-toastr {
     min-height: 3rem;
     padding: 0.875rem 1rem;
-    color: rgba(255, 255, 255, .7);
+    color: #fff;
     background-color: #333;
-    border-radius: 0.25rem;
+    background-position: 1rem center;
+    background-size: 1rem;
+    border-radius: 0.5rem;
 
     @include mat.elevation(4);
 
@@ -20,8 +22,8 @@
   .toast-info,
   .toast-warning,
   .toast-error {
-    padding-left: 3.125rem;
-    color: white;
+    padding-left: 3rem;
+    color: #fff;
   }
 
   .toast-info {
@@ -41,7 +43,12 @@
   }
 
   .toast-close-button {
-    font-size: inherit;
+    top: -0.5rem;
+    right: -0.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1rem;
     text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
 
     &:hover {
