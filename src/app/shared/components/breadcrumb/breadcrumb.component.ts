@@ -18,8 +18,6 @@ export class BreadcrumbComponent implements OnInit {
 
   @Input() nav: string[] = [];
 
-  constructor() {}
-
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];
 

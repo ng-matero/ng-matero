@@ -62,7 +62,8 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private isMobileScreen = false;
 
-  @HostBinding('class.matero-content-width-fix') get contentWidthFix() {
+  @HostBinding('class.matero-content-width-fix')
+  get contentWidthFix() {
     return (
       this.isContentWidthFixed &&
       this.options.navPos === 'side' &&
@@ -73,7 +74,8 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private isContentWidthFixed = true;
 
-  @HostBinding('class.matero-sidenav-collapsed-fix') get collapsedWidthFix() {
+  @HostBinding('class.matero-sidenav-collapsed-fix')
+  get collapsedWidthFix() {
     return (
       this.isCollapsedWidthFixed &&
       (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))

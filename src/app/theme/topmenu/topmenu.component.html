@@ -23,8 +23,8 @@
       }
       @if (menuItem.type === 'sub') {
         <button mat-button
-          [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
-          [class.active]="menuStates[index].active">
+          [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive #rla="routerLinkActive"
+          [class.active]="rla.isActive || menuStates[index].active">
           <ng-container [ngTemplateOutlet]="linkTypeTpl" [ngTemplateOutletContext]="{item: menuItem}">
           </ng-container>
           <app-topmenu-panel #submenu

@@ -1,4 +1,12 @@
-import { Directive, HostBinding, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Directive,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { NavAccordionDirective } from './nav-accordion.directive';
 
 @Directive({
@@ -8,6 +16,7 @@ import { NavAccordionDirective } from './nav-accordion.directive';
 })
 export class NavAccordionItemDirective implements OnInit, OnDestroy {
   private readonly nav = inject(NavAccordionDirective);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   @Input() route = '';
   @Input() type: 'link' | 'sub' | 'extLink' | 'extTabLink' = 'link';
@@ -19,6 +28,7 @@ export class NavAccordionItemDirective implements OnInit, OnDestroy {
   }
   set expanded(value: boolean) {
     this.isExpanded = value;
+    this.cdr.markForCheck();
 
     if (value) {
       this.nav.closeOtherItems(this);
