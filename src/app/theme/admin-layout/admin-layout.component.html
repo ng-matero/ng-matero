@@ -25,8 +25,9 @@
       <app-sidebar [showToggle]="!isOver"
         [showUser]="options.showUserPanel"
         [showHeader]="options.headerPos !== 'above'"
+        [toggleChecked]="options.sidenavCollapsed"
         (toggleCollapsed)="toggleCollapsed()"
-        [toggleChecked]="!!options.sidenavCollapsed">
+        (closeSidenav)="sidenav.close()">
       </app-sidebar>
     </mat-sidenav>
 

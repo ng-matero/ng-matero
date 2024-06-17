@@ -4,9 +4,9 @@ import { Component, Input } from '@angular/core';
   selector: 'app-branding',
   template: `
     <a class="branding" href="/">
-      <img src="./assets/images/matero.png" class="brand-logo" alt="logo" />
-      @if (showBrandText) {
-        <span class="brand-text">MATERO</span>
+      <img src="./assets/images/matero.png" class="branding-logo" alt="logo" />
+      @if (showName) {
+        <span class="branding-name">MATERO</span>
       }
     </a>
   `,
@@ -20,13 +20,13 @@ import { Component, Input } from '@angular/core';
       color: inherit;
     }
 
-    .brand-logo {
+    .branding-logo {
       width: 2rem;
       height: 2rem;
       border-radius: 50rem;
     }
 
-    .brand-text {
+    .branding-name {
       margin: 0 0.5rem;
       font-size: 1rem;
       font-weight: 500;
@@ -35,5 +35,5 @@ import { Component, Input } from '@angular/core';
   standalone: true,
 })
 export class BrandingComponent {
-  @Input() showBrandText = true;
+  @Input() showName = true;
 }

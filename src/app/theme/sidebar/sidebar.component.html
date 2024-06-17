@@ -1,6 +1,6 @@
 @if (showHeader) {
   <div class="matero-sidebar-header">
-    <app-branding [showBrandText]="!toggleChecked"></app-branding>
+    <app-branding [showName]="!toggleChecked"></app-branding>
 
     <span class="flex-fill"></span>
 
@@ -10,7 +10,7 @@
         (change)="toggleCollapsed.emit()">
       </mat-slide-toggle>
     } @else {
-      <button mat-icon-button>
+      <button mat-icon-button (click)="closeSidenav.emit()">
         <mat-icon>close</mat-icon>
       </button>
     }

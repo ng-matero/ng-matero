@@ -29,4 +29,5 @@ export class SidebarComponent {
   @Input() toggleChecked = false;
 
   @Output() toggleCollapsed = new EventEmitter<void>();
+  @Output() closeSidenav = new EventEmitter<void>();
 }
