@@ -5,15 +5,15 @@
   [class.matero-header-above]="options.headerPos === 'above'"
   [class.matero-header-fixed]="options.headerPos === 'fixed'"
   [dir]="options.dir">
-  <ng-progress></ng-progress>
+
+  <ng-progress />
 
   <!-- Header Above -->
   @if (options.showHeader && options.headerPos === 'above') {
     <app-header
       (toggleSidenav)="sidenav.toggle()"
       (toggleSidenavNotice)="sidenavNotice.toggle()"
-      [showBranding]="true">
-    </app-header>
+      [showBranding]="true" />
   }
 
   <mat-sidenav-container class="matero-container" autosize autoFocus>
@@ -22,17 +22,17 @@
       [opened]="options.navPos === 'side' && options.sidenavOpened && !isOver"
       (openedChange)="onSidenavOpenedChange($event)"
       (closedStart)="onSidenavClosedStart()">
-      <app-sidebar [showToggle]="!isOver"
+      <app-sidebar
+        [showToggle]="!isOver"
         [showUser]="options.showUserPanel"
         [showHeader]="options.headerPos !== 'above'"
         [toggleChecked]="options.sidenavCollapsed"
         (toggleCollapsed)="toggleCollapsed()"
-        (closeSidenav)="sidenav.close()">
-      </app-sidebar>
+        (closeSidenav)="sidenav.close()" />
     </mat-sidenav>
 
     <mat-sidenav #sidenavNotice position="end" mode="over">
-      <app-sidebar-notice></app-sidebar-notice>
+      <app-sidebar-notice />
     </mat-sidenav>
 
     <mat-sidenav-content #content class="matero-content">
@@ -41,20 +41,19 @@
           [showToggle]="!options.sidenavCollapsed && options.navPos !== 'top'"
           [showBranding]="options.navPos === 'top'"
           (toggleSidenav)="sidenav.toggle()"
-          (toggleSidenavNotice)="sidenavNotice.toggle()">
-        </app-header>
+          (toggleSidenavNotice)="sidenavNotice.toggle()" />
       }
 
       @if (options.navPos === 'top') {
-        <app-topmenu></app-topmenu>
+        <app-topmenu />
       }
 
       <main class="matero-page-content">
-        <router-outlet></router-outlet>
+        <router-outlet />
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
   <!-- Demo purposes only -->
-  <app-customizer (optionsChange)="updateOptions($event)"></app-customizer>
+  <app-customizer (optionsChange)="updateOptions($event)" />
 </div>

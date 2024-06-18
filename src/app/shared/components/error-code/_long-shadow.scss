@@ -25,7 +25,7 @@
     to top left: 225deg
   );
 
-  @if map-has-key($conversion-map, $direction) {
+  @if map.has-key($conversion-map, $direction) {
     $direction: map.get($conversion-map, $direction);
   }
 

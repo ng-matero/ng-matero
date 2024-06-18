@@ -6,26 +6,26 @@
   }
 
   @if (showBranding) {
-    <app-branding></app-branding>
+    <app-branding />
   }
 
   <span class="flex-fill"></span>
 
-  <app-github-button></app-github-button>
+  <app-github-button />
 
   <button mat-icon-button>
     <mat-icon>search</mat-icon>
   </button>
 
-  <app-translate></app-translate>
+  <app-translate />
 
   <button mat-icon-button class="hide-small" (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
   </button>
 
-  <app-notification class="hide-small"></app-notification>
+  <app-notification class="hide-small" />
 
-  <app-user></app-user>
+  <app-user />
 
   <button mat-icon-button class="hide-small" (click)="toggleSidenavNotice.emit()">
     <mat-icon>list</mat-icon>

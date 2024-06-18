@@ -1,14 +1,13 @@
 <mat-menu class="matero-topmenu-panel">
   @for (item of items; track item; let index = $index) {
-    <ng-template [ngxPermissionsOnly]="item.permissions?.only!"
+    <ng-template
+      [ngxPermissionsOnly]="item.permissions?.only!"
       [ngxPermissionsExcept]="item.permissions?.except!">
       @if (item.type === 'link') {
         <a mat-menu-item
           [routerLink]="buildRoute(parentRoute.concat([item.route]))"
           routerLinkActive #rla="routerLinkActive" [class.active]="rla.isActive"
-          (click)="onRouterLinkClick(rla)">
-          {{item.name | translate}}
-        </a>
+          (click)="onRouterLinkClick(rla)">{{item.name | translate}}</a>
       }
       @if (item.type === 'extLink') {
         <a mat-menu-item [href]="item.route">
@@ -23,16 +22,16 @@
         </a>
       }
       @if (item.type === 'sub') {
-        <button mat-menu-item
-          [matMenuTriggerFor]="submenu.menuPanel" routerLinkActive="active"
-          [class.active]="menuStates[index].active">
-          {{item.name | translate}}
+        <button mat-menu-item [matMenuTriggerFor]="submenu.menuPanel"
+          routerLinkActive #rla="routerLinkActive"
+          [class.active]="rla.isActive || menuStates[index].active">{{item.name | translate}}
+
           <app-topmenu-panel #submenu
             [items]="item.children!"
             [parentRoute]="parentRoute.concat([item.route])"
             [level]="level + 1"
-            (routeChange)="onRouteChange($event, index)">
-          </app-topmenu-panel>
+            (routeChange)="onRouteChange($event, index)" />
+
         </button>
       }
     </ng-template>

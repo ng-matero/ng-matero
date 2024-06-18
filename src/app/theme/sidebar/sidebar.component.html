@@ -1,14 +1,11 @@
 @if (showHeader) {
   <div class="matero-sidebar-header">
-    <app-branding [showName]="!toggleChecked"></app-branding>
+    <app-branding [showName]="!toggleChecked" />
 
     <span class="flex-fill"></span>
 
     @if (showToggle) {
-      <mat-slide-toggle hideIcon
-        [checked]="toggleChecked"
-        (change)="toggleCollapsed.emit()">
-      </mat-slide-toggle>
+      <mat-slide-toggle hideIcon [checked]="toggleChecked" (change)="toggleCollapsed.emit()" />
     } @else {
       <button mat-icon-button (click)="closeSidenav.emit()">
         <mat-icon>close</mat-icon>
@@ -19,7 +16,7 @@
 
 <div class="matero-sidebar-main">
   @if (showUser) {
-    <app-user-panel></app-user-panel>
+    <app-user-panel />
   }
-  <app-sidemenu [ripple]="showToggle"></app-sidemenu>
+  <app-sidemenu [ripple]="showToggle" />
 </div>
