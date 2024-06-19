@@ -33,7 +33,6 @@ html {
   @include mtx.color-variants-backwards-compatibility($light-theme);
 }
 
-
 //////////////////////////////////////////////////////////////////////////////////////
 // When we use the Schematics (`ng add`) to start, the following variables will be  //
 // used to create a dark theme! This strategy will not generate redundant codes.    //

@@ -6,7 +6,7 @@
       "type": "link",
       "icon": "dashboard",
       "badge": {
-        "color": "red-500",
+        "color": "red-50",
         "value": "5"
       }
     },

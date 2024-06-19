@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
       code="500"
       title="Server went wrong!"
       message="Just kidding, looks like we have an internal issue, please try refreshing."
-    >
-    </error-code>
+    />
   `,
 })
 export class Error500Component {}
