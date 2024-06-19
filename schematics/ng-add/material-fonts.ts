@@ -27,7 +27,7 @@ export function addFontsToIndex(options: Schema): Rule {
 
     const preconnect = `<link rel="preconnect" href="https://fonts.gstatic.com">`;
     const fonts = [
-      'assets/fonts/Material_Icons.css',
+      'fonts/Material_Icons.css',
       'https://fonts.googleapis.com/icon?family=Material+Icons',
     ];
 

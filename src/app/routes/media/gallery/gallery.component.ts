@@ -13,7 +13,7 @@ import { PageHeaderComponent } from '@shared';
   imports: [MatGridListModule, MatLineModule, MtxPhotoviewerModule, PageHeaderComponent],
 })
 export class MediaGalleryComponent implements OnInit {
-  dir = 'assets/images/pixabay/';
+  dir = 'images/pixabay/';
   images: any[] = [];
 
   ngOnInit(): void {

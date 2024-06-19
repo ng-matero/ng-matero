@@ -33,11 +33,11 @@ function copySrcRoot() {
 // src/assets
 function copyAssets() {
   return src([
-    'src/assets/**/*',
-    '!src/assets/data/menu.json',
-    '!src/assets/images/heros/**',
-    '!src/assets/images/pixabay/**',
-  ]).pipe(dest(`${FILES}/src/assets`));
+    'public/**/*',
+    '!public/data/menu.json',
+    '!public/images/heros/**',
+    '!public/images/pixabay/**',
+  ]).pipe(dest(`${FILES}/public`));
 }
 
 // src/styles

@@ -24,7 +24,7 @@ import { FormlyConfigModule } from './formly-config.module';
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, 'i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {

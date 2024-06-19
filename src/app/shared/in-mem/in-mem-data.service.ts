@@ -91,7 +91,7 @@ export class InMemDataService implements InMemoryDbService {
       password: 'ng-matero',
       name: 'Zongbin',
       email: 'nzb329@163.com',
-      avatar: './assets/images/avatar.jpg',
+      avatar: 'images/avatar.jpg',
     },
     {
       id: 2,
@@ -99,7 +99,7 @@ export class InMemDataService implements InMemoryDbService {
       password: 'password',
       name: 'recca0120',
       email: 'recca0120@gmail.com',
-      avatar: './assets/images/heros/10.jpg',
+      avatar: 'images/heros/10.jpg',
       refresh_token: true,
     },
   ];
@@ -123,7 +123,7 @@ export class InMemDataService implements InMemoryDbService {
     }
 
     if (is(reqInfo, 'me/menu')) {
-      return ajax('assets/data/menu.json?_t=' + Date.now()).pipe(
+      return ajax('data/menu.json?_t=' + Date.now()).pipe(
         map((response: any) => {
           return { headers, url, status: STATUS.OK, body: { menu: response.response.menu } };
         }),

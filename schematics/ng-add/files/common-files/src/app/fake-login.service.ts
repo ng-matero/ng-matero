@@ -28,7 +28,7 @@ export class FakeLoginService extends LoginService {
 
   menu() {
     return this.http
-      .get<{ menu: Menu[] }>('assets/data/menu.json?_t=' + Date.now())
+      .get<{ menu: Menu[] }>('data/menu.json?_t=' + Date.now())
       .pipe(map(res => res.menu));
   }
 }

@@ -20,7 +20,7 @@ import { BASE_URL, httpInterceptorProviders, appInitializerProviders } from '@co
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, 'i18n/', '.json');
 }
 
 import { LoginService } from '@core/authentication/login.service';

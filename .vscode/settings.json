@@ -16,5 +16,5 @@
     "source.fixAll.stylelint": "explicit"
   },
   "ngx-translate.lookup.resourcesType": "json",
-  "ngx-translate.lookup.resourcesPath": "src/assets/i18n/zh-CN.json",
+  "ngx-translate.lookup.resourcesPath": "public/i18n/zh-CN.json",
 }
