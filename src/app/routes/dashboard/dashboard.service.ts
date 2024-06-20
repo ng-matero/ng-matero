@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { type ApexOptions } from 'apexcharts';
+import { ApexOptions } from 'apexcharts';
 
 export interface PeriodicElement {
   name: string;
@@ -147,7 +147,7 @@ export class DashboardService {
       series: [
         {
           name: 'Weekly Revenue',
-          data: [20, 100, 40, 30, 50, 80, 33],
+          data: [30, 110, 50, 40, 60, 90, 45],
         },
       ],
       labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -165,8 +165,6 @@ export class DashboardService {
       colors: ['#FF4560'],
       markers: {
         size: 4,
-        colors: ['#fff'],
-        strokeColors: '#FF4560',
         strokeWidth: 2,
       },
       tooltip: {

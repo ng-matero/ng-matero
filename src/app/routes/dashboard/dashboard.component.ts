@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
 import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { Subscription } from 'rxjs';
 
-import { SettingsService } from '@core';
+import { AppSettings, SettingsService } from '@core';
 import { BreadcrumbComponent } from '@shared';
 import { DashboardService } from './dashboard.service';
 
@@ -53,38 +53,72 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   messages = this.dashboardSrv.getMessages();
 
   charts = this.dashboardSrv.getCharts();
-  chart1: any;
-  chart2: any;
+  chart1?: ApexCharts;
+  chart2?: ApexCharts;
 
   stats = this.dashboardSrv.getStats();
 
-  notifySubscription!: Subscription;
+  notifySubscription = Subscription.EMPTY;
 
   ngOnInit() {
-    this.notifySubscription = this.settings.notify.subscribe(res => {
-      console.log(res);
+    this.notifySubscription = this.settings.notify.subscribe(opts => {
+      console.log(opts);
+
+      this.updateCharts(opts);
     });
   }
 
   ngAfterViewInit() {
-    this.ngZone.runOutsideAngular(() => this.initChart());
+    this.ngZone.runOutsideAngular(() => this.initCharts());
   }
 
   ngOnDestroy() {
-    if (this.chart1) {
-      this.chart1?.destroy();
-    }
-    if (this.chart2) {
-      this.chart2?.destroy();
-    }
+    this.chart1?.destroy();
+    this.chart2?.destroy();
 
     this.notifySubscription.unsubscribe();
   }
 
-  initChart() {
+  initCharts() {
     this.chart1 = new ApexCharts(document.querySelector('#chart1'), this.charts[0]);
     this.chart1?.render();
     this.chart2 = new ApexCharts(document.querySelector('#chart2'), this.charts[1]);
     this.chart2?.render();
+
+    this.updateCharts(this.settings.options);
+  }
+
+  updateCharts(opts: Partial<AppSettings>) {
+    this.chart1?.updateOptions({
+      chart: {
+        foreColor: opts.theme === 'dark' ? '#ccc' : '#333',
+      },
+      tooltip: {
+        theme: opts.theme === 'dark' ? 'dark' : 'light',
+      },
+      grid: {
+        borderColor: opts.theme === 'dark' ? '#5a5a5a' : '#e9e9e9',
+      },
+    });
+
+    this.chart2?.updateOptions({
+      chart: {
+        foreColor: opts.theme === 'dark' ? '#ccc' : '#333',
+      },
+      plotOptions: {
+        radar: {
+          polygons: {
+            strokeColors: opts.theme === 'dark' ? '#5a5a5a' : '#e9e9e9',
+            connectorColors: opts.theme === 'dark' ? '#5a5a5a' : '#e9e9e9',
+            fill: {
+              colors: opts.theme === 'dark' ? ['#2c2c2c', '#222'] : ['#f8f8f8', '#fff'],
+            },
+          },
+        },
+      },
+      tooltip: {
+        theme: opts.theme === 'dark' ? 'dark' : 'light',
+      },
+    });
   }
 }

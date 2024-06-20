@@ -1,10 +1,10 @@
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 
 import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyFieldComboboxComponent } from './formly-templates';
 import { FormlyValidations } from './formly-validations';
 import { FormlyWrapperCardComponent, FormlyWrapperDivComponent } from './formly-wrappers';
-import { FormlyMaterialModule } from '@ngx-formly/material';
 
 /**
  * Formly global configuration

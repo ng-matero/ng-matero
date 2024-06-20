@@ -1,4 +1,4 @@
-export const MAT_COLORS = {
+export const M3_COLORS = {
   'red': {
     0: '#000000',
     10: '#410000',
