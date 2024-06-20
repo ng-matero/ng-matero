@@ -20,7 +20,6 @@
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "eslint \"src/**/*.ts\" --fix",
     "lint:scss": "stylelint \"src/**/*.scss\" --fix",
-    "hmr": "ng serve --hmr --disable-host-check",
     "predeploy": "npm run build:prod",
     "deploy": "ng deploy",
     "publish": "npm run build:schematics && cd dist/schematics && npm publish",

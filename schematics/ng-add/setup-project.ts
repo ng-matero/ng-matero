@@ -85,7 +85,6 @@ function addScriptsToPackageJson() {
     addScriptToPackageJson(host, 'lint', `npm run lint:ts && npm run lint:scss`);
     addScriptToPackageJson(host, 'lint:ts', `eslint "src/**/*.ts" --fix`);
     addScriptToPackageJson(host, 'lint:scss', `stylelint "src/**/*.scss" --fix`);
-    addScriptToPackageJson(host, 'hmr', `ng serve --hmr --disable-host-check`);
   };
 }
 
