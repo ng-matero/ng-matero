@@ -3,7 +3,7 @@ import { PreloaderService, SettingsService } from '@core';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: `<router-outlet />`,
 })
 export class AppComponent implements OnInit, AfterViewInit {
   private readonly preloader = inject(PreloaderService);
