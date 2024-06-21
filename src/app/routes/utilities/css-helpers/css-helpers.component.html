@@ -158,6 +158,16 @@
             }
           </mat-list>
         </div>
+        <div class="col-sm-6 col-md-3">
+          <mat-list>
+            <h3 matSubheader>Gap</h3>
+            @for (i of [0,4,8,16,24,32,48]; track i) {
+              <mat-list-item>
+                <code>.gap[-[t|b|r|l|x|y]]-{{i}}</code>
+              </mat-list-item>
+            }
+          </mat-list>
+        </div>
       </div>
     </mat-tab>
 

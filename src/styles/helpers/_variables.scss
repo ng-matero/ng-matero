@@ -22,7 +22,7 @@ $negative-spacers: functions.negativify-map($spacers) !default;
 
 // Border
 
-$border-color: rgba(0, 0, 0, .12) !default;
+$border-color: var(--mat-divider-color) !default;
 $borders: (
   0: 0,
   1: 1px solid $border-color,

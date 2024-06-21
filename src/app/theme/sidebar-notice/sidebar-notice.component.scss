@@ -1,5 +1,16 @@
-:host ::ng-deep {
-  .mat-mdc-tab {
-    min-width: 160px;
+.matero-sidebar-notice {
+  display: block;
+  height: 100%;
+
+  .mat-mdc-tab-group {
+    height: 100%;
+  }
+
+  .mat-mdc-tab-body-wrapper {
+    flex: 1;
+  }
+
+  .mat-mdc-tab-body-content {
+    padding: 1rem;
   }
 }

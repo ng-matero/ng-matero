@@ -106,5 +106,10 @@ $utilities: (
     property: padding-left,
     class: p-l,
     values: variables.$spacers
+  ),
+  'gap': (
+    property: gap,
+    class: gap,
+    values: variables.$spacers
   )
 );

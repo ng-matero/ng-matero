@@ -23,6 +23,12 @@ import { MatMenuModule } from '@angular/material/menu';
       </mat-nav-list>
     </mat-menu>
   `,
+  styles: `
+    :host ::ng-deep .mat-badge-content {
+      --mat-badge-background-color: #ef0000;
+      --mat-badge-text-color: #fff;
+    }
+  `,
   standalone: true,
   imports: [MatBadgeModule, MatButtonModule, MatIconModule, MatListModule, MatMenuModule],
 })

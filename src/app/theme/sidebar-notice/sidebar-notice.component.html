@@ -1,4 +1,16 @@
 <mat-tab-group>
-  <mat-tab label="Today"> Content 1 </mat-tab>
-  <mat-tab label="Notifications"> Content 2 </mat-tab>
+  @for (tab of tabs; track tab) {
+    <mat-tab [label]="tab.label">
+      @for (msg of tab.messages; track msg) {
+        <div class="d-flex align-items-center gap-16 p-16 m-b-16 b-1 r-12">
+          <div class="d-flex align-items-center justify-content-center r-12 {{msg.color}}"
+               [style.width.rem]="3" [style.height.rem]="3">{{msg.icon}}</div>
+          <div class="flex-grow-1 w-0">
+            <div class="f-w-600">{{msg.title}}</div>
+            <div class="f-s-14">{{msg.content}}</div>
+          </div>
+        </div>
+      }
+    </mat-tab>
+  }
 </mat-tab-group>
