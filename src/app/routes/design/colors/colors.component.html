@@ -7,8 +7,8 @@
         @for (hue of color.value | keyvalue: keyAscOrder; track hue) {
           @if (hue.key > 0 && hue.key < 100) {
             <div class="d-flex p-8 bg-{{color.key + '-' + hue.key}}"
-                [class.text-light]="hue.key < 60"
-                [class.text-dark]="hue.key >= 60">
+                [class.text-light]="hue.key <= 60"
+                [class.text-dark]="hue.key > 60">
               <span>{{hue.key}}</span>
               <span class="flex-fill"></span>
               <span>{{hue.value}}</span>

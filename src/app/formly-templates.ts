@@ -22,8 +22,7 @@ import { FieldType } from '@ngx-formly/material/form-field';
     [required]="props.required!"
     [closeOnSelect]="!props.multiple"
     [compareWith]="props.compareWith"
-  >
-  </mtx-select>`,
+  />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [AsyncPipe, ReactiveFormsModule, MtxSelectModule, MtxPipesModule],

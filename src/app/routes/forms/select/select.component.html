@@ -23,8 +23,7 @@
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
           <mtx-select [items]="(people$ | async)!" bindLabel="name" bindValue="id" autofocus
-            [(ngModel)]="selectedPersonId">
-          </mtx-select>
+            [(ngModel)]="selectedPersonId" />
         </mat-form-field>
         Selected: {{selectedPersonId}}
         <mat-divider class="m-y-16" />
@@ -35,8 +34,7 @@
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
           <mtx-select [items]="people" bindLabel="name" bindValue="id"
-            [(ngModel)]="selectedPersonId2">
-          </mtx-select>
+            [(ngModel)]="selectedPersonId2" />
         </mat-form-field>
         Selected: {{selectedPersonId2}}
         <mat-divider class="m-y-16" />
@@ -47,8 +45,7 @@
         </p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
-          <mtx-select [items]="simpleItems" [(ngModel)]="selectedSimpleItem">
-          </mtx-select>
+          <mtx-select [items]="simpleItems" [(ngModel)]="selectedSimpleItem" />
         </mat-form-field>
         Selected: {{selectedSimpleItem | json}}
         <mat-divider class="m-y-16" />
@@ -86,8 +83,7 @@
         <label>Default tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="[]" [addTag]="true" [(ngModel)]="selectedCompany">
-          </mtx-select>
+          <mtx-select [items]="[]" [addTag]="true" [(ngModel)]="selectedCompany" />
         </mat-form-field>
 
         <p>
@@ -99,8 +95,7 @@
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="companies" [addTag]="addTag" [hideSelected]="true" [multiple]="true"
-            bindLabel="name" [(ngModel)]="selectedCompanyCustom">
-          </mtx-select>
+            bindLabel="name" [(ngModel)]="selectedCompanyCustom" />
         </mat-form-field>
 
         <p>
@@ -126,8 +121,7 @@
         <label>Tagging without dropdown. Press enter to add item</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="[]" [addTag]="true" [multiple]="true" [selectOnTab]="true">
-          </mtx-select>
+          <mtx-select [items]="[]" [addTag]="true" [multiple]="true" [selectOnTab]="true" />
         </mat-form-field>
 
       </mat-card-content>

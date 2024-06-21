@@ -88,7 +88,9 @@
 
   .menu-name {
     flex: 1;
+    overflow: hidden;
     text-align: initial;
+    text-overflow: ellipsis;
   }
 
   .menu-name,

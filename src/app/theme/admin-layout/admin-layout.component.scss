@@ -31,10 +31,7 @@
 
   .matero-sidebar-main {
     height: 100% !important;
-  }
-
-  .matero-user-panel {
-    margin-top: 0.5rem;
+    padding-top: 0.5rem;
   }
 }
 
@@ -112,9 +109,6 @@
   .matero-header {
     position: sticky;
     top: 0;
-    // Fix header's positioning problem on Firefox
-    // https://github.com/ng-matero/ng-matero/issues/522
-    display: block;
   }
 
   .matero-topmenu {
@@ -142,5 +136,11 @@
 
 .matero-page-content {
   position: relative;
-  padding: 0 var(--gutter) var(--gutter);
+  padding: var(--gutter);
+
+  .matero-header + &,
+  .matero-header-above &,
+  .matero-navbar-top & {
+    padding-top: 0;
+  }
 }
