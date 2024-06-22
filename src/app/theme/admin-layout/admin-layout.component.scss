@@ -49,6 +49,10 @@
       opacity: 0;
     }
 
+    .menu-icon.submenu-icon {
+      opacity: 1;
+    }
+
     .matero-user-panel-avatar {
       transform: scale(.5);
     }
@@ -62,6 +66,10 @@
       .menu-caret,
       .matero-user-panel-info {
         opacity: 1;
+      }
+
+      .menu-icon.submenu-icon {
+        opacity: 0;
       }
 
       .matero-user-panel-avatar {

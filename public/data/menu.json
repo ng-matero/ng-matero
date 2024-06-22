@@ -23,12 +23,14 @@
         {
           "route": "colors",
           "name": "colors",
-          "type": "link"
+          "type": "link",
+          "icon": "colorize"
         },
         {
           "route": "icons",
           "name": "icons",
-          "type": "link"
+          "type": "link",
+          "icon": "flag"
         }
       ],
       "permissions": {

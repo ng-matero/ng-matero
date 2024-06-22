@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet, SlicePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -27,6 +27,7 @@ import { NavAccordionDirective } from './nav-accordion.directive';
   standalone: true,
   imports: [
     AsyncPipe,
+    SlicePipe,
     NgTemplateOutlet,
     RouterLink,
     RouterLinkActive,

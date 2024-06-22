@@ -2,7 +2,6 @@
 @use '../style/badge';
 
 .matero-sidemenu {
-  width: calc(var(--sidenav-width) - 1rem);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -11,6 +10,7 @@
     display: block;
     height: auto;
     padding: 0;
+    overflow: hidden;
     border-radius: 1.5rem;
 
     >.menu-heading {
@@ -21,7 +21,7 @@
     }
 
     &.active {
-      > .menu-heading {
+      >.menu-heading {
         color: var(--sidemenu-active-heading-text-color);
         background-color: var(--sidemenu-active-heading-background-color);
 
@@ -40,21 +40,17 @@
       }
     }
 
-    &:has(.active) > .menu-heading {
+    &:has(.active)>.menu-heading {
       color: var(--sidemenu-active-heading-text-color);
     }
   }
 
-  &.submenu {
-    padding-top: 0;
-    overflow: hidden;
-  }
-
   .menu-heading {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    width: calc(var(--sidenav-width) - 1rem);
     padding: 0.75rem;
     font-size: inherit;
     color: inherit;
@@ -66,21 +62,36 @@
     outline: none;
   }
 
-  .mat-icon.menu-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-right: 1rem;
-    margin-left: 0.125rem;
+  .menu-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
     font-size: 1.25rem;
-    line-height: 1.25rem;
+    line-height: 1.5rem;
+    text-align: center;
 
     [dir='rtl'] & {
-      margin-right: 0.125rem;
-      margin-left: 1rem;
+      margin-right: 0;
+      margin-left: 0.75rem;
+    }
+
+    &.submenu-icon {
+      position: absolute;
+      left: 0.75rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      opacity: 0;
+
+      [dir='rtl'] & {
+        right: 0.75rem;
+        left: 0;
+      }
     }
   }
 
-  .mat-icon.menu-caret {
+  .menu-caret {
     display: block;
     text-align: center;
     transition: transform mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
@@ -93,6 +104,7 @@
     text-overflow: ellipsis;
   }
 
+  .menu-icon,
   .menu-name,
   .menu-label,
   .menu-badge {
@@ -109,10 +121,10 @@
   }
 
   &.level-1>li>.menu-heading {
-    padding-left: 3.125rem;
+    padding-left: 3rem;
 
     [dir='rtl'] & {
-      padding-right: 3.125rem;
+      padding-right: 3rem;
       padding-left: 1rem;
     }
   }

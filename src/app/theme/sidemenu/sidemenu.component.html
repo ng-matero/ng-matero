@@ -2,8 +2,8 @@
   [ngTemplateOutlet]="menuListTpl"
   [ngTemplateOutletContext]="{menuList: menu$ | async, parentRoute: [], level: 0, expanded: true}" />
 
-<ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level"
-  let-expanded="expanded">
+<ng-template #menuListTpl
+  let-menuList="menuList" let-parentRoute="parentRoute" let-level="level" let-expanded="expanded">
   <ul navAccordion class="matero-sidemenu level-{{level}}" [class.submenu]="level>0"
     [@expansion]="expanded ? 'expanded' : 'collapsed'">
     @for (menuItem of menuList; track menuItem) {
@@ -61,8 +61,10 @@
 </ng-template>
 
 <ng-template #linkTypeTpl let-item="item" let-level="level">
-  @if (level===0) {
-    <mat-icon class="menu-icon">{{item.icon}}</mat-icon>
+  @if (item.icon) {
+    <mat-icon class="menu-icon" [class.submenu-icon]="level>0">{{item.icon}}</mat-icon>
+  } @else {
+    <span class="menu-icon" [class.submenu-icon]="level>0">{{item.name | translate | slice:0:1}}</span>
   }
   <span class="menu-name">{{item.name | translate}}</span>
   @if (item.label) {
