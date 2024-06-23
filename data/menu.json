@@ -6,7 +6,7 @@
       "type": "link",
       "icon": "dashboard",
       "badge": {
-        "color": "red-500",
+        "color": "red-50",
         "value": "5"
       }
     },
@@ -15,16 +15,22 @@
       "name": "design",
       "type": "sub",
       "icon": "color_lens",
+      "label": {
+        "color": "azure-50",
+        "value": "New"
+      },
       "children": [
         {
           "route": "colors",
           "name": "colors",
-          "type": "link"
+          "type": "link",
+          "icon": "colorize"
         },
         {
           "route": "icons",
           "name": "icons",
-          "type": "link"
+          "type": "link",
+          "icon": "flag"
         }
       ],
       "permissions": {
@@ -417,10 +423,6 @@
       "name": "utilities",
       "type": "sub",
       "icon": "all_inbox",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "route": "css-grid",
