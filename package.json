@@ -45,7 +45,7 @@
     "@ngx-formly/material": "^6.3.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
-    "angular-in-memory-web-api": "~0.17.0",
+    "angular-in-memory-web-api": "~0.18.0",
     "apexcharts": "^3.49.0",
     "moment": "^2.30.0",
     "moment-timezone": "^0.5.45",
@@ -56,7 +56,7 @@
     "rxjs": "~7.8.0",
     "screenfull": "^6.0.2",
     "tslib": "^2.6.0",
-    "zone.js": "~0.14.4"
+    "zone.js": "~0.14.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.3",

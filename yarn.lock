@@ -3958,10 +3958,10 @@ angular-cli-ghpages@^2.0.0:
     fs-extra "^11.2.0"
     gh-pages "^3.1.0"
 
-angular-in-memory-web-api@~0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.17.0.tgz#e0d8935f5fc67e8521ff380eae0aee7f4520a752"
-  integrity sha512-q1VPfyg8B0dBKjjURitxFnUBqEiR4JyATxgHuAVTLfgcMJwJIBqfEYrejCPRE2GslzqMjf2PdLklxoYs/HDd7Q==
+angular-in-memory-web-api@~0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.18.0.tgz#abb2997b7aed3ac2680452f85963adfc88366ab2"
+  integrity sha512-Eqkr9+x3d7K4dmn6Qs3ZVAfqBDPZN0N7Qel5i8eU/pe5r44J/pfxlNW+1LC2Sb2PdENEdvFzC8wx8qly5+kQyQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -12420,9 +12420,7 @@ yocto-queue@^1.0.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.0.0.tgz#7f816433fb2cbc511ec8bf7d263c3b58a1a3c251"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
 
-zone.js@~0.14.4:
-  version "0.14.5"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.14.5.tgz#7f3591dc4cad1a030cda86b03d10450b719dd460"
-  integrity sha512-9XYWZzY6PhHOSdkYryNcMm7L8EK7a4q+GbTvxbIA2a9lMdRUpGuyaYvLDcg8D6bdn+JomSsbPcilVKg6SmUx6w==
-  dependencies:
-    tslib "^2.3.0"
+zone.js@~0.14.7:
+  version "0.14.7"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.14.7.tgz#4a9a70599109663b1921165663bbac521995eef3"
+  integrity sha512-0w6DGkX2BPuiK/NLf+4A8FLE43QwBfuqz2dVgi/40Rj1WmqUskCqj329O/pwrqFJLG5X8wkeG2RhIAro441xtg==
