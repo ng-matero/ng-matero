@@ -71,7 +71,7 @@
     "@commitlint/config-conventional": "^19.2.0",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.12.2",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.11.0",
     "angular-cli-ghpages": "^2.0.0",
     "cpr": "^3.0.1",
