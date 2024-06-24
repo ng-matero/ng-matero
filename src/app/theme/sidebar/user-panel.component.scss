@@ -8,8 +8,10 @@
   cursor: pointer;
   background-color: var(--user-panel-background-color);
   border-radius: 0.75rem;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--user-panel-hover-background-color);
   }
 }

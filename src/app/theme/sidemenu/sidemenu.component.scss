@@ -7,11 +7,9 @@
   list-style: none;
 
   .menu-item {
-    display: block;
-    height: auto;
-    padding: 0;
     overflow: hidden;
     border-radius: 1.5rem;
+    will-change: transform; // fix expansion in Safari
 
     >.menu-heading {
       &:hover,
@@ -48,7 +46,6 @@
   .menu-heading {
     position: relative;
     display: flex;
-    flex-direction: row;
     align-items: center;
     width: calc(var(--sidenav-width) - 1rem);
     padding: 0.75rem;
@@ -93,6 +90,10 @@
 
   .menu-caret {
     display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     text-align: center;
     transition: transform mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
   }

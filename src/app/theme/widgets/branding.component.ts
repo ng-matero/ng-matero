@@ -18,6 +18,7 @@ import { Component, Input } from '@angular/core';
       text-decoration: none;
       white-space: nowrap;
       color: inherit;
+      border-radius: 50rem;
     }
 
     .branding-logo {
