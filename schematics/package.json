@@ -1,7 +1,7 @@
 {
   "name": "ng-matero",
-  "version": "18.0.0",
-  "description": "Angular Material Admin Dashboard",
+  "version": "18.0.1",
+  "description": "Angular Material admin template",
   "author": "nzbin<nzb329@163.com>",
   "repository": {
     "type": "git",
@@ -11,6 +11,7 @@
     "angular",
     "angular-material",
     "admin-dashboard",
+    "admin-template",
     "ng-matero",
     "ng-admin",
     "ngx-admin",
