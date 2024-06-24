@@ -1,21 +1,11 @@
 @use '../style/breakpoints';
 
 .matero-sidebar-header {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  width: var(--sidenav-width);
-  height: var(--mat-toolbar-standard-height);
-  padding: 0 0.5rem;
   overflow: hidden;
 
-  @include breakpoints.bp-lt(small) {
-    & {
-      height: var(--mat-toolbar-mobile-height);
-    }
+  mat-toolbar {
+    width: var(--sidenav-width);
+    padding: 0 0.5rem;
   }
 
   // Remove redundant padding in the slide toggle
@@ -26,7 +16,7 @@
 
 .matero-sidebar-main {
   height: calc(100% - var(--mat-toolbar-standard-height));
-  padding: 0 0.5rem;
+  padding: 0 0.5rem 0.5rem;
   overflow: auto;
   scrollbar-width: none;
 

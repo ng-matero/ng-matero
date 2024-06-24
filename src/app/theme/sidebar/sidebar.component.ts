@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { BrandingComponent } from '../widgets/branding.component';
@@ -17,6 +18,7 @@ import { UserPanelComponent } from './user-panel.component';
     MatSlideToggleModule,
     MatIconModule,
     MatButtonModule,
+    MatToolbarModule,
     BrandingComponent,
     SidemenuComponent,
     UserPanelComponent,
