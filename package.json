@@ -23,7 +23,7 @@
     "predeploy": "npm run build:prod",
     "deploy": "ng deploy",
     "publish": "npm run build:schematics && cd dist/schematics && npm publish",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky",
     "analyze": "ng build --stats-json && webpack-bundle-analyzer dist/ng-matero/stats.json"
   },
   "private": true,
@@ -78,7 +78,8 @@
     "eslint": "^8.57.0",
     "gulp": "^4.0.2",
     "gulp-each": "^0.5.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
+    "is-ci": "^3.0.1",
     "jasmine-core": "~5.1.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.0",
