@@ -54,8 +54,8 @@ export class TablesRemoteDataComponent implements OnInit {
       field: 'archived',
       type: 'tag',
       tag: {
-        true: { text: 'Yes', color: 'red-100' },
-        false: { text: 'No', color: 'green-100' },
+        true: { text: 'Yes', color: 'red-95' },
+        false: { text: 'No', color: 'green-95' },
       },
     },
     { header: 'Created Date', field: 'created_at' },
