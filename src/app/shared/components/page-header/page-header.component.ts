@@ -33,18 +33,9 @@ export class PageHeaderComponent implements OnInit {
   @Input({ transform: booleanAttribute }) hideBreadcrumb = false;
 
   ngOnInit() {
-    this.nav = Array.isArray(this.nav) ? this.nav : [];
-
-    if (this.nav.length === 0) {
-      this.genBreadcrumb();
-    }
-
-    this.title = this.title || this.nav[this.nav.length - 1];
-  }
-
-  genBreadcrumb() {
     const routes = this.router.url.slice(1).split('/');
-    this.nav = this.menu.getLevel(routes);
-    this.nav.unshift('home');
+    const menuLevel = this.menu.getLevel(routes);
+
+    this.title = this.title || menuLevel[menuLevel.length - 1];
   }
 }

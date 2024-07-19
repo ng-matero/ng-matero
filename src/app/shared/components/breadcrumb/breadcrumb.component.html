@@ -1,13 +1,13 @@
 <nav aria-label="breadcrumb">
   <ol class="matero-breadcrumb">
-    @for (navLink of nav; track trackByNavlink($index, navLink); let isFirst = $first) {
+    @for (item of navItems; track trackByNavItem($index, item); let isFirst = $first) {
       <li class="matero-breadcrumb-item">
         @if (isFirst) {
-          <a href="#" class="link">{{navLink}}</a>
+          <a href="#" class="link">{{item}}</a>
         }
         @if (!isFirst) {
           <mat-icon class="chevron">chevron_right</mat-icon>
-          <span>{{navLink | translate}}</span>
+          <span>{{item | translate}}</span>
         }
       </li>
     }
