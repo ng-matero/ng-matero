@@ -141,7 +141,8 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/ng-matero/"
+            "baseHref": "/ng-matero/",
+            "remote": "origin"
           }
         }
       }
