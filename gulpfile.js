@@ -34,6 +34,7 @@ function copySrcRoot() {
 function copyAssets() {
   return src([
     'public/**/*',
+    '!public/favicon.ico',
     '!public/data/menu.json',
     '!public/images/heros/**',
     '!public/images/pixabay/**',
