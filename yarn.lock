@@ -7213,10 +7213,10 @@ ngx-permissions@^17.1.0:
   dependencies:
     tslib "^2.3.0"
 
-ngx-progressbar@^11.1.0:
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-11.1.0.tgz#aee3c4088bf0a90d78daeb15053919433487704b"
-  integrity sha512-OClROEQn+hXIcE+JO6FPfjUrFOPbRUs4McUN9ZFZsRSt1lqpPNuHW19ANhClXr0sPPBlUuOKhoenB6xNAFe/aQ==
+ngx-progressbar@^12.0.0:
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-12.0.1.tgz#7ba484f0400b4ea5d7bb0797bcf8fa1568465fcf"
+  integrity sha512-YbdS5+YWfU7RN+4SxoGsLaefVyAky5ASyX1+nk86w8dufA6hti8UOVuGC2plciBjm2jqk0nBhDGNXhZKTRp1Vw==
   dependencies:
     tslib "^2.0.0"
 

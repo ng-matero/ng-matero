@@ -7,9 +7,8 @@ import { MaterialModule } from '../material.module';
 import { MaterialExtensionsModule } from '../material-extensions.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
-import { NgProgressModule } from 'ngx-progressbar';
-import { NgProgressHttpModule } from 'ngx-progressbar/http';
-import { NgProgressRouterModule } from 'ngx-progressbar/router';
+import { NgProgressbar } from 'ngx-progressbar';
+import { NgProgressRouter } from 'ngx-progressbar/router';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
@@ -30,12 +29,11 @@ const MODULES: any[] = [
   MaterialExtensionsModule,
   FormlyModule,
   FormlyMaterialModule,
-  NgProgressModule,
-  NgProgressRouterModule,
-  NgProgressHttpModule,
   NgxPermissionsModule,
   ToastrModule,
   TranslateModule,
+  NgProgressbar,
+  NgProgressRouter,
 ];
 const COMPONENTS: any[] = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const DIRECTIVES: any[] = [DisableControlDirective];

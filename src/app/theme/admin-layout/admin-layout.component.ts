@@ -10,7 +10,8 @@ import {
 } from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { NgProgressComponent } from 'ngx-progressbar';
+import { NgProgressbar } from 'ngx-progressbar';
+import { NgProgressRouter } from 'ngx-progressbar/router';
 import { Subscription, filter } from 'rxjs';
 
 import { AppSettings, SettingsService } from '@core';
@@ -34,7 +35,8 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
     RouterOutlet,
     BidiModule,
     MatSidenavModule,
-    NgProgressComponent,
+    NgProgressbar,
+    NgProgressRouter,
     HeaderComponent,
     TopmenuComponent,
     SidebarComponent,
