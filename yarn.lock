@@ -7519,10 +7519,10 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==
 
-photoviewer@^3.10.0, photoviewer@^3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/photoviewer/-/photoviewer-3.10.1.tgz#477c20a71c2b0fa9d0136bcd78c9717c33416873"
-  integrity sha512-wPHiaamDw/Jxv/vKMsxnXNQURZXG1sk03KZFNjUscHLJNXlKc2H/xdDkMqlr6kQiAXFpCXt/+VuiMU69E066CA==
+photoviewer@^3.10.0, photoviewer@^3.10.2:
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/photoviewer/-/photoviewer-3.10.2.tgz#3bc77665216a7d5ee8fcc0c71891a788c23a0537"
+  integrity sha512-liikwlwe3jsqgQPeaNR4FkM/9siAmxA9+DQB3iwO56Idg+Rxu1/t8fJDsLSza6mXZuyA6eBl/jtaCOeGlQSupg==
   dependencies:
     domq.js "^0.7.0"
 
