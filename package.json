@@ -69,7 +69,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.0",
     "@types/jasmine": "~5.1.0",
-    "@types/node": "^20.14.0",
+    "@types/node": "^22.5.2",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "angular-cli-ghpages": "^2.0.0",
