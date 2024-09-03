@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   MatBottomSheet,
@@ -40,6 +40,8 @@ const defaultConfig = new MatBottomSheetConfig();
   ],
 })
 export class BottomSheetComponent {
+  private _bottomSheet = inject(MatBottomSheet);
+
   config: MatBottomSheetConfig = {
     hasBackdrop: defaultConfig.hasBackdrop,
     disableClose: defaultConfig.disableClose,
@@ -49,8 +51,6 @@ export class BottomSheetComponent {
   };
 
   @ViewChild(TemplateRef) template!: TemplateRef<any>;
-
-  constructor(private _bottomSheet: MatBottomSheet) {}
 
   openComponent() {
     this._bottomSheet.open(BottomSheetOverviewComponent, this.config);
@@ -77,7 +77,7 @@ export class BottomSheetComponent {
   imports: [MatListModule],
 })
 export class BottomSheetOverviewComponent {
-  constructor(private _bottomSheet: MatBottomSheetRef) {}
+  private _bottomSheet = inject(MatBottomSheetRef);
 
   handleClick(event: MouseEvent) {
     event.preventDefault();

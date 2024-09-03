@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -35,6 +35,9 @@ import { BreadcrumbComponent } from '@shared';
   ],
 })
 export class SnackBarComponent {
+  snackBar = inject(MatSnackBar);
+  private _dir = inject(Directionality);
+
   @ViewChild('template') template!: TemplateRef<any>;
   message = 'Snack Bar opened.';
   actionButtonLabel = 'Retry';
@@ -44,11 +47,6 @@ export class SnackBarComponent {
   addExtraClass = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
-  constructor(
-    public snackBar: MatSnackBar,
-    private _dir: Directionality
-  ) {}
 
   open() {
     const config = this._createConfig();

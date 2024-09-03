@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -16,9 +16,9 @@ import { BreadcrumbComponent } from '@shared';
   imports: [BreadcrumbComponent, MatButtonModule, MatCardModule],
 })
 export class DialogComponent {
-  fruitSelectedOption = '';
+  dialog = inject(MatDialog);
 
-  constructor(public dialog: MatDialog) {}
+  fruitSelectedOption = '';
 
   openFruitDialog() {
     const dialogRef = this.dialog.open(DialogFruitComponent);
@@ -62,7 +62,7 @@ export class DialogWelcomeComponent {}
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DialogNeptuneComponent {
-  constructor(public dialog: MatDialog) {}
+  dialog = inject(MatDialog);
 
   showInStackedDialog() {
     this.dialog.open(DialogNeptuneIFrameComponent);

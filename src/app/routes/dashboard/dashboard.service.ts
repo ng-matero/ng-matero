@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApexOptions } from 'apexcharts';
 
@@ -57,6 +57,8 @@ const MESSAGES = [
 
 @Injectable()
 export class DashboardService {
+  private http = inject(HttpClient);
+
   stats = [
     {
       title: 'Total Sales',
@@ -186,8 +188,6 @@ export class DashboardService {
       },
     },
   ];
-
-  constructor(private http: HttpClient) {}
 
   getData() {
     return ELEMENT_DATA;

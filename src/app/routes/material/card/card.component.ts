@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,9 +13,9 @@ import { BreadcrumbComponent } from '@shared';
   imports: [BreadcrumbComponent, MatCardModule, MatButtonModule],
 })
 export class CardComponent {
-  showProgress = false;
+  private snackBar = inject(MatSnackBar);
 
-  constructor(private snackBar: MatSnackBar) {}
+  showProgress = false;
 
   openSnackbar(message: string) {
     this.snackBar.open(message, '', { duration: 2000 });

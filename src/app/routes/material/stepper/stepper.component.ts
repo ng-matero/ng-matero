@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -31,11 +31,11 @@ import { BreadcrumbComponent } from '@shared';
   ],
 })
 export class StepperComponent implements OnInit {
+  private formBuilder = inject(FormBuilder);
+
   isLinear = false;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({

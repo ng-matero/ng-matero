@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -30,15 +30,11 @@ import { BreadcrumbComponent } from '@shared';
     BreadcrumbComponent,
   ],
 })
-export class FormFieldComponent implements OnInit {
-  options: FormGroup;
+export class FormFieldComponent {
+  private fb = inject(FormBuilder);
 
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      hideRequired: false,
-      floatLabel: 'auto',
-    });
-  }
-
-  ngOnInit() {}
+  options: FormGroup = this.fb.group({
+    hideRequired: false,
+    floatLabel: 'auto',
+  });
 }

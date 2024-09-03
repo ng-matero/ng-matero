@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +17,7 @@ export interface Person {
 
 @Injectable()
 export class DataService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getGithubAccounts(term?: string) {
     if (term) {

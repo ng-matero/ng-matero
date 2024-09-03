@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipEditedEvent, MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,6 +27,8 @@ export interface Person {
   ],
 })
 export class ChipsComponent {
+  snackBar = inject(MatSnackBar);
+
   visible = true;
   color = '';
   selectable = true;
@@ -49,8 +51,6 @@ export class ChipsComponent {
     { name: 'Accent', color: 'accent' },
     { name: 'Warn', color: 'warn' },
   ];
-
-  constructor(public snackBar: MatSnackBar) {}
 
   displayMessage(message: string): void {
     this.message = message;

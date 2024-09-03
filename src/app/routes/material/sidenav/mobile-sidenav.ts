@@ -1,5 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -28,7 +28,10 @@ export class SidenavMobileComponent implements OnDestroy {
 
   mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor() {
+    const changeDetectorRef = inject(ChangeDetectorRef);
+    const media = inject(MediaMatcher);
+
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQuery.addListener(this.mobileQueryListener);

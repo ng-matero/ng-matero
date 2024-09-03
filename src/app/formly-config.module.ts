@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
+import { ModuleWithProviders, NgModule, Provider, inject } from '@angular/core';
 
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
@@ -40,7 +40,9 @@ const formlyModuleProviders = FormlyModule.forRoot({
   providers: [FormlyValidations],
 })
 export class FormlyConfigModule {
-  constructor(formlyValidations: FormlyValidations) {
+  constructor() {
+    const formlyValidations = inject(FormlyValidations);
+
     formlyValidations.init();
   }
 

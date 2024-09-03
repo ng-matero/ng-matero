@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,11 +15,11 @@ import { BreadcrumbComponent } from '@shared';
   imports: [FormsModule, MatCardModule, MatSlideToggleModule, MatButtonModule, BreadcrumbComponent],
 })
 export class SlideToggleComponent {
+  private snackBar = inject(MatSnackBar);
+
   emailToggle = true;
   termsToggle = false;
   musicToggle = false;
-
-  constructor(private snackBar: MatSnackBar) {}
 
   onFormSubmit() {
     this.snackBar.open('Terms and condistions accepted!', '', { duration: 2000 });

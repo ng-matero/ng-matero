@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ export interface RepoSearchList {
 
 @Injectable()
 export class TablesRemoteDataService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getList(params = {}): Observable<RepoSearchList> {
     return this.http.get<RepoSearchList>('https://api.github.com/search/repositories', { params });

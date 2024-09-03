@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +14,7 @@ import { BreadcrumbComponent } from '@shared';
   imports: [BreadcrumbComponent, MatIconModule, MatButtonModule, MatCardModule],
 })
 export class IconComponent {
-  constructor(private snackBar: MatSnackBar) {}
+  private snackBar = inject(MatSnackBar);
 
   deleteIcon() {
     this.snackBar.open('Item deleted', '', { duration: 2000 });

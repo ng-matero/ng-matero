@@ -1,5 +1,5 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
@@ -34,6 +34,8 @@ export interface StateGroup {
   ],
 })
 export class AutocompleteComponent implements OnInit {
+  private _formBuilder = inject(FormBuilder);
+
   states = [
     { code: 'AL', name: 'Alabama' },
     { code: 'AK', name: 'Alaska' },
@@ -195,8 +197,6 @@ export class AutocompleteComponent implements OnInit {
     },
   ];
   stateGroupOptions!: Observable<StateGroup[]>;
-
-  constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges.pipe(
