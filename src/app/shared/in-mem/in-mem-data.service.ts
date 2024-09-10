@@ -116,12 +116,6 @@ export class InMemDataService implements InMemoryDbService {
   get(reqInfo: RequestInfo) {
     const { headers, url } = reqInfo;
 
-    if (is(reqInfo, 'sanctum/csrf-cookie')) {
-      const response = { headers, url, status: STATUS.NO_CONTENT, body: {} };
-
-      return reqInfo.utils.createResponse$(() => response);
-    }
-
     if (is(reqInfo, 'me/menu')) {
       return ajax('data/menu.json?_t=' + Date.now()).pipe(
         map((response: any) => {
