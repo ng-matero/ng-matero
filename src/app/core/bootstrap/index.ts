@@ -1,11 +1,17 @@
-import { APP_INITIALIZER } from '@angular/core';
+export * from './menu.service';
+export * from './settings.service';
+export * from './startup.service';
+export * from './preloader.service';
+export * from './translate-lang.service';
 
-import { TranslateLangService } from './bootstrap/translate-lang.service';
+import { APP_INITIALIZER } from '@angular/core';
+import { TranslateLangService } from './translate-lang.service';
+import { StartupService } from './startup.service';
+
 export function TranslateLangServiceFactory(translateLangService: TranslateLangService) {
   return () => translateLangService.load();
 }
 
-import { StartupService } from './bootstrap/startup.service';
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
 }
