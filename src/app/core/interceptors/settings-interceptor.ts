@@ -7,10 +7,10 @@ import { SettingsService } from '@core';
 export class SettingsInterceptor implements HttpInterceptor {
   private settings = inject(SettingsService);
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
     return next.handle(
-      request.clone({
-        headers: request.headers.append('Accept-Language', this.settings.options.language),
+      req.clone({
+        headers: req.headers.append('Accept-Language', this.settings.options.language),
       })
     );
   }

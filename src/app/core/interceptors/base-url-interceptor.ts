@@ -9,10 +9,10 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
   private hasScheme = (url: string) => this.baseUrl && new RegExp('^http(s)?://', 'i').test(url);
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
-    return this.hasScheme(request.url) === false
-      ? next.handle(request.clone({ url: this.prependBaseUrl(request.url) }))
-      : next.handle(request);
+  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
+    return this.hasScheme(req.url) === false
+      ? next.handle(req.clone({ url: this.prependBaseUrl(req.url) }))
+      : next.handle(req);
   }
 
   private prependBaseUrl(url: string) {

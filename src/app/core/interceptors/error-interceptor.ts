@@ -30,10 +30,8 @@ export class ErrorInterceptor implements HttpInterceptor {
     return `${error.status} ${error.statusText}`;
   };
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
-    return next
-      .handle(request)
-      .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));
+  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
+    return next.handle(req).pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));
   }
 
   private handleError(error: HttpErrorResponse) {

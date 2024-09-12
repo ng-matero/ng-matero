@@ -13,9 +13,9 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private hasHttpScheme = (url: string) => new RegExp('^http(s)?://', 'i').test(url);
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
     const handler = () => {
-      if (request.url.includes('/auth/logout')) {
+      if (req.url.includes('/auth/logout')) {
         this.router.navigateByUrl('/auth/login');
       }
 
@@ -24,11 +24,11 @@ export class TokenInterceptor implements HttpInterceptor {
       }
     };
 
-    if (this.tokenService.valid() && this.shouldAppendToken(request.url)) {
+    if (this.tokenService.valid() && this.shouldAppendToken(req.url)) {
       return next
         .handle(
-          request.clone({
-            headers: request.headers.append('Authorization', this.tokenService.getBearerToken()),
+          req.clone({
+            headers: req.headers.append('Authorization', this.tokenService.getBearerToken()),
             withCredentials: true,
           })
         )
@@ -43,7 +43,7 @@ export class TokenInterceptor implements HttpInterceptor {
         );
     }
 
-    return next.handle(request).pipe(tap(() => handler()));
+    return next.handle(req).pipe(tap(() => handler()));
   }
 
   private shouldAppendToken(url: string) {
