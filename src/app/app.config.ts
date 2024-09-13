@@ -18,7 +18,7 @@ import { environment } from '@env/environment';
 import { PaginatorI18nService } from '@shared';
 import { InMemDataService } from '@shared/in-mem/in-mem-data.service';
 import { routes } from './app.routes';
-import { FormlyConfigModule } from './formly-config.module';
+import { FormlyConfigModule } from './formly-config';
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {

@@ -17,7 +17,7 @@ import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@co
 import { environment } from '@env/environment';
 import { PaginatorI18nService } from '@shared';
 import { routes } from './app.routes';
-import { FormlyConfigModule } from './formly-config.module';
+import { FormlyConfigModule } from './formly-config';
 
 import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
