@@ -22,25 +22,25 @@ export function formlyConfigFactory(translate: TranslateService): ConfigOption {
     validationMessages: [
       {
         name: 'required',
-        message: (err, field) => translate.stream('validations.required'),
+        message: (err, field) => translate.stream('validation.required'),
       },
       {
         name: 'min',
-        message: (err, field) => translate.stream('validations.min', { number: field.props?.min }),
+        message: (err, field) => translate.stream('validation.min', { number: field.props?.min }),
       },
       {
         name: 'max',
-        message: (err, field) => translate.stream('validations.max', { number: field.props?.max }),
+        message: (err, field) => translate.stream('validation.max', { number: field.props?.max }),
       },
       {
         name: 'minLength',
         message: (err, field) =>
-          translate.stream('validations.minlength', { number: field.props?.minLength }),
+          translate.stream('validation.min_length', { number: field.props?.minLength }),
       },
       {
         name: 'maxLength',
         message: (err, field) =>
-          translate.stream('validations.maxlength', { number: field.props?.maxLength }),
+          translate.stream('validation.max_length', { number: field.props?.maxLength }),
       },
     ],
   };

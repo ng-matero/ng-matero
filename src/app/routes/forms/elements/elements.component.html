@@ -43,7 +43,7 @@
             <mat-label>Username</mat-label>
             <input matInput placeholder="Simple placeholder" formControlName="username" required>
             @if (reactiveForm1.get('username')?.invalid) {
-              <mat-error>{{'validations.required' | translate}}</mat-error>
+              <mat-error>{{'validation.required' | translate}}</mat-error>
             }
           </mat-form-field>
 
@@ -55,7 +55,7 @@
               <mat-option value="2">female</mat-option>
             </mat-select>
             @if (reactiveForm1.get('gender')?.invalid) {
-              <mat-error>{{'validations.required' | translate}}</mat-error>
+              <mat-error>{{'validation.required' | translate}}</mat-error>
             }
           </mat-form-field>
 
@@ -65,7 +65,7 @@
               required>
             <mat-icon matSuffix>smartphone</mat-icon>
             @if (reactiveForm1.get('mobile')?.invalid) {
-              <mat-error>{{'validations.required' | translate}}</mat-error>
+              <mat-error>{{'validation.required' | translate}}</mat-error>
             }
           </mat-form-field>
 
@@ -134,7 +134,7 @@
                 <input matInput placeholder="Simple placeholder" formControlName="username"
                   required>
                 @if (reactiveForm2.get('username')?.invalid) {
-                  <mat-error>{{'validations.required' | translate}}</mat-error>
+                  <mat-error>{{'validation.required' | translate}}</mat-error>
                 }
               </mat-form-field>
             </div>
@@ -148,7 +148,7 @@
                   <mat-option value="2">female</mat-option>
                 </mat-select>
                 @if (reactiveForm2.get('gender')?.invalid) {
-                  <mat-error>{{'validations.required' | translate}}</mat-error>
+                  <mat-error>{{'validation.required' | translate}}</mat-error>
                 }
               </mat-form-field>
             </div>
@@ -160,7 +160,7 @@
                   formControlName="mobile" required>
                 <mat-icon matSuffix>smartphone</mat-icon>
                 @if (reactiveForm2.get('mobile')?.invalid) {
-                  <mat-error>{{'validations.required' | translate}}</mat-error>
+                  <mat-error>{{'validation.required' | translate}}</mat-error>
                 }
               </mat-form-field>
             </div>

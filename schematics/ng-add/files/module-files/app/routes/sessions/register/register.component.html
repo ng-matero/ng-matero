@@ -14,7 +14,7 @@
           <input matInput formControlName="username" required>
           @if (registerForm.get('username')?.invalid) {
             <mat-error>
-              <span>{{'validations.required' | translate}}</span>
+              <span>{{'validation.required' | translate}}</span>
             </mat-error>
           }
         </mat-form-field>
@@ -24,7 +24,7 @@
           <input matInput type="password" formControlName="password" required>
           @if (registerForm.get('password')?.invalid) {
             <mat-error>
-              <span>{{'validations.required' | translate}}</span>
+              <span>{{'validation.required' | translate}}</span>
             </mat-error>
           }
         </mat-form-field>
@@ -34,13 +34,13 @@
           <input matInput type="password" formControlName="confirmPassword" required>
           @if (registerForm.get('confirmPassword')?.hasError('required')) {
             <mat-error>
-              <span>{{'validations.required' | translate}}</span>
+              <span>{{'validation.required' | translate}}</span>
             </mat-error>
           }
           @if (registerForm.get('confirmPassword')?.hasError('mismatch')) {
             <mat-error
               translate [translateParams]="{value: 'login.password' | translate}">
-              <span>{{'validations.inconsistent'}}</span>
+              <span>{{'validation.inconsistent'}}</span>
             </mat-error>
           }
         </mat-form-field>

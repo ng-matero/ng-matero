@@ -90,9 +90,9 @@ export class FormsElementsComponent implements OnInit, OnDestroy {
 
   getErrorMessage(form: FormGroup<ControlsOf<IProfile>>) {
     return form.get('email')?.hasError('required')
-      ? 'validations.required'
+      ? 'validation.required'
       : form.get('email')?.hasError('email')
-        ? 'validations.invalid_email'
+        ? 'validation.invalid_email'
         : '';
   }
 }
