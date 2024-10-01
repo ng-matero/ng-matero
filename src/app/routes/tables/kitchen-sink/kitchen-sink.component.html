@@ -50,8 +50,7 @@
           [pageIndex]="0"
           [pageSize]="5"
           (sortChange)="changeSort($event)"
-          (selectionChange)="changeSelect($event)">
-</mtx-grid>
+          (selectionChange)="changeSelect($event)" />
 <ng-template #expansionTpl let-row>
   {{row.name}}
 </ng-template>

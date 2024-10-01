@@ -12,8 +12,8 @@
           #birthdayModel="ngModel"
           [max]="maxBirthday"
           required>
-        <mat-datepicker-toggle matSuffix [for]="birthdayPicker"></mat-datepicker-toggle>
-        <mat-datepicker #birthdayPicker startView="year"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="birthdayPicker" />
+        <mat-datepicker #birthdayPicker startView="year" />
         @if (birthdayModel.hasError('required')) {
           <mat-error>Please choose a date.</mat-error>
         }
@@ -34,8 +34,8 @@
           [min]="minPaymentDate"
           required
           aria-label="Payment date">
-        <mat-datepicker-toggle matSuffix [for]="paymentPicker"></mat-datepicker-toggle>
-        <mat-datepicker #paymentPicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="paymentPicker" />
+        <mat-datepicker #paymentPicker />
         @if (paymentDateModel.hasError('required')) {
           <mat-error>
             Please choose a date.
@@ -59,8 +59,8 @@
           [min]="minTripDate"
           [max]="maxTripDate"
           required>
-        <mat-datepicker-toggle matSuffix [for]="departPicker"></mat-datepicker-toggle>
-        <mat-datepicker #departPicker [startAt]="startTripDate"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="departPicker" />
+        <mat-datepicker #departPicker [startAt]="startTripDate" />
         @if (departDateModel.hasError('required')) {
           <mat-error>Please choose a date.</mat-error>
         }
@@ -79,8 +79,8 @@
           #returnDateModel="ngModel"
           [min]="departDate || minTripDate"
           [max]="maxTripDate">
-        <mat-datepicker-toggle matSuffix [for]="returnPicker"></mat-datepicker-toggle>
-        <mat-datepicker #returnPicker [startAt]="startTripDate"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="returnPicker" />
+        <mat-datepicker #returnPicker [startAt]="startTripDate" />
         @if (returnDateModel.hasError('matDatepickerMin') && !departDate) {
           <mat-error>Please choose a later date.</mat-error>
         }
@@ -105,8 +105,8 @@
           [max]="maxAppointmentDate"
           [matDatepickerFilter]="weekdaysOnly"
           required>
-        <mat-datepicker-toggle matSuffix [for]="appointmentPicker"></mat-datepicker-toggle>
-        <mat-datepicker #appointmentPicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="appointmentPicker" />
+        <mat-datepicker #appointmentPicker />
         @if (appointmentDateModel.hasError('required')) {
           <mat-error>Please choose a date.</mat-error>
         }

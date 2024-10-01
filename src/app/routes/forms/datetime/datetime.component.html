@@ -51,9 +51,9 @@
 
         <mat-form-field>
           <mat-label>DateTime Year selector</mat-label>
-          <mtx-datetimepicker-toggle [for]="datetimeYearPicker" matSuffix></mtx-datetimepicker-toggle>
+          <mtx-datetimepicker-toggle [for]="datetimeYearPicker" matSuffix />
           <mtx-datetimepicker #datetimeYearPicker [multiYearSelector]="true" startView="month"
-          [timeInterval]="5"></mtx-datetimepicker>
+            [timeInterval]="5" />
           <input [mtxDatetimepicker]="datetimeYearPicker" [max]="tomorrow" [min]="today"
             autocomplete="false" formControlName="dateTimeYear" matInput required>
           @if (group.get('dateTimeYear')?.errors?.required) {

@@ -17,8 +17,7 @@
     </mat-form-field>
 
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-      (page)="pageEvent = $event">
-    </mat-paginator>
+      (page)="pageEvent = $event" />
 
     @if (pageEvent) {
       <div>

@@ -108,8 +108,8 @@
           <mat-form-field>
             <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
               formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
+            <mat-datepicker-toggle matSuffix [for]="picker2" />
+            <mat-datepicker #picker2 />
             @if (reactiveForm.get('date')?.invalid) {
               <mat-error>Please enter website</mat-error>
             }

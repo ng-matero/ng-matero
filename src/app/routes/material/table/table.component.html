@@ -21,8 +21,8 @@
         <mat-header-cell *cdkHeaderCellDef>Age</mat-header-cell>
         <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
       </ng-container>
-      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-header-row *cdkHeaderRowDef="displayedColumns" />
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;" />
     </mat-table>
   </mat-card-content>
 </mat-card>
@@ -50,8 +50,8 @@
         <mat-header-cell *cdkHeaderCellDef mat-sort-header>Age</mat-header-cell>
         <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
       </ng-container>
-      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-header-row *cdkHeaderRowDef="displayedColumns" />
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;" />
     </mat-table>
   </mat-card-content>
 </mat-card>
@@ -78,14 +78,13 @@
         <mat-header-cell *cdkHeaderCellDef>Age</mat-header-cell>
         <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
       </ng-container>
-      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-header-row *cdkHeaderRowDef="displayedColumns" />
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;" />
     </mat-table>
     <mat-paginator #paginator
                    [length]="6"
                    [pageIndex]="0"
                    [pageSize]="3"
-                   [pageSizeOptions]="[1, 3, 5]">
-    </mat-paginator>
+                   [pageSizeOptions]="[1, 3, 5]" />
   </mat-card-content>
 </mat-card>
