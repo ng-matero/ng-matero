@@ -90,13 +90,7 @@ function updateVersions(cb) {
           'ngx-toastr',
           'photoviewer',
           'screenfull',
-          '@angular-eslint/builder',
-          '@angular-eslint/eslint-plugin',
-          '@angular-eslint/eslint-plugin-template',
-          '@angular-eslint/schematics',
-          '@angular-eslint/template-parser',
-          '@typescript-eslint/eslint-plugin',
-          '@typescript-eslint/parser',
+          'angular-eslint',
           'eslint',
           'parse5',
           'prettier',
@@ -104,6 +98,7 @@ function updateVersions(cb) {
           'stylelint-config-recess-order',
           'stylelint-config-recommended-scss',
           'stylelint-config-standard',
+          'typescript-eslint',
         ].forEach(name => {
           if (!pkg.dependencies[name] && !pkg.devDependencies[name]) {
             cb(`${name} not found!`);

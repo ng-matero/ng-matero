@@ -23,6 +23,7 @@ export function addPackage(host: Tree, pkgverion: string, type = '') {
   const pos = pkgverion.lastIndexOf('@');
   const pkg = pkgverion.substring(0, pos);
   const verstion = pkgverion.substring(pos + 1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   type === 'dev'
     ? addPackageToPackageJson(host, pkg, verstion, 'devDependencies')
     : addPackageToPackageJson(host, pkg, verstion);
