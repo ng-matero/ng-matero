@@ -22,7 +22,7 @@ export class DesignColorsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const colors: { [k: string]: any } = M3_COLORS;
+    const colors: Record<string, any> = M3_COLORS;
     for (const key of Object.keys(colors)) {
       this.colors.push({
         key,

@@ -28,7 +28,7 @@ export class LocalStorageService {
 }
 
 export class MemoryStorageService {
-  private store: { [k: string]: string } = {};
+  private store: Record<string, string> = {};
 
   get(key: string) {
     return JSON.parse(this.store[key] || '{}') || {};

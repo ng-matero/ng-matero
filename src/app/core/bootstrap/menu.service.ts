@@ -99,7 +99,7 @@ export class MenuService {
   }
 
   // Whether routeArr equals realRouteArr (after remove empty route element)
-  private isRouteEqual(routeArr: Array<string>, realRouteArr: Array<string>) {
+  private isRouteEqual(routeArr: string[], realRouteArr: string[]) {
     realRouteArr = this.deepClone(realRouteArr);
     realRouteArr = realRouteArr.filter(r => r !== '');
     return this.isJsonObjEqual(routeArr, realRouteArr);

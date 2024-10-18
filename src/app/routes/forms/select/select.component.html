@@ -80,7 +80,7 @@
       </mat-card-header>
 
       <mat-card-content>
-        <label>Default tags</label>
+        <label for="">Default tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="[]" [addTag]="true" [(ngModel)]="selectedCompany" />
@@ -91,7 +91,7 @@
         </p>
         <mat-divider class="m-y-16" />
 
-        <label>Custom tags</label>
+        <label for="">Custom tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="companies" [addTag]="addTag" [hideSelected]="true" [multiple]="true"
@@ -104,7 +104,7 @@
 
         <mat-divider class="m-y-16" />
 
-        <label>Server side tags</label>
+        <label for="">Server side tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="companies" [addTag]="addTagPromise" [multiple]="true"
@@ -118,7 +118,7 @@
 
         <mat-divider class="m-y-16" />
 
-        <label>Tagging without dropdown. Press enter to add item</label>
+        <label for="">Tagging without dropdown. Press enter to add item</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
           <mtx-select [items]="[]" [addTag]="true" [multiple]="true" [selectOnTab]="true"

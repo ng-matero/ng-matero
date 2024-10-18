@@ -13,7 +13,7 @@ import { MAT_ICONS, PageHeaderComponent } from '@shared';
   imports: [KeyValuePipe, MatCardModule, MatIconModule, PageHeaderComponent],
 })
 export class DesignIconsComponent implements OnInit {
-  icons!: { [key: string]: string[] };
+  icons!: Record<string, string[]>;
 
   ngOnInit() {
     this.icons = MAT_ICONS;

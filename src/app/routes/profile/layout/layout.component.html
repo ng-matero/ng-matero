@@ -23,7 +23,7 @@
           <a mat-list-item routerLink="/profile/settings">
             <mat-icon matListItemIcon>edit</mat-icon> {{ 'edit_profile' | translate }}
           </a>
-          <a mat-list-item (click)="logout()">
+          <a mat-list-item (click)="logout()" (keydown.enter)="logout()" tabindex="0">
             <mat-icon matListItemIcon>exit_to_app</mat-icon> {{ 'logout' | translate }}
           </a>
         </mat-nav-list>

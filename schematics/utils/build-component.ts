@@ -284,7 +284,7 @@ function indentTextContent(text: string, numSpaces: number): string {
  */
 export function buildComponent(
   options: ComponentOptions,
-  additionalFiles: { [key: string]: string } = {}
+  additionalFiles: Record<string, string> = {}
 ): Rule {
   return async (host: Tree, context: FileSystemSchematicContext) => {
     const workspace = await getWorkspace(host);
