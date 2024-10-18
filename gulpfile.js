@@ -15,10 +15,10 @@ function copyDotVscode() {
 // root
 function copyRoot() {
   return src([
-    '.eslintrc.json',
     '.prettierignore',
     '.prettierrc',
     '.stylelintrc',
+    'eslint.config.js',
     'LICENSE',
     'proxy.config.js',
     'tsconfig.json',

@@ -82,7 +82,7 @@ function deleteExsitingFiles(options: Schema) {
 function addScriptsToPackageJson() {
   return (host: Tree) => {
     addScriptToPackageJson(host, 'build:prod', 'ng build --prod');
-    addScriptToPackageJson(host, 'lint', `npm run lint:ts && npm run lint:scss`);
+    addScriptToPackageJson(host, 'lint', `ng lint --fix && npm run lint:scss`);
     addScriptToPackageJson(host, 'lint:ts', `eslint "src/**/*.ts" --fix`);
     addScriptToPackageJson(host, 'lint:scss', `stylelint "src/**/*.scss" --fix`);
   };
