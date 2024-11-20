@@ -1,10 +1,10 @@
-import { KeyValuePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPseudoCheckbox } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { SettingsService } from '@core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-translate',
@@ -14,32 +14,34 @@ import { TranslateService } from '@ngx-translate/core';
     </button>
 
     <mat-menu #menu="matMenu">
-      @for (lang of langs | keyvalue; track lang) {
-        <button mat-menu-item (click)="useLanguage(lang.key)">
-          <span>{{ lang.value }}</span>
+      @for (lang of langs; track lang.value) {
+        <button mat-menu-item (click)="changeLang(lang.value)">
+          <span class="d-flex justify-content-between gap-8">
+            {{ lang.name | translate }}
+            @if (lang.value === options.language) {
+              <mat-pseudo-checkbox state="checked" appearance="minimal" />
+            }
+          </span>
         </button>
       }
     </mat-menu>
   `,
   standalone: true,
-  imports: [KeyValuePipe, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [MatButtonModule, MatIconModule, MatMenuModule, MatPseudoCheckbox, TranslatePipe],
 })
 export class TranslateComponent {
-  private readonly translate = inject(TranslateService);
-  private readonly settings = inject(SettingsService);
+  private settings = inject(SettingsService);
 
-  langs = {
-    'en-US': 'English',
-    'zh-CN': '中文简体',
-    'zh-TW': '中文繁体',
-  };
+  options = this.settings.options;
 
-  constructor() {
-    this.translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
-  }
+  langs = [
+    { value: 'en-US', name: 'en_us' },
+    { value: 'zh-CN', name: 'zh_cn' },
+    { value: 'zh-TW', name: 'zh_tw' },
+    { value: 'auto', name: 'system' },
+  ];
 
-  useLanguage(language: string) {
-    this.translate.use(language);
-    this.settings.setLanguage(language);
+  changeLang(lang: string) {
+    this.settings.setLanguage(lang);
   }
 }

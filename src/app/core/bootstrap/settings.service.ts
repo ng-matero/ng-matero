@@ -1,9 +1,10 @@
+import { Direction } from '@angular/cdk/bidi';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
+import { TranslateService } from '@ngx-translate/core';
 import { AppDirectionality, LocalStorageService } from '@shared';
+import { BehaviorSubject } from 'rxjs';
 import { AppSettings, AppTheme, defaults } from '../settings';
 
 @Injectable({
@@ -12,9 +13,10 @@ import { AppSettings, AppTheme, defaults } from '../settings';
 export class SettingsService {
   private readonly key = 'ng-matero-settings';
 
+  private readonly document = inject(DOCUMENT);
+  private readonly translate = inject(TranslateService);
   private readonly store = inject(LocalStorageService);
   private readonly mediaMatcher = inject(MediaMatcher);
-  private readonly document = inject(DOCUMENT);
   private readonly dir = inject(AppDirectionality);
 
   private readonly notify$ = new BehaviorSubject<Partial<AppSettings>>({});
@@ -23,21 +25,34 @@ export class SettingsService {
     return this.notify$.asObservable();
   }
 
-  private htmlElement!: HTMLHtmlElement;
+  private htmlElement = this.document.querySelector('html')!;
 
-  options: AppSettings;
+  private storedOptions: AppSettings = this.store.get(this.key);
 
-  themeColor: Exclude<AppTheme, 'auto'> = 'light';
+  options: AppSettings = Object.assign(defaults, this.storedOptions);
+
+  languages = ['en-US', 'zh-CN', 'zh-TW'];
 
   constructor() {
-    const storedOptions = this.store.get(this.key);
-    this.options = Object.assign(defaults, storedOptions);
-    this.themeColor = this.getThemeColor();
-    this.htmlElement = this.document.querySelector('html')!;
+    this.translate.addLangs(this.languages);
   }
 
   reset() {
     this.store.remove(this.key);
+  }
+
+  setOptions(options?: Partial<AppSettings>) {
+    this.options = Object.assign(defaults, this.options, options);
+    this.store.set(this.key, this.options);
+    this.notify$.next(this.options);
+  }
+
+  setDirection(dir?: Direction) {
+    if (dir) {
+      this.setOptions({ dir });
+    }
+    this.dir.value = this.options.dir;
+    this.htmlElement.dir = this.options.dir;
   }
 
   getThemeColor() {
@@ -54,30 +69,29 @@ export class SettingsService {
     }
   }
 
-  setOptions(options: AppSettings) {
-    this.options = Object.assign(defaults, options);
-    this.store.set(this.key, this.options);
-    this.notify$.next(this.options);
-  }
-
-  setLanguage(lang: string) {
-    this.options.language = lang;
-    this.store.set(this.key, this.options);
-    this.notify$.next(this.options);
-  }
-
-  setDirection() {
-    this.dir.value = this.options.dir;
-    this.htmlElement.dir = this.dir.value;
-  }
-
-  setTheme() {
-    this.themeColor = this.getThemeColor();
-
-    if (this.themeColor === 'dark') {
+  setTheme(theme?: AppTheme) {
+    if (theme) {
+      this.setOptions({ theme });
+    }
+    if (this.getThemeColor() === 'dark') {
       this.htmlElement.classList.add('theme-dark');
     } else {
       this.htmlElement.classList.remove('theme-dark');
     }
+  }
+
+  getTranslateLang() {
+    if (this.options.language === 'auto') {
+      const browserLang = navigator.language;
+      return this.languages.includes(browserLang) ? browserLang : 'en-US';
+    }
+    return this.options.language;
+  }
+
+  setLanguage(language?: string) {
+    if (language) {
+      this.setOptions({ language });
+    }
+    this.translate.use(this.getTranslateLang());
   }
 }

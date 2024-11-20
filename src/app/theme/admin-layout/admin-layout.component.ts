@@ -55,7 +55,7 @@ export class AdminLayoutComponent implements OnDestroy {
   options = this.settings.options;
 
   get themeColor() {
-    return this.settings.themeColor;
+    return this.settings.getThemeColor();
   }
 
   get isOver() {

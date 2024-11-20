@@ -98,6 +98,10 @@
     "range_page_label_1": "no record",
     "range_page_label_2": "{{startIndex}} - {{endIndex}} of {{length}}"
   },
+  "en_us": "English",
+  "zh_cn": "Simplified Chinese",
+  "zh_tw": "Traditional Chinese",
+  "system": "System",
   "position": "Position",
   "name": "Name",
   "weight": "Weight",
