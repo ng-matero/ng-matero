@@ -11,8 +11,8 @@ import { SharedModule } from '@shared/shared.module';
 import { RoutesModule } from './routes/routes.module';
 import { FormlyConfigModule } from './formly-config';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { ToastrModule } from 'ngx-toastr';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { provideToastr } from 'ngx-toastr';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '@env/environment';
@@ -36,18 +36,18 @@ import { FakeLoginService } from './fake-login.service';
     RoutesModule,
     FormlyConfigModule.forRoot(),
     NgxPermissionsModule.forRoot(),
-    ToastrModule.forRoot(),
-    TranslateModule.forRoot({
+  ],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),<% if(animations!='excluded') { %>
+    provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
+    provideToastr(),
+    provideTranslateService({
       loader: {
         provide: TranslateLoader,
         useFactory: TranslateHttpLoaderFactory,
         deps: [HttpClient],
       },
     }),
-  ],
-  providers: [
-    provideHttpClient(withInterceptorsFromDi()),<% if(animations!='excluded') { %>
-    provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
     { provide: BASE_URL, useValue: environment.baseUrl },
     // ==================================================
     // 👇 ❌ Remove it in the realworld application
