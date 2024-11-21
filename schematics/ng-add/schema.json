@@ -77,7 +77,7 @@
       "type": "string",
       "default": "ltr",
       "x-prompt": {
-        "message": "Choose a prebuilt direction option:",
+        "message": "Choose a default direction:",
         "type": "list",
         "items": [
           {
@@ -87,6 +87,33 @@
           {
             "value": "rtl",
             "label": "RTL"
+          }
+        ]
+      }
+    },
+    "language": {
+      "description": "The language to apply",
+      "type": "string",
+      "default": "auto",
+      "x-prompt": {
+        "message": "Choose a default language:",
+        "type": "list",
+        "items": [
+          {
+            "value": "auto",
+            "label": "System"
+          },
+          {
+            "value": "en-US",
+            "label": "English (en-US)"
+          },
+          {
+            "value": "zh-CN",
+            "label": "简体中文 (zh-CN)"
+          },
+          {
+            "value": "zh-TW",
+            "label": "繁体中文 (zh-TW)"
           }
         ]
       }

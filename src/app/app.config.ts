@@ -4,6 +4,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
+import { MAT_CARD_CONFIG } from '@angular/material/card';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { provideMomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
@@ -62,6 +63,12 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MAT_DATE_LOCALE,
       useFactory: () => navigator.language, // <= This will be overrided by runtime setting
+    },
+    {
+      provide: MAT_CARD_CONFIG,
+      useValue: {
+        appearance: 'outlined',
+      },
     },
     provideMomentDateAdapter({
       parse: {
