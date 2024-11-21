@@ -29,6 +29,7 @@ module.exports = tseslint.config(
       'semi': ['warn', 'always'],
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@angular-eslint/no-empty-lifecycle-method': 'off',
     },
