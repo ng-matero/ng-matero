@@ -7,8 +7,7 @@ import {
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { provideToastr, ToastrService } from 'ngx-toastr';
 import { ErrorInterceptor } from './error-interceptor';
 
 describe('ErrorInterceptor', () => {
@@ -32,11 +31,11 @@ describe('ErrorInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, ToastrModule.forRoot()],
       providers: [
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
+        provideToastr(),
       ],
     });
 

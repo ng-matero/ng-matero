@@ -17,7 +17,6 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
         provideHttpClient(withInterceptorsFromDi()),

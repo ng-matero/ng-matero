@@ -2,8 +2,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { TestBed, inject } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, provideRouter } from '@angular/router';
 import { AuthService, TokenService, authGuard } from '@core/authentication';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 
@@ -24,17 +23,15 @@ describe('authGuard function unit test', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule.withRoutes([
-          { path: 'dashboard', component: DummyComponent, canActivate: [authGuard] },
-          { path: 'auth/login', component: DummyComponent },
-        ]),
-        DummyComponent,
-      ],
+      imports: [DummyComponent],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
+        provideRouter([
+          { path: 'dashboard', component: DummyComponent, canActivate: [authGuard] },
+          { path: 'auth/login', component: DummyComponent },
+        ]),
       ],
     });
     TestBed.createComponent(DummyComponent);

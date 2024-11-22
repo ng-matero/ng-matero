@@ -21,7 +21,6 @@ describe('BaseUrlInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [],
       providers: [
         { provide: BASE_URL, useValue: null },
         { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },

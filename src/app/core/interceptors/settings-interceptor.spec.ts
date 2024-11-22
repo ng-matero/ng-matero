@@ -7,6 +7,7 @@ import {
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { SettingsService } from '@core/bootstrap/settings.service';
+import { provideTranslateService } from '@ngx-translate/core';
 import { SettingsInterceptor } from './settings-interceptor';
 
 describe('SettingsInterceptor', () => {
@@ -21,6 +22,7 @@ describe('SettingsInterceptor', () => {
         { provide: HTTP_INTERCEPTORS, useClass: SettingsInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
+        provideTranslateService(),
       ],
     });
 
