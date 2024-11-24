@@ -98,6 +98,10 @@
     "range_page_label_1": "無數據",
     "range_page_label_2": "第 {{startIndex}} - {{endIndex}} 行，共 {{length}} 行"
   },
+  "en_us": "英語",
+  "zh_cn": "簡體中文",
+  "zh_tw": "繁體中文",
+  "system": "跟隨系統",
   "position": "序號",
   "name": "姓名",
   "weight": "體重",
