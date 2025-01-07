@@ -1,5 +1,9 @@
-<div class="customizer-handle" matTooltip="Drag me around"
-     cdkDrag (cdkDragStarted)="onDragStart($event)">
+<div
+  class="customizer-handle"
+  matTooltip="Drag me around"
+  cdkDrag
+  (cdkDragStarted)="onDragStart($event)"
+>
   <button mat-fab (click)="openPanel(customizerPanel)">
     <mat-icon aria-label="Example icon-button with a settings icon">settings</mat-icon>
   </button>
@@ -23,12 +27,17 @@
     </div>
     <h3 class="f-w-400">Header</h3>
     <div class="m-l-8">
-      <mat-slide-toggle formControlName="showHeader"
-                        [disableControl]="isHeaderPosAbove || isNavPosTop">Visible</mat-slide-toggle>
+      <mat-slide-toggle
+        formControlName="showHeader"
+        [disableControl]="isHeaderPosAbove || isNavPosTop"
+      >
+        Visible
+      </mat-slide-toggle>
       <h4 class="f-w-400">Position</h4>
       <mat-radio-group formControlName="headerPos">
-        <mat-radio-button class="m-x-4" value="above"
-                          [disabled]="!isShowHeader || isNavPosTop">Above</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="above" [disabled]="!isShowHeader || isNavPosTop">
+          Above
+        </mat-radio-button>
         <mat-radio-button class="m-x-4" value="fixed">Fixed</mat-radio-button>
         <mat-radio-button class="m-x-4" value="static">Static</mat-radio-button>
       </mat-radio-group>
@@ -40,8 +49,9 @@
       <h4 class="f-w-400">Position</h4>
       <mat-radio-group formControlName="navPos">
         <mat-radio-button class="m-x-4" value="side">Side</mat-radio-button>
-        <mat-radio-button class="m-x-4" value="top"
-                          [disabled]="isHeaderPosAbove || !isShowHeader">Top</mat-radio-button>
+        <mat-radio-button class="m-x-4" value="top" [disabled]="isHeaderPosAbove || !isShowHeader">
+          Top
+        </mat-radio-button>
       </mat-radio-group>
     </div>
     <mat-divider inset class="m-x-0 m-y-24" />

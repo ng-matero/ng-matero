@@ -3,7 +3,7 @@
 <mat-card class="example-container">
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Input">
+      <input matInput placeholder="Input" />
     </mat-form-field>
 
     <mat-form-field>
@@ -23,7 +23,7 @@
     <form [formGroup]="options">
       <mat-checkbox formControlName="hideRequired">Hide required marker</mat-checkbox>
       <div>
-        <label for="">Float label: </label>
+        <label for="">Float label:</label>
         <mat-radio-group formControlName="floatLabel">
           <mat-radio-button value="auto">Auto</mat-radio-button>
           <mat-radio-button value="always">Always</mat-radio-button>
@@ -32,24 +32,30 @@
       </div>
     </form>
 
-    <mat-form-field [hideRequiredMarker]="options.value.hideRequired"
-                    [floatLabel]="options.value.floatLabel">
-      <input matInput placeholder="Simple placeholder" required>
+    <mat-form-field
+      [hideRequiredMarker]="options.value.hideRequired"
+      [floatLabel]="options.value.floatLabel"
+    >
+      <input matInput placeholder="Simple placeholder" required />
     </mat-form-field>
 
     <mat-form-field [floatLabel]="options.value.floatLabel">
       <mat-label>Both a label and a placeholder</mat-label>
-      <input matInput placeholder="Simple placeholder">
+      <input matInput placeholder="Simple placeholder" />
     </mat-form-field>
 
-    <mat-form-field [hideRequiredMarker]="options.value.hideRequired"
-                    [floatLabel]="options.value.floatLabel">
+    <mat-form-field
+      [hideRequiredMarker]="options.value.hideRequired"
+      [floatLabel]="options.value.floatLabel"
+    >
       <mat-select required>
         <mat-option>-- None --</mat-option>
         <mat-option value="option">Option</mat-option>
       </mat-select>
       <mat-label>
-        <mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i>
+        <mat-icon>favorite</mat-icon>
+        <b>Fancy</b>
+        <i>label</i>
       </mat-label>
     </mat-form-field>
   </mat-card-content>
@@ -60,7 +66,7 @@
     <p>
       <mat-form-field>
         <mat-label>Standard form field</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Placeholder" />
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>
@@ -68,7 +74,7 @@
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Fill form field</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Placeholder" />
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>
@@ -76,7 +82,7 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Outline form field</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="Placeholder" />
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>

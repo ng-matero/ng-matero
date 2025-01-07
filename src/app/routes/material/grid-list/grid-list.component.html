@@ -6,8 +6,14 @@
       <h2>Types of coffee (fix-height grid-list)</h2>
       <mat-grid-list role="list" [cols]="fixedCols" [rowHeight]="fixedRowHeight">
         @for (tile of tiles; track tile) {
-          <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows"
-            [style.background]="tile.color" role="listitem">{{tile.text}}</mat-grid-tile>
+          <mat-grid-tile
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            [style.background]="tile.color"
+            role="listitem"
+          >
+            {{ tile.text }}
+          </mat-grid-tile>
         }
       </mat-grid-list>
     </section>
@@ -16,17 +22,26 @@
       <h2>Types of coffee (ratio-height grid list)</h2>
       <mat-grid-list role="list" cols="2" [rowHeight]="ratio" gutterSize="4px">
         @for (tile of tiles; track tile) {
-          <mat-grid-tile [style.background]="'lightblue'" role="listitem">{{tile.text}}</mat-grid-tile>
+          <mat-grid-tile [style.background]="'lightblue'" role="listitem">
+            {{ tile.text }}
+          </mat-grid-tile>
         }
       </mat-grid-list>
     </section>
 
     <section>
       <h2>Types of coffee (fit-height grid list)</h2>
-      <mat-grid-list role="list" cols="2" rowHeight="fit" [gutterSize]="ratioGutter"
-        [style.height]="fitListHeight">
+      <mat-grid-list
+        role="list"
+        cols="2"
+        rowHeight="fit"
+        [gutterSize]="ratioGutter"
+        [style.height]="fitListHeight"
+      >
         @for (tile of tiles; track tile) {
-          <mat-grid-tile role="listitem" [style.background]="'#F1EBBA'">{{tile.text}}</mat-grid-tile>
+          <mat-grid-tile role="listitem" [style.background]="'#F1EBBA'">
+            {{ tile.text }}
+          </mat-grid-tile>
         }
       </mat-grid-list>
     </section>
@@ -36,11 +51,13 @@
       <mat-grid-list role="list" cols="3" rowHeight="200px">
         @for (dog of dogs; track dog) {
           <mat-grid-tile role="listitem">
-            <mat-grid-tile-header>{{dog.name}}</mat-grid-tile-header>
-            <img alt="Photo of {{dog.name}}"
-              src="https://material.angular.io/assets/img/examples/{{dog.name}}.jpg">
+            <mat-grid-tile-header>{{ dog.name }}</mat-grid-tile-header>
+            <img
+              alt="Photo of {{ dog.name }}"
+              src="https://material.angular.io/assets/img/examples/{{ dog.name }}.jpg"
+            />
             <mat-grid-tile-footer>
-              <span mat-line>Human: {{dog.human}}</span>
+              <span mat-line>Human: {{ dog.human }}</span>
             </mat-grid-tile-footer>
           </mat-grid-tile>
         }

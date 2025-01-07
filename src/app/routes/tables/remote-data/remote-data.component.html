@@ -2,7 +2,7 @@
 
 <form class="m-x--4">
   <mat-form-field class="m-x-4" appearance="outline">
-    <input matInput [(ngModel)]="query.q" name="q" placeholder="Query String">
+    <input matInput [(ngModel)]="query.q" name="q" placeholder="Query String" />
   </mat-form-field>
 
   <mat-form-field class="m-x-4" appearance="outline">
@@ -26,12 +26,14 @@
   <button class="m-x-4" mat-button color="warn" (click)="reset()">Reset</button>
 </form>
 
-<mtx-grid [data]="list"
-          [columns]="columns"
-          [length]="total"
-          [loading]="isLoading"
-          [pageOnFront]="false"
-          [pageIndex]="query.page"
-          [pageSize]="query.per_page"
-          [pageSizeOptions]="[5,10,20]"
-          (page)="getNextPage($event)" />
+<mtx-grid
+  [data]="list"
+  [columns]="columns"
+  [length]="total"
+  [loading]="isLoading"
+  [pageOnFront]="false"
+  [pageIndex]="query.page"
+  [pageSize]="query.per_page"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="getNextPage($event)"
+/>

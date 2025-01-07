@@ -4,7 +4,9 @@
   <mat-card-content>
     <h2>Bottom sheet demo</h2>
 
-    <button mat-raised-button color="primary" (click)="openComponent()">Open component sheet</button>
+    <button mat-raised-button color="primary" (click)="openComponent()">
+      Open component sheet
+    </button>
     <button mat-raised-button color="accent" (click)="openTemplate()">Open template sheet</button>
 
     <h2>Options</h2>
@@ -19,7 +21,7 @@
 
     <p>
       <mat-form-field>
-        <input matInput [(ngModel)]="config.backdropClass" placeholder="Backdrop class">
+        <input matInput [(ngModel)]="config.backdropClass" placeholder="Backdrop class" />
       </mat-form-field>
     </p>
 
@@ -31,7 +33,6 @@
         </mat-select>
       </mat-form-field>
     </p>
-
   </mat-card-content>
 </mat-card>
 

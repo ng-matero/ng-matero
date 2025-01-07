@@ -10,19 +10,19 @@
           <div>
             <label class="demo-color-label" for="r-slider">Red</label>
             <mat-slider aria-label="Red" id="r-slider" min="0" max="255" discrete>
-              <input matSliderThumb [(ngModel)]="red">
+              <input matSliderThumb [(ngModel)]="red" />
             </mat-slider>
           </div>
           <div>
             <label class="demo-color-label" for="g-slider">Green</label>
             <mat-slider aria-label="Green" id="g-slider" min="0" max="255" discrete>
-              <input matSliderThumb [(ngModel)]="green">
+              <input matSliderThumb [(ngModel)]="green" />
             </mat-slider>
           </div>
           <div>
             <label class="demo-color-label" for="b-slider">Blue</label>
             <mat-slider aria-label="Blue" id="b-slider" min="0" max="255" discrete>
-              <input matSliderThumb [(ngModel)]="blue">
+              <input matSliderThumb [(ngModel)]="blue" />
             </mat-slider>
           </div>
         </div>
@@ -34,15 +34,21 @@
       <h2>Discrete slider (e.g. rate a product)</h2>
       <p>Please rate our product on a scale of 1 (not satisfied) to 5 (extremely satisfied).</p>
       <mat-slider min="1" max="5" step="1" showTickMarks aria-label="Rating" discrete>
-        <input matSliderThumb>
+        <input matSliderThumb />
       </mat-slider>
     </section>
 
     <section>
       <h2>Slider with custom thumb label formatting.</h2>
-      <mat-slider min="0" max="100000" step="1000" showTickMarks discrete
-                  [displayWith]="formatLabel">
-        <input matSliderThumb>
+      <mat-slider
+        min="0"
+        max="100000"
+        step="1000"
+        showTickMarks
+        discrete
+        [displayWith]="formatLabel"
+      >
+        <input matSliderThumb />
       </mat-slider>
     </section>
 
@@ -50,8 +56,8 @@
       <h2>Range slider</h2>
       <div class="demo-volume-container">
         <mat-slider min="200" max="500">
-          <input value="300" matSliderStartThumb>
-          <input value="400" matSliderEndThumb>
+          <input value="300" matSliderStartThumb />
+          <input value="400" matSliderEndThumb />
         </mat-slider>
       </div>
     </section>

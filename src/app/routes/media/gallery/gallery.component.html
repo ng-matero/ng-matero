@@ -2,21 +2,24 @@
 
 <p>
   The media pictures are powered by
-  <a href="https://github.com/nzbin/photoviewer" target="_blank">PhotoViewer</a>,
-  you can click the picture to enlarge it.
+  <a href="https://github.com/nzbin/photoviewer" target="_blank">PhotoViewer</a>
+  , you can click the picture to enlarge it.
 </p>
 
 <mat-grid-list cols="4" rowHeight="1:1">
   @for (image of images; track image; let i = $index) {
     <mat-grid-tile>
       <mat-grid-tile-header>
-        <span matLine>Gallery Image: {{ i+1 }}</span>
+        <span matLine>Gallery Image: {{ i + 1 }}</span>
       </mat-grid-tile-header>
-      <img class="w-full h-full object-cover cursor-pointer"
+      <img
+        class="w-full h-full object-cover cursor-pointer"
         mtxPhotoviewer
         [mtxPhotoviewerItems]="images"
         [mtxPhotoviewerOptions]="{ index: i }"
-        [src]="image.src" alt="Gallery Image {{ i+1 }}" />
+        [src]="image.src"
+        alt="Gallery Image {{ i + 1 }}"
+      />
     </mat-grid-tile>
   }
 </mat-grid-list>

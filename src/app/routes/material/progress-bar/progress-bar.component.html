@@ -4,14 +4,23 @@
   <mat-card-content>
     <section>
       <h2>Survey progress (Determinate progress bar)</h2>
-      <mat-progress-bar mode="determinate" [value]="surveyProgress" color="primary"
-                        aria-label="Survey progress" />
+      <mat-progress-bar
+        mode="determinate"
+        [value]="surveyProgress"
+        color="primary"
+        aria-label="Survey progress"
+      />
     </section>
 
     <section>
-      <h2>Video progress (Progress bar with buffer) </h2>
-      <mat-progress-bar [value]="videoPlayValue" [bufferValue]="videoBufferValue" mode="buffer"
-                        color="primary" aria-label="Video progress" />
+      <h2>Video progress (Progress bar with buffer)</h2>
+      <mat-progress-bar
+        [value]="videoPlayValue"
+        [bufferValue]="videoBufferValue"
+        mode="buffer"
+        color="primary"
+        aria-label="Video progress"
+      />
     </section>
 
     <section>

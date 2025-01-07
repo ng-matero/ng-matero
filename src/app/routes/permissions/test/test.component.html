@@ -10,24 +10,23 @@
     </p>
 
     <ng-template permissions [ngxPermissionsOnly]="['admin']">
-      <p class="bg-green-50 text-white">
-        I should see it only admin
-      </p>
+      <p class="bg-green-50 text-white">I should see it only admin</p>
     </ng-template>
 
     <ng-template [ngxPermissionsOnly]="['admin']" [ngxPermissionsExcept]="'hhhhh'">
-      <p class="bg-green-50 text-white">
-        Usage on both only and except I should see it only admin
-      </p>
+      <p class="bg-green-50 text-white">Usage on both only and except I should see it only admin</p>
     </ng-template>
 
     <ng-template permissions [ngxPermissionsOnly]="['guest']">
       <p class="bg-purple-50 text-white">I will see it only guest</p>
     </ng-template>
 
-    <ng-template permissions [ngxPermissionsExcept]="['adminnnnn']"
-                 (permissionsAuthorized)="authorized()"
-                 (permissionsUnauthorized)="unAuthorized()">
+    <ng-template
+      permissions
+      [ngxPermissionsExcept]="['adminnnnn']"
+      (permissionsAuthorized)="authorized()"
+      (permissionsUnauthorized)="unAuthorized()"
+    >
       <p class="bg-orange-50 text-white">I will see it except adminnnnn</p>
     </ng-template>
 
@@ -35,13 +34,9 @@
       <p class="bg-azure-50 text-white">I should see it except admin</p>
     </ng-template>
 
-    <div *ngxPermissionsOnly="['admin']; else a; then b">
-      Testing template
-    </div>
+    <div *ngxPermissionsOnly="['admin']; else a; then: b">Testing template</div>
 
-    <div *ngxPermissionsExcept="['admin']; else a; then b">
-      Testing template
-    </div>
+    <div *ngxPermissionsExcept="['admin']; else a; then: b">Testing template</div>
 
     <ng-template #a>
       <p class="bg-azure-30 text-light">else block</p>
@@ -51,7 +46,8 @@
     </ng-template>
 
     <p>
-      Compared permission: <code>{{comparedPermission | json}}</code>
+      Compared permission:
+      <code>{{ comparedPermission | json }}</code>
     </p>
 
     <div>
@@ -71,8 +67,8 @@
     </div>
 
     <p>
-      Your current permissions: <code>{{getPermissions() | json}}</code>
+      Your current permissions:
+      <code>{{ getPermissions() | json }}</code>
     </p>
-
   </mat-card-content>
 </mat-card>

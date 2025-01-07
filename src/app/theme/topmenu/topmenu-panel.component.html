@@ -2,36 +2,49 @@
   @for (item of items; track item; let index = $index) {
     <ng-template
       [ngxPermissionsOnly]="item.permissions?.only!"
-      [ngxPermissionsExcept]="item.permissions?.except!">
+      [ngxPermissionsExcept]="item.permissions?.except!"
+    >
       @if (item.type === 'link') {
-        <a mat-menu-item
+        <a
+          mat-menu-item
           [routerLink]="buildRoute(parentRoute.concat([item.route]))"
-          routerLinkActive #rla="routerLinkActive" [class.active]="rla.isActive"
-          (click)="onRouterLinkClick(rla)">{{item.name | translate}}</a>
+          routerLinkActive
+          #rla="routerLinkActive"
+          [class.active]="rla.isActive"
+          (click)="onRouterLinkClick(rla)"
+        >
+          {{ item.name | translate }}
+        </a>
       }
       @if (item.type === 'extLink') {
         <a mat-menu-item [href]="item.route">
-          <span class="menu-name">{{item.name | translate}}</span>
+          <span class="menu-name">{{ item.name | translate }}</span>
           <mat-icon>launch</mat-icon>
         </a>
       }
       @if (item.type === 'extTabLink') {
         <a mat-menu-item [href]="item.route" target="_blank">
-          <span class="menu-name">{{item.name | translate}}</span>
+          <span class="menu-name">{{ item.name | translate }}</span>
           <mat-icon>launch</mat-icon>
         </a>
       }
       @if (item.type === 'sub') {
-        <button mat-menu-item [matMenuTriggerFor]="submenu.menuPanel"
-          routerLinkActive #rla="routerLinkActive"
-          [class.active]="rla.isActive || menuStates[index].active">{{item.name | translate}}
+        <button
+          mat-menu-item
+          [matMenuTriggerFor]="submenu.menuPanel"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [class.active]="rla.isActive || menuStates[index].active"
+        >
+          {{ item.name | translate }}
 
-          <app-topmenu-panel #submenu
+          <app-topmenu-panel
+            #submenu
             [items]="item.children!"
             [parentRoute]="parentRoute.concat([item.route])"
             [level]="level + 1"
-            (routeChange)="onRouteChange($event, index)" />
-
+            (routeChange)="onRouteChange($event, index)"
+          />
         </button>
       }
     </ng-template>

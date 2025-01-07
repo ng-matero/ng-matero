@@ -3,9 +3,13 @@
 <div class="m-b-16">
   The following examples use the
   <a href="https://ng-matero.github.io/extensions/components/select" target="_blank">
-    <code>select</code></a> component of
-  <a href="https://github.com/ng-matero/extensions" target="_blank">Material Extensions</a>,
-  it is a Material form field wrapper of <code>ng-select</code>.
+    <code>select</code>
+  </a>
+  component of
+  <a href="https://github.com/ng-matero/extensions" target="_blank">Material Extensions</a>
+  , it is a Material form field wrapper of
+  <code>ng-select</code>
+  .
 </div>
 
 <div class="row">
@@ -18,25 +22,34 @@
       <mat-card-content>
         <p class="m-t-0">
           Most common case is showing data from backend API and with mtx-select this is extremely
-          simple since you can bind directly to observable when using angular <b> | async</b> pipe.
+          simple since you can bind directly to observable when using angular
+          <b>| async</b>
+          pipe.
         </p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
-          <mtx-select [items]="(people$ | async)!" bindLabel="name" bindValue="id" autofocus
-            [(ngModel)]="selectedPersonId" />
+          <mtx-select
+            [items]="(people$ | async)!"
+            bindLabel="name"
+            bindValue="id"
+            autofocus
+            [(ngModel)]="selectedPersonId"
+          />
         </mat-form-field>
-        Selected: {{selectedPersonId}}
+        Selected: {{ selectedPersonId }}
         <mat-divider class="m-y-16" />
 
-        <p>
-          You can also set array of objects as items input.
-        </p>
+        <p>You can also set array of objects as items input.</p>
         <mat-form-field class="w-full">
           <mat-label>select person</mat-label>
-          <mtx-select [items]="people" bindLabel="name" bindValue="id"
-            [(ngModel)]="selectedPersonId2" />
+          <mtx-select
+            [items]="people"
+            bindLabel="name"
+            bindValue="id"
+            [(ngModel)]="selectedPersonId2"
+          />
         </mat-form-field>
-        Selected: {{selectedPersonId2}}
+        Selected: {{ selectedPersonId2 }}
         <mat-divider class="m-y-16" />
 
         <p>
@@ -47,12 +60,14 @@
           <mat-label>select person</mat-label>
           <mtx-select [items]="simpleItems" [(ngModel)]="selectedSimpleItem" />
         </mat-form-field>
-        Selected: {{selectedSimpleItem | json}}
+        Selected: {{ selectedSimpleItem | json }}
         <mat-divider class="m-y-16" />
 
         <p>
           If you have simple use case, you can omit items array and bind options directly in html
-          using <b>ng-option</b> component.
+          using
+          <b>ng-option</b>
+          component.
         </p>
         <button class="m-b-8" type="button" mat-flat-button (click)="toggleDisabled()">
           Toggle option[1] disabled
@@ -62,13 +77,13 @@
           <mat-label>Select car</mat-label>
           <mtx-select [(ngModel)]="selectedCarId">
             @for (car of cars; track car) {
-              <mtx-option [value]="car.id" [disabled]="car.disabled">{{car.name}}</mtx-option>
+              <mtx-option [value]="car.id" [disabled]="car.disabled">{{ car.name }}</mtx-option>
             }
             <mtx-option [value]="'custom'">Custom</mtx-option>
           </mtx-select>
         </mat-form-field>
 
-        Selected car ID: {{selectedCarId | json}}
+        Selected car ID: {{ selectedCarId | json }}
       </mat-card-content>
     </mat-card>
   </div>
@@ -86,32 +101,40 @@
           <mtx-select [items]="[]" [addTag]="true" [(ngModel)]="selectedCompany" />
         </mat-form-field>
 
-        <p>
-          Selected value: {{selectedCompany | json}}
-        </p>
+        <p>Selected value: {{ selectedCompany | json }}</p>
         <mat-divider class="m-y-16" />
 
         <label for="">Custom tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="companies" [addTag]="addTag" [hideSelected]="true" [multiple]="true"
-            bindLabel="name" [(ngModel)]="selectedCompanyCustom" />
+          <mtx-select
+            [items]="companies"
+            [addTag]="addTag"
+            [hideSelected]="true"
+            [multiple]="true"
+            bindLabel="name"
+            [(ngModel)]="selectedCompanyCustom"
+          />
         </mat-form-field>
 
-        <p>
-          Selected value: {{selectedCompanyCustom | json}}
-        </p>
+        <p>Selected value: {{ selectedCompanyCustom | json }}</p>
 
         <mat-divider class="m-y-16" />
 
         <label for="">Server side tags</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="companies" [addTag]="addTagPromise" [multiple]="true"
-            bindLabel="name" [loading]="loading"
-            [(ngModel)]="selectedCompanyCustomPromise">
+          <mtx-select
+            [items]="companies"
+            [addTag]="addTagPromise"
+            [multiple]="true"
+            bindLabel="name"
+            [loading]="loading"
+            [(ngModel)]="selectedCompanyCustomPromise"
+          >
             <ng-template ng-tag-tmp let-search="searchTerm">
-              <b>create new</b>: {{search}}
+              <b>create new</b>
+              : {{ search }}
             </ng-template>
           </mtx-select>
         </mat-form-field>
@@ -121,10 +144,14 @@
         <label for="">Tagging without dropdown. Press enter to add item</label>
         <mat-form-field class="w-full">
           <mat-label>Select item</mat-label>
-          <mtx-select [items]="[]" [addTag]="true" [multiple]="true" [selectOnTab]="true"
-            [isOpen]="false" />
+          <mtx-select
+            [items]="[]"
+            [addTag]="true"
+            [multiple]="true"
+            [selectOnTab]="true"
+            [isOpen]="false"
+          />
         </mat-form-field>
-
       </mat-card-content>
     </mat-card>
   </div>

@@ -6,23 +6,25 @@
     <mat-card-subtitle>Shows name, color and age data.</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-table aria-readonly="true"
-               [dataSource]="basicDataSource"
-               aria-label="Users favorite colors and age">
+    <mat-table
+      aria-readonly="true"
+      [dataSource]="basicDataSource"
+      aria-label="Users favorite colors and age"
+    >
       <ng-container cdkColumnDef="name">
         <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="color">
         <mat-header-cell *cdkHeaderCellDef>Color</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.color}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.color }}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="age">
         <mat-header-cell *cdkHeaderCellDef>Age</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.age }}</mat-cell>
       </ng-container>
       <mat-header-row *cdkHeaderRowDef="displayedColumns" />
-      <mat-row *cdkRowDef="let row; columns: displayedColumns;" />
+      <mat-row *cdkRowDef="let row; columns: displayedColumns" />
     </mat-table>
   </mat-card-content>
 </mat-card>
@@ -33,25 +35,28 @@
     <mat-card-subtitle>Shows name, color and age data. Sorted ascending by age.</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-table [dataSource]="sortDataSource"
-               aria-label="Users favorite colors and age"
-               aria-readonly="true"
-               matSort matSortActive="age"
-               matSortDirection="asc">
+    <mat-table
+      [dataSource]="sortDataSource"
+      aria-label="Users favorite colors and age"
+      aria-readonly="true"
+      matSort
+      matSortActive="age"
+      matSortDirection="asc"
+    >
       <ng-container cdkColumnDef="name">
         <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="color">
         <mat-header-cell *cdkHeaderCellDef>Color</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.color}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.color }}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="age">
         <mat-header-cell *cdkHeaderCellDef mat-sort-header>Age</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.age }}</mat-cell>
       </ng-container>
       <mat-header-row *cdkHeaderRowDef="displayedColumns" />
-      <mat-row *cdkRowDef="let row; columns: displayedColumns;" />
+      <mat-row *cdkRowDef="let row; columns: displayedColumns" />
     </mat-table>
   </mat-card-content>
 </mat-card>
@@ -59,32 +64,37 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Paginated Table</mat-card-title>
-    <mat-card-subtitle>Shows name, color and age data. Shows only first 5 until
-      paginated.</mat-card-subtitle>
+    <mat-card-subtitle>
+      Shows name, color and age data. Shows only first 5 until paginated.
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-table [dataSource]="paginatedDataSource"
-               aria-readonly="true"
-               aria-label="Users favorite colors and age">
+    <mat-table
+      [dataSource]="paginatedDataSource"
+      aria-readonly="true"
+      aria-label="Users favorite colors and age"
+    >
       <ng-container cdkColumnDef="name">
         <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.name}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.name }}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="color">
         <mat-header-cell *cdkHeaderCellDef>Color</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.color}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.color }}</mat-cell>
       </ng-container>
       <ng-container cdkColumnDef="age">
         <mat-header-cell *cdkHeaderCellDef>Age</mat-header-cell>
-        <mat-cell *cdkCellDef="let row;">{{row.age}}</mat-cell>
+        <mat-cell *cdkCellDef="let row">{{ row.age }}</mat-cell>
       </ng-container>
       <mat-header-row *cdkHeaderRowDef="displayedColumns" />
-      <mat-row *cdkRowDef="let row; columns: displayedColumns;" />
+      <mat-row *cdkRowDef="let row; columns: displayedColumns" />
     </mat-table>
-    <mat-paginator #paginator
-                   [length]="6"
-                   [pageIndex]="0"
-                   [pageSize]="3"
-                   [pageSizeOptions]="[1, 3, 5]" />
+    <mat-paginator
+      #paginator
+      [length]="6"
+      [pageIndex]="0"
+      [pageSize]="3"
+      [pageSizeOptions]="[1, 3, 5]"
+    />
   </mat-card-content>
 </mat-card>

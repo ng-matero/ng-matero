@@ -11,18 +11,20 @@ import { FieldType } from '@ngx-formly/material/form-field';
  */
 @Component({
   selector: 'formly-field-combobox',
-  template: `<mtx-select
-    #select
-    [formControl]="formControl"
-    [items]="props.options | toObservable | async"
-    [bindLabel]="bindLabel"
-    [bindValue]="bindValue!"
-    [multiple]="props.multiple"
-    [placeholder]="props.placeholder!"
-    [required]="props.required!"
-    [closeOnSelect]="!props.multiple"
-    [compareWith]="props.compareWith"
-  />`,
+  template: `
+    <mtx-select
+      #select
+      [formControl]="formControl"
+      [items]="props.options | toObservable | async"
+      [bindLabel]="bindLabel"
+      [bindValue]="bindValue!"
+      [multiple]="props.multiple"
+      [placeholder]="props.placeholder!"
+      [required]="props.required!"
+      [closeOnSelect]="!props.multiple"
+      [compareWith]="props.compareWith"
+    />
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [AsyncPipe, ReactiveFormsModule, MtxSelectModule, MtxPipesModule],
 })

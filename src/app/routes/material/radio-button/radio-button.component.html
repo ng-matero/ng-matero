@@ -6,7 +6,7 @@
       <h2>Radio buttons in group</h2>
       <mat-radio-group name="seasons" [(ngModel)]="favoriteSeason" aria-label="Seasons">
         @for (season of seasonOptions; track season) {
-          <mat-radio-button [value]="season">{{season}}</mat-radio-button>
+          <mat-radio-button [value]="season">{{ season }}</mat-radio-button>
         }
       </mat-radio-group>
     </section>
@@ -23,8 +23,8 @@
     <section>
       <h2>Disabled radio buttons</h2>
       <p>
-        This section contains three radio buttons for "Yes", "No", and "Maybe".
-        The "Maybe" radio button is disabled.
+        This section contains three radio buttons for "Yes", "No", and "Maybe". The "Maybe" radio
+        button is disabled.
       </p>
       <mat-radio-button name="disable">Yes</mat-radio-button>
       <mat-radio-button name="disable">No</mat-radio-button>

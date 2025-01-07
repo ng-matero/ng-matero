@@ -5,7 +5,7 @@
     <mat-card>
       <mat-card-content>
         <div class="text-center">
-          <img class="m-b-8 r-full" [src]="user.avatar" alt="" width="80">
+          <img class="m-b-8 r-full" [src]="user.avatar" alt="" width="80" />
           <h2 class="m-t-0 m-b-8 f-w-400">{{ user.name }}</h2>
           <p class="m-t-0 m-b-8">FE Developer, UE designer</p>
           <p class="m-t-0 text-grey-500">I like reading, writing and drawing.</p>
@@ -18,13 +18,16 @@
 
         <mat-nav-list>
           <a mat-list-item routerLink="/profile/overview">
-            <mat-icon matListItemIcon>account_circle</mat-icon> {{ 'profile' | translate }}
+            <mat-icon matListItemIcon>account_circle</mat-icon>
+            {{ 'profile' | translate }}
           </a>
           <a mat-list-item routerLink="/profile/settings">
-            <mat-icon matListItemIcon>edit</mat-icon> {{ 'edit_profile' | translate }}
+            <mat-icon matListItemIcon>edit</mat-icon>
+            {{ 'edit_profile' | translate }}
           </a>
           <a mat-list-item (click)="logout()" (keydown.enter)="logout()" tabindex="0">
-            <mat-icon matListItemIcon>exit_to_app</mat-icon> {{ 'logout' | translate }}
+            <mat-icon matListItemIcon>exit_to_app</mat-icon>
+            {{ 'logout' | translate }}
           </a>
         </mat-nav-list>
       </mat-card-content>

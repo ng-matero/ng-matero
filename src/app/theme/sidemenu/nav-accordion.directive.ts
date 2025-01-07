@@ -7,7 +7,6 @@ import { NavAccordionItemDirective } from './nav-accordion-item.directive';
 @Directive({
   selector: '[navAccordion]',
   exportAs: 'navAccordion',
-  standalone: true,
 })
 export class NavAccordionDirective {
   private readonly router = inject(Router);

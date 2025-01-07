@@ -12,16 +12,25 @@
 
     <div class="demo-section">
       Button with a badge on the left
-      <button mat-raised-button color="primary"
-              matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+      <button
+        mat-raised-button
+        color="primary"
+        matBadge="8"
+        matBadgePosition="before"
+        matBadgeColor="accent"
+      >
         Action
       </button>
     </div>
 
     <div class="demo-section">
       Button toggles badge visibility
-      <button mat-raised-button matBadge="7" [matBadgeHidden]="hidden"
-              (click)="toggleBadgeVisibility()">
+      <button
+        mat-raised-button
+        matBadge="7"
+        [matBadgeHidden]="hidden"
+        (click)="toggleBadgeVisibility()"
+      >
         Hide
       </button>
     </div>

@@ -13,7 +13,8 @@
   <mat-checkbox [(ngModel)]="columnPinnable">Column Pinning</mat-checkbox>
   <mat-checkbox [(ngModel)]="rowHover">Hover</mat-checkbox>
   <mat-checkbox [(ngModel)]="rowStriped">Striped</mat-checkbox>
-  <mat-checkbox [(ngModel)]="expandable" (change)="enableRowExpandable()">Row Expandable
+  <mat-checkbox [(ngModel)]="expandable" (change)="enableRowExpandable()">
+    Row Expandable
   </mat-checkbox>
   <mat-checkbox [(ngModel)]="showPaginator">Show Paginator</mat-checkbox>
   <mat-checkbox [(ngModel)]="isLoading">Loading Status</mat-checkbox>
@@ -23,34 +24,36 @@
   <button mat-button (click)="updateCell()">Update cell</button>
   <button mat-button (click)="updateList()">Update list</button>
 
-  <a mat-button
-     href="https://ng-matero.github.io/extensions/components/data-grid"
-     target="_blank">View more examples</a>
+  <a mat-button href="https://ng-matero.github.io/extensions/components/data-grid" target="_blank">
+    View more examples
+  </a>
 </div>
 
-<mtx-grid [data]="list"
-          [columns]="columns"
-          [loading]="isLoading"
-          [columnResizable]="columnResizable"
-          [multiSelectable]="multiSelectable"
-          [rowSelectable]="rowSelectable"
-          [hideRowSelectionCheckbox]="hideRowSelectionCheckbox"
-          [rowHover]="rowHover"
-          [rowStriped]="rowStriped"
-          [showToolbar]="showToolbar"
-          [toolbarTitle]="'Data Grid Toolbar'"
-          [columnHideable]="columnHideable"
-          [columnSortable]="columnSortable"
-          [columnPinnable]="columnPinnable"
-          [expandable]="expandable"
-          [expansionTemplate]="expansionTpl"
-          [pageOnFront]="showPaginator"
-          [showPaginator]="showPaginator"
-          [pageSizeOptions]="[5,10,50,100]"
-          [pageIndex]="0"
-          [pageSize]="5"
-          (sortChange)="changeSort($event)"
-          (selectionChange)="changeSelect($event)" />
+<mtx-grid
+  [data]="list"
+  [columns]="columns"
+  [loading]="isLoading"
+  [columnResizable]="columnResizable"
+  [multiSelectable]="multiSelectable"
+  [rowSelectable]="rowSelectable"
+  [hideRowSelectionCheckbox]="hideRowSelectionCheckbox"
+  [rowHover]="rowHover"
+  [rowStriped]="rowStriped"
+  [showToolbar]="showToolbar"
+  [toolbarTitle]="'Data Grid Toolbar'"
+  [columnHideable]="columnHideable"
+  [columnSortable]="columnSortable"
+  [columnPinnable]="columnPinnable"
+  [expandable]="expandable"
+  [expansionTemplate]="expansionTpl"
+  [pageOnFront]="showPaginator"
+  [showPaginator]="showPaginator"
+  [pageSizeOptions]="[5, 10, 50, 100]"
+  [pageIndex]="0"
+  [pageSize]="5"
+  (sortChange)="changeSort($event)"
+  (selectionChange)="changeSelect($event)"
+/>
 <ng-template #expansionTpl let-row>
-  {{row.name}}
+  {{ row.name }}
 </ng-template>

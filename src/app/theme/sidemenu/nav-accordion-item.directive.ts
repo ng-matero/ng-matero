@@ -12,7 +12,6 @@ import { NavAccordionDirective } from './nav-accordion.directive';
 @Directive({
   selector: '[navAccordionItem]',
   exportAs: 'navAccordionItem',
-  standalone: true,
 })
 export class NavAccordionItemDirective implements OnInit, OnDestroy {
   private readonly nav = inject(NavAccordionDirective);

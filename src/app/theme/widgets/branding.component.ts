@@ -33,7 +33,6 @@ import { Component, Input } from '@angular/core';
       font-weight: 500;
     }
   `,
-  standalone: true,
 })
 export class BrandingComponent {
   @Input() showName = true;

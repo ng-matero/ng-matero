@@ -4,27 +4,31 @@
   <mat-card-content>
     <mat-form-field>
       <mat-label>List length</mat-label>
-      <input matInput [(ngModel)]="length">
+      <input matInput [(ngModel)]="length" />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Page size</mat-label>
-      <input matInput [(ngModel)]="pageSize">
+      <input matInput [(ngModel)]="pageSize" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Page size options</mat-label>
-      <input matInput [ngModel]="pageSizeOptions" (ngModelChange)="setPageSizeOptions($event)">
+      <input matInput [ngModel]="pageSizeOptions" (ngModelChange)="setPageSizeOptions($event)" />
     </mat-form-field>
 
-    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-      (page)="pageEvent = $event" />
+    <mat-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = $event"
+    />
 
     @if (pageEvent) {
       <div>
         <h5>Page Change Event Properties</h5>
-        <div>List length: {{pageEvent.length}}</div>
-        <div>Page size: {{pageEvent.pageSize}}</div>
-        <div>Page index: {{pageEvent.pageIndex}}</div>
+        <div>List length: {{ pageEvent.length }}</div>
+        <div>Page size: {{ pageEvent.pageSize }}</div>
+        <div>Page index: {{ pageEvent.pageIndex }}</div>
       </div>
     }
   </mat-card-content>

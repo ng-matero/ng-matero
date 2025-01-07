@@ -6,10 +6,11 @@
 
     <div>
       <div>
-        Message: <mat-form-field><input matInput type="text" [(ngModel)]="message"></mat-form-field>
+        Message:
+        <mat-form-field><input matInput type="text" [(ngModel)]="message" /></mat-form-field>
       </div>
       <div>
-        <div>Position in page: </div>
+        <div>Position in page:</div>
         <mat-form-field>
           <mat-label>Horizontal</mat-label>
           <mat-select [(ngModel)]="horizontalPosition">
@@ -36,7 +37,7 @@
           @if (action) {
             <mat-form-field>
               <mat-label>Snack bar action label</mat-label>
-              <input matInput type="text" [(ngModel)]="actionButtonLabel">
+              <input matInput type="text" [(ngModel)]="actionButtonLabel" />
             </mat-form-field>
           }
         </mat-checkbox>
@@ -49,7 +50,7 @@
           @if (setAutoHide) {
             <mat-form-field>
               <mat-label>Auto hide duration in ms</mat-label>
-              <input matInput type="number" [(ngModel)]="autoHide">
+              <input matInput type="number" [(ngModel)]="autoHide" />
             </mat-form-field>
           }
         </mat-checkbox>
@@ -67,8 +68,6 @@
       <button mat-raised-button (click)="openTemplate()">OPEN TEMPLATE</button>
     </p>
 
-    <ng-template #template>
-      Template snack bar: {{message}}
-    </ng-template>
+    <ng-template #template>Template snack bar: {{ message }}</ng-template>
   </mat-card-content>
 </mat-card>

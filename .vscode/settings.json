@@ -1,7 +1,6 @@
 {
   "editor.rulers": [100],
   "html.format.wrapLineLength": 100,
-  "html.format.wrapAttributes": "preserve-aligned",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -9,6 +8,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {

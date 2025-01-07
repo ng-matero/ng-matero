@@ -1,18 +1,19 @@
 <div class="d-flex w-full h-full">
-  <mat-card class="m-auto" style="max-width: 380px;">
+  <mat-card class="m-auto" style="max-width: 380px">
     <mat-card-header class="m-b-24">
-      <mat-card-title>👋 {{'login_title' | translate}}!</mat-card-title>
+      <mat-card-title>👋 {{ 'login_title' | translate }}!</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
       <form class="form-field-full" [formGroup]="loginForm">
         <mat-form-field appearance="outline">
-          <mat-label>{{'username' | translate}}: ng-matero</mat-label>
-          <input matInput placeholder="ng-matero" formControlName="username" required>
+          <mat-label>{{ 'username' | translate }}: ng-matero</mat-label>
+          <input matInput placeholder="ng-matero" formControlName="username" required />
           @if (username.invalid) {
             <mat-error>
               @if (username.errors?.required) {
-                <span>{{'please_enter' | translate}}
+                <span>
+                  {{ 'please_enter' | translate }}
                   <strong>ng-matero</strong>
                 </span>
               }
@@ -24,13 +25,19 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>{{'password' | translate}}: ng-matero</mat-label>
-          <input matInput placeholder="ng-matero" type="password"
-            formControlName="password" required>
+          <mat-label>{{ 'password' | translate }}: ng-matero</mat-label>
+          <input
+            matInput
+            placeholder="ng-matero"
+            type="password"
+            formControlName="password"
+            required
+          />
           @if (password.invalid) {
             <mat-error>
               @if (password.errors?.required) {
-                <span>{{'please_enter' | translate}}
+                <span>
+                  {{ 'please_enter' | translate }}
                   <strong>ng-matero</strong>
                 </span>
               }
@@ -41,14 +48,21 @@
           }
         </mat-form-field>
 
-        <mat-checkbox formControlName="rememberMe">{{'remember_me' | translate}}</mat-checkbox>
+        <mat-checkbox formControlName="rememberMe">{{ 'remember_me' | translate }}</mat-checkbox>
 
-        <button class="w-full m-y-16" mat-flat-button [disabled]="!!loginForm.invalid"
-          [loading]="isSubmitting" (click)="login()">{{'login' | translate}}</button>
+        <button
+          class="w-full m-y-16"
+          mat-flat-button
+          [disabled]="!!loginForm.invalid"
+          [loading]="isSubmitting"
+          (click)="login()"
+        >
+          {{ 'login' | translate }}
+        </button>
 
         <div>
-          <span>{{'have_no_account' | translate}}? </span>
-          <a routerLink="/auth/register">{{'create_one_account' | translate}}</a>
+          <span>{{ 'have_no_account' | translate }}?</span>
+          <a routerLink="/auth/register">{{ 'create_one_account' | translate }}</a>
         </div>
       </form>
     </mat-card-content>

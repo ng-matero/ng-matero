@@ -7,15 +7,21 @@
     <mat-checkbox [(ngModel)]="unbounded">Unbounded</mat-checkbox>
 
     <mat-form-field class="example-ripple-form-field">
-      <input matInput [(ngModel)]="radius" type="number" placeholder="Radius">
+      <input matInput [(ngModel)]="radius" type="number" placeholder="Radius" />
     </mat-form-field>
     <mat-form-field class="example-ripple-form-field">
-      <input matInput [(ngModel)]="color" type="text" placeholder="Color">
+      <input matInput [(ngModel)]="color" type="text" placeholder="Color" />
     </mat-form-field>
 
-    <div class="example-ripple-container" matRipple [matRippleCentered]="centered"
-         [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
-         [matRippleColor]="color">
+    <div
+      class="example-ripple-container"
+      matRipple
+      [matRippleCentered]="centered"
+      [matRippleDisabled]="disabled"
+      [matRippleUnbounded]="unbounded"
+      [matRippleRadius]="radius"
+      [matRippleColor]="color"
+    >
       Click me
     </div>
   </mat-card-content>

@@ -2,16 +2,20 @@
   @for (color of colors; track trackByColor($index, color)) {
     <div class="col-sm-6 col-md-3 col-xl-2">
       <div class="b-1 m-b-16 r-16 overflow-hidden">
-        <div class="p-8 text-capitalize text-{{color.key}}-95 bg-{{color.key}}-10">{{color.key}}</div>
+        <div class="p-8 text-capitalize text-{{ color.key }}-95 bg-{{ color.key }}-10">
+          {{ color.key }}
+        </div>
 
         @for (hue of color.value | keyvalue: keyAscOrder; track hue) {
           @if (hue.key > 0 && hue.key < 100) {
-            <div class="d-flex p-8 bg-{{color.key + '-' + hue.key}}"
-                [class.text-light]="hue.key <= 60"
-                [class.text-dark]="hue.key > 60">
-              <span>{{hue.key}}</span>
+            <div
+              class="d-flex p-8 bg-{{ color.key + '-' + hue.key }}"
+              [class.text-light]="hue.key <= 60"
+              [class.text-dark]="hue.key > 60"
+            >
+              <span>{{ hue.key }}</span>
               <span class="flex-fill"></span>
-              <span>{{hue.value}}</span>
+              <span>{{ hue.value }}</span>
             </div>
           }
         }

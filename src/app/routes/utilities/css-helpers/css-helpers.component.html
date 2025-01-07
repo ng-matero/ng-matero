@@ -9,12 +9,12 @@
             <h3 matSubheader>Background/Border/Text Color</h3>
             @for (i of colorNames; track i) {
               <mat-list-item>
-                <code>.[bg|border|text]-{{i}}-[{{colorHues}}]</code>
+                <code>.[bg|border|text]-{{ i }}-[{{ colorHues }}]</code>
               </mat-list-item>
             }
-            @for (c of ['white','black','light','dark']; track c) {
+            @for (c of ['white', 'black', 'light', 'dark']; track c) {
               <mat-list-item>
-                <code>.[bg|border|text]-{{c}}</code>
+                <code>.[bg|border|text]-{{ c }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -27,9 +27,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Position</h3>
-            @for (i of ['static','fixed','absolute','relative','sticky']; track i) {
+            @for (i of ['static', 'fixed', 'absolute', 'relative', 'sticky']; track i) {
               <mat-list-item>
-                <code>.{{i}}</code>
+                <code>.{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -37,10 +37,12 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Display</h3>
-            @for (i of ['block','inline-block','inline',
-              'flex','inline-flex','none']; track i) {
+            @for (
+              i of ['block', 'inline-block', 'inline', 'flex', 'inline-flex', 'none'];
+              track i
+            ) {
               <mat-list-item>
-                <code>.d-{{i}}</code>
+                <code>.d-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -48,9 +50,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Direction)</h3>
-            @for (i of ['row','row-reverse','col','col-reverse']; track i) {
+            @for (i of ['row', 'row-reverse', 'col', 'col-reverse']; track i) {
               <mat-list-item>
-                <code>.flex-{{i}}</code>
+                <code>.flex-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -61,14 +63,14 @@
             <mat-list-item>
               <code>.flex-fill</code>
             </mat-list-item>
-            @for (i of ['grow-0','grow-1']; track i) {
+            @for (i of ['grow-0', 'grow-1']; track i) {
               <mat-list-item>
-                <code>.flex-{{i}}</code>
+                <code>.flex-{{ i }}</code>
               </mat-list-item>
             }
-            @for (i of ['shrink-0','shrink-1']; track i) {
+            @for (i of ['shrink-0', 'shrink-1']; track i) {
               <mat-list-item>
-                <code>.flex-{{i}}</code>
+                <code>.flex-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -76,9 +78,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Wrap)</h3>
-            @for (i of ['wrap','nowrap','wrap-reverse']; track i) {
+            @for (i of ['wrap', 'nowrap', 'wrap-reverse']; track i) {
               <mat-list-item>
-                <code>.flex-{{i}}</code>
+                <code>.flex-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -86,9 +88,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Justify content)</h3>
-            @for (i of ['start','end','center','between','around']; track i) {
+            @for (i of ['start', 'end', 'center', 'between', 'around']; track i) {
               <mat-list-item>
-                <code>.justify-content-{{i}}</code>
+                <code>.justify-content-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -96,9 +98,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Align content)</h3>
-            @for (i of ['start','end','center','between','around','stretch']; track i) {
+            @for (i of ['start', 'end', 'center', 'between', 'around', 'stretch']; track i) {
               <mat-list-item>
-                <code>.align-content-{{i}}</code>
+                <code>.align-content-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -106,9 +108,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Align items)</h3>
-            @for (i of ['start','end','center','baseline','stretch']; track i) {
+            @for (i of ['start', 'end', 'center', 'baseline', 'stretch']; track i) {
               <mat-list-item>
-                <code>.align-items-{{i}}</code>
+                <code>.align-items-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -116,9 +118,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Flexbox (Align self)</h3>
-            @for (i of ['auto','start','end','center','baseline','stretch']; track i) {
+            @for (i of ['auto', 'start', 'end', 'center', 'baseline', 'stretch']; track i) {
               <mat-list-item>
-                <code>.align-self-{{i}}</code>
+                <code>.align-self-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -131,9 +133,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Margin</h3>
-            @for (i of [0,4,8,16,24,32,48,'auto']; track i) {
+            @for (i of [0, 4, 8, 16, 24, 32, 48, 'auto']; track i) {
               <mat-list-item>
-                <code>.m[-[t|b|r|l|x|y]]-{{i}}</code>
+                <code>.m[-[t|b|r|l|x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -141,9 +143,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Negative Margin</h3>
-            @for (i of [4,8,16,24,32,48]; track i) {
+            @for (i of [4, 8, 16, 24, 32, 48]; track i) {
               <mat-list-item>
-                <code>.m[-[t|b|r|l|x|y]]--{{i}}</code>
+                <code>.m[-[t|b|r|l|x|y]]--{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -151,9 +153,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Padding</h3>
-            @for (i of [0,4,8,16,24,32,48]; track i) {
+            @for (i of [0, 4, 8, 16, 24, 32, 48]; track i) {
               <mat-list-item>
-                <code>.p[-[t|b|r|l|x|y]]-{{i}}</code>
+                <code>.p[-[t|b|r|l|x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -161,9 +163,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Gap</h3>
-            @for (i of [0,4,8,16,24,32,48]; track i) {
+            @for (i of [0, 4, 8, 16, 24, 32, 48]; track i) {
               <mat-list-item>
-                <code>.gap[-[t|b|r|l|x|y]]-{{i}}</code>
+                <code>.gap[-[t|b|r|l|x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -176,9 +178,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Border</h3>
-            @for (i of [0,1,2,3,4,5]; track i) {
+            @for (i of [0, 1, 2, 3, 4, 5]; track i) {
               <mat-list-item>
-                <code>.b[-[t|b|r|l|x|y]]-{{i}}</code>
+                <code>.b[-[t|b|r|l|x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -186,9 +188,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Border Width</h3>
-            @for (i of [0,1,2,3,4,5]; track i) {
+            @for (i of [0, 1, 2, 3, 4, 5]; track i) {
               <mat-list-item>
-                <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
+                <code>.border[-[t|b|r|l|x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -196,9 +198,9 @@
         <div class="col-sm-12 col-md-6">
           <mat-list>
             <h3 matSubheader>Border Style</h3>
-            @for (i of ['solid','dashed','dotted','double','hidden','none']; track i) {
+            @for (i of ['solid', 'dashed', 'dotted', 'double', 'hidden', 'none']; track i) {
               <mat-list-item>
-                <code>.border[-[t|b|r|l|x|y]]-{{i}}</code>
+                <code>.border[-[t|b|r|l|x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -206,9 +208,9 @@
         <div class="col-sm-12 col-md-6">
           <mat-list>
             <h3 matSubheader>Border Radius</h3>
-            @for (i of [0,4,8,16,24,32,'full']; track i) {
+            @for (i of [0, 4, 8, 16, 24, 32, 'full']; track i) {
               <mat-list-item>
-                <code>.r[-[t|b]-[r|l]]-{{i}}, r[-[t|b|l|r]]-{{i}}</code>
+                <code>.r[-[t|b]-[r|l]]-{{ i }}, r[-[t|b|l|r]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -221,9 +223,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Width (%)</h3>
-            @for (i of [20,25,40,50,60,75,80,'full','auto']; track i) {
+            @for (i of [20, 25, 40, 50, 60, 75, 80, 'full', 'auto']; track i) {
               <mat-list-item>
-                <code>.w-{{i}}</code>
+                <code>.w-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -231,9 +233,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Height (%)</h3>
-            @for (i of [20,25,40,50,60,75,80,'full','auto']; track i) {
+            @for (i of [20, 25, 40, 50, 60, 75, 80, 'full', 'auto']; track i) {
               <mat-list-item>
-                <code>.h-{{i}}</code>
+                <code>.h-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -246,9 +248,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Font Weight</h3>
-            @for (i of [1,2,3,4,5,6,7,8,9]; track i) {
+            @for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9]; track i) {
               <mat-list-item>
-                <code>.f-w-{{i*100}}</code>
+                <code>.f-w-{{ i * 100 }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -256,9 +258,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Font Size</h3>
-            @for (i of [0,10,12,14,16,18,20]; track i) {
+            @for (i of [0, 10, 12, 14, 16, 18, 20]; track i) {
               <mat-list-item>
-                <code>.f-s-{{i}}</code>
+                <code>.f-s-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -328,9 +330,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Vertical Align</h3>
-            @for (i of ['top','middle','bottom']; track i) {
+            @for (i of ['top', 'middle', 'bottom']; track i) {
               <mat-list-item>
-                <code>.align-{{i}}</code>
+                <code>.align-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -338,10 +340,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Cursor</h3>
-            @for (i of ['default','pointer','text',
-              'move','copy','not-allowed']; track i) {
+            @for (i of ['default', 'pointer', 'text', 'move', 'copy', 'not-allowed']; track i) {
               <mat-list-item>
-                <code>.cursor-{{i}}</code>
+                <code>.cursor-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -349,9 +350,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>User Select</h3>
-            @for (i of ['all','auto','none']; track i) {
+            @for (i of ['all', 'auto', 'none']; track i) {
               <mat-list-item>
-                <code>.select-{{i}}</code>
+                <code>.select-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -366,9 +367,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Overflow</h3>
-            @for (i of ['auto','hidden','visible','scroll']; track i) {
+            @for (i of ['auto', 'hidden', 'visible', 'scroll']; track i) {
               <mat-list-item>
-                <code>.overflow[-[x|y]]-{{i}}</code>
+                <code>.overflow[-[x|y]]-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -376,9 +377,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Object Fit</h3>
-            @for (i of ['cover','contain','fill','none','scale-down']; track i) {
+            @for (i of ['cover', 'contain', 'fill', 'none', 'scale-down']; track i) {
               <mat-list-item>
-                <code>.object-{{i}}</code>
+                <code>.object-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -386,10 +387,22 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Object Position</h3>
-            @for (i of ['top','bottom','center','left','left-top',
-              'left-right','right','right-top','right-bottom']; track i) {
+            @for (
+              i of [
+                'top',
+                'bottom',
+                'center',
+                'left',
+                'left-top',
+                'left-right',
+                'right',
+                'right-top',
+                'right-bottom',
+              ];
+              track i
+            ) {
               <mat-list-item>
-                <code>.object-{{i}}</code>
+                <code>.object-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>
@@ -397,9 +410,9 @@
         <div class="col-sm-6 col-md-3">
           <mat-list>
             <h3 matSubheader>Icon Size</h3>
-            @for (i of [18,24,36,48]; track i) {
+            @for (i of [18, 24, 36, 48]; track i) {
               <mat-list-item>
-                <code>.icon-{{i}}</code>
+                <code>.icon-{{ i }}</code>
               </mat-list-item>
             }
           </mat-list>

@@ -11,12 +11,12 @@
         <form>
           <mat-form-field class="m-r-8" appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="q.username" name="username">
+            <input matInput [(ngModel)]="q.username" name="username" />
           </mat-form-field>
 
           <mat-form-field class="m-r-8" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput [(ngModel)]="q.email" name="email">
+            <input matInput [(ngModel)]="q.email" name="email" />
           </mat-form-field>
 
           <mat-form-field class="m-r-8" appearance="outline">
@@ -41,9 +41,9 @@
         <form [formGroup]="reactiveForm1" class="form-field-full">
           <mat-form-field>
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Simple placeholder" formControlName="username" required>
+            <input matInput placeholder="Simple placeholder" formControlName="username" required />
             @if (reactiveForm1.get('username')?.invalid) {
-              <mat-error>{{'validation.required' | translate}}</mat-error>
+              <mat-error>{{ 'validation.required' | translate }}</mat-error>
             }
           </mat-form-field>
 
@@ -55,57 +55,66 @@
               <mat-option value="2">female</mat-option>
             </mat-select>
             @if (reactiveForm1.get('gender')?.invalid) {
-              <mat-error>{{'validation.required' | translate}}</mat-error>
+              <mat-error>{{ 'validation.required' | translate }}</mat-error>
             }
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Mobile</mat-label>
-            <input matInput placeholder="Simple placeholder" type="number" formControlName="mobile"
-              required>
+            <input
+              matInput
+              placeholder="Simple placeholder"
+              type="number"
+              formControlName="mobile"
+              required
+            />
             <mat-icon matSuffix>smartphone</mat-icon>
             @if (reactiveForm1.get('mobile')?.invalid) {
-              <mat-error>{{'validation.required' | translate}}</mat-error>
+              <mat-error>{{ 'validation.required' | translate }}</mat-error>
             }
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Simple placeholder" formControlName="email" required>
+            <input matInput placeholder="Simple placeholder" formControlName="email" required />
             @if (reactiveForm1.get('email')?.invalid) {
-              <mat-error>{{getErrorMessage(reactiveForm1) | translate}}</mat-error>
+              <mat-error>{{ getErrorMessage(reactiveForm1) | translate }}</mat-error>
             }
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>City</mat-label>
-            <input matInput placeholder="Simple placeholder" formControlName="city">
+            <input matInput placeholder="Simple placeholder" formControlName="city" />
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Address</mat-label>
-            <input matInput placeholder="Simple placeholder" formControlName="address">
+            <input matInput placeholder="Simple placeholder" formControlName="address" />
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Company</mat-label>
-            <input matInput placeholder="Simple placeholder" formControlName="company">
+            <input matInput placeholder="Simple placeholder" formControlName="company" />
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Tele</mat-label>
-            <input matInput placeholder="Simple placeholder" type="number" formControlName="tele">
+            <input matInput placeholder="Simple placeholder" type="number" formControlName="tele" />
             <mat-icon matSuffix>phone</mat-icon>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Website</mat-label>
-            <input matInput placeholder="Simple placeholder" formControlName="website">
+            <input matInput placeholder="Simple placeholder" formControlName="website" />
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date"
-              formControlName="date">
+            <input
+              matInput
+              [matDatepicker]="picker"
+              placeholder="Choose a date"
+              formControlName="date"
+            />
             <mat-datepicker-toggle matSuffix [for]="picker" />
             <mat-datepicker #picker />
           </mat-form-field>
@@ -126,15 +135,18 @@
 
       <mat-card-content>
         <form [formGroup]="reactiveForm2" class="form-field-full">
-
           <div class="row">
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="username"
-                  required>
+                <input
+                  matInput
+                  placeholder="Simple placeholder"
+                  formControlName="username"
+                  required
+                />
                 @if (reactiveForm2.get('username')?.invalid) {
-                  <mat-error>{{'validation.required' | translate}}</mat-error>
+                  <mat-error>{{ 'validation.required' | translate }}</mat-error>
                 }
               </mat-form-field>
             </div>
@@ -148,7 +160,7 @@
                   <mat-option value="2">female</mat-option>
                 </mat-select>
                 @if (reactiveForm2.get('gender')?.invalid) {
-                  <mat-error>{{'validation.required' | translate}}</mat-error>
+                  <mat-error>{{ 'validation.required' | translate }}</mat-error>
                 }
               </mat-form-field>
             </div>
@@ -156,11 +168,16 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Mobile</mat-label>
-                <input matInput placeholder="Simple placeholder" type="number"
-                  formControlName="mobile" required>
+                <input
+                  matInput
+                  placeholder="Simple placeholder"
+                  type="number"
+                  formControlName="mobile"
+                  required
+                />
                 <mat-icon matSuffix>smartphone</mat-icon>
                 @if (reactiveForm2.get('mobile')?.invalid) {
-                  <mat-error>{{'validation.required' | translate}}</mat-error>
+                  <mat-error>{{ 'validation.required' | translate }}</mat-error>
                 }
               </mat-form-field>
             </div>
@@ -168,9 +185,9 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="email" required>
+                <input matInput placeholder="Simple placeholder" formControlName="email" required />
                 @if (reactiveForm2.get('email')?.invalid) {
-                  <mat-error>{{getErrorMessage(reactiveForm2) | translate}}</mat-error>
+                  <mat-error>{{ getErrorMessage(reactiveForm2) | translate }}</mat-error>
                 }
               </mat-form-field>
             </div>
@@ -178,29 +195,33 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>City</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="city">
+                <input matInput placeholder="Simple placeholder" formControlName="city" />
               </mat-form-field>
             </div>
 
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Address</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="address">
+                <input matInput placeholder="Simple placeholder" formControlName="address" />
               </mat-form-field>
             </div>
 
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Company</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="company">
+                <input matInput placeholder="Simple placeholder" formControlName="company" />
               </mat-form-field>
             </div>
 
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Tele</mat-label>
-                <input matInput placeholder="Simple placeholder" type="number"
-                  formControlName="tele">
+                <input
+                  matInput
+                  placeholder="Simple placeholder"
+                  type="number"
+                  formControlName="tele"
+                />
                 <mat-icon matSuffix>phone</mat-icon>
               </mat-form-field>
             </div>
@@ -208,14 +229,18 @@
             <div class="col-sm-6">
               <mat-form-field>
                 <mat-label>Website</mat-label>
-                <input matInput placeholder="Simple placeholder" formControlName="website">
+                <input matInput placeholder="Simple placeholder" formControlName="website" />
               </mat-form-field>
             </div>
 
             <div class="col-sm-6">
               <mat-form-field>
-                <input matInput [matDatepicker]="picker2" placeholder="Choose a date"
-                  formControlName="date">
+                <input
+                  matInput
+                  [matDatepicker]="picker2"
+                  placeholder="Choose a date"
+                  formControlName="date"
+                />
                 <mat-datepicker-toggle matSuffix [for]="picker2" />
                 <mat-datepicker #picker2 />
               </mat-form-field>
