@@ -8,7 +8,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-progress-spinner',
   templateUrl: './progress-spinner.component.html',
   styleUrl: './progress-spinner.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatProgressSpinnerModule, MatCardModule],
 })
 export class ProgressSpinnerComponent {

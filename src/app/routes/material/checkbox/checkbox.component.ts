@@ -15,7 +15,6 @@ export interface Task {
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
-  standalone: true,
   imports: [FormsModule, MatCardModule, MatCheckboxModule, BreadcrumbComponent],
 })
 export class CheckboxComponent {

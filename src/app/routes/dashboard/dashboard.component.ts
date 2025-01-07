@@ -19,7 +19,6 @@ import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { Subscription } from 'rxjs';
 
 import { AppSettings, SettingsService } from '@core';
-import { BreadcrumbComponent } from '@shared';
 import { DashboardService } from './dashboard.service';
 
 @Component({
@@ -28,7 +27,6 @@ import { DashboardService } from './dashboard.service';
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DashboardService],
-  standalone: true,
   imports: [
     RouterLink,
     MatButtonModule,
@@ -39,7 +37,6 @@ import { DashboardService } from './dashboard.service';
     MatTableModule,
     MatTabsModule,
     MtxProgressModule,
-    BreadcrumbComponent,
   ],
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {

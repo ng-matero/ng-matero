@@ -26,7 +26,6 @@ import { TranslatePipe } from '@ngx-translate/core';
       }
     </mat-menu>
   `,
-  standalone: true,
   imports: [MatButtonModule, MatIconModule, MatMenuModule, MatPseudoCheckbox, TranslatePipe],
 })
 export class TranslateComponent {

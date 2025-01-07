@@ -10,7 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-icon',
   templateUrl: './icon.component.html',
   styleUrl: './icon.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatIconModule, MatButtonModule, MatCardModule],
 })
 export class IconComponent {

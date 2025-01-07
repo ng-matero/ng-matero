@@ -10,7 +10,6 @@ import { filter, startWith } from 'rxjs';
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss',
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [MatIconModule, TranslateModule],
 })
 export class BreadcrumbComponent implements OnInit {

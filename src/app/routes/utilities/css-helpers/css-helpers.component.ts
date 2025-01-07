@@ -9,7 +9,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-utilities-css-helpers',
   templateUrl: './css-helpers.component.html',
   styleUrl: './css-helpers.component.scss',
-  standalone: true,
   imports: [MatCardModule, MatListModule, MatTabsModule, PageHeaderComponent],
 })
 export class UtilitiesCssHelpersComponent {

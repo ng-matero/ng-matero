@@ -21,7 +21,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-snack-bar',
   templateUrl: './snack-bar.component.html',
   styleUrl: './snack-bar.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     MatFormFieldModule,

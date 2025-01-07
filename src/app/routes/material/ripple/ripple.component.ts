@@ -12,7 +12,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-ripple',
   templateUrl: './ripple.component.html',
   styleUrl: './ripple.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     MatCheckboxModule,

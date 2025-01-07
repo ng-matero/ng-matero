@@ -10,7 +10,6 @@ import { ErrorCodeComponent } from '@shared/components/error-code/error-code.com
       message="Just kidding, looks like we have an internal issue, please try refreshing."
     />
   `,
-  standalone: true,
   imports: [ErrorCodeComponent],
 })
 export class Error500Component {}

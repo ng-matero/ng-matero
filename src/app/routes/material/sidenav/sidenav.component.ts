@@ -8,7 +8,6 @@ import { BreadcrumbComponent } from '@shared';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  standalone: true,
   imports: [BreadcrumbComponent, MatButtonModule, MatCardModule, RouterLink],
 })
 export class SidenavComponent {}

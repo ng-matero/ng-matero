@@ -11,7 +11,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-forms-dynamic',
   templateUrl: './dynamic.component.html',
   styleUrl: './dynamic.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,

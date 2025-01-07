@@ -11,7 +11,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     MatCardModule,

@@ -11,7 +11,6 @@ import { RouterLink } from '@angular/router';
   selector: 'dual-sidenav',
   templateUrl: 'dual-sidenav.html',
   styleUrls: ['shared.scss', 'dual-sidenav.scss'],
-  standalone: true,
   imports: [
     MatToolbarModule,
     MatButtonModule,

@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
   selector: 'app-profile-overview',
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
-  standalone: true,
   imports: [MatCardModule, MatTabsModule],
 })
 export class ProfileOverviewComponent {}

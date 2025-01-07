@@ -1,14 +1,13 @@
 import { KeyValue, KeyValuePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { PageHeaderComponent, M3_COLORS } from '@shared';
+import { M3_COLORS } from '@shared';
 
 @Component({
   selector: 'app-design-colors',
   templateUrl: './colors.component.html',
   styleUrl: './colors.component.scss',
-  standalone: true,
-  imports: [KeyValuePipe, PageHeaderComponent],
+  imports: [KeyValuePipe],
 })
 export class DesignColorsComponent implements OnInit {
   colors: { key: string; value: any }[] = [];

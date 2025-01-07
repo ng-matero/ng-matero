@@ -18,7 +18,6 @@ import { FormsSelectEditComponent } from './edit/edit.component';
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',
   providers: [DataService],
-  standalone: true,
   imports: [
     AsyncPipe,
     JsonPipe,

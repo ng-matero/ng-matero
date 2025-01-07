@@ -18,7 +18,6 @@ import { UserComponent } from '../widgets/user.component';
     class: 'matero-header',
   },
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [
     MatToolbarModule,
     MatButtonModule,

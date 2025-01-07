@@ -12,7 +12,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatButtonModule, MatCardModule],
 })
 export class DialogComponent {
@@ -42,7 +41,6 @@ export class DialogComponent {
 @Component({
   selector: 'dialog-fruit',
   templateUrl: 'dialog-fruit.html',
-  standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DialogFruitComponent {}
@@ -50,7 +48,6 @@ export class DialogFruitComponent {}
 @Component({
   selector: 'dialog-welcome',
   templateUrl: 'dialog-welcome.html',
-  standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DialogWelcomeComponent {}
@@ -58,7 +55,6 @@ export class DialogWelcomeComponent {}
 @Component({
   selector: 'dialog-neptune-dialog',
   templateUrl: './dialog-neptune.html',
-  standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DialogNeptuneComponent {
@@ -77,7 +73,6 @@ export class DialogNeptuneComponent {
     }
   `,
   templateUrl: './dialog-neptune-iframe.html',
-  standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DialogNeptuneIFrameComponent {}
@@ -90,7 +85,6 @@ export class DialogNeptuneIFrameComponent {}
     }
   `,
   templateUrl: 'dialog-address-form.html',
-  standalone: true,
   imports: [MatDialogModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
 })
 export class DialogAddressFormComponent {}

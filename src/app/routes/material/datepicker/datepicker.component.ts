@@ -11,7 +11,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrl: './datepicker.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     MatCardModule,

@@ -24,7 +24,6 @@ import { NavAccordionDirective } from './nav-accordion.directive';
   styleUrl: './sidemenu.component.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     AsyncPipe,
     SlicePipe,

@@ -47,7 +47,6 @@ interface ExampleFlatNode {
   selector: 'app-tree',
   templateUrl: './tree.component.html',
   styleUrl: './tree.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatTreeModule, MatButtonModule, MatIconModule],
 })
 export class TreeComponent {

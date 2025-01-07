@@ -9,7 +9,6 @@ import { MAT_ICONS, PageHeaderComponent } from '@shared';
   selector: 'app-design-icons',
   templateUrl: './icons.component.html',
   styleUrl: './icons.component.scss',
-  standalone: true,
   imports: [KeyValuePipe, MatCardModule, MatIconModule, PageHeaderComponent],
 })
 export class DesignIconsComponent implements OnInit {

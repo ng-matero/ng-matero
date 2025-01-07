@@ -11,7 +11,6 @@ import { RouterLink } from '@angular/router';
   selector: 'mobile-sidenav',
   templateUrl: 'mobile-sidenav.html',
   styleUrls: ['shared.scss', 'mobile-sidenav.scss'],
-  standalone: true,
   imports: [
     RouterLink,
     MatButtonModule,

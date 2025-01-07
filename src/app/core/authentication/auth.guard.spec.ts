@@ -8,7 +8,6 @@ import { LocalStorageService, MemoryStorageService } from '@shared/services/stor
 
 @Component({
   template: '',
-  standalone: true,
   imports: [],
   providers: [provideHttpClientTesting()],
 })

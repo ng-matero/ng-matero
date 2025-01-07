@@ -61,8 +61,8 @@
   $infix: if($breakpoint-infix == '', '', '-#{$breakpoint-infix}');
 
   .col#{$infix} {
-    flex-basis: 0;
     flex-grow: 1;
+    flex-basis: 0;
     max-width: 100%;
   }
 

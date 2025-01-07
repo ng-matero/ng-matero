@@ -23,7 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
       </svg>
     </a>
   `,
-  standalone: true,
   imports: [MatButtonModule],
 })
 export class GithubButtonComponent {}

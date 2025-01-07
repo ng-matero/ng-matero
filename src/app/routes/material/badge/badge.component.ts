@@ -10,7 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-badge',
   templateUrl: './badge.component.html',
   styleUrl: './badge.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatBadgeModule, MatButtonModule, MatIconModule, MatCardModule],
 })
 export class BadgeComponent {

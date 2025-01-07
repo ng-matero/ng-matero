@@ -10,7 +10,6 @@ import { ErrorCodeComponent } from '@shared/components/error-code/error-code.com
       message="You do not have permission to access the requested data."
     />
   `,
-  standalone: true,
   imports: [ErrorCodeComponent],
 })
 export class Error403Component {}

@@ -16,7 +16,6 @@ import { TablesKitchenSinkEditComponent } from './edit/edit.component';
   templateUrl: './kitchen-sink.component.html',
   styleUrl: './kitchen-sink.component.scss',
   providers: [TablesDataService],
-  standalone: true,
   imports: [
     FormsModule,
     MatButtonModule,

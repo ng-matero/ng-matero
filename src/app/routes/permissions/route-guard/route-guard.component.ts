@@ -12,7 +12,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-permissions-route-guard',
   templateUrl: './route-guard.component.html',
   styleUrl: './route-guard.component.scss',
-  standalone: true,
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, MatCardModule, PageHeaderComponent],
 })
 export class PermissionsRouteGuardComponent implements OnInit {

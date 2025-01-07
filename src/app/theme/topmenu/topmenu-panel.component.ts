@@ -26,7 +26,6 @@ import { TopmenuState } from './topmenu.component';
   templateUrl: './topmenu-panel.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     RouterLink,
     RouterLinkActive,

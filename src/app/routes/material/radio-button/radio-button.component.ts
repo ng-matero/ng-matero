@@ -9,7 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-radio-button',
   templateUrl: './radio-button.component.html',
   styleUrl: './radio-button.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatRadioModule, FormsModule],
 })
 export class RadioButtonComponent {

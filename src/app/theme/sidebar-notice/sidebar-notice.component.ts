@@ -9,7 +9,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     class: 'matero-sidebar-notice',
   },
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [MatTabsModule],
 })
 export class SidebarNoticeComponent {

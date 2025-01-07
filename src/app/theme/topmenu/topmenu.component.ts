@@ -33,7 +33,6 @@ export interface TopmenuState {
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     AsyncPipe,
     NgTemplateOutlet,

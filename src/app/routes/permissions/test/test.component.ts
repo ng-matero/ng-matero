@@ -10,7 +10,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-permissions-test',
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss',
-  standalone: true,
   imports: [JsonPipe, MatCardModule, MtxAlertModule, NgxPermissionsModule, PageHeaderComponent],
 })
 export class PermissionsTestComponent {

@@ -9,7 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrl: './tooltip.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatButtonModule, MatTooltipModule, MatCardModule],
 })
 export class TooltipComponent {}

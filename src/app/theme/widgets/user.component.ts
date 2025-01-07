@@ -41,7 +41,6 @@ import { AuthService, SettingsService, User } from '@core';
       border-radius: 50rem;
     }
   `,
-  standalone: true,
   imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
 })
 export class UserComponent implements OnInit {

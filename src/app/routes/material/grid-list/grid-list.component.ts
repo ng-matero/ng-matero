@@ -9,7 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-grid-list',
   templateUrl: './grid-list.component.html',
   styleUrl: './grid-list.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatGridListModule, MatLineModule, MatCardModule],
 })
 export class GridListComponent {

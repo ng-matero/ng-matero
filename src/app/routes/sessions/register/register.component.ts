@@ -18,7 +18,6 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
-  standalone: true,
   imports: [
     RouterLink,
     FormsModule,

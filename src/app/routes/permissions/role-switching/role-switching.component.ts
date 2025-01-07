@@ -13,7 +13,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-permissions-role-switching',
   templateUrl: './role-switching.component.html',
   styleUrl: './role-switching.component.scss',
-  standalone: true,
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, MatCardModule, PageHeaderComponent],
 })
 export class PermissionsRoleSwitchingComponent implements OnInit, OnDestroy {

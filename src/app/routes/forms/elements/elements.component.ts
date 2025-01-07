@@ -23,7 +23,6 @@ import { ControlsOf, IProfile, PageHeaderComponent } from '@shared';
   selector: 'app-forms-elements',
   templateUrl: './elements.component.html',
   styleUrl: './elements.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,

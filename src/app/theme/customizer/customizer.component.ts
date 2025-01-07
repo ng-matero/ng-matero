@@ -25,7 +25,6 @@ import { DisableControlDirective } from '@shared';
   templateUrl: './customizer.component.html',
   styleUrl: './customizer.component.scss',
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,

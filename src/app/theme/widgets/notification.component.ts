@@ -29,7 +29,6 @@ import { MatMenuModule } from '@angular/material/menu';
       --mat-badge-text-color: #fff;
     }
   `,
-  standalone: true,
   imports: [MatBadgeModule, MatButtonModule, MatIconModule, MatListModule, MatMenuModule],
 })
 export class NotificationComponent {

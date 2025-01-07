@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
   selector: 'basic-sidenav',
   templateUrl: 'basic-sidenav.html',
   styleUrls: ['shared.scss'],
-  standalone: true,
   imports: [
     MatToolbarModule,
     MatButtonModule,

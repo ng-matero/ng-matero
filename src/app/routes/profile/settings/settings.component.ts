@@ -21,7 +21,6 @@ import { ControlsOf, IProfile } from '@shared';
   selector: 'app-profile-settings',
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     ReactiveFormsModule,

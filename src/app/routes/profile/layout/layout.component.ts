@@ -14,7 +14,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-profile-layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
-  standalone: true,
   imports: [
     RouterLink,
     RouterOutlet,

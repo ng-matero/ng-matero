@@ -8,7 +8,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-utilities-css-grid',
   templateUrl: './css-grid.component.html',
   styleUrl: './css-grid.component.scss',
-  standalone: true,
   imports: [RouterLink, MatCardModule, PageHeaderComponent],
 })
 export class UtilitiesCssGridComponent {}

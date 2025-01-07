@@ -20,7 +20,6 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
     class: 'matero-page-header',
   },
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [BreadcrumbComponent, TranslateModule],
 })
 export class PageHeaderComponent implements OnInit {

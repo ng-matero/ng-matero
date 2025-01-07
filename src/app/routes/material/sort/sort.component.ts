@@ -20,7 +20,6 @@ function compare(a: number | string, b: number | string, isAsc: boolean) {
   selector: 'app-sort',
   templateUrl: './sort.component.html',
   styleUrl: './sort.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatSortModule],
 })
 export class SortComponent {

@@ -13,7 +13,6 @@ import { UserPanelComponent } from './user-panel.component';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [
     MatSlideToggleModule,
     MatIconModule,

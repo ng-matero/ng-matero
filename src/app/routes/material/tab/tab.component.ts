@@ -9,7 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-tab',
   templateUrl: './tab.component.html',
   styleUrl: './tab.component.scss',
-  standalone: true,
   imports: [
     BreadcrumbComponent,
     MatCardModule,

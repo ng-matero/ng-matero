@@ -10,7 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatButtonModule, MatIconModule, MatCardModule],
 })
 export class ButtonComponent {

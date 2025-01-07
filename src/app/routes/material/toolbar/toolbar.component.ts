@@ -10,7 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule],
 })
 export class ToolbarComponent {}

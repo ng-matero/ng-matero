@@ -9,7 +9,6 @@ import { PageHeaderComponent } from '@shared';
   selector: 'app-media-gallery',
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss',
-  standalone: true,
   imports: [MatGridListModule, MatLineModule, MtxPhotoviewerModule, PageHeaderComponent],
 })
 export class MediaGalleryComponent implements OnInit {

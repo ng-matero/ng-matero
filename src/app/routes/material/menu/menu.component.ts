@@ -10,7 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatMenuModule, MatCardModule, MatButtonModule, MatIconModule],
 })
 export class MenuComponent {}

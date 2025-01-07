@@ -28,7 +28,6 @@ const exampleData = [
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
-  standalone: true,
   imports: [
     BreadcrumbComponent,
     CdkTableModule,

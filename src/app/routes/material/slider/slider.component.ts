@@ -9,7 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatSliderModule, FormsModule],
 })
 export class SliderComponent {

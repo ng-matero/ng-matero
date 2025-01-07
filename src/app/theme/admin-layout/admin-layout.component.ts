@@ -30,7 +30,6 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.scss',
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [
     RouterOutlet,
     BidiModule,

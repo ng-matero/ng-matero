@@ -17,7 +17,6 @@ import { TablesRemoteDataService } from './remote-data.service';
   templateUrl: './remote-data.component.html',
   styleUrl: './remote-data.component.scss',
   providers: [TablesRemoteDataService],
-  standalone: true,
   imports: [
     FormsModule,
     MatButtonModule,

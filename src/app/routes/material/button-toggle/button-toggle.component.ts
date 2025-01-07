@@ -10,7 +10,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-button-toggle',
   templateUrl: './button-toggle.component.html',
   styleUrl: './button-toggle.component.scss',
-  standalone: true,
   imports: [FormsModule, BreadcrumbComponent, MatButtonToggleModule, MatIconModule, MatCardModule],
 })
 export class ButtonToggleComponent {

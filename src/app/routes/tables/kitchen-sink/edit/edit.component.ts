@@ -7,7 +7,6 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
   selector: 'app-table-kitchen-sink-edit',
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss',
-  standalone: true,
   imports: [MatDialogModule, MatButtonModule, JsonPipe],
 })
 export class TablesKitchenSinkEditComponent {

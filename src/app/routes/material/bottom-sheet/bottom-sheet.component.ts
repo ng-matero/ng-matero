@@ -23,7 +23,6 @@ const defaultConfig = new MatBottomSheetConfig();
   selector: 'app-bottom-sheet',
   templateUrl: './bottom-sheet.component.html',
   styleUrl: './bottom-sheet.component.scss',
-  standalone: true,
   imports: [
     FormsModule,
     MatButtonModule,
@@ -73,7 +72,6 @@ export class BottomSheetComponent {
       }
     </mat-nav-list>
   `,
-  standalone: true,
   imports: [MatListModule],
 })
 export class BottomSheetOverviewComponent {

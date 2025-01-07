@@ -9,7 +9,6 @@ import { BreadcrumbComponent } from '@shared';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
-  standalone: true,
   imports: [BreadcrumbComponent, MatCardModule, MatButtonModule],
 })
 export class CardComponent {

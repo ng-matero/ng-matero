@@ -10,7 +10,6 @@ import { ErrorCodeComponent } from '@shared/components/error-code/error-code.com
       message="This is not the web page you are looking for."
     />
   `,
-  standalone: true,
   imports: [ErrorCodeComponent],
 })
 export class Error404Component {}

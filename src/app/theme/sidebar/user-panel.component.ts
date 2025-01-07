@@ -19,7 +19,6 @@ import { TranslateModule } from '@ngx-translate/core';
   `,
   styleUrl: './user-panel.component.scss',
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [RouterLink, MatButtonModule, MatIconModule, MatTooltipModule, TranslateModule],
 })
 export class UserPanelComponent implements OnInit {
