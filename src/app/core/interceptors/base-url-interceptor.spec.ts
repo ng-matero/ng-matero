@@ -35,16 +35,16 @@ describe('BaseUrlInterceptor', () => {
   it('should not prepend base url when base url is empty', () => {
     setBaseUrl(null);
 
-    http.get('/me').subscribe(data => expect(data).toEqual({ success: true }));
+    http.get('/user').subscribe(data => expect(data).toEqual({ success: true }));
 
-    httpMock.expectOne('/me').flush({ success: true });
+    httpMock.expectOne('/user').flush({ success: true });
   });
 
   it('should prepend base url when request url does not has http scheme', () => {
     setBaseUrl(baseUrl);
 
-    http.get('./me').subscribe(data => expect(data).toEqual({ success: true }));
-    httpMock.expectOne(baseUrl + '/me').flush({ success: true });
+    http.get('./user').subscribe(data => expect(data).toEqual({ success: true }));
+    httpMock.expectOne(baseUrl + '/user').flush({ success: true });
 
     http.get('').subscribe(data => expect(data).toEqual({ success: true }));
     httpMock.expectOne(baseUrl).flush({ success: true });

@@ -53,7 +53,7 @@ describe('AuthService', () => {
     httpMock.expectOne('/auth/login').flush(token);
 
     expect(authService.check()).toBeTrue();
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectOne('/user').flush(user);
   });
 
   it('should log out failed when user is not login', () => {
@@ -70,7 +70,7 @@ describe('AuthService', () => {
   it('should log out successful when user is login', () => {
     tokenService.set(token);
     expect(authService.check()).toBeTrue();
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectOne('/user').flush(user);
 
     user$.pipe(skip(1)).subscribe(currentUser => expect(currentUser.id).toBeUndefined());
     authService.logout().subscribe();
@@ -82,7 +82,7 @@ describe('AuthService', () => {
   it('should refresh token when access_token is valid', fakeAsync(() => {
     tokenService.set(Object.assign({ expires_in: 5 }, token));
     expect(authService.check()).toBeTrue();
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectOne('/user').flush(user);
     const match = (req: HttpRequest<any>) => req.url === '/auth/refresh' && !req.body.refresh_token;
 
     tick(4000);
@@ -90,7 +90,7 @@ describe('AuthService', () => {
     httpMock.match(match)[0].flush(token);
 
     expect(authService.check()).toBeTrue();
-    httpMock.expectNone('/me');
+    httpMock.expectNone('/user');
     tokenService.ngOnDestroy();
   }));
 
@@ -100,13 +100,13 @@ describe('AuthService', () => {
       req.url === '/auth/refresh' && req.body.refresh_token === 'foo';
 
     expect(authService.check()).toBeTrue();
-    httpMock.expectOne('/me').flush(user);
+    httpMock.expectOne('/user').flush(user);
     tick(10000);
     expect(authService.check()).toBeFalse();
     httpMock.match(match)[0].flush(token);
 
     expect(authService.check()).toBeTrue();
-    httpMock.expectNone('/me');
+    httpMock.expectNone('/user');
     tokenService.ngOnDestroy();
   }));
 
@@ -118,7 +118,7 @@ describe('AuthService', () => {
 
     tick(10000);
     expect(authService.check()).toBeFalse();
-    httpMock.expectOne('/me').flush({});
+    httpMock.expectOne('/user').flush({});
     httpMock.match(match)[0].flush({}, { status: 401, statusText: 'Unauthorized' });
 
     expect(authService.check()).toBeFalse();
@@ -129,6 +129,6 @@ describe('AuthService', () => {
   it('it only call http request once when on change subscribe twice', () => {
     authService.change().subscribe();
     tokenService.set(token);
-    httpMock.expectOne('/me').flush({});
+    httpMock.expectOne('/user').flush({});
   });
 });

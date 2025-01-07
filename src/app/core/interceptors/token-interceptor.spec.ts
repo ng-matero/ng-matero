@@ -52,7 +52,7 @@ describe('TokenInterceptor', () => {
   it('should append token when url does not has http scheme', () => {
     init('', 'token');
 
-    const headers = mockRequest('/me', user).request.headers;
+    const headers = mockRequest('/user', user).request.headers;
 
     expect(headers.get('Authorization')).toEqual('Bearer token');
   });
@@ -60,7 +60,7 @@ describe('TokenInterceptor', () => {
   it('should append token when url does not has http and base url not empty', () => {
     init(baseUrl, 'token');
 
-    const headers = mockRequest('/me', user).request.headers;
+    const headers = mockRequest('/user', user).request.headers;
 
     expect(headers.get('Authorization')).toEqual('Bearer token');
   });
@@ -68,7 +68,7 @@ describe('TokenInterceptor', () => {
   it('should append token when url include base url', () => {
     init(baseUrl, 'token');
 
-    const headers = mockRequest(`${baseUrl}/me`, user).request.headers;
+    const headers = mockRequest(`${baseUrl}/user`, user).request.headers;
 
     expect(headers.get('Authorization')).toEqual('Bearer token');
   });
@@ -93,7 +93,7 @@ describe('TokenInterceptor', () => {
     init('', 'token');
     spyOn(tokenService, 'clear');
 
-    mockRequest('/me', {}, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
+    mockRequest('/user', {}, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
 
     expect(tokenService.clear).toHaveBeenCalled();
   });

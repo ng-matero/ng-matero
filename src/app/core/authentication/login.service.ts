@@ -23,11 +23,11 @@ export class LoginService {
     return this.http.post<any>('/auth/logout', {});
   }
 
-  me() {
-    return this.http.get<User>('/me');
+  user() {
+    return this.http.get<User>('/user');
   }
 
   menu() {
-    return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
+    return this.http.get<{ menu: Menu[] }>('/user/menu').pipe(map(res => res.menu));
   }
 }

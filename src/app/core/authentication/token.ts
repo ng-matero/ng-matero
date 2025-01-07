@@ -4,45 +4,45 @@ import { Token } from './interface';
 export abstract class BaseToken {
   constructor(protected attributes: Token) {}
 
-  get access_token(): string {
+  get access_token() {
     return this.attributes.access_token;
   }
 
-  get refresh_token(): string | void {
+  get refresh_token() {
     return this.attributes.refresh_token;
   }
 
-  get token_type(): string {
+  get token_type() {
     return this.attributes.token_type ?? 'bearer';
   }
 
-  get exp(): number | void {
+  get exp() {
     return this.attributes.exp;
   }
 
-  valid(): boolean {
+  valid() {
     return this.hasAccessToken() && !this.isExpired();
   }
 
-  getBearerToken(): string {
+  getBearerToken() {
     return this.access_token
       ? [capitalize(this.token_type), this.access_token].join(' ').trim()
       : '';
   }
 
-  needRefresh(): boolean {
+  needRefresh() {
     return this.exp !== undefined && this.exp >= 0;
   }
 
-  getRefreshTime(): number {
+  getRefreshTime() {
     return timeLeft((this.exp ?? 0) - 5);
   }
 
-  private hasAccessToken(): boolean {
+  private hasAccessToken() {
     return !!this.access_token;
   }
 
-  private isExpired(): boolean {
+  private isExpired() {
     return this.exp !== undefined && this.exp - currentTimestamp() <= 0;
   }
 }
@@ -50,7 +50,7 @@ export abstract class BaseToken {
 export class SimpleToken extends BaseToken {}
 
 export class JwtToken extends SimpleToken {
-  private _payload?: { exp?: number | void };
+  private _payload?: { exp?: number };
 
   static is(accessToken: string): boolean {
     try {
@@ -63,11 +63,11 @@ export class JwtToken extends SimpleToken {
     }
   }
 
-  get exp(): number | void {
+  get exp() {
     return this.payload?.exp;
   }
 
-  private get payload(): { exp?: number | void } {
+  private get payload(): { exp?: number } {
     if (!this.access_token) {
       return {};
     }
