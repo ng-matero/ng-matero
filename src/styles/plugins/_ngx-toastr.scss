@@ -27,19 +27,19 @@
   }
 
   .toast-info {
-    background-color: var(--toast-info-background-color);
+    background-color: light-dark(#0074e9, #002f65);
   }
 
   .toast-success {
-    background-color: var(--toast-success-background-color);
+    background-color: light-dark(#03a800, #013a00);
   }
 
   .toast-warning {
-    background-color: var(--toast-warning-background-color);
+    background-color: light-dark(#e37100, #323200);
   }
 
   .toast-error {
-    background-color: var(--toast-error-background-color);
+    background-color: light-dark(#ef0000, #690100);
   }
 
   .toast-close-button {

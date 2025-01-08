@@ -9,8 +9,6 @@
 }
 
 .matero-sidenav {
-  --mat-sidenav-container-width: var(--sidenav-width);
-
   position: absolute;
   overflow-x: hidden;
   border-width: 0 !important;
@@ -45,38 +43,39 @@
     .menu-label,
     .menu-badge,
     .menu-caret,
-    .matero-user-panel-info, {
-      opacity: 0;
-    }
+    .matero-user-panel-info,
+    {
+    opacity: 0;
+  }
 
-    .menu-icon.submenu-icon {
+  .menu-icon.submenu-icon {
+    opacity: 1;
+  }
+
+  .matero-user-panel-avatar {
+    transform: scale(.5);
+  }
+
+  &:hover {
+    width: var(--sidenav-width);
+
+    .menu-name,
+    .menu-label,
+    .menu-badge,
+    .menu-caret,
+    .matero-user-panel-info {
       opacity: 1;
     }
 
-    .matero-user-panel-avatar {
-      transform: scale(.5);
+    .menu-icon.submenu-icon {
+      opacity: 0;
     }
 
-    &:hover {
-      width: var(--sidenav-width);
-
-      .menu-name,
-      .menu-label,
-      .menu-badge,
-      .menu-caret,
-      .matero-user-panel-info {
-        opacity: 1;
-      }
-
-      .menu-icon.submenu-icon {
-        opacity: 0;
-      }
-
-      .matero-user-panel-avatar {
-        transform: scale(1);
-      }
+    .matero-user-panel-avatar {
+      transform: scale(1);
     }
   }
+}
 }
 
 // Layout control
@@ -146,7 +145,7 @@
   position: relative;
   padding: var(--gutter);
 
-  .matero-header + &,
+  .matero-header+&,
   .matero-header-above &,
   .matero-navbar-top & {
     padding-top: 0;

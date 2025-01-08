@@ -119,7 +119,9 @@ export class AdminLayoutComponent implements OnDestroy {
 
   // TODO: Trigger when transition end
   resetCollapsedState(timer = 400) {
-    setTimeout(() => this.settings.setOptions(this.options), timer);
+    setTimeout(() => {
+      this.settings.setOptions(this.options);
+    }, timer);
   }
 
   onSidenavClosedStart() {

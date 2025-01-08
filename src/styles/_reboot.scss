@@ -1,3 +1,32 @@
+:root {
+  --body-font-family: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
+    'Lucida Grande', sans-serif;
+  --code-font-family: 'Roboto Mono', monospace;
+  --gutter: 1rem;
+  --sidenav-width: 15rem;
+  --sidenav-collapsed-width: 4rem;
+  --body-background-color: var(--mat-sys-surface-container);
+  --link-color: var(--mat-sys-primary);
+  --link-hover-color: var(--mat-sys-primary);
+  --code-border-color: light-dark(rgba(19, 28, 43, .08), rgba(218, 226, 249, .08));
+  --code-background-color: light-dark(rgba(19, 28, 43, .04), rgba(218, 226, 249, .04));
+  --header-background-color: light-dark(rgba(239, 237, 240, .8), rgba(31, 32, 34, .8));
+  --user-panel-background-color: var(--mat-sys-surface-container);
+  --user-panel-hover-background-color: var(--mat-sys-surface-variant);
+  --sidemenu-heading-hover-background-color: var(--mat-sys-surface-container-highest);
+  --sidemenu-active-heading-text-color: var(--mat-sys-primary);
+  --sidemenu-active-heading-background-color: var(--mat-sys-primary-container);
+  --sidemenu-active-heading-hover-background-color: var(--mat-sys-primary-container);
+  --sidemenu-expanded-background-color: var(--mat-sys-surface-container);
+  --topmenu-text-color: var(--mat-sys-on-background);
+  --topmenu-background-color: var(--header-background-color);
+  --topmenu-item-active-background-color: var(--mat-sys-primary-container);
+  --topmenu-dropdown-item-active-text-color: var(--mat-sys-primary);
+  --mat-sidenav-container-width: var(--sidenav-width);
+  --mat-toolbar-standard-height: 4rem;
+  --mat-toolbar-mobile-height: 3.5rem;
+}
+
 *,
 ::after,
 ::before {

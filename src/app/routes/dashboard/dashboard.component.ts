@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
 import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { Subscription } from 'rxjs';
 
-import { AppSettings, SettingsService } from '@core';
+import { SettingsService } from '@core';
 import { DashboardService } from './dashboard.service';
 
 @Component({
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.notifySubscription = this.settings.notify.subscribe(opts => {
       console.log(opts);
 
-      this.updateCharts(opts);
+      this.updateCharts();
     });
   }
 
@@ -82,39 +82,41 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chart2 = new ApexCharts(document.querySelector('#chart2'), this.charts[1]);
     this.chart2?.render();
 
-    this.updateCharts(this.settings.options);
+    this.updateCharts();
   }
 
-  updateCharts(opts: Partial<AppSettings>) {
+  updateCharts() {
+    const isDark = this.settings.getThemeColor() == 'dark';
+
     this.chart1?.updateOptions({
       chart: {
-        foreColor: opts.theme === 'dark' ? '#ccc' : '#333',
+        foreColor: isDark ? '#ccc' : '#333',
       },
       tooltip: {
-        theme: opts.theme === 'dark' ? 'dark' : 'light',
+        theme: isDark ? 'dark' : 'light',
       },
       grid: {
-        borderColor: opts.theme === 'dark' ? '#5a5a5a' : '#e9e9e9',
+        borderColor: isDark ? '#5a5a5a' : '#e9e9e9',
       },
     });
 
     this.chart2?.updateOptions({
       chart: {
-        foreColor: opts.theme === 'dark' ? '#ccc' : '#333',
+        foreColor: isDark ? '#ccc' : '#333',
       },
       plotOptions: {
         radar: {
           polygons: {
-            strokeColors: opts.theme === 'dark' ? '#5a5a5a' : '#e9e9e9',
-            connectorColors: opts.theme === 'dark' ? '#5a5a5a' : '#e9e9e9',
+            strokeColors: isDark ? '#5a5a5a' : '#e9e9e9',
+            connectorColors: isDark ? '#5a5a5a' : '#e9e9e9',
             fill: {
-              colors: opts.theme === 'dark' ? ['#2c2c2c', '#222'] : ['#f8f8f8', '#fff'],
+              colors: isDark ? ['#2c2c2c', '#222'] : ['#f8f8f8', '#fff'],
             },
           },
         },
       },
       tooltip: {
-        theme: opts.theme === 'dark' ? 'dark' : 'light',
+        theme: isDark ? 'dark' : 'light',
       },
     });
   }
