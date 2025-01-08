@@ -1,3 +1,3 @@
 # Interceptors
 
-https://angular.io/guide/http#intercepting-requests-and-responses
+https://angular.dev/guide/http/interceptors

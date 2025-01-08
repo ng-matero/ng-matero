@@ -1,14 +1,9 @@
-import {
-  HTTP_INTERCEPTORS,
-  HttpClient,
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { provideToastr, ToastrService } from 'ngx-toastr';
-import { ErrorInterceptor } from './error-interceptor';
+import { errorInterceptor } from './error-interceptor';
 
 describe('ErrorInterceptor', () => {
   let httpMock: HttpTestingController;
@@ -32,8 +27,7 @@ describe('ErrorInterceptor', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withInterceptors([errorInterceptor])),
         provideHttpClientTesting(),
         provideToastr(),
       ],

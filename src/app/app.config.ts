@@ -1,5 +1,10 @@
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  inject,
+  provideAppInitializer,
+} from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
@@ -14,7 +19,18 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { provideToastr } from 'ngx-toastr';
 
-import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@core';
+import {
+  apiInterceptor,
+  BASE_URL,
+  baseUrlInterceptor,
+  errorInterceptor,
+  loggingInterceptor,
+  noopInterceptor,
+  settingsInterceptor,
+  StartupService,
+  tokenInterceptor,
+  TranslateLangService,
+} from '@core';
 import { environment } from '@env/environment';
 import { PaginatorI18nService } from '@shared';
 import { InMemDataService } from '@shared/in-mem/in-mem-data.service';
@@ -22,14 +38,28 @@ import { routes } from './app.routes';
 import { FormlyConfigModule } from './formly-config';
 
 // Required for AOT compilation
-export function TranslateHttpLoaderFactory(http: HttpClient) {
+function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'i18n/', '.json');
 }
 
+// Http interceptor providers in outside-in order
+const interceptors = [
+  noopInterceptor,
+  baseUrlInterceptor,
+  settingsInterceptor,
+  tokenInterceptor,
+  apiInterceptor,
+  errorInterceptor,
+  loggingInterceptor,
+];
+
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: BASE_URL, useValue: environment.baseUrl },
+    provideAppInitializer(() => inject(TranslateLangService).load()),
+    provideAppInitializer(() => inject(StartupService).load()),
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptors(interceptors)),
     provideRouter(
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
@@ -52,9 +82,6 @@ export const appConfig: ApplicationConfig = {
         passThruUnknownUrl: true,
       })
     ),
-    { provide: BASE_URL, useValue: environment.baseUrl },
-    httpInterceptorProviders,
-    appInitializerProviders,
     {
       provide: MatPaginatorIntl,
       useFactory: (paginatorI18nSrv: PaginatorI18nService) => paginatorI18nSrv.getPaginatorIntl(),
