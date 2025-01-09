@@ -1,8 +1,10 @@
-import { Component, OnInit<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';<% if(standalone) { %>
+import { Component<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';<% if(standalone) { %>
 import { PageHeaderComponent } from '@shared';<% } %>
 
 @Component({
-  selector: '<%= selector %>',<% if(inlineTemplate) { %>
+  selector: '<%= selector %>',<% if(standalone) { %>
+  imports: [PageHeaderComponent],<%} else { %>
+  standalone: false,<% }%><% if(inlineTemplate) { %>
   template: `
     <%= indentTextContent(resolvedFiles.template, 4) %>
   `,<% } else { %>
@@ -12,15 +14,8 @@ import { PageHeaderComponent } from '@shared';<% } %>
   `]<% } else { %>
   styleUrl: './<%= dasherize(name) %>.component.<%= style %>'<% } %><% if(!!viewEncapsulation) { %>,
   encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
-  changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %><% if(standalone) { %>,
-  standalone: true,
-  imports: [PageHeaderComponent]<% } %>
+  changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
 })
-export class <%= classify(pageName) %>Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class <%= classify(pageName) %>Component {
 
 }
