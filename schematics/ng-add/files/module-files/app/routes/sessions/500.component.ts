@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,5 +10,6 @@ import { Component } from '@angular/core';
       message="Just kidding, looks like we have an internal issue, please try refreshing."
     />
   `,
+  standalone: false,
 })
 export class Error500Component {}

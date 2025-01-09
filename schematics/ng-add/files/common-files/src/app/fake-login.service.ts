@@ -22,7 +22,7 @@ export class FakeLoginService extends LoginService {
     return of({});
   }
 
-  me() {
+  user() {
     return of(admin);
   }
 

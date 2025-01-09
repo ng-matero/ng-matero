@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -10,6 +11,7 @@ import { AuthService } from '@core/authentication';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  standalone: false,
 })
 export class LoginComponent {
   private readonly fb = inject(FormBuilder);

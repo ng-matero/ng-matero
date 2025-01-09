@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
@@ -5,6 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DashboardComponent {
 

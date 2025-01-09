@@ -1,5 +1,10 @@
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';<% if(animations!='excluded') { %>
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  inject,
+  provideAppInitializer,
+} from '@angular/core';<% if(animations!='excluded') { %>
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';<% } %>
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
@@ -13,7 +18,18 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { provideToastr } from 'ngx-toastr';
 
-import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@core';
+import {
+  apiInterceptor,
+  BASE_URL,
+  baseUrlInterceptor,
+  errorInterceptor,
+  loggingInterceptor,
+  noopInterceptor,
+  settingsInterceptor,
+  StartupService,
+  tokenInterceptor,
+  TranslateLangService,
+} from '@core';
 import { environment } from '@env/environment';
 import { PaginatorI18nService } from '@shared';
 import { routes } from './app.routes';
@@ -23,14 +39,28 @@ import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
 
 // Required for AOT compilation
-export function TranslateHttpLoaderFactory(http: HttpClient) {
+function TranslateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'i18n/', '.json');
 }
 
+// Http interceptor providers in outside-in order
+const interceptors = [
+  noopInterceptor,
+  baseUrlInterceptor,
+  settingsInterceptor,
+  tokenInterceptor,
+  apiInterceptor,
+  errorInterceptor,
+  loggingInterceptor,
+];
+
 export const appConfig: ApplicationConfig = {
-  providers: [<% if(animations!='excluded') { %>
+  providers: [
+    { provide: BASE_URL, useValue: environment.baseUrl },
+    provideAppInitializer(() => inject(TranslateLangService).load()),
+    provideAppInitializer(() => inject(StartupService).load()),<% if(animations!='excluded') { %>
     provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptors(interceptors)),
     provideRouter(
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
@@ -48,15 +78,12 @@ export const appConfig: ApplicationConfig = {
       NgxPermissionsModule.forRoot(),
       FormlyConfigModule.forRoot()
     ),
-    { provide: BASE_URL, useValue: environment.baseUrl },
     // ==================================================
     // 👇 ❌ Remove it in the realworld application
     //
     { provide: LoginService, useClass: FakeLoginService },
     //
     // ==================================================
-    httpInterceptorProviders,
-    appInitializerProviders,
     {
       provide: MatPaginatorIntl,
       deps: [PaginatorI18nService],

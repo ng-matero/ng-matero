@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,5 +10,6 @@ import { Component } from '@angular/core';
       message="This is not the web page you are looking for."
     />
   `,
+  standalone: false,
 })
 export class Error404Component {}

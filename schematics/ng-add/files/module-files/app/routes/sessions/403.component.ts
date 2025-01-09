@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,5 +10,6 @@ import { Component } from '@angular/core';
       message="You do not have permission to access the requested data."
     />
   `,
+  standalone: false,
 })
 export class Error403Component {}

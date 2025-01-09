@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
@@ -5,6 +6,7 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
+  standalone: false,
 })
 export class RegisterComponent {
   private readonly fb = inject(FormBuilder);
