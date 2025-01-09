@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 
+import { MatDateFnsModule, provideDateFnsAdapter } from '@angular/material-date-fns-adapter';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -8,12 +9,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MAT_CARD_CONFIG, MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatRippleModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
   MatDialogConfig,
   MatDialogModule,
-  MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -39,8 +40,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
+import { SettingsService } from '@core';
 import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
 
 @NgModule({
@@ -55,7 +56,7 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
     MatChipsModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatMomentDateModule, // <= You can also import the other adapter you need (e.g. luxon, date-fns)
+    MatDateFnsModule, // <= You can also import the other adapter you need (e.g. moment, luxon)
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
@@ -89,6 +90,12 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
       useFactory: (paginatorI18nSrv: PaginatorI18nService) => paginatorI18nSrv.getPaginatorIntl(),
     },
     {
+      provide: MAT_CARD_CONFIG,
+      useValue: {
+        appearance: 'outlined',
+      },
+    },
+    {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: {
         ...new MatDialogConfig(),
@@ -96,28 +103,19 @@ import { PaginatorI18nService } from '@shared/services/paginator-i18n.service';
     },
     {
       provide: MAT_DATE_LOCALE,
-      useFactory: () => navigator.language, // <= This will be overrided by runtime setting
+      useFactory: () => inject(SettingsService).getLocale(),
     },
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: 'YYYY-MM-DD',
-        },
-        display: {
-          dateInput: 'YYYY-MM-DD',
-          monthYearLabel: 'YYYY MMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'YYYY MMM',
-        },
+    provideDateFnsAdapter({
+      parse: {
+        dateInput: 'yyyy-MM-dd',
       },
-    },
-    {
-      provide: MAT_CARD_CONFIG,
-      useValue: {
-        appearance: 'outlined',
+      display: {
+        dateInput: 'yyyy-MM-dd',
+        monthYearLabel: 'yyyy MMM',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'yyyy MMM',
       },
-    },
+    }),
   ],
 })
 export class MaterialModule {}

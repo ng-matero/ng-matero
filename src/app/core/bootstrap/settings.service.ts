@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppDirectionality, LocalStorageService } from '@shared';
+import { enUS, Locale, zhCN, zhTW } from 'date-fns/locale';
 import { BehaviorSubject } from 'rxjs';
 import { AppSettings, AppTheme, defaults } from '../settings';
 
@@ -32,6 +33,8 @@ export class SettingsService {
   options: AppSettings = Object.assign(defaults, this.storedOptions);
 
   languages = ['en-US', 'zh-CN', 'zh-TW'];
+
+  localeMap: Record<string, Locale> = { 'en-US': enUS, 'zh-CN': zhCN, 'zh-TW': zhTW };
 
   constructor() {
     this.translate.addLangs(this.languages);
@@ -93,5 +96,9 @@ export class SettingsService {
       this.setOptions({ language });
     }
     this.translate.use(this.getTranslateLang());
+  }
+
+  getLocale() {
+    return this.localeMap[this.getTranslateLang()];
   }
 }

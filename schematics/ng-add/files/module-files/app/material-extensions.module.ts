@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { MtxDateFnsDatetimeModule, provideDateFnsDatetimeAdapter } from '@ng-matero/extensions-date-fns-adapter';
 import { MtxAlertModule } from '@ng-matero/extensions/alert';
 import { MtxButtonModule } from '@ng-matero/extensions/button';
 import { MtxCheckboxGroupModule } from '@ng-matero/extensions/checkbox-group';
@@ -15,8 +16,6 @@ import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { MtxSplitModule } from '@ng-matero/extensions/split';
 import { MtxTooltipModule } from '@ng-matero/extensions/tooltip';
-import { MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
-import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
 
 @NgModule({
   exports: [
@@ -35,32 +34,29 @@ import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
     MtxSelectModule,
     MtxSplitModule,
     MtxTooltipModule,
-    MtxMomentDatetimeModule, // <= You can also import the other adapter you need (e.g. luxon, date-fns)
+    MtxDateFnsDatetimeModule, // <= You can also import the other adapter you need (e.g. moment, luxon)
   ],
   providers: [
-    {
-      provide: MTX_DATETIME_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: 'YYYY-MM-DD',
-          yearInput: 'YYYY',
-          monthInput: 'MMMM',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
-          timeInput: 'HH:mm',
-        },
-        display: {
-          dateInput: 'YYYY-MM-DD',
-          yearInput: 'YYYY',
-          monthInput: 'MMMM',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
-          timeInput: 'HH:mm',
-          monthYearLabel: 'YYYY MMMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'MMMM YYYY',
-          popupHeaderDateLabel: 'MMM DD, ddd',
-        },
+    provideDateFnsDatetimeAdapter({
+      parse: {
+        dateInput: 'yyyy-MM-dd',
+        yearInput: 'yyyy',
+        monthInput: 'MMMM',
+        datetimeInput: 'yyyy-MM-dd HH:mm',
+        timeInput: 'HH:mm',
       },
-    },
+      display: {
+        dateInput: 'yyyy-MM-dd',
+        yearInput: 'yyyy',
+        monthInput: 'MMMM',
+        datetimeInput: 'yyyy-MM-dd HH:mm',
+        timeInput: 'HH:mm',
+        monthYearLabel: 'yyyy MMMM',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM yyyy',
+        popupHeaderDateLabel: 'MMM dd, E',
+      },
+    }),
   ],
 })
 export class MaterialExtensionsModule {}

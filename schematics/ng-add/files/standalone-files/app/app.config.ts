@@ -8,11 +8,11 @@ import {
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';<% } %>
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
-import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
+import { provideDateFnsAdapter } from '@angular/material-date-fns-adapter';
 import { MAT_CARD_CONFIG } from '@angular/material/card';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
-import { provideMomentDatetimeAdapter } from '@ng-matero/extensions-moment-adapter';
+import { provideDateFnsDatetimeAdapter } from '@ng-matero/extensions-date-fns-adapter';
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxPermissionsModule } from 'ngx-permissions';
@@ -26,6 +26,7 @@ import {
   loggingInterceptor,
   noopInterceptor,
   settingsInterceptor,
+  SettingsService,
   StartupService,
   tokenInterceptor,
   TranslateLangService,
@@ -91,7 +92,7 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: MAT_DATE_LOCALE,
-      useFactory: () => navigator.language, // <= This will be overrided by runtime setting
+      useFactory: () => inject(SettingsService).getLocale(),
     },
     {
       provide: MAT_CARD_CONFIG,
@@ -99,35 +100,35 @@ export const appConfig: ApplicationConfig = {
         appearance: 'outlined',
       },
     },
-    provideMomentDateAdapter({
+    provideDateFnsAdapter({
       parse: {
-        dateInput: 'YYYY-MM-DD',
+        dateInput: 'yyyy-MM-dd',
       },
       display: {
-        dateInput: 'YYYY-MM-DD',
-        monthYearLabel: 'YYYY MMM',
+        dateInput: 'yyyy-MM-dd',
+        monthYearLabel: 'yyyy MMM',
         dateA11yLabel: 'LL',
-        monthYearA11yLabel: 'YYYY MMM',
+        monthYearA11yLabel: 'yyyy MMM',
       },
     }),
-    provideMomentDatetimeAdapter({
+    provideDateFnsDatetimeAdapter({
       parse: {
-        dateInput: 'YYYY-MM-DD',
-        yearInput: 'YYYY',
+        dateInput: 'yyyy-MM-dd',
+        yearInput: 'yyyy',
         monthInput: 'MMMM',
-        datetimeInput: 'YYYY-MM-DD HH:mm',
+        datetimeInput: 'yyyy-MM-dd HH:mm',
         timeInput: 'HH:mm',
       },
       display: {
-        dateInput: 'YYYY-MM-DD',
-        yearInput: 'YYYY',
+        dateInput: 'yyyy-MM-dd',
+        yearInput: 'yyyy',
         monthInput: 'MMMM',
-        datetimeInput: 'YYYY-MM-DD HH:mm',
+        datetimeInput: 'yyyy-MM-dd HH:mm',
         timeInput: 'HH:mm',
-        monthYearLabel: 'YYYY MMMM',
+        monthYearLabel: 'yyyy MMMM',
         dateA11yLabel: 'LL',
-        monthYearA11yLabel: 'MMMM YYYY',
-        popupHeaderDateLabel: 'MMM DD, ddd',
+        monthYearA11yLabel: 'MMMM yyyy',
+        popupHeaderDateLabel: 'MMM dd, E',
       },
     }),
   ],

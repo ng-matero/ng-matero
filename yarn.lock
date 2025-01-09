@@ -328,10 +328,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/material-moment-adapter@^19.0.4":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-19.0.4.tgz#ffc37744734dd0a2b9809ab10f811bf2c6552501"
-  integrity sha512-H+5m5kE7AOm0TFNzJfkiIy/voVYyjm0ocul01HTOxYM4RDxQoVWjxVLZdcRm1UvXbT9JdONY7IOcN1GhmkWUqw==
+"@angular/material-date-fns-adapter@^19.0.5":
+  version "19.0.5"
+  resolved "https://registry.yarnpkg.com/@angular/material-date-fns-adapter/-/material-date-fns-adapter-19.0.5.tgz#4ca4f4c5de11c81216e8d126c2a664a50132273c"
+  integrity sha512-3AjV0/SguZeRheN8KWx/GabjaT07y4k3Pet/JFbjvbi0E0R49MAkahUUtJMaoXLAgIOg9oZ1apj4nqRDn/U+jg==
   dependencies:
     tslib "^2.3.0"
 
@@ -2107,10 +2107,10 @@
     "@napi-rs/nice-win32-ia32-msvc" "1.0.1"
     "@napi-rs/nice-win32-x64-msvc" "1.0.1"
 
-"@ng-matero/extensions-moment-adapter@^19.0.0":
+"@ng-matero/extensions-date-fns-adapter@^19.0.0":
   version "19.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions-moment-adapter/-/extensions-moment-adapter-19.0.0.tgz#ceabf33c477163006feddf2ccd9c9794c8d9e366"
-  integrity sha512-abXTouz53ggq+rUQOcjqnwuG2WU0JweH/PDbIVaK1tx41hU/xSHiXkrRnSAWrsDkwJf/hRIJN9CB18qyJ6RAfA==
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions-date-fns-adapter/-/extensions-date-fns-adapter-19.0.0.tgz#f7bd31383767d98525c38f41ef08580cb6355fba"
+  integrity sha512-nj1EbG4s0E7/zp1cfDYIxgWBTmg5eC+OqFVyxgjrCElk9+X1f5R0zgvKOqY5+t89XfFwUJ5bOEgWHFsQufdfww==
   dependencies:
     tslib "^2.4.0"
 
@@ -4219,6 +4219,11 @@ dashdash@^1.12.0:
   integrity sha512-jRFi8UDGo6j+odZiEpjazZaWqEal3w/basFjQHQEwVtZJGDpxbH1MeYluwCS8Xq5wmLJooDlMgvVarmWfGM44g==
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-4.1.0.tgz#64b3d83fff5aa80438f5b1a633c2e83b8a1c2d14"
+  integrity sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==
 
 date-format@^4.0.14:
   version "4.0.14"
@@ -7072,11 +7077,6 @@ mkdirp@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-3.0.1.tgz#e44e4c5607fb279c168241713cc6e0fea9adcb50"
   integrity sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==
-
-moment@^2.30.0:
-  version "2.30.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
-  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
 
 mrmime@2.0.0, mrmime@^2.0.0:
   version "2.0.0"
