@@ -2114,10 +2114,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^19.0.0":
-  version "19.0.1"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-19.0.1.tgz#38a8df3c02d27b239def2e7d77d00764b97bcd80"
-  integrity sha512-gCFpyAaU6pCGleJkf6wUAIRlQ5xyEzq6FNYgOVstgBmEtSAeOtJkYBw6p45LIyam6XFG4Y9UzXSF25DuignsHw==
+"@ng-matero/extensions@^19.0.2":
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-19.0.2.tgz#0e41660c203bc346406eb8d55f5e8795464e541c"
+  integrity sha512-dMZRg6Ho9G7BJjTpXpg3YpfuzpwLQeY09cQV0nuVrXjr6iZ1ezcj8OphpI3JHIlOfFFrEE1qyi4VVOQBbvQPmA==
   dependencies:
     "@ng-select/ng-select" "^14.1.0"
     ngx-color "^9.0.0"
@@ -9457,10 +9457,10 @@ typescript-eslint@^8.19.0:
     "@typescript-eslint/parser" "8.19.1"
     "@typescript-eslint/utils" "8.19.1"
 
-typescript@~5.5.2:
-  version "5.5.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
-  integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
+typescript@~5.6.2:
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.3.tgz#5f3449e31c9d94febb17de03cc081dd56d81db5b"
+  integrity sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==
 
 ua-parser-js@^0.7.30:
   version "0.7.40"

@@ -38,7 +38,7 @@
     "@angular/platform-browser": "^19.0.5",
     "@angular/platform-browser-dynamic": "^19.0.5",
     "@angular/router": "^19.0.5",
-    "@ng-matero/extensions": "^19.0.0",
+    "@ng-matero/extensions": "^19.0.2",
     "@ng-matero/extensions-date-fns-adapter": "^19.0.0",
     "@ngx-formly/core": "^6.3.10",
     "@ngx-formly/material": "^6.3.10",
@@ -88,7 +88,7 @@
     "stylelint-config-recess-order": "^5.1.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-standard": "^36.0.0",
-    "typescript": "~5.5.2",
+    "typescript": "~5.6.2",
     "typescript-eslint": "^8.19.0",
     "webpack-bundle-analyzer": "^4.10.0"
   }
