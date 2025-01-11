@@ -1,3 +1,15 @@
 .mat-mdc-button-base {
   margin: 4px;
 }
+
+mtx-alert {
+  position: sticky;
+  top: 64px;
+  z-index: 10;
+}
+
+@media (width <= 599px) {
+  mtx-alert {
+    top: 56px;
+  }
+}

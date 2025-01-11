@@ -15,10 +15,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterLink } from '@angular/router';
+import { SettingsService } from '@core';
+import { MtxAlertModule } from '@ng-matero/extensions/alert';
 import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { Subscription } from 'rxjs';
-
-import { SettingsService } from '@core';
 import { DashboardService } from './dashboard.service';
 
 @Component({
@@ -37,6 +37,7 @@ import { DashboardService } from './dashboard.service';
     MatTableModule,
     MatTabsModule,
     MtxProgressModule,
+    MtxAlertModule,
   ],
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -56,6 +57,8 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   stats = this.dashboardSrv.getStats();
 
   notifySubscription = Subscription.EMPTY;
+
+  isShowAlert = true;
 
   ngOnInit() {
     this.notifySubscription = this.settings.notify.subscribe(opts => {
@@ -96,7 +99,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
         theme: isDark ? 'dark' : 'light',
       },
       grid: {
-        borderColor: isDark ? '#5a5a5a' : '#e9e9e9',
+        borderColor: isDark ? '#5a5a5a' : '#e1e1e1',
       },
     });
 
@@ -107,10 +110,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       plotOptions: {
         radar: {
           polygons: {
-            strokeColors: isDark ? '#5a5a5a' : '#e9e9e9',
-            connectorColors: isDark ? '#5a5a5a' : '#e9e9e9',
+            strokeColors: isDark ? '#5a5a5a' : '#e1e1e1',
+            connectorColors: isDark ? '#5a5a5a' : '#e1e1e1',
             fill: {
-              colors: isDark ? ['#2c2c2c', '#222'] : ['#f8f8f8', '#fff'],
+              colors: isDark ? ['#2c2c2c', '#222'] : ['#f2f2f2', '#fff'],
             },
           },
         },
@@ -119,5 +122,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
         theme: isDark ? 'dark' : 'light',
       },
     });
+  }
+
+  onAlertDismiss() {
+    this.isShowAlert = false;
   }
 }

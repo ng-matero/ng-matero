@@ -102,6 +102,9 @@ export class DashboardService {
         toolbar: {
           show: false,
         },
+        zoom: {
+          enabled: false,
+        },
       },
       dataLabels: {
         enabled: false,
