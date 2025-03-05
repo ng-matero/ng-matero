@@ -2107,27 +2107,27 @@
     "@napi-rs/nice-win32-ia32-msvc" "1.0.1"
     "@napi-rs/nice-win32-x64-msvc" "1.0.1"
 
-"@ng-matero/extensions-date-fns-adapter@^19.0.0":
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions-date-fns-adapter/-/extensions-date-fns-adapter-19.0.0.tgz#f7bd31383767d98525c38f41ef08580cb6355fba"
-  integrity sha512-nj1EbG4s0E7/zp1cfDYIxgWBTmg5eC+OqFVyxgjrCElk9+X1f5R0zgvKOqY5+t89XfFwUJ5bOEgWHFsQufdfww==
+"@ng-matero/extensions-date-fns-adapter@^19.1.0":
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions-date-fns-adapter/-/extensions-date-fns-adapter-19.1.0.tgz#d142ba216231920e9a6b1c07b8887234e49f56ab"
+  integrity sha512-SkhM299WjFN5qfTRAUvfgFelggCKnzA1WWUunhNh1iFgk0dJkxBcPgQ4cB3XdZVtS+FnErKQLhCKjKW5ErPXww==
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^19.0.2":
-  version "19.0.2"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-19.0.2.tgz#0e41660c203bc346406eb8d55f5e8795464e541c"
-  integrity sha512-dMZRg6Ho9G7BJjTpXpg3YpfuzpwLQeY09cQV0nuVrXjr6iZ1ezcj8OphpI3JHIlOfFFrEE1qyi4VVOQBbvQPmA==
+"@ng-matero/extensions@^19.2.1":
+  version "19.2.1"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-19.2.1.tgz#d0e0bfec4a4c300777dc160d988fb3d5848b591e"
+  integrity sha512-c1r6s3U71LYPe+GMBv8NgrQK3q/x8libPH/hzvZN60dnQvgdbtSfh8itdB+Od3hXTIU0lm2g+Ir4sJvEDPnBFg==
   dependencies:
-    "@ng-select/ng-select" "^14.1.0"
+    "@ng-select/ng-select" "^14.2.0"
     ngx-color "^9.0.0"
     photoviewer "^3.10.0"
     tslib "^2.4.0"
 
-"@ng-select/ng-select@^14.1.0":
-  version "14.1.0"
-  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-14.1.0.tgz#f90a8cd5a90c8644a8d0208e293ee97db3d96e94"
-  integrity sha512-cE/e7WIqLAgUF83mpmDWbgmy7OvzWTjCTjtcIzhabRbhN0RDqp7u39noC12kSN+viAfYnA1TS7rBru+IouNt1g==
+"@ng-select/ng-select@^14.2.0":
+  version "14.2.2"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-14.2.2.tgz#31a8c6adea192388ab0a8cb0a33be5dd046e13e9"
+  integrity sha512-K7AAeaVpWiwkkWXQFb4+ywoSRDMazCcqptAtpVnJ5+A1W/RJsYOZwf0xLR2Lqe/8PykbQg5+fw6pVve+FFv6eg==
   dependencies:
     tslib "^2.3.1"
 

@@ -38,13 +38,4 @@ export class FormlyFieldComboboxComponent extends FieldType<FieldTypeConfig> {
   get bindValue() {
     return typeof this.props.valueProp === 'string' ? this.props.valueProp : undefined;
   }
-
-  // The original `onContainerClick` has been covered up in FieldType, so we should redefine it.
-  onContainerClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    if (/mat-form-field|mtx-select/g.test(target.parentElement?.classList[0] || '')) {
-      this.select.focus();
-      this.select.open();
-    }
-  }
 }
