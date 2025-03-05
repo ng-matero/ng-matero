@@ -1,9 +1,9 @@
 @if (isShowAlert) {
   <mtx-alert type="info" dismissible (closed)="onAlertDismiss()">
     🎉 Introducing
-    <a href="https://github.com/acrodata/gui" target="_blank">Acrodata GUI</a>
-    - A JSON powered GUI for configurable panels.
-    <a href="https://github.com/acrodata/gui" target="_blank">Learn more!</a>
+    <a [href]="introducingItem.link" target="_blank">{{ introducingItem.name }}</a>
+    - {{ introducingItem.description }}
+    <a [href]="introducingItem.link" target="_blank">Learn more!</a>
   </mtx-alert>
 }
 

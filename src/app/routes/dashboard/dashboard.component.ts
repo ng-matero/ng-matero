@@ -60,6 +60,31 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isShowAlert = true;
 
+  introducingItems = [
+    {
+      name: 'Acrodata GUI',
+      description: 'A JSON powered GUI for configurable panels.',
+      link: 'https://github.com/acrodata/gui',
+    },
+    {
+      name: 'Code Editor',
+      description: 'The CodeMirror 6 wrapper for Angular.',
+      link: 'https://github.com/acrodata/code-editor',
+    },
+    {
+      name: 'Watermark',
+      description: 'A watermark component that can prevent deletion.',
+      link: 'https://github.com/acrodata/watermark',
+    },
+    {
+      name: 'RnD Dialog',
+      description: 'Resizable and draggable dialog based on CDK dialog.',
+      link: 'https://github.com/acrodata/rnd-dialog',
+    },
+  ];
+
+  introducingItem = this.introducingItems[this.getRandom(0, 3)];
+
   ngOnInit() {
     this.notifySubscription = this.settings.notify.subscribe(opts => {
       console.log(opts);
@@ -126,5 +151,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onAlertDismiss() {
     this.isShowAlert = false;
+  }
+
+  getRandom(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
