@@ -4,19 +4,12 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: variables.$grid-gutter * -.5;
-  margin-left: variables.$grid-gutter * -.5;
+  margin-right: calc(var(--gutter) * -0.5);
+  margin-left: calc(var(--gutter) * -0.5);
 }
 
 .no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > .col,
-  > [class*='col-'] {
-    padding-right: 0;
-    padding-left: 0;
-  }
+  --gutter: 0;
 }
 
 @include mixins.make-grid-columns();

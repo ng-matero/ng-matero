@@ -52,8 +52,8 @@
   #{$list} {
     position: relative;
     width: 100%;
-    padding-right: variables.$grid-gutter * .5;
-    padding-left: variables.$grid-gutter * .5;
+    padding-right: calc(var(--gutter) * 0.5);
+    padding-left: calc(var(--gutter) * 0.5);
   }
 }
 
