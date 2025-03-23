@@ -9,6 +9,8 @@
 }
 
 .matero-sidenav {
+  --mat-sidenav-container-width: var(--sidenav-width);
+
   position: absolute;
   overflow-x: hidden;
   border-width: 0 !important;

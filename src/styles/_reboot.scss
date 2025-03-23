@@ -22,7 +22,6 @@
   --topmenu-background-color: var(--header-background-color);
   --topmenu-item-active-background-color: var(--mat-sys-primary-container);
   --topmenu-dropdown-item-active-text-color: var(--mat-sys-primary);
-  --mat-sidenav-container-width: var(--sidenav-width);
   --mat-toolbar-standard-height: 4rem;
   --mat-toolbar-mobile-height: 3.5rem;
 }
@@ -68,7 +67,7 @@ samp {
 code {
   padding: 0.125rem 0.25rem;
   font-size: 80%;
-  word-break: break-word;
+  overflow-wrap: break-word;
   background-color: var(--code-background-color);
   border: 1px solid var(--code-border-color);
   border-radius: 0.25rem;
