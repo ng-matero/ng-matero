@@ -53,10 +53,10 @@
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+    outline: none;
     background-color: transparent;
     border: none;
     border-radius: 1.5rem;
-    outline: none;
   }
 
   .menu-icon {
@@ -101,8 +101,8 @@
   .menu-name {
     flex: 1;
     overflow: hidden;
-    text-align: initial;
     text-overflow: ellipsis;
+    text-align: initial;
   }
 
   .menu-icon,

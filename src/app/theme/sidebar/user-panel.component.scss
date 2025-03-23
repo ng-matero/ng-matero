@@ -6,9 +6,9 @@
   padding: 0.75rem;
   margin-bottom: 0.75rem;
   cursor: pointer;
+  outline: none;
   background-color: var(--user-panel-background-color);
   border-radius: 0.75rem;
-  outline: none;
 
   &:hover,
   &:focus {
@@ -21,8 +21,8 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50rem;
-  transition: transform mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
   transform-origin: 0 1.5rem;
+  transition: transform mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
 
   [dir='rtl'] & {
     transform-origin: 3rem 1.5rem;
