@@ -75,6 +75,7 @@ function updateVersions(cb) {
     .pipe(
       each(function (content, file, callback) {
         [
+          '@angular/animations',
           '@angular/cdk',
           '@angular/material',
           '@angular/material-date-fns-adapter',

@@ -8,11 +8,12 @@ const VERSION = require('../package.json').version;
 export function addKeyPkgsToPackageJson(host: Tree) {
   addPackage(host, '@angular/cdk@0.0.0-PLACEHOLDER');
   addPackage(host, 'parse5@0.0.0-PLACEHOLDER', 'dev');
-  addPackage(host, `ng-matero@~${VERSION}`);
+  addPackage(host, `ng-matero@^${VERSION}`);
 }
 
 /** Add dependencies to package.json */
 export function add3rdPkgsToPackageJson(host: Tree) {
+  addPackage(host, '@angular/animations@0.0.0-PLACEHOLDER');
   addPackage(host, '@angular/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@angular/material-date-fns-adapter@0.0.0-PLACEHOLDER');
 
