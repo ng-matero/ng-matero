@@ -99,6 +99,7 @@
     "range_page_label_2": "{{startIndex}} - {{endIndex}} of {{length}}"
   },
   "en_us": "English",
+  "ro": "Romanian",
   "zh_cn": "Simplified Chinese",
   "zh_tw": "Traditional Chinese",
   "system": "System",
