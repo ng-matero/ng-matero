@@ -14,7 +14,7 @@
   position: absolute;
   overflow-x: hidden;
   border-width: 0 !important;
-  transition: width mat.$private-swift-ease-out-duration mat.$private-swift-ease-out-timing-function;
+  transition-property: transform, width !important;
 }
 
 // Layout control
@@ -45,39 +45,38 @@
     .menu-label,
     .menu-badge,
     .menu-caret,
-    .matero-user-panel-info,
-    {
-    opacity: 0;
-  }
-
-  .menu-icon.submenu-icon {
-    opacity: 1;
-  }
-
-  .matero-user-panel-avatar {
-    transform: scale(.5);
-  }
-
-  &:hover {
-    width: var(--sidenav-width);
-
-    .menu-name,
-    .menu-label,
-    .menu-badge,
-    .menu-caret,
     .matero-user-panel-info {
-      opacity: 1;
-    }
-
-    .menu-icon.submenu-icon {
       opacity: 0;
     }
 
+    .menu-icon.submenu-icon {
+      opacity: 1;
+    }
+
     .matero-user-panel-avatar {
-      transform: scale(1);
+      transform: scale(0.5);
+    }
+
+    &:hover {
+      width: var(--sidenav-width);
+
+      .menu-name,
+      .menu-label,
+      .menu-badge,
+      .menu-caret,
+      .matero-user-panel-info {
+        opacity: 1;
+      }
+
+      .menu-icon.submenu-icon {
+        opacity: 0;
+      }
+
+      .matero-user-panel-avatar {
+        transform: scale(1);
+      }
     }
   }
-}
 }
 
 // Layout control
