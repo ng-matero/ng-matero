@@ -1,13 +1,6 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  Component,
-  HostBinding,
-  OnDestroy,
-  ViewChild,
-  ViewEncapsulation,
-  inject,
-} from '@angular/core';
+import { Component, OnDestroy, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NgProgressbar } from 'ngx-progressbar';
@@ -42,6 +35,10 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
     SidebarNoticeComponent,
     CustomizerComponent,
   ],
+  host: {
+    '[class.matero-content-width-fix]': 'contentWidthFix',
+    '[class.matero-sidenav-collapsed-fix]': 'collapsedWidthFix',
+  },
 })
 export class AdminLayoutComponent implements OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
@@ -63,7 +60,8 @@ export class AdminLayoutComponent implements OnDestroy {
 
   private isMobileScreen = false;
 
-  @HostBinding('class.matero-content-width-fix')
+  private isContentWidthFixed = true;
+
   get contentWidthFix() {
     return (
       this.isContentWidthFixed &&
@@ -73,9 +71,6 @@ export class AdminLayoutComponent implements OnDestroy {
     );
   }
 
-  private isContentWidthFixed = true;
-
-  @HostBinding('class.matero-sidenav-collapsed-fix')
   get collapsedWidthFix() {
     return (
       this.isCollapsedWidthFixed &&
