@@ -81,9 +81,14 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       description: 'Resizable and draggable dialog based on CDK dialog.',
       link: 'https://github.com/acrodata/rnd-dialog',
     },
+    {
+      name: 'NG DnD',
+      description: 'A toolkit for building complex drag and drop and very similar to react-dnd.',
+      link: 'https://github.com/ng-dnd/ng-dnd',
+    },
   ];
 
-  introducingItem = this.introducingItems[this.getRandom(0, 3)];
+  introducingItem = this.introducingItems[this.getRandom(0, 4)];
 
   ngOnInit() {
     this.notifySubscription = this.settings.notify.subscribe(opts => {
