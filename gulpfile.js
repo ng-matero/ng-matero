@@ -32,13 +32,16 @@ function copySrcRoot() {
 
 // src/assets
 function copyAssets() {
-  return src([
-    'public/**/*',
-    '!public/favicon.ico',
-    '!public/data/menu.json',
-    '!public/images/heros/**',
-    '!public/images/pixabay/**',
-  ]).pipe(dest(`${FILES}/public`));
+  return src(
+    [
+      'public/**/*',
+      '!public/favicon.ico',
+      '!public/data/menu.json',
+      '!public/images/heros/**',
+      '!public/images/pixabay/**',
+    ],
+    { encoding: false }
+  ).pipe(dest(`${FILES}/public`));
 }
 
 // src/styles
