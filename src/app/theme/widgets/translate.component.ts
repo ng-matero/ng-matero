@@ -35,6 +35,7 @@ export class TranslateComponent {
 
   langs = [
     { value: 'en-US', name: 'en_us' },
+    { value: 'ro', name: 'ro' },
     { value: 'zh-CN', name: 'zh_cn' },
     { value: 'zh-TW', name: 'zh_tw' },
     { value: 'auto', name: 'system' },
