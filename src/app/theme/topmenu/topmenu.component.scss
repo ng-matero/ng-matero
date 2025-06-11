@@ -2,8 +2,8 @@
 @use '../style/badge';
 
 .matero-topmenu {
-  --mat-tab-header-divider-height: 0;
-  --mdc-text-button-label-text-color: var(--topmenu-text-color);
+  --mat-tab-divider-height: 0;
+  --mat-button-text-label-text-color: var(--topmenu-text-color);
 
   position: sticky;
   z-index: 200;
