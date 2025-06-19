@@ -20,7 +20,7 @@ import { RouterLink } from '@angular/router';
     MatToolbarModule,
   ],
 })
-export class SidenavMobileComponent implements OnDestroy {
+export class SidenavMobile implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   filler = Array(20).fill(0);

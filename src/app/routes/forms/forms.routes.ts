@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 
-import { FormsDatetimeComponent } from './datetime/datetime.component';
-import { FormsDynamicComponent } from './dynamic/dynamic.component';
-import { FormsElementsComponent } from './elements/elements.component';
-import { FormsSelectComponent } from './select/select.component';
+import { FormsDatetime } from './datetime/datetime';
+import { FormsDynamic } from './dynamic/dynamic';
+import { FormsElements } from './elements/elements';
+import { FormsSelect } from './select/select';
 
 export const routes: Routes = [
-  { path: 'elements', component: FormsElementsComponent },
-  { path: 'dynamic', component: FormsDynamicComponent },
-  { path: 'select', component: FormsSelectComponent },
-  { path: 'datetime', component: FormsDatetimeComponent },
+  { path: 'elements', component: FormsElements },
+  { path: 'dynamic', component: FormsDynamic },
+  { path: 'select', component: FormsSelect },
+  { path: 'datetime', component: FormsDatetime },
 ];

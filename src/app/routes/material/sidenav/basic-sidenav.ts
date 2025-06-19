@@ -19,4 +19,4 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
 })
-export class SidenavBasicComponent {}
+export class SidenavBasic {}

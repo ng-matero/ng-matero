@@ -1,3 +1,3 @@
-export * from './breadcrumb/breadcrumb.component';
-export * from './error-code/error-code.component';
-export * from './page-header/page-header.component';
+export * from './breadcrumb/breadcrumb';
+export * from './error-code/error-code';
+export * from './page-header/page-header';

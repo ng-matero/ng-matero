@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { DesignColorsComponent } from './colors/colors.component';
-import { DesignIconsComponent } from './icons/icons.component';
+import { DesignColors } from './colors/colors';
+import { DesignIcons } from './icons/icons';
 
 export const routes: Routes = [
-  { path: 'colors', component: DesignColorsComponent },
-  { path: 'icons', component: DesignIconsComponent },
+  { path: 'colors', component: DesignColors },
+  { path: 'icons', component: DesignIcons },
 ];

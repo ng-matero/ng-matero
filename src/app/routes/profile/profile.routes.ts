@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
 
-import { ProfileLayoutComponent } from './layout/layout.component';
-import { ProfileOverviewComponent } from './overview/overview.component';
-import { ProfileSettingsComponent } from './settings/settings.component';
+import { ProfileLayout } from './layout/layout';
+import { ProfileOverview } from './overview/overview';
+import { ProfileSettings } from './settings/settings';
 
 export const routes: Routes = [
   {
     path: '',
-    component: ProfileLayoutComponent,
+    component: ProfileLayout,
     children: [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
-      { path: 'overview', component: ProfileOverviewComponent },
-      { path: 'settings', component: ProfileSettingsComponent },
+      { path: 'overview', component: ProfileOverview },
+      { path: 'settings', component: ProfileSettings },
     ],
   },
 ];

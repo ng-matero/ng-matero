@@ -1,4 +1,4 @@
 import { Routes } from '@angular/router';
-import { MediaGalleryComponent } from './gallery/gallery.component';
+import { MediaGallery } from './gallery/gallery';
 
-export const routes: Routes = [{ path: 'gallery', component: MediaGalleryComponent }];
+export const routes: Routes = [{ path: 'gallery', component: MediaGallery }];

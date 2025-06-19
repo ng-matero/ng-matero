@@ -20,7 +20,7 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
 })
-export class SidenavDualComponent {
+export class SidenavDual {
   private snackbar = inject(MatSnackBar);
 
   play(list: string) {

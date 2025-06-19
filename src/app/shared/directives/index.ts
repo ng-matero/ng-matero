@@ -1,1 +1,1 @@
-export * from './disable-control.directive';
+export * from './disable-control';
