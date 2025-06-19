@@ -12,6 +12,7 @@
     "alpha-value-notation": null,
     "annotation-no-unknown": null,
     "at-rule-empty-line-before": null,
+    "color-function-alias-notation": null,
     "color-function-notation": "legacy",
     "function-no-unknown": null,
     "media-query-no-invalid": null,
