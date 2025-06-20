@@ -22,38 +22,16 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { provideToastr } from 'ngx-toastr';
 
 import {
-  apiInterceptor,
   BASE_URL,
-  baseUrlInterceptor,
-  errorInterceptor,
-  loggingInterceptor,
-  noopInterceptor,
-  settingsInterceptor,
+  interceptors,
   SettingsService,
   StartupService,
-  tokenInterceptor,
   TranslateLangService,
 } from '@core';
 import { environment } from '@env/environment';
 import { formlyConfigFactory, PaginatorI18nService } from '@shared';
 import { InMemDataService } from '@shared/in-mem/in-mem-data.service';
 import { routes } from './app.routes';
-
-// Required for AOT compilation
-function TranslateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'i18n/', '.json');
-}
-
-// Http interceptor providers in outside-in order
-const interceptors = [
-  noopInterceptor,
-  baseUrlInterceptor,
-  settingsInterceptor,
-  tokenInterceptor,
-  apiInterceptor,
-  errorInterceptor,
-  loggingInterceptor,
-];
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -71,7 +49,7 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       loader: {
         provide: TranslateLoader,
-        useFactory: TranslateHttpLoaderFactory,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, 'i18n/', '.json'),
         deps: [HttpClient],
       },
     }),
