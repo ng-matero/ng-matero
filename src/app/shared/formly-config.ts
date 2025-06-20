@@ -1,6 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { ConfigOption, FORMLY_CONFIG } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
+import { ConfigOption } from '@ngx-formly/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormlyFieldComboboxComponent } from './formly-templates';
 import { FormlyWrapperCardComponent, FormlyWrapperDivComponent } from './formly-wrappers';
@@ -44,29 +42,4 @@ export function formlyConfigFactory(translate: TranslateService): ConfigOption {
       },
     ],
   };
-}
-
-@NgModule({
-  imports: [
-    FormlyMaterialModule,
-    FormlyFieldComboboxComponent,
-    FormlyWrapperCardComponent,
-    FormlyWrapperDivComponent,
-  ],
-  providers: [
-    {
-      provide: FORMLY_CONFIG,
-      useFactory: formlyConfigFactory,
-      deps: [TranslateService],
-      multi: true,
-    },
-  ],
-})
-export class FormlyConfigModule {
-  static forRoot(): ModuleWithProviders<FormlyConfigModule> {
-    return {
-      ngModule: FormlyConfigModule,
-      providers: [],
-    };
-  }
 }
