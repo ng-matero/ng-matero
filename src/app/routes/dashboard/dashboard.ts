@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -19,14 +11,12 @@ import { SettingsService } from '@core';
 import { MtxAlertModule } from '@ng-matero/extensions/alert';
 import { MtxProgressModule } from '@ng-matero/extensions/progress';
 import { Subscription } from 'rxjs';
-import { DashboardService } from './dashboard-service';
+import { CHARTS, ELEMENT_DATA, MESSAGES, STATS } from './data';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [DashboardService],
   imports: [
     RouterLink,
     MatButtonModule,
@@ -43,18 +33,17 @@ import { DashboardService } from './dashboard-service';
 export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
   private readonly ngZone = inject(NgZone);
   private readonly settings = inject(SettingsService);
-  private readonly dashboardSrv = inject(DashboardService);
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = this.dashboardSrv.getData();
+  dataSource = ELEMENT_DATA;
 
-  messages = this.dashboardSrv.getMessages();
+  messages = MESSAGES;
 
-  charts = this.dashboardSrv.getCharts();
+  charts = CHARTS;
   chart1?: ApexCharts;
   chart2?: ApexCharts;
 
-  stats = this.dashboardSrv.getStats();
+  stats = STATS;
 
   notifySubscription = Subscription.EMPTY;
 

@@ -10,14 +10,13 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { Observable } from 'rxjs';
 
 import { PageHeader } from '@shared';
-import { DataService, Person } from '../data.service';
+import { FormsService, Person } from '../forms.service';
 import { FormsSelectEdit } from './edit/edit';
 
 @Component({
   selector: 'app-forms-selects',
   templateUrl: './select.html',
   styleUrl: './select.scss',
-  providers: [DataService],
   imports: [
     AsyncPipe,
     JsonPipe,
@@ -33,7 +32,7 @@ import { FormsSelectEdit } from './edit/edit';
 })
 export class FormsSelect implements OnInit {
   private readonly dialog = inject(MatDialog);
-  private readonly dataService = inject(DataService);
+  private readonly formsSrv = inject(FormsService);
 
   // Data source
   people$!: Observable<Person[]>;
@@ -62,8 +61,8 @@ export class FormsSelect implements OnInit {
   selectedCompanyCustomPromise = null;
 
   ngOnInit() {
-    this.people$ = this.dataService.getPeople();
-    this.dataService.getPeople().subscribe(items => (this.people = items));
+    this.people$ = this.formsSrv.getPeople();
+    this.formsSrv.getPeople().subscribe(items => (this.people = items));
     this.simpleItems = [true, 'Two', 3];
 
     this.companiesNames.forEach((c, i) => {

@@ -15,8 +15,10 @@ export interface Person {
   disabled?: boolean;
 }
 
-@Injectable()
-export class DataService {
+@Injectable({
+  providedIn: 'root',
+})
+export class FormsService {
   private http = inject(HttpClient);
 
   getGithubAccounts(term?: string) {

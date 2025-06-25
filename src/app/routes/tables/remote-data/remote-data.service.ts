@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface RepoSearchList {
@@ -8,7 +8,9 @@ export interface RepoSearchList {
   total_count: number;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class TablesRemoteDataService {
   private http = inject(HttpClient);
 

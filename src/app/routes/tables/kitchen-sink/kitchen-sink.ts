@@ -8,14 +8,13 @@ import { MtxGridColumn, MtxGridModule } from '@ng-matero/extensions/grid';
 import { TranslateService } from '@ngx-translate/core';
 
 import { PageHeader } from '@shared';
-import { TablesDataService } from '../data.service';
+import { TablesService } from '../tables.service';
 import { TablesKitchenSinkEdit } from './edit/edit';
 
 @Component({
   selector: 'app-table-kitchen-sink',
   templateUrl: './kitchen-sink.html',
   styleUrl: './kitchen-sink.scss',
-  providers: [TablesDataService],
   imports: [
     FormsModule,
     MatButtonModule,
@@ -27,7 +26,7 @@ import { TablesKitchenSinkEdit } from './edit/edit';
 })
 export class TablesKitchenSink implements OnInit {
   private readonly translate = inject(TranslateService);
-  private readonly dataSrv = inject(TablesDataService);
+  private readonly tablesSrv = inject(TablesService);
   private readonly dialog = inject(MtxDialog);
 
   columns: MtxGridColumn[] = [
@@ -150,7 +149,7 @@ export class TablesKitchenSink implements OnInit {
   columnResizable = false;
 
   ngOnInit() {
-    this.list = this.dataSrv.getData();
+    this.list = this.tablesSrv.getData();
     this.isLoading = false;
   }
 

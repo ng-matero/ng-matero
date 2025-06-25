@@ -319,8 +319,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
 ];
 
-@Injectable()
-export class TablesDataService {
+@Injectable({
+  providedIn: 'root',
+})
+export class TablesService {
   getData() {
     return ELEMENT_DATA;
   }

@@ -10,13 +10,12 @@ import { MtxGridColumn, MtxGridModule } from '@ng-matero/extensions/grid';
 import { finalize } from 'rxjs';
 
 import { PageHeader } from '@shared';
-import { TablesRemoteDataService } from './remote-data-service';
+import { TablesRemoteDataService } from './remote-data.service';
 
 @Component({
   selector: 'app-tables-remote-data',
   templateUrl: './remote-data.html',
   styleUrl: './remote-data.scss',
-  providers: [TablesRemoteDataService],
   imports: [
     FormsModule,
     MatButtonModule,
