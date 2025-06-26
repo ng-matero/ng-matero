@@ -12,4 +12,4 @@ import { Component } from '@angular/core';
   `,
   standalone: false,
 })
-export class Error404Component {}
+export class Error404 {}

@@ -13,47 +13,26 @@ import { MAT_CARD_CONFIG } from '@angular/material/card';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { provideDateFnsDatetimeAdapter } from '@ng-matero/extensions-date-fns-adapter';
-import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
+import { FORMLY_CONFIG, provideFormlyCore } from '@ngx-formly/core';
+import { withFormlyMaterial } from '@ngx-formly/material';
+import { provideTranslateService, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { provideToastr } from 'ngx-toastr';
 
 import {
-  apiInterceptor,
   BASE_URL,
-  baseUrlInterceptor,
-  errorInterceptor,
-  loggingInterceptor,
-  noopInterceptor,
-  settingsInterceptor,
+  interceptors,
   SettingsService,
   StartupService,
-  tokenInterceptor,
   TranslateLangService,
 } from '@core';
 import { environment } from '@env/environment';
-import { PaginatorI18nService } from '@shared';
+import { formlyConfigFactory, PaginatorI18nService } from '@shared';
 import { routes } from './app.routes';
-import { FormlyConfigModule } from './formly-config';
 
 import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
-
-// Required for AOT compilation
-function TranslateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'i18n/', '.json');
-}
-
-// Http interceptor providers in outside-in order
-const interceptors = [
-  noopInterceptor,
-  baseUrlInterceptor,
-  settingsInterceptor,
-  tokenInterceptor,
-  apiInterceptor,
-  errorInterceptor,
-  loggingInterceptor,
-];
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -71,13 +50,12 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       loader: {
         provide: TranslateLoader,
-        useFactory: TranslateHttpLoaderFactory,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, 'i18n/', '.json'),
         deps: [HttpClient],
       },
     }),
     importProvidersFrom(
       NgxPermissionsModule.forRoot(),
-      FormlyConfigModule.forRoot()
     ),
     // ==================================================
     // 👇 ❌ Remove it in the realworld application
@@ -85,6 +63,13 @@ export const appConfig: ApplicationConfig = {
     { provide: LoginService, useClass: FakeLoginService },
     //
     // ==================================================
+    provideFormlyCore([...withFormlyMaterial()]),
+    {
+      provide: FORMLY_CONFIG,
+      useFactory: formlyConfigFactory,
+      deps: [TranslateService],
+      multi: true,
+    },
     {
       provide: MatPaginatorIntl,
       deps: [PaginatorI18nService],

@@ -7,7 +7,7 @@ import { PreloaderService, SettingsService } from '@core';
   template: `<router-outlet />`,
   standalone: false,
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class App implements OnInit, AfterViewInit {
   private readonly preloader = inject(PreloaderService);
   private readonly settings = inject(SettingsService);
 

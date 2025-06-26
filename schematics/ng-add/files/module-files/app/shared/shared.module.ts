@@ -13,10 +13,10 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { ErrorCodeComponent } from './components/error-code/error-code.component';
-import { DisableControlDirective } from './directives/disable-control.directive';
+import { Breadcrumb } from './components/breadcrumb/breadcrumb';
+import { PageHeader } from './components/page-header/page-header';
+import { ErrorCode } from './components/error-code/error-code';
+import { DisableControl } from './directives/disable-control';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 
@@ -35,8 +35,8 @@ const MODULES: any[] = [
   NgProgressbar,
   NgProgressRouter,
 ];
-const COMPONENTS: any[] = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
-const DIRECTIVES: any[] = [DisableControlDirective];
+const COMPONENTS: any[] = [Breadcrumb, PageHeader, ErrorCode];
+const DIRECTIVES: any[] = [DisableControl];
 const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
 
 @NgModule({

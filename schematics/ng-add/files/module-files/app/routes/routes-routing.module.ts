@@ -1,37 +1,37 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { authGuard } from '@core';
 import { environment } from '@env/environment';
 
-import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './sessions/login/login.component';
-import { RegisterComponent } from './sessions/register/register.component';
-import { Error403Component } from './sessions/403.component';
-import { Error404Component } from './sessions/404.component';
-import { Error500Component } from './sessions/500.component';
-import { authGuard } from '@core';
+import { AdminLayout } from '../theme/admin-layout/admin-layout';
+import { AuthLayout } from '../theme/auth-layout/auth-layout';
+import { Dashboard } from './dashboard/dashboard';
+import { Login } from './sessions/login/login';
+import { Register } from './sessions/register/register';
+import { Error403 } from './sessions/error-403';
+import { Error404 } from './sessions/error-404';
+import { Error500 } from './sessions/error-500';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminLayoutComponent,
+    component: AdminLayout,
     canActivate: [authGuard],
     canActivateChild: [authGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: '403', component: Error403Component },
-      { path: '404', component: Error404Component },
-      { path: '500', component: Error500Component },
+      { path: 'dashboard', component: Dashboard },
+      { path: '403', component: Error403 },
+      { path: '404', component: Error404 },
+      { path: '500', component: Error500 },
     ],
   },
   {
     path: 'auth',
-    component: AuthLayoutComponent,
+    component: AuthLayout,
     children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: Login },
+      { path: 'register', component: Register },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },

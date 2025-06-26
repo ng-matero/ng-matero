@@ -3,60 +3,34 @@ import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common
 import { BrowserModule } from '@angular/platform-browser';<% if(animations!='excluded') { %>
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';<% } %>
 
-import { AppComponent } from './app.component';
+import { App } from './app';
 
 import { CoreModule } from '@core/core.module';
 import { ThemeModule } from '@theme/theme.module';
 import { SharedModule } from '@shared/shared.module';
 import { RoutesModule } from './routes/routes.module';
-import { FormlyConfigModule } from './formly-config';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { provideToastr } from 'ngx-toastr';
-import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
+import { FORMLY_CONFIG, provideFormlyCore } from '@ngx-formly/core';
+import { withFormlyMaterial } from '@ngx-formly/material';
+import { provideTranslateService, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import {
-  apiInterceptor,
-  BASE_URL,
-  baseUrlInterceptor,
-  errorInterceptor,
-  loggingInterceptor,
-  noopInterceptor,
-  settingsInterceptor,
-  StartupService,
-  tokenInterceptor,
-  TranslateLangService,
-} from '@core';
+import { BASE_URL, interceptors, StartupService, TranslateLangService } from '@core';
+import { formlyConfigFactory } from '@shared';
 import { environment } from '@env/environment';
-
-// Required for AOT compilation
-function TranslateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'i18n/', '.json');
-}
-
-// Http interceptor providers in outside-in order
-const interceptors = [
-  noopInterceptor,
-  baseUrlInterceptor,
-  settingsInterceptor,
-  tokenInterceptor,
-  apiInterceptor,
-  errorInterceptor,
-  loggingInterceptor,
-];
 
 import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [App],
   imports: [
     BrowserModule,
     CoreModule,
     ThemeModule,
     SharedModule,
     RoutesModule,
-    FormlyConfigModule.forRoot(),
     NgxPermissionsModule.forRoot(),
   ],
   providers: [
@@ -69,10 +43,17 @@ import { FakeLoginService } from './fake-login.service';
     provideTranslateService({
       loader: {
         provide: TranslateLoader,
-        useFactory: TranslateHttpLoaderFactory,
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, 'i18n/', '.json'),
         deps: [HttpClient],
       },
     }),
+    provideFormlyCore([...withFormlyMaterial()]),
+    {
+      provide: FORMLY_CONFIG,
+      useFactory: formlyConfigFactory,
+      deps: [TranslateService],
+      multi: true,
+    },
     // ==================================================
     // 👇 ❌ Remove it in the realworld application
     //
@@ -80,6 +61,6 @@ import { FakeLoginService } from './fake-login.service';
     //
     // ==================================================
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [App],
 })
 export class AppModule {}

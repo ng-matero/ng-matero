@@ -9,11 +9,11 @@ import { AuthService } from '@core/authentication';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './login.html',
+  styleUrl: './login.scss',
   standalone: false,
 })
-export class LoginComponent {
+export class Login {
   private readonly fb = inject(FormBuilder);
   private readonly router = inject(Router);
   private readonly auth = inject(AuthService);

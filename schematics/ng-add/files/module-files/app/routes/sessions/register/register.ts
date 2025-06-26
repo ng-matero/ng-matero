@@ -4,11 +4,11 @@ import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  templateUrl: './register.html',
+  styleUrl: './register.scss',
   standalone: false,
 })
-export class RegisterComponent {
+export class Register {
   private readonly fb = inject(FormBuilder);
 
   registerForm = this.fb.nonNullable.group(
