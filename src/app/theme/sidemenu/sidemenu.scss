@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '../style/badge';
 
 .matero-sidemenu {
   padding: 0;
@@ -114,7 +113,13 @@
 
   .menu-label,
   .menu-badge {
-    @include badge.badge();
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    background-color: #757575;
+    border-radius: 0.375rem;
   }
 
   .menu-badge {
