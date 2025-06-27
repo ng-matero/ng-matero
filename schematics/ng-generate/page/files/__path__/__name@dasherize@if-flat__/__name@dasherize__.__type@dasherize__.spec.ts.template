@@ -1,0 +1,30 @@
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';<% if(standalone) { %>
+import { PageHeader } from '@shared';<% } else { %>
+import { SharedModule } from '@shared/shared.module';<% } %>
+
+import { <%= classify(pageName) %><%= classify(type) %> } from './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>';
+
+describe('<%= classify(pageName) %><%= classify(type) %>', () => {
+  let component: <%= classify(pageName) %><%= classify(type) %>;
+  let fixture: ComponentFixture<<%= classify(pageName) %><%= classify(type) %>>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({<% if(standalone) { %>
+      imports: [NoopAnimationsModule, PageHeader]<% } else { %>
+      declarations: [<%= classify(pageName) %><%= classify(type) %>],
+      imports: [NoopAnimationsModule, SharedModule]<% } %>
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(<%= classify(pageName) %><%= classify(type) %>);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

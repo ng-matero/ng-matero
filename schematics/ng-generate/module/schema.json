@@ -29,8 +29,7 @@
     "routing": {
       "type": "boolean",
       "description": "When true, creates a routing module.",
-      "default": true,
-      "x-user-analytics": 17
+      "default": true
     },
     "routingScope": {
       "enum": [
@@ -60,12 +59,6 @@
       "type": "string",
       "description": "The declaring NgModule.",
       "alias": "m"
-    },
-    "lintFix": {
-      "type": "boolean",
-      "default": false,
-      "description": "When true, applies lint fixes after generating the module.",
-      "x-user-analytics": 15
     },
     "standalone": {
       "type": "boolean",

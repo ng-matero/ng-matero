@@ -1,21 +1,21 @@
 import { Component<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }%><% if(changeDetection !== 'Default') { %>, ChangeDetectionStrategy<% }%> } from '@angular/core';<% if(standalone) { %>
-import { PageHeaderComponent } from '@shared';<% } %>
+import { PageHeader } from '@shared';<% } %>
 
 @Component({
   selector: '<%= selector %>',<% if(standalone) { %>
-  imports: [PageHeaderComponent],<%} else { %>
+  imports: [PageHeader],<%} else { %>
   standalone: false,<% }%><% if(inlineTemplate) { %>
   template: `
     <%= indentTextContent(resolvedFiles.template, 4) %>
   `,<% } else { %>
-  templateUrl: './<%= dasherize(name) %>.component.html',<% } if(inlineStyle) { %>
-  styles: [`
+  templateUrl: './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %><%= ngext %>.html',<% } if(inlineStyle) { %>
+  styles: `
     <%= indentTextContent(resolvedFiles.stylesheet, 4) %>
-  `]<% } else { %>
-  styleUrl: './<%= dasherize(name) %>.component.<%= style %>'<% } %><% if(!!viewEncapsulation) { %>,
+  `<% } else { %>
+  styleUrl: './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>.<%= style %>'<% } %><% if(!!viewEncapsulation) { %>,
   encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
   changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
 })
-export class <%= classify(pageName) %>Component {
+export <% if(exportDefault) {%>default <%}%>class <%= classify(pageName) %><%= classify(type) %> {
 
 }
