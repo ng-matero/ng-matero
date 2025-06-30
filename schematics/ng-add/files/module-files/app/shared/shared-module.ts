@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { MaterialModule } from '../material.module';
-import { MaterialExtensionsModule } from '../material-extensions.module';
+import { MaterialModule } from '../material-module';
+import { MaterialExtensionsModule } from '../material-extensions-module';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressbar } from 'ngx-progressbar';

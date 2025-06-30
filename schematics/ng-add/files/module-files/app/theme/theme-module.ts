@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared/shared.module';
+import { SharedModule } from '@shared/shared-module';
 
 import { AdminLayout } from './admin-layout/admin-layout';
 import { AuthLayout } from './auth-layout/auth-layout';
