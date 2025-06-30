@@ -47,6 +47,11 @@ export interface Schema {
    * The scope for the new routing module. Invalid to config.
    */
   routingScope?: RoutingScope;
+  /**
+   * The separator character to use before the type within the generated file's name.
+   * For example, if you set the option to `.`, the file will be named `example.module.ts`.
+   */
+  typeSeparator?: '-' | '.';
 }
 
 /**

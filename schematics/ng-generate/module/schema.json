@@ -64,6 +64,15 @@
       "type": "boolean",
       "default": true,
       "description": "Whether the generated module is standalone."
+    },
+    "typeSeparator": {
+      "type": "string",
+      "default": "-",
+      "enum": [
+        "-",
+        "."
+      ],
+      "description": "The separator character to use before the type within the generated file's name. For example, if you set the option to `.`, the file will be named `example.module.ts`."
     }
   },
   "required": [

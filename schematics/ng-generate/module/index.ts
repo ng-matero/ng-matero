@@ -27,7 +27,7 @@ function buildRelativeModulePath(options: ModuleOptions, modulePath: string): st
     `/${options.path}/` +
       (options.flat ? '' : strings.dasherize(options.name) + '/') +
       strings.dasherize(options.name) +
-      (options.standalone ? '.routes' : '.module')
+      (options.standalone ? '.routes' : options.typeSeparator + 'module')
   );
   return buildRelativePath(modulePath, importModulePath);
 }
@@ -79,8 +79,7 @@ function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath
 
 function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefined {
   let path: Path | undefined;
-  const modulePath = options.module as string;
-  let routingModuleName = modulePath.split('.')[0] + '-routing';
+  let routingModuleName = options.module!.split(options.typeSeparator!)[0] + '-routing';
   // Fix `routingModuleName`
   // (i.e. `/src/app/module/module-routing.module.ts` -> `/module/module-routing.module.ts`)
   if (options.path) {
@@ -89,9 +88,9 @@ function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefi
   const { module, ...rest } = options;
 
   try {
-    path = findModuleFromOptions(host, { module: routingModuleName, ...rest } as any);
-  } catch {
-    /** */
+    path = findModuleFromOptions(host, { module: routingModuleName, ...rest });
+  } catch (e) {
+    console.error(e);
   }
 
   return path;
@@ -140,7 +139,7 @@ export default function (options: ModuleOptions): Rule {
     }
 
     // As following, the modulePath has become `src/app/...`
-    options.module = findModuleFromOptions(host, options as any);
+    options.module = findModuleFromOptions(host, options);
 
     let routingModulePath: Path | undefined;
     const isLazyLoadedModuleGen = options.route && options.module; // must be true

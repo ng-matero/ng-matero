@@ -40,7 +40,9 @@ import {
 import { InsertChange } from '@schematics/angular/utility/change';
 import {
   MODULE_EXT,
+  MODULE_EXT_LEGACY,
   ROUTING_MODULE_EXT,
+  ROUTING_MODULE_EXT_LEGACY,
   buildRelativePath,
   findModule,
 } from '@schematics/angular/utility/find-module';
@@ -135,7 +137,7 @@ function addComponent(host: Tree, modulePath: string, fileName: string, symbolNa
  */
 function addImportDeclaration(host: Tree, modulePath: string, fileName: string, filePath: string) {
   const source = readIntoSourceFile(host, modulePath);
-  const changes = insertImport(source as any, modulePath, fileName, filePath);
+  const changes = insertImport(source, modulePath, fileName, filePath);
   const declarationRecorder = host.beginUpdate(modulePath);
 
   if (changes instanceof InsertChange) {
@@ -338,7 +340,9 @@ export function buildComponent(
     // Route module path
     const routingModulePath = options.standalone
       ? options.module
-      : options.module.replace('.module', '-routing.module');
+      : options.module.endsWith(MODULE_EXT)
+        ? options.module.replace(MODULE_EXT, ROUTING_MODULE_EXT)
+        : options.module.replace(MODULE_EXT_LEGACY, ROUTING_MODULE_EXT_LEGACY);
 
     const parsedPath = parseName(options.path, options.name);
     options.name = parsedPath.name;
@@ -424,13 +428,10 @@ export function findModuleFromOptions(host: Tree, options: ComponentOptions): Pa
     return undefined;
   }
 
-  const moduleExt = options.moduleExt || MODULE_EXT;
-  const routingModuleExt = options.routingModuleExt || ROUTING_MODULE_EXT;
-
   if (!options.module) {
     const pathToCheck = (options.path || '') + '/' + options.name;
 
-    return normalize(findModule(host, pathToCheck, moduleExt, routingModuleExt));
+    return normalize(findModule(host, pathToCheck, options.moduleExt, options.routingModuleExt));
   } else {
     const modulePath = normalize(`/${options.path}/${options.module}`);
     const componentPath = normalize(`/${options.path}/${options.name}`);
@@ -446,14 +447,21 @@ export function findModuleFromOptions(host: Tree, options: ComponentOptions): Pa
     }
 
     const candidatesDirs = [...candidateSet].sort((a, b) => b.length - a.length);
-    for (const c of candidatesDirs) {
-      const candidateFiles = ['', `${moduleBaseName}.ts`, `${moduleBaseName}${moduleExt}`].map(x =>
-        join(c, x)
+    const candidateFiles: string[] = ['', `${moduleBaseName}.ts`];
+    if (options.moduleExt) {
+      candidateFiles.push(`${moduleBaseName}${options.moduleExt}`);
+    } else {
+      candidateFiles.push(
+        `${moduleBaseName}${MODULE_EXT}`,
+        `${moduleBaseName}${MODULE_EXT_LEGACY}`
       );
+    }
 
+    for (const c of candidatesDirs) {
       for (const sc of candidateFiles) {
-        if (host.exists(sc)) {
-          return normalize(sc);
+        const scPath = join(c, sc);
+        if (host.exists(scPath)) {
+          return normalize(scPath);
         }
       }
     }
