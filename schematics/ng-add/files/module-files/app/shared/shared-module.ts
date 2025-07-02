@@ -17,8 +17,7 @@ import { Breadcrumb } from './components/breadcrumb/breadcrumb';
 import { PageHeader } from './components/page-header/page-header';
 import { ErrorCode } from './components/error-code/error-code';
 import { DisableControl } from './directives/disable-control';
-import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { ToObservablePipe } from './pipes/to-observable.pipe';
+import { SafeUrlPipe } from './pipes/safe-url-pipe';
 
 const MODULES: any[] = [
   CommonModule,
@@ -37,7 +36,7 @@ const MODULES: any[] = [
 ];
 const COMPONENTS: any[] = [Breadcrumb, PageHeader, ErrorCode];
 const DIRECTIVES: any[] = [DisableControl];
-const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
+const PIPES: any[] = [SafeUrlPipe];
 
 @NgModule({
   imports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES],
