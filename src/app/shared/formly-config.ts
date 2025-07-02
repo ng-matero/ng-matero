@@ -1,20 +1,20 @@
 import { ConfigOption } from '@ngx-formly/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FormlyFieldComboboxComponent } from './formly-templates';
-import { FormlyWrapperCardComponent, FormlyWrapperDivComponent } from './formly-wrappers';
+import { FormlyFieldCombobox } from './formly-templates';
+import { FormlyWrapperCard, FormlyWrapperDiv } from './formly-wrappers';
 
 export function formlyConfigFactory(translate: TranslateService): ConfigOption {
   return {
     types: [
       {
         name: 'combobox',
-        component: FormlyFieldComboboxComponent,
+        component: FormlyFieldCombobox,
         wrappers: ['form-field'],
       },
     ],
     wrappers: [
-      { name: 'card', component: FormlyWrapperCardComponent },
-      { name: 'div', component: FormlyWrapperDivComponent },
+      { name: 'card', component: FormlyWrapperCard },
+      { name: 'div', component: FormlyWrapperDiv },
     ],
     validators: [],
     validationMessages: [

@@ -28,7 +28,7 @@ import { FieldType } from '@ngx-formly/material/form-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [AsyncPipe, ReactiveFormsModule, MtxSelectModule, MtxPipesModule],
 })
-export class FormlyFieldComboboxComponent extends FieldType<FieldTypeConfig> {
+export class FormlyFieldCombobox extends FieldType<FieldTypeConfig> {
   @ViewChild('select', { static: true }) select!: MtxSelect;
 
   get bindLabel() {
