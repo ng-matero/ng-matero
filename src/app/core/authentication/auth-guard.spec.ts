@@ -11,7 +11,7 @@ import { LocalStorageService, MemoryStorageService } from '@shared/services/stor
   imports: [],
   providers: [provideHttpClientTesting()],
 })
-class DummyComponent {}
+class Dummy {}
 
 describe('authGuard function unit test', () => {
   const route: any = {};
@@ -22,18 +22,18 @@ describe('authGuard function unit test', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [DummyComponent],
+      imports: [Dummy],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting(),
         provideRouter([
-          { path: 'dashboard', component: DummyComponent, canActivate: [authGuard] },
-          { path: 'auth/login', component: DummyComponent },
+          { path: 'dashboard', component: Dummy, canActivate: [authGuard] },
+          { path: 'auth/login', component: Dummy },
         ]),
       ],
     });
-    TestBed.createComponent(DummyComponent);
+    TestBed.createComponent(Dummy);
     router = TestBed.inject(Router);
     authService = TestBed.inject(AuthService);
     tokenService = TestBed.inject(TokenService);

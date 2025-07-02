@@ -52,7 +52,7 @@ export class BottomSheetDemo {
   @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
   openComponent() {
-    this._bottomSheet.open(BottomSheetOverviewComponent, this.config);
+    this._bottomSheet.open(BottomSheetOverviewExampleSheet, this.config);
   }
 
   openTemplate() {
@@ -74,7 +74,7 @@ export class BottomSheetDemo {
   `,
   imports: [MatListModule],
 })
-export class BottomSheetOverviewComponent {
+export class BottomSheetOverviewExampleSheet {
   private _bottomSheet = inject(MatBottomSheetRef);
 
   handleClick(event: MouseEvent) {
