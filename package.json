@@ -36,7 +36,6 @@
     "@angular/material": "^20.1.0",
     "@angular/material-date-fns-adapter": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
-    "@angular/platform-browser-dynamic": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@ng-matero/extensions": "^20.2.0",
     "@ng-matero/extensions-date-fns-adapter": "^20.0.0",
