@@ -2,6 +2,122 @@
 # yarn lockfile v1
 
 
+"@algolia/client-abtesting@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-abtesting/-/client-abtesting-5.32.0.tgz#b9ce496665c5385ef09d2297e280381c78598e9d"
+  integrity sha512-HG/6Eib6DnJYm/B2ijWFXr4txca/YOuA4K7AsEU0JBrOZSB+RU7oeDyNBPi3c0v0UDDqlkBqM3vBU/auwZlglA==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/client-analytics@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-analytics/-/client-analytics-5.32.0.tgz#844ae80626bdaa1b5a1750b538db585734ec70ee"
+  integrity sha512-8Y9MLU72WFQOW3HArYv16+Wvm6eGmsqbxxM1qxtm0hvSASJbxCm+zQAZe5stqysTlcWo4BJ82KEH1PfgHbJAmQ==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/client-common@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-common/-/client-common-5.32.0.tgz#468b36d0ee7c9c64bafc62099475a1889d032196"
+  integrity sha512-w8L+rgyXMCPBKmEdOT+RfgMrF0mT6HK60vPYWLz8DBs/P7yFdGo7urn99XCJvVLMSKXrIbZ2FMZ/i50nZTXnuQ==
+
+"@algolia/client-insights@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-insights/-/client-insights-5.32.0.tgz#18c4011a782b8ab8bb73af5afbc8aca1a16474d7"
+  integrity sha512-AdWfynhUeX7jz/LTiFU3wwzJembTbdLkQIOLs4n7PyBuxZ3jz4azV1CWbIP8AjUOFmul6uXbmYza+KqyS5CzOA==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/client-personalization@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-personalization/-/client-personalization-5.32.0.tgz#3b3fd95f8c437ed5becfa4ec97f3c3b8396d5a20"
+  integrity sha512-bTupJY4xzGZYI4cEQcPlSjjIEzMvv80h7zXGrXY1Y0KC/n/SLiMv84v7Uy+B6AG1Kiy9FQm2ADChBLo1uEhGtQ==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/client-query-suggestions@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-query-suggestions/-/client-query-suggestions-5.32.0.tgz#4582f47f120da89029d3511818342c0a90a22f62"
+  integrity sha512-if+YTJw1G3nDKL2omSBjQltCHUQzbaHADkcPQrGFnIGhVyHU3Dzq4g46uEv8mrL5sxL8FjiS9LvekeUlL2NRqw==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/client-search@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/client-search/-/client-search-5.32.0.tgz#0e3b4775bf98e9215b683d598d0fce2d94b7b062"
+  integrity sha512-kmK5nVkKb4DSUgwbveMKe4X3xHdMsPsOVJeEzBvFJ+oS7CkBPmpfHAEq+CcmiPJs20YMv6yVtUT9yPWL5WgAhg==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/ingestion@1.32.0":
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/ingestion/-/ingestion-1.32.0.tgz#4ab08b4c72205c8727dfafeefc4651a07ea2ed9d"
+  integrity sha512-PZTqjJbx+fmPuT2ud1n4vYDSF1yrT//vOGI9HNYKNA0PM0xGUBWigf5gRivHsXa3oBnUlTyHV9j7Kqx5BHbVHQ==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/monitoring@1.32.0":
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/monitoring/-/monitoring-1.32.0.tgz#6c9343081184e40c3bf0a4c01b96ac3d8c0c2190"
+  integrity sha512-kYYoOGjvNQAmHDS1v5sBj+0uEL9RzYqH/TAdq8wmcV+/22weKt/fjh+6LfiqkS1SCZFYYrwGnirrUhUM36lBIQ==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/recommend@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/recommend/-/recommend-5.32.0.tgz#fb508fc35bc0ad2f549fe520e4961733081f334c"
+  integrity sha512-jyIBLdskjPAL7T1g57UMfUNx+PzvYbxKslwRUKBrBA6sNEsYCFdxJAtZSLUMmw6MC98RDt4ksmEl5zVMT5bsuw==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
+
+"@algolia/requester-browser-xhr@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/requester-browser-xhr/-/requester-browser-xhr-5.32.0.tgz#17617ec3b1ec304f9ff43f7eee482766aa7b49e0"
+  integrity sha512-eDp14z92Gt6JlFgiexImcWWH+Lk07s/FtxcoDaGrE4UVBgpwqOO6AfQM6dXh1pvHxlDFbMJihHc/vj3gBhPjqQ==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+
+"@algolia/requester-fetch@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/requester-fetch/-/requester-fetch-5.32.0.tgz#4d388574c0cce3edcd430d915c136d94c6ea0d4b"
+  integrity sha512-rnWVglh/K75hnaLbwSc2t7gCkbq1ldbPgeIKDUiEJxZ4mlguFgcltWjzpDQ/t1LQgxk9HdIFcQfM17Hid3aQ6Q==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+
+"@algolia/requester-node-http@5.32.0":
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/@algolia/requester-node-http/-/requester-node-http-5.32.0.tgz#ef7d878e62c30d97e7588ad05752bb080f52a90e"
+  integrity sha512-LbzQ04+VLkzXY4LuOzgyjqEv/46Gwrk55PldaglMJ4i4eDXSRXGKkwJpXFwsoU+c1HMQlHIyjJBhrfsfdyRmyQ==
+  dependencies:
+    "@algolia/client-common" "5.32.0"
+
 "@ampproject/remapping@2.3.0", "@ampproject/remapping@^2.2.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.3.0.tgz#ed441b6fa600072520ce18b43d2c8cc8caecc7f4"
@@ -18,12 +134,12 @@
     "@angular-devkit/core" "20.1.0"
     rxjs "7.8.2"
 
-"@angular-devkit/architect@>= 0.2000.0 < 0.2100.0":
-  version "0.2000.4"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.2000.4.tgz#ac21b6278daa4f101339c2921418c7677ae46998"
-  integrity sha512-pg+EPv/j17ybCoYiKjeRCebkE5CeD009xC6XJfugBmui6CcCQ5UAN82ibBhL869PXR7xCboylcRxlFfcBmvCpA==
+"@angular-devkit/architect@0.2001.4", "@angular-devkit/architect@>= 0.2000.0 < 0.2100.0":
+  version "0.2001.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.2001.4.tgz#a361ad440bc0829053cc261afc1047737e9f8357"
+  integrity sha512-lZ9wYv1YDcw2Ggi2/TXXhYs7JAukAJHdZGZn6Co5s1QE774bVled1qK8pf46rSsG1BGn1a9VFsRFOlB/sx6WjA==
   dependencies:
-    "@angular-devkit/core" "20.0.4"
+    "@angular-devkit/core" "20.1.4"
     rxjs "7.8.2"
 
 "@angular-devkit/architect@~0.1800.0":
@@ -128,18 +244,6 @@
     rxjs "7.8.1"
     source-map "0.7.4"
 
-"@angular-devkit/core@20.0.4", "@angular-devkit/core@>= 20.0.0 < 21.0.0":
-  version "20.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-20.0.4.tgz#7f81183b2ce6654f600f8a8417a7f76fe27cc7ed"
-  integrity sha512-GmHBOEhdZn0Xh8JAdmnbSXtEMoAEqakEFy1JZmwuUo5e6uuuEp5xQY4O3MO0UQBVjYT+Wz8KNfonTvY91t/lNQ==
-  dependencies:
-    ajv "8.17.1"
-    ajv-formats "3.0.1"
-    jsonc-parser "3.3.1"
-    picomatch "4.0.2"
-    rxjs "7.8.2"
-    source-map "0.7.4"
-
 "@angular-devkit/core@20.1.0":
   version "20.1.0"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-20.1.0.tgz#66893f7f3067afa8b8576550255a509d0b0c7ee3"
@@ -152,23 +256,24 @@
     rxjs "7.8.2"
     source-map "0.7.4"
 
-"@angular-devkit/schematics@20.1.0":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-20.1.0.tgz#fd61a35f143e3af8cfa04012eb779a8516ccf0c2"
-  integrity sha512-0UtJAptrqsfABi0DxrY7cyvlGe5kHRiqVwB+h3g2DEv3ikXKZh1dOFR3o2bK+sVhUqgFaV8qgSnCmR9a48xY0g==
+"@angular-devkit/core@20.1.4", "@angular-devkit/core@>= 20.0.0 < 21.0.0":
+  version "20.1.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-20.1.4.tgz#4d1ecf596b93396458fc104a286e1c78fc80ba13"
+  integrity sha512-I5CllQoDrVL20/+0JZk/gmR14n/+mwYIoD1RfBDwnaiHlO9o2whRsJj+LeUd9IA5Hf9MPPx+EkOVQt3vsYU0sQ==
   dependencies:
-    "@angular-devkit/core" "20.1.0"
+    ajv "8.17.1"
+    ajv-formats "3.0.1"
     jsonc-parser "3.3.1"
-    magic-string "0.30.17"
-    ora "8.2.0"
+    picomatch "4.0.2"
     rxjs "7.8.2"
+    source-map "0.7.4"
 
-"@angular-devkit/schematics@>= 20.0.0 < 21.0.0":
-  version "20.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-20.0.4.tgz#b2f1ab86a5efeda453d2488adb8a42bc05dcfc7e"
-  integrity sha512-NADJed7h4KYSqbbw91AKFvFp+CsDuPUBzuMrck38R0ql0ZeaLKJtwT+IQFs7Hb6bmE4xn1i0+Z/p7v8q6ZRrKw==
+"@angular-devkit/schematics@20.1.4", "@angular-devkit/schematics@>= 20.0.0 < 21.0.0":
+  version "20.1.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-20.1.4.tgz#cf0fd6236be3d54e6a1097580312d246204b1ca0"
+  integrity sha512-dyvlQcXf5XKPRC1qTqzIGkltFHh8mYujPk6qt6Ah2nKp7UeA80ZSAocwOmlBg8t7GjN8ICe4Kese5scT1ByFXQ==
   dependencies:
-    "@angular-devkit/core" "20.0.4"
+    "@angular-devkit/core" "20.1.4"
     jsonc-parser "3.3.1"
     magic-string "0.30.17"
     ora "8.2.0"
@@ -294,19 +399,20 @@
     parse5 "^7.1.2"
     tslib "^2.3.0"
 
-"@angular/cli@^20.1.0":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-20.1.0.tgz#56ab982528d594cfa9b908861ed295d74683eea3"
-  integrity sha512-jZudpHlPVAvrywVZuhUkUr5K7ThW/6CPjT7qxZBSdOvu7cD49JPpDivCdlMh0kCBSHsJ0ZbLx35oi6zF8PegiA==
+"@angular/cli@^20.1.4":
+  version "20.1.4"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-20.1.4.tgz#a1efac0a1eed7396a52411ca105274de6c52bb5e"
+  integrity sha512-VAQ/EBelBPiX1vV57TZJRPcao/e+Ee9IeLK43fsE2xL+GuEjrJ/fQXqt7OesrgIJHJBwUiX+j8pMMT6VfT1xSA==
   dependencies:
-    "@angular-devkit/architect" "0.2001.0"
-    "@angular-devkit/core" "20.1.0"
-    "@angular-devkit/schematics" "20.1.0"
+    "@angular-devkit/architect" "0.2001.4"
+    "@angular-devkit/core" "20.1.4"
+    "@angular-devkit/schematics" "20.1.4"
     "@inquirer/prompts" "7.6.0"
     "@listr2/prompt-adapter-inquirer" "2.0.22"
     "@modelcontextprotocol/sdk" "1.13.3"
-    "@schematics/angular" "20.1.0"
+    "@schematics/angular" "20.1.4"
     "@yarnpkg/lockfile" "1.1.0"
+    algoliasearch "5.32.0"
     ini "5.0.0"
     jsonc-parser "3.3.1"
     listr2 "8.3.3"
@@ -2579,13 +2685,13 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.45.1.tgz#e5085c6d13da15b4c5133cd2a6bb11f25b6bb77a"
   integrity sha512-M/fKi4sasCdM8i0aWJjCSFm2qEnYRR8AMLG2kxp6wD13+tMGA4Z1tVAuHkNRjud5SW2EM3naLuK35w9twvf6aA==
 
-"@schematics/angular@20.1.0":
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-20.1.0.tgz#b22b60daad3ea918e77522e88ea14145b677a191"
-  integrity sha512-sAEwygjY/j0tvo+EDFUAc54Hfp++K43ISe1/fdCU/M3Pseuf7oPPIm6VxxTrRc6fu4Lp5DBaD/PBkXNt/FqZpg==
+"@schematics/angular@20.1.4":
+  version "20.1.4"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-20.1.4.tgz#9b4d3b74a5feba29119df1a1a0521d768afeca74"
+  integrity sha512-TNpm15NKf4buxPYnGaB3JY2B/3sbL19SdlpPDxkgyVY8WDDeZX95m3Tz2qlKpsYxy2XCGUj4Sxh7zJNGC9e/4g==
   dependencies:
-    "@angular-devkit/core" "20.1.0"
-    "@angular-devkit/schematics" "20.1.0"
+    "@angular-devkit/core" "20.1.4"
+    "@angular-devkit/schematics" "20.1.4"
     jsonc-parser "3.3.1"
 
 "@sigstore/bundle@^3.1.0":
@@ -3251,6 +3357,25 @@ ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.6:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
+
+algoliasearch@5.32.0:
+  version "5.32.0"
+  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-5.32.0.tgz#2b9d17c4592b573146e3a2322a563aef68d473e3"
+  integrity sha512-84xBncKNPBK8Ae89F65+SyVcOihrIbm/3N7to+GpRBHEUXGjA3ydWTMpcRW6jmFzkBQ/eqYy/y+J+NBpJWYjBg==
+  dependencies:
+    "@algolia/client-abtesting" "5.32.0"
+    "@algolia/client-analytics" "5.32.0"
+    "@algolia/client-common" "5.32.0"
+    "@algolia/client-insights" "5.32.0"
+    "@algolia/client-personalization" "5.32.0"
+    "@algolia/client-query-suggestions" "5.32.0"
+    "@algolia/client-search" "5.32.0"
+    "@algolia/ingestion" "1.32.0"
+    "@algolia/monitoring" "1.32.0"
+    "@algolia/recommend" "5.32.0"
+    "@algolia/requester-browser-xhr" "5.32.0"
+    "@algolia/requester-fetch" "5.32.0"
+    "@algolia/requester-node-http" "5.32.0"
 
 angular-cli-ghpages@^2.0.3:
   version "2.0.3"
