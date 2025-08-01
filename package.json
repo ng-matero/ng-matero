@@ -41,7 +41,7 @@
     "@ng-matero/extensions-date-fns-adapter": "^20.0.0",
     "@ngx-formly/core": "^7.0.0",
     "@ngx-formly/material": "^7.0.0",
-    "@ngx-translate/core": "^16.0.0",
+    "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^16.0.0",
     "angular-in-memory-web-api": "~0.20.0",
     "apexcharts": "~4.5.0",
