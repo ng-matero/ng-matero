@@ -71,6 +71,11 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
       link: 'https://github.com/acrodata/rnd-dialog',
     },
     {
+      name: 'Gradient Picker',
+      description: 'A powerful and beautiful gradient picker.',
+      link: 'https://github.com/acrodata/gradient-picker',
+    },
+    {
       name: 'NG DnD',
       description: 'A toolkit for building complex drag and drop and very similar to react-dnd.',
       link: 'https://github.com/ng-dnd/ng-dnd',
