@@ -2,14 +2,14 @@ import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { provideToastr, ToastrService } from 'ngx-toastr';
+import { HotToastService, provideHotToastConfig } from '@ngxpert/hot-toast';
 import { errorInterceptor } from './error-interceptor';
 
 describe('ErrorInterceptor', () => {
   let httpMock: HttpTestingController;
   let http: HttpClient;
   let router: Router;
-  let toast: ToastrService;
+  let toast: HotToastService;
   const emptyFn = () => {};
 
   function assertStatus(status: number, statusText: string) {
@@ -29,14 +29,14 @@ describe('ErrorInterceptor', () => {
       providers: [
         provideHttpClient(withInterceptors([errorInterceptor])),
         provideHttpClientTesting(),
-        provideToastr(),
+        provideHotToastConfig(),
       ],
     });
 
     httpMock = TestBed.inject(HttpTestingController);
     http = TestBed.inject(HttpClient);
     router = TestBed.inject(Router);
-    toast = TestBed.inject(ToastrService);
+    toast = TestBed.inject(HotToastService);
   });
 
   afterEach(() => httpMock.verify());

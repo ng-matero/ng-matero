@@ -371,13 +371,6 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "20.3.0"
 
-"@angular/animations@^20.3.0":
-  version "20.3.0"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-20.3.0.tgz#ce5381c8f0c22e0be0a2a2b39f83dcbdd14e5bbc"
-  integrity sha512-rCojVsJHaReDfSB4lwcWYJAfbkFXQmcdivdN5m1NavuSlKpWoLw4fLkxkcuOXDjUEwNSb45hRI4ixcwrcuQtmw==
-  dependencies:
-    tslib "^2.3.0"
-
 "@angular/build@20.3.1":
   version "20.3.1"
   resolved "https://registry.yarnpkg.com/@angular/build/-/build-20.3.1.tgz#99562315c8a8819271332b8b4f7f7c5c7176cd6d"
@@ -2522,22 +2515,29 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^20.2.0":
-  version "20.2.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-20.2.0.tgz#b6cf935aa7e149e9b84ca281785c64f8cd99a4aa"
-  integrity sha512-yoB59hnLZPnr9Hl+Q+UmMOnYLb0P8K2+cf9AYGh7JWeSrStGnRAz0mkNzloHDcxP9ok8/UYXxY5gFWolA1lAXA==
+"@ng-matero/extensions@^20.3.0":
+  version "20.3.1"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-20.3.1.tgz#7291cce9ecd8d44e2a70b9766544210ba8797f81"
+  integrity sha512-eR0A88Yj+CSjCgrV/m+rHPtGwThPWTWjUxdZL9T8dz+j9FmrLBjJGbm4QVw47tu69ZHl0epBFjpHEXmxqaZTdA==
   dependencies:
-    "@ng-select/ng-select" "^15.0.0"
+    "@ng-select/ng-select" "^20.0.0"
     ngx-color "^10.0.0"
     photoviewer "^3.10.0"
     tslib "^2.4.0"
 
-"@ng-select/ng-select@^15.0.0":
-  version "15.1.3"
-  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-15.1.3.tgz#067a71ccc19b083f97345562994520a665efd8df"
-  integrity sha512-O1qnK5BsCg1E9P7YzzhyeNT1IAx4xBzQMIqTMb50dRckECnEEU3H80f136mk/s1K87PQDmoGthKPCWRnWsn8bQ==
+"@ng-select/ng-select@^20.0.0":
+  version "20.2.0"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-20.2.0.tgz#41a80b19750e407e12c9c4700e91bdb756c018bf"
+  integrity sha512-+uKq2GwhObTgTQsoEv0AnJWSGRLUthWuF9S3bM8R0pfSAYtLTzQ1HEVOrzp42MCVGnvdKCr+Ls81rroFJtSS3Q==
   dependencies:
     tslib "^2.8.1"
+
+"@ngneat/overview@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@ngneat/overview/-/overview-6.1.1.tgz#e053a6c561fd386a595abfcd9d6b7be23bc401da"
+  integrity sha512-31gsEbSbLWTD/LD8KtUS2Qv+GVQS2pK00S9ZBP+pv2ZF1NIfwHjXs8fey8TQN1QuKPLa510YYN3rEwyP57UCfw==
+  dependencies:
+    tslib "^2.0.0"
 
 "@ngtools/webpack@20.3.1":
   version "20.3.1"
@@ -2569,6 +2569,13 @@
   version "16.0.1"
   resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-16.0.1.tgz#01219d623ea810fd36ba2911d1452975cd32a041"
   integrity sha512-xJEOUpvs6Zfc8G4cmQmegFOEpfYSoplTHHoisPNrATXjRBjpaKsBaPOXlZsuFUW2XV00s16gIyI4+9z1XkO5bw==
+  dependencies:
+    tslib "^2.3.0"
+
+"@ngxpert/hot-toast@5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@ngxpert/hot-toast/-/hot-toast-5.1.1.tgz#414b163fd2eddb663aa1f6bd789c73c76c13c8be"
+  integrity sha512-fpqPHxlOgk8tg+/pi6FvsZ0LeILz8RbU7s+FwG+3efpvs8S/M29xvDmbBvX86Sz/uKVnzqfdfJmztqL81HbLaw==
   dependencies:
     tslib "^2.3.0"
 
@@ -7789,13 +7796,6 @@ ngx-progressbar@^14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-14.0.0.tgz#941dd19a20bf1846f94685cda5f8aa030711934f"
   integrity sha512-tDj7h5F2aSI4/XaJjs50FnELVe6qFqyz3vVq22acacd3oDW2EyJB4c+IYaxMf5972OdTw0WL4n6UwQ3dqC+gCA==
-  dependencies:
-    tslib "^2.3.0"
-
-ngx-toastr@^19.0.0:
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-19.0.0.tgz#51ebb9cb8f8b2f43704d45b560f6d8997f556016"
-  integrity sha512-6pTnktwwWD+kx342wuMOWB4+bkyX9221pAgGz3SHOJH0/MI9erLucS8PeeJDFwbUYyh75nQ6AzVtolgHxi52dQ==
   dependencies:
     tslib "^2.3.0"
 

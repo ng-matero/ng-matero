@@ -5,7 +5,6 @@ import {
   inject,
   provideAppInitializer,
 } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { provideDateFnsAdapter } from '@angular/material-date-fns-adapter';
@@ -17,9 +16,9 @@ import { FORMLY_CONFIG, provideFormlyCore } from '@ngx-formly/core';
 import { withFormlyMaterial } from '@ngx-formly/material';
 import { provideTranslateService, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { provideToastr } from 'ngx-toastr';
 
 import {
   BASE_URL,
@@ -38,14 +37,13 @@ export const appConfig: ApplicationConfig = {
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
     provideAppInitializer(() => inject(StartupService).load()),
-    provideAnimationsAsync(),
     provideHttpClient(withInterceptors(interceptors)),
     provideRouter(
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
       withComponentInputBinding()
     ),
-    provideToastr(),
+    provideHotToastConfig(),
     provideTranslateService({
       loader: {
         provide: TranslateLoader,

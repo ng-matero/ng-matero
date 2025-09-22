@@ -1,10 +1,10 @@
 import { HttpEvent, HttpHandlerFn, HttpRequest, HttpResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { mergeMap, of, throwError } from 'rxjs';
 
 export function apiInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
-  const toast = inject(ToastrService);
+  const toast = inject(HotToastService);
 
   if (!req.url.includes('/api/')) {
     return next(req);

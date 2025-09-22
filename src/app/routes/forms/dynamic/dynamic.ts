@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { ToastrService } from 'ngx-toastr';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
@@ -21,7 +21,7 @@ import { PageHeader } from '@shared';
   ],
 })
 export class FormsDynamic {
-  private readonly toast = inject(ToastrService);
+  private readonly toast = inject(HotToastService);
 
   form = new FormGroup({});
   model = { email: 'email@gmail.com' };
