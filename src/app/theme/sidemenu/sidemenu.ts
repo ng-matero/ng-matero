@@ -1,4 +1,3 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AsyncPipe, NgTemplateOutlet, SlicePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -14,9 +13,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { MenuService } from '@core';
+import { NavAccordion } from './nav-accordion';
 import { NavAccordionItem } from './nav-accordion-item';
 import { NavAccordionToggle } from './nav-accordion-toggle';
-import { NavAccordion } from './nav-accordion';
 
 @Component({
   selector: 'app-sidemenu',
@@ -37,16 +36,6 @@ import { NavAccordion } from './nav-accordion';
     NavAccordion,
     NavAccordionItem,
     NavAccordionToggle,
-  ],
-  animations: [
-    trigger('expansion', [
-      state('collapsed, void', style({ height: '0px', visibility: 'hidden' })),
-      state('expanded', style({ height: '*', visibility: '' })),
-      transition(
-        'expanded <=> collapsed, void => collapsed',
-        animate('225ms cubic-bezier(0.4,0,0.2,1)')
-      ),
-    ]),
   ],
 })
 export class Sidemenu {

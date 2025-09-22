@@ -14,7 +14,6 @@
     navAccordion
     class="matero-sidemenu level-{{ level }}"
     [class.submenu]="level > 0"
-    [@expansion]="expanded ? 'expanded' : 'collapsed'"
   >
     @for (menuItem of menuList; track menuItem) {
       <ng-template

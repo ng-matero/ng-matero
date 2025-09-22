@@ -8,7 +8,12 @@
   .menu-item {
     overflow: hidden;
     border-radius: 1.5rem;
-    will-change: transform; // fix expansion in Safari
+    transition: background 225ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    >.submenu {
+      height: 0;
+      transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     >.menu-heading {
       &:hover,
@@ -31,6 +36,11 @@
 
     &.expanded {
       background-color: var(--sidemenu-expanded-background-color);
+
+      >.submenu {
+        height: auto; // fallback for browsers that do not support calc-size
+        height: calc-size(auto, size);
+      }
 
       >.menu-toggle>.menu-caret {
         transform: rotate(-180deg);
