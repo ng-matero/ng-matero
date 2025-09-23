@@ -1,0 +1,13 @@
+@use '@ngxpert/hot-toast/styles';
+
+.hot-toast-theme-toast {
+  --hot-toast-padding: 6px 10px;
+  --hot-toast-border-radius: 8px;
+  --hot-toast-line: 1.25;
+  --hot-toast-message-margin: 4px 8px;
+  --hot-toast-icon-padding-top: 4px;
+  --hot-toast-close-btn-width: 12px;
+  --hot-toast-close-btn-height: 12px;
+  --hot-toast-close-btn-padding: 4px;
+  --hot-toast-close-btn-margin-top: 4px;
+}
