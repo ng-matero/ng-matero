@@ -14,9 +14,6 @@ export interface Schema {
   /** Which direction should be set up. */
   dir: 'rtl' | 'ltr';
 
-  /** Whether the Angular browser animations module should be included and enabled. */
-  animations: 'enabled' | 'disabled' | 'excluded';
-
   /** Creates an application based upon the standalone API, without NgModules. */
   standalone: boolean;
 }

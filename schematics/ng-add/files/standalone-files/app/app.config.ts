@@ -4,8 +4,7 @@ import {
   importProvidersFrom,
   inject,
   provideAppInitializer,
-} from '@angular/core';<% if(animations!='excluded') { %>
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';<% } %>
+} from '@angular/core';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { provideDateFnsAdapter } from '@angular/material-date-fns-adapter';
@@ -38,8 +37,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
-    provideAppInitializer(() => inject(StartupService).load()),<% if(animations!='excluded') { %>
-    provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
+    provideAppInitializer(() => inject(StartupService).load()),
     provideHttpClient(withInterceptors(interceptors)),
     provideRouter(
       routes,

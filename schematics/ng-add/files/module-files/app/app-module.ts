@@ -1,7 +1,6 @@
 import { inject, NgModule, provideAppInitializer } from '@angular/core';
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';<% if(animations!='excluded') { %>
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';<% } %>
+import { BrowserModule } from '@angular/platform-browser';
 
 import { App } from './app';
 
@@ -37,8 +36,7 @@ import { FakeLoginService } from './fake-login.service';
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
     provideAppInitializer(() => inject(StartupService).load()),
-    provideHttpClient(withInterceptors(interceptors)),<% if(animations!='excluded') { %>
-    provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
+    provideHttpClient(withInterceptors(interceptors)),
     provideHotToastConfig(),
     provideTranslateService({
       loader: {
