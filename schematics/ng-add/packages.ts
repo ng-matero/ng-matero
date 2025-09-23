@@ -13,21 +13,21 @@ export function addKeyPkgsToPackageJson(host: Tree) {
 
 /** Add dependencies to package.json */
 export function add3rdPkgsToPackageJson(host: Tree) {
-  addPackage(host, '@angular/animations@0.0.0-PLACEHOLDER');
   addPackage(host, '@angular/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@angular/material-date-fns-adapter@0.0.0-PLACEHOLDER');
 
   // 3rd lib
   addPackage(host, '@ng-matero/extensions@0.0.0-PLACEHOLDER');
   addPackage(host, '@ng-matero/extensions-date-fns-adapter@0.0.0-PLACEHOLDER');
+  addPackage(host, '@ngneat/overview@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-formly/material@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/http-loader@0.0.0-PLACEHOLDER');
+  addPackage(host, '@ngxpert/hot-toast@0.0.0-PLACEHOLDER');
   addPackage(host, 'date-fns@0.0.0-PLACEHOLDER');
   addPackage(host, 'ngx-permissions@0.0.0-PLACEHOLDER');
   addPackage(host, 'ngx-progressbar@0.0.0-PLACEHOLDER');
-  addPackage(host, 'ngx-toastr@0.0.0-PLACEHOLDER');
   addPackage(host, 'photoviewer@0.0.0-PLACEHOLDER');
   addPackage(host, 'screenfull@0.0.0-PLACEHOLDER');
 

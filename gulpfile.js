@@ -78,20 +78,20 @@ function updateVersions(cb) {
     .pipe(
       each(function (content, file, callback) {
         [
-          '@angular/animations',
           '@angular/cdk',
           '@angular/material',
           '@angular/material-date-fns-adapter',
           '@ng-matero/extensions',
           '@ng-matero/extensions-date-fns-adapter',
+          '@ngneat/overview',
           '@ngx-formly/core',
           '@ngx-formly/material',
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
+          '@ngxpert/hot-toast',
           'date-fns',
           'ngx-permissions',
           'ngx-progressbar',
-          'ngx-toastr',
           'photoviewer',
           'screenfull',
           'angular-eslint',

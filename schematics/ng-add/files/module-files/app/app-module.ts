@@ -10,11 +10,11 @@ import { ThemeModule } from '@theme/theme-module';
 import { SharedModule } from '@shared/shared-module';
 import { RoutesModule } from './routes/routes-module';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { provideToastr } from 'ngx-toastr';
 import { FORMLY_CONFIG, provideFormlyCore } from '@ngx-formly/core';
 import { withFormlyMaterial } from '@ngx-formly/material';
 import { provideTranslateService, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 import { BASE_URL, interceptors, StartupService, TranslateLangService } from '@core';
 import { formlyConfigFactory } from '@shared';
@@ -39,7 +39,7 @@ import { FakeLoginService } from './fake-login.service';
     provideAppInitializer(() => inject(StartupService).load()),
     provideHttpClient(withInterceptors(interceptors)),<% if(animations!='excluded') { %>
     provideAnimationsAsync(<% if(animations=='disabled') { %>'noop'<% } %>),<% } %>
-    provideToastr(),
+    provideHotToastConfig(),
     provideTranslateService({
       loader: {
         provide: TranslateLoader,
