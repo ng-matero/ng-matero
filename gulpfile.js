@@ -89,6 +89,7 @@ function updateVersions(cb) {
           '@ngx-translate/core',
           '@ngx-translate/http-loader',
           '@ngxpert/hot-toast',
+          'base64-js',
           'date-fns',
           'ngx-permissions',
           'ngx-progressbar',

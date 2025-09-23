@@ -25,6 +25,7 @@ export function add3rdPkgsToPackageJson(host: Tree) {
   addPackage(host, '@ngx-translate/core@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngx-translate/http-loader@0.0.0-PLACEHOLDER');
   addPackage(host, '@ngxpert/hot-toast@0.0.0-PLACEHOLDER');
+  addPackage(host, 'base64-js@0.0.0-PLACEHOLDER');
   addPackage(host, 'date-fns@0.0.0-PLACEHOLDER');
   addPackage(host, 'ngx-permissions@0.0.0-PLACEHOLDER');
   addPackage(host, 'ngx-progressbar@0.0.0-PLACEHOLDER');
