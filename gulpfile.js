@@ -103,6 +103,7 @@ function updateVersions(cb) {
           'stylelint-config-recess-order',
           'stylelint-config-recommended-scss',
           'stylelint-config-standard',
+          'stylelint-order',
           'typescript-eslint',
         ].forEach(name => {
           if (!pkg.dependencies[name] && !pkg.devDependencies[name]) {
