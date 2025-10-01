@@ -90,7 +90,7 @@
     "stylelint-config-standard": "^39.0.0",
     "stylelint-order": "^7.0.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.44.0",
+    "typescript-eslint": "^8.45.0",
     "webpack-bundle-analyzer": "^4.10.0"
   }
 }
