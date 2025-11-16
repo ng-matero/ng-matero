@@ -5,7 +5,7 @@ import { NavAccordionItem } from './nav-accordion-item';
   selector: '[navAccordionToggle]',
   exportAs: 'navAccordionToggle',
   host: {
-    '(click)': 'onClick($event)',
+    '(click)': 'onClick()',
   },
 })
 export class NavAccordionToggle {

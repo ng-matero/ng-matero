@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-branding',
   template: `
     <a class="branding" href="/">
       <img src="images/matero.png" class="branding-logo" alt="logo" />
-      @if (showName) {
+      @if (showName()) {
         <span class="branding-name">MATERO</span>
       }
     </a>
@@ -35,5 +35,5 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class Branding {
-  @Input() showName = true;
+  readonly showName = input(true);
 }

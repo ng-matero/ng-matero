@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Output, ViewEncapsulation, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -30,8 +30,8 @@ import { UserButton } from '../widgets/user-button';
   ],
 })
 export class Header {
-  @Input() showToggle = true;
-  @Input() showBranding = false;
+  readonly showToggle = input(true);
+  readonly showBranding = input(false);
 
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleSidenavNotice = new EventEmitter<void>();

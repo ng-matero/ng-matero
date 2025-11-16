@@ -39,15 +39,16 @@ export class NavAccordion {
   closeOtherItems(openedItem: NavAccordionItem) {
     this.navItems.forEach(item => {
       if (item !== openedItem) {
-        item.expanded = false;
+        item.setExpanded(false);
       }
     });
   }
 
   checkOpenedItems() {
     this.navItems.forEach(item => {
-      if (item.route && this.router.url.split('/').includes(item.route)) {
-        item.expanded = true;
+      const route = item.route();
+      if (route && this.router.url.split('/').includes(route)) {
+        item.setExpanded(true);
         this.closeOtherItems(item);
       }
     });

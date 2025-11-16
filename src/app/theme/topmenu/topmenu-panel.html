@@ -1,5 +1,5 @@
 <mat-menu class="matero-topmenu-panel">
-  @for (item of items; track item; let index = $index) {
+  @for (item of items(); track item; let index = $index) {
     <ng-template
       [ngxPermissionsOnly]="item.permissions?.only!"
       [ngxPermissionsExcept]="item.permissions?.except!"
@@ -7,7 +7,7 @@
       @if (item.type === 'link') {
         <a
           mat-menu-item
-          [routerLink]="buildRoute(parentRoute.concat([item.route]))"
+          [routerLink]="buildRoute(parentRoute().concat([item.route]))"
           routerLinkActive
           #rla="routerLinkActive"
           [class.active]="rla.isActive"
@@ -41,8 +41,8 @@
           <app-topmenu-panel
             #submenu
             [items]="item.children!"
-            [parentRoute]="parentRoute.concat([item.route])"
-            [level]="level + 1"
+            [parentRoute]="parentRoute().concat([item.route])"
+            [level]="level() + 1"
             (routeChange)="onRouteChange($event, index)"
           />
         </button>

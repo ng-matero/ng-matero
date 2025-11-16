@@ -2,9 +2,9 @@ import { AsyncPipe, NgTemplateOutlet, SlicePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   ViewEncapsulation,
   inject,
+  input,
 } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -40,7 +40,7 @@ import { NavAccordionToggle } from './nav-accordion-toggle';
 })
 export class Sidemenu {
   // The ripple effect makes page flashing on mobile
-  @Input() ripple = false;
+  readonly ripple = input(false);
 
   private readonly menu = inject(MenuService);
 

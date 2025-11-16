@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink, MatButtonModule],
 })
 export class ErrorCode {
-  @Input() code = '';
-  @Input() title = '';
-  @Input() message = '';
+  readonly code = input('');
+  readonly title = input('');
+  readonly message = input('');
 }

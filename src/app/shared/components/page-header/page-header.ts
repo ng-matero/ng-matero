@@ -1,10 +1,10 @@
 import {
   Component,
-  Input,
-  OnInit,
   ViewEncapsulation,
   booleanAttribute,
+  computed,
   inject,
+  input,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,19 +22,18 @@ import { Breadcrumb } from '../breadcrumb/breadcrumb';
   encapsulation: ViewEncapsulation.None,
   imports: [Breadcrumb, TranslateModule],
 })
-export class PageHeader implements OnInit {
+export class PageHeader {
   private readonly router = inject(Router);
   private readonly menu = inject(MenuService);
 
-  @Input() title = '';
-  @Input() subtitle = '';
-  @Input() nav: string[] = [];
-  @Input({ transform: booleanAttribute }) hideBreadcrumb = false;
+  readonly title = input('');
+  readonly subtitle = input('');
+  readonly nav = input<string[]>([]);
+  readonly hideBreadcrumb = input(false, { transform: booleanAttribute });
 
-  ngOnInit() {
+  titleName = computed(() => {
     const routes = this.router.url.slice(1).split('/');
     const menuLevel = this.menu.getLevel(routes);
-
-    this.title = this.title || menuLevel[menuLevel.length - 1];
-  }
+    return this.title() || menuLevel[menuLevel.length - 1];
+  });
 }

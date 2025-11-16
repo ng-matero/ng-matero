@@ -10,11 +10,7 @@
   let-level="level"
   let-expanded="expanded"
 >
-  <ul
-    navAccordion
-    class="matero-sidemenu level-{{ level }}"
-    [class.submenu]="level > 0"
-  >
+  <ul navAccordion class="matero-sidemenu level-{{ level }}" [class.submenu]="level > 0">
     @for (menuItem of menuList; track menuItem) {
       <ng-template
         [ngxPermissionsOnly]="menuItem.permissions?.only"
@@ -33,7 +29,7 @@
               class="menu-heading"
               [routerLink]="buildRoute(parentRoute.concat([menuItem.route]))"
               matRipple
-              [matRippleDisabled]="!ripple"
+              [matRippleDisabled]="!ripple()"
             >
               <ng-container
                 [ngTemplateOutlet]="linkTypeTpl"
@@ -42,7 +38,12 @@
             </a>
           }
           @if (menuItem.type === 'extLink') {
-            <a class="menu-heading" [href]="menuItem.route" matRipple [matRippleDisabled]="!ripple">
+            <a
+              class="menu-heading"
+              [href]="menuItem.route"
+              matRipple
+              [matRippleDisabled]="!ripple()"
+            >
               <ng-container
                 [ngTemplateOutlet]="linkTypeTpl"
                 [ngTemplateOutletContext]="{ item: menuItem, level: level }"
@@ -55,7 +56,7 @@
               [href]="menuItem.route"
               target="_blank"
               matRipple
-              [matRippleDisabled]="!ripple"
+              [matRippleDisabled]="!ripple()"
             >
               <ng-container
                 [ngTemplateOutlet]="linkTypeTpl"
@@ -68,7 +69,7 @@
               navAccordionToggle
               class="menu-heading menu-toggle"
               matRipple
-              [matRippleDisabled]="!ripple"
+              [matRippleDisabled]="!ripple()"
             >
               <ng-container
                 [ngTemplateOutlet]="linkTypeTpl"
@@ -82,7 +83,7 @@
                 menuList: menuItem.children,
                 parentRoute: parentRoute.concat([menuItem.route]),
                 level: level + 1,
-                expanded: navItem.expanded,
+                expanded: navItem.expanded(),
               }"
             />
           }

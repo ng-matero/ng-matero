@@ -3,13 +3,13 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
   OnDestroy,
   OnInit,
   Output,
   ViewChild,
   ViewEncapsulation,
   inject,
+  input,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
@@ -42,9 +42,9 @@ export class TopmenuPanel implements OnInit, OnDestroy {
 
   @ViewChild(MatMenu, { static: true }) menuPanel!: MatMenu;
 
-  @Input() items: MenuChildrenItem[] = [];
-  @Input() parentRoute: string[] = [];
-  @Input() level = 1;
+  readonly items = input<MenuChildrenItem[]>([]);
+  readonly parentRoute = input<string[]>([]);
+  readonly level = input(1);
   @Output() routeChange = new EventEmitter<RouterLinkActive>();
 
   menuStates: TopmenuState[] = [];
@@ -54,7 +54,7 @@ export class TopmenuPanel implements OnInit, OnDestroy {
   private routerSubscription = Subscription.EMPTY;
 
   ngOnInit() {
-    this.items.forEach(item => {
+    this.items().forEach(item => {
       this.menuStates.push({ active: this.checkRoute(item), route: item.route });
     });
   }

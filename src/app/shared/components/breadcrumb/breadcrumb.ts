@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '@core/bootstrap/menu.service';
@@ -16,7 +16,7 @@ export class Breadcrumb implements OnInit {
   private readonly router = inject(Router);
   private readonly menu = inject(MenuService);
 
-  @Input() nav: string[] = [];
+  readonly nav = input<string[]>([]);
 
   navItems: string[] = [];
 
@@ -37,8 +37,8 @@ export class Breadcrumb implements OnInit {
 
   genBreadcrumb() {
     const routes = this.router.url.slice(1).split('/');
-    if (this.nav.length > 0) {
-      this.navItems = [...this.nav];
+    if (this.nav().length > 0) {
+      this.navItems = [...this.nav()];
     } else {
       this.navItems = this.menu.getLevel(routes);
       this.navItems.unshift('home');
