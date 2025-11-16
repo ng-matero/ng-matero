@@ -1,6 +1,6 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnDestroy, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation, inject, viewChild } from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NgProgressbar } from 'ngx-progressbar';
@@ -41,8 +41,8 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   },
 })
 export class AdminLayout implements OnDestroy {
-  @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
-  @ViewChild('content', { static: true }) content!: MatSidenavContent;
+  readonly sidenav = viewChild.required<MatSidenav>('sidenav');
+  readonly content = viewChild.required<MatSidenavContent>('content');
 
   private readonly breakpointObserver = inject(BreakpointObserver);
   private readonly router = inject(Router);
@@ -96,9 +96,9 @@ export class AdminLayout implements OnDestroy {
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
       if (this.isOver) {
-        this.sidenav.close();
+        this.sidenav().close();
       }
-      this.content.scrollTo({ top: 0 });
+      this.content().scrollTo({ top: 0 });
     });
   }
 

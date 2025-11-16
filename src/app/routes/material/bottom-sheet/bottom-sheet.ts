@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
+import { Component, TemplateRef, inject, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   MatBottomSheet,
@@ -49,14 +49,14 @@ export class BottomSheetDemo {
     ariaLabel: 'Example bottom sheet',
   };
 
-  @ViewChild(TemplateRef) template!: TemplateRef<any>;
+  readonly template = viewChild.required(TemplateRef);
 
   openComponent() {
     this._bottomSheet.open(BottomSheetOverviewExampleSheet, this.config);
   }
 
   openTemplate() {
-    this._bottomSheet.open(this.template, this.config);
+    this._bottomSheet.open(this.template(), this.config);
   }
 }
 

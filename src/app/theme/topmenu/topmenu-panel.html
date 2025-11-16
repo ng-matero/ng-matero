@@ -31,7 +31,7 @@
       @if (item.type === 'sub') {
         <button
           mat-menu-item
-          [matMenuTriggerFor]="submenu.menuPanel"
+          [matMenuTriggerFor]="submenu.menuPanel()"
           routerLinkActive
           #rla="routerLinkActive"
           [class.active]="rla.isActive || menuStates[index].active"

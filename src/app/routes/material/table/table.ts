@@ -1,5 +1,5 @@
 import { CdkTableModule, DataSource } from '@angular/cdk/table';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, viewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -38,8 +38,8 @@ const exampleData = [
   ],
 })
 export class TableDemo implements OnInit {
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  @ViewChild(MatPaginator, { static: true }) pager!: MatPaginator;
+  readonly sort = viewChild.required(MatSort);
+  readonly pager = viewChild.required(MatPaginator);
 
   displayedColumns = ['name', 'color', 'age'];
   basicDataSource!: BasicDataSource;
@@ -48,8 +48,8 @@ export class TableDemo implements OnInit {
 
   ngOnInit(): void {
     this.basicDataSource = new BasicDataSource();
-    this.sortDataSource = new SortDataSource(this.sort);
-    this.paginatedDataSource = new PaginatedDataSource(this.pager);
+    this.sortDataSource = new SortDataSource(this.sort());
+    this.paginatedDataSource = new PaginatedDataSource(this.pager());
   }
 }
 

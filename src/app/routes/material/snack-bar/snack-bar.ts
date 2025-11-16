@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
+import { Component, TemplateRef, inject, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -37,7 +37,7 @@ export class SnackBarDemo {
   snackBar = inject(MatSnackBar);
   private _dir = inject(Directionality);
 
-  @ViewChild('template') template!: TemplateRef<any>;
+  readonly template = viewChild.required<TemplateRef<any>>('template');
   message = 'Snack Bar opened.';
   actionButtonLabel = 'Retry';
   action = false;
@@ -54,7 +54,7 @@ export class SnackBarDemo {
 
   openTemplate() {
     const config = this._createConfig();
-    this.snackBar.openFromTemplate(this.template, config);
+    this.snackBar.openFromTemplate(this.template(), config);
   }
 
   private _createConfig() {

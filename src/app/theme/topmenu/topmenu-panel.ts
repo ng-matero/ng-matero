@@ -4,11 +4,11 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  ViewChild,
   ViewEncapsulation,
   inject,
   input,
   output,
+  viewChild,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
@@ -39,7 +39,7 @@ export class TopmenuPanel implements OnInit, OnDestroy {
   private readonly router = inject(Router);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  @ViewChild(MatMenu, { static: true }) menuPanel!: MatMenu;
+  readonly menuPanel = viewChild.required(MatMenu);
 
   readonly items = input<MenuChildrenItem[]>([]);
   readonly parentRoute = input<string[]>([]);
