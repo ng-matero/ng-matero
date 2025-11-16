@@ -2,14 +2,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
   OnDestroy,
   OnInit,
-  Output,
   ViewChild,
   ViewEncapsulation,
   inject,
   input,
+  output,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
@@ -45,7 +44,7 @@ export class TopmenuPanel implements OnInit, OnDestroy {
   readonly items = input<MenuChildrenItem[]>([]);
   readonly parentRoute = input<string[]>([]);
   readonly level = input(1);
-  @Output() routeChange = new EventEmitter<RouterLinkActive>();
+  readonly routeChange = output<RouterLinkActive>();
 
   menuStates: TopmenuState[] = [];
 

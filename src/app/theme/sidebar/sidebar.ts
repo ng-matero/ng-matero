@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewEncapsulation, input } from '@angular/core';
+import { Component, ViewEncapsulation, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -29,6 +29,6 @@ export class Sidebar {
   readonly showHeader = input(true);
   readonly toggleChecked = input(false);
 
-  @Output() toggleCollapsed = new EventEmitter<void>();
-  @Output() closeSidenav = new EventEmitter<void>();
+  readonly toggleCollapsed = output<void>();
+  readonly closeSidenav = output<void>();
 }

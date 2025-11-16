@@ -1,12 +1,5 @@
 import { CdkDrag, CdkDragStart } from '@angular/cdk/drag-drop';
-import {
-  Component,
-  EventEmitter,
-  Output,
-  TemplateRef,
-  ViewEncapsulation,
-  inject,
-} from '@angular/core';
+import { Component, TemplateRef, ViewEncapsulation, inject, output } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -40,7 +33,7 @@ import { DisableControl } from '@shared';
   ],
 })
 export class Customizer {
-  @Output() optionsChange = new EventEmitter<AppSettings>();
+  readonly optionsChange = output<AppSettings>();
 
   private readonly settings = inject(SettingsService);
   private readonly drawer = inject(MtxDrawer);
