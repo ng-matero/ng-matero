@@ -12,7 +12,6 @@ export class NavAccordionItem implements OnInit, OnDestroy {
   private readonly nav = inject(NavAccordion);
 
   readonly route = input('');
-  readonly type = input<'link' | 'sub' | 'extLink' | 'extTabLink'>('link');
 
   expanded = signal(false);
 

@@ -7,7 +7,7 @@
       @if (item.type === 'link') {
         <a
           mat-menu-item
-          [routerLink]="buildRoute(parentRoute().concat([item.route]))"
+          [routerLink]="menu.buildRoute(parentRoute().concat([item.route]))"
           routerLinkActive
           #rla="routerLinkActive"
           [class.active]="rla.isActive"

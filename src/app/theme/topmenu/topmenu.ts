@@ -48,13 +48,9 @@ export interface TopmenuState {
   ],
 })
 export class Topmenu implements OnDestroy {
-  private readonly menu = inject(MenuService);
   private readonly router = inject(Router);
   private readonly cdr = inject(ChangeDetectorRef);
-
-  menu$ = this.menu.getAll();
-
-  buildRoute = this.menu.buildRoute;
+  readonly menu = inject(MenuService);
 
   menuList: Menu[] = [];
   menuStates: TopmenuState[] = [];
@@ -63,7 +59,7 @@ export class Topmenu implements OnDestroy {
   private routerSubscription = Subscription.EMPTY;
 
   constructor() {
-    this.menuSubscription = this.menu$.subscribe(res => {
+    this.menuSubscription = this.menu.getAll().subscribe(res => {
       this.menuList = res;
       this.menuList.forEach(item => {
         this.menuStates.push({

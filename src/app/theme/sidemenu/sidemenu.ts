@@ -1,11 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet, SlicePipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ViewEncapsulation,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -39,12 +33,5 @@ import { NavAccordionToggle } from './nav-accordion-toggle';
   ],
 })
 export class Sidemenu {
-  // The ripple effect makes page flashing on mobile
-  readonly ripple = input(false);
-
-  private readonly menu = inject(MenuService);
-
-  menu$ = this.menu.getAll();
-
-  buildRoute = this.menu.buildRoute;
+  readonly menu = inject(MenuService);
 }

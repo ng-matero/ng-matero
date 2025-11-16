@@ -35,9 +35,9 @@ import { TopmenuState } from './topmenu';
   ],
 })
 export class TopmenuPanel implements OnInit, OnDestroy {
-  private readonly menu = inject(MenuService);
-  private readonly router = inject(Router);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly router = inject(Router);
+  readonly menu = inject(MenuService);
 
   readonly menuPanel = viewChild.required(MatMenu);
 
@@ -47,8 +47,6 @@ export class TopmenuPanel implements OnInit, OnDestroy {
   readonly routeChange = output<RouterLinkActive>();
 
   menuStates: TopmenuState[] = [];
-
-  buildRoute = this.menu.buildRoute;
 
   private routerSubscription = Subscription.EMPTY;
 

@@ -1,11 +1,11 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-  @for (menuItem of menu$ | async; track menuItem; let index = $index) {
+  @for (menuItem of menu.getAll() | async; track menuItem; let index = $index) {
     <ng-template
       [ngxPermissionsOnly]="menuItem.permissions?.only!"
       [ngxPermissionsExcept]="menuItem.permissions?.except!"
     >
       @if (menuItem.type === 'link') {
-        <a mat-button [routerLink]="buildRoute([menuItem.route])" routerLinkActive="active">
+        <a mat-button [routerLink]="menu.buildRoute([menuItem.route])" routerLinkActive="active">
           <ng-container
             [ngTemplateOutlet]="linkTypeTpl"
             [ngTemplateOutletContext]="{ item: menuItem }"
