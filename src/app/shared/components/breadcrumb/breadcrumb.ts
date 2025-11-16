@@ -20,10 +20,6 @@ export class Breadcrumb implements OnInit {
 
   navItems: string[] = [];
 
-  trackByNavItem(index: number, item: string) {
-    return item;
-  }
-
   ngOnInit() {
     this.router.events
       .pipe(
