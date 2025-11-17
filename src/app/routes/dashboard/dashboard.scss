@@ -1,15 +1,7 @@
-.mat-mdc-button-base {
-  margin: 4px;
-}
-
 mtx-alert {
-  position: sticky;
-  top: 64px;
-  z-index: 10;
-}
+  --mtx-alert-container-shape: 24px;
 
-@media (width <= 599px) {
-  mtx-alert {
-    top: 56px;
-  }
+  position: sticky;
+  top: 8px;
+  z-index: 1000;
 }

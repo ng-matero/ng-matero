@@ -170,34 +170,50 @@
         <mat-card-title>Chips & Buttons</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-chip-listbox class="m-t-16">
+        <h3 class="m-t-0">Chips</h3>
+        <mat-chip-listbox>
           <mat-chip-option selected>One fish</mat-chip-option>
           <mat-chip-option color="primary">Primary fish</mat-chip-option>
           <mat-chip-option color="accent">Accent fish</mat-chip-option>
           <mat-chip-option color="warn">Two fish</mat-chip-option>
         </mat-chip-listbox>
-        <mat-chip-listbox class="m-t-8">
-          <mat-chip-option class="bg-orange-90">Orange fish</mat-chip-option>
-          <mat-chip-option class="bg-blue-90">Blue fish</mat-chip-option>
-          <mat-chip-option class="bg-cyan-90">Cyan fish</mat-chip-option>
-          <mat-chip-option class="bg-red-90" selected>Red fish</mat-chip-option>
-          <mat-chip-option class="bg-green-90">Green fish</mat-chip-option>
+        <h4>Custom chip colors</h4>
+        <mat-chip-listbox>
+          <mat-chip-option class="bg-orange-{{ isDark ? 50 : 90 }}">Orange fish</mat-chip-option>
+          <mat-chip-option class="bg-blue-{{ isDark ? 50 : 90 }}">Blue fish</mat-chip-option>
+          <mat-chip-option class="bg-cyan-{{ isDark ? 50 : 90 }}">Cyan fish</mat-chip-option>
+          <mat-chip-option class="bg-red-{{ isDark ? 50 : 90 }}" selected>Red fish</mat-chip-option>
+          <mat-chip-option class="bg-green-{{ isDark ? 50 : 90 }}">Green fish</mat-chip-option>
         </mat-chip-listbox>
 
-        <div class="m-t-16">
-          <button mat-raised-button>Basic</button>
-          <button mat-raised-button color="primary">Primary</button>
-          <button mat-raised-button color="accent">Accent</button>
-          <button mat-raised-button color="warn">Warn</button>
-          <button mat-raised-button disabled>Disabled</button>
-          <a mat-raised-button routerLink=".">Link</a>
+        <h3>Buttons</h3>
+        <div class="d-flex flex-wrap align-items-center gap-8">
+          <button matButton>Text</button>
+          <button matButton="elevated">Elevated</button>
+          <button matButton="outlined">Outlined</button>
+          <button matButton="filled">Filled</button>
+          <button matButton="tonal">Tonal</button>
+          <button matIconButton>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <button matFab>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button matMiniFab>
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button matFab extended>
+            <mat-icon>favorite</mat-icon>
+            Basic
+          </button>
         </div>
-        <div class="m-t-8">
-          <button mat-flat-button class="bg-orange-90 text-dark">Orange</button>
-          <button mat-flat-button class="bg-blue-90 text-dark">Teal</button>
-          <button mat-flat-button class="bg-cyan-90 text-dark">Cyan</button>
-          <button mat-flat-button class="bg-red-90 text-dark">Purple</button>
-          <button mat-flat-button class="bg-green-90 text-dark">Green</button>
+        <h4>Custom button colors</h4>
+        <div class="d-flex flex-wrap align-items-center gap-8">
+          <button matButton="filled" class="bg-orange-90 text-dark">Orange</button>
+          <button matButton="filled" class="bg-blue-90 text-dark">Teal</button>
+          <button matButton="filled" class="bg-cyan-90 text-dark">Cyan</button>
+          <button matButton="filled" class="bg-red-90 text-dark">Purple</button>
+          <button matButton="filled" class="bg-green-90 text-dark">Green</button>
         </div>
       </mat-card-content>
     </mat-card>

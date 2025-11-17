@@ -3,10 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RouterLink } from '@angular/router';
 import { SettingsService } from '@core';
 import { MtxAlertModule } from '@ng-matero/extensions/alert';
 import { MtxProgressModule } from '@ng-matero/extensions/progress';
@@ -18,7 +18,6 @@ import { CHARTS, ELEMENT_DATA, MESSAGES, STATS } from './data';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
   imports: [
-    RouterLink,
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
@@ -26,6 +25,7 @@ import { CHARTS, ELEMENT_DATA, MESSAGES, STATS } from './data';
     MatGridListModule,
     MatTableModule,
     MatTabsModule,
+    MatIconModule,
     MtxProgressModule,
     MtxAlertModule,
   ],
@@ -84,6 +84,10 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
 
   introducingItem = this.introducingItems[this.getRandom(0, 4)];
 
+  get isDark() {
+    return this.settings.getThemeColor() == 'dark';
+  }
+
   ngOnInit() {
     this.notifySubscription = this.settings.notify.subscribe(opts => {
       console.log(opts);
@@ -113,37 +117,43 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
   }
 
   updateCharts() {
-    const isDark = this.settings.getThemeColor() == 'dark';
-
     this.chart1?.updateOptions({
       chart: {
-        foreColor: isDark ? '#ccc' : '#333',
+        foreColor: this.isDark ? '#ccc' : '#333',
+        background: 'transparent',
       },
       tooltip: {
-        theme: isDark ? 'dark' : 'light',
+        theme: this.isDark ? 'dark' : 'light',
       },
       grid: {
-        borderColor: isDark ? '#5a5a5a' : '#e1e1e1',
+        borderColor: this.isDark ? '#5a5a5a' : '#e1e1e1',
+      },
+      theme: {
+        mode: this.isDark ? 'dark' : 'light',
       },
     });
 
     this.chart2?.updateOptions({
       chart: {
-        foreColor: isDark ? '#ccc' : '#333',
+        foreColor: this.isDark ? '#ccc' : '#333',
+        background: 'transparent',
       },
       plotOptions: {
         radar: {
           polygons: {
-            strokeColors: isDark ? '#5a5a5a' : '#e1e1e1',
-            connectorColors: isDark ? '#5a5a5a' : '#e1e1e1',
+            strokeColors: this.isDark ? '#5a5a5a' : '#e1e1e1',
+            connectorColors: this.isDark ? '#5a5a5a' : '#e1e1e1',
             fill: {
-              colors: isDark ? ['#2c2c2c', '#222'] : ['#f2f2f2', '#fff'],
+              colors: this.isDark ? ['#2c2c2c', '#222'] : ['#f2f2f2', '#fff'],
             },
           },
         },
       },
       tooltip: {
-        theme: isDark ? 'dark' : 'light',
+        theme: this.isDark ? 'dark' : 'light',
+      },
+      theme: {
+        mode: this.isDark ? 'dark' : 'light',
       },
     });
   }
