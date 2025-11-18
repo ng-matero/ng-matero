@@ -1,6 +1,4 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -8,6 +6,7 @@ import {
   inject,
   input,
   output,
+  signal,
   viewChild,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,16 +14,14 @@ import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { Subscription, filter } from 'rxjs';
+import { Subscription, debounceTime, filter, tap } from 'rxjs';
 
 import { MenuChildrenItem, MenuService } from '@core';
-import { TopmenuState } from './topmenu';
 
 @Component({
   selector: 'app-topmenu-panel',
   templateUrl: './topmenu-panel.html',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterLink,
     RouterLinkActive,
@@ -35,7 +32,6 @@ import { TopmenuState } from './topmenu';
   ],
 })
 export class TopmenuPanel implements OnInit, OnDestroy {
-  private readonly cdr = inject(ChangeDetectorRef);
   private readonly router = inject(Router);
   readonly menu = inject(MenuService);
 
@@ -46,13 +42,15 @@ export class TopmenuPanel implements OnInit, OnDestroy {
   readonly level = input(1);
   readonly routeChange = output<RouterLinkActive>();
 
-  menuStates: TopmenuState[] = [];
-
-  private routerSubscription = Subscription.EMPTY;
+  private routerSubscription = this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(e => {
+      this.items().map(item => item.active?.set(false));
+    });
 
   ngOnInit() {
     this.items().forEach(item => {
-      this.menuStates.push({ active: this.checkRoute(item), route: item.route });
+      item.active = signal(this.checkRoute(item));
     });
   }
 
@@ -84,18 +82,22 @@ export class TopmenuPanel implements OnInit, OnDestroy {
     this.routeChange.emit(rla);
   }
 
-  onRouteChange(rla: RouterLinkActive, index: number) {
+  onRouteChange(rla: RouterLinkActive, menuItem: MenuChildrenItem) {
     this.routeChange.emit(rla);
 
     this.routerSubscription.unsubscribe();
     this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(e => {
-        this.menuStates.forEach(item => (item.active = false));
-        setTimeout(() => {
-          this.menuStates[index].active = rla.isActive;
-          this.cdr.markForCheck();
-        });
-      });
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        tap(() => {
+          const items = this.items();
+          items.filter(m => m != menuItem).map(item => item.active?.set(false));
+        }),
+        debounceTime(10),
+        tap(() => {
+          menuItem.active?.set(rla.isActive);
+        })
+      )
+      .subscribe();
   }
 }

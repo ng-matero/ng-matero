@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal } from '@angular/core';
 import { BehaviorSubject, share } from 'rxjs';
 
 export interface MenuTag {
@@ -17,6 +17,7 @@ export interface MenuChildrenItem {
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   children?: MenuChildrenItem[];
   permissions?: MenuPermissions;
+  active?: WritableSignal<boolean>;
 }
 
 export interface Menu {
@@ -28,6 +29,7 @@ export interface Menu {
   badge?: MenuTag;
   children?: MenuChildrenItem[];
   permissions?: MenuPermissions;
+  active?: WritableSignal<boolean>;
 }
 
 @Injectable({

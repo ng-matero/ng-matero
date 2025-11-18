@@ -8,9 +8,8 @@
         <a
           mat-menu-item
           [routerLink]="menu.buildRoute(parentRoute().concat([item.route]))"
-          routerLinkActive
+          routerLinkActive="active"
           #rla="routerLinkActive"
-          [class.active]="rla.isActive"
           (click)="onRouterLinkClick(rla)"
         >
           {{ item.name | translate }}
@@ -32,18 +31,16 @@
         <button
           mat-menu-item
           [matMenuTriggerFor]="submenu.menuPanel()"
-          routerLinkActive
-          #rla="routerLinkActive"
-          [class.active]="rla.isActive || menuStates[index].active"
+          [class.active]="item.active?.()"
         >
           {{ item.name | translate }}
 
           <app-topmenu-panel
             #submenu
-            [items]="item.children!"
+            [items]="item.children || []"
             [parentRoute]="parentRoute().concat([item.route])"
             [level]="level() + 1"
-            (routeChange)="onRouteChange($event, index)"
+            (routeChange)="onRouteChange($event, item)"
           />
         </button>
       }

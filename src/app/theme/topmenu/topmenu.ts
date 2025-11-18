@@ -1,12 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  ViewEncapsulation,
-  inject,
-} from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -14,15 +7,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { Subscription, filter } from 'rxjs';
+import { debounceTime, filter, tap } from 'rxjs';
 
 import { Menu, MenuService } from '@core';
 import { TopmenuPanel } from './topmenu-panel';
-
-export interface TopmenuState {
-  active: boolean;
-  route: string;
-}
 
 @Component({
   selector: 'app-topmenu',
@@ -32,7 +20,6 @@ export interface TopmenuState {
     class: 'matero-topmenu',
   },
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
     NgTemplateOutlet,
@@ -49,48 +36,42 @@ export interface TopmenuState {
 })
 export class Topmenu implements OnDestroy {
   private readonly router = inject(Router);
-  private readonly cdr = inject(ChangeDetectorRef);
   readonly menu = inject(MenuService);
 
   menuList: Menu[] = [];
-  menuStates: TopmenuState[] = [];
 
-  private menuSubscription = Subscription.EMPTY;
-  private routerSubscription = Subscription.EMPTY;
-
-  constructor() {
-    this.menuSubscription = this.menu.getAll().subscribe(res => {
-      this.menuList = res;
-      this.menuList.forEach(item => {
-        this.menuStates.push({
-          active: this.router.url.split('/').includes(item.route),
-          route: item.route,
-        });
-      });
+  private menuSubscription = this.menu.getAll().subscribe(items => {
+    this.menuList = items.map(item => {
+      const isCurrentRoute = this.router.url.split('/').includes(item.route);
+      item.active = signal(isCurrentRoute);
+      return item;
     });
+  });
 
-    this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(e => {
-        this.menuStates.forEach(item => (item.active = false));
-      });
-  }
+  private routerSubscription = this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(e => {
+      this.menuList.map(item => item.active?.set(false));
+    });
 
   ngOnDestroy() {
     this.menuSubscription.unsubscribe();
     this.routerSubscription.unsubscribe();
   }
 
-  onRouteChange(rla: RouterLinkActive, index: number) {
+  onRouteChange(rla: RouterLinkActive, menuItem: Menu) {
     this.routerSubscription.unsubscribe();
     this.routerSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(e => {
-        this.menuStates.forEach(item => (item.active = false));
-        setTimeout(() => {
-          this.menuStates[index].active = rla.isActive;
-          this.cdr.markForCheck();
-        });
-      });
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        tap(() => {
+          this.menuList.filter(m => m != menuItem).map(item => item.active?.set(false));
+        }),
+        debounceTime(10),
+        tap(() => {
+          menuItem.active?.set(rla.isActive);
+        })
+      )
+      .subscribe();
   }
 }

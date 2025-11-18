@@ -32,9 +32,7 @@
         <button
           mat-button
           [matMenuTriggerFor]="submenu.menuPanel()"
-          routerLinkActive
-          #rla="routerLinkActive"
-          [class.active]="rla.isActive || menuStates[index].active"
+          [class.active]="menuItem.active?.()"
         >
           <ng-container
             [ngTemplateOutlet]="linkTypeTpl"
@@ -43,10 +41,10 @@
 
           <app-topmenu-panel
             #submenu
-            [items]="menuItem.children!"
+            [items]="menuItem.children || []"
             [parentRoute]="[menuItem.route]"
             [level]="1"
-            (routeChange)="onRouteChange($event, index)"
+            (routeChange)="onRouteChange($event, menuItem)"
           />
         </button>
       }
