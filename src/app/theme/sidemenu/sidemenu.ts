@@ -1,5 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet, SlicePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -16,7 +16,6 @@ import { NavAccordionToggle } from './nav-accordion-toggle';
   templateUrl: './sidemenu.html',
   styleUrl: './sidemenu.scss',
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     AsyncPipe,
     SlicePipe,

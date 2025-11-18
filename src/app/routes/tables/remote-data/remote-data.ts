@@ -1,4 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
@@ -26,9 +32,11 @@ import { TablesRemoteDataService } from './remote-data.service';
     MatSelectModule,
     PageHeader,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TablesRemoteData implements OnInit {
-  private readonly remoteSrv = inject(TablesRemoteDataService);
+  private remoteSrv = inject(TablesRemoteDataService);
+  private cdr = inject(ChangeDetectorRef);
 
   columns: MtxGridColumn[] = [
     {
@@ -89,12 +97,14 @@ export class TablesRemoteData implements OnInit {
       .pipe(
         finalize(() => {
           this.isLoading = false;
+          this.cdr.detectChanges();
         })
       )
       .subscribe(res => {
         this.list = res.items;
         this.total = res.total_count;
         this.isLoading = false;
+        this.cdr.detectChanges();
       });
   }
 

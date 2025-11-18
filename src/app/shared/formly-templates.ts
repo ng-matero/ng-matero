@@ -1,8 +1,8 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MtxPipesModule } from '@ng-matero/extensions/core';
-import { MtxSelect, MtxSelectModule } from '@ng-matero/extensions/select';
+import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { FieldTypeConfig } from '@ngx-formly/core';
 import { FieldType } from '@ngx-formly/material/form-field';
 
@@ -25,12 +25,10 @@ import { FieldType } from '@ngx-formly/material/form-field';
       [compareWith]="props.compareWith"
     />
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+
   imports: [AsyncPipe, ReactiveFormsModule, MtxSelectModule, MtxPipesModule],
 })
 export class FormlyFieldCombobox extends FieldType<FieldTypeConfig> {
-  readonly select = viewChild.required<MtxSelect>('select');
-
   get bindLabel() {
     return typeof this.props.labelProp === 'string' ? this.props.labelProp : '';
   }

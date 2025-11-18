@@ -5,8 +5,8 @@
     <mat-card>
       <mat-card-content>
         <div class="text-center">
-          <img class="m-b-8 r-full" [src]="user.avatar" alt="" width="80" />
-          <h2 class="m-t-0 m-b-8 f-w-400">{{ user.name }}</h2>
+          <img class="m-b-8 r-full" [src]="user()?.avatar" alt="" width="80" />
+          <h2 class="m-t-0 m-b-8 f-w-400">{{ user()?.name }}</h2>
           <p class="m-t-0 m-b-8">FE Developer, UE designer</p>
           <p class="m-t-0 text-grey-500">I like reading, writing and drawing.</p>
 

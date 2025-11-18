@@ -1,4 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -6,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
-import { AuthService, User } from '@core';
+import { AuthService } from '@core';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageHeader } from '@shared';
 
@@ -26,15 +27,11 @@ import { PageHeader } from '@shared';
     TranslateModule,
   ],
 })
-export class ProfileLayout implements OnInit {
+export class ProfileLayout {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
 
-  user!: User;
-
-  ngOnInit(): void {
-    this.auth.user().subscribe(user => (this.user = user));
-  }
+  user = toSignal(this.auth.user());
 
   logout() {
     this.auth.logout().subscribe(() => {

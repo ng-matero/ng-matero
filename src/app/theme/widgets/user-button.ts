@@ -1,18 +1,18 @@
-import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { debounceTime, tap } from 'rxjs';
 
-import { AuthService, SettingsService, User } from '@core';
+import { AuthService, SettingsService } from '@core';
 
 @Component({
   selector: 'app-user',
   template: `
     <button mat-icon-button [matMenuTriggerFor]="menu">
-      <img class="avatar" [src]="user.avatar" width="24" alt="avatar" />
+      <img class="avatar" [src]="user()?.avatar" width="24" alt="avatar" />
     </button>
 
     <mat-menu #menu="matMenu">
@@ -43,23 +43,12 @@ import { AuthService, SettingsService, User } from '@core';
   `,
   imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
 })
-export class UserButton implements OnInit {
-  private readonly cdr = inject(ChangeDetectorRef);
+export class UserButton {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly settings = inject(SettingsService);
 
-  user!: User;
-
-  ngOnInit(): void {
-    this.auth
-      .user()
-      .pipe(
-        tap(user => (this.user = user)),
-        debounceTime(10)
-      )
-      .subscribe(() => this.cdr.detectChanges());
-  }
+  user = toSignal(this.auth.user());
 
   logout() {
     this.auth.logout().subscribe(() => {
