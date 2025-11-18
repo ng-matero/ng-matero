@@ -9,14 +9,14 @@
         <button mat-menu-item>Help</button>
       </mat-menu>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu1" aria-label="Open Menu">
+      <button matIconButton [matMenuTriggerFor]="menu1" aria-label="Open Menu">
         <mat-icon>more_vert</mat-icon>
       </button>
     </section>
 
     <section>
       <h2>Menu with Icons</h2>
-      <button mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Open Menu">
+      <button matIconButton [matMenuTriggerFor]="menu2" aria-label="Open Menu">
         <mat-icon>more_vert</mat-icon>
       </button>
 
@@ -38,7 +38,7 @@
 
     <section>
       <h2>Menu with links</h2>
-      <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Learn more about Angular">
+      <button matIconButton [matMenuTriggerFor]="menu3" aria-label="Learn more about Angular">
         <mat-icon>more_vert</mat-icon>
       </button>
 
@@ -51,7 +51,7 @@
     <section>
       <h2>Nested menu</h2>
 
-      <button mat-button [matMenuTriggerFor]="animals">Animal index</button>
+      <button matButton [matMenuTriggerFor]="animals">Animal index</button>
       <mat-menu #animals="matMenu">
         <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
         <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>

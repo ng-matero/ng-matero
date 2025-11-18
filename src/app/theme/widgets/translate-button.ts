@@ -9,7 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-translate',
   template: `
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button matIconButton [matMenuTriggerFor]="menu">
       <mat-icon>translate</mat-icon>
     </button>
 

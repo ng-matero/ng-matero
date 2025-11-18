@@ -11,7 +11,7 @@ import { AuthService, SettingsService } from '@core';
 @Component({
   selector: 'app-user',
   template: `
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button matIconButton [matMenuTriggerFor]="menu">
       <img class="avatar" [src]="user()?.avatar" width="24" alt="avatar" />
     </button>
 

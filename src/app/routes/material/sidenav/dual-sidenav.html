@@ -1,10 +1,10 @@
 <mat-toolbar color="primary" role="header" aria-label="Dual sidenav app">
-  <button mat-icon-button aria-label="Navigation menu" (click)="startSnav.toggle()">
+  <button matIconButton aria-label="Navigation menu" (click)="startSnav.toggle()">
     <mat-icon aria-hidden="true">menu</mat-icon>
   </button>
   <h1 class="demo-sidenav-app-name">Dual Sidenav App</h1>
   <span class="demo-sidenav-spacer" aria-hidden="true"></span>
-  <button mat-icon-button aria-label="Playlist menu" (click)="endSnav.toggle()">
+  <button matIconButton aria-label="Playlist menu" (click)="endSnav.toggle()">
     <mat-icon aria-hidden="true">playlist_play</mat-icon>
   </button>
 </mat-toolbar>
@@ -21,7 +21,7 @@
 
   <mat-sidenav-content role="region">
     <button
-      mat-raised-button
+      matButton="elevated"
       aria-label="Close dual sidenav example"
       color="primary"
       class="demo-sidenav-close"
@@ -40,14 +40,14 @@
     (open)="playlist1.focus()"
   >
     <h2 class="demo-sidenav-playlist-header">Playlists</h2>
-    <button #playlist1 mat-button aria-label="Thumbs up playlist" (click)="play('Thumbs up')">
+    <button #playlist1 matButton aria-label="Thumbs up playlist" (click)="play('Thumbs up')">
       Thumbs up
     </button>
-    <button mat-button aria-label="Last added playlist" (click)="play('Last added')">
+    <button matButton aria-label="Last added playlist" (click)="play('Last added')">
       Last added
     </button>
     <button
-      mat-button
+      matButton
       aria-label="Free and purchased playlist"
       (click)="play('Free and purchased')"
     >

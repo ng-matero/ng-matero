@@ -5,7 +5,7 @@
       [ngxPermissionsExcept]="menuItem.permissions?.except!"
     >
       @if (menuItem.type === 'link') {
-        <a mat-button [routerLink]="menu.buildRoute([menuItem.route])" routerLinkActive="active">
+        <a matButton [routerLink]="menu.buildRoute([menuItem.route])" routerLinkActive="active">
           <ng-container
             [ngTemplateOutlet]="linkTypeTpl"
             [ngTemplateOutletContext]="{ item: menuItem }"
@@ -13,7 +13,7 @@
         </a>
       }
       @if (menuItem.type === 'extLink') {
-        <a mat-button [href]="menuItem.route">
+        <a matButton [href]="menuItem.route">
           <ng-container
             [ngTemplateOutlet]="linkTypeTpl"
             [ngTemplateOutletContext]="{ item: menuItem }"
@@ -21,7 +21,7 @@
         </a>
       }
       @if (menuItem.type === 'extTabLink') {
-        <a mat-button [href]="menuItem.route" target="_blank">
+        <a matButton [href]="menuItem.route" target="_blank">
           <ng-container
             [ngTemplateOutlet]="linkTypeTpl"
             [ngTemplateOutletContext]="{ item: menuItem }"
@@ -30,7 +30,7 @@
       }
       @if (menuItem.type === 'sub') {
         <button
-          mat-button
+          matButton
           [matMenuTriggerFor]="submenu.menuPanel()"
           [class.active]="menuItem.active?.()"
         >

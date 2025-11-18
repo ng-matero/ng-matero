@@ -1,6 +1,6 @@
 <mat-toolbar>
   @if (showToggle()) {
-    <button mat-icon-button (click)="toggleSidenav.emit()">
+    <button matIconButton (click)="toggleSidenav.emit()">
       <mat-icon>menu</mat-icon>
     </button>
   }
@@ -13,13 +13,13 @@
 
   <app-github-button />
 
-  <button mat-icon-button>
+  <button matIconButton>
     <mat-icon>search</mat-icon>
   </button>
 
   <app-translate />
 
-  <button mat-icon-button class="hide-small" (click)="toggleFullscreen()">
+  <button matIconButton class="hide-small" (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
   </button>
 
@@ -27,7 +27,7 @@
 
   <app-user />
 
-  <button mat-icon-button class="hide-small" (click)="toggleSidenavNotice.emit()">
+  <button matIconButton class="hide-small" (click)="toggleSidenavNotice.emit()">
     <mat-icon>list</mat-icon>
   </button>
 </mat-toolbar>

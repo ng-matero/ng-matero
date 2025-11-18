@@ -4,7 +4,7 @@
   cdkDrag
   (cdkDragStarted)="onDragStart($event)"
 >
-  <button mat-fab (click)="openPanel(customizerPanel)">
+  <button matFab (click)="openPanel(customizerPanel)">
     <mat-icon aria-label="Example icon-button with a settings icon">settings</mat-icon>
   </button>
 </div>
@@ -12,7 +12,7 @@
 <ng-template #customizerPanel>
   <h2 class="d-flex align-items-center justify-content-between m-t-0 f-w-400">
     <span>Settings</span>
-    <button mat-icon-button (click)="closePanel()">
+    <button matIconButton (click)="closePanel()">
       <mat-icon>close</mat-icon>
     </button>
   </h2>
