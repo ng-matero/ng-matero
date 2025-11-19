@@ -1,5 +1,5 @@
 <mat-menu class="matero-topmenu-panel">
-  @for (item of items(); track item; let index = $index) {
+  @for (item of items(); track $index) {
     <ng-template
       [ngxPermissionsOnly]="item.permissions?.only!"
       [ngxPermissionsExcept]="item.permissions?.except!"

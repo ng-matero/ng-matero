@@ -36,7 +36,7 @@
     <section>
       <h2>Exclusive selection button toggle group</h2>
       <mat-button-toggle-group name="pies" [(ngModel)]="favoritePie" aria-label="Pies">
-        @for (pie of pieOptions; track pie) {
+        @for (pie of pieOptions; track $index) {
           <mat-button-toggle [value]="pie">{{ pie }}</mat-button-toggle>
         }
       </mat-button-toggle-group>

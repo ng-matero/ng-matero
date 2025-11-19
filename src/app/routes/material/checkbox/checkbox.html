@@ -23,7 +23,7 @@
 
     <section>
       <h2>Nested checklist</h2>
-      @for (task of tasks; track task) {
+      @for (task of tasks; track $index) {
         <div>
           <mat-checkbox
             [(ngModel)]="task.completed"
@@ -34,7 +34,7 @@
             {{ task.name }}
           </mat-checkbox>
           <div class="demo-sub-list">
-            @for (subtask of task.subtasks; track subtask) {
+            @for (subtask of task.subtasks; track $index) {
               <div>
                 <mat-checkbox [(ngModel)]="subtask.completed">{{ subtask.name }}</mat-checkbox>
               </div>

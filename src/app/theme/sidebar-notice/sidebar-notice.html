@@ -1,7 +1,7 @@
 <mat-tab-group>
-  @for (tab of tabs; track tab) {
+  @for (tab of tabs; track $index) {
     <mat-tab [label]="tab.label">
-      @for (msg of tab.messages; track msg) {
+      @for (msg of tab.messages; track $index) {
         <div class="d-flex align-items-center gap-16 p-16 m-b-16 b-1 r-12">
           <div
             class="d-flex align-items-center justify-content-center r-12 {{ msg.color }}"

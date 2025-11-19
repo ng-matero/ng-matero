@@ -5,7 +5,7 @@
     <section>
       <h2>Types of coffee (fix-height grid-list)</h2>
       <mat-grid-list role="list" [cols]="fixedCols" [rowHeight]="fixedRowHeight">
-        @for (tile of tiles; track tile) {
+        @for (tile of tiles; track $index) {
           <mat-grid-tile
             [colspan]="tile.cols"
             [rowspan]="tile.rows"
@@ -21,7 +21,7 @@
     <section>
       <h2>Types of coffee (ratio-height grid list)</h2>
       <mat-grid-list role="list" cols="2" [rowHeight]="ratio" gutterSize="4px">
-        @for (tile of tiles; track tile) {
+        @for (tile of tiles; track $index) {
           <mat-grid-tile [style.background]="'lightblue'" role="listitem">
             {{ tile.text }}
           </mat-grid-tile>
@@ -38,7 +38,7 @@
         [gutterSize]="ratioGutter"
         [style.height]="fitListHeight"
       >
-        @for (tile of tiles; track tile) {
+        @for (tile of tiles; track $index) {
           <mat-grid-tile role="listitem" [style.background]="'#F1EBBA'">
             {{ tile.text }}
           </mat-grid-tile>
@@ -49,7 +49,7 @@
     <section>
       <h2>Angular team dogs (Grid list with header and footer)</h2>
       <mat-grid-list role="list" cols="3" rowHeight="200px">
-        @for (dog of dogs; track dog) {
+        @for (dog of dogs; track $index) {
           <mat-grid-tile role="listitem">
             <mat-grid-tile-header>{{ dog.name }}</mat-grid-tile-header>
             <img

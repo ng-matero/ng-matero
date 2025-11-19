@@ -9,7 +9,7 @@
 
 <div class="row">
   <!-- Statistics -->
-  @for (stat of stats; track stat) {
+  @for (stat of stats; track $index) {
     <div class="col-sm-6 col-md-3">
       <mat-card [class]="['text-white', 'b-0', stat.color]">
         <mat-card-header>
@@ -126,7 +126,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          @for (message of messages; track message) {
+          @for (message of messages; track $index) {
             <mat-list-item>
               <img matListItemAvatar [src]="message.img" alt="Avatar" />
               <h3 matListItemTitle>{{ message.subject }}</h3>

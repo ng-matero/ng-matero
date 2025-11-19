@@ -14,7 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
     <mat-menu #menu="matMenu">
       <mat-nav-list>
-        @for (message of messages; track message) {
+        @for (message of messages; track $index) {
           <mat-list-item>
             <mat-icon class="m-x-16" matListItemIcon>info</mat-icon>
             <a matListItemTitle href="#">{{ message }}</a>

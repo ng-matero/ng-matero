@@ -48,7 +48,7 @@
       <mat-form-field>
         <mat-label>Contributors</mat-label>
         <mat-chip-grid #chipGrid>
-          @for (person of people; track person) {
+          @for (person of people; track $index) {
             <mat-chip-row
               [color]="color"
               [editable]="true"

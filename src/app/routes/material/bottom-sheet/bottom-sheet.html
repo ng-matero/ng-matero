@@ -38,7 +38,7 @@
 
 <ng-template let-bottomSheetRef="bottomSheetRef">
   <mat-nav-list>
-    @for (action of [1, 2, 3]; track action) {
+    @for (action of [1, 2, 3]; track $index) {
       <mat-list-item (click)="bottomSheetRef.dismiss()">
         <mat-icon matListItemIcon>folder</mat-icon>
         <span matListItemTitle>Action {{ action }}</span>

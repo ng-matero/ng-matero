@@ -76,7 +76,7 @@
         <mat-form-field class="w-full">
           <mat-label>Select car</mat-label>
           <mtx-select [(ngModel)]="selectedCarId">
-            @for (car of cars; track car) {
+            @for (car of cars; track $index) {
               <mtx-option [value]="car.id" [disabled]="car.disabled">{{ car.name }}</mtx-option>
             }
             <mtx-option [value]="'custom'">Custom</mtx-option>

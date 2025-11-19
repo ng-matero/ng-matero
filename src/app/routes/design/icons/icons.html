@@ -1,13 +1,13 @@
 <page-header class="bg-magenta-40" />
 
-@for (group of icons | keyvalue; track trackByIcon($index, group)) {
+@for (group of icons | keyvalue; track group.key) {
   <mat-card>
     <mat-card-header>
       <mat-card-title class="text-capitalize m-b-16 text-gray-500">{{ group.key }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
-        @for (icon of group.value; track icon) {
+        @for (icon of group.value; track $index) {
           <div class="col-4 col-sm-3 col-md-2 col-xl-1">
             <div class="text-center m-t-12 m-b-24">
               <mat-icon>{{ icon }}</mat-icon>

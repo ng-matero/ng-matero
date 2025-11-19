@@ -9,7 +9,7 @@
       <mat-form-field>
         <mat-label>Colors</mat-label>
         <mat-select [(ngModel)]="selectedColor">
-          @for (color of colors; track color) {
+          @for (color of colors; track $index) {
             <mat-option [value]="color.value">{{ color.label }}</mat-option>
           }
         </mat-select>
@@ -23,7 +23,7 @@
       <mat-form-field>
         <mat-label>Toppings</mat-label>
         <mat-select [(ngModel)]="selectedTopping" multiple>
-          @for (topping of toppings; track topping) {
+          @for (topping of toppings; track $index) {
             <mat-option [value]="topping.value">{{ topping.label }}</mat-option>
           }
         </mat-select>
@@ -37,9 +37,9 @@
       <mat-form-field>
         <mat-label>Pokemon</mat-label>
         <mat-select [(ngModel)]="selectedPokemon">
-          @for (group of pokemon; track group) {
+          @for (group of pokemon; track $index) {
             <mat-optgroup [label]="group.label">
-              @for (creature of group.pokemon; track creature) {
+              @for (creature of group.pokemon; track $index) {
                 <mat-option [value]="creature.value">{{ creature.label }}</mat-option>
               }
             </mat-optgroup>

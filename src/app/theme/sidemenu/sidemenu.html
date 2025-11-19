@@ -1,22 +1,16 @@
 <ng-container
-  [ngTemplateOutlet]="menuListTpl"
+  [ngTemplateOutlet]="menuTpl"
   [ngTemplateOutletContext]="{ menuList: menu.getAll() | async, parentRoute: [], level: 0 }"
 />
 
-<ng-template #menuListTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">
+<ng-template #menuTpl let-menuList="menuList" let-parentRoute="parentRoute" let-level="level">
   <ul navAccordion class="matero-sidemenu level-{{ level }}" [class.submenu]="level > 0">
-    @for (menuItem of menuList; track menuItem) {
+    @for (menuItem of menuList; track $index) {
       <ng-template
         [ngxPermissionsOnly]="menuItem.permissions?.only"
         [ngxPermissionsExcept]="menuItem.permissions?.except"
       >
-        <li
-          class="menu-item"
-          #navItem="navAccordionItem"
-          navAccordionItem
-          [route]="menuItem.route"
-          routerLinkActive="active"
-        >
+        <li class="menu-item" navAccordionItem [route]="menuItem.route" routerLinkActive="active">
           @if (menuItem.type === 'link') {
             <a
               class="menu-heading"
@@ -54,7 +48,7 @@
             </button>
 
             <ng-container
-              [ngTemplateOutlet]="menuListTpl"
+              [ngTemplateOutlet]="menuTpl"
               [ngTemplateOutletContext]="{
                 menuList: menuItem.children,
                 parentRoute: parentRoute.concat([menuItem.route]),

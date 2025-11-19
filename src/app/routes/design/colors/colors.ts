@@ -29,8 +29,4 @@ export class DesignColors implements OnInit {
       });
     }
   }
-
-  trackByColor(index: number, color: { key: string; value: any }): string {
-    return color.key;
-  }
 }

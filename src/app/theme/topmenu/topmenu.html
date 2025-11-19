@@ -1,5 +1,5 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-  @for (menuItem of menu.getAll() | async; track menuItem; let index = $index) {
+  @for (menuItem of menu.getAll() | async; track $index) {
     <ng-template
       [ngxPermissionsOnly]="menuItem.permissions?.only!"
       [ngxPermissionsExcept]="menuItem.permissions?.except!"

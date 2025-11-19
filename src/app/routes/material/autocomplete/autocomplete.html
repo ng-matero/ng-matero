@@ -13,7 +13,7 @@
         (ngModelChange)="filteredStates = filter(value)"
       />
       <mat-autocomplete #autocomplete="matAutocomplete">
-        @for (state of filteredStates; track state) {
+        @for (state of filteredStates; track $index) {
           <mat-option [value]="state.name">
             <span>{{ state.name }}</span>
           </mat-option>
@@ -35,9 +35,9 @@
           [matAutocomplete]="autoGroup"
         />
         <mat-autocomplete #autoGroup="matAutocomplete">
-          @for (group of stateGroupOptions | async; track group) {
+          @for (group of stateGroupOptions | async; track $index) {
             <mat-optgroup [label]="group.letter">
-              @for (name of group.names; track name) {
+              @for (name of group.names; track $index) {
                 <mat-option [value]="name">{{ name }}</mat-option>
               }
             </mat-optgroup>
