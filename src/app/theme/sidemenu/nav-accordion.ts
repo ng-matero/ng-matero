@@ -1,7 +1,7 @@
 import { Directive, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '@core';
-import { filter } from 'rxjs';
+import { debounceTime, filter } from 'rxjs';
 import { NavAccordionItem } from './nav-accordion-item';
 
 @Directive({
@@ -20,9 +20,12 @@ export class NavAccordion {
       .subscribe(() => this.checkOpenedItems());
 
     // Fix opening status for async menu data
-    this.menu.change().subscribe(() => {
-      setTimeout(() => this.checkOpenedItems());
-    });
+    this.menu
+      .change()
+      .pipe(debounceTime(10))
+      .subscribe(() => {
+        setTimeout(() => this.checkOpenedItems());
+      });
   }
 
   addItem(item: NavAccordionItem) {
