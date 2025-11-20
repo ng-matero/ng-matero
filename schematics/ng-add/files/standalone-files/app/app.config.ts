@@ -4,6 +4,8 @@ import {
   importProvidersFrom,
   inject,
   provideAppInitializer,
+  provideBrowserGlobalErrorListeners,<% if(zoneless) { %>
+  provideZonelessChangeDetection,<% } %>
 } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
@@ -35,6 +37,8 @@ import { FakeLoginService } from './fake-login.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideBrowserGlobalErrorListeners(),<% if(zoneless) { %>
+    provideZonelessChangeDetection(),<% } %>
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
     provideAppInitializer(() => inject(StartupService).load()),

@@ -1,5 +1,11 @@
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { inject, NgModule, provideAppInitializer } from '@angular/core';
+import {
+  inject,
+  NgModule,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,<% if(zoneless) { %>
+  provideZonelessChangeDetection,<% } %>
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { App } from './app';
@@ -34,6 +40,8 @@ import { FakeLoginService } from './fake-login.service';
     NgxPermissionsModule.forRoot(),
   ],
   providers: [
+    provideBrowserGlobalErrorListeners(),<% if(zoneless) { %>
+    provideZonelessChangeDetection(),<% } %>
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
     provideAppInitializer(() => inject(StartupService).load()),

@@ -16,4 +16,7 @@ export interface Schema {
 
   /** Creates an application based upon the standalone API, without NgModules. */
   standalone: boolean;
+
+  /** Generate an application that does not use `zone.js`. */
+  zoneless: boolean;
 }

@@ -17,7 +17,11 @@ import {
   getProjectMainFile,
   isStandaloneApp,
 } from '@angular/cdk/schematics';
-import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
+import {
+  getWorkspace,
+  ProjectDefinition,
+  updateWorkspace,
+} from '@schematics/angular/utility/workspace';
 import { addLoaderToIndex } from './global-loader';
 import { addFontsToIndex } from './material-fonts';
 import { addScriptToPackageJson } from './package-config';
@@ -180,6 +184,8 @@ function addStarterFiles(options: Schema) {
     const project = getProjectFromWorkspace(workspace, options.project);
     const mainFilePath = getProjectMainFile(project);
 
+    options.zoneless = isZonelessApp(project);
+
     return chain([
       mergeWith(
         apply(url('./files/common-files'), [
@@ -218,4 +224,16 @@ function installPackages() {
 
     context.addTask(new NodePackageInstallTask());
   };
+}
+
+function isZonelessApp(project: ProjectDefinition): boolean {
+  const buildTarget = project.targets.get('build');
+  if (!buildTarget?.options?.polyfills) {
+    return true;
+  }
+
+  const polyfills = buildTarget.options.polyfills as string[] | string;
+  const polyfillsList = Array.isArray(polyfills) ? polyfills : [polyfills];
+
+  return !polyfillsList.includes('zone.js');
 }
