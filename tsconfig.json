@@ -18,10 +18,6 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
     "paths": {
       "@core": [
         "app/core"
