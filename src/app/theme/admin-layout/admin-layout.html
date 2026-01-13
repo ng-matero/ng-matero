@@ -25,7 +25,6 @@
       [mode]="isOver ? 'over' : 'side'"
       [opened]="options.navPos === 'side' && options.sidenavOpened && !isOver"
       (openedChange)="onSidenavOpenedChange($event)"
-      (closedStart)="onSidenavClosedStart()"
     >
       <app-sidebar
         [showToggle]="!isOver"
