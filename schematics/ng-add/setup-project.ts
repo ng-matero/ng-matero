@@ -1,14 +1,14 @@
 import { strings } from '@angular-devkit/core';
 import {
-  MergeStrategy,
-  Rule,
-  SchematicContext,
-  Tree,
   apply,
   chain,
+  MergeStrategy,
   mergeWith,
   move,
+  Rule,
+  SchematicContext,
   template,
+  Tree,
   url,
 } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
@@ -22,20 +22,20 @@ import {
   ProjectDefinition,
   updateWorkspace,
 } from '@schematics/angular/utility/workspace';
+import { applyEdits, modify } from 'jsonc-parser';
 import { addLoaderToIndex } from './global-loader';
 import { addFontsToIndex } from './material-fonts';
 import { addScriptToPackageJson } from './package-config';
 import { add3rdPkgsToPackageJson } from './packages';
 import { Schema } from './schema';
-import { addThemeStyleToTarget } from './theming';
 
 /**
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Scripts to `package.json`
  *  - Add proxy to `angular.json`
- *  - Add style to `angular.json`
  *  - Add fileReplacements to `angular.json`
+ *  - Add paths to `tsconfig.json`
  *  - Add Fonts & Icons to `index.html`
  *  - Add Preloader to `index.html`
  *  - Add Packages to `package.json`
@@ -47,8 +47,8 @@ export default function (options: Schema): Rule {
     addScriptsToPackageJson(),
     addESLintToAngularJson(options),
     addProxyToAngularJson(options),
-    addStyleToAngularJson(options),
     addFileReplacementsToAngularJson(options),
+    addPathsToTsconfig(options),
     addFontsToIndex(options),
     addLoaderToIndex(options),
     installPackages(),
@@ -62,9 +62,6 @@ function deleteExsitingFiles(options: Schema) {
     const project = getProjectFromWorkspace(workspace, options.project);
 
     [
-      `${project.root}/.vscode/extensions.json`,
-      `${project.root}/.vscode/settings.json`,
-      `${project.root}/tsconfig.json`,
       `${project.sourceRoot}/app/app-routing-module.ts`,
       `${project.sourceRoot}/app/app-module.ts`,
       `${project.sourceRoot}/app/app.config.ts`,
@@ -135,19 +132,6 @@ function addProxyToAngularJson(options: Schema) {
   });
 }
 
-/** Add style to `angular.json` */
-function addStyleToAngularJson(options: Schema): Rule {
-  return (_host: Tree, context: SchematicContext) => {
-    // Path needs to be always relative to the `package.json` or workspace root.
-    const themePath = `src/styles.scss`;
-
-    return chain([
-      addThemeStyleToTarget(options.project, 'build', themePath, context.logger),
-      addThemeStyleToTarget(options.project, 'test', themePath, context.logger),
-    ]);
-  };
-}
-
 /** Add fileReplacements to 'angular.json' */
 function addFileReplacementsToAngularJson(options: Schema): Rule {
   return updateWorkspace(workspace => {
@@ -177,6 +161,42 @@ function addFileReplacementsToAngularJson(options: Schema): Rule {
   });
 }
 
+/** Add paths to `tsconfig.json` */
+function addPathsToTsconfig(options: Schema): Rule {
+  return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
+    const project = getProjectFromWorkspace(workspace, options.project);
+
+    const fileName = 'tsconfig.json';
+    const formattingOptions = { insertSpaces: true, tabSize: 2 };
+
+    let fileContent = host.read(fileName)!.toString();
+    let edits = modify(fileContent, ['compilerOptions', 'baseUrl'], './', {
+      formattingOptions,
+    });
+    fileContent = applyEdits(fileContent, edits);
+
+    const paths: Record<string, string[]> = {
+      '@core': [`${project.sourceRoot}/app/core`],
+      '@core/*': [`${project.sourceRoot}/app/core/*`],
+      '@shared': [`${project.sourceRoot}/app/shared`],
+      '@shared/*': [`${project.sourceRoot}/app/shared/*`],
+      '@theme': [`${project.sourceRoot}/app/theme`],
+      '@theme/*': [`${project.sourceRoot}/app/theme/*`],
+      '@env': [`${project.sourceRoot}/environments`],
+      '@env/*': [`${project.sourceRoot}/environments/*`],
+    };
+    Object.keys(paths).forEach(key => {
+      edits = modify(fileContent, ['compilerOptions', 'paths', key], paths[key], {
+        formattingOptions,
+      });
+      fileContent = applyEdits(fileContent, edits);
+    });
+
+    host.overwrite(fileName, fileContent);
+  };
+}
+
 /** Add starter files to root */
 function addStarterFiles(options: Schema) {
   return async (host: Tree) => {
@@ -188,12 +208,23 @@ function addStarterFiles(options: Schema) {
 
     return chain([
       mergeWith(
+        apply(url('./files/root-files'), [
+          template({
+            ...strings,
+            ...options,
+          }),
+        ]),
+        MergeStrategy.Overwrite
+      ),
+      mergeWith(
         apply(url('./files/common-files'), [
           template({
             ...strings,
             ...options,
           }),
-        ])
+          move(project.root!),
+        ]),
+        MergeStrategy.Overwrite
       ),
       mergeWith(
         apply(
@@ -207,7 +238,7 @@ function addStarterFiles(options: Schema) {
               ...strings,
               ...options,
             }),
-            move('./src'),
+            move(project.sourceRoot!),
           ]
         ),
         MergeStrategy.Overwrite

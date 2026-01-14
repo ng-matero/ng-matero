@@ -10,23 +10,23 @@ import { map } from 'rxjs/operators';
 export class FakeLoginService extends LoginService {
   private token = { access_token: 'MW56YjMyOUAxNjMuY29tWm9uZ2Jpbg==', token_type: 'bearer' };
 
-  login() {
+  override login() {
     return of(this.token);
   }
 
-  refresh() {
+  override refresh() {
     return of(this.token);
   }
 
-  logout() {
+  override logout() {
     return of({});
   }
 
-  user() {
+  override user() {
     return of(admin);
   }
 
-  menu() {
+  override menu() {
     return this.http
       .get<{ menu: Menu[] }>('data/menu.json?_t=' + Date.now())
       .pipe(map(res => res.menu));

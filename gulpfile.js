@@ -5,11 +5,12 @@ const pkg = require('./package.json');
 
 const DEST = 'dist/schematics';
 const NG_ADD = DEST + '/ng-add';
-const FILES = NG_ADD + '/files/common-files';
+const ROOT_FILES = NG_ADD + '/files/root-files';
+const COMMON_FILES = NG_ADD + '/files/common-files';
 
 // .vscode
 function copyDotVscode() {
-  return src(['.vscode/*']).pipe(dest(`${FILES}/.vscode`));
+  return src(['.vscode/*']).pipe(dest(`${ROOT_FILES}/.vscode`));
 }
 
 // root
@@ -21,16 +22,10 @@ function copyRoot() {
     'eslint.config.js',
     'LICENSE',
     'proxy.config.js',
-    'tsconfig.json',
-  ]).pipe(dest(`${FILES}/`));
+  ]).pipe(dest(`${ROOT_FILES}/`));
 }
 
-// src/
-function copySrcRoot() {
-  return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${FILES}/src`));
-}
-
-// src/assets
+// public/
 function copyAssets() {
   return src(
     [
@@ -41,17 +36,24 @@ function copyAssets() {
       '!public/images/pixabay/**',
     ],
     { encoding: false }
-  ).pipe(dest(`${FILES}/public`));
+  ).pipe(dest(`${COMMON_FILES}/public`));
+}
+
+// src/
+function copySrcRoot() {
+  return src(['src/styles.scss', 'src/typings.d.ts']).pipe(dest(`${COMMON_FILES}/src`));
 }
 
 // src/styles
 function copyStyles() {
-  return src(['src/styles/**/*', '!src/styles/_themes.scss']).pipe(dest(`${FILES}/src/styles`));
+  return src(['src/styles/**/*', '!src/styles/_themes.scss']).pipe(
+    dest(`${COMMON_FILES}/src/styles`)
+  );
 }
 
 // src/environments
 function copyEnvironments() {
-  return src(['src/environments/*']).pipe(dest(`${FILES}/src/environments`));
+  return src(['src/environments/*']).pipe(dest(`${COMMON_FILES}/src/environments`));
 }
 
 // src/app/
@@ -64,12 +66,14 @@ function copySrcApp() {
     '!src/app/theme/admin-layout/*.html',
     '!src/app/app.config.ts',
     '!src/app/app.routes.ts',
-  ]).pipe(dest(`${FILES}/src/app`));
+  ]).pipe(dest(`${COMMON_FILES}/src/app`));
 }
 
 // src/app/routes
 function copySrcAppRoutes() {
-  return src(['src/app/routes/sessions/**/*']).pipe(dest(`${FILES}/src/app/routes/sessions`));
+  return src(['src/app/routes/sessions/**/*']).pipe(
+    dest(`${COMMON_FILES}/src/app/routes/sessions`)
+  );
 }
 
 // Replace version placeholder
