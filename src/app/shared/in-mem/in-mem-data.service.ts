@@ -15,8 +15,10 @@ class JWT {
     return filterObject({
       access_token: this.createToken(user, expiresIn),
       token_type: 'bearer',
-      expires_in: user.refresh_token ? expiresIn : undefined,
-      refresh_token: user.refresh_token ? this.createToken(user, refreshTokenExpiresIn) : undefined,
+      expires_in: user['refresh_token'] ? expiresIn : undefined,
+      refresh_token: user['refresh_token']
+        ? this.createToken(user, refreshTokenExpiresIn)
+        : undefined,
     });
   }
 
@@ -42,7 +44,7 @@ class JWT {
   }
 
   createToken(user: User, expiresIn = 0) {
-    const exp = user.refresh_token ? currentTimestamp() + expiresIn : undefined;
+    const exp = user['refresh_token'] ? currentTimestamp() + expiresIn : undefined;
 
     return [
       base64.encode(JSON.stringify({ typ: 'JWT', alg: 'HS256' })),
@@ -160,13 +162,13 @@ export class InMemDataService implements InMemoryDbService {
     const { username, password } = req.body;
 
     return from(this.users).pipe(
-      find(user => user.username === username || user.email === username),
+      find(user => user['username'] === username || user.email === username),
       map(user => {
         if (!user) {
           return { headers, url, status: STATUS.UNAUTHORIZED, body: {} };
         }
 
-        if (user.password !== password) {
+        if (user['password'] !== password) {
           const result = {
             status: STATUS.UNPROCESSABLE_ENTRY,
             error: { errors: { password: ['The provided password is incorrect.'] } },
@@ -176,7 +178,7 @@ export class InMemDataService implements InMemoryDbService {
         }
 
         const currentUser = Object.assign({}, user);
-        delete currentUser.password;
+        delete currentUser['password'];
         return { headers, url, status: STATUS.OK, body: jwt.generate(currentUser) };
       }),
       switchMap(response => reqInfo.utils.createResponse$(() => response))

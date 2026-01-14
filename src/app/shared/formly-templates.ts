@@ -18,11 +18,11 @@ import { FieldType } from '@ngx-formly/material/form-field';
       [items]="props.options | toObservable | async"
       [bindLabel]="bindLabel"
       [bindValue]="bindValue!"
-      [multiple]="props.multiple"
+      [multiple]="props['multiple']"
       [placeholder]="props.placeholder!"
       [required]="props.required!"
-      [closeOnSelect]="!props.multiple"
-      [compareWith]="props.compareWith"
+      [closeOnSelect]="!props['multiple']"
+      [compareWith]="props['compareWith']"
     />
   `,
 
@@ -30,10 +30,10 @@ import { FieldType } from '@ngx-formly/material/form-field';
 })
 export class FormlyFieldCombobox extends FieldType<FieldTypeConfig> {
   get bindLabel() {
-    return typeof this.props.labelProp === 'string' ? this.props.labelProp : '';
+    return typeof this.props['labelProp'] === 'string' ? this.props['labelProp'] : '';
   }
 
   get bindValue() {
-    return typeof this.props.valueProp === 'string' ? this.props.valueProp : undefined;
+    return typeof this.props['valueProp'] === 'string' ? this.props['valueProp'] : undefined;
   }
 }

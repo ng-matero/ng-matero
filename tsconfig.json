@@ -1,62 +1,44 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "src",
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
     "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "sourceMap": true,
-    "declaration": false,
-    "module": "ES2022",
-    "moduleResolution": "bundler",
-    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "module": "preserve",
     "paths": {
-      "@core": [
-        "app/core"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@shared": [
-        "app/shared"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@theme": [
-        "app/theme"
-      ],
-      "@theme/*": [
-        "app/theme/*"
-      ],
-      "@testing": [
-        "testing"
-      ],
-      "@testing/*": [
-        "testing/*"
-      ],
-      "@env": [
-        "environments"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
-    },
-    "useDefineForClassFields": false,
-    "esModuleInterop": true
+      "@core": ["src/app/core"],
+      "@core/*": ["src/app/core/*"],
+      "@shared": ["src/app/shared"],
+      "@shared/*": ["src/app/shared/*"],
+      "@theme": ["src/app/theme"],
+      "@theme/*": ["src/app/theme/*"],
+      "@env": ["src/environments"],
+      "@env/*": ["src/environments/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

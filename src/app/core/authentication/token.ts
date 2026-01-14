@@ -63,7 +63,7 @@ export class JwtToken extends SimpleToken {
     }
   }
 
-  get exp() {
+  override get exp() {
     return this.payload?.exp;
   }
 

@@ -11,14 +11,14 @@
           <input matInput placeholder="ng-matero" formControlName="username" required />
           @if (username.invalid) {
             <mat-error>
-              @if (username.errors?.required) {
+              @if (username.errors?.['required']) {
                 <span>
                   {{ 'please_enter' | translate }}
                   <strong>ng-matero</strong>
                 </span>
               }
-              @if (username.errors?.remote) {
-                <span>{{ username.errors?.remote }}</span>
+              @if (username.errors?.['remote']) {
+                <span>{{ username.errors?.['remote'] }}</span>
               }
             </mat-error>
           }
@@ -35,14 +35,14 @@
           />
           @if (password.invalid) {
             <mat-error>
-              @if (password.errors?.required) {
+              @if (password.errors?.['required']) {
                 <span>
                   {{ 'please_enter' | translate }}
                   <strong>ng-matero</strong>
                 </span>
               }
-              @if (password.errors?.remote) {
-                <span>{{ password.errors?.remote }}</span>
+              @if (password.errors?.['remote']) {
+                <span>{{ password.errors?.['remote'] }}</span>
               }
             </mat-error>
           }

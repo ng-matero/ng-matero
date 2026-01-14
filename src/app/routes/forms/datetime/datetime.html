@@ -30,13 +30,13 @@
           matInput
           required
         />
-        @if (group.get('dateTime')?.errors?.required) {
+        @if (group.get('dateTime')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
-        @if (group.get('dateTime')?.errors?.mtxDatetimepickerMin) {
+        @if (group.get('dateTime')?.errors?.['mtxDatetimepickerMin']) {
           <mat-error>min</mat-error>
         }
-        @if (group.get('dateTime')?.errors?.mtxDatetimepickerMax) {
+        @if (group.get('dateTime')?.errors?.['mtxDatetimepickerMax']) {
           <mat-error>max</mat-error>
         }
       </mat-form-field>
@@ -59,13 +59,13 @@
           matInput
           required
         />
-        @if (group.get('dateTimeManual')?.errors?.required) {
+        @if (group.get('dateTimeManual')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
-        @if (group.get('dateTimeManual')?.errors?.mtxDatetimepickerMin) {
+        @if (group.get('dateTimeManual')?.errors?.['mtxDatetimepickerMin']) {
           <mat-error>min</mat-error>
         }
-        @if (group.get('dateTimeManual')?.errors?.mtxDatetimepickerMax) {
+        @if (group.get('dateTimeManual')?.errors?.['mtxDatetimepickerMax']) {
           <mat-error>max</mat-error>
         }
       </mat-form-field>
@@ -88,13 +88,13 @@
           matInput
           required
         />
-        @if (group.get('dateTimeYear')?.errors?.required) {
+        @if (group.get('dateTimeYear')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
-        @if (group.get('dateTimeYear')?.errors?.mtxDatetimepickerMin) {
+        @if (group.get('dateTimeYear')?.errors?.['mtxDatetimepickerMin']) {
           <mat-error>min</mat-error>
         }
-        @if (group.get('dateTimeYear')?.errors?.mtxDatetimepickerMax) {
+        @if (group.get('dateTimeYear')?.errors?.['mtxDatetimepickerMax']) {
           <mat-error>max</mat-error>
         }
       </mat-form-field>
@@ -104,7 +104,7 @@
         <mtx-datetimepicker-toggle [for]="timePicker" matSuffix />
         <mtx-datetimepicker #timePicker [timeInterval]="5" type="time" />
         <input [mtxDatetimepicker]="timePicker" formControlName="time" matInput required />
-        @if (group.get('time')?.errors?.required) {
+        @if (group.get('time')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
       </mat-form-field>
@@ -114,7 +114,7 @@
         <mtx-datetimepicker-toggle [for]="timeAMPMPicker" matSuffix />
         <mtx-datetimepicker #timeAMPMPicker [timeInterval]="5" [twelvehour]="true" type="time" />
         <input [mtxDatetimepicker]="timeAMPMPicker" formControlName="timeAMPM" matInput required />
-        @if (group.get('timeAMPM')?.errors?.required) {
+        @if (group.get('timeAMPM')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
       </mat-form-field>
@@ -136,13 +136,13 @@
           matInput
           required
         />
-        @if (group.get('timeAMPMManual')?.errors?.required) {
+        @if (group.get('timeAMPMManual')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
-        @if (group.get('timeAMPMManual')?.errors?.mtxDatetimepickerMin) {
+        @if (group.get('timeAMPMManual')?.errors?.['mtxDatetimepickerMin']) {
           <mat-error>min</mat-error>
         }
-        @if (group.get('timeAMPMManual')?.errors?.mtxDatetimepickerMax) {
+        @if (group.get('timeAMPMManual')?.errors?.['mtxDatetimepickerMax']) {
           <mat-error>max</mat-error>
         }
       </mat-form-field>
@@ -152,7 +152,7 @@
         <mtx-datetimepicker-toggle [for]="datePicker" matSuffix />
         <mtx-datetimepicker #datePicker type="date" />
         <input [mtxDatetimepicker]="datePicker" formControlName="date" matInput required />
-        @if (group.get('date')?.errors?.required) {
+        @if (group.get('date')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
       </mat-form-field>
@@ -162,7 +162,7 @@
         <mtx-datetimepicker-toggle [for]="monthPicker" matSuffix />
         <mtx-datetimepicker #monthPicker mode="portrait" type="month" />
         <input [mtxDatetimepicker]="monthPicker" formControlName="month" matInput required />
-        @if (group.get('month')?.errors?.required) {
+        @if (group.get('month')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
       </mat-form-field>
@@ -172,7 +172,7 @@
         <mtx-datetimepicker-toggle [for]="yearPicker" matSuffix />
         <mtx-datetimepicker #yearPicker type="year" />
         <input [mtxDatetimepicker]="yearPicker" formControlName="year" matInput required />
-        @if (group.get('year')?.errors?.required) {
+        @if (group.get('year')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
       </mat-form-field>
@@ -189,13 +189,13 @@
         />
         <mtx-datetimepicker-toggle [for]="minTestPicker" matSuffix />
         <mtx-datetimepicker #minTestPicker mode="landscape" [timeInterval]="5" />
-        @if (group.get('mintest')?.errors?.required) {
+        @if (group.get('mintest')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
-        @if (group.get('mintest')?.errors?.mtxDatetimepickerMin) {
+        @if (group.get('mintest')?.errors?.['mtxDatetimepickerMin']) {
           <mat-error>min</mat-error>
         }
-        @if (group.get('mintest')?.errors?.mtxDatetimepickerMax) {
+        @if (group.get('mintest')?.errors?.['mtxDatetimepickerMax']) {
           <mat-error>max</mat-error>
         }
       </mat-form-field>
@@ -211,10 +211,10 @@
         />
         <mtx-datetimepicker-toggle [for]="filterTestPicker" matSuffix />
         <mtx-datetimepicker #filterTestPicker mode="landscape" [timeInterval]="5" />
-        @if (group.get('filtertest')?.errors?.required) {
+        @if (group.get('filtertest')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
-        @if (group.get('filtertest')?.errors?.mtxDatetimepickerFilter) {
+        @if (group.get('filtertest')?.errors?.['mtxDatetimepickerFilter']) {
           <mat-error>filter</mat-error>
         }
       </mat-form-field>
@@ -224,7 +224,7 @@
         <input [mtxDatetimepicker]="touch" [min]="min" formControlName="touch" matInput required />
         <mtx-datetimepicker-toggle [for]="touch" matSuffix />
         <mtx-datetimepicker #touch mode="portrait" [timeInterval]="5" [touchUi]="true" />
-        @if (group.get('touch')?.errors?.required) {
+        @if (group.get('touch')?.errors?.['required']) {
           <mat-error>required</mat-error>
         }
       </mat-form-field>
