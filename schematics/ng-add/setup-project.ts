@@ -17,12 +17,9 @@ import {
   getProjectMainFile,
   isStandaloneApp,
 } from '@angular/cdk/schematics';
-import {
-  getWorkspace,
-  ProjectDefinition,
-  updateWorkspace,
-} from '@schematics/angular/utility/workspace';
-import { applyEdits, modify } from 'jsonc-parser';
+import { isZonelessApp } from '@schematics/angular/utility/project-targets';
+import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
+import { applyEdits, modify, parse } from 'jsonc-parser';
 import { addLoaderToIndex } from './global-loader';
 import { addFontsToIndex } from './material-fonts';
 import { addScriptToPackageJson } from './package-config';
@@ -176,18 +173,25 @@ function addPathsToTsconfig(options: Schema): Rule {
     });
     fileContent = applyEdits(fileContent, edits);
 
-    const paths: Record<string, string[]> = {
-      '@core': [`${project.sourceRoot}/app/core`],
-      '@core/*': [`${project.sourceRoot}/app/core/*`],
-      '@shared': [`${project.sourceRoot}/app/shared`],
-      '@shared/*': [`${project.sourceRoot}/app/shared/*`],
-      '@theme': [`${project.sourceRoot}/app/theme`],
-      '@theme/*': [`${project.sourceRoot}/app/theme/*`],
-      '@env': [`${project.sourceRoot}/environments`],
-      '@env/*': [`${project.sourceRoot}/environments/*`],
+    const currentJson = parse(fileContent);
+    const currentPaths = currentJson.compilerOptions.paths || {};
+
+    const pathsToUpdate: Record<string, string> = {
+      '@core': `${project.sourceRoot}/app/core`,
+      '@core/*': `${project.sourceRoot}/app/core/*`,
+      '@shared': `${project.sourceRoot}/app/shared`,
+      '@shared/*': `${project.sourceRoot}/app/shared/*`,
+      '@theme': `${project.sourceRoot}/app/theme`,
+      '@theme/*': `${project.sourceRoot}/app/theme/*`,
+      '@env': `${project.sourceRoot}/environments`,
+      '@env/*': `${project.sourceRoot}/environments/*`,
     };
-    Object.keys(paths).forEach(key => {
-      edits = modify(fileContent, ['compilerOptions', 'paths', key], paths[key], {
+    Object.keys(pathsToUpdate).forEach(key => {
+      const newPath = pathsToUpdate[key];
+      const existingPaths = Array.isArray(currentPaths[key]) ? currentPaths[key] : [];
+      const updatedPaths = Array.from(new Set([...existingPaths, newPath]));
+
+      edits = modify(fileContent, ['compilerOptions', 'paths', key], updatedPaths, {
         formattingOptions,
       });
       fileContent = applyEdits(fileContent, edits);
@@ -255,16 +259,4 @@ function installPackages() {
 
     context.addTask(new NodePackageInstallTask());
   };
-}
-
-function isZonelessApp(project: ProjectDefinition): boolean {
-  const buildTarget = project.targets.get('build');
-  if (!buildTarget?.options?.polyfills) {
-    return true;
-  }
-
-  const polyfills = buildTarget.options.polyfills as string[] | string;
-  const polyfillsList = Array.isArray(polyfills) ? polyfills : [polyfills];
-
-  return !polyfillsList.includes('zone.js');
 }
