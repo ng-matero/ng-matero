@@ -1,4 +1,4 @@
-import { normalize, Path, strings } from '@angular-devkit/core';
+import { normalize, strings } from '@angular-devkit/core';
 import {
   apply,
   applyTemplates,
@@ -16,7 +16,14 @@ import {
 } from '@angular/cdk/schematics';
 import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
-import { buildRelativePath, findModuleFromOptions } from '@schematics/angular/utility/find-module';
+import {
+  buildRelativePath,
+  findModuleFromOptions,
+  MODULE_EXT,
+  MODULE_EXT_LEGACY,
+  ROUTING_MODULE_EXT,
+  ROUTING_MODULE_EXT_LEGACY,
+} from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { createDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
 import { addRouteDeclarationToModule } from '../../utils';
@@ -40,7 +47,7 @@ function buildRoute(options: ModuleOptions, modulePath: string) {
   return `    { path: '${options.route}', loadChildren: ${loadChildren} }`;
 }
 
-function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath?: Path): Rule {
+function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath?: string): Rule {
   return (host: Tree) => {
     if (!options.route) {
       return host;
@@ -77,23 +84,15 @@ function addRouteDeclarationToNgModule(options: ModuleOptions, routingModulePath
   };
 }
 
-function getRoutingModulePath(host: Tree, options: ModuleOptions): Path | undefined {
-  let path: Path | undefined;
-  let routingModuleName = options.module!.split(options.typeSeparator!)[0] + '-routing';
-  // Fix `routingModuleName`
-  // (i.e. `/src/app/module/module-routing.module.ts` -> `/module/module-routing.module.ts`)
-  if (options.path) {
-    routingModuleName = routingModuleName.replace(options.path, '');
-  }
-  const { module, ...rest } = options;
+function getRoutingModulePath(host: Tree, modulePath: string): string | undefined {
+  const routingModulePath =
+    modulePath.endsWith(ROUTING_MODULE_EXT_LEGACY) || modulePath.endsWith(ROUTING_MODULE_EXT)
+      ? modulePath
+      : modulePath
+          .replace(MODULE_EXT_LEGACY, ROUTING_MODULE_EXT_LEGACY)
+          .replace(MODULE_EXT, ROUTING_MODULE_EXT);
 
-  try {
-    path = findModuleFromOptions(host, { module: routingModuleName, ...rest });
-  } catch (e) {
-    console.error(e);
-  }
-
-  return path;
+  return host.exists(routingModulePath) ? routingModulePath : undefined;
 }
 
 export default function (options: ModuleOptions): Rule {
@@ -141,11 +140,11 @@ export default function (options: ModuleOptions): Rule {
     // As following, the modulePath has become `src/app/...`
     options.module = findModuleFromOptions(host, options);
 
-    let routingModulePath: Path | undefined;
+    let routingModulePath: string | undefined;
     const isLazyLoadedModuleGen = options.route && options.module; // must be true
     if (isLazyLoadedModuleGen) {
       options.routingScope = RoutingScope.Child;
-      routingModulePath = getRoutingModulePath(host, options);
+      routingModulePath = getRoutingModulePath(host, options.module!);
     }
 
     const templateSource = apply(url('./files/module-files'), [
