@@ -23,9 +23,7 @@
     height: calc(100% - var(--mat-toolbar-standard-height)) !important;
 
     @include breakpoints.bp-lt(small) {
-      & {
-        height: calc(100% - var(--mat-toolbar-mobile-height)) !important;
-      }
+      height: calc(100% - var(--mat-toolbar-mobile-height)) !important;
     }
   }
 
@@ -119,9 +117,7 @@
     top: var(--mat-toolbar-standard-height);
 
     @include breakpoints.bp-lt(small) {
-      & {
-        top: var(--mat-toolbar-mobile-height);
-      }
+      top: var(--mat-toolbar-mobile-height);
     }
   }
 }

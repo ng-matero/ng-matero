@@ -21,8 +21,6 @@
   scrollbar-width: none;
 
   @include breakpoints.bp-lt(small) {
-    & {
-      height: calc(100% - var(--mat-toolbar-mobile-height));
-    }
+    height: calc(100% - var(--mat-toolbar-mobile-height));
   }
 }

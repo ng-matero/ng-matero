@@ -34,9 +34,9 @@ export class TranslateButton {
   options = this.settings.options;
 
   langs = [
-    { value: 'en-US', name: 'en_us' },
-    { value: 'zh-CN', name: 'zh_cn' },
-    { value: 'zh-TW', name: 'zh_tw' },
+    { value: 'en-US', name: 'English' },
+    { value: 'zh-CN', name: '中文简体' },
+    { value: 'zh-TW', name: '中文繁体' },
     { value: 'auto', name: 'system' },
   ];
 
