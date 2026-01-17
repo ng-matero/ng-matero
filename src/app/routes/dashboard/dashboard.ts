@@ -76,13 +76,18 @@ export class Dashboard implements OnInit, AfterViewInit, OnDestroy {
       link: 'https://github.com/acrodata/gradient-picker',
     },
     {
+      name: 'Color Picker',
+      description: 'Another beautiful color picker.',
+      link: 'https://github.com/acrodata/color-picker',
+    },
+    {
       name: 'NG DnD',
       description: 'A toolkit for building complex drag and drop and very similar to react-dnd.',
       link: 'https://github.com/ng-dnd/ng-dnd',
     },
   ];
 
-  introducingItem = this.introducingItems[this.getRandom(0, 4)];
+  introducingItem = this.introducingItems[this.getRandom(0, 6)];
 
   get isDark() {
     return this.settings.getThemeColor() == 'dark';
