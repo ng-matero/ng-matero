@@ -2,7 +2,8 @@
   <mat-card class="m-auto" style="max-width: 380px">
     <mat-card-header class="m-b-24">
       <mat-card-title>
-        {{ 'register_welcome' | translate }}, <br />
+        {{ 'register_welcome' | translate }},
+        <br />
         {{ 'register_title' | translate }}
       </mat-card-title>
     </mat-card-header>
@@ -49,7 +50,7 @@
         <button class="w-full m-y-16" mat-flat-button>{{ 'register' | translate }}</button>
 
         <div>
-          <span>{{ 'have_an_account' | translate }}? </span>
+          <span>{{ 'have_an_account' | translate }}?</span>
           <a routerLink="/auth/login">{{ 'login' | translate }}</a>
         </div>
       </form>

@@ -12,8 +12,8 @@
           @if (username.invalid) {
             <mat-error>
               @if (username.errors?.['required']) {
-                <span
-                  >{{ 'please_enter' | translate }}
+                <span>
+                  {{ 'please_enter' | translate }}
                   <strong>ng-matero</strong>
                 </span>
               }
@@ -36,8 +36,8 @@
           @if (password.invalid) {
             <mat-error>
               @if (password.errors?.['required']) {
-                <span
-                  >{{ 'please_enter' | translate }}
+                <span>
+                  {{ 'please_enter' | translate }}
                   <strong>ng-matero</strong>
                 </span>
               }
@@ -61,7 +61,7 @@
         </button>
 
         <div>
-          <span>{{ 'have_no_account' | translate }}? </span>
+          <span>{{ 'have_no_account' | translate }}?</span>
           <a routerLink="/auth/register">{{ 'create_one_account' | translate }}</a>
         </div>
       </form>

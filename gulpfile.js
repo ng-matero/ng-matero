@@ -16,7 +16,6 @@ function copyDotVscode() {
 // root
 function copyRoot() {
   return src([
-    '.prettierignore',
     '.prettierrc',
     '.stylelintrc',
     'eslint.config.js',
