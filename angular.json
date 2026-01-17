@@ -53,7 +53,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/ng-matero/"
             },
             "development": {
               "optimization": false,
