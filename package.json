@@ -61,7 +61,7 @@
     "@angular/compiler-cli": "^21.0.3",
     "@commitlint/cli": "^20.3.0",
     "@commitlint/config-conventional": "^20.3.0",
-    "@types/jasmine": "~5.1.0",
+    "@types/jasmine": "~6.0.0",
     "@types/node": "^25.0.0",
     "angular-cli-ghpages": "^3.0.0",
     "angular-eslint": "^21.1.0",
