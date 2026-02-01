@@ -44,7 +44,7 @@
     "@ngx-translate/http-loader": "^17.0.0",
     "@ngxpert/hot-toast": "6.1.0",
     "angular-in-memory-web-api": "~0.21.0",
-    "apexcharts": "^5.3.0",
+    "apexcharts": "^5.3.6",
     "base64-js": "^1.5.1",
     "date-fns": "^4.1.0",
     "ngx-permissions": "^19.0.0",
