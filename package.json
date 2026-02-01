@@ -64,7 +64,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^25.0.0",
     "angular-cli-ghpages": "^3.0.0",
-    "angular-eslint": "^21.1.0",
+    "angular-eslint": "^21.2.0",
     "cpr": "^3.0.1",
     "eslint": "^9.39.0",
     "gulp": "^5.0.0",
