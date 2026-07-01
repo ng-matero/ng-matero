@@ -1597,10 +1597,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@ngxpert/hot-toast@^6.1.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@ngxpert/hot-toast/-/hot-toast-6.2.0.tgz#8446c4fc690dbf10bbf2922bf7f134f1e19f7ba8"
-  integrity sha512-YQiGU6J4DtC2dUCsh8xWJwW9YyRWsrufK1fs1NeycnOzb7IH+Z4zvTp9/yU7AXPWr65p8BLaFcd+ELRi0QrTkQ==
+"@ngxpert/hot-toast@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@ngxpert/hot-toast/-/hot-toast-6.3.0.tgz#41aee73d82e20c2d682c23bc863039b06278a505"
+  integrity sha512-5K7jHoJkSwquXJnCQSboguXefVwJpGke0DcxB+N6SpTZTSLQGNzkMBVDzVjIV5AXw3OX13DYOj7baO5ICv0y9Q==
   dependencies:
     tslib "^2.3.0"
 
