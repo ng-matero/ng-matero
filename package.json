@@ -42,7 +42,7 @@
     "@ngx-formly/material": "^7.1.0",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
-    "@ngxpert/hot-toast": "^6.1.0",
+    "@ngxpert/hot-toast": "^6.3.0",
     "angular-in-memory-web-api": "~0.21.0",
     "apexcharts": "^5.10.0",
     "base64-js": "^1.5.1",
