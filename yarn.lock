@@ -302,10 +302,10 @@
     yargs "18.0.0"
     zod "4.3.6"
 
-"@angular/common@^21.2.11":
-  version "21.2.11"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-21.2.11.tgz#d8d88c85e0dd215035c1a77ade2baaf263af2914"
-  integrity sha512-3Z3SABXpzM6fkX21WCRP6IwrjxNQVHM/3Fk2OXScExOAzpaOpS2bDgS4NB6rtCbmzKL/NFSp7ZPIZigfdqnWGw==
+"@angular/common@^21.2.19":
+  version "21.2.19"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-21.2.19.tgz#0e4030a71e0f38a0bc63cf74347d142617073e68"
+  integrity sha512-Rvo/VXI0kUmfQT7+OeAjv526OJlf/WrLnJq1Tz84Jkyv9bs9SOMTCT6m4+boo8gxVNdrcxvGU3Q0o2jZzKceSg==
   dependencies:
     tslib "^2.3.0"
 
