@@ -1,8 +1,8 @@
 <mat-menu class="matero-topmenu-panel">
   @for (item of items(); track $index) {
     <ng-template
-      [ngxPermissionsOnly]="item.permissions?.only!"
-      [ngxPermissionsExcept]="item.permissions?.except!"
+      [ngxPermissionsOnly]="$safeNavigationMigration(item.permissions?.only)!"
+      [ngxPermissionsExcept]="$safeNavigationMigration(item.permissions?.except)!"
     >
       @if (item.type === 'link') {
         <a

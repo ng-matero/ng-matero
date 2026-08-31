@@ -7,8 +7,8 @@
   <ul navAccordion class="matero-sidemenu level-{{ level }}" [class.submenu]="level > 0">
     @for (menuItem of menuList; track $index) {
       <ng-template
-        [ngxPermissionsOnly]="menuItem.permissions?.only"
-        [ngxPermissionsExcept]="menuItem.permissions?.except"
+        [ngxPermissionsOnly]="$safeNavigationMigration(menuItem.permissions?.only)"
+        [ngxPermissionsExcept]="$safeNavigationMigration(menuItem.permissions?.except)"
       >
         <li class="menu-item" navAccordionItem [route]="menuItem.route" routerLinkActive="active">
           @if (menuItem.type === 'link') {

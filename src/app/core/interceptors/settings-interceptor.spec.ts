@@ -1,4 +1,4 @@
-import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { SettingsService } from '@core/bootstrap/settings.service';
@@ -14,7 +14,7 @@ describe('SettingsInterceptor', () => {
     TestBed.configureTestingModule({
       imports: [],
       providers: [
-        provideHttpClient(withInterceptors([settingsInterceptor])),
+        provideHttpClient(withXhr(), withInterceptors([settingsInterceptor])),
         provideHttpClientTesting(),
         provideTranslateService(),
       ],

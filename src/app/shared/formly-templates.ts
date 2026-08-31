@@ -25,7 +25,6 @@ import { FieldType } from '@ngx-formly/material/form-field';
       [compareWith]="props['compareWith']"
     />
   `,
-
   imports: [AsyncPipe, ReactiveFormsModule, MtxSelectModule, MtxPipesModule],
 })
 export class FormlyFieldCombobox extends FieldType<FieldTypeConfig> {

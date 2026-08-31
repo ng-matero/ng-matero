@@ -1,11 +1,11 @@
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { admin, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 describe('StartupService', () => {
   let httpMock: HttpTestingController;
@@ -37,7 +37,7 @@ describe('StartupService', () => {
           },
         },
         StartupService,
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     });

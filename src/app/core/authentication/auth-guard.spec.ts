@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { TestBed, inject } from '@angular/core/testing';
@@ -25,7 +25,7 @@ describe('authGuard function unit test', () => {
       imports: [Dummy],
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
         provideRouter([
           { path: 'dashboard', component: Dummy, canActivate: [authGuard] },

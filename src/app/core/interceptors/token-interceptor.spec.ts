@@ -1,4 +1,4 @@
-import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
@@ -22,7 +22,7 @@ describe('TokenInterceptor', () => {
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
         { provide: BASE_URL, useValue: url },
-        provideHttpClient(withInterceptors([tokenInterceptor])),
+        provideHttpClient(withXhr(), withInterceptors([tokenInterceptor])),
         provideHttpClientTesting(),
       ],
     });

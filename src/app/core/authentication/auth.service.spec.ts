@@ -1,4 +1,9 @@
-import { HttpRequest, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HttpRequest,
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withXhr,
+} from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { AuthService, LoginService, TokenService, User } from '@core/authentication';
@@ -19,7 +24,7 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: LocalStorageService, useClass: MemoryStorageService },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideHttpClientTesting(),
       ],
     });

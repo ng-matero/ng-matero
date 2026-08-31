@@ -1,6 +1,13 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnDestroy, ViewEncapsulation, inject, viewChild } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  ViewEncapsulation,
+  inject,
+  viewChild,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NgProgressbar } from 'ngx-progressbar';

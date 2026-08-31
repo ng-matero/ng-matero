@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -42,7 +42,7 @@ export const appConfig: ApplicationConfig = {
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
     provideAppInitializer(() => inject(StartupService).load()),
-    provideHttpClient(withInterceptors(interceptors)),
+    provideHttpClient(withXhr(), withInterceptors(interceptors)),
     provideRouter(
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),

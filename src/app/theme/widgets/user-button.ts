@@ -12,7 +12,12 @@ import { AuthService, SettingsService } from '@core';
   selector: 'app-user',
   template: `
     <button matIconButton [matMenuTriggerFor]="menu">
-      <img class="avatar" [src]="user()?.avatar" width="24" alt="avatar" />
+      <img
+        class="avatar"
+        [src]="$safeNavigationMigration(user()?.avatar)"
+        width="24"
+        alt="avatar"
+      />
     </button>
 
     <mat-menu #menu="matMenu">

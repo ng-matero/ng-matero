@@ -1,8 +1,8 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
   @for (menuItem of menu.getAll() | async; track $index) {
     <ng-template
-      [ngxPermissionsOnly]="menuItem.permissions?.only!"
-      [ngxPermissionsExcept]="menuItem.permissions?.except!"
+      [ngxPermissionsOnly]="$safeNavigationMigration(menuItem.permissions?.only)!"
+      [ngxPermissionsExcept]="$safeNavigationMigration(menuItem.permissions?.except)!"
     >
       @if (menuItem.type === 'link') {
         <a matButton [routerLink]="menu.buildRoute([menuItem.route])" routerLinkActive="active">

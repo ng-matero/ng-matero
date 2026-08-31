@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
-import { HotToastService } from '@ngxpert/hot-toast';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 import { PageHeader } from '@shared';
 
