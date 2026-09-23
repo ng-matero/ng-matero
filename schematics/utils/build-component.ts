@@ -4,8 +4,8 @@ import {
   template as interpolateTemplate,
   normalize,
   strings,
+  workspaces,
 } from '@angular-devkit/core';
-import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 import {
   FileOperator,
   Rule,
@@ -30,7 +30,6 @@ import {
   isStandaloneApp,
 } from '@angular/cdk/schematics';
 import { Schema, Style } from '@schematics/angular/component/schema';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
   addExportToModule,
   findNode,
@@ -52,6 +51,7 @@ import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { ProjectType } from '@schematics/angular/utility/workspace-models';
 import { readFileSync, statSync } from 'fs';
 import { dirname, join, resolve } from 'path';
+import ts from 'typescript';
 import { addRouteDeclarationToModule } from './ast-utils';
 
 export interface ComponentOptions extends Schema {
@@ -66,7 +66,7 @@ export interface ComponentOptions extends Schema {
  * Build a default project path for generating.
  * @param project The project to build the path for.
  */
-function buildDefaultPath(project: ProjectDefinition): string {
+function buildDefaultPath(project: workspaces.ProjectDefinition): string {
   const root = project.sourceRoot ? `/${project.sourceRoot}/` : `/${project.root}/src/`;
   const projectDirName = project.extensions.projectType === ProjectType.Application ? 'app' : 'lib';
   return `${root}${projectDirName}`;

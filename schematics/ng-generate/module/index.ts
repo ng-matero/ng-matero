@@ -14,7 +14,6 @@ import {
   getProjectMainFile,
   isStandaloneApp,
 } from '@angular/cdk/schematics';
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import { InsertChange } from '@schematics/angular/utility/change';
 import {
   buildRelativePath,
@@ -26,6 +25,7 @@ import {
 } from '@schematics/angular/utility/find-module';
 import { parseName } from '@schematics/angular/utility/parse-name';
 import { createDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
+import ts from 'typescript';
 import { addRouteDeclarationToModule } from '../../utils';
 import { Schema as ModuleOptions, RoutingScope } from './schema';
 

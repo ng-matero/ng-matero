@@ -1,4 +1,3 @@
-import * as ts from '@schematics/angular/third_party/github.com/Microsoft/TypeScript/lib/typescript';
 import {
   findNodes,
   getRouterModuleDeclaration,
@@ -6,6 +5,7 @@ import {
   insertAfterLastOccurrence,
 } from '@schematics/angular/utility/ast-utils';
 import { Change } from '@schematics/angular/utility/change';
+import ts from 'typescript';
 
 export function findRouteNode(
   node: ts.Node,

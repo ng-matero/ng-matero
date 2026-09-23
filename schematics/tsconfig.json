@@ -1,13 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
     "declaration": true,
     "module": "commonjs",
-    "moduleResolution": "node",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
