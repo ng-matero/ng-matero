@@ -7,7 +7,7 @@ import { AdminLayout } from '../theme/admin-layout/admin-layout';
 import { AuthLayout } from '../theme/auth-layout/auth-layout';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './sessions/login/login';
-import { Register } from './sessions/register/register';
+import { Signup } from './sessions/signup/signup';
 import { Error403 } from './sessions/error-403';
 import { Error404 } from './sessions/error-404';
 import { Error500 } from './sessions/error-500';
@@ -31,7 +31,7 @@ const routes: Routes = [
     component: AuthLayout,
     children: [
       { path: 'login', component: Login },
-      { path: 'register', component: Register },
+      { path: 'signup', component: Signup },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },

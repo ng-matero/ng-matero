@@ -1,36 +1,14 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, inject } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.html',
-  styleUrl: './register.scss',
-  imports: [
-    RouterLink,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    TranslatePipe,
-  ],
+  selector: 'app-signup',
+  templateUrl: './signup.html',
+  styleUrl: './signup.scss',
+  standalone: false,
 })
-export class Register {
+export class Signup {
   private readonly fb = inject(FormBuilder);
 
   registerForm = this.fb.nonNullable.group(
@@ -41,7 +19,7 @@ export class Register {
     },
     {
       validators: [this.matchValidator('password', 'confirmPassword')],
-    }
+    },
   );
 
   matchValidator(source: string, target: string) {

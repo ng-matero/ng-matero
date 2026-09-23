@@ -7,7 +7,7 @@ import { Error403 } from './routes/sessions/error-403';
 import { Error404 } from './routes/sessions/error-404';
 import { Error500 } from './routes/sessions/error-500';
 import { Login } from './routes/sessions/login/login';
-import { Register } from './routes/sessions/register/register';
+import { Signup } from './routes/sessions/signup/signup';
 
 export const routes: Routes = [
   {
@@ -28,7 +28,7 @@ export const routes: Routes = [
     component: AuthLayout,
     children: [
       { path: 'login', component: Login },
-      { path: 'register', component: Register },
+      { path: 'signup', component: Signup },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },
