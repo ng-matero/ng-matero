@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 import { AuthService } from '@core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { PageHeader } from '@shared';
 
 @Component({
@@ -24,7 +24,7 @@ import { PageHeader } from '@shared';
     MatListModule,
     MatIconModule,
     PageHeader,
-    TranslateModule,
+    TranslatePipe,
   ],
 })
 export class ProfileLayout {

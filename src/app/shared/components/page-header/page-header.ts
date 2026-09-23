@@ -7,7 +7,7 @@ import {
   input,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { MenuService } from '@core';
 import { Breadcrumb } from '../breadcrumb/breadcrumb';
@@ -20,7 +20,7 @@ import { Breadcrumb } from '../breadcrumb/breadcrumb';
     class: 'matero-page-header',
   },
   encapsulation: ViewEncapsulation.None,
-  imports: [Breadcrumb, TranslateModule],
+  imports: [Breadcrumb, TranslatePipe],
 })
 export class PageHeader {
   private readonly router = inject(Router);

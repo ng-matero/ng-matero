@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { debounceTime, filter, tap } from 'rxjs';
 
@@ -30,7 +30,7 @@ import { TopmenuPanel } from './topmenu-panel';
     MatMenuModule,
     MatTabsModule,
     NgxPermissionsModule,
-    TranslateModule,
+    TranslatePipe,
     TopmenuPanel,
   ],
 })

@@ -5,7 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@core/authentication';
-import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-panel',
@@ -25,7 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   `,
   styleUrl: './user-panel.scss',
   encapsulation: ViewEncapsulation.None,
-  imports: [RouterLink, MatButtonModule, MatIconModule, MatTooltipModule, TranslateModule],
+  imports: [RouterLink, MatButtonModule, MatIconModule, MatTooltipModule],
 })
 export class UserPanel {
   private readonly auth = inject(AuthService);

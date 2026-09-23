@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 import { ControlsOf, IProfile, PageHeader } from '@shared';
 
@@ -34,7 +34,7 @@ import { ControlsOf, IProfile, PageHeader } from '@shared';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    TranslateModule,
+    TranslatePipe,
     PageHeader,
   ],
 })

@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { AuthService, SettingsService } from '@core';
 
@@ -46,7 +46,7 @@ import { AuthService, SettingsService } from '@core';
       border-radius: 50rem;
     }
   `,
-  imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
+  imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslatePipe],
 })
 export class UserButton {
   private readonly auth = inject(AuthService);

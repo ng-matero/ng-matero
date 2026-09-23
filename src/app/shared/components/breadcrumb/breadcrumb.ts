@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '@core/bootstrap/menu.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { filter, startWith } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ import { filter, startWith } from 'rxjs';
   templateUrl: './breadcrumb.html',
   styleUrl: './breadcrumb.scss',
   encapsulation: ViewEncapsulation.None,
-  imports: [MatIconModule, TranslateModule],
+  imports: [MatIconModule, TranslatePipe],
 })
 export class Breadcrumb implements OnInit {
   private readonly router = inject(Router);

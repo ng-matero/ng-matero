@@ -2,9 +2,9 @@
   <mat-card class="m-auto" style="max-width: 380px">
     <mat-card-header class="m-b-24">
       <mat-card-title>
-        {{ 'register_welcome' | translate }},
+        {{ 'signup_welcome' | translate }},
         <br />
-        {{ 'register_title' | translate }}
+        {{ 'signup_title' | translate }}
       </mat-card-title>
     </mat-card-header>
 
@@ -39,19 +39,21 @@
             </mat-error>
           }
           @if (registerForm.get('confirmPassword')?.hasError('mismatch')) {
-            <mat-error translate [translateParams]="{ value: 'login.password' | translate }">
-              <span>{{ 'validation.inconsistent' }}</span>
+            <mat-error>
+              <span>
+                {{ 'validation.inconsistent' | translate: { value: 'password' | translate } }}
+              </span>
             </mat-error>
           }
         </mat-form-field>
 
         <mat-checkbox>{{ 'read_and_agree' | translate }}</mat-checkbox>
 
-        <button class="w-full m-y-16" matButton="filled">{{ 'register' | translate }}</button>
+        <button class="w-full m-y-16" matButton="filled">{{ 'signup' | translate }}</button>
 
         <div>
-          <span>{{ 'have_an_account' | translate }}?</span>
-          <a routerLink="/auth/login">{{ 'login' | translate }}</a>
+          <span>{{ 'have_an_account' | translate }}</span>
+          <a class="text-none" routerLink="/auth/login">{{ 'login' | translate }}</a>
         </div>
       </form>
     </mat-card-content>

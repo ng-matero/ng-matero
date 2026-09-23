@@ -10,7 +10,7 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { NgProgressbar } from 'ngx-progressbar';
 import { NgProgressRouter } from 'ngx-progressbar/router';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe, TranslateDirective } from '@ngx-translate/core';
 
 import { Breadcrumb } from './components/breadcrumb/breadcrumb';
 import { PageHeader } from './components/page-header/page-header';
@@ -28,7 +28,8 @@ const MODULES: any[] = [
   FormlyModule,
   FormlyMaterialModule,
   NgxPermissionsModule,
-  TranslateModule,
+  TranslatePipe,
+  TranslateDirective,
   NgProgressbar,
   NgProgressRouter,
 ];

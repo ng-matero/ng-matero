@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { MenuService } from '@core';
@@ -25,7 +25,7 @@ import { NavAccordionToggle } from './nav-accordion-toggle';
     NgxPermissionsModule,
     MatIconModule,
     MatRippleModule,
-    TranslateModule,
+    TranslatePipe,
     NavAccordion,
     NavAccordionItem,
     NavAccordionToggle,
