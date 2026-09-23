@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Service, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
 
 export interface Person {
   id: string;
@@ -15,9 +15,7 @@ export interface Person {
   disabled?: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class FormsService {
   private http = inject(HttpClient);
 

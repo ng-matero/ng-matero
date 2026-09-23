@@ -1,13 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { map } from 'rxjs';
 
 import { Menu } from '@core';
 import { Token, User } from './interface';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class LoginService {
   protected readonly http = inject(HttpClient);
 

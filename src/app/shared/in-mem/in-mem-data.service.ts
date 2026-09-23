@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
+import { Service } from '@angular/core';
+import { base64, currentTimestamp, filterObject, User } from '@core/authentication';
+import { environment } from '@env/environment';
 import { InMemoryDbService, RequestInfo, STATUS } from 'angular-in-memory-web-api';
 import { from, Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { find, map, switchMap } from 'rxjs/operators';
-import { environment } from '@env/environment';
-import { base64, currentTimestamp, filterObject, User } from '@core/authentication';
 
 class JWT {
   generate(user: User) {
@@ -82,9 +82,7 @@ function is(reqInfo: RequestInfo, path: string) {
   return new RegExp(`${path}(/)?$`, 'i').test(reqInfo.req.url);
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class InMemDataService implements InMemoryDbService {
   private users: User[] = [
     {

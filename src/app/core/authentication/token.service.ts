@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy, inject } from '@angular/core';
+import { OnDestroy, Service, inject } from '@angular/core';
 import { BehaviorSubject, Subject, Subscription, share, timer } from 'rxjs';
 
 import { LocalStorageService } from '@shared';
@@ -7,9 +7,7 @@ import { Token } from './interface';
 import { BaseToken } from './token';
 import { TokenFactory } from './token-factory.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TokenService implements OnDestroy {
   private readonly key = 'ng-matero-token';
 

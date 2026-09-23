@@ -1,15 +1,13 @@
 import { Direction } from '@angular/cdk/bidi';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Injectable, inject, DOCUMENT } from '@angular/core';
+import { DOCUMENT, inject, Service } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppDirectionality, LocalStorageService } from '@shared';
 import { enUS, Locale, zhCN, zhTW } from 'date-fns/locale';
 import { BehaviorSubject } from 'rxjs';
 import { AppSettings, AppTheme, defaults } from '../settings';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class SettingsService {
   private readonly key = 'ng-matero-settings';
 

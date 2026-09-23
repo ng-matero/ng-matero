@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Service } from '@angular/core';
 import { Token } from './interface';
-import { SimpleToken, JwtToken, BaseToken } from './token';
+import { BaseToken, JwtToken, SimpleToken } from './token';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TokenFactory {
   create(attributes: Token): BaseToken | undefined {
     if (!attributes.access_token) {

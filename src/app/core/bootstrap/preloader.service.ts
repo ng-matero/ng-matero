@@ -1,8 +1,6 @@
-import { Injectable, inject, DOCUMENT } from '@angular/core';
+import { DOCUMENT, Service, inject } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class PreloaderService {
   private readonly document = inject(DOCUMENT);
 

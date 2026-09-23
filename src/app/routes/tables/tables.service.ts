@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Service } from '@angular/core';
 
 export interface PeriodicElement {
   name: string;
@@ -319,9 +319,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   },
 ];
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TablesService {
   getData() {
     return ELEMENT_DATA;

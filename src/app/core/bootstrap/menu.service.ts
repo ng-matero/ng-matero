@@ -1,4 +1,4 @@
-import { Injectable, WritableSignal } from '@angular/core';
+import { Service, WritableSignal } from '@angular/core';
 import { BehaviorSubject, share } from 'rxjs';
 
 export interface MenuTag {
@@ -32,9 +32,7 @@ export interface Menu {
   active?: WritableSignal<boolean>;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class MenuService {
   private readonly menu$ = new BehaviorSubject<Menu[]>([]);
 
