@@ -1,18 +1,12 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  Component,
-  OnDestroy,
-  ViewEncapsulation,
-  inject,
-  viewChild,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, DestroyRef, ViewEncapsulation, inject, viewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NgProgressbar } from 'ngx-progressbar';
 import { NgProgressRouter } from 'ngx-progressbar/router';
-import { Subscription, filter } from 'rxjs';
+import { filter } from 'rxjs';
 
 import { AppSettings, SettingsService } from '@core';
 import { Customizer } from '../customizer/customizer';
@@ -42,10 +36,11 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 600px)';
     Customizer,
   ],
 })
-export class AdminLayout implements OnDestroy {
+export class AdminLayout {
   readonly sidenav = viewChild.required<MatSidenav>('sidenav');
   readonly content = viewChild.required<MatSidenavContent>('content');
 
+  private readonly destroyRef = inject(DestroyRef);
   private readonly breakpointObserver = inject(BreakpointObserver);
   private readonly router = inject(Router);
   private readonly settings = inject(SettingsService);
@@ -61,11 +56,10 @@ export class AdminLayout implements OnDestroy {
   }
   private isMobileScreen = false;
 
-  private layoutChangesSub = Subscription.EMPTY;
-
   constructor() {
-    this.layoutChangesSub = this.breakpointObserver
+    this.breakpointObserver
       .observe([MOBILE_MEDIAQUERY, MONITOR_MEDIAQUERY])
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(state => {
         if (state.breakpoints[MOBILE_MEDIAQUERY]) {
           this.isMobileScreen = true;
@@ -75,16 +69,17 @@ export class AdminLayout implements OnDestroy {
         }
       });
 
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
-      if (this.isOver) {
-        this.sidenav().close();
-      }
-      this.content().scrollTo({ top: 0 });
-    });
-  }
-
-  ngOnDestroy() {
-    this.layoutChangesSub.unsubscribe();
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(e => {
+        if (this.isOver) {
+          this.sidenav().close();
+        }
+        this.content().scrollTo({ top: 0 });
+      });
   }
 
   toggleCollapsed() {

@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
   FormGroup,
@@ -15,7 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
 
 import { ControlsOf, IProfile, PageHeader } from '@shared';
 
@@ -38,10 +38,11 @@ import { ControlsOf, IProfile, PageHeader } from '@shared';
     PageHeader,
   ],
 })
-export class FormsElements implements OnInit, OnDestroy {
+export class FormsElements implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly dateAdapter = inject(DateAdapter);
   private readonly translate = inject(TranslateService);
+  private readonly destroyRef = inject(DestroyRef);
 
   q = {
     username: '',
@@ -75,16 +76,12 @@ export class FormsElements implements OnInit, OnDestroy {
     date: [''],
   });
 
-  private translateSubscription = Subscription.EMPTY;
-
   ngOnInit() {
-    this.translateSubscription = this.translate.onLangChange.subscribe((res: { lang: any }) => {
-      this.dateAdapter.setLocale(res.lang);
-    });
-  }
-
-  ngOnDestroy() {
-    this.translateSubscription.unsubscribe();
+    this.translate.onLangChange
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res: { lang: any }) => {
+        this.dateAdapter.setLocale(res.lang);
+      });
   }
 
   getErrorMessage(form: FormGroup<ControlsOf<IProfile>>) {

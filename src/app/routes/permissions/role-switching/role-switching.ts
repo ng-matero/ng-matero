@@ -1,11 +1,10 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { PageHeader } from '@shared';
 
@@ -15,9 +14,10 @@ import { PageHeader } from '@shared';
   styleUrl: './role-switching.scss',
   imports: [JsonPipe, FormsModule, MatButtonToggleModule, MatCardModule, PageHeader],
 })
-export class PermissionsRoleSwitching implements OnInit, OnDestroy {
+export class PermissionsRoleSwitching implements OnInit {
   private readonly rolesSrv = inject(NgxRolesService);
   private readonly permissionsSrv = inject(NgxPermissionsService);
+  private readonly destroyRef = inject(DestroyRef);
 
   currentRole = '';
 
@@ -29,23 +29,18 @@ export class PermissionsRoleSwitching implements OnInit, OnDestroy {
     GUEST: ['canRead'],
   };
 
-  private readonly _destroy$ = new Subject<void>();
-
   ngOnInit() {
     this.currentRole = Object.keys(this.rolesSrv.getRoles())[0];
     this.currentPermissions = Object.keys(this.permissionsSrv.getPermissions());
 
-    this.rolesSrv.roles$.pipe(takeUntil(this._destroy$)).subscribe(roles => {
+    this.rolesSrv.roles$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(roles => {
       console.log(roles);
     });
-    this.permissionsSrv.permissions$.pipe(takeUntil(this._destroy$)).subscribe(permissions => {
-      console.log(permissions);
-    });
-  }
-
-  ngOnDestroy() {
-    this._destroy$.next();
-    this._destroy$.complete();
+    this.permissionsSrv.permissions$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(permissions => {
+        console.log(permissions);
+      });
   }
 
   onPermissionChange() {

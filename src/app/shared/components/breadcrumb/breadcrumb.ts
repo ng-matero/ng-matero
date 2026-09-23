@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, inject, input } from '@angular/core';
+import { Component, DestroyRef, OnInit, ViewEncapsulation, inject, input } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '@core/bootstrap/menu.service';
@@ -15,6 +16,7 @@ import { filter, startWith } from 'rxjs';
 export class Breadcrumb implements OnInit {
   private readonly router = inject(Router);
   private readonly menu = inject(MenuService);
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly nav = input<string[]>([]);
 
@@ -24,7 +26,8 @@ export class Breadcrumb implements OnInit {
     this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),
-        startWith(this.router)
+        startWith(this.router),
+        takeUntilDestroyed(this.destroyRef)
       )
       .subscribe(() => {
         this.genBreadcrumb();

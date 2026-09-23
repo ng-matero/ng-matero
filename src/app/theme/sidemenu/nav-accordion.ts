@@ -1,4 +1,5 @@
-import { Directive, inject } from '@angular/core';
+import { DestroyRef, Directive, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '@core';
 import { debounceTime, filter } from 'rxjs';
@@ -11,12 +12,16 @@ import { NavAccordionItem } from './nav-accordion-item';
 export class NavAccordion {
   private readonly router = inject(Router);
   private readonly menu = inject(MenuService);
+  private readonly destroyRef = inject(DestroyRef);
 
   private navItems: NavAccordionItem[] = [];
 
   constructor() {
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef)
+      )
       .subscribe(() => this.checkOpenedItems());
 
     // Fix opening status for async menu data

@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
   FormGroup,
@@ -17,7 +18,6 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { PageHeader } from '@shared';
 import { addDays, set } from 'date-fns';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forms-datetime',
@@ -33,10 +33,11 @@ import { Subscription } from 'rxjs';
     PageHeader,
   ],
 })
-export class FormsDatetime implements OnInit, OnDestroy {
+export class FormsDatetime implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly dateAdapter = inject(DateAdapter);
   private readonly translate = inject(TranslateService);
+  private readonly destroyRef = inject(DestroyRef);
 
   type = 'date-fns';
 
@@ -47,8 +48,6 @@ export class FormsDatetime implements OnInit, OnDestroy {
   max: Date;
   start: Date;
   filter: (date: Date | null, type: MtxDatetimepickerFilterType) => boolean;
-
-  private translateSubscription = Subscription.EMPTY;
 
   constructor() {
     this.today = new Date(); // moment.utc();
@@ -93,12 +92,10 @@ export class FormsDatetime implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.translateSubscription = this.translate.onLangChange.subscribe((res: { lang: string }) => {
-      this.dateAdapter.setLocale(res.lang);
-    });
-  }
-
-  ngOnDestroy() {
-    this.translateSubscription.unsubscribe();
+    this.translate.onLangChange
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res: { lang: string }) => {
+        this.dateAdapter.setLocale(res.lang);
+      });
   }
 }
