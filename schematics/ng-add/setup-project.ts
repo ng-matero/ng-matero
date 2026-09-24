@@ -5,7 +5,6 @@ import {
   MergeStrategy,
   mergeWith,
   move,
-  Rule,
   SchematicContext,
   template,
   Tree,
@@ -30,6 +29,7 @@ import { Schema } from './schema';
  * Scaffolds the basics of a Angular Material application, this includes:
  *  - Add Starter files to root
  *  - Add Scripts to `package.json`
+ *  - Add styles.scss to `angular.json`
  *  - Add proxy to `angular.json`
  *  - Add fileReplacements to `angular.json`
  *  - Add paths to `tsconfig.json`
@@ -37,11 +37,12 @@ import { Schema } from './schema';
  *  - Add Preloader to `index.html`
  *  - Add Packages to `package.json`
  */
-export default function (options: Schema): Rule {
+export default function (options: Schema) {
   return chain([
     deleteExsitingFiles(options),
     addStarterFiles(options),
     addScriptsToPackageJson(),
+    addStylesToAngularJson(options),
     addESLintToAngularJson(options),
     addProxyToAngularJson(options),
     addFileReplacementsToAngularJson(options),
@@ -86,8 +87,27 @@ function addScriptsToPackageJson() {
   };
 }
 
+/** Add styles.scss to angular.json if not already present */
+function addStylesToAngularJson(options: Schema) {
+  return updateWorkspace(workspace => {
+    const project = getProjectFromWorkspace(workspace, options.project);
+    const buildTarget = project.targets.get('build')!;
+    const stylesPath = 'src/styles.scss';
+
+    // Check if styles.scss already exists in build options
+    const styles = buildTarget.options?.styles as string[] | undefined;
+    const hasStyles = styles?.some((s: string) => s === stylesPath);
+
+    // Only add if not already present
+    if (!hasStyles && styles) {
+      styles.unshift(stylesPath);
+      buildTarget.options!.styles = styles;
+    }
+  });
+}
+
 /** Add ESLint to `angular.json` */
-function addESLintToAngularJson(options: Schema): Rule {
+function addESLintToAngularJson(options: Schema) {
   return updateWorkspace(workspace => {
     const project = getProjectFromWorkspace(workspace, options.project);
 
@@ -124,7 +144,7 @@ function addProxyToAngularJson(options: Schema) {
 }
 
 /** Add fileReplacements to 'angular.json' */
-function addFileReplacementsToAngularJson(options: Schema): Rule {
+function addFileReplacementsToAngularJson(options: Schema) {
   return updateWorkspace(workspace => {
     const project = getProjectFromWorkspace(workspace, options.project);
     const targetBuildConfig = project.targets.get('build')!;
@@ -153,7 +173,7 @@ function addFileReplacementsToAngularJson(options: Schema): Rule {
 }
 
 /** Add paths to `tsconfig.json` */
-function addPathsToTsconfig(options: Schema): Rule {
+function addPathsToTsconfig(options: Schema) {
   return async (host: Tree) => {
     const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
@@ -162,30 +182,26 @@ function addPathsToTsconfig(options: Schema): Rule {
     const formattingOptions = { insertSpaces: true, tabSize: 2 };
 
     let fileContent = host.read(fileName)!.toString();
-    let edits = modify(fileContent, ['compilerOptions', 'baseUrl'], './', {
-      formattingOptions,
-    });
-    fileContent = applyEdits(fileContent, edits);
 
     const currentJson = parse(fileContent);
     const currentPaths = currentJson.compilerOptions.paths || {};
 
     const pathsToUpdate: Record<string, string> = {
-      '@core': `${project.sourceRoot}/app/core`,
-      '@core/*': `${project.sourceRoot}/app/core/*`,
-      '@shared': `${project.sourceRoot}/app/shared`,
-      '@shared/*': `${project.sourceRoot}/app/shared/*`,
-      '@theme': `${project.sourceRoot}/app/theme`,
-      '@theme/*': `${project.sourceRoot}/app/theme/*`,
-      '@env': `${project.sourceRoot}/environments`,
-      '@env/*': `${project.sourceRoot}/environments/*`,
+      '@core': `./${project.sourceRoot}/app/core`,
+      '@core/*': `./${project.sourceRoot}/app/core/*`,
+      '@shared': `./${project.sourceRoot}/app/shared`,
+      '@shared/*': `./${project.sourceRoot}/app/shared/*`,
+      '@theme': `./${project.sourceRoot}/app/theme`,
+      '@theme/*': `./${project.sourceRoot}/app/theme/*`,
+      '@env': `./${project.sourceRoot}/environments`,
+      '@env/*': `./${project.sourceRoot}/environments/*`,
     };
     Object.keys(pathsToUpdate).forEach(key => {
       const newPath = pathsToUpdate[key];
       const existingPaths = Array.isArray(currentPaths[key]) ? currentPaths[key] : [];
       const updatedPaths = Array.from(new Set([...existingPaths, newPath]));
 
-      edits = modify(fileContent, ['compilerOptions', 'paths', key], updatedPaths, {
+      const edits = modify(fileContent, ['compilerOptions', 'paths', key], updatedPaths, {
         formattingOptions,
       });
       fileContent = applyEdits(fileContent, edits);
