@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ErrorCode } from '@shared/components/error-code/error-code';
+import { ErrorCode } from '@shared';
 
 @Component({
   selector: 'app-error-403',
