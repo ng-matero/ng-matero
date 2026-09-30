@@ -93,7 +93,17 @@
             ]
           }
         },
-
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "ng-matero:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ng-matero:serve:production"
+            }
+          }
+        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
@@ -116,7 +126,8 @@
   "cli": {
     "analytics": false,
     "schematicCollections": [
-      "@angular-eslint"
+      "angular-eslint",
+      "playwright-ng-schematics"
     ]
   },
   "schematics": {
