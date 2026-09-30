@@ -3,8 +3,9 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { TokenService, User } from '@core/authentication';
-import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { LocalStorageService, MemoryStorageService } from '@shared';
 import { STATUS } from 'angular-in-memory-web-api';
+import { vi } from 'vitest';
 import { BASE_URL } from './base-url-interceptor';
 import { tokenInterceptor } from './token-interceptor';
 
@@ -72,7 +73,7 @@ describe('TokenInterceptor', () => {
 
     const headers = mockRequest('https://api.github.com', { success: true }).request.headers;
 
-    expect(headers.has('Authorization')).toBeFalse();
+    expect(headers.has('Authorization')).toBe(false);
   });
 
   it('should not append token when base url is empty and url is not same site', () => {
@@ -80,12 +81,12 @@ describe('TokenInterceptor', () => {
 
     const headers = mockRequest('https://api.github.com', { success: true }).request.headers;
 
-    expect(headers.has('Authorization')).toBeFalse();
+    expect(headers.has('Authorization')).toBe(false);
   });
 
   it('should clear token when response status is unauthorized', () => {
     init('', 'token');
-    spyOn(tokenService, 'clear');
+    vi.spyOn(tokenService, 'clear');
 
     mockRequest('/user', {}, { status: STATUS.UNAUTHORIZED, statusText: 'Unauthorized' });
 
@@ -94,8 +95,7 @@ describe('TokenInterceptor', () => {
 
   it('should navigate /auth/login when api url is /auth/logout and token is valid', () => {
     init('', 'token');
-    const navigateByUrl = spyOn(router, 'navigateByUrl');
-    navigateByUrl.and.returnValue(Promise.resolve(true));
+    const navigateByUrl = vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
 
     mockRequest('/auth/logout');
 
@@ -104,8 +104,7 @@ describe('TokenInterceptor', () => {
 
   it('should navigate /auth/login when api url is /auth/logout and token is invalid', () => {
     init('', '');
-    const navigateByUrl = spyOn(router, 'navigateByUrl');
-    navigateByUrl.and.returnValue(Promise.resolve(true));
+    const navigateByUrl = vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
 
     mockRequest('/auth/logout');
 

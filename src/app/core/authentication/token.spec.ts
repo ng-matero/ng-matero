@@ -17,7 +17,7 @@ describe('Token', () => {
     });
 
     it('test access_token is JWT', () => {
-      expect(JwtToken.is(token.access_token)).toBeTrue();
+      expect(JwtToken.is(token.access_token)).toBe(true);
     });
 
     it('test bearer token', function () {

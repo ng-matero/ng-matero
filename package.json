@@ -9,7 +9,7 @@
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
-    "test:ci": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "test:ci": "ng test --watch=false --coverage",
     "e2e": "ng e2e",
     "build": "ng build",
     "build:schematics": "npm run copy:schematics && cd schematics && npm run build && cd .. && npm run build:starter",
@@ -52,8 +52,7 @@
     "photoviewer": "^3.11.1",
     "rxjs": "~7.8.0",
     "screenfull": "^6.0.2",
-    "tslib": "^2.8.0",
-    "zone.js": "~0.16.0"
+    "tslib": "^2.8.0"
   },
   "devDependencies": {
     "@angular/build": "^22.1.0",
@@ -62,8 +61,10 @@
     "@commitlint/cli": "^21.2.0",
     "@commitlint/config-conventional": "^21.2.0",
     "@eslint/js": "^10.0.1",
-    "@types/jasmine": "~5.1.0",
+    "@types/jasmine": "^7.0.0",
     "@types/node": "^26.6.0",
+    "@vitest/browser-playwright": "^5.0.2",
+    "@vitest/coverage-v8": "^5.0.2",
     "angular-cli-ghpages": "^3.1.0",
     "angular-eslint": "^22.5.0",
     "cpr": "^3.0.1",
@@ -73,15 +74,10 @@
     "husky": "^9.1.6",
     "is-ci": "^4.1.0",
     "istanbul-lib-instrument": "^6.0.3",
-    "jasmine-core": "~5.1.0",
-    "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "jsdom": "^30.1.1",
     "lint-staged": "^17.5.0",
     "parse5": "^8.0.0",
+    "playwright": "^1.63.0",
     "prettier": "^3.9.0",
     "protractor": "~7.0.0",
     "rimraf": "^6.0.0",
@@ -92,6 +88,7 @@
     "stylelint-order": "^8.1.0",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.2",
     "webpack-bundle-analyzer": "^4.10.0"
   }
 }

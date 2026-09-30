@@ -35,6 +35,7 @@ speed-measure-plugin*.json
 /.angular/cache
 /.nx/cache
 /.sass-cache
+/.vitest
 /connect.lock
 /coverage
 /libpeerconnection.log

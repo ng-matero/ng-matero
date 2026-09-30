@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
 import { TestBed, inject } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
 import { AuthService, TokenService, authGuard } from '@core/authentication';
-import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { LocalStorageService, MemoryStorageService } from '@shared';
+import { vi } from 'vitest';
 
 @Component({
   template: '',
@@ -47,13 +48,13 @@ describe('authGuard function unit test', () => {
     inject([AuthService, Router], () => {
       tokenService.set({ access_token: 'token', token_type: 'bearer' });
 
-      expect(authGuard(route, state)).toBeTrue();
+      expect(authGuard(route, state)).toBe(true);
     });
   });
 
   it('should redirect to /auth/login when authenticate failed', () => {
     inject([AuthService, Router], () => {
-      spyOn(authService, 'check').and.returnValue(false);
+      vi.spyOn(authService, 'check').mockReturnValue(false);
 
       expect(authGuard(route, state)).toEqual(router.parseUrl('/auth/login'));
     });

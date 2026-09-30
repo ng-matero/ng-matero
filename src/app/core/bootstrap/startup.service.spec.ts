@@ -4,8 +4,9 @@ import { TestBed } from '@angular/core/testing';
 import { admin, TokenService } from '@core/authentication';
 import { MenuService } from '@core/bootstrap/menu.service';
 import { StartupService } from '@core/bootstrap/startup.service';
-import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
+import { LocalStorageService, MemoryStorageService } from '@shared';
 import { NgxPermissionsModule, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { vi } from 'vitest';
 
 describe('StartupService', () => {
   let httpMock: HttpTestingController;
@@ -54,11 +55,11 @@ describe('StartupService', () => {
   it('should load menu when token changed and token valid', async () => {
     const menuData = { menu: [] };
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-    spyOn(menuService, 'addNamespace');
-    spyOn(menuService, 'set');
-    spyOn(mockPermissionsService, 'loadPermissions');
-    spyOn(mockRolesService, 'flushRoles');
-    spyOn(mockRolesService, 'addRoles');
+    vi.spyOn(menuService, 'addNamespace').mockReturnValue(undefined);
+    vi.spyOn(menuService, 'set').mockReturnValue(undefined);
+    vi.spyOn(mockPermissionsService, 'loadPermissions').mockReturnValue(undefined);
+    vi.spyOn(mockRolesService, 'flushRoles').mockReturnValue(undefined);
+    vi.spyOn(mockRolesService, 'addRoles').mockReturnValue(undefined);
 
     await startup.load();
 
@@ -75,8 +76,8 @@ describe('StartupService', () => {
   });
 
   it('should clear menu when token changed and token invalid', async () => {
-    spyOn(menuService, 'addNamespace');
-    spyOn(menuService, 'set');
+    vi.spyOn(menuService, 'addNamespace').mockReturnValue(undefined);
+    vi.spyOn(menuService, 'set').mockReturnValue(undefined);
 
     await startup.load();
 

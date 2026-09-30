@@ -49,7 +49,6 @@ export class MenuService {
   /** Initialize the menu data. */
   set(menu: Menu[]) {
     this.menu$.next(menu);
-    return this.menu$.asObservable();
   }
 
   /** Add one item to the menu data. */
