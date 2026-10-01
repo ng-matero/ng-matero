@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@acrodata/color-picker@^1.4.0":
+"@acrodata/color-picker@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@acrodata/color-picker/-/color-picker-1.5.0.tgz#f069ec22bab6e4fee5685188ace31c7d189e1cbc"
   integrity sha512-3iJobPSBCu4EpZE9F+IqzwSIOgswiNNr6Ep9wGb2dZMQuUnE7xopQbOtW1Xs+EAbPUrenVZWXKYqypeb2/iQTw==
@@ -1488,12 +1488,12 @@
   dependencies:
     tslib "^2.4.0"
 
-"@ng-matero/extensions@^22.0.0":
-  version "22.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-22.0.0.tgz#72bb5818fb37d08b23d41308af3951798354c124"
-  integrity sha512-nS9cBhrI5r5+/vCvs11oOYEFjJMyF8sYHPYzzcWH1xmFq0KnH5zb3+WhSiDcy6lOQgHbveD2CRPJulJWB7/gwg==
+"@ng-matero/extensions@^22.1.0":
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-22.1.0.tgz#46bacef11cb40d5b3f878a9c6f91507bf8fca237"
+  integrity sha512-sKJkxoNQqDXydBWVf+MzCrZxcEluPpIBNKXGBTo5gA2WxqsmejYpUxxCEfh7biUV/15YEZYHqNH9+Cd0IYLRIQ==
   dependencies:
-    "@acrodata/color-picker" "^1.4.0"
+    "@acrodata/color-picker" "^1.5.0"
     "@ng-matero/ng-select" "^1.2.0"
     photoviewer "^3.11.0"
     tslib "^2.4.0"
