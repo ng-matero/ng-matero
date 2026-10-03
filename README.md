@@ -49,7 +49,8 @@ Which version to use?
 
 | Angular | Material | Ng-Matero | Extensions |
 | ------- | -------- | --------- | ---------- |
-| v21     | v21      | 21.x.x    | 21.x.x     |
+| v22     | v22      | 22.x.x    | 22.x.x     |
+| v21     | v21      | 21.1.x    | 21.3.x     |
 | v20     | v20      | 20.2.x    | 20.4.x     |
 | v19     | v19      | 19.2.x    | 19.5.x     |
 | v18     | v18      | 18.3.x    | 18.6.x     |
