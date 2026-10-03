@@ -3,8 +3,8 @@ import {
   inject,
   NgModule,
   provideAppInitializer,
-  provideBrowserGlobalErrorListeners,<% if(zoneless) { %>
-  provideZonelessChangeDetection,<% } %>
+  provideBrowserGlobalErrorListeners,<% if(!zoneless) { %>
+  provideZoneChangeDetection,<% } %>
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -40,8 +40,8 @@ import { FakeLoginService } from './fake-login.service';
     NgxPermissionsModule.forRoot(),
   ],
   providers: [
-    provideBrowserGlobalErrorListeners(),<% if(zoneless) { %>
-    provideZonelessChangeDetection(),<% } %>
+    provideBrowserGlobalErrorListeners(),<% if(!zoneless) { %>
+    provideZoneChangeDetection({ eventCoalescing: true }),<% } %>
     { provide: BASE_URL, useValue: environment.baseUrl },
     provideAppInitializer(() => inject(TranslateLangService).load()),
     provideAppInitializer(() => inject(StartupService).load()),
