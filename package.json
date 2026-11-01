@@ -68,7 +68,7 @@
     "@vitest/browser-playwright": "^5.0.2",
     "@vitest/coverage-v8": "^5.0.2",
     "angular-cli-ghpages": "^3.1.0",
-    "angular-eslint": "^22.5.0",
+    "angular-eslint": "^22.6.0",
     "cpr": "^3.0.1",
     "esbuild-visualizer": "^0.7.0",
     "eslint": "^10.11.0",
