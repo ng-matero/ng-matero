@@ -81,7 +81,7 @@
     "lint-staged": "^17.5.0",
     "parse5": "^8.0.0",
     "playwright": "^1.63.0",
-    "playwright-ng-schematics": "^22.1.2",
+    "playwright-ng-schematics": "^22.1.3",
     "prettier": "^3.9.0",
     "rimraf": "^6.0.0",
     "stylelint": "^17.15.0",
