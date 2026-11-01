@@ -5402,10 +5402,10 @@ strip-outer@^1.0.1:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-stylelint-config-recess-order@^7.8.0:
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recess-order/-/stylelint-config-recess-order-7.8.0.tgz#598d6b74a476b8e1dffa8e87406517cafc55f70e"
-  integrity sha512-ObYusdkXavm8ulgb5xvmU1l8wgCdveNYG12hOTUEdjS8bNhSRggl4or0mE0JaOnQz+Ve2xZemVpwqERCgJbntg==
+stylelint-config-recess-order@^7.9.0:
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recess-order/-/stylelint-config-recess-order-7.9.0.tgz#8a850d6260a3bb8bca53a7574e1a2368db63396d"
+  integrity sha512-Pu3zhefjou7PYNkEtx4uLnsCSmXpiNIx8ALd20r+PGO1LApcf2Gowh2pKEaY9h8gdR8Wp6rUGqhqEIAhdyoHxg==
 
 stylelint-config-recommended-scss@^17.0.0:
   version "17.0.1"
